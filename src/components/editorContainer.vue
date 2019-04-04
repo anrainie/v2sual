@@ -4,10 +4,10 @@
   </div>
 </template>
 <script>
-import aContainer from "./aContainer.vue";
+//import aContainer from "./aContainer.vue";
 import Vue from "vue";
 
-Vue.component("aContainer", aContainer);
+//Vue.component("aContainer", aContainer);
 
 export default {};
 </script>
