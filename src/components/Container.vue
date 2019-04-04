@@ -1,4 +1,5 @@
 <template>
+  <!-- 抽象容器 -->
   <div  @click.stop="$emit('selected')">
     <span>{{model.name}}</span>
 
