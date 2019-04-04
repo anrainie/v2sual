@@ -9,96 +9,103 @@
       </div>
     </div>
     <div class="editor">
-      <editorContainer
-        ref="editorContainer"
-        @selected="select=model"
-        :class="{selected:select==model}"
-      >
-        <template v-for="(item,index) of model.children">
-          <component
-            @selected="select=item.model"
-            :class="{selected:select==item.model}"
-            :key="index"
-            :is="item.component.name"
-            :model="item.model"
-          ></component>
-        </template>
-      </editorContainer>
+      <v2Container v-model="rootId"></v2Container>
     </div>
   </div>
 </template>
 <script>
-import editorContainer from "./editorContainer";
-import Vue from "vue";
+import { canvas } from "../assets/js/v2-view.js";
+import { setTimeout } from "timers";
+
+import Vue from "Vue";
+
 export default {
-  components: {
-    editorContainer
-  },
+  mixins: [canvas],
   mounted() {
-    this.select = "editorContainier";
-  },
-  methods: {
-    add(item) {
-      let i = {
-        ...item,
-        id: new Date().toString()
-      };
-      if (this.select) {
-        if (!this.select.children) {
-          Vue.set(this.select, "children", []);
+    window.Editor = this;
+    //模拟异步读取数据
+    setTimeout(() => {
+      this.store.commit("init", {
+        structure: {
+          id: "root",
+          component: "v2Container",
+          direction: "row",
+          layout: [30, 30, 30],
+          style: {
+            width: "100%",
+            height: "100%"
+          },
+          data: {},
+          children: [
+            {
+              id: "b1145",
+              component: "v2-container",
+              data: "ba15",
+              style: {
+                width: "100%",
+                height: "100%"
+              },
+              direction: "col",
+              layout: [30, 60], 
+              children: [
+                {
+                  id: "fah1",
+                  component: "v2Input",
+                  data: "badf",
+                  style: {
+                    height: "40px"
+                  }
+                },
+                {
+                  id: "vaf",
+                  component: "v2Input",
+                  data: "dfa13",
+                  style: {
+                    height: "40px"
+                  }
+                }
+              ]
+            },
+            {
+              id: "241123",
+              component: "v2Input",
+              data: "1235",
+              style: {
+                width: "100px",
+                height: "40px"
+              }
+            },
+            {
+              id: "vasg123",
+              component: "v2Input",
+              data: "agqe",
+              style: {
+                width: "100px",
+                height: "50px"
+              }
+            }
+          ]
         }
-        this.select.children.push(i);
-      }
-    }
+      });
+      this.rootId = "root";
+    }, 100);
   },
+  methods: {},
   data() {
     return {
-      select: null,
       palatteConfig: {
         children: [
           {
-            name: "容器",
-            model: {
-              name: "新建容器"
-            },
-            component: { name: "aContainer" }
+            name: "容器"
           }
         ]
       },
-      model: {
-        children: [
-          {
-            id: 1,
-            model: {
-              name: "容器1"
-            },
-            component: { name: "aContainer" }
-          },
-          {
-            id: 2,
-            model: {
-              name: "容器2"
-            },
-            component: { name: "aContainer" }
-          },
-          {
-            id: 3,
-            model: {
-              name: "容器3"
-            },
-            component: { name: "aContainer" }
-          }
-        ]
-      }
+      rootId: null
     };
   }
 };
 </script>
 <style>
-.selected {
-  background: lightgray;
-  border: 1px solid darkgray;
-}
 .editorPart {
   display: flex;
   position: relative;

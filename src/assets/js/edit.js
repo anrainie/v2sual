@@ -2,12 +2,19 @@
  * 编辑器相关方法
  */
 export const edit = {
-  mounted() {
-    let c = this.$refs.container;
-    if (c) {
-      $(c.$el ? c.$el : c).click(() => {
-        this.store.$emit('select', this.wid);
-      })
+  methods: {
+    save() {
+
     }
-  }
+  },
+  mounted() {
+    let el = this.$refs.wrap.$el || this.$refs.wrap;
+    $(el).click(() => {
+      this.store.commit('select', this.wid);
+    });
+    console.log(el)
+  },
+  isSelected(wid) {
+    // this.store.
+  },
 }

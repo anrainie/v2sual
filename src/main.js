@@ -5,19 +5,22 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import 'es6-promise/auto'
-import Vuex from 'vuex'
 
-Vue.use(Vuex)
 Vue.use(ElementUI)
-
-
 Vue.config.productionTip = false
+
+
+import v2Container from "./components/edit/Container.vue";
+import v2Input from "./components/input/Input.vue";
+Vue.component('v2Container',v2Container);
+Vue.component('v2Input',v2Input);
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  components: {
+    App
+  },
   template: '<App/>'
 })

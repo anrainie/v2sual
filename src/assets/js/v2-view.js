@@ -1,24 +1,41 @@
-import store from 'store.js'
+import store from './store.js'
+
+export const canvas = {
+  mounted() {
+    this.store = store;
+  },
+}
+
 /**
  * 控件的性质
  */
 export const widget = {
+  data() {
+    return {
+      parent: null,
+    }
+  },
+  model: {
+    prop: 'wid',
+    event: 'change'
+  },
   /**
-   * model:数据模型
-   * config:视图配置
+   * wid：widget ID,是控件实例的唯一标识
    */
   props: ["wid"],
   /**
    * 注入store
    */
-  store,
+  mounted() {
+    this.store = store;
+  },
   methods: {
     LOG: console.log,
     ERR: console.error,
   },
   computed: {
     model() {
-      let model = store.state.components[this.wid] || {};
+      let model = store.state.UIData.structureIndex[this.wid] || {};
       //TODO
       return model;
     }
@@ -35,13 +52,19 @@ export const composite = {
      * @param {索引} index 
      */
     layout(index) {
-      if (this.direction == 'col') {
+      if (this.model.direction == 'col') {
         //列布局/横向布局，返回span
-        return model.layoutData instanceof Array ? model.layoutData[index] * 12 / 100 : '2'
+        return this.model.layout instanceof Array ? Math.round(this.model.layout[index] * 12 / 100) : '2'
       } else {
         //行布局/纵向布局，返回百分比
-        return model.layoutData instanceof Array ? model.layoutData[index] + '%' : '50%'
+        return this.model.layout instanceof Array ? this.model.layout[index] + '%' : '50%'
       }
+    },
+    addChild({
+      wid,
+      factory,
+    }) {
+      store.commit('addChild', {});
     }
   },
 }
