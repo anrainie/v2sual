@@ -1,30 +1,55 @@
-# awebide
+# WEB IDE - AWEB IDE
 
 > A Vue.js project
 
-## Build Setup
+## 命令
 
-``` bash
-# install dependencies
-npm install
+- 安装
+  ```sh
+  npm i
+  ```
 
-# serve with hot reload at localhost:8080
-npm run dev
+- 开发前端页面
 
-# build for production with minification
-npm run build
+  ```sh
+  npm run dev
+  ```
 
-# build for production and view the bundle analyzer report
-npm run build --report
+- 打包前端页面
 
-# run unit tests
-npm run unit
+  ```sh
+  npm run build
+  ```
+  
+- 前端分析报告
 
-# run e2e tests
-npm run e2e
+  ```sh
+  npm run build --report
+  ```
 
-# run all tests
-npm test
-```
+- 前端单元测试
+  
+  ```sh
+  npm run unit
+  ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+- 前端集成测试
+
+  ```sh
+  npm run e2e
+  ```
+  
+- 前端集成测试
+
+  ```sh
+  npm test
+  ```
+
+
+
+## Vue 打包配置 
+[guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+
+## License
+[Ant 996](https://github.com/996icu/996.ICU/blob/master/LICENSE) 
