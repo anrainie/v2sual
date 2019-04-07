@@ -1,9 +1,7 @@
 import store from './store.js'
 
 export const canvas = {
-  mounted() {
-    this.store = store;
-  },
+  store,
 }
 
 /**
@@ -26,9 +24,6 @@ export const widget = {
   /**
    * 注入store
    */
-  mounted() {
-    this.store = store;
-  },
   methods: {
     LOG: console.log,
     ERR: console.error,
@@ -38,7 +33,10 @@ export const widget = {
       let model = store.state.UIData.structureIndex[this.wid] || {};
       //TODO
       return model;
-    }
+    },
+    wrapClass() {
+      return {}
+    },
   }
 }
 /**
@@ -47,6 +45,12 @@ export const widget = {
 export const composite = {
   computed: {},
   methods: {
+    $canAddChild() {
+      return true;
+    },
+    addChild(factory) {
+      this.model.children.push(factory());
+    },
     /**
      * 布局函数
      * @param {索引} index 

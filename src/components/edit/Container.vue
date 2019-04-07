@@ -1,6 +1,6 @@
 <template>
   <!-- 布局容器 -->
-  <div class="V2Container" ref="wrap" :style="model.style">
+  <div class="V2Container" ref="wrap" :style="model.style" :class="wrapClass">
     <!-- model来自widget -->
     <template v-for="(item,index) of model.children">
       <el-col :span="layout(index,item)" :key="item.id" v-if="model.direction=='col'">

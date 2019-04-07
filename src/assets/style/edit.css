@@ -1,3 +1,4 @@
+/* 考虑用before/after */
 .selected {
   background: lightblue;
   border: 1px solid black;

@@ -9,7 +9,6 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 
-
 import v2Container from "./components/edit/Container.vue";
 import v2Input from "./components/input/Input.vue";
 Vue.component('v2Container',v2Container);

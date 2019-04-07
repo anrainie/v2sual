@@ -2,7 +2,7 @@
   <div class="editorPart">
     <div class="palatte">
       <div v-for="(item,index) of palatteConfig.children" :key="index">
-        <span @dblclick="add(item)">
+        <span class="PaletteItem" @click.native="createElement(item)">
           <i :class="item.icon"/>
           <span>{{item.name}}</span>
         </span>
@@ -15,22 +15,29 @@
 </template>
 <script>
 import { canvas } from "../assets/js/v2-view.js";
+import { createTool } from "../assets/js/edit.js";
 import { setTimeout } from "timers";
-
-import Vue from "Vue";
 
 export default {
   mixins: [canvas],
   mounted() {
+    // $('.PaletteItem').draggable({
+    //   cursor: "move",
+    //   cursorAt: { top: -12, left: -20 },
+    //   helper: function( event ) {
+    //     return $( "<div class='ui-widget-header'>I'm a custom helper</div>" );
+    //   }
+    // });
+
     window.Editor = this;
     //模拟异步读取数据
     setTimeout(() => {
-      this.store.commit("init", {
+      this.$store.commit("init", {
         structure: {
           id: "root",
           component: "v2Container",
           direction: "row",
-          layout: [30, 30, 30],
+          layout: [50, 30, 30],
           style: {
             width: "100%",
             height: "100%"
@@ -46,7 +53,7 @@ export default {
                 height: "100%"
               },
               direction: "col",
-              layout: [30, 60], 
+              layout: [30, 60],
               children: [
                 {
                   id: "fah1",
@@ -90,13 +97,31 @@ export default {
       this.rootId = "root";
     }, 100);
   },
-  methods: {},
+  methods: {
+    initDraggable(e, item) {
+      console.log(e, item);
+    },
+    /**
+     *创建元素，传入一个createTool，并且传入element
+     */
+    createElement(item) {
+      let tool = {
+        ...createTool,
+        element: item.model
+      };
+      this.$store.setActiveTool(tool);
+    }
+  },
   data() {
     return {
       palatteConfig: {
         children: [
           {
-            name: "容器"
+            name: "容器",
+            component: "v2-container",
+            factory() {
+              return {};
+            }
           }
         ]
       },
@@ -107,8 +132,8 @@ export default {
 </script>
 <style>
 .editorPart {
+  margin: 0;
   display: flex;
-  position: relative;
   width: 100vw;
   height: 100vh;
 }
@@ -119,5 +144,7 @@ export default {
 }
 .editor {
   flex: 6;
+  height: 100%;
+  overflow-y: auto;
 }
 </style>
