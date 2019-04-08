@@ -7,6 +7,8 @@
  * 使用方式store.setActiveTool($1);
  */
 export const createTool = {
+  //为了支持校验activeTool.type=='create'
+  type: 'create',
   $wrapClass() {
     return {
 
@@ -16,16 +18,20 @@ export const createTool = {
 
   },
   /**
-   * 创建完成后的hook
+   * 对象组装工厂，工厂需要完成两个行为，1、生成wid；2、调用$store.registIndex注册widget索引
    * @param {*} _self 
    */
-  createFactory(_self) {
-    let factory = _self.$createFactory || (e => {
-      //默认行为
-      e.wid = new Date().valueOf();
+  getFactory(_self) {
+    let factory = _self.$getFactory || (e => {
+      //默认行为，添加一个wid
+      e.id = new Date().valueOf();
+      _self.$store.commit('registIndex', {
+        id: e.id,
+        content: e
+      });
       return e;
     });
-    return factory.create(this.element, _self);
+    return factory;
   },
   /**
    * 1、点击后执行创建操作
@@ -40,24 +46,21 @@ export const createTool = {
       _self.$store.commit('setActiveTool', selectionTool);
       //选中
       _self.$store.commit('select', e.wid, event);
-    }).catch(e => {
-      //TODO 错误行为定义
     });
   },
   append(_self, event) {
     //可能未来有异步请求，使用Promise处理
+    let tool = this;
     return new Promise((res, rej) => {
       //校验可创建性
-      if (_self.$canAddChild && _self.$canAddChild(this.element)) {
-        debugger;
+      if (_self.$canAddChild && _self.$canAddChild(tool.element)) {
         if (_self.$addChild) {
-          return _self.$addChild(this.createFactory(this.element), event);
+          return _self.$addChild(tool.getFactory(_self)(tool.element), event);
         } else {
           let children = _self.model.children = _self.model.children || [];
-          let result = this.createFactory(this.element);
+          let result = tool.getFactory(_self)(tool.element);
           children.push(result);
           _self.model.layout.push(30);
-          console.log(result,_self.model);
           res(result);
         }
       } else {
@@ -135,5 +138,9 @@ export const edit = {
       }
       return false;
     },
+    $removeChild(index) {
+      //   this.model.children.push(factory());
+      this.model.children.splice(index, 1, null);
+    }
   },
 }

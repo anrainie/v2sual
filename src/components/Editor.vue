@@ -1,8 +1,8 @@
 <template>
   <div class="editorPart">
     <div class="palatte">
-      <div v-for="(item,index) of palatteConfig.children" :key="index">
-        <span class="PaletteItem" @click.native="createElement(item)">
+      <div v-for="(item,index) of palatteConfig" :key="index" @click.stop="createElement(item)">
+        <span class="PaletteItem">
           <i :class="item.icon"/>
           <span>{{item.name}}</span>
         </span>
@@ -37,23 +37,23 @@ export default {
           id: "root",
           component: "v2Container",
           direction: "row",
-          layout: [50, 30, 30],
+          layout: [20, 10, 10, 20, 10],
           style: {
             width: "100%",
             height: "100%"
           },
           data: {},
           children: [
+            null,
             {
               id: "b1145",
               component: "v2-container",
-              data: "ba15",
               style: {
                 width: "100%",
                 height: "100%"
               },
               direction: "col",
-              layout: [30, 60],
+              layout: [30, 10, 20],
               children: [
                 {
                   id: "fah1",
@@ -63,6 +63,7 @@ export default {
                     height: "40px"
                   }
                 },
+                null,
                 {
                   id: "vaf",
                   component: "v2Input",
@@ -107,24 +108,61 @@ export default {
     createElement(item) {
       let tool = {
         ...createTool,
-        element: item.model
+        element: item.element
       };
-      this.$store.setActiveTool(tool);
+      this.$store.commit("setActiveTool", tool);
     }
   },
   data() {
     return {
-      palatteConfig: {
-        children: [
-          {
-            name: "容器",
+      palatteConfig: [
+        {
+          name: "纵向布局",
+          element: {
             component: "v2-container",
-            factory() {
-              return {};
-            }
+            style: {
+              width: "100%",
+              height: "100%"
+            },
+            direction: "col",
+            layout: [30, 10, 20],
+            children: []
+          },
+          factory() {
+            return {};
           }
-        ]
-      },
+        },
+        {
+          name: "横向布局",
+          element: {
+            component: "v2-container",
+            style: {
+              width: "100%",
+              height: "100%"
+            },
+            direction: "row",
+            layout: [30, 10, 20],
+            children: []
+          },
+          factory() {
+            return {};
+          }
+        },
+        {
+          name: "文本框",
+          element: {
+            component: "v2-input",
+            style: {
+              width: "100%",
+              height: "100%"
+            },
+            data: "文本框"
+          },
+          factory() {
+            return {};
+          }
+        }
+      ],
       rootId: null
     };
   }

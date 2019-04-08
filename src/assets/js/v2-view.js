@@ -19,8 +19,10 @@ export const widget = {
   },
   /**
    * wid：widget ID,是控件实例的唯一标识
+   * index：children数组index
+   * pid: parent ID
    */
-  props: ["wid"],
+  props: ["wid", "index", "pid"],
   /**
    * 注入store
    */
@@ -31,7 +33,7 @@ export const widget = {
   computed: {
     model() {
       let model = store.state.UIData.structureIndex[this.wid] || {};
-      //TODO
+      // //TODO
       return model;
     },
     wrapClass() {
@@ -45,12 +47,6 @@ export const widget = {
 export const composite = {
   computed: {},
   methods: {
-    $canAddChild() {
-      return true;
-    },
-    addChild(factory) {
-      this.model.children.push(factory());
-    },
     /**
      * 布局函数
      * @param {索引} index 
@@ -64,11 +60,5 @@ export const composite = {
         return this.model.layout instanceof Array ? this.model.layout[index] + '%' : '50%'
       }
     },
-    addChild({
-      wid,
-      factory,
-    }) {
-      store.commit('addChild', {});
-    }
   },
 }

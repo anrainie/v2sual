@@ -3,3 +3,15 @@
   background: lightblue;
   border: 1px solid black;
 }
+.transparent{
+  opacity: .8;
+}
+
+.dropable{
+  background-color:lightpink;
+  border: 1px solid darkorange;
+}
+
+.dropable:hover{
+  background-color:lightcyan;
+}
