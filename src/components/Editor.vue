@@ -1,107 +1,177 @@
 <template>
   <div class="editorPart">
     <div class="palatte">
-      <div v-for="(item,index) of palatteConfig.children" :key="index">
-        <span @dblclick="add(item)">
+      <div v-for="(item,index) of palatteConfig" :key="index" @click.stop="createElement(item)">
+        <span class="PaletteItem">
           <i :class="item.icon"/>
           <span>{{item.name}}</span>
         </span>
       </div>
     </div>
     <div class="editor">
-      <editorContainer
-        ref="editorContainer"
-        @selected="select=model"
-        :class="{selected:select==model}"
-      >
-        <template v-for="(item,index) of model.children">
-          <component
-            @selected="select=item.model"
-            :class="{selected:select==item.model}"
-            :key="index"
-            :is="item.component.name"
-            :model="item.model"
-          ></component>
-        </template>
-      </editorContainer>
+      <v2Container v-model="rootId"></v2Container>
     </div>
   </div>
 </template>
 <script>
-import editorContainer from "./editorContainer";
-import Vue from "vue";
+import { canvas } from "../assets/js/v2-view.js";
+import { createTool } from "../assets/js/edit.js";
+import { setTimeout } from "timers";
+
 export default {
-  components: {
-    editorContainer
-  },
+  mixins: [canvas],
   mounted() {
-    this.select = "editorContainier";
+    // $('.PaletteItem').draggable({
+    //   cursor: "move",
+    //   cursorAt: { top: -12, left: -20 },
+    //   helper: function( event ) {
+    //     return $( "<div class='ui-widget-header'>I'm a custom helper</div>" );
+    //   }
+    // });
+
+    window.Editor = this;
+    //模拟异步读取数据
+    setTimeout(() => {
+      this.$store.commit("init", {
+        structure: {
+          id: "root",
+          component: "v2Container",
+          direction: "row",
+          layout: [20, 10, 10, 20, 10],
+          style: {
+            width: "100%",
+            height: "100%"
+          },
+          data: {},
+          children: [
+            null,
+            {
+              id: "b1145",
+              component: "v2-container",
+              style: {
+                width: "100%",
+                height: "100%"
+              },
+              direction: "col",
+              layout: [30, 10, 20],
+              children: [
+                {
+                  id: "fah1",
+                  component: "v2Input",
+                  data: "badf",
+                  style: {
+                    height: "40px"
+                  }
+                },
+                null,
+                {
+                  id: "vaf",
+                  component: "v2Input",
+                  data: "dfa13",
+                  style: {
+                    height: "40px"
+                  }
+                }
+              ]
+            },
+            {
+              id: "241123",
+              component: "v2Input",
+              data: "1235",
+              style: {
+                width: "100px",
+                height: "40px"
+              }
+            },
+            {
+              id: "vasg123",
+              component: "v2Input",
+              data: "agqe",
+              style: {
+                width: "100px",
+                height: "50px"
+              }
+            }
+          ]
+        }
+      });
+      this.rootId = "root";
+    }, 100);
   },
   methods: {
-    add(item) {
-      let i = {
-        ...item,
-        id: new Date().toString()
+    initDraggable(e, item) {
+      console.log(e, item);
+    },
+    /**
+     *创建元素，传入一个createTool，并且传入element
+     */
+    createElement(item) {
+      let tool = {
+        ...createTool,
+        element: item.element
       };
-      if (this.select) {
-        if (!this.select.children) {
-          Vue.set(this.select, "children", []);
-        }
-        this.select.children.push(i);
-      }
+      this.$store.commit("setActiveTool", tool);
     }
   },
   data() {
     return {
-      select: null,
-      palatteConfig: {
-        children: [
-          {
-            name: "容器",
-            model: {
-              name: "新建容器"
+      palatteConfig: [
+        {
+          name: "纵向布局",
+          element: {
+            component: "v2-container",
+            style: {
+              width: "100%",
+              height: "100%"
             },
-            component: { name: "aContainer" }
-          }
-        ]
-      },
-      model: {
-        children: [
-          {
-            id: 1,
-            model: {
-              name: "容器1"
-            },
-            component: { name: "aContainer" }
+            direction: "col",
+            layout: [30, 10, 20],
+            children: []
           },
-          {
-            id: 2,
-            model: {
-              name: "容器2"
-            },
-            component: { name: "aContainer" }
-          },
-          {
-            id: 3,
-            model: {
-              name: "容器3"
-            },
-            component: { name: "aContainer" }
+          factory() {
+            return {};
           }
-        ]
-      }
+        },
+        {
+          name: "横向布局",
+          element: {
+            component: "v2-container",
+            style: {
+              width: "100%",
+              height: "100%"
+            },
+            direction: "row",
+            layout: [30, 10, 20],
+            children: []
+          },
+          factory() {
+            return {};
+          }
+        },
+        {
+          name: "文本框",
+          element: {
+            component: "v2-input",
+            style: {
+              width: "100%",
+              height: "100%"
+            },
+            data: "文本框"
+          },
+          factory() {
+            return {};
+          }
+        }
+      ],
+      rootId: null
     };
   }
 };
 </script>
 <style>
-.selected {
-  background: lightgray;
-  border: 1px solid darkgray;
-}
 .editorPart {
+  margin: 0;
   display: flex;
-  position: relative;
   width: 100vw;
   height: 100vh;
 }
@@ -112,5 +182,7 @@ export default {
 }
 .editor {
   flex: 6;
+  height: 100%;
+  overflow-y: auto;
 }
 </style>

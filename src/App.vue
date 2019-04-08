@@ -8,21 +8,25 @@
 import Vue from 'vue'
 import 'es6-promise/auto'
 import Vuex from 'vuex'
-
+import 'jquery-ui';
 Vue.use(Vuex)
 
 export default {
-  name: 'App'
+  name: 'App',
 }
 </script>
 
 <style>
+@import './assets/style/common.css';
+@import './assets/style/edit.css';
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+body{
+  margin:0;
 }
 </style>
