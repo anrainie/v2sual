@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import { app } from '@/utils/app.js'
+  import { app } from '@/utils/app.js';
 export default {
 
   data() {

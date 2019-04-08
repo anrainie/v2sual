@@ -17,6 +17,7 @@ const PORT = '3000'
 // Fake Data
 //const FAKE_DATA = require('./fakeData')
 const RUNTIME_PATH='./runtime/';
+const PAGE_PATH='src/views/example';
 
 
 // Dependences
@@ -37,8 +38,11 @@ const path =require('path')
 // });
 
 
-
-router.get('/v1/page',require('./page/getPage')(path.resolve(path.join(RUNTIME_PATH,'src/views/pages'))));
+//页面操作内容
+const Page=require('./page/Page');
+const page = new Page(path.resolve(path.join(RUNTIME_PATH,PAGE_PATH)));
+router.get('/v1/page/list',page.list());
+router.get('/v1/page/content/:filepath',page.content());
 
 // router.get('/v1/page',async(ctx,next)=>{
 //   debugger;

@@ -37,17 +37,16 @@
     }
 ```
 
-
-
 ## API 接口
 
 1. 获取页面列表
-    
+
     >URL
-    
+
     <keymap>GET</keymap> v1/page
 
     >返回
+    
     ```
         [pagename,...,pagename]
     ```
