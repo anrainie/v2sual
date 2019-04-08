@@ -43,7 +43,7 @@
 
     >URL
 
-    <keymap>GET</keymap> v1/page
+    <keymap>GET</keymap> v1/page/list
 
     >返回
     
@@ -51,3 +51,12 @@
         [pagename,...,pagename]
     ```
 
+2. 获取文件 AST
+
+    > URL
+
+    <keymap>content</keymap> v1/page/content/:filepath
+
+    ```
+        AST 内容
+    ```
