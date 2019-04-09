@@ -1,6 +1,6 @@
 <template>
-  <!-- 空组件，没有独立的wid，其wid == pid -->
-  <div class="V2Empty" :class="emptyClass"></div>
+  <!-- 空组件-->
+  <div class="V2Empty" :class="{...wrapClass,...emptyClass}"></div>
 </template>
 <script>
 import { widget } from "../../assets/js/v2-view.js";
@@ -26,6 +26,20 @@ export default {
     $canAddChild() {
       return true;
     },
+    $addChild(m) {
+      console.log(m);
+      this.$set(this.parent.children, this.index, m);
+    },
+    $getFactory(e) {
+      let result = JSON.parse(JSON.stringify(e));
+      result.id = new Date().valueOf();
+      result.pid = this.parentId;
+      this.$store.commit("registIndex", {
+        id: result.id,
+        content: result
+      });
+      return result;
+    }
   }
 };
 </script>

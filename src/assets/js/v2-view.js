@@ -8,15 +8,11 @@ export const canvas = {
  * 控件的性质
  */
 export const widget = {
-  data() {
-    return {
-      parent: null,
-    }
-  },
   model: {
     prop: 'wid',
     event: 'change'
   },
+
   /**
    * wid：widget ID,是控件实例的唯一标识
    * index：children数组index
@@ -36,8 +32,15 @@ export const widget = {
     //   // //TODO
     //   return model;
     // },
-    model(){
+    model() {
       return this.$store.getters.model(this.wid) || {};
+    },
+    parentId() {
+
+      return this.pid || (this.pid = this.$store.getters.parentId(this.wid));
+    },
+    parent() {
+      return this.$store.getters.model(this.parentId);
     },
     wrapClass() {
       return {}

@@ -37,6 +37,13 @@ export default {
     //   }
     // });
 
+    let originalOnkeyDown = window.onkeydown;
+    window.onkeydown = e => {
+      console.log(e);
+      console.log(this.$store.getters.firstSelection);
+      console.log(this.$store.state.UIData.focusTarget);
+      originalOnkeyDown && originalOnkeyDown(e);
+    };
     window.Editor = this;
     //模拟异步读取数据
     setTimeout(() => {
@@ -133,7 +140,7 @@ export default {
               height: "100%"
             },
             direction: "col",
-            layout: [30, 30, 20],
+            layout: [50, 50],
             children: []
           },
           factory() {
@@ -149,7 +156,7 @@ export default {
               height: "100%"
             },
             direction: "row",
-            layout: [30, 30, 20],
+            layout: [50, 50],
             children: []
           },
           factory() {

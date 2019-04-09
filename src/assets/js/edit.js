@@ -49,6 +49,7 @@ export const createTool = {
       _self.$store.commit('setActiveTool', selectionTool);
       //选中
       _self.$store.commit('select', e.wid, event);
+      _self.$store.commit('focus', e);
     });
   },
   append(_self, event) {
@@ -59,10 +60,12 @@ export const createTool = {
       if (_self.$canAddChild && _self.$canAddChild(tool.element)) {
         let m = tool.getFactory(_self)(tool.element);
         if (_self.$addChild) {
-          _self.$addChild(m, event);
+          _self.$addChild(m, {
+            index: _self.index,
+            event
+          });
         } else {
           _self.$set(_self.model.children, _self.index, m);
-
         }
         res(m);
       } else {
@@ -81,7 +84,7 @@ export const selectionTool = {
   $wrapClass(_self) {
     let c = {};
     //选中状态
-    if (_self.isSelected())
+    if (_self.$store.getters.isSelected(_self.wid))
       if (_self.$selectedClass) {
         c = {
           ..._self.$selectedClass(),
@@ -99,6 +102,7 @@ export const selectionTool = {
    */
   $selected(_self, event) {
     _self.$store.commit('select', _self.wid, event);
+    _self.$store.commit('focus', _self);
   }
 }
 
@@ -115,7 +119,6 @@ export const edit = {
     wrapClass() {
       let activeTool = this.$store.state.activeTool || selectionTool;
       return activeTool.$wrapClass(this);
-
     },
   },
   mounted() {
@@ -131,16 +134,6 @@ export const edit = {
     selected(e) {
       let activeTool = this.$store.state.activeTool || selectionTool;
       return activeTool.$selected(this, e);
-    },
-    isSelected() {
-      let s = this.$store.state.UIData.selectTarget;
-      if (s) {
-        for (let v of s) {
-          if (v == this.wid)
-            return true;
-        }
-      }
-      return false;
     },
     $removeChild(index) {
       //   this.model.children.push(factory());

@@ -11,7 +11,7 @@
         style="height:100%;"
         v-if="model.direction=='col'"
       >
-        <component :is="component(index)" :wid="wigetId(index)" :index="index"></component>
+        <component :is="component(index)" :wid="wigetId(index)" :index="index" :pid="wid"></component>
       </el-col>
       <el-row
         class="V2ContainerBlock"
@@ -20,7 +20,7 @@
         :key="index"
         v-else
       >
-        <component :is="component(index)" :wid="wigetId(index)" :index="index"></component>
+        <component :is="component(index)" :wid="wigetId(index)" :index="index" :pid="wid"></component>
       </el-row>
     </template>
   </div>
@@ -49,6 +49,9 @@ export default {
     component(index) {
       return index => {
         let item = this.model.children[index];
+        if (item === undefined) {
+          this.model.children[index] = null;
+        }
         if (item) return item.component;
         return "v2Empty";
       };
@@ -59,7 +62,7 @@ export default {
         if (item) {
           return item.id;
         }
-        return this.wid;
+        return this.wid + "-" + index;
       };
     },
     blockClass(index) {
