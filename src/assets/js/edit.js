@@ -24,12 +24,14 @@ export const createTool = {
   getFactory(_self) {
     let factory = _self.$getFactory || (e => {
       //默认行为，添加一个wid
-      e.id = new Date().valueOf();
+      let result = JSON.parse(JSON.stringify(e));
+      result.id = new Date().valueOf();
+
       _self.$store.commit('registIndex', {
-        id: e.id,
-        content: e
+        id: result.id,
+        content: result
       });
-      return e;
+      return result;
     });
     return factory;
   },
@@ -54,15 +56,14 @@ export const createTool = {
     return new Promise((res, rej) => {
       //校验可创建性
       if (_self.$canAddChild && _self.$canAddChild(tool.element)) {
+        let m = tool.getFactory(_self)(tool.element);
         if (_self.$addChild) {
-          return _self.$addChild(tool.getFactory(_self)(tool.element), event);
+          _self.$addChild(m, event);
         } else {
-          let children = _self.model.children = _self.model.children || [];
-          let result = tool.getFactory(_self)(tool.element);
-          children.push(result);
-          _self.model.layout.push(30);
-          res(result);
+          _self.$set(_self.model.children, _self.index, m);
+
         }
+        res(m);
       } else {
         rej('非容器对象不能添加元素');
       }
@@ -81,11 +82,12 @@ export const selectionTool = {
     //选中状态
     if (_self.$selectedClass) {
       c = {
-        ..._self.$selectionClass(),
+        ..._self.$selectedClass(),
       }
     } else {
       c.selected = _self.isSelected();
     }
+    c.selectable = true;
     return c;
   },
   /**

@@ -125,7 +125,7 @@ export default {
               height: "100%"
             },
             direction: "col",
-            layout: [30, 10, 20],
+            layout: [30, 30, 20],
             children: []
           },
           factory() {
@@ -141,7 +141,7 @@ export default {
               height: "100%"
             },
             direction: "row",
-            layout: [30, 10, 20],
+            layout: [30, 30, 20],
             children: []
           },
           factory() {

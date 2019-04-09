@@ -26,11 +26,6 @@ export default {
     $canAddChild() {
       return true;
     },
-    $addChild(m) {
-      //   this.model.children.push(factory());
-      this.model.children.splice(this.index, 1, m);
-      console.log(this.model,this.model.children);
-    }
   }
 };
 </script>

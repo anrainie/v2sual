@@ -1,7 +1,7 @@
 {
-  "name": "awebide",
+  "name": "v2sual",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "vue visual studio",
   "author": "anrainie",
   "private": true,
   "scripts": {
