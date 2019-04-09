@@ -35,8 +35,15 @@ export default {
   name: "v2Container",
   mixins,
   mounted() {
-    window.c=this;
-    console.log("wid", this.wid,this.model);
+    window.c = this;
+    console.log("wid", this.wid, this.model);
+  },
+  methods: {
+    $selectedClass() {
+      return {
+        selectedContainer: true
+      };
+    }
   },
   computed: {
     component(index) {
@@ -75,3 +82,5 @@ export default {
   }
 };
 </script>
+<style>
+</style>
