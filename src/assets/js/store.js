@@ -39,6 +39,11 @@ const store = new Vuex.Store({
 
     // },
   },
+  getters: {
+    model: (state) => (wid) => {
+      return state.UIData.structureIndex[wid];
+    }
+  },
   mutations: {
     /**
      * 初始化画布

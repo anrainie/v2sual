@@ -1,6 +1,7 @@
 /* 考虑用before/after */
 .selected {
-  border: 1px dashed lightblue;
+  border: 2px dashed lightblue;
+  background:red;
 }
 
 .transparent {

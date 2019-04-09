@@ -26,6 +26,7 @@ export const createTool = {
       //默认行为，添加一个wid
       let result = JSON.parse(JSON.stringify(e));
       result.id = new Date().valueOf();
+      result.pid = _self.wid;
 
       _self.$store.commit('registIndex', {
         id: result.id,
@@ -80,13 +81,14 @@ export const selectionTool = {
   $wrapClass(_self) {
     let c = {};
     //选中状态
-    if (_self.$selectedClass) {
-      c = {
-        ..._self.$selectedClass(),
+    if (_self.isSelected())
+      if (_self.$selectedClass) {
+        c = {
+          ..._self.$selectedClass(),
+        }
+      } else {
+        c.selected = true;
       }
-    } else {
-      c.selected = _self.isSelected();
-    }
     c.selectable = true;
     return c;
   },

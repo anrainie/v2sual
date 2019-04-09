@@ -31,10 +31,13 @@ export const widget = {
     ERR: console.error,
   },
   computed: {
-    model() {
-      let model = store.state.UIData.structureIndex[this.wid] || {};
-      // //TODO
-      return model;
+    // model() {
+    //   let model = store.state.UIData.structureIndex[this.wid] || {};
+    //   // //TODO
+    //   return model;
+    // },
+    model(){
+      return this.$store.getters.model(this.wid) || {};
     },
     wrapClass() {
       return {}
@@ -54,7 +57,7 @@ export const composite = {
     layout(index) {
       if (this.model.direction == 'col') {
         //列布局/横向布局，返回span
-        return this.model.layout instanceof Array ? Math.round(this.model.layout[index] * 12 / 100) : '2'
+        return this.model.layout instanceof Array ? Math.round(this.model.layout[index] * 24 / 100) : '2'
       } else {
         //行布局/纵向布局，返回百分比
         return this.model.layout instanceof Array ? this.model.layout[index] + '%' : '50%'

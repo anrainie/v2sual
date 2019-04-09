@@ -11,14 +11,22 @@
     <div class="editor">
       <v2Container v-model="rootId"></v2Container>
     </div>
+    <div class="control">
+      <layoutControl style="flex:3;width:99%;border:1px solid lightgray;"></layoutControl>
+      <!-- <component :is="component(index)" :wid="wigetId(index)" :index="index"></component> -->
+    </div>
   </div>
 </template>
 <script>
 import { canvas } from "../assets/js/v2-view.js";
 import { createTool } from "../assets/js/edit.js";
 import { setTimeout } from "timers";
+import layoutControl from "./control/LayoutControl";
 
 export default {
+  components: {
+    layoutControl
+  },
   mixins: [canvas],
   mounted() {
     // $('.PaletteItem').draggable({
@@ -184,5 +192,13 @@ export default {
   flex: 6;
   height: 100%;
   overflow-y: auto;
+}
+.control {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: none;
+  display: flex;
+  flex-direction: column;
 }
 </style>
