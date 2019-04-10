@@ -11,6 +11,10 @@
     <div class="editor">
       <v2Container v-model="rootId"></v2Container>
     </div>
+        <div class="control">
+      <layoutControl style="flex:3;width:99%;border:1px solid lightgray;"></layoutControl>
+      <!-- <component :is="component(index)" :wid="wigetId(index)" :index="index"></component> -->
+    </div>
   </div>
 </template>
 <script>
@@ -84,7 +88,7 @@ export default {
               id: "row1",
               component: "v2Container",
               direction: "col",
-              layout: [66, 66, 66],
+              layout: [33, 33, 33],
               style: {
                 width: "100%",
                 height: "100%"
@@ -127,7 +131,7 @@ export default {
               id: "row2",
               component: "v2Container",
               direction: "col",
-              layout: [66, 66, 66],
+              layout: [33, 33, 33],
               style: {
                 width: "100%",
                 height: "100%"
@@ -176,7 +180,7 @@ export default {
               id: "row3",
               component: "v2Container",
               direction: "col",
-              layout: [66, 66, 66],
+              layout: [33, 33, 33],
               style: {
                 width: "100%",
                 height: "100%"
@@ -225,7 +229,7 @@ export default {
               id: "row4",
               component: "v2Container",
               direction: "col",
-              layout: [66, 66, 66],
+              layout: [33, 33, 33],
               style: {
                 width: "100%",
                 height: "100%"
@@ -377,6 +381,14 @@ export default {
   flex: 6;
   height: 100%;
   overflow-y: auto;
+}
+.control {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: none;
+  display: flex;
+  flex-direction: column;
 }
 /* 打印样式 */
 @media print{
