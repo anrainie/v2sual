@@ -15,16 +15,17 @@ const __buildIndex = (v, pool) => {
 }
 
 const __findParent = (targetId, parent) => {
-  let parentId = parent.Id
-  if (targetId == parentId) return -1;
-  for (let i of v.children) {
-    let p;
-    if (i.id == targetId) {
-      return parentId;
-    } else if ((p = __findParent(targetId, i)) != null) {
-      return p;
+  if (targetId == parent.Id) return -1;
+  if (parent.children)
+    for (let i of parent.children) {
+      let p;
+      if (i.id == targetId) {
+        return parent.id;
+      } else if ((p = __findParent(targetId, i)) != null) {
+        console.log(p)
+        return p;
+      }
     }
-  }
   return null;
 }
 
@@ -54,8 +55,46 @@ const store = new Vuex.Store({
     // },
   },
   getters: {
-    model: (state) => (wid) => {
-      return state.UIData.structureIndex[wid];
+    getNextBrother: (state, getters) => (wid) => {
+      let pid = getters.parentId(wid, true);
+      if (pid == null) return;
+      let p = getters.model(pid);
+      if (p == null || !p.children) return;
+      let index = -1;
+      for (let i = 0; i < p.children.length; i++) {
+        let c = p.children[i];
+        if (c.id == wid) {
+          index = i;
+          break;
+        }
+      }
+      if (index == -1) return null;
+      return p.children[index + 1];
+    },
+    getPrevBrother: (state, getters) => (wid) => {
+      let pid = getters.parentId(wid, true);
+      if (pid == null) return;
+      let p = getters.model(pid);
+      if (p == null || !p.children) return;
+      let index = -1;
+      for (let i = 0; i < p.children.length; i++) {
+        let c = p.children[i];
+        if (c.id == wid) {
+          index = i;
+          break;
+        }
+      }
+      if (index == -1) return null;
+      return p.children[index - 1];
+    },
+    model: ({
+      UIData
+    }) => (wid) => {
+      if (wid == null) return null;
+      let model = UIData.structureIndex[wid];
+      if (!model)
+        throw `invalid widget id: ${wid}`;
+      return model;
     },
     firstSelection: (state) => {
       return state.UIData.selectTarget ? state.UIData.selectTarget[0] : {};
@@ -84,6 +123,51 @@ const store = new Vuex.Store({
       return false;
     },
   },
+  actions: {
+    /**
+     * 委托给activeTool来找到上一个\下一个聚焦对象，因为在不同的模式下，聚焦的策略可能有所不同
+     * @param {*} context 
+     */
+    "focus.next"(context) {
+      let tool = context.state.activeTool;
+      tool && tool.$focusPrev && tool.$focusNext(context);
+    },
+    "focus.prev"(context) {
+      let tool = context.state.activeTool;
+      tool && tool.$focusPrev && tool.$focusPrev(context);
+    },
+    "focus"(context, wid) {
+      let model = context.getters.model(wid);
+      let before = null,
+        after = null;
+      e = {
+        context,
+        target: wid,
+        source: context.state.focusTarget,
+        stop: false,
+      }
+      if (model.before) {
+        before = model.before(e);
+      }
+      if (!before || !before.then) {
+        before = new Promise();
+      }
+      return before.then((res, rej) => {
+        if (e.stop) {
+          rej();
+        } else {
+          context.state.focusTarget = wid;
+        }
+        return;
+      }).then(() => {
+        if (model.after) {
+          let p = model.after(e);
+          if (p && p.then)
+            return p;
+        }
+      });
+    },
+  },
   mutations: {
     /**
      * 初始化画布
@@ -103,11 +187,14 @@ const store = new Vuex.Store({
      * 构建索引
      * @param {*} state 
      */
-    buildIndex(state) {
-      if (state.structure) {
+    buildIndex({
+      structure,
+      UIData
+    }) {
+      if (structure) {
         //清空原始索引
-        state.UIData.structureIndex = {};
-        __buildIndex(state.structure, state.UIData.structureIndex);
+        UIData.structureIndex = {};
+        __buildIndex(structure, UIData.structureIndex);
       }
     },
     /**
@@ -115,12 +202,14 @@ const store = new Vuex.Store({
      * @param {索引} index 
      * @param {*} v 
      */
-    registIndex(state, {
+    registIndex({
+      UIData
+    }, {
       id,
       content
     }) {
-      state.UIData.structureIndex = state.UIData.structureIndex || {};
-      state.UIData.structureIndex[id] = content;
+      UIData.structureIndex = UIData.structureIndex || {};
+      UIData.structureIndex[id] = content;
     },
     /**
      * 设置当前激活的工具
@@ -131,12 +220,21 @@ const store = new Vuex.Store({
       console.log('setActiveTool', tool);
       state.activeTool = tool;
     },
-    focus(state, target) {
-      state.UIData.focusTarget = target;
+    "select.firstChild"(state) {
+      let m = this.getters.model(state.UIData.selectTarget[0]);
+      if (m && m.children && m.children.length > 0)
+        this.commit('select', m.children[0].id);
+    },
+    "select.parent"(state) {
+      let pid = this.getters.parentId(state.UIData.selectTarget[0], true);
+      console.log('id', pid, state.UIData.selectTarget)
+      if (pid == null)
+        return;
+      this.commit('select', pid);
     },
     /**
      * 
-     * @param {stroe状态} state 
+     * @param {*} state 
      * @param {选中目标Id或者Array} target 
      * @param {是否为多选模式} append 
      */

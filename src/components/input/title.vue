@@ -1,5 +1,5 @@
 <template>
-  <div class="title">
+  <div class="title" :class="wrapClass">
     <h2>{{model.data}}</h2>
   </div>
 </template>
