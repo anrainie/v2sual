@@ -24,12 +24,15 @@ export const createTool = {
   getFactory(_self) {
     let factory = _self.$getFactory || (e => {
       //默认行为，添加一个wid
-      e.id = new Date().valueOf();
+      let result = JSON.parse(JSON.stringify(e));
+      result.id = new Date().valueOf();
+      result.pid = _self.wid;
+
       _self.$store.commit('registIndex', {
-        id: e.id,
-        content: e
+        id: result.id,
+        content: result
       });
-      return e;
+      return result;
     });
     return factory;
   },
@@ -46,6 +49,7 @@ export const createTool = {
       _self.$store.commit('setActiveTool', selectionTool);
       //选中
       _self.$store.commit('select', e.wid, event);
+      _self.$store.commit('focus', e);
     });
   },
   append(_self, event) {
@@ -54,15 +58,16 @@ export const createTool = {
     return new Promise((res, rej) => {
       //校验可创建性
       if (_self.$canAddChild && _self.$canAddChild(tool.element)) {
+        let m = tool.getFactory(_self)(tool.element);
         if (_self.$addChild) {
-          return _self.$addChild(tool.getFactory(_self)(tool.element), event);
+          _self.$addChild(m, {
+            index: _self.index,
+            event
+          });
         } else {
-          let children = _self.model.children = _self.model.children || [];
-          let result = tool.getFactory(_self)(tool.element);
-          children.push(result);
-          _self.model.layout.push(30);
-          res(result);
+          _self.$set(_self.model.children, _self.index, m);
         }
+        res(m);
       } else {
         rej('非容器对象不能添加元素');
       }
@@ -79,13 +84,15 @@ export const selectionTool = {
   $wrapClass(_self) {
     let c = {};
     //选中状态
-    if (_self.$selectedClass) {
-      c = {
-        ..._self.$selectionClass(),
+    if (_self.$store.getters.isSelected(_self.wid))
+      if (_self.$selectedClass) {
+        c = {
+          ..._self.$selectedClass(),
+        }
+      } else {
+        c.selected = true;
       }
-    } else {
-      c.selected = _self.isSelected();
-    }
+    c.selectable = true;
     return c;
   },
   /**
@@ -95,7 +102,15 @@ export const selectionTool = {
    */
   $selected(_self, event) {
     _self.$store.commit('select', _self.wid, event);
-  }
+    _self.$store.commit('focus', _self);
+  },
+  $getActions() {
+    return [{
+
+    }, {
+      icon:'el-icon-remove',
+    }]
+  },
 }
 
 /**
@@ -111,7 +126,6 @@ export const edit = {
     wrapClass() {
       let activeTool = this.$store.state.activeTool || selectionTool;
       return activeTool.$wrapClass(this);
-
     },
   },
   mounted() {
@@ -127,16 +141,6 @@ export const edit = {
     selected(e) {
       let activeTool = this.$store.state.activeTool || selectionTool;
       return activeTool.$selected(this, e);
-    },
-    isSelected() {
-      let s = this.$store.state.UIData.selectTarget;
-      if (s) {
-        for (let v of s) {
-          if (v == this.wid)
-            return true;
-        }
-      }
-      return false;
     },
     $removeChild(index) {
       //   this.model.children.push(factory());

@@ -1,17 +1,37 @@
 /* 考虑用before/after */
 .selected {
-  background: lightblue;
-  border: 1px solid black;
+  border: 2px dashed lightblue;
 }
-.transparent{
+
+.transparent {
   opacity: .8;
 }
 
-.dropable{
-  background-color:lightpink;
+
+.dropable {
+  background-color: lightpink;
   border: 1px solid darkorange;
 }
 
-.dropable:hover{
-  background-color:lightcyan;
+.dropable:hover {
+  background-color: lightcyan;
+}
+
+
+.selectedContainer {
+  border: 1px dashed lightcoral;
+}
+
+.V2Empty{
+  position:relative;
+}
+.V2Empty::before {
+  content: "";
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  left: 2px;
+  top: 2px;
+  opacity: .5;
+  position: absolute;
+  background: lightgreen;
 }

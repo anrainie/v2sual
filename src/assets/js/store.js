@@ -14,6 +14,20 @@ const __buildIndex = (v, pool) => {
   }
 }
 
+const __findParent = (targetId, parent) => {
+  let parentId = parent.Id
+  if (targetId == parentId) return -1;
+  for (let i of v.children) {
+    let p;
+    if (i.id == targetId) {
+      return parentId;
+    } else if ((p = __findParent(targetId, i)) != null) {
+      return p;
+    }
+  }
+  return null;
+}
+
 const store = new Vuex.Store({
   state: {
     //编辑模式开关
@@ -38,6 +52,37 @@ const store = new Vuex.Store({
     // components: {
 
     // },
+  },
+  getters: {
+    model: (state) => (wid) => {
+      return state.UIData.structureIndex[wid];
+    },
+    firstSelection: (state) => {
+      return state.UIData.selectTarget ? state.UIData.selectTarget[0] : {};
+    },
+    parentId: (state, getters) => (wid, force) => {
+      let m = getters.model(wid);
+      if (!m) return null;
+      if (m.pid == null && force) {
+        //model没有注册pid的情况，在structure中遍历查找
+        let p = __findParent(wid, state.structure);
+        if (p != wid) {
+          m.pid = p;
+        } else
+          return null;
+      }
+      return m.pid;
+    },
+    isSelected: (state) => (wid) => {
+      let s = state.UIData.selectTarget;
+      if (s) {
+        for (let v of s) {
+          if (v == wid)
+            return true;
+        }
+      }
+      return false;
+    },
   },
   mutations: {
     /**
@@ -86,30 +131,33 @@ const store = new Vuex.Store({
       console.log('setActiveTool', tool);
       state.activeTool = tool;
     },
+    focus(state, target) {
+      state.UIData.focusTarget = target;
+    },
     /**
      * 
      * @param {stroe状态} state 
      * @param {选中目标Id或者Array} target 
-     * @param {是否为附加模式} append 
+     * @param {是否为多选模式} append 
      */
     select(state, target, append = false) {
       if (target == null) {
         state.UIData.selectTarget = [];
         return;
       }
-      if (target.constructor == String) {
-        if (append) {
-          state.UIData.selectTarget = state.UIData.selectTarget || [];
-          state.UIData.selectTarget.push(target);
-        } else
-          state.UIData.selectTarget = [target];
-      } else if (target.constructor == Array) {
+      if (target.constructor == Array) {
         if (append) {
           state.UIData.selectTarget = state.UIData.selectTarget || [];
           state.UIData.selectTarget = state.UIData.selectTarget.concat(target);
         } else {
           state.UIData.selectTarget = target;
         }
+      } else {
+        if (append) {
+          state.UIData.selectTarget = state.UIData.selectTarget || [];
+          state.UIData.selectTarget.splice(0, 0, target);
+        } else
+          state.UIData.selectTarget = [target];
       }
     },
   }

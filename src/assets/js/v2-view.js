@@ -8,15 +8,11 @@ export const canvas = {
  * 控件的性质
  */
 export const widget = {
-  data() {
-    return {
-      parent: null,
-    }
-  },
   model: {
     prop: 'wid',
     event: 'change'
   },
+
   /**
    * wid：widget ID,是控件实例的唯一标识
    * index：children数组index
@@ -31,10 +27,20 @@ export const widget = {
     ERR: console.error,
   },
   computed: {
+    // model() {
+    //   let model = store.state.UIData.structureIndex[this.wid] || {};
+    //   // //TODO
+    //   return model;
+    // },
     model() {
-      let model = store.state.UIData.structureIndex[this.wid] || {};
-      // //TODO
-      return model;
+      return this.$store.getters.model(this.wid) || {};
+    },
+    parentId() {
+
+      return this.pid || (this.pid = this.$store.getters.parentId(this.wid));
+    },
+    parent() {
+      return this.$store.getters.model(this.parentId);
     },
     wrapClass() {
       return {}
@@ -54,7 +60,7 @@ export const composite = {
     layout(index) {
       if (this.model.direction == 'col') {
         //列布局/横向布局，返回span
-        return this.model.layout instanceof Array ? Math.round(this.model.layout[index] * 12 / 100) : '2'
+        return this.model.layout instanceof Array ? Math.round(this.model.layout[index] * 24 / 100) : '2'
       } else {
         //行布局/纵向布局，返回百分比
         return this.model.layout instanceof Array ? this.model.layout[index] + '%' : '50%'

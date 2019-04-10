@@ -5,22 +5,20 @@
     <template v-for="(lyt,index) of model.layout">
       <el-col
         class="V2ContainerBlock"
-        :class="blockClass(index)"
         :span="layout(index)"
         :key="index"
         style="height:100%;"
         v-if="model.direction=='col'"
       >
-        <component :is="component(index)" :wid="wigetId(index)" :index="index"></component>
+        <component :is="component(index)" :wid="wigetId(index)" :index="index" :pid="wid"></component>
       </el-col>
       <el-row
         class="V2ContainerBlock"
-        :class="blockClass(index)"
         :style="{height:layout(index),width:'100%',}"
         :key="index"
         v-else
       >
-        <component :is="component(index)" :wid="wigetId(index)" :index="index"></component>
+        <component :is="component(index)" :wid="wigetId(index)" :index="index" :pid="wid"></component>
       </el-row>
     </template>
   </div>
@@ -35,13 +33,22 @@ export default {
   name: "v2Container",
   mixins,
   mounted() {
-    window.c=this;
-    console.log("wid", this.wid,this.model);
+    window.c = this;
+  },
+  methods: {
+    $selectedClass() {
+      return {
+        selectedContainer: true
+      };
+    }
   },
   computed: {
     component(index) {
       return index => {
         let item = this.model.children[index];
+        if (item === undefined) {
+          this.model.children[index] = null;
+        }
         if (item) return item.component;
         return "v2Empty";
       };
@@ -52,26 +59,11 @@ export default {
         if (item) {
           return item.id;
         }
-        return this.wid;
+        return this.wid + "-" + index;
       };
     },
-    blockClass(index) {
-      return index => {
-        //在组件内部定制样式，根据当前的activeTool来切换
-        let s = {};
-        //没有children的block才会变色
-        if (this.model.children[index]) {
-          if (
-            this.$store.state.activeTool &&
-            this.$store.state.activeTool.type == "create"
-          ) {
-            s["transparent"] = true;
-          }
-        }
-        // this.LOG("blockClass", s);
-        return s;
-      };
-    }
   }
 };
 </script>
+<style>
+</style>
