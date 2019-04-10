@@ -15,6 +15,7 @@
     "server": "node --inspect ./server/server.js"
   },
   "dependencies": {
+    "d3": "^5.9.2",
     "element-ui": "^2.7.2",
     "es6-promise": "^4.2.6",
     "install": "^0.12.2",
