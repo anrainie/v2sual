@@ -1,8 +1,8 @@
 import Vuex from 'vuex'
 /**
  * 扁平化结构树，构建索引
- * @param {*} v 
- * @param {*} pool 
+ * @param {*} v
+ * @param {*} pool
  */
 const __buildIndex = (v, pool) => {
   if (v) {
@@ -12,20 +12,6 @@ const __buildIndex = (v, pool) => {
         __buildIndex(i, pool);
     }
   }
-}
-
-const __findParent = (targetId, parent) => {
-  let parentId = parent.Id
-  if (targetId == parentId) return -1;
-  for (let i of v.children) {
-    let p;
-    if (i.id == targetId) {
-      return parentId;
-    } else if ((p = __findParent(targetId, i)) != null) {
-      return p;
-    }
-  }
-  return null;
 }
 
 const store = new Vuex.Store({
@@ -50,45 +36,20 @@ const store = new Vuex.Store({
     },
     // //组件
     // components: {
-
     // },
-  },
-  getters: {
-    model: (state) => (wid) => {
-      return state.UIData.structureIndex[wid];
+
+    // 表单列表
+    inputEl:{
+      focusIndex:"",
+      inputArr:[]
     },
-    firstSelection: (state) => {
-      return state.UIData.selectTarget ? state.UIData.selectTarget[0] : {};
-    },
-    parentId: (state, getters) => (wid, force) => {
-      let m = getters.model(wid);
-      if (!m) return null;
-      if (m.pid == null && force) {
-        //model没有注册pid的情况，在structure中遍历查找
-        let p = __findParent(wid, state.structure);
-        if (p != wid) {
-          m.pid = p;
-        } else
-          return null;
-      }
-      return m.pid;
-    },
-    isSelected: (state) => (wid) => {
-      let s = state.UIData.selectTarget;
-      if (s) {
-        for (let v of s) {
-          if (v == wid)
-            return true;
-        }
-      }
-      return false;
-    },
+
   },
   mutations: {
     /**
      * 初始化画布
-     * @param {*} state 
-     * @param {Object} param1 
+     * @param {*} state
+     * @param {Object} param1
      */
     init(state, {
       //   components,
@@ -101,7 +62,7 @@ const store = new Vuex.Store({
     },
     /**
      * 构建索引
-     * @param {*} state 
+     * @param {*} state
      */
     buildIndex(state) {
       if (state.structure) {
@@ -112,8 +73,8 @@ const store = new Vuex.Store({
     },
     /**
      * 注册索引
-     * @param {索引} index 
-     * @param {*} v 
+     * @param {索引} index
+     * @param {*} v
      */
     registIndex(state, {
       id,
@@ -124,42 +85,45 @@ const store = new Vuex.Store({
     },
     /**
      * 设置当前激活的工具
-     * @param {*} state 
-     * @param {*} tool 
+     * @param {*} state
+     * @param {*} tool
      */
     setActiveTool(state, tool) {
       console.log('setActiveTool', tool);
       state.activeTool = tool;
     },
-    focus(state, target) {
-      state.UIData.focusTarget = target;
-    },
     /**
-     * 
-     * @param {stroe状态} state 
-     * @param {选中目标Id或者Array} target 
-     * @param {是否为多选模式} append 
+     *
+     * @param {stroe状态} state
+     * @param {选中目标Id或者Array} target
+     * @param {是否为附加模式} append
      */
     select(state, target, append = false) {
       if (target == null) {
         state.UIData.selectTarget = [];
         return;
       }
-      if (target.constructor == Array) {
+      if (target.constructor == String) {
+        if (append) {
+          state.UIData.selectTarget = state.UIData.selectTarget || [];
+          state.UIData.selectTarget.push(target);
+        } else
+          state.UIData.selectTarget = [target];
+      } else if (target.constructor == Array) {
         if (append) {
           state.UIData.selectTarget = state.UIData.selectTarget || [];
           state.UIData.selectTarget = state.UIData.selectTarget.concat(target);
         } else {
           state.UIData.selectTarget = target;
         }
-      } else {
-        if (append) {
-          state.UIData.selectTarget = state.UIData.selectTarget || [];
-          state.UIData.selectTarget.splice(0, 0, target);
-        } else
-          state.UIData.selectTarget = [target];
       }
     },
+    setInputEl(state, target){
+      state.inputEl.inputArr = target
+    },
+    setInputActive(state,value){
+      state.inputEl.focusIndex = value
+    }
   }
 })
 
