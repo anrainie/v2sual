@@ -11,10 +11,14 @@ Vue.config.productionTip = false
 
 import v2Container from "./components/edit/Container.vue";
 import v2Input from "./components/input/Input.vue";
+import v2LableInput from "./components/input/lableInput.vue";
+import v2Title from "./components/input/title.vue";
 import empty from "./components/edit/Empty.vue";
 Vue.component('v2Container',v2Container);
 Vue.component('v2Input',v2Input);
 Vue.component('v2Empty',empty);
+Vue.component('v2Title',v2Title);
+Vue.component('v2LableInput',v2LableInput);
 
 /* eslint-disable no-new */
 new Vue({
