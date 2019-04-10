@@ -103,7 +103,14 @@ export const selectionTool = {
   $selected(_self, event) {
     _self.$store.commit('select', _self.wid, event);
     _self.$store.commit('focus', _self);
-  }
+  },
+  $getActions() {
+    return [{
+
+    }, {
+      icon:'el-icon-remove',
+    }]
+  },
 }
 
 /**

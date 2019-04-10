@@ -1,5 +1,5 @@
 <template>
-  <div class="editorPart">
+  <div class="editorPart" onkeydown="console.log">
     <div class="palatte">
       <div v-for="(item,index) of palatteConfig" :key="index" @click.stop="createElement(item)">
         <span class="PaletteItem">
@@ -22,6 +22,7 @@ import { canvas } from "../assets/js/v2-view.js";
 import { createTool } from "../assets/js/edit.js";
 import { setTimeout } from "timers";
 import layoutControl from "./control/LayoutControl";
+import { debug } from "util";
 
 export default {
   components: {
@@ -37,14 +38,32 @@ export default {
     //   }
     // });
 
-    let originalOnkeyDown = window.onkeydown;
-    window.onkeydown = e => {
-      console.log(e);
-      console.log(this.$store.getters.firstSelection);
-      console.log(this.$store.state.UIData.focusTarget);
-      originalOnkeyDown && originalOnkeyDown(e);
-    };
-    window.Editor = this;
+    // .onkeydown = e => {
+    //   console.log(e);
+    //   console.log(this.$store.getters.firstSelection);
+    //   console.log(this.$store.state.UIData.focusTarget);
+    // };
+    // window.Editor = this;
+
+    const self = this;
+    $(this.window).off('.keymap').on("keydown.keymap", function(e) {
+      var key = e.which || window.event.keyCode,
+        $target = $(e.target || event.srcElement),
+        result = true;
+      if (
+        $target.closest(".editor").length &&
+        $target.closest(".editorPart").is(self.$el)
+      ) {
+         console.log(e);
+          result = false;
+          debugger;
+          // $target.trigger('keydown',e);
+      }
+
+
+
+      return true;
+    });
     //模拟异步读取数据
     setTimeout(() => {
       this.$store.commit("init", {

@@ -5,7 +5,6 @@
     <template v-for="(lyt,index) of model.layout">
       <el-col
         class="V2ContainerBlock"
-        :class="blockClass(index)"
         :span="layout(index)"
         :key="index"
         style="height:100%;"
@@ -15,7 +14,6 @@
       </el-col>
       <el-row
         class="V2ContainerBlock"
-        :class="blockClass(index)"
         :style="{height:layout(index),width:'100%',}"
         :key="index"
         v-else
@@ -36,7 +34,6 @@ export default {
   mixins,
   mounted() {
     window.c = this;
-    console.log("wid", this.wid, this.model);
   },
   methods: {
     $selectedClass() {
@@ -65,23 +62,6 @@ export default {
         return this.wid + "-" + index;
       };
     },
-    blockClass(index) {
-      return index => {
-        //在组件内部定制样式，根据当前的activeTool来切换
-        let s = {};
-        //没有children的block才会变色
-        if (this.model.children[index]) {
-          if (
-            this.$store.state.activeTool &&
-            this.$store.state.activeTool.type == "create"
-          ) {
-            s["transparent"] = true;
-          }
-        }
-        // this.LOG("blockClass", s);
-        return s;
-      };
-    }
   }
 };
 </script>
