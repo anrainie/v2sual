@@ -4,6 +4,8 @@
       <div
         v-show="previewLoading"
         v-loading="previewLoading"
+        element-loading-text="加载预览中..."
+        element-loading-background="rgba(0, 0, 0, 0.8)"
         style="position:absolute;width:100%;height:100%;"
       ></div>
       <iframe
@@ -301,10 +303,14 @@ export default {
       self.previewLoading = true;
       setTimeout(() => {
         self.$refs.previewFrame.contentWindow.preview = true;
-        self.$refs.previewFrame.contentWindow.data =
-          self.$store.state.structure;
+        self.$refs.previewFrame.contentWindow.data = JSON.parse(
+          JSON.stringify(self.$store.state.structure)
+        );
+        self.$refs.previewFrame.contentWindow.close = () => {
+          self.showPreview = false;
+        };
         self.$refs.previewFrame.contentWindow.onload = () => {
-          console.log('loaded')
+          console.log("loaded");
           self.previewLoading = false;
         };
         // self.$refs.previewFrame.reload();
@@ -359,9 +365,6 @@ export default {
             direction: "col",
             layout: [50, 50],
             children: []
-          },
-          factory() {
-            return {};
           }
         },
         {
@@ -375,9 +378,6 @@ export default {
             direction: "row",
             layout: [50, 50],
             children: []
-          },
-          factory() {
-            return {};
           }
         },
         {
@@ -389,9 +389,55 @@ export default {
               height: "100%"
             },
             data: "文本框"
-          },
-          factory() {
-            return {};
+          }
+        },
+        {
+          name: "下拉框",
+          element: {
+            component: "v2-combo",
+            style: {
+              width: "100%",
+              height: "100%"
+            },
+            data: {
+              name: "名称",
+              value: 0,
+              options: [
+                { value: 0, label: "选项一" },
+                { value: 1, label: "选项二" },
+                { value: 2, label: "选项三" }
+              ],
+              placeholder: "请选择"
+            }
+          }
+        },
+        {
+          name: "开关",
+          element: {
+            component: "v2-switch",
+            style: {
+              width: "100%",
+              height: "100%"
+            },
+            data: {
+              value: false,
+              activeText: "打开",
+              inactiveText: "关闭"
+            }
+          }
+        },
+        {
+          name: "多选框",
+          element: {
+            component: "v2-checkbox",
+            style: {
+              width: "100%",
+              height: "100%"
+            },
+            data: {
+              checked: false,
+              text: "文字"
+            }
           }
         }
       ]

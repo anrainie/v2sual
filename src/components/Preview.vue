@@ -1,5 +1,8 @@
 <template>
   <div class="preview">
+     <div class="toolbar">
+        <el-button size="mini" @click="close">关闭</el-button>
+      </div>
     <v2Container v-model="rootId"></v2Container>
   </div>
 </template>
@@ -21,7 +24,9 @@ export default {
     this.$store.commit("setActiveTool", previewTool);
   },
   methods: {
-    preview() {}
+    close(){
+      window.close();
+    }
   },
   data() {
     return {

@@ -43,10 +43,10 @@ export default {
     }
   },
   methods: {
-    $focusPrev() {
+    $ArrowRight() {
       return true;
     },
-    $focusNext() {
+    $ArrowLeft() {
       return true;
     }
   }

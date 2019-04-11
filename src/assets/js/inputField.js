@@ -8,6 +8,18 @@ const preview = {
         };
       }).sort((a, b) => a.index - b.index).map(e => e.elem);
     },
+    $ArrowRight(e) {
+      return this.$focusNext(e);
+    },
+    $ArrowDown(e) {
+      return this.$focusNext(e);
+    },
+    $ArrowLeft(e) {
+      return this.$focusPrev(e);
+    },
+    $ArrowUp(e) {
+      return this.$focusPrev(e);
+    },
     $focusNext(e) {
       let inputFields = this.__getInputFields();
       let index = $.inArray(e.target, inputFields);
@@ -19,6 +31,38 @@ const preview = {
       let index = $.inArray(e.target, inputFields);
       $(inputFields[index - 1]).focus();
       return false;
+    },
+    handleKeyDown(e){
+      if (!e.altKey && !e.ctrlKey && !e.shiftKey) {
+        let before = this.model[e.key + ":before"];
+        let after = this.model[e.key + ":after"];
+        let invoker = this['$' + e.key];
+        if (invoker) {
+          let beforeResult = before ? before(this, e) : true;
+          let b = beforeResult;
+          if (!(beforeResult instanceof Promise)) {
+            b = new Promise(res => {
+              res(beforeResult);
+            });
+          }
+          b.then(result => {
+            if (result) {
+              return invoker(e, result);
+            }
+          }).then(afterResult => {
+            if (after) {
+              if (afterResult instanceof Promise) {
+                afterResult.then(r => {
+                  after(this, r);
+                });
+              } else {
+                after(this, afterResult);
+              }
+            }
+          });
+          return true;
+        }
+      }
     }
   },
   mounted() {
@@ -27,49 +71,8 @@ const preview = {
     let x = [];
     el.off(".keymap")
       .on("keydown.keymap", (e) => {
-        // console.log(x[0].key)
-        let inputFields, index;
-        if (!e.altKey && !e.ctrlKey && !e.shiftKey) {
-          let before = this.model[e.key + ":before"];
-          let after = this.model[e.key + ":after"];
-          let invoker;
-          switch (e.key) {
-            case 'ArrowRight':
-            case 'ArrowDown':
-              invoker = this.$focusNext;
-              break;
-            case 'ArrowLeft':
-            case 'ArrowUp':
-              invoker = this.$focusPrev;
-              break;
-          }
-          if (invoker) {
-            let beforeResult = before ? before(this, e) : true;
-            let b = beforeResult;
-            if (!(beforeResult instanceof Promise)) {
-              b = new Promise(res => {
-                res(beforeResult);
-              });
-            }
-            b.then(result => {
-              if (result) {
-                return invoker(e, result);
-              }
-            }).then(afterResult => {
-              if (after) {
-                if (afterResult instanceof Promise) {
-                  afterResult.then(r => {
-                    after(this, r);
-                  });
-                } else {
-                  after(this, afterResult);
-                }
-              }
-            });
-
-            return true;
-          }
-        }
+        console.log(e.key,e.keyCode) 
+        return this.handleKeyDown(e);
 
         return true;
       });

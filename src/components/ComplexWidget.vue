@@ -1,5 +1,5 @@
 <template>
-  <v2Container v-model="rootId" class="preview"></v2Container>
+  <v2Container v-model="rootId" class="complexwidget"></v2Container>
 </template>
 <script>
 //开启预览模式，该模式下edit.js失效
@@ -15,7 +15,7 @@ export default {
 };
 </script>
 <style>
-.preview {
+.complexwidget {
   margin: 0;
   box-sizing: border-box;
   width: 100%;

@@ -134,11 +134,11 @@ export const selectionTool = {
       case 'Esc':
       case 'Escape':
         _self.$store.commit('select');
-        return false;
+        return true;
       case 'Del':
       case 'Delete':
         _self.$store.commit("delete.select");
-        return false;
+        return true;
     }
     if (e.ctrlKey) {
       switch (e.key) {
