@@ -16,7 +16,7 @@
                 <input style="width:25px;" v-model="model.layout[index]">%
               </el-col>
               <el-col :span="1">
-                  <i class="el-icon-close" style="color:red" @click="remove(index)"></i>
+                <i class="el-icon-close" style="color:red" @click="remove(index)"></i>
               </el-col>
             </el-row>
           </div>
@@ -26,18 +26,17 @@
   </div>
 </template>
 <script>
-import store from "../../assets/js/store.js";
 import draggable from "vuedraggable";
 export default {
-  store,
+  props: ["store"],
   methods: {
     add() {
       this.model.children.push(null);
       this.model.layout.push(10);
     },
-    remove(index){
-        this.model.children.splice(index,1);
-        this.model.layout.splice(index,1);
+    remove(index) {
+      this.model.children.splice(index, 1);
+      this.model.layout.splice(index, 1);
     },
     change(e) {
       if (e && e.moved) {
@@ -53,7 +52,7 @@ export default {
   },
   computed: {
     wid() {
-      let st = this.$store.state.UIData.selectTarget;
+      let st = this.store.state.UIData.selectTarget;
 
       if (!st || st.length != 1) {
         return null;
@@ -61,7 +60,7 @@ export default {
       return st[0];
     },
     model() {
-      return this.$store.getters.model(this.wid) || {};
+      return this.store.getters.model(this.wid) || {};
     }
   },
   components: {

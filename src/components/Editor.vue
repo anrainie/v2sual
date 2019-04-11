@@ -1,11 +1,18 @@
 <template>
   <div>
-    <iframe
-      v-if="showPreview"
-      ref="previewFrame"
-      src="http://localhost:8080/#/preview"
-      style="width:100%;height:100%;position:absolute;left:0;"
-    ></iframe>
+    <div v-if="showPreview" style="position:fixed;width:100%;height:100%;">
+      <div
+        v-show="previewLoading"
+        v-loading="previewLoading"
+        style="position:absolute;width:100%;height:100%;"
+      ></div>
+      <iframe
+        v-show="!previewLoading"
+        ref="previewFrame"
+        src="http://localhost:8080/#/preview"
+        style="width:100%;height:100%;position:absolute;left:0;"
+      ></iframe>
+    </div>
     <div v-else class="editorPart" onkeydown="console.log">
       <div class="palatte">
         <div v-for="(item,index) of palatteConfig" :key="index" @click.stop="createElement(item)">
@@ -19,10 +26,11 @@
         <v2Container v-model="rootId"></v2Container>
       </div>
       <div class="control">
-        <layoutControl style="flex:3;width:99%;border:1px solid lightgray;"></layoutControl>
+        <layoutControl :store="$store" style="flex:3;width:99%;border:1px solid lightgray;"></layoutControl>
         <!-- <component :is="component(index)" :wid="wigetId(index)" :index="index"></component> -->
       </div>
       <div class="toolbar">
+        <el-button size="mini" @click="deleteSelection">删除</el-button>
         <el-button size="mini" @click="selectParent">向上选择</el-button>
         <el-button size="mini" @click="selectFirstChild">向下选择</el-button>
         <el-button size="mini" @click="preview">预览</el-button>
@@ -32,7 +40,7 @@
 </template>
 <script>
 import { canvas } from "../assets/js/v2-view.js";
-import { createTool } from "../assets/js/tools.js";
+import { createTool, selectionTool } from "../assets/js/tools.js";
 import { setTimeout } from "timers";
 import layoutControl from "./control/LayoutControl";
 import { debug } from "util";
@@ -43,38 +51,16 @@ export default {
   computed: {},
   // data(){}
   mounted() {
+    this.$store.commit("setActiveTool", selectionTool);
     const self = this;
     $(window)
       .off(".keymap")
       .on("keydown.keymap", e => {
-        console.log("Editor", e.key);
-        let b;
-        switch (e.key) {
-          case "ArrowRight":
-          case "ArrowDown":
-            if (e.ctrlKey) {
-              this.selectFirstChild();
-            } else {
-              b = this.$store.getters.getNextBrother(
-                this.$store.getters.firstSelection
-              );
-              if (b != null) this.$store.commit("select", b.id);
-            }
-            return;
-          case "ArrowLeft":
-          case "ArrowUp":
-            if (e.ctrlKey) {
-              this.selectParent();
-            } else {
-              b = this.$store.getters.getPrevBrother(
-                this.$store.getters.firstSelection
-              );
-              if (b != null) this.$store.commit("select", b.id);
-            }
-            return;
-        }
-        return true;
+        return this.activeTool && this.activeTool.dispatchKeyEvent
+          ? this.activeTool.dispatchKeyEvent(this, e)
+          : true;
       });
+
     //模拟异步读取数据
     setTimeout(() => {
       this.$store.commit("init", {
@@ -82,7 +68,7 @@ export default {
           id: "root",
           component: "v2Container",
           direction: "row",
-          layout: [10, 10, 10, 10, 10, 10, 10],
+          layout: [10, 10, 10, 10, 10, 10, 10, 10],
           style: {
             width: "100%",
             height: "100%"
@@ -254,14 +240,55 @@ export default {
                   placeholder: "请输入账户名称"
                 }
               ]
+            },
+            {
+              id: "row14",
+              component: "v2Container",
+              direction: "col",
+              layout: [33, 33, 33],
+              style: {
+                width: "100%",
+                height: "100%"
+              },
+              children: [
+                {
+                  id: "complexComponent1",
+                  component: "v2ComplextWidget",
+                  layout: [30, 30],
+                  direction: "row",
+                  children: [
+                    {
+                      id: "input_bank1",
+                      index: 10,
+                      component: "v2LableInput",
+                      data: "",
+                      label: "开户行名称",
+                      placeholder: "请输入开户行名称"
+                    },
+                    {
+                      id: "input_accontName2",
+                      index: 11,
+                      component: "v2LableInput",
+                      data: "",
+                      label: "账户名称",
+                      placeholder: "请输入账户名称"
+                    }
+                  ]
+                },
+                null,
+                null
+              ]
             }
           ]
         }
       });
-      this.rootId = "root";
+      // this.rootId = "root";
     }, 100);
   },
   methods: {
+    deleteSelection() {
+      this.$store.commit("delete.select");
+    },
     selectParent() {
       this.$store.commit("select.parent");
     },
@@ -271,10 +298,15 @@ export default {
     preview() {
       this.showPreview = true;
       let self = this;
+      self.previewLoading = true;
       setTimeout(() => {
         self.$refs.previewFrame.contentWindow.preview = true;
         self.$refs.previewFrame.contentWindow.data =
           self.$store.state.structure;
+        self.$refs.previewFrame.contentWindow.onload = () => {
+          console.log('loaded')
+          self.previewLoading = false;
+        };
         // self.$refs.previewFrame.reload();
       });
     },
@@ -313,6 +345,7 @@ export default {
   },
   data() {
     return {
+      previewLoading: false,
       showPreview: false,
       palatteConfig: [
         {
@@ -324,7 +357,7 @@ export default {
               height: "100%"
             },
             direction: "col",
-            layout: [30, 10, 20],
+            layout: [50, 50],
             children: []
           },
           factory() {
@@ -340,7 +373,7 @@ export default {
               height: "100%"
             },
             direction: "row",
-            layout: [30, 10, 20],
+            layout: [50, 50],
             children: []
           },
           factory() {
@@ -361,13 +394,20 @@ export default {
             return {};
           }
         }
-      ],
-      rootId: null
+      ]
+      // rootId: null
     };
   }
 };
 </script>
 <style>
+.testInput {
+  width: 100px;
+  height: 40px;
+  position: relative;
+  background: yellow;
+  margin: 10px;
+}
 .editorPart {
   margin: 0;
   display: flex;
@@ -399,7 +439,12 @@ export default {
   padding: 2px;
   border: 1px solid darkcyan;
   box-shadow: 0 1px 1px #000;
-  left: 80%;
+  left: 40%;
+  opacity: 0.2;
+}
+
+.toolbar:hover {
+  opacity: 1;
 }
 /* 打印样式 */
 @media print {

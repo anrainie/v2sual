@@ -15,7 +15,6 @@ export default {
       console.log("data", window.data);
       this.$store.commit("init", { structure: window.data });
       this.$router.push("/preview");
-      this.rootId = "root";
     }, 500);
   },
   mounted() {
@@ -26,7 +25,6 @@ export default {
   },
   data() {
     return {
-      rootId: null
     };
   }
 };

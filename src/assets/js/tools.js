@@ -9,12 +9,36 @@ export const previewTool = {
 }
 
 /**
+ * 容器色块工具集
+ */
+
+export const containerTool = {
+  $wrapClass() {
+    return {
+
+    }
+  },
+}
+
+
+/**
  * 用于创建元素的Tool。
  * 用于拦截键盘、鼠标行为，可编辑节点状态，等等。
  * 使用方式store.setActiveTool($1);
  */
 
 export const createTool = {
+  //键盘事件分发
+  dispatchKeyEvent(_self, e) {
+    switch (e.key) {
+      case 'Esc':
+      case 'Escape':
+        _self.$store.commit('setActiveTool', selectionTool);
+        return false;
+    }
+    return true;
+  },
+
   //为了支持校验activeTool.type=='create'
   type: 'create',
   $wrapClass() {
@@ -88,6 +112,43 @@ export const createTool = {
  * 使用方式store.setActiveTool($1);
  */
 export const selectionTool = {
+  dispatchKeyEvent(_self, e) {
+    let b;
+    switch (e.key) {
+      case "ArrowRight":
+      case "ArrowDown":
+        if (e.ctrlKey) {
+          _self.selectFirstChild();
+        } else {
+          _self.$store.commit("select.next");
+        }
+        return false;
+      case "ArrowLeft":
+      case "ArrowUp":
+        if (e.ctrlKey) {
+          _self.selectParent();
+        } else {
+          _self.$store.commit("select.prev");
+        }
+        return false;
+      case 'Esc':
+      case 'Escape':
+        _self.$store.commit('select');
+        return false;
+      case 'Del':
+      case 'Delete':
+        _self.$store.commit("delete.select");
+        return false;
+    }
+    if (e.ctrlKey) {
+      switch (e.key) {
+        case 's':
+        case 'p':
+          return false;
+      }
+    }
+    return true;
+  },
   $wrapClass(_self) {
     let c = {};
     //选中状态
@@ -99,7 +160,9 @@ export const selectionTool = {
       } else {
         c.selected = true;
       }
-    c.selectable = true;
+    // else if (!_self.$store.getters.isSelectedParent(_self.wid)) {
+    //   c.unselected = true;
+    // }
     return c;
   },
   /**

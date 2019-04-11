@@ -1,8 +1,10 @@
 /* 考虑用before/after */
 .selected {
-  border: 2px dashed lightblue;
+  box-shadow: 0px 0px 3px darkgray;
 }
-
+.unselected{
+  opacity: .5;
+}
 .transparent {
   opacity: .8;
 }
@@ -19,7 +21,7 @@
 
 
 .selectedContainer {
-  border: 1px dashed lightcoral;
+  box-shadow: 1px 1px 3px darkgray;
 }
 
 .V2Empty{

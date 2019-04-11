@@ -42,7 +42,14 @@ export default {
       }
     }
   },
-  methods: {}
+  methods: {
+    $focusPrev() {
+      return true;
+    },
+    $focusNext() {
+      return true;
+    }
+  }
 };
 </script>
 

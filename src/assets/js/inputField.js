@@ -1,37 +1,73 @@
 const preview = {
+  methods: {
+    __getInputFields() {
+      return Array.prototype.map.call($(':input'), function (elem) {
+        return {
+          elem,
+          index: $(elem).attr('tabindex') || Infinity
+        };
+      }).sort((a, b) => a.index - b.index).map(e => e.elem);
+    },
+    $focusNext(e) {
+      let inputFields = this.__getInputFields();
+      let index = $.inArray(e.target, inputFields);
+      $(inputFields[index + 1]).focus();
+      return false;
+    },
+    $focusPrev(e) {
+      let inputFields = this.__getInputFields();
+      let index = $.inArray(e.target, inputFields);
+      $(inputFields[index - 1]).focus();
+      return false;
+    }
+  },
   mounted() {
     //拦截按键
     let el = $(this.$el);
     let x = [];
     el.off(".keymap")
       .on("keydown.keymap", (e) => {
-        console.log(e.shiftKey, e.keyCode, e.key, e.which);
-        //TODO 暂时不知道从哪里取事件，暂时先不动
-        if (x[0] == null)
-          x[0] = e;
-        console.log(x[0].key)
+        // console.log(x[0].key)
+        let inputFields, index;
         if (!e.altKey && !e.ctrlKey && !e.shiftKey) {
-          let event = $.Event('keydown');
-          event.keyCode = 9;
-          event.key = 'Tab'
-          event.which = 9
+          let before = this.model[e.key + ":before"];
+          let after = this.model[e.key + ":after"];
+          let invoker;
           switch (e.key) {
             case 'ArrowRight':
             case 'ArrowDown':
-              event.shiftKey = false;
-              setTimeout(() => {
-                el.trigger(event);
-                el.blur();
-              }, 50);
-
-              return false;
+              invoker = this.$focusNext;
+              break;
             case 'ArrowLeft':
             case 'ArrowUp':
-              event.shiftKey = true;
-              el.trigger(event);
-              return false;
-            default:
-              return true;
+              invoker = this.$focusPrev;
+              break;
+          }
+          if (invoker) {
+            let beforeResult = before ? before(this, e) : true;
+            let b = beforeResult;
+            if (!(beforeResult instanceof Promise)) {
+              b = new Promise(res => {
+                res(beforeResult);
+              });
+            }
+            b.then(result => {
+              if (result) {
+                return invoker(e, result);
+              }
+            }).then(afterResult => {
+              if (after) {
+                if (afterResult instanceof Promise) {
+                  afterResult.then(r => {
+                    after(this, r);
+                  });
+                } else {
+                  after(this, afterResult);
+                }
+              }
+            });
+
+            return true;
           }
         }
 
@@ -42,8 +78,15 @@ const preview = {
 }
 
 
-const edit = {}
+const edit = {
+  mounted() {
+
+  }
+}
 
 
-// export default window.preview ? preview : edit;
-export default preview;
+
+
+
+export default window.preview ? preview : edit;
+// export default preview;

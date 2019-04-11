@@ -1,7 +1,19 @@
 import store from './store.js'
 
 export const canvas = {
-  store,
+  store: new store(),
+  computed: {
+    activeTool() {
+      return this.$store.state.activeTool;
+    },
+    rootId() {
+      return this.$store.state.structure ? this.$store.state.structure.id : null;
+    },
+  }
+}
+
+export const complexWidget = {
+
 }
 
 /**
@@ -32,6 +44,9 @@ export const widget = {
     //   // //TODO
     //   return model;
     // },
+    activeTool() {
+      return this.$store.state.activeTool;
+    },
     model() {
       return this.$store.getters.model(this.wid) || {};
     },

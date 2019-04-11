@@ -8,7 +8,7 @@ export const edit = window.preview ? {} : {
   computed: {
     wrapClass() {
       let activeTool = this.$store.state.activeTool || selectionTool;
-      return activeTool.$wrapClass(this);
+      return activeTool.$wrapClass ? activeTool.$wrapClass(this) : {};
     },
   },
   mounted() {
