@@ -1,16 +1,21 @@
 <template>
   <div>
-       <base-config  v-if="showOption" class="aui-config-ctn" :arraySelector="arraySelector" :objSelector="objSelector" :handler="handler" :array="model.option" :obj="model.data"></base-config>
+      <div class="aui-config-tilte">配置</div>
+      <div class="aui-config-content">
+       <base-config  v-if="showOption" class="aui-config-ctn" :arraySelector="arraySelector" :objSelector="objSelector" :handler="handler" :array="arr" :obj="obj"></base-config>
+
+      </div>
 
   </div>
 </template>
 <script>
-import store from "../../assets/js/store.js";
+// import store from "../../assets/js/store.js";
 
 export default {
-  store,
+  // store,
   mounted: function() {
     this.showOption = true;
+
   },
 
   data() {
@@ -66,7 +71,7 @@ export default {
         panelChange: function() {},
 
         handleChange: function(args) {
-          debugger;
+   
         },
 
         edmSorted: function(edmObj, modelSelector) {
@@ -112,24 +117,26 @@ export default {
     }
   },
   computed: {
+    arr(){
+      return this.model.option;
+    },
+    obj(){
+      return this.model.data;
+    },
     wid() {
-      // console.log("eeeeeeeeeeeeeee")
-      let st = this.$store.state.UIData.selectTarget;
+     
+      // let st = this.$store.state.UIData.selectTarget;
 
-      if (!st || st.length != 1) {
-        return null;
-      }
-      return st[0];
+      // if (!st || st.length != 1) {
+      //   return null;
+      // }
+      return this.$store.getters.firstSelection
     },
     model() {
-      return this.$store.getters.model(this.wid) || {};
-    },
-    //  array(){
-    //         let  this.$store.getters.model(this.wid) || {};
-    //  },
-    //   obj(){
-
-    //   }
+      console.log(this.$store.getters.model(this.$store.getters.firstSelection))
+      return this.$store.getters.model(this.$store.getters.firstSelection) || {};
+    }
+  
   }
 };
 </script>

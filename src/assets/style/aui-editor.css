@@ -1,6 +1,17 @@
-.aui-menu-tilte{
+.aui-menu-tilte,.aui-config-tilte{
     line-height: 1.5em;
+    padding: 0.5em 0.4em;
 }
+.aui-config-content{
+    background: #fff;
+    /* height: 100%; */
+    position: absolute;
+    top: 30px;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
 .list-item,.text-overflow {
     text-overflow: ellipsis;
     white-space: nowrap;
