@@ -1,5 +1,6 @@
 import {
   selectionTool,
+  createTool,
 } from "./tools.js"
 /**
  * 该文件定义了编辑器的行为
@@ -16,6 +17,7 @@ export const edit = window.preview ? {} : {
       this.selected(e);
       e.stopPropagation();
     });
+
   },
   methods: {
     /**

@@ -31,6 +31,15 @@ export default {
         type: "Empty"
       }
     });
+    let self = this;
+    $(this.$el).droppable({
+      drop(event, ui) {
+        console.log(self.$store.state.activeTool);
+        if (self.$store.state.activeTool == createTool) {
+          createTool.$selected(self, event);
+        }
+      }
+    });
 
     $(this.$el).attr("tableIndex", Infinity);
   },

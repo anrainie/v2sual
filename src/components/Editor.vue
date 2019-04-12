@@ -1,54 +1,63 @@
 <template>
-  <div class="editorPart" onkeydown="console.log">
-    <div class="palatte">
-      <!-- <div v-for="(item,index) of palatteConfig" :key="index" @click.stop="createElement(item)">
-        <span class="PaletteItem">
-          <i :class="item.icon"/>
-          <span>{{item.name}}</span>
-        </span>
-      </div>-->
+  <div>
+    <div v-if="showPreview" style="position:fixed;width:100%;height:100%;">
+      <div
+        v-show="previewLoading"
+        v-loading="previewLoading"
+        style="position:absolute;width:100%;height:100%;"
+      ></div>
+      <iframe
+        v-show="!previewLoading"
+        ref="previewFrame"
+        src="http://localhost:8080/#/preview"
+        style="width:100%;height:100%;position:absolute;left:0;"
+      ></iframe>
+    </div>
+    <div v-else class="editorPart" onkeydown="console.log">
+      <div class="palatte">
+        <div class="aui-menu-tilte">菜单</div>
+        <div data-role="leftAside" id="auiMenuFrame" class="aui-aside-left aui-tab-pane active">
+          <div id="asideTabCtn" class="aui-tabbable">
+            <div class="aui-tab-content" data-role="auiTabContent">
+              <div class="aui-aside-menu-ctn" id="auiAsidePlatformMenu">
+                <div class="aui-widget-set">
+                  <div class="aui-widget-set-body">
+                    <!-- {{each data as value index}} -->
+                    <div
+                      class="aui-widget-menu-group"
+                      v-for="(value,index) in palatteConfig"
+                      :key="index"
+                    >
+                      <div class="aui-widget-menu-group-header" data-role="menuAngleUpTitle">
+                        <i class="aui aui-jiantou-xia aui-menu-angle" :calss="value.angleUp"></i>
+                        <span>{{value.name}}</span>
+                      </div>
 
-      <div class="aui-menu-tilte">菜单</div>
-      <div data-role="leftAside" id="auiMenuFrame" class="aui-aside-left aui-tab-pane active">
-        <div id="asideTabCtn" class="aui-tabbable">
-          <div class="aui-tab-content" data-role="auiTabContent">
-            <div class="aui-aside-menu-ctn" id="auiAsidePlatformMenu">
-              <div class="aui-widget-set">
-                <div class="aui-widget-set-body">
-                  <!-- {{each data as value index}} -->
-                  <div
-                    class="aui-widget-menu-group"
-                    v-for="(value,index) in palatteConfig"
-                    :key="index"
-                  >
-                    <div class="aui-widget-menu-group-header" data-role="menuAngleUpTitle">
-                      <i class="aui aui-jiantou-xia aui-menu-angle" :calss="value.angleUp"></i>
-                      <span>{{value.name}}</span>
-                    </div>
-
-                    <div class="aui-widget-menu-inner">
-                      <div class="aui-widget-menu-block" :data-type="value.type">
-                        <div class="aui-widget-menu-body" :style="{'display':value.collapse}">
-                          <template v-if="value.children">
-                            <div
-                              v-for="(subValue,i) in value.children"
-                              :key="i"
-                              class="aui-widget-menu-block"
-                              :data-type="subValue.type"
-                              @click.stop="createElement(subValue)"
-                            >
+                      <div class="aui-widget-menu-inner">
+                        <div class="aui-widget-menu-block" :data-type="value.type">
+                          <div class="aui-widget-menu-body" :style="{'display':value.collapse}">
+                            <template v-if="value.children">
                               <div
-                                class="aui-widget-menu-group-header"
-                                data-role="menuAngleUpTitle"
+                                v-for="(subValue,i) in value.children"
+                                :key="i"
+                                class="aui-widget-menu-block paletteItem"
+                                :data-type="subValue.type"
+                                @click.stop="startCreateElement(subValue)"
+                                v-draggable="subValue"
                               >
-                                <i
-                                  class="aui aui-jiantou-xia aui-menu-angle"
-                                  :class="subValue.angleUp"
-                                ></i>
-                                <span>{{subValue.name}}</span>
+                                <div
+                                  class="aui-widget-menu-group-header"
+                                  data-role="menuAngleUpTitle"
+                                >
+                                  <i
+                                    class="aui aui-jiantou-xia aui-menu-angle"
+                                    :class="subValue.angleUp"
+                                  ></i>
+                                  <span>{{subValue.name}}</span>
+                                </div>
                               </div>
-                            </div>
-                          </template>
+                            </template>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -59,16 +68,27 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="editor">
-      <v2Container v-model="rootId"></v2Container>
-    </div>
+      <div class="editor">
+        <v2Container v-model="rootId"></v2Container>
+      </div>
 
-    <div class="control">
-      <Base/>
-      <!-- <layoutControl style="flex:3;width:99%;border:1px solid lightgray;"></layoutControl> -->
-      <!-- <component :is="component(index)" :wid="wigetId(index)" :index="index"></component> -->
+      <div class="control">
+        <Base/>
+      </div>
+      <div class="toolbar">
+        <el-button size="mini" @click="deleteSelection">删除</el-button>
+        <el-button size="mini" @click="selectParent">向上选择</el-button>
+        <el-button size="mini" @click="selectFirstChild">向下选择</el-button>
+        <el-button size="mini" @click="preview">预览</el-button>
+      </div>
+      <div
+        v-show="showDragHelper"
+        style="position:fixed;width:10rem;height:5rem;box-shadow:0 0 5px black;"
+        ref="dragHelper"
+      >
+        <component :is="dragHelper.component" :wid="'helper'"></component>
+      </div>
     </div>
   </div>
 </template>
@@ -76,7 +96,6 @@
 import { canvas } from "../assets/js/v2-view.js";
 import { createTool, selectionTool } from "../assets/js/tools.js";
 import { setTimeout } from "timers";
-import layoutControl from "./control/LayoutControl";
 
 import { debug } from "util";
 import { constants } from "fs";
@@ -96,6 +115,19 @@ export default {
           ? this.activeTool.dispatchKeyEvent(this, e)
           : true;
       });
+
+    // $(".paletteItem").draggable({
+    //   helper: function(event, ui) {
+    //     console.log("help", event, ui);
+    //     return $(
+    //       `<div style='position:fixed;' class='ui-widget-header'>${event}</div>`
+    //     );
+    //   },
+    //   start(event, ui) {
+    //     ui.test = 123;
+    //     console.log(event, ui);
+    //   }
+    // });
 
     //模拟异步读取数据
     setTimeout(() => {
@@ -138,10 +170,23 @@ export default {
     /**
      *创建元素，传入一个createTool，并且传入element
      */
-    createElement(item) {
+    startCreateElement(item) {
+      this.dragHelper = JSON.parse(JSON.stringify(item.element));
+      this.$store.commit("regist.index", {
+        id: "helper",
+        content: this.dragHelper
+      });
+      this.showDragHelper = true;
       let tool = createTool;
       this.$store.commit("setActiveTool", tool);
       tool.setElement(item.element);
+    },
+    createDragHelper(item) {
+      console.log(this.$refs.dragHelper);
+      return this.$refs.dragHelper;
+    },
+    finishCreateElement() {
+      this.showDragHelper = false;
     },
     /*设置聚焦节点*/
     mouseEven(e) {
@@ -165,6 +210,11 @@ export default {
   },
   data() {
     return {
+      dragHelper: {
+        id: "helper",
+        component: ""
+      },
+      showDragHelper: false,
       previewLoading: false,
       showPreview: false,
       palatteConfig: [
@@ -272,117 +322,116 @@ export default {
               element: {
                 component: "v2Switch",
                 children: [],
-                data:{
+                data: {
                   title: "开关",
                   value: true,
-                  activeText:'开',
-                  inactiveText:'关'
+                  activeText: "开",
+                  inactiveText: "关"
                 },
-                   option: [
-              {
-                componentType: "",
-                hidden: false,
-                defaultValue: "switch1",
-                valueArray: "",
-                type: "string_input",
-                appendNumber: 1,
-                titleKey: "",
-                desp: "标题",
-                formatter: "",
-                isAdvanced: false,
-                idUniqueSpace: "",
-                dataList: "",
-                hasEvent: false,
-                name: "title",
-                details: "",
-                placeholder: "",
-                edmKey: "",
-                despArray: "",
-                direction: "",
-                validate: {
-                  errorMessage: "",
-                  type: ""
-                }
+                option: [
+                  {
+                    componentType: "",
+                    hidden: false,
+                    defaultValue: "switch1",
+                    valueArray: "",
+                    type: "string_input",
+                    appendNumber: 1,
+                    titleKey: "",
+                    desp: "标题",
+                    formatter: "",
+                    isAdvanced: false,
+                    idUniqueSpace: "",
+                    dataList: "",
+                    hasEvent: false,
+                    name: "title",
+                    details: "",
+                    placeholder: "",
+                    edmKey: "",
+                    despArray: "",
+                    direction: "",
+                    validate: {
+                      errorMessage: "",
+                      type: ""
+                    }
+                  },
+                  {
+                    componentType: "",
+                    hidden: false,
+                    defaultValue: true,
+                    valueArray: "",
+                    type: "boolean",
+                    appendNumber: 1,
+                    titleKey: "",
+                    desp: "开关的值",
+                    formatter: "",
+                    isAdvanced: false,
+                    idUniqueSpace: "",
+                    dataList: "",
+                    hasEvent: false,
+                    name: "value",
+                    details: "",
+                    placeholder: "",
+                    edmKey: "",
+                    despArray: "",
+                    direction: "",
+                    validate: {
+                      errorMessage: "",
+                      type: ""
+                    }
+                  },
+                  {
+                    componentType: "",
+                    hidden: false,
+                    defaultValue: "switch1",
+                    valueArray: "",
+                    type: "string_input",
+                    appendNumber: 1,
+                    titleKey: "",
+                    desp: "激活的文本",
+                    formatter: "",
+                    isAdvanced: false,
+                    idUniqueSpace: "",
+                    dataList: "",
+                    hasEvent: false,
+                    name: "activeText",
+                    details: "",
+                    placeholder: "",
+                    edmKey: "",
+                    despArray: "",
+                    direction: "",
+                    validate: {
+                      errorMessage: "",
+                      type: ""
+                    }
+                  },
+                  {
+                    componentType: "",
+                    hidden: false,
+                    defaultValue: "switch1",
+                    valueArray: "",
+                    type: "string_input",
+                    appendNumber: 1,
+                    titleKey: "",
+                    desp: "未激活的文本",
+                    formatter: "",
+                    isAdvanced: false,
+                    idUniqueSpace: "",
+                    dataList: "",
+                    hasEvent: false,
+                    name: "inactiveText",
+                    details: "",
+                    placeholder: "",
+                    edmKey: "",
+                    despArray: "",
+                    direction: "",
+                    validate: {
+                      errorMessage: "",
+                      type: ""
+                    }
+                  }
+                ]
               },
-              {
-                componentType: "",
-                hidden: false,
-                defaultValue: true,
-                valueArray: "",
-                type: "boolean",
-                appendNumber: 1,
-                titleKey: "",
-                desp: "开关的值",
-                formatter: "",
-                isAdvanced: false,
-                idUniqueSpace: "",
-                dataList: "",
-                hasEvent: false,
-                name: "value",
-                details: "",
-                placeholder: "",
-                edmKey: "",
-                despArray: "",
-                direction: "",
-                validate: {
-                  errorMessage: "",
-                  type: ""
-                }
-              },
-              {
-                componentType: "",
-                hidden: false,
-                defaultValue: "switch1",
-                valueArray: "",
-                type: "string_input",
-                appendNumber: 1,
-                titleKey: "",
-                desp: "激活的文本",
-                formatter: "",
-                isAdvanced: false,
-                idUniqueSpace: "",
-                dataList: "",
-                hasEvent: false,
-                name: "activeText",
-                details: "",
-                placeholder: "",
-                edmKey: "",
-                despArray: "",
-                direction: "",
-                validate: {
-                  errorMessage: "",
-                  type: ""
-                }
-              },
-              {
-                componentType: "",
-                hidden: false,
-                defaultValue: "switch1",
-                valueArray: "",
-                type: "string_input",
-                appendNumber: 1,
-                titleKey: "",
-                desp: "未激活的文本",
-                formatter: "",
-                isAdvanced: false,
-                idUniqueSpace: "",
-                dataList: "",
-                hasEvent: false,
-                name: "inactiveText",
-                details: "",
-                placeholder: "",
-                edmKey: "",
-                despArray: "",
-                direction: "",
-                validate: {
-                  errorMessage: "",
-                  type: ""
-                }
-              }
-        
-            ]
-              },
-             
+
               factory() {
                 return {};
               }
@@ -447,11 +496,10 @@ export default {
                   ]
                 }
               }
-            },
+            }
           ]
         }
       ]
-     
     };
   }
 };
@@ -483,14 +531,13 @@ export default {
 }
 
 .editor {
-
-    flex: 6;
-    height: 100%;
-    overflow-y: auto;
-    padding: 0.6em;
-    background: #fff;
-    border: 1px solid #ccc;
-    margin: 0 0.8em;
+  flex: 6;
+  height: 100%;
+  overflow-y: auto;
+  padding: 0.6em;
+  background: #fff;
+  border: 1px solid #ccc;
+  margin: 0 0.8em;
 }
 .control {
   flex: 2;
@@ -499,8 +546,8 @@ export default {
   overflow-x: none;
   display: flex;
   flex-direction: column;
-      background: #eeeef2;
-      border: 1px solid #ccc;
+  background: #eeeef2;
+  border: 1px solid #ccc;
 }
 .toolbar {
   position: fixed;

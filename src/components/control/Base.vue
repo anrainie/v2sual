@@ -1,11 +1,18 @@
 <template>
   <div>
-      <div class="aui-config-tilte">配置</div>
-      <div class="aui-config-content">
-       <base-config  v-if="showOption" class="aui-config-ctn" :arraySelector="arraySelector" :objSelector="objSelector" :handler="handler" :array="arr" :obj="obj"></base-config>
-
-      </div>
-
+    <div class="aui-config-tilte">配置</div>
+    <div class="aui-config-content">
+      <base-config
+        v-if="showOption"
+        class="aui-config-ctn"
+        :arraySelector="arraySelector"
+        :objSelector="objSelector"
+        :handler="handler"
+        :array="arr"
+        :obj="obj"
+      ></base-config>
+    </div>
+    <LayoutControl></LayoutControl>
   </div>
 </template>
 <script>
@@ -15,17 +22,15 @@ export default {
   // store,
   mounted: function() {
     this.showOption = true;
-
   },
-
   data() {
     return {
-    //   //model responsive data
-    //   array: JSON.parse(JSON.stringify(baseArray)),
-    //   obj: JSON.parse(JSON.stringify(baseObj)),
+      //   //model responsive data
+      //   array: JSON.parse(JSON.stringify(baseArray)),
+      //   obj: JSON.parse(JSON.stringify(baseObj)),
 
       //model selector
-      objSelector: 'objectSlector',
+      objSelector: "objectSlector",
       arraySelector: "array",
 
       //model display control
@@ -36,11 +41,10 @@ export default {
       handler: {
         showNextLevel: false,
 
-        handleValidate: function($event, item) {
-        
+        handleValidate: function($event, item) {},
+        validate() {
+          return true;
         },
-
-      
 
         getHeaderValue: function(value) {
           if (typeof value === "string") {
@@ -50,15 +54,11 @@ export default {
           }
         },
 
-        getHeader: function(item, instanceItem, index, emdObj) {
-      
-        },
+        getHeader: function(item, instanceItem, index, emdObj) {},
 
         tabClicked: function(name, id) {},
 
-        panelCreated: function(panelInstance, optionItem) {
-
-        },
+        panelCreated: function(panelInstance, optionItem) {},
 
         // swapComponent: baseVueHandler.swapComponent,
 
@@ -70,27 +70,17 @@ export default {
 
         panelChange: function() {},
 
-        handleChange: function(args) {
-   
-        },
+        handleChange: function(args) {},
 
-        edmSorted: function(edmObj, modelSelector) {
-         
-        },
+        edmSorted: function(edmObj, modelSelector) {},
 
-        panelOpen: function(event, args) {
-          
-        },
+        panelOpen: function(event, args) {},
 
-        addBlock: function(event, args) {
-          
-        },
+        addBlock: function(event, args) {},
 
-        delBlock: function(event, item, modelSelector, edmCollectionObj) {
-        
-        }
+        delBlock: function(event, item, modelSelector, edmCollectionObj) {}
       }
-    }
+    };
   },
   destroyed: function() {
     console.log("destroy");
@@ -117,26 +107,28 @@ export default {
     }
   },
   computed: {
-    arr(){
+    arr() {
       return this.model.option;
     },
-    obj(){
+    obj() {
       return this.model.data;
     },
     wid() {
-     
       // let st = this.$store.state.UIData.selectTarget;
 
       // if (!st || st.length != 1) {
       //   return null;
       // }
-      return this.$store.getters.firstSelection
+      return this.$store.getters.firstSelection;
     },
     model() {
-      console.log(this.$store.getters.model(this.$store.getters.firstSelection))
-      return this.$store.getters.model(this.$store.getters.firstSelection) || {};
+      console.log(
+        this.$store.getters.model(this.$store.getters.firstSelection)
+      );
+      return (
+        this.$store.getters.model(this.$store.getters.firstSelection) || {}
+      );
     }
-  
   }
 };
 </script>

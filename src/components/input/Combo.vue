@@ -21,7 +21,9 @@ import inputField from '../../assets/js/inputField';
 export default {
   name: "v2Input",
   mixins: [widget,inputField, edit],
-  mounted() {},
+  mounted() {
+    console.log('Combo init',this.wid,this.model);
+  },
   methods: {
     trigger(e) {
         // console.log('e',e)

@@ -3,7 +3,7 @@ export const data = {
     id: "root",
     component: "v2Container",
     direction: "row",
-    layout: [10, 10, 10, 10, 10, 10, 10, 10],
+    layout: [10, 10, 10, 10, 10, 10, 10, 20],
     style: {
       width: "100%",
       height: "100%"
@@ -295,7 +295,7 @@ export const data = {
         id: "row14",
         component: "v2Container",
         direction: "col",
-        layout: [33, 33, 33],
+        layout: [50,50],
         style: {
           width: "100%",
           height: "100%"
@@ -303,7 +303,7 @@ export const data = {
         children: [{
             id: "complexComponent1",
             component: "v2ComplextWidget",
-            layout: [30, 30],
+            layout: [50,50],
             direction: "row",
             children: [{
                 id: "input_bank1",

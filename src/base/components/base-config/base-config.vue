@@ -1,25 +1,32 @@
 <template>
-    <div class="aui-base-config">
-        <base-component :array="array" v-for="(item, index) in array" 
-        :key="item.name" 
-        :item="item" 
-        :edmCollectionObj="edmCollectionObj" 
-        :objSelector="objSelector" 
-        :obj="obj" 
-        :handler="handler" 
-        :arraySelector="getArraySelector(index)">
-        </base-component>
-    </div>
+  <div class="aui-base-config">
+    <base-component
+      :array="array"
+      v-for="(item, index) in array"
+      :key="item.name"
+      :item="item"
+      :edmCollectionObj="edmCollectionObj"
+      :objSelector="objSelector"
+      :obj="obj"
+      :handler="handler"
+      :arraySelector="getArraySelector(index)"
+    ></base-component>
+  </div>
 </template>
 
 <script>
-import BaseComponent from './base-component.vue'
+import BaseComponent from "./base-component.vue";
 
 export default {
   name: "BaseConfig",
 
   data() {
     return {};
+  },
+  watch: {
+    obj(v) {
+      console.log(v);
+    }
   },
 
   components: {
@@ -46,12 +53,12 @@ export default {
     },
 
     arraySelector: {
-        type: String,
-        default: 'baseConfigArray'
+      type: String,
+      default: "baseConfigArray"
     },
     objSelector: {
-        type: String,
-        default: 'baseConfigObj'
+      type: String,
+      default: "baseConfigObj"
     },
 
     edmCollectionObj: Object,

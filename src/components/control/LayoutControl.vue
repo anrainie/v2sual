@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="aui-config-tilte">布局</div>
     <el-row>
       <el-button class="el-icon-plus" size="mini" @click="add"></el-button>
     </el-row>
@@ -28,7 +29,6 @@
 <script>
 import draggable from "vuedraggable";
 export default {
-  props: ["store"],
   methods: {
     add() {
       this.model.children.push(null);
@@ -52,7 +52,7 @@ export default {
   },
   computed: {
     wid() {
-      let st = this.store.state.UIData.selectTarget;
+      let st = this.$store.state.UIData.selectTarget;
 
       if (!st || st.length != 1) {
         return null;
@@ -60,7 +60,7 @@ export default {
       return st[0];
     },
     model() {
-      return this.store.getters.model(this.wid) || {};
+      return this.$store.getters.model(this.wid) || {};
     }
   },
   components: {
