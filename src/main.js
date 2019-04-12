@@ -16,6 +16,7 @@ import v2Title from "./components/input/title.vue";
 import v2Combo from "./components/input/Combo.vue";
 import v2Switch from "./components/input/Switch.vue";
 import v2Checkbox from "./components/input/Checkbox.vue";
+import v2Table from "./components/input/Table.vue";
 import empty from "./components/edit/Empty.vue";
 import LayoutControl from "./components/control/LayoutControl.vue";
 import ComplexWidget from "./components/ComplexWidget.vue";
@@ -30,6 +31,7 @@ Vue.component('v2ComplextWidget',ComplexWidget);
 Vue.component('v2Combo',v2Combo);
 Vue.component('v2Switch',v2Switch);
 Vue.component('v2Checkbox',v2Checkbox);
+Vue.component('v2Table',v2Table);
 
 /* eslint-disable no-new */
 new Vue({

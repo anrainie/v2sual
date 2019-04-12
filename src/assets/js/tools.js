@@ -46,9 +46,9 @@ export const createTool = {
 
     }
   },
-  element: {
-
-  },
+  element: null,
+  target: null,
+  event: null,
   /**
    * 对象组装工厂，工厂需要完成两个行为，1、生成wid；2、调用$store.registIndex注册widget索引
    * @param {*} _self 
@@ -60,7 +60,7 @@ export const createTool = {
       result.id = new Date().valueOf();
       result.pid = _self.wid;
 
-      _self.$store.commit('registIndex', {
+      _self.$store.commit('regist.index', {
         id: result.id,
         content: result
       });
@@ -76,16 +76,38 @@ export const createTool = {
    * @param {*} event 
    */
   $selected(_self, event) {
-    this.append(_self, event).then(e => {
-      //切换Tool
-      _self.$store.commit('setActiveTool', selectionTool);
-      //选中
-      _self.$store.commit('select', e.wid, event);
-    });
+    this.target = _self;
+    this.event = event;
+    this.tryCreate();
   },
-  append(_self, event) {
+  setElement(element) {
+    this.element = element;
+    this.tryCreate();
+  },
+  tryCreate() {
+    if (this.element && this.target) {
+      this.__append().then(e => {
+        //切换Tool
+        this.target.$store.commit('setActiveTool', selectionTool);
+        //选中
+        this.target.$store.commit('select', e.wid, event);
+        this.dispose();
+      }).catch(e => {
+        console.error(e)
+        this.dispose();
+      });
+    }
+  },
+  dispose() {
+    this.target = null;
+    this.event = null;
+    this.element = null;
+  },
+  __append() {
     //可能未来有异步请求，使用Promise处理
     let tool = this;
+    let _self = this.target;
+    let event = this.event;
     return new Promise((res, rej) => {
       //校验可创建性
       if (_self.$canAddChild && _self.$canAddChild(tool.element)) {
@@ -114,40 +136,75 @@ export const createTool = {
 export const selectionTool = {
   dispatchKeyEvent(_self, e) {
     let b;
-    switch (e.key) {
-      case "ArrowRight":
-      case "ArrowDown":
-        if (e.ctrlKey) {
-          _self.selectFirstChild();
-        } else {
+    if (!e.ctrlKey && !e.altKey && !e.shiftKey) {
+      switch (e.key) {
+        case "ArrowRight":
           _self.$store.commit("select.next");
-        }
-        return false;
-      case "ArrowLeft":
-      case "ArrowUp":
-        if (e.ctrlKey) {
-          _self.selectParent();
-        } else {
+          return false;
+        case "ArrowDown":
+          _self.$store.commit("select.firstChild");
+          return false;
+        case "ArrowLeft":
           _self.$store.commit("select.prev");
-        }
-        return false;
-      case 'Esc':
-      case 'Escape':
-        _self.$store.commit('select');
-        return true;
-      case 'Del':
-      case 'Delete':
-        _self.$store.commit("delete.select");
-        return true;
+          return false;
+        case "ArrowUp":
+          _self.selectParent();
+          return false;
+        case 'Esc':
+        case 'Escape':
+          _self.$store.commit('select');
+          return true;
+        case 'Del':
+        case 'Delete':
+          _self.$store.commit("delete.select");
+          return true;
+        case 'Enter':
+          let s = _self.$store.getters.firstSelection;
+          let m = _self.$store.getters.model(s);
+          if (m == null || m.type == "Empty") {
+            let v = _self.$store.getters.vueInstance(s);
+            console.log(v)
+            if (v) {
+              _self.$store.commit("setActiveTool", createTool);
+              createTool.$selected(v, e);
+            }
+          }
+          return true;
+      }
     }
     if (e.ctrlKey) {
       switch (e.key) {
         case 's':
         case 'p':
           return false;
+        case '=':
+        case '+':
+          this.$sizeUp(_self);
+          return false;
+        case '-':
+        case '_':
+          this.$sizeDown(_self);
+          return false;
       }
     }
     return true;
+  },
+  $sizeUp(_self) {
+    this.$sizeChange(_self, 1);
+  },
+  $sizeDown(_self) {
+    this.$sizeChange(_self, -1);
+  },
+  $sizeChange(_self, dir) {
+    let s = _self.$store.getters.firstSelection;
+    let p = _self.$store.getters.parent(s, true);
+    if (!p) return;
+    let index = _self.$store.getters.indexOf(p, s);
+    if (index == -1) return;
+    let step = 1;
+    if (p.direction == 'col')
+      step = 4.5
+    p.layout && p.layout[index] != null && _self.$set(p.layout, index, p.layout[index] + step * dir);
   },
   $wrapClass(_self) {
     let c = {};

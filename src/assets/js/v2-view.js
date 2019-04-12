@@ -38,6 +38,12 @@ export const widget = {
     LOG: console.log,
     ERR: console.error,
   },
+  mounted() {
+    this.$store.commit('regist.vue', {
+      wid: this.wid,
+      vue: this
+    });
+  },
   computed: {
     // model() {
     //   let model = store.state.UIData.structureIndex[this.wid] || {};

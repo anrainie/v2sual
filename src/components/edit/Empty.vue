@@ -5,6 +5,7 @@
 <script>
 import { widget } from "../../assets/js/v2-view.js";
 import { edit } from "../../assets/js/edit.js";
+import { createTool } from "../../assets/js/tools.js";
 let mixins = [widget, edit];
 export default {
   mixins,
@@ -22,13 +23,16 @@ export default {
   },
   mounted() {
     //注册自身
-    this.$store.commit("registIndex", {
+    this.$store.commit("regist.index", {
       id: this.wid,
       content: {
         id: this.wid,
-        pid: this.pid
+        pid: this.pid,
+        type: "Empty"
       }
     });
+
+    $(this.$el).attr("tableIndex", Infinity);
   },
   methods: {
     $ticket() {
@@ -44,7 +48,7 @@ export default {
       let result = JSON.parse(JSON.stringify(e));
       result.id = new Date().valueOf();
       result.pid = this.parentId;
-      this.$store.commit("registIndex", {
+      this.$store.commit("regist.index", {
         id: result.id,
         content: result
       });

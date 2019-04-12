@@ -45,6 +45,8 @@ export default () => {
         structureIndex: {
 
         },
+        //vue索引
+        vueIndex: {},
       },
       //结构
       structure: {
@@ -56,6 +58,11 @@ export default () => {
       // },
     },
     getters: {
+      vueInstance: ({
+        UIData
+      }) => wid => {
+        return UIData.vueIndex[wid];
+      },
       getNextBrother: (state, getters) => (wid) => {
         let pid = getters.parentId(wid, true);
         if (pid == null) return;
@@ -78,6 +85,22 @@ export default () => {
             id: (pid + '-' + nextIndex)
           };
         return r;
+      },
+      indexOf: (state, getters) => (p, wid) => {
+        if (p != null) {
+          if (!p.children) {
+            p = this.getters.model(p);
+          }
+          if (p.children) {
+            for (let i = 0; i < p.children.length; i++) {
+              let id = p.children[i] ? p.children[i].id : (p.id + '-' + i);
+              if (id == wid) {
+                return i;
+              }
+            }
+          }
+        }
+        return -1;
       },
       getPrevBrother: (state, getters) => (wid) => {
         let pid = getters.parentId(wid, true);
@@ -246,12 +269,21 @@ export default () => {
           __buildIndex(structure, UIData.structureIndex);
         }
       },
+      "regist.vue"({
+        UIData
+      }, {
+        wid,
+        vue
+      }) {
+        UIData.vueIndex = UIData.vueIndex || {};
+        UIData.vueIndex[wid] = vue;
+      },
       /**
        * 注册索引
        * @param {索引} index 
        * @param {*} v 
        */
-      registIndex({
+      'regist.index'({
         UIData
       }, {
         id,
@@ -267,7 +299,11 @@ export default () => {
        */
       setActiveTool(state, tool) {
         console.log('setActiveTool', tool);
-        state.activeTool = tool;
+        if (state.activeTool != tool) {
+          state.activeTool && state.activeTool.dispose && state.activeTool.dispose();
+          console.log('setActiveTool success');
+          state.activeTool = tool;
+        }
       },
       "delete.select"(state) {
         let s = this.getters.firstSelection;
@@ -289,12 +325,26 @@ export default () => {
           this.getters.firstSelection
         );
         if (b != null) this.commit("select", b.id);
+        else {
+          //如果找不到下一个目标，则选中父节点
+          let pid = this.getters.parentId(
+            this.getters.firstSelection, true
+          );
+          this.commit("select", pid);
+        }
       },
       "select.next"(state) {
         let b = this.getters.getNextBrother(
           this.getters.firstSelection
         );
         if (b != null) this.commit("select", b.id);
+        else {
+          //如果找不到下一个目标，则选中父节点
+          let pid = this.getters.parentId(
+            this.getters.firstSelection, true
+          );
+          this.commit("select", pid);
+        }
       },
       "select.firstChild"(state) {
         let m = this.getters.model(state.UIData.selectTarget[0]);
@@ -318,7 +368,7 @@ export default () => {
        */
       select(state, target, append = false) {
         if (target == null) {
-          state.UIData.selectTarget = [];
+          state.UIData.selectTarget = [state.structure.id];
           return;
         }
         if (target.constructor == Array) {
