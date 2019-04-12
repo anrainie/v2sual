@@ -10,7 +10,30 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/v1': {
+          target: 'http://localhost:3000',
+          changeOrigin: true,
+          rewrite: {
+          },
+          onProxyRes: function(proxyRes, req, res) {
+            var cookies = proxyRes.headers['set-cookie'];
+            var cookieRegex = /Path=\/XXX\//i;
+            //修改cookie Path
+            if (cookies) {
+              var newCookie = cookies.map(function(cookie) {
+                if (cookieRegex.test(cookie)) {
+                  return cookie.replace(cookieRegex, 'Path=/');
+                }
+                return cookie;
+              });
+              //修改cookie path
+              delete proxyRes.headers['set-cookie'];
+              proxyRes.headers['set-cookie'] = newCookie;
+            }
+          }
+        }
+  },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

@@ -22,15 +22,18 @@
     "install": "^0.12.2",
     "jquery": "^3.3.1",
     "jquery-ui": "^1.12.1",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
     "npm": "^6.9.0",
-    "vue": "^2.5.2",
-    "vue-router": "^3.0.1",
-    "vuedraggable": "^2.20.0",
-    "vuex": "^3.1.0",
     "popper.js": "^0.6.4",
     "scriptjs": "^2.5.8",
     "sortablejs": "^1.7.0",
-    "tinycolor2": "^1.4.1"
+    "tinycolor2": "^1.4.1",
+    "uglify-es-web": "^1.0.1",
+    "vue": "^2.5.2",
+    "vue-router": "^3.0.1",
+    "vuedraggable": "^2.20.0",
+    "vuex": "^3.1.0"
   },
   "devDependencies": {
     "@junyiz/koa-proxy-pass": "^1.2.1",

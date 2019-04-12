@@ -1,10 +1,16 @@
 const reader = require('filelist_reader');
+const readDir = require('recursive-readdir');
 const path = require('path');
 const UglifyJS = require('uglify-es');
 const fs = require('fs');
 
+const Result = require('../Result/Result');
+
 class Page {
-  constructor (_path) {
+
+
+
+  constructor(_path) {
     this.pagePath = _path;
   }
 
@@ -13,35 +19,26 @@ class Page {
    *  @type GET
    *  @url /list
    */
-  list () {
+  list() {
     const pagePath = this.pagePath;
     return async function (ctx, next) {
-      // const pagePath=this.getPagePath();
-      pagePath;
-      ctx.response.type = 'json';
-
       try {
-        ctx.response.body = await new Promise(
-          (resolve, reject) => reader(pagePath)
-            .then((result) => {
-              resolve(JSON.stringify(result))
-            })
-            .catch(e => {
-              console.log(e);
-              ctx.throw(500);
-            }));
+        const files = await readDir(pagePath);
+
+        const vueFiles = files.filter(f => f.lastIndexOf('.vue') !== -1).map(f => f.replace(pagePath, ''));
+
+        Result.success(ctx, vueFiles);
       } catch (e) {
-        console.log(e);
-        ctx.throw(500);
+        Result.error(ctx, e);
       }
-    };
+    }
   }
   /**
    * @desp 获取文件内容
    * @type GET
    * @url /content/:filepath
    */
-  content () {
+  content() {
     const pagePath = this.pagePath;
     return async function (ctx) {
 
@@ -50,12 +47,12 @@ class Page {
       if (filepath) {
         ctx.response.type = 'json';
         const content = await new Promise((resolve, reject) => {
-          fs.readFile(path.resolve(pagePath, filepath.replace(/\$\$/g, '/')), 'utf8', (error, response) => {
+          fs.readFile(path.resolve(pagePath, filepath), 'utf8', (error, response) => {
             if (error) {
               console.log(error);
-              reject(error);
+              reject(error)
             } else {
-              resolve(response);
+              resolve(response)
             }
           });
         });
@@ -71,14 +68,22 @@ class Page {
 
         debugger;
 
-       // const ast = UglifyJS.parse(script);
+        // const ast = UglifyJS.parse(script);
 
         ctx.response.body = JSON.stringify(ast);
+
       } else {
         ctx.throw(500);
       }
     }
   }
+
+
+  /**
+   * @desp 获取文件内容方法与属性
+   * @type GET
+   */
+
 }
 
 module.exports = Page;

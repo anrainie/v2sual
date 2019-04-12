@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import axios from "axios";
 import './base/styles/bundle.css';
 import './assets/style/aui-editor.css';
 
@@ -12,6 +13,19 @@ import 'jquery-ui/ui/widgets/draggable'
 import 'jquery-ui/ui/widgets/droppable'
 import 'jquery-ui/ui/widgets/resizable'
 
+Vue.prototype.apis = (url,params,type)=>{
+  return new Promise((resolve)=>{
+    axios[type||'get'](url,params).then(r=>{
+      if(r.data.status){
+        resolve(r.data);
+      }else{
+        throw r.data;
+      }
+    });
+  }).catch(e=>{
+    console.log(url,e);
+  })
+}
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 
