@@ -86,11 +86,12 @@ export const createTool = {
   },
   tryCreate() {
     if (this.element && this.target) {
+      let _self=this.target
       this.__append().then(e => {
         //切换Tool
-        this.target.$store.commit('setActiveTool', selectionTool);
+        _self.$store.commit('setActiveTool', selectionTool);
         //选中
-        this.target.$store.commit('select', e.wid, event);
+        _self.$store.commit('select', e.wid, event);
         this.dispose();
       }).catch(e => {
         console.error(e)

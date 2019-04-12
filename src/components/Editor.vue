@@ -1,65 +1,74 @@
 <template>
   <div class="editorPart" onkeydown="console.log">
     <div class="palatte">
-     
       <!-- <div v-for="(item,index) of palatteConfig" :key="index" @click.stop="createElement(item)">
         <span class="PaletteItem">
           <i :class="item.icon"/>
           <span>{{item.name}}</span>
         </span>
-      </div> -->
+      </div>-->
 
       <div class="aui-menu-tilte">菜单</div>
       <div data-role="leftAside" id="auiMenuFrame" class="aui-aside-left aui-tab-pane active">
-          <div id="asideTabCtn" class="aui-tabbable">
-            <div class="aui-tab-content" data-role="auiTabContent">
-              <div class="aui-aside-menu-ctn" id="auiAsidePlatformMenu">
-                <div class="aui-widget-set">
-                  <div class="aui-widget-set-body">
-                      <!-- {{each data as value index}} -->
-                      <div class="aui-widget-menu-group" v-for="(value,index) in palatteConfig" :key="index">
-                          <div class="aui-widget-menu-group-header" data-role="menuAngleUpTitle">
-                              <i class="aui aui-jiantou-xia aui-menu-angle" :calss="value.angleUp"></i><span>{{value.name}}</span>
-                          </div>
+        <div id="asideTabCtn" class="aui-tabbable">
+          <div class="aui-tab-content" data-role="auiTabContent">
+            <div class="aui-aside-menu-ctn" id="auiAsidePlatformMenu">
+              <div class="aui-widget-set">
+                <div class="aui-widget-set-body">
+                  <!-- {{each data as value index}} -->
+                  <div
+                    class="aui-widget-menu-group"
+                    v-for="(value,index) in palatteConfig"
+                    :key="index"
+                  >
+                    <div class="aui-widget-menu-group-header" data-role="menuAngleUpTitle">
+                      <i class="aui aui-jiantou-xia aui-menu-angle" :calss="value.angleUp"></i>
+                      <span>{{value.name}}</span>
+                    </div>
 
-                          <div class="aui-widget-menu-inner">
-                              <div class="aui-widget-menu-block" :data-type="value.type">
-                                  <div class="aui-widget-menu-body" :style="{'display':value.collapse}">
-                            
-                                    <template  v-if="value.children">
-                                      <div  v-for="(subValue,i) in value.children"  :key="i" class="aui-widget-menu-block" :data-type="subValue.type" @click.stop="createElement(subValue)">
-                                          <div class="aui-widget-menu-group-header" data-role="menuAngleUpTitle">
-                                              <i class="aui aui-jiantou-xia aui-menu-angle" :class="subValue.angleUp"></i><span>{{subValue.name}}</span>
-                                          </div>
-                                       
-                                      </div>
-                                    </template>
-                                  </div>
-
+                    <div class="aui-widget-menu-inner">
+                      <div class="aui-widget-menu-block" :data-type="value.type">
+                        <div class="aui-widget-menu-body" :style="{'display':value.collapse}">
+                          <template v-if="value.children">
+                            <div
+                              v-for="(subValue,i) in value.children"
+                              :key="i"
+                              class="aui-widget-menu-block"
+                              :data-type="subValue.type"
+                              @click.stop="createElement(subValue)"
+                            >
+                              <div
+                                class="aui-widget-menu-group-header"
+                                data-role="menuAngleUpTitle"
+                              >
+                                <i
+                                  class="aui aui-jiantou-xia aui-menu-angle"
+                                  :class="subValue.angleUp"
+                                ></i>
+                                <span>{{subValue.name}}</span>
                               </div>
-
-                          </div>
+                            </div>
+                          </template>
+                        </div>
                       </div>
-                      
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          
           </div>
+        </div>
       </div>
-      
     </div>
-
 
     <div class="editor">
       <v2Container v-model="rootId"></v2Container>
     </div>
 
     <div class="control">
-          <Base />
+      <Base/>
       <!-- <layoutControl style="flex:3;width:99%;border:1px solid lightgray;"></layoutControl> -->
-      
+
       <!-- <component :is="component(index)" :wid="wigetId(index)" :index="index"></component> -->
     </div>
   </div>
@@ -180,7 +189,7 @@ export default {
                   height: "100%"
                 },
                 direction: "col",
-                layout: [30, 10, 20],
+                layout: [50, 50],
                 children: []
               },
               factory() {
@@ -200,7 +209,7 @@ export default {
                   height: "100%"
                 },
                 direction: "row",
-                layout: [30, 10, 20],
+                layout: [50, 50],
                 children: []
               },
               factory() {
@@ -236,6 +245,26 @@ export default {
               }
             },
             {
+              name: "下拉框",
+              element: {
+                component: "v2-combo",
+                style: {
+                  width: "100%",
+                  height: "100%"
+                },
+                data: {
+                  name: "名称",
+                  value: 0,
+                  options: [
+                    { value: 0, label: "选项一" },
+                    { value: 1, label: "选项二" },
+                    { value: 2, label: "选项三" }
+                  ],
+                  placeholder: "请选择"
+                }
+              }
+            },
+            {
               type: "v2Switch",
               name: "开关",
               icon: "fa fa-wrench",
@@ -248,10 +277,71 @@ export default {
               factory() {
                 return {};
               }
-            }
+            },
+            {
+              name: "多选框",
+              element: {
+                component: "v2-checkbox",
+                style: {
+                  width: "100%",
+                  height: "100%"
+                },
+                data: {
+                  checked: false,
+                  text: "文字"
+                }
+              }
+            },
+            {
+              name: "表格",
+              element: {
+                component: "v2-table",
+                style: {
+                  width: "100%",
+                  height: "100%",
+                  overflow: "auto"
+                },
+                data: {
+                  value: [
+                    {
+                      cname: "中文名1",
+                      ename: "英文名1",
+                      desc: "描述1"
+                    },
+                    {
+                      cname: "中文名2",
+                      ename: "英文名2",
+                      desc: "描述2"
+                    },
+                    {
+                      cname: "中文名3",
+                      ename: "英文名3",
+                      desc: "描述3"
+                    }
+                  ],
+                  columns: [
+                    {
+                      name: "英文名",
+                      key: "ename",
+                      width: 100
+                    },
+                    {
+                      name: "中文名",
+                      key: "cname",
+                      width: 100
+                    },
+                    {
+                      name: "描述",
+                      key: "desc",
+                      width: 200
+                    }
+                  ]
+                }
+              }
+            },
           ]
         }
-      ],
+      ]
       // palatteConfig: [
       //   {
       //     name: "纵向布局",
