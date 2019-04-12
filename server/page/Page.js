@@ -42,20 +42,12 @@ class Page {
     const pagePath = this.pagePath;
     return async function (ctx) {
 
-      const filepath = ctx.params.filepath;
+      try{
+        const query=ctx.request.query;
+        const filepath = query.path;
 
-      if (filepath) {
-        ctx.response.type = 'json';
-        const content = await new Promise((resolve, reject) => {
-          fs.readFile(path.resolve(pagePath, filepath), 'utf8', (error, response) => {
-            if (error) {
-              console.log(error);
-              reject(error)
-            } else {
-              resolve(response)
-            }
-          });
-        });
+        const content = await new Promise(resolve =>  fs.readFile(path.join(pagePath, filepath), 'utf8', (error, response) => error?Result.error(ctx,error):resolve(response)));
+        
         const startTag = '<script>';
         const start = content.indexOf(startTag);
         const endTag = '</script>';
@@ -65,15 +57,9 @@ class Page {
 
         const ast = UglifyJS.parse(script);
 
-
-        debugger;
-
-        // const ast = UglifyJS.parse(script);
-
-        ctx.response.body = JSON.stringify(ast);
-
-      } else {
-        ctx.throw(500);
+        Result.success(ctx,ast)       
+      }catch(e){
+        Result.error(ctx,e);
       }
     }
   }
