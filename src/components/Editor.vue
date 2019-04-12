@@ -9,6 +9,7 @@
         </span>
       </div> -->
 
+      <div class="aui-menu-tilte">菜单</div>
       <div data-role="leftAside" id="auiMenuFrame" class="aui-aside-left aui-tab-pane active">
           <div id="asideTabCtn" class="aui-tabbable">
             <div class="aui-tab-content" data-role="auiTabContent">
