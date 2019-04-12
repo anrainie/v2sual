@@ -6,6 +6,7 @@ import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import './base/styles/bundle.css';
+import './assets/style/aui-editor.css';
 
 
 Vue.use(ElementUI)
