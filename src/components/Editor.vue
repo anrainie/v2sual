@@ -66,7 +66,7 @@
 </template>
 <script>
 import { canvas } from "../assets/js/v2-view.js";
-import { createTool } from "../assets/js/edit.js";
+import { createTool, selectionTool } from "../assets/js/tools.js";
 import { setTimeout } from "timers";
 import layoutControl from "./control/LayoutControl";
 
@@ -78,40 +78,16 @@ export default {
   computed: {},
   // data(){}
   mounted() {
-    // $('.PaletteItem').draggable({
-    //   cursor: "move",
-    //   cursorAt: { top: -12, left: -20 },
-    //   helper: function( event ) {
-    //     return $( "<div class='ui-widget-header'>I'm a custom helper</div>" );
-    //   }
-    // });
-
-    // .onkeydown = e => {
-    //   console.log(e);
-    //   console.log(this.$store.getters.firstSelection);
-    //   console.log(this.$store.state.UIData.focusTarget);
-    // };
-    // window.Editor = this;
-
+    this.$store.commit("setActiveTool", selectionTool);
     const self = this;
-    $(this.window)
+    $(window)
       .off(".keymap")
-      .on("keydown.keymap", function(e) {
-        var key = e.which || window.event.keyCode,
-          $target = $(e.target || event.srcElement),
-          result = true;
-        if (
-          $target.closest(".editor").length &&
-          $target.closest(".editorPart").is(self.$el)
-        ) {
-          console.log(e);
-          result = false;
-          debugger;
-          // $target.trigger('keydown',e);
-        }
-
-        return true;
+      .on("keydown.keymap", e => {
+        return this.activeTool && this.activeTool.dispatchKeyEvent
+          ? this.activeTool.dispatchKeyEvent(this, e)
+          : true;
       });
+
     //模拟异步读取数据
     setTimeout(() => {
       this.$store.commit("init", {
@@ -119,7 +95,7 @@ export default {
           id: "root",
           component: "v2Container",
           direction: "row",
-          layout: [10, 10, 10, 10, 10, 10, 10],
+          layout: [10, 10, 10, 10, 10, 10, 10, 10],
           style: {
             width: "100%",
             height: "100%"
@@ -149,9 +125,7 @@ export default {
                   index: 0,
                   data: "",
                   label: "姓名",
-                  placeholder: "请输入姓名",
-                  keyupEven: this.btnEven,
-                  focusEven: this.mouseEven
+                  placeholder: "请输入姓名"
                 },
                 {
                   id: "input_company",
@@ -159,9 +133,7 @@ export default {
                   component: "v2LableInput",
                   data: "",
                   label: "单位名称",
-                  placeholder: "请输入单位名称",
-                  keyupEven: this.btnEven,
-                  focusEven: this.mouseEven
+                  placeholder: "请输入单位名称"
                 },
                 {
                   id: "input_address",
@@ -169,9 +141,7 @@ export default {
                   component: "v2LableInput",
                   data: "",
                   label: "通讯地址",
-                  placeholder: "请输入通讯地址",
-                  focusEven: this.mouseEven,
-                  keyupEven: this.btnEven
+                  placeholder: "请输入通讯地址"
                 }
               ]
             },
@@ -192,9 +162,7 @@ export default {
                   component: "v2LableInput",
                   data: "",
                   label: "电话",
-                  placeholder: "请输入电话",
-                  focusEven: this.mouseEven,
-                  keyupEven: this.btnEven
+                  placeholder: "请输入电话"
                 },
                 {
                   id: "input_certificate",
@@ -202,9 +170,7 @@ export default {
                   component: "v2LableInput",
                   data: "",
                   label: "证件类型",
-                  placeholder: "请输入证件类型",
-                  focusEven: this.mouseEven,
-                  keyupEven: this.btnEven
+                  placeholder: "请输入证件类型"
                 },
                 {
                   id: "input_post",
@@ -212,9 +178,7 @@ export default {
                   component: "v2LableInput",
                   data: "",
                   label: "邮政编码",
-                  placeholder: "请输入邮政编码",
-                  focusEven: this.mouseEven,
-                  keyupEven: this.btnEven
+                  placeholder: "请输入邮政编码"
                 }
               ]
             },
@@ -241,9 +205,7 @@ export default {
                   component: "v2LableInput",
                   data: "",
                   label: "管理员姓名",
-                  placeholder: "请输入管理员姓名",
-                  focusEven: this.mouseEven,
-                  keyupEven: this.btnEven
+                  placeholder: "请输入管理员姓名"
                 },
                 {
                   id: "input_operatorNum",
@@ -251,9 +213,7 @@ export default {
                   component: "v2LableInput",
                   data: "",
                   label: "管理员编号",
-                  placeholder: "请输入管理员编号",
-                  focusEven: this.mouseEven,
-                  keyupEven: this.btnEven
+                  placeholder: "请输入管理员编号"
                 },
                 {
                   id: "input_apply",
@@ -261,9 +221,7 @@ export default {
                   component: "v2LableInput",
                   data: "",
                   label: "申请证书",
-                  placeholder: "请输入申请证书",
-                  focusEven: this.mouseEven,
-                  keyupEven: this.btnEven
+                  placeholder: "请输入申请证书"
                 }
               ]
             },
@@ -290,9 +248,7 @@ export default {
                   component: "v2LableInput",
                   data: "",
                   label: "账号",
-                  placeholder: "请输入账号",
-                  focusEven: this.mouseEven,
-                  keyupEven: this.btnEven
+                  placeholder: "请输入账号"
                 },
                 {
                   id: "input_bank",
@@ -300,9 +256,7 @@ export default {
                   component: "v2LableInput",
                   data: "",
                   label: "开户行名称",
-                  placeholder: "请输入开户行名称",
-                  focusEven: this.mouseEven,
-                  keyupEven: this.btnEven
+                  placeholder: "请输入开户行名称"
                 },
                 {
                   id: "input_accontName",
@@ -496,27 +450,93 @@ export default {
                   ]
                 }
               ]
+            },
+            {
+              id: "row14",
+              component: "v2Container",
+              direction: "col",
+              layout: [33, 33, 33],
+              style: {
+                width: "100%",
+                height: "100%"
+              },
+              children: [
+                {
+                  id: "complexComponent1",
+                  component: "v2ComplextWidget",
+                  layout: [30, 30],
+                  direction: "row",
+                  children: [
+                    {
+                      id: "input_bank1",
+                      index: 10,
+                      component: "v2LableInput",
+                      data: "",
+                      label: "开户行名称",
+                      placeholder: "请输入开户行名称"
+                    },
+                    {
+                      id: "input_accontName2",
+                      index: 11,
+                      component: "v2LableInput",
+                      data: "",
+                      label: "账户名称",
+                      placeholder: "请输入账户名称"
+                    }
+                  ]
+                },
+                null,
+                null
+              ]
             }
           ]
         }
       });
-      this.rootId = "root";
+      // this.rootId = "root";
     }, 100);
   },
   methods: {
+    deleteSelection() {
+      this.$store.commit("delete.select");
+    },
+    selectParent() {
+      this.$store.commit("select.parent");
+    },
+    selectFirstChild() {
+      this.$store.commit("select.firstChild");
+    },
+    preview() {
+      this.showPreview = true;
+      let self = this;
+      self.previewLoading = true;
+      setTimeout(() => {
+        self.$refs.previewFrame.contentWindow.preview = true;
+        self.$refs.previewFrame.contentWindow.data = JSON.parse(
+          JSON.stringify(self.$store.state.structure)
+        );
+        self.$refs.previewFrame.contentWindow.close = () => {
+          self.showPreview = false;
+        };
+        self.$refs.previewFrame.contentWindow.onload = () => {
+          console.log("loaded");
+          self.previewLoading = false;
+        };
+        // self.$refs.previewFrame.reload();
+      });
+    },
     initDraggable(e, item) {
       // console.log(e, item);
     },
     /**
      *创建元素，传入一个createTool，并且传入element
      */
-    // createElement(item) {
-    //   let tool = {
-    //     ...createTool,
-    //     element: item.element
-    //   };
-    //   this.$store.commit("setActiveTool", tool);
-    // },
+    createElement(item) {
+      let tool = {
+        ...createTool,
+        element: item.element
+      };
+      this.$store.commit("setActiveTool", tool);
+    },
     /*设置聚焦节点*/
     mouseEven(e) {
       this.$store.commit("setInputActive", $(e.target).attr("index"));
@@ -539,6 +559,8 @@ export default {
   },
   data() {
     return {
+      previewLoading: false,
+      showPreview: false,
       palatteConfig: [
         {
           type: "ctn",
@@ -697,6 +719,13 @@ export default {
 };
 </script>
 <style>
+.testInput {
+  width: 100px;
+  height: 40px;
+  position: relative;
+  background: yellow;
+  margin: 10px;
+}
 .editorPart {
   margin: 0;
   display: flex;
@@ -727,6 +756,18 @@ export default {
   overflow-x: none;
   display: flex;
   flex-direction: column;
+}
+.toolbar {
+  position: fixed;
+  padding: 2px;
+  border: 1px solid darkcyan;
+  box-shadow: 0 1px 1px #000;
+  left: 40%;
+  opacity: 0.2;
+}
+
+.toolbar:hover {
+  opacity: 1;
 }
 /* 打印样式 */
 @media print {

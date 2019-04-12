@@ -20,6 +20,9 @@ import v2Switch from "./components/input/switch.vue";
 import empty from "./components/edit/Empty.vue";
 import LayoutControl from "./components/control/LayoutControl.vue";
 import Base from "./components/control/Base.vue";
+import v2Combo from "./components/input/Combo.vue";
+import v2Checkbox from "./components/input/Checkbox.vue";
+import ComplexWidget from "./components/ComplexWidget.vue";
 
 Vue.component('v2Container',v2Container);
 Vue.component('v2Input',v2Input);
@@ -29,6 +32,9 @@ Vue.component('v2LableInput',v2LableInput);
 Vue.component('LayoutControl',LayoutControl);
 Vue.component('v2Switch',v2Switch);
 Vue.component('Base',Base);
+Vue.component('v2ComplextWidget',ComplexWidget);
+Vue.component('v2Combo',v2Combo);
+Vue.component('v2Checkbox',v2Checkbox);
 
 import bundle from './base/index';
 Vue.use(bundle, {});

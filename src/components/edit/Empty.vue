@@ -16,18 +16,28 @@ export default {
         this.$store.state.activeTool.type == "create"
       ) {
         s["dropable"] = true;
-      } else {
-        s["selectabled"] = true;
       }
       return s;
     }
   },
+  mounted() {
+    //注册自身
+    this.$store.commit("registIndex", {
+      id: this.wid,
+      content: {
+        id: this.wid,
+        pid: this.pid
+      }
+    });
+  },
   methods: {
-    $canAddChild() {
+    $ticket() {
+      return ["table"];
+    },
+    $canAddChild(m, e) {
       return true;
     },
     $addChild(m) {
-      console.log(m);
       this.$set(this.parent.children, this.index, m);
     },
     $getFactory(e) {

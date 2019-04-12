@@ -33,7 +33,6 @@ export default {
   name: "v2Container",
   mixins,
   mounted() {
-    window.c = this;
   },
   methods: {
     $selectedClass() {
@@ -61,7 +60,7 @@ export default {
         }
         return this.wid + "-" + index;
       };
-    },
+    }
   }
 };
 </script>
