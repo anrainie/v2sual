@@ -68,7 +68,6 @@
     <div class="control">
       <Base/>
       <!-- <layoutControl style="flex:3;width:99%;border:1px solid lightgray;"></layoutControl> -->
-
       <!-- <component :is="component(index)" :wid="wigetId(index)" :index="index"></component> -->
     </div>
   </div>
@@ -183,7 +182,7 @@ export default {
               collapse: "block",
               name: "纵向布局",
               element: {
-                component: "v2-container",
+                component: "v2Container",
                 style: {
                   width: "100%",
                   height: "100%"
@@ -203,7 +202,7 @@ export default {
               collapse: "block",
               name: "横向布局",
               element: {
-                component: "v2-container",
+                component: "v2Container",
                 style: {
                   width: "100%",
                   height: "100%"
@@ -233,7 +232,7 @@ export default {
               angleUp: "",
               collapse: "block",
               element: {
-                component: "v2-input",
+                component: "v2Input",
                 style: {
                   width: "100%",
                   height: "100%"
@@ -247,7 +246,7 @@ export default {
             {
               name: "下拉框",
               element: {
-                component: "v2-combo",
+                component: "v2Combo",
                 style: {
                   width: "100%",
                   height: "100%"
@@ -271,9 +270,119 @@ export default {
               angleUp: "",
               collapse: "block",
               element: {
-                component: "v2-switch",
-                children: []
+                component: "v2Switch",
+                children: [],
+                data:{
+                  title: "开关",
+                  value: true,
+                  activeText:'开',
+                  inactiveText:'关'
+                },
+                   option: [
+              {
+                componentType: "",
+                hidden: false,
+                defaultValue: "switch1",
+                valueArray: "",
+                type: "string_input",
+                appendNumber: 1,
+                titleKey: "",
+                desp: "标题",
+                formatter: "",
+                isAdvanced: false,
+                idUniqueSpace: "",
+                dataList: "",
+                hasEvent: false,
+                name: "title",
+                details: "",
+                placeholder: "",
+                edmKey: "",
+                despArray: "",
+                direction: "",
+                validate: {
+                  errorMessage: "",
+                  type: ""
+                }
               },
+              {
+                componentType: "",
+                hidden: false,
+                defaultValue: true,
+                valueArray: "",
+                type: "boolean",
+                appendNumber: 1,
+                titleKey: "",
+                desp: "开关的值",
+                formatter: "",
+                isAdvanced: false,
+                idUniqueSpace: "",
+                dataList: "",
+                hasEvent: false,
+                name: "value",
+                details: "",
+                placeholder: "",
+                edmKey: "",
+                despArray: "",
+                direction: "",
+                validate: {
+                  errorMessage: "",
+                  type: ""
+                }
+              },
+              {
+                componentType: "",
+                hidden: false,
+                defaultValue: "switch1",
+                valueArray: "",
+                type: "string_input",
+                appendNumber: 1,
+                titleKey: "",
+                desp: "激活的文本",
+                formatter: "",
+                isAdvanced: false,
+                idUniqueSpace: "",
+                dataList: "",
+                hasEvent: false,
+                name: "activeText",
+                details: "",
+                placeholder: "",
+                edmKey: "",
+                despArray: "",
+                direction: "",
+                validate: {
+                  errorMessage: "",
+                  type: ""
+                }
+              },
+              {
+                componentType: "",
+                hidden: false,
+                defaultValue: "switch1",
+                valueArray: "",
+                type: "string_input",
+                appendNumber: 1,
+                titleKey: "",
+                desp: "未激活的文本",
+                formatter: "",
+                isAdvanced: false,
+                idUniqueSpace: "",
+                dataList: "",
+                hasEvent: false,
+                name: "inactiveText",
+                details: "",
+                placeholder: "",
+                edmKey: "",
+                despArray: "",
+                direction: "",
+                validate: {
+                  errorMessage: "",
+                  type: ""
+                }
+              }
+        
+            ]
+              },
+             
               factory() {
                 return {};
               }
@@ -281,7 +390,7 @@ export default {
             {
               name: "多选框",
               element: {
-                component: "v2-checkbox",
+                component: "v2Checkbox",
                 style: {
                   width: "100%",
                   height: "100%"
@@ -295,7 +404,7 @@ export default {
             {
               name: "表格",
               element: {
-                component: "v2-table",
+                component: "v2Table",
                 style: {
                   width: "100%",
                   height: "100%",
@@ -342,65 +451,7 @@ export default {
           ]
         }
       ]
-      // palatteConfig: [
-      //   {
-      //     name: "纵向布局",
-      //     element: {
-      //       component: "v2-container",
-      //       style: {
-      //         width: "100%",
-      //         height: "100%"
-      //       },
-      //       direction: "col",
-      //       layout: [30, 10, 20],
-      //       children: []
-      //     },
-      //     factory() {
-      //       return {};
-      //     }
-      //   },
-      //   {
-      //     name: "横向布局",
-      //     element: {
-      //       component: "v2-container",
-      //       style: {
-      //         width: "100%",
-      //         height: "100%"
-      //       },
-      //       direction: "row",
-      //       layout: [30, 10, 20],
-      //       children: []
-      //     },
-      //     factory() {
-      //       return {};
-      //     }
-      //   },
-      //   {
-      //     name: "文本框",
-      //     element: {
-      //       component: "v2-input",
-      //       style: {
-      //         width: "100%",
-      //         height: "100%"
-      //       },
-      //       data: "文本框"
-      //     },
-      //     factory() {
-      //       return {};
-      //     }
-      //   },
-      //   {
-      //     name: "开关",
-      //     element: {
-      //       component: "v2-switch",
-
-      //       children: []
-      //     },
-      //     factory() {
-      //       return {};
-      //     }
-      //   }
-      // ],
+     
     };
   }
 };
@@ -432,17 +483,24 @@ export default {
 }
 
 .editor {
-  flex: 6;
-  height: 100%;
-  overflow-y: auto;
+
+    flex: 6;
+    height: 100%;
+    overflow-y: auto;
+    padding: 0.6em;
+    background: #fff;
+    border: 1px solid #ccc;
+    margin: 0 0.8em;
 }
 .control {
-  flex: 1;
+  flex: 2;
   height: 100%;
   overflow-y: auto;
   overflow-x: none;
   display: flex;
   flex-direction: column;
+      background: #eeeef2;
+      border: 1px solid #ccc;
 }
 .toolbar {
   position: fixed;

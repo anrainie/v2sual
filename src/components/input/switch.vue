@@ -1,5 +1,6 @@
 <template>
   <div :style="model.style" :class="wrapClass">
+    <div>{{model.data.title}}</div>
     <el-switch ref="switch"
       v-model="model.data.value"
       :active-text="model.data.activeText"

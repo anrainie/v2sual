@@ -176,73 +176,15 @@ export const data = {
             index: 12,
             component: "v2Switch",
             data: {
-              titleStyle: {},
-              imgStyle: {},
-              iconStyle: {},
-              switchListStyle: {},
-              switchStyle: {},
-              switchNotChecked: {},
-              switchChecked: {},
-              swtichInnerStyle: {},
-              disabled: false,
-              value: true,
+           
               title: "开关",
-              icon: "",
-              img: "",
-              value: true
+              value: true,
+              activeText:'开',
+              inactiveText:'关'
             },
             style: {},
 
-            option: [{
-                componentType: "",
-                hidden: false,
-                defaultValue: true,
-                valueArray: "",
-                type: "boolean",
-                appendNumber: 1,
-                titleKey: "",
-                desp: "开关的值",
-                formatter: "",
-                isAdvanced: false,
-                idUniqueSpace: "",
-                dataList: "",
-                hasEvent: false,
-                name: "value",
-                details: "",
-                placeholder: "",
-                edmKey: "",
-                despArray: "",
-                direction: "",
-                validate: {
-                  errorMessage: "",
-                  type: ""
-                }
-              },
-              {
-                componentType: "",
-                hidden: false,
-                defaultValue: false,
-                valueArray: "",
-                type: "boolean",
-                appendNumber: 1,
-                titleKey: "",
-                desp: "是否置灰",
-                formatter: "",
-                isAdvanced: false,
-                idUniqueSpace: "",
-                dataList: "",
-                hasEvent: false,
-                name: "disabled",
-                details: "",
-                placeholder: "",
-                edmKey: "",
-                despArray: "",
-                direction: "",
-                validate: {
-                  errorMessage: "",
-                  type: ""
-                }
-              },
+            option: [
               {
                 componentType: "",
                 hidden: false,
@@ -271,46 +213,18 @@ export const data = {
               {
                 componentType: "",
                 hidden: false,
-                defaultValue: "icon",
-                valueArray: ["img", "icon"],
-                type: "string_select",
-                appendNumber: 1,
-                titleKey: "",
-                desp: "图片图标",
-                formatter: "",
-                isAdvanced: false,
-                idUniqueSpace: "",
-                dataList: "",
-                hasEvent: false,
-                name: "imgIcon",
-                details: "",
-                placeholder: "",
-                edmKey: "",
-                despArray: ["图片", "图标"],
-                direction: "",
-                validate: {
-                  errorMessage: "",
-                  type: ""
-                }
-              },
-              {
-                componentType: "",
-                hidden: false,
-                defaultValue: "",
-                require: {
-                  imgIcon: ["icon"]
-                },
+                defaultValue: true,
                 valueArray: "",
-                type: "icon",
+                type: "boolean",
                 appendNumber: 1,
                 titleKey: "",
-                desp: "图标",
+                desp: "开关的值",
                 formatter: "",
                 isAdvanced: false,
                 idUniqueSpace: "",
                 dataList: "",
                 hasEvent: false,
-                name: "icon",
+                name: "value",
                 details: "",
                 placeholder: "",
                 edmKey: "",
@@ -324,21 +238,43 @@ export const data = {
               {
                 componentType: "",
                 hidden: false,
-                defaultValue: "",
-                require: {
-                  imgIcon: ["img"]
-                },
+                defaultValue: "switch1",
                 valueArray: "",
-                type: "file",
+                type: "string_input",
                 appendNumber: 1,
                 titleKey: "",
-                desp: "图片",
+                desp: "激活的文本",
                 formatter: "",
                 isAdvanced: false,
                 idUniqueSpace: "",
                 dataList: "",
                 hasEvent: false,
-                name: "img",
+                name: "activeText",
+                details: "",
+                placeholder: "",
+                edmKey: "",
+                despArray: "",
+                direction: "",
+                validate: {
+                  errorMessage: "",
+                  type: ""
+                }
+              },
+              {
+                componentType: "",
+                hidden: false,
+                defaultValue: "switch1",
+                valueArray: "",
+                type: "string_input",
+                appendNumber: 1,
+                titleKey: "",
+                desp: "未激活的文本",
+                formatter: "",
+                isAdvanced: false,
+                idUniqueSpace: "",
+                dataList: "",
+                hasEvent: false,
+                name: "inactiveText",
                 details: "",
                 placeholder: "",
                 edmKey: "",
@@ -349,6 +285,8 @@ export const data = {
                   type: ""
                 }
               }
+             
+              
             ]
           }
         ]
@@ -369,7 +307,7 @@ export const data = {
             direction: "row",
             children: [{
                 id: "input_bank1",
-                index: 10,
+                index: 13,
                 component: "v2LableInput",
                 data: "",
                 label: "开户行名称",
@@ -377,7 +315,7 @@ export const data = {
               },
               {
                 id: "input_accontName2",
-                index: 11,
+                index: 14,
                 component: "v2LableInput",
                 data: "",
                 label: "账户名称",
