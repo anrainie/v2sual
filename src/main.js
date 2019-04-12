@@ -5,6 +5,9 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import './base/styles/bundle.css';
+import './assets/style/aui-editor.css';
+
 
 Vue.use(ElementUI)
 Vue.config.productionTip = false
@@ -13,12 +16,13 @@ import v2Container from "./components/edit/Container.vue";
 import v2Input from "./components/input/Input.vue";
 import v2LableInput from "./components/input/lableInput.vue";
 import v2Title from "./components/input/title.vue";
-import v2Combo from "./components/input/Combo.vue";
 import v2Switch from "./components/input/Switch.vue";
-import v2Checkbox from "./components/input/Checkbox.vue";
 import v2Table from "./components/input/Table.vue";
 import empty from "./components/edit/Empty.vue";
 import LayoutControl from "./components/control/LayoutControl.vue";
+import Base from "./components/control/Base.vue";
+import v2Combo from "./components/input/Combo.vue";
+import v2Checkbox from "./components/input/Checkbox.vue";
 import ComplexWidget from "./components/ComplexWidget.vue";
 
 Vue.component('v2Container',v2Container);
@@ -27,13 +31,17 @@ Vue.component('v2Empty',empty);
 Vue.component('v2Title',v2Title);
 Vue.component('v2LableInput',v2LableInput);
 Vue.component('LayoutControl',LayoutControl);
+Vue.component('v2Switch',v2Switch);
+Vue.component('Base',Base);
 Vue.component('v2ComplextWidget',ComplexWidget);
 Vue.component('v2Combo',v2Combo);
-Vue.component('v2Switch',v2Switch);
 Vue.component('v2Checkbox',v2Checkbox);
 Vue.component('v2Table',v2Table);
 
+import bundle from './base/index';
+Vue.use(bundle, {});
 /* eslint-disable no-new */
+
 new Vue({
   el: '#app',
   router,
@@ -42,3 +50,4 @@ new Vue({
   },
   template: '<App/>'
 })
+

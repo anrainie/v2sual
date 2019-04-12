@@ -139,7 +139,7 @@ export const data = {
         id: "row4",
         component: "v2Container",
         direction: "col",
-        layout: [33, 33, 33],
+        layout: [25, 25, 25, 24],
         style: {
           width: "100%",
           height: "100%"
@@ -167,7 +167,189 @@ export const data = {
             component: "v2LableInput",
             data: "",
             label: "账户名称",
-            placeholder: "请输入账户名称"
+            placeholder: "请输入账户名称",
+            focusEven: this.mouseEven,
+            keyupEven: this.btnEven
+          },
+          {
+            id: "switch1",
+            index: 12,
+            component: "v2Switch",
+            data: {
+              titleStyle: {},
+              imgStyle: {},
+              iconStyle: {},
+              switchListStyle: {},
+              switchStyle: {},
+              switchNotChecked: {},
+              switchChecked: {},
+              swtichInnerStyle: {},
+              disabled: false,
+              value: true,
+              title: "开关",
+              icon: "",
+              img: "",
+              value: true
+            },
+            style: {},
+
+            option: [{
+                componentType: "",
+                hidden: false,
+                defaultValue: true,
+                valueArray: "",
+                type: "boolean",
+                appendNumber: 1,
+                titleKey: "",
+                desp: "开关的值",
+                formatter: "",
+                isAdvanced: false,
+                idUniqueSpace: "",
+                dataList: "",
+                hasEvent: false,
+                name: "value",
+                details: "",
+                placeholder: "",
+                edmKey: "",
+                despArray: "",
+                direction: "",
+                validate: {
+                  errorMessage: "",
+                  type: ""
+                }
+              },
+              {
+                componentType: "",
+                hidden: false,
+                defaultValue: false,
+                valueArray: "",
+                type: "boolean",
+                appendNumber: 1,
+                titleKey: "",
+                desp: "是否置灰",
+                formatter: "",
+                isAdvanced: false,
+                idUniqueSpace: "",
+                dataList: "",
+                hasEvent: false,
+                name: "disabled",
+                details: "",
+                placeholder: "",
+                edmKey: "",
+                despArray: "",
+                direction: "",
+                validate: {
+                  errorMessage: "",
+                  type: ""
+                }
+              },
+              {
+                componentType: "",
+                hidden: false,
+                defaultValue: "switch1",
+                valueArray: "",
+                type: "string_input",
+                appendNumber: 1,
+                titleKey: "",
+                desp: "标题",
+                formatter: "",
+                isAdvanced: false,
+                idUniqueSpace: "",
+                dataList: "",
+                hasEvent: false,
+                name: "title",
+                details: "",
+                placeholder: "",
+                edmKey: "",
+                despArray: "",
+                direction: "",
+                validate: {
+                  errorMessage: "",
+                  type: ""
+                }
+              },
+              {
+                componentType: "",
+                hidden: false,
+                defaultValue: "icon",
+                valueArray: ["img", "icon"],
+                type: "string_select",
+                appendNumber: 1,
+                titleKey: "",
+                desp: "图片图标",
+                formatter: "",
+                isAdvanced: false,
+                idUniqueSpace: "",
+                dataList: "",
+                hasEvent: false,
+                name: "imgIcon",
+                details: "",
+                placeholder: "",
+                edmKey: "",
+                despArray: ["图片", "图标"],
+                direction: "",
+                validate: {
+                  errorMessage: "",
+                  type: ""
+                }
+              },
+              {
+                componentType: "",
+                hidden: false,
+                defaultValue: "",
+                require: {
+                  imgIcon: ["icon"]
+                },
+                valueArray: "",
+                type: "icon",
+                appendNumber: 1,
+                titleKey: "",
+                desp: "图标",
+                formatter: "",
+                isAdvanced: false,
+                idUniqueSpace: "",
+                dataList: "",
+                hasEvent: false,
+                name: "icon",
+                details: "",
+                placeholder: "",
+                edmKey: "",
+                despArray: "",
+                direction: "",
+                validate: {
+                  errorMessage: "",
+                  type: ""
+                }
+              },
+              {
+                componentType: "",
+                hidden: false,
+                defaultValue: "",
+                require: {
+                  imgIcon: ["img"]
+                },
+                valueArray: "",
+                type: "file",
+                appendNumber: 1,
+                titleKey: "",
+                desp: "图片",
+                formatter: "",
+                isAdvanced: false,
+                idUniqueSpace: "",
+                dataList: "",
+                hasEvent: false,
+                name: "img",
+                details: "",
+                placeholder: "",
+                edmKey: "",
+                despArray: "",
+                direction: "",
+                validate: {
+                  errorMessage: "",
+                  type: ""
+                }
+              }
+            ]
           }
         ]
       },
