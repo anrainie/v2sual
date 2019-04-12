@@ -426,9 +426,9 @@ export default {
   flex: 1;
   background: #eeeef2;
   border: 1px solid #ccc;
-  -webkit-box-shadow: 0 0 1em #000;
-  -moz-box-shadow: 0 0 1em #000;
-  box-shadow: 0 0 1em #000;
+  -webkit-box-shadow: 0 0 2px #000;
+  -moz-box-shadow: 0 0 2px #000;
+  box-shadow: 0 0 2px #000;
 }
 
 .editor {
