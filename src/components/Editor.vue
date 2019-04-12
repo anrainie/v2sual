@@ -12,7 +12,9 @@
       <v2Container v-model="rootId"></v2Container>
     </div>
         <div class="control">
-      <layoutControl style="flex:3;width:99%;border:1px solid lightgray;"></layoutControl>
+          <Base></Base>
+      <!-- <layoutControl style="flex:3;width:99%;border:1px solid lightgray;"></layoutControl> -->
+      
       <!-- <component :is="component(index)" :wid="wigetId(index)" :index="index"></component> -->
     </div>
   </div>
@@ -22,8 +24,9 @@ import { canvas } from "../assets/js/v2-view.js";
 import { createTool } from "../assets/js/edit.js";
 import { setTimeout } from "timers";
 import layoutControl from "./control/LayoutControl";
+
 import { debug } from "util";
-import { constants } from "fs"; 
+import { constants } from "fs";
 
 export default {
   mixins: [canvas],
@@ -46,24 +49,24 @@ export default {
     // window.Editor = this;
 
     const self = this;
-    $(this.window).off('.keymap').on("keydown.keymap", function(e) {
-      var key = e.which || window.event.keyCode,
-        $target = $(e.target || event.srcElement),
-        result = true;
-      if (
-        $target.closest(".editor").length &&
-        $target.closest(".editorPart").is(self.$el)
-      ) {
-         console.log(e);
+    $(this.window)
+      .off(".keymap")
+      .on("keydown.keymap", function(e) {
+        var key = e.which || window.event.keyCode,
+          $target = $(e.target || event.srcElement),
+          result = true;
+        if (
+          $target.closest(".editor").length &&
+          $target.closest(".editorPart").is(self.$el)
+        ) {
+          console.log(e);
           result = false;
           debugger;
           // $target.trigger('keydown',e);
-      }
+        }
 
-
-
-      return true;
-    });
+        return true;
+      });
     //模拟异步读取数据
     setTimeout(() => {
       this.$store.commit("init", {
@@ -229,7 +232,7 @@ export default {
               id: "row4",
               component: "v2Container",
               direction: "col",
-              layout: [33, 33, 33],
+              layout: [25, 25, 25, 24],
               style: {
                 width: "100%",
                 height: "100%"
@@ -265,6 +268,188 @@ export default {
                   placeholder: "请输入账户名称",
                   focusEven: this.mouseEven,
                   keyupEven: this.btnEven
+                },
+                {
+                  id: "switch1",
+                  index: 12,
+                  component: "v2Switch",
+                  data: {
+                       titleStyle: {},
+                      imgStyle: {},
+                      iconStyle: {},
+                      switchListStyle: {},
+                      switchStyle: {},
+                      switchNotChecked: {},
+                      switchChecked: {},
+                      swtichInnerStyle: {},
+                      disabled: false,
+                      value: true,
+                      title: "开关",
+                      icon: "",
+                      img: "",
+                      value: true,
+                  },
+                  style: {},
+               
+                  
+                  option: [
+                    {
+                      componentType: "",
+                      hidden: false,
+                      defaultValue: true,
+                      valueArray: "",
+                      type: "boolean",
+                      appendNumber: 1,
+                      titleKey: "",
+                      desp: "开关的值",
+                      formatter: "",
+                      isAdvanced: false,
+                      idUniqueSpace: "",
+                      dataList: "",
+                      hasEvent: false,
+                      name: "value",
+                      details: "",
+                      placeholder: "",
+                      edmKey: "",
+                      despArray: "",
+                      direction: "",
+                      validate: {
+                        errorMessage: "",
+                        type: ""
+                      }
+                    },
+                    {
+                      componentType: "",
+                      hidden: false,
+                      defaultValue: false,
+                      valueArray: "",
+                      type: "boolean",
+                      appendNumber: 1,
+                      titleKey: "",
+                      desp: "是否置灰",
+                      formatter: "",
+                      isAdvanced: false,
+                      idUniqueSpace: "",
+                      dataList: "",
+                      hasEvent: false,
+                      name: "disabled",
+                      details: "",
+                      placeholder: "",
+                      edmKey: "",
+                      despArray: "",
+                      direction: "",
+                      validate: {
+                        errorMessage: "",
+                        type: ""
+                      }
+                    },
+                    {
+                      componentType: "",
+                      hidden: false,
+                      defaultValue: "switch1",
+                      valueArray: "",
+                      type: "string_input",
+                      appendNumber: 1,
+                      titleKey: "",
+                      desp: "标题",
+                      formatter: "",
+                      isAdvanced: false,
+                      idUniqueSpace: "",
+                      dataList: "",
+                      hasEvent: false,
+                      name: "title",
+                      details: "",
+                      placeholder: "",
+                      edmKey: "",
+                      despArray: "",
+                      direction: "",
+                      validate: {
+                        errorMessage: "",
+                        type: ""
+                      }
+                    },
+                    {
+                      componentType: "",
+                      hidden: false,
+                      defaultValue: "icon",
+                      valueArray: ["img", "icon"],
+                      type: "string_select",
+                      appendNumber: 1,
+                      titleKey: "",
+                      desp: "图片图标",
+                      formatter: "",
+                      isAdvanced: false,
+                      idUniqueSpace: "",
+                      dataList: "",
+                      hasEvent: false,
+                      name: "imgIcon",
+                      details: "",
+                      placeholder: "",
+                      edmKey: "",
+                      despArray: ["图片", "图标"],
+                      direction: "",
+                      validate: {
+                        errorMessage: "",
+                        type: ""
+                      }
+                    },
+                    {
+                      componentType: "",
+                      hidden: false,
+                      defaultValue: "",
+                      require: {
+                        imgIcon: ["icon"]
+                      },
+                      valueArray: "",
+                      type: "icon",
+                      appendNumber: 1,
+                      titleKey: "",
+                      desp: "图标",
+                      formatter: "",
+                      isAdvanced: false,
+                      idUniqueSpace: "",
+                      dataList: "",
+                      hasEvent: false,
+                      name: "icon",
+                      details: "",
+                      placeholder: "",
+                      edmKey: "",
+                      despArray: "",
+                      direction: "",
+                      validate: {
+                        errorMessage: "",
+                        type: ""
+                      }
+                    },
+                    {
+                      componentType: "",
+                      hidden: false,
+                      defaultValue: "",
+                      require: {
+                        imgIcon: ["img"]
+                      },
+                      valueArray: "",
+                      type: "file",
+                      appendNumber: 1,
+                      titleKey: "",
+                      desp: "图片",
+                      formatter: "",
+                      isAdvanced: false,
+                      idUniqueSpace: "",
+                      dataList: "",
+                      hasEvent: false,
+                      name: "img",
+                      details: "",
+                      placeholder: "",
+                      edmKey: "",
+                      despArray: "",
+                      direction: "",
+                      validate: {
+                        errorMessage: "",
+                        type: ""
+                      }
+                    }
+                  ]
                 }
               ]
             }
@@ -327,6 +512,7 @@ export default {
             return {};
           }
         },
+
         {
           name: "横向布局",
           element: {
@@ -352,6 +538,17 @@ export default {
               height: "100%"
             },
             data: "文本框"
+          },
+          factory() {
+            return {};
+          }
+        },
+        {
+          name: "开关",
+          element: {
+            component: "v2-switch",
+
+            children: []
           },
           factory() {
             return {};
@@ -391,16 +588,18 @@ export default {
   flex-direction: column;
 }
 /* 打印样式 */
-@media print{
-        .palatte{display: none}
-        .selected{
-          border: none;
-        }
-        .editor{
-          margin: 0;
-          padding:0 5px;
-          box-sizing: border-box;
-          border: 1px solid #000;
-        }
+@media print {
+  .palatte {
+    display: none;
+  }
+  .selected {
+    border: none;
+  }
+  .editor {
+    margin: 0;
+    padding: 0 5px;
+    box-sizing: border-box;
+    border: 1px solid #000;
+  }
 }
 </style>

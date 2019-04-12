@@ -33,6 +33,7 @@ export const widget = {
     //   return model;
     // },
     model() {
+      debugger;
       return this.$store.getters.model(this.wid) || {};
     },
     parentId() {
