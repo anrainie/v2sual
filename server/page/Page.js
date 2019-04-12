@@ -36,7 +36,7 @@ class Page {
   /**
    * @desp 获取文件内容
    * @type GET
-   * @url /content/:filepath
+   * @url /content?path=[filepath]
    */
   content() {
     const pagePath = this.pagePath;
