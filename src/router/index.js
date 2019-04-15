@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Editor from '@/components/Editor'
+import Flow from '@/components/Flow'
 import Preview from '@/components/Preview'
 import PageFlow from '@/components/PageFlow';
 
@@ -20,6 +21,11 @@ export default new Router({
       path: '/pageflow',
       name: 'PageFlow',
       component: PageFlow
+    },
+    {
+      path:'/Flow',
+      name:'Flow',
+      component:Flow
     }
   ]
-});
+})

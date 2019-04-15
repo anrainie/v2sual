@@ -20,5 +20,8 @@
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "request": "^2.88.0"
+  },
+  "dependencies": {
+    "recursive-readdir": "^2.2.2"
   }
 }
