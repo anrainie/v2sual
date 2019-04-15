@@ -77,8 +77,8 @@ export default {
         if (r.status) {
           this.pageFlow.splice(0, this.pageFlow.length);
           this.pageFlow.push({
-              label:page.id,
-              children:r.content.methods.map(m=>{
+              label:r.content.label,
+              children:r.content.children.map(m=>{
                   return {
                       label:m.desp,
                       children:[]

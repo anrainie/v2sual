@@ -70,7 +70,7 @@ const uuid4 = require('uuid/v4');
                             ${cursor === 'pointer' ? 'label-cursor ' : ''} ${setType(item) ? `label-type-${setType(item)} ` : ' '} ${setClassName(item) || ''}">
                             <span title="${label}">${label}</span>
                             ${typeof showCloseBtn === 'function' ? showCloseBtn(item, data) ? closeBtn(item) : '' : showCloseBtn ? closeBtn(item) : ''}
-                            // ${!item.children || item.children.length <= 0 ? `<i title="${typeof expandedTitle === 'function' ? expandedTitle(item) : expandedTitle}" class="toggleBtn fa fa-plus-circle"></i>` : ''}
+                            ${0?'':`${!item.children || item.children.length <= 0 ? `<i title="${typeof expandedTitle === 'function' ? expandedTitle(item) : expandedTitle}" class="toggleBtn fa fa-plus-circle"></i>` : ''}`}
                             ${item.children && item.children.length > 0 ? `<i title="${collapsedTitle}" class="toggleBtn toggleBtn-collapse fa fa-minus-circle"></i>` : ''}
                         </div>
                         ${item.children && item.children.length > 0 ? `

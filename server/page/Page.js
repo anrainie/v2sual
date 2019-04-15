@@ -36,16 +36,33 @@ class Page {
 
 
   getComments(comments) {
-    var lines = comments.value.split('*').map(l => l !== undefined && l !== null ? l : '').map(l => l.trim()).filter(l => !!l.trim());
-    var ret = {};
+    var ret = {
+      desp: ''
+    };
+    try {
+      var lines = comments.value.split('*').map(l => l !== undefined && l !== null ? l : '').map(l => l.trim()).filter(l => !!l.trim());
 
-    lines.forEach(l => {
-      var params = l.match(/@([^\s]+)\s([^$]+)/);
 
-      ret[params[1]] = params[2];
-    });
+      lines.forEach(l => {
+        var params = l.match(/@([^\s]+)\s([^$]+)/);
 
-    return ret;
+        ret[params[1]] = params[2];
+      });
+    } catch (e) {
+      console.log(e);
+    } finally {
+      return ret;
+    }
+
+
+
+  }
+  getPageName(filepath, content) {
+    try {
+      return content.split(/[\n\r]/)[0].match(/<!--@desp (.*)-->/)[1].trim();
+    } catch (e) {
+      return filepath
+    }
   }
   /**
    *  @desp 分析内容
@@ -72,10 +89,11 @@ class Page {
       methodList = methodsAst[0].value.properties;
 
       return {
-        methods: methodList.map(m => m.key).map(p => {
-          const params=this.getComments(p.start.comments_before[0]);
+        label: this.getPageName(filepath, content),
+        children: methodList.map(m => m.key).map(p => {
+          const params = this.getComments(p.start.comments_before[0]);
           return {
-            desp: params.desp,
+            desp: params.desp || p.name,
             name: p.name
           }
         }),
@@ -83,10 +101,10 @@ class Page {
     } catch (e) {
       console.log(e);
       return {
-        methods:[]
+        methods: []
       }
-      
-      
+
+
     }
   }
 
