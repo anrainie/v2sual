@@ -1,7 +1,7 @@
 const reader = require('filelist_reader');
 const readDir = require('recursive-readdir');
 const path = require('path');
-const UglifyJS = require('uglify-es');
+const UglifyJS = require('uglify-es-web');
 const fs = require('fs');
 
 const Result = require('../Result/Result');
@@ -33,33 +33,81 @@ class Page {
       }
     }
   }
+
+
+  getComments(comments) {
+    var lines = comments.value.split('*').map(l => l !== undefined && l !== null ? l : '').map(l => l.trim()).filter(l => !!l.trim());
+    var ret = {};
+
+    lines.forEach(l => {
+      var params = l.match(/@([^\s]+)\s([^$]+)/);
+
+      ret[params[1]] = params[2];
+    });
+
+    return ret;
+  }
+  /**
+   *  @desp 分析内容
+   *  @type GET
+   *  @path
+   */
+  async analysis(filepath) {
+    const content = await new Promise(resolve => fs.readFile(path.join(this.pagePath, filepath), 'utf8', (error, response) => error ? Result.error(ctx, error) : resolve(response)));
+
+    const startTag = '<script>';
+    const start = content.indexOf(startTag);
+    const endTag = '</script>';
+    const end = content.indexOf(endTag);
+
+    const script = start !== -1 ? content.substring(start + startTag.length, end) : '';
+
+    const ast = UglifyJS.parse(script);
+
+    //获取方法列表
+    let methodList;
+    try {
+      const exportAst = ast.body.filter(b => !!b.exported_value);
+      const methodsAst = exportAst[0].exported_value.properties.filter(p => p.key === 'methods' && p.start.value === 'methods');
+      methodList = methodsAst[0].value.properties;
+
+      return {
+        methods: methodList.map(m => m.key).map(p => {
+          const params=this.getComments(p.start.comments_before[0]);
+          return {
+            desp: params.desp,
+            name: p.name
+          }
+        }),
+      };
+    } catch (e) {
+      console.log(e);
+      return {
+        methods:[]
+      }
+      
+      
+    }
+  }
+
   /**
    * @desp 获取文件内容
    * @type GET
    * @url /content?path=[filepath]
    */
   content() {
-    const pagePath = this.pagePath;
+    const analysis = this.analysis;
+    const context = this;
     return async function (ctx) {
 
-      try{
-        const query=ctx.request.query;
+      try {
+        const query = ctx.request.query;
         const filepath = query.path;
+        const ret = await analysis.call(context, filepath);
 
-        const content = await new Promise(resolve =>  fs.readFile(path.join(pagePath, filepath), 'utf8', (error, response) => error?Result.error(ctx,error):resolve(response)));
-        
-        const startTag = '<script>';
-        const start = content.indexOf(startTag);
-        const endTag = '</script>';
-        const end = content.indexOf(endTag);
-
-        const script = start !== -1 ? content.substring(start + startTag.length, end) : '';
-
-        const ast = UglifyJS.parse(script);
-
-        Result.success(ctx,ast)       
-      }catch(e){
-        Result.error(ctx,e);
+        Result.success(ctx, ret)
+      } catch (e) {
+        Result.error(ctx, e);
       }
     }
   }
