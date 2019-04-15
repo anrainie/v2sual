@@ -25,6 +25,7 @@
     "jquery-ui": "^1.12.1",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
+    "mysql": "^2.16.0",
     "npm": "^6.9.0",
     "popper.js": "^0.6.4",
     "scriptjs": "^2.5.8",
