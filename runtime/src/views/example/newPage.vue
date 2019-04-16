@@ -37,8 +37,8 @@ export default {
     openTable() {
       app.open({
         status: true,
-        title: "新页面",
-        page: "pages/table"
+        title: "新页面11",
+        page: "/A5/components/script/scriptManager"
       });
     }
   },
