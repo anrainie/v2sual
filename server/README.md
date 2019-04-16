@@ -60,3 +60,33 @@
     ```
         AST 内容
     ```
+
+
+## Vue 文件格式
+
+```vue
+<!--
+    @desp       描述
+    @author     作者
+    @version    版本
+    @props      属性
+-->
+<template></template>
+<script>
+    import * from 'module';
+
+    export default {
+
+        methods:{
+            /**
+            * @desp 方法描述
+            * @params name 方法入参1
+            * @params name 方法入参2
+            */
+            methodName(){
+                //do something
+            }
+        }
+    }
+</script>
+```

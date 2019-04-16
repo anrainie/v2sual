@@ -141,7 +141,8 @@ class Page {
     const script = this.getPageScriptInfo(filepath, content);
 
     return {
-      label: info.desp,
+      ...info,
+      label:info.desp,
       children: script.methods
     };
   }
