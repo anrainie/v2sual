@@ -11,7 +11,6 @@
             obj: Object,
             item: Object,
             array: Array,
-
             arraySelector: String,
             objSelector: String,
 
@@ -78,6 +77,7 @@
 
     export default {
         name: "BaseComponent",
+
         data() {
             return {
                 visible: this.getVisible()
@@ -86,7 +86,7 @@
 
         components: {
 
-//            auiadvance_configure: {
+//            _advance_configure: {
 //                template: `
 //            <collapse :id.prop="objSelector + item.name.replace(/#/g, '')" :value="item.expand ? (objSelector + item.name) : undefined" @on-open="handler.panelOpen($event,${handleChangeParamsStr} )">
 //                <panel @panelCreated="handler.panelCreated($event,item)" :name="objSelector + item.name">
@@ -98,7 +98,7 @@
 //            </collapse>`,
 //                mixins: [mixin]
 //            },
-            auistring_input: {
+            _string_input: {
                 template: `<div class="aui-row">
                 <div class="col-2" v-tooltip="item">
                      {{item.desp || item.name}}
@@ -111,7 +111,7 @@
                 mixins: [mixin]
             },
 
-            auitextarea: {
+            _textarea: {
                 template: `<div class="aui-row">
                 <div class="col-2" v-tooltip="item">
                      {{item.desp || item.name}}
@@ -124,7 +124,7 @@
                 mixins: [mixin]
             },
 
-            auiobject: {
+            _object: {
                 template: `<collapse :id.prop="objSelector + item.name.replace(/#/g, '')" :value="item.expand ? (objSelector + item.name) : undefined" @on-open="handler.panelOpen($event,${handleChangeParamsStr} )">
                 <panel @panelCreated="handler.panelCreated($event,item)" :name="objSelector + item.name">
                     {{item.desp || item.name}}
@@ -139,7 +139,7 @@
                 mixins: [mixin]
             },
 
-            auiarray: {
+            _array: {
                 template: `<collapse :id.prop="objSelector + item.name.replace(/#/g, '')" :value="item.expand ? (objSelector + item.name) : undefined" @on-open="handler.panelOpen">
                 <Alert v-if="item.alert" type="warning" show-icon>{{item.alert}}</Alert>
                 <panel :name="objSelector + item.name">
@@ -162,7 +162,7 @@
                 mixins: [mixin]
             },
 
-            auistring_select: {
+            _string_select: {
                 template: `<div class="aui-row">
                 <div class="col-2" v-tooltip="item">
                     {{item.desp || item.name}}
@@ -180,7 +180,7 @@
                 mixins: [mixin]
             },
 
-            auimultiple_select: {
+            _multiple_select: {
                 template: `<div class="aui-row">
                 <div class="col-2" v-tooltip="item">
                     {{item.desp || item.name}}
@@ -197,7 +197,7 @@
                 mixins: [mixin]
             },
 
-            auiboolean: {
+            _boolean: {
                 template: `<div class="aui-row">
                 <div class="col-2" v-tooltip="item">
                     {{item.desp || item.name}}
@@ -212,7 +212,7 @@
                 mixins: [mixin]
             },
 
-            auinumber: {
+            _number: {
                 template: `<div class="aui-row">
                 <div class="col-2" v-tooltip="item">
                     {{item.desp || item.name}}
@@ -225,7 +225,7 @@
                 mixins: [mixin]
             },
 
-            auidirective_div: {
+            _directive_div: {
                 template: `<div class="aui-row">
                  <Alert v-if="!item.noAlert" show-icon>{{item.desp || item.name}}<span v-if="item.info">: {{item.info}}</span></Alert>
                 <div :style.prop="item.style || 'height: 300px'"
@@ -234,7 +234,7 @@
                 mixins: [mixin]
             },
 
-            auidirective_input: {
+            _directive_input: {
                 template: `<div class="aui-row">
                 <div class="col-2" v-tooltip="item">
                      {{item.desp || item.name}}
@@ -244,7 +244,7 @@
                 mixins: [mixin]
             },
 
-            auiconfigure_modal: {
+            _configure_modal: {
                 template: `<div class="aui-row">
                 <div class="col-2" v-tooltip="item">
                     {{item.desp || item.name}}
@@ -260,7 +260,7 @@
                 mixins: [mixin]
             },
 
-            auiedmCollection: {
+            _edmCollection: {
                 template: `<collapse>
                 <Alert v-if="item.alert" type="warning" show-icon>{{item.alert}}</Alert>
                 <panel v-tooltip="item">
@@ -283,7 +283,7 @@
                 mixins: [mixin]
             },
 
-            auiedm: {
+            _edm: {
                 template: `<div class="aui-config-block">
         <div v-if="item.direction === 'request' && !item.noShowDesp" class="aui-row">
         <div class="col-2" v-tooltip="item">
@@ -307,7 +307,7 @@
                 mixins: [mixin]
             },
 
-            auifile: {
+            _file: {
                 template: `<div data-role="auiPath" class="aui-row aui-up-path aui-row-icon">
                     <div class="col-2" v-tooltip="item">
                     {{item.desp || item.name}}
@@ -326,7 +326,7 @@
                 mixins: [mixin]
             },
 
-            auicolorPicker: {
+            _colorPicker: {
                 template: `<div class="aui-row">
         <div class="col-2" v-tooltip="item">
         {{item.desp || item.name}}
@@ -341,7 +341,7 @@
                 mixins: [mixin]
             },
 
-            auiinput_append: {
+            _input_append: {
                 template: `<div class="aui-row">
         <div class="col-2" v-tooltip="item">
         {{item.desp || item.name}}
@@ -359,7 +359,7 @@
                 mixins: [mixin]
             },
 
-            auitab: {
+            _tab: {
                 template: `<tabs :placement="item.placement" @on-click="handler.tabClicked" :animated="false" size="small">
         <tab-pane v-for="(tabItem, index) in item.tabPanes" :id="objSelector + tabItem.name" :label="tabItem.desp" :key="tabItem.name">
         <base-config fromTabPanes :array="[tabItem]" :arraySelector="arraySelector + '---tabPanes---' + index " :objSelector="objSelector" :handler="handler" :obj="obj"></base-config>
@@ -374,7 +374,7 @@
 
         computed: {
             componentName() {
-                return "aui" + this.item.type;
+                return "_" + this.item.type;
             },
 
             classes() {

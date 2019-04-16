@@ -7,16 +7,19 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import axios from "axios";
 import './base/styles/bundle.css';
+import './base/styles/aui-iconfont.css';
 import './assets/style/aui-editor.css';
 
 import 'jquery-ui/ui/widgets/draggable'
 import 'jquery-ui/ui/widgets/droppable'
 import 'jquery-ui/ui/widgets/resizable'
 
+
 Vue.prototype.apis = (url,params,type)=>{
   return new Promise((resolve)=>{
     axios[type||'get'](url,params).then(r=>{
-      if(r.data.status){
+  
+      if(r.status){
         resolve(r.data);
       }else{
         throw r.data;
@@ -42,6 +45,8 @@ import v2Combo from "./components/input/Combo.vue";
 import v2Checkbox from "./components/input/Checkbox.vue";
 import ComplexWidget from "./components/ComplexWidget.vue";
 
+import V2AuiComponent from "./components/AUIComponent.vue";
+
 Vue.component('v2Container', v2Container);
 Vue.component('v2Input', v2Input);
 Vue.component('v2Empty', empty);
@@ -54,6 +59,7 @@ Vue.component('v2ComplextWidget', ComplexWidget);
 Vue.component('v2Combo', v2Combo);
 Vue.component('v2Checkbox', v2Checkbox);
 Vue.component('v2Table', v2Table);
+Vue.component('V2AuiComponent',V2AuiComponent);
 
 Vue.directive('span', {})
 Vue.directive('tooltip', {})
@@ -74,8 +80,17 @@ Vue.directive('draggable', function (el, binding, vnode) {
 
 
 import bundle from './base/index';
+
+
 Vue.use(bundle, {});
+
+
 /* eslint-disable no-new */
+
+
+
+componentInstall(Vue);
+
 
 new Vue({
   el: '#app',
