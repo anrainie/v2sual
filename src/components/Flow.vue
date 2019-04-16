@@ -48,15 +48,28 @@ export default {
       this.$refs.aside.filter(val);
     },
     pageFlow() {
-        
-        
-    //加载右侧内容
+      //加载右侧内容
       $("[data-role=topo]", this.$el)
         .empty()
         .topology({
           data: [...this.pageFlow],
-          setType: item => item.type
-          //renderLabel: item => `自定义：${item.label}`
+          setType: item => item.type,
+          renderLabel: item => {
+            console.log(item);
+            switch (item.catalog) {
+              case "method":
+                return `onEvent:${item.label}`;
+                break;
+              case "page":
+              default:
+                return item.label;
+            }
+          },
+          expandedTitle: item => {
+            return item && item.children && item.children.length > 0
+              ? "展开"
+              : "添加节点";
+          }
         });
     }
   },
@@ -77,13 +90,8 @@ export default {
         if (r.status) {
           this.pageFlow.splice(0, this.pageFlow.length);
           this.pageFlow.push({
-              label:r.content.label,
-              children:r.content.children.map(m=>{
-                  return {
-                      label:m.desp,
-                      children:[]
-                  }
-              })
+            label: r.content.label,
+            children: r.content.children
           });
           //   this.aside = r.content.map(f => {
           //     return {
@@ -110,87 +118,84 @@ export default {
       }
     });
 
-
-    this.pageFlow.push(
+    this.pageFlow.push({
+      label: "业务事项名称",
+      children: [
         {
-          label: "业务事项名称",
+          label: "我要显示关闭按钮",
           children: [
             {
-              label: "我要显示关闭按钮",
+              label: "数据库名称",
               children: [
                 {
-                  label: "数据库名称",
+                  label: "数据表名称1"
+                },
+                {
+                  label: "我是成功类型",
+                  type: "success"
+                },
+                {
+                  label: "数据表名称3",
                   children: [
                     {
-                      label: "数据表名称1"
-                    },
+                      label: "表字段已建"
+                    }
+                  ]
+                },
+                {
+                  label: "数据表名称3",
+                  children: [
                     {
-                      label: "我是成功类型",
-                      type: "success"
-                    },
+                      label: "表字段已建"
+                    }
+                  ]
+                },
+                {
+                  label: "数据表名称3"
+                },
+                {
+                  label: "数据表名称3",
+                  children: [
                     {
-                      label: "数据表名称3",
-                      children: [
-                        {
-                          label: "表字段已建"
-                        }
-                      ]
-                    },
-                    {
-                      label: "数据表名称3",
-                      children: [
-                        {
-                          label: "表字段已建"
-                        }
-                      ]
-                    },
-                    {
-                      label: "数据表名称3"
-                    },
-                    {
-                      label: "数据表名称3",
-                      children: [
-                        {
-                          label: "表字段已建"
-                        }
-                      ]
+                      label: "表字段已建"
                     }
                   ]
                 }
               ]
-            },
-            {
-              label: "应用系统2",
-              children: [
-                {
-                  label: "我是失败类型",
-                  type: "error"
-                }
-              ]
-            },
-            {
-              label: "信息资源1",
-              children: [
-                {
-                  label: "信息项已建"
-                },
-                {
-                  label: "应用系统1"
-                },
-                {
-                  label: "共享资源1"
-                },
-                {
-                  label: "共享资源2"
-                }
-              ]
-            },
-            {
-              label: "信息资源2"
             }
           ]
+        },
+        {
+          label: "应用系统2",
+          children: [
+            {
+              label: "我是失败类型",
+              type: "error"
+            }
+          ]
+        },
+        {
+          label: "信息资源1",
+          children: [
+            {
+              label: "信息项已建"
+            },
+            {
+              label: "应用系统1"
+            },
+            {
+              label: "共享资源1"
+            },
+            {
+              label: "共享资源2"
+            }
+          ]
+        },
+        {
+          label: "信息资源2"
         }
-      );
+      ]
+    });
   }
 };
 </script>

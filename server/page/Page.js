@@ -99,7 +99,7 @@ class Page {
       const methodsAst = exportAst[0].exported_value.properties.filter(p => p.key === 'methods' && p.start.value === 'methods');
       const methodList = methodsAst[0].value.properties;
 
-      var t = methodList
+      const methods = methodList
         //if m.key
         .filter(m => m.key && m.key)
         //if m.value
@@ -110,18 +110,63 @@ class Page {
 
           const name = typeof m.key === 'object' ? m.key.name : m.key;
 
+
+          let list = [].concat(m.value.body);
+          let method;
+          let pages = [];
+
+          while (method = list.pop()) {
+            try {
+              if (method.expression && method.expression.start.value === 'app' && method.expression.end.value === 'open') {
+                let args = {};
+                try {
+                  method.args[0].properties.forEach(a => {
+                    args[a.start.value] = a.end.value;
+                  });
+                  console.log(args);
+                  pages.push(args);
+                } catch (e) {
+
+                }
+              }
+
+              if (method.body) {
+                list.push(method.body);
+              }
+
+              list = list.concat(Object.values(method).filter(e => Array.isArray(e)));
+            } catch (e) {
+
+            }
+
+
+          }
+
+
           return {
+            catalog: 'method',
             name: name,
-            desp: params.desp || name,
-            key: m.key,
-            body: m.value.body
+            label: params.desp || name,
+            children: pages.map(p => {
+              return {
+                label: p.title,
+                children: [],
+                catalog: 'page',
+                page:p.page
+              }
+            })
           }
         });
 
+
+
+
+
       return {
-        methods: t
+        methods: methods
       }
     } catch (e) {
+      console.log(e);
       return {
         methods: []
       }
@@ -142,7 +187,7 @@ class Page {
 
     return {
       ...info,
-      label:info.desp,
+      label: info.desp,
       children: script.methods
     };
   }
