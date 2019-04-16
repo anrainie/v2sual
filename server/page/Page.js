@@ -89,7 +89,7 @@ class Page {
    * @param 文件路径 filepath 
    * @param 文件内容 content 
    */
-  getPageScriptInfo(filepath, content) {
+  async getPageScriptInfo(filepath, content) {
     try {
       const script = this.getMatchPart(content, '<script>', '</script>');
 
@@ -98,6 +98,10 @@ class Page {
       const exportAst = ast.body.filter(b => !!b.exported_value);
       const methodsAst = exportAst[0].exported_value.properties.filter(p => p.key === 'methods' && p.start.value === 'methods');
       const methodList = methodsAst[0].value.properties;
+
+      const pageMap = {
+
+      };
 
       const methods = methodList
         //if m.key
@@ -148,19 +152,30 @@ class Page {
             name: name,
             label: params.desp || name,
             children: pages.map(p => {
+              pageMap[p.page] = pageMap[p.page] || [];
+
               return {
                 label: p.title,
-                children: [],
-                catalog: 'page',
-                page:p.page
+                children: pageMap[p.page],
+                catalog: 'page'
               }
             })
           }
         });
 
+      await new Promise(async resolve => {
+        let pages = Object.keys(pageMap);
+        let page;
+        while (page = pages.pop()) {
 
+          const content = await this.analysis(`${page}.vue`);
+          
+          pageMap[page].push(content);
 
+        }
 
+        resolve();
+      });
 
       return {
         methods: methods
@@ -183,7 +198,7 @@ class Page {
 
     const info = this.getPageInfo(filepath, content);
 
-    const script = this.getPageScriptInfo(filepath, content);
+    const script = await this.getPageScriptInfo(filepath, content);
 
     return {
       ...info,
@@ -227,7 +242,7 @@ class Page {
       try {
         const files = await readDir(pagePath);
 
-        const vueFiles = files.filter(f => f.lastIndexOf('.vue') !== -1).map(f => f.replace(pagePath, ''));
+        const vueFiles = files.filter(f => f.lastIndexOf('.vue') !== -1).map(f => f.replace(pagePath, '')).sort();
 
         Result.success(ctx, vueFiles);
       } catch (e) {

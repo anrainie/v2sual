@@ -64,11 +64,6 @@ export default {
               default:
                 return item.label;
             }
-          },
-          expandedTitle: item => {
-            return item && item.children && item.children.length > 0
-              ? "展开"
-              : "添加节点";
           }
         });
     }

@@ -29,6 +29,17 @@ export default {
       app.close({
         vm: this
       });
+    },
+    /**
+     * @desp 打开表格页面
+     *
+     */
+    openTable() {
+      app.open({
+        status: true,
+        title: "新页面",
+        page: "pages/table"
+      });
     }
   },
   mounted() {
