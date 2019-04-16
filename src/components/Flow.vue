@@ -55,7 +55,6 @@ export default {
           data: [...this.pageFlow],
           setType: item => item.type,
           renderLabel: item => {
-            console.log(item);
             switch (item.catalog) {
               case "method":
                 return `onEvent:${item.label}`;
@@ -73,43 +72,93 @@ export default {
     // 搜索
     filterPage(value, data) {
       if (!value) return true;
-      return data.label.indexOf(value) !== -1;
+      return data.id.indexOf(value) !== -1;
     },
     // 显示页面流
     showPageFlow(page) {
-      this.apis(api.content, {
-        params: {
-          path: page.id
-        }
-      }).then(r => {
-        if (r.status) {
-          this.pageFlow.splice(0, this.pageFlow.length);
-          this.pageFlow.push({
-            label: r.content.label,
-            children: r.content.children
-          });
-          //   this.aside = r.content.map(f => {
-          //     return {
-          //       id: f,
-          //       label: f,
-          //       children: []
-          //     };
-          //   });
-        }
-      });
+      if (!page.children || !page.children.length) {
+        this.apis(api.content, {
+          params: {
+            path: page.id
+          }
+        }).then(r => {
+          if (r.status) {
+            this.pageFlow.splice(0, this.pageFlow.length);
+            this.pageFlow.push({
+              label: r.content.label,
+              children: r.content.children
+            });
+            //   this.aside = r.content.map(f => {
+            //     return {
+            //       id: f,
+            //       label: f,
+            //       children: []
+            //     };
+            //   });
+          }
+        });
+      }
     }
   },
   mounted() {
     //加载左侧菜单
     this.apis(api.list).then(r => {
       if (r.status) {
-        this.aside = r.content.map(f => {
-          return {
-            id: f,
-            label: f,
+        const divider = "/";
+        let map = {
+          "/": {
+            id: divider,
+            label: divider,
             children: []
-          };
-        });
+          }
+        };
+
+        let list = [].concat(r.content);
+        let page;
+
+        while ((page = list.pop())) {
+          const paths = page.split(divider);
+          const pId = paths.slice(0, paths.length - 1).join(divider) || divider;
+
+          if (!map[pId]) {
+            map[pId] = {
+              id: pId,
+              label:
+                paths.slice(paths.length - 2, paths.length - 1).join(divider) ||
+                divider,
+              children: []
+            };
+
+            let pNode = map[pId];
+
+            let cursor = paths.length - 1;
+            let pPId = paths.slice(0, cursor - 1).join(divider) || divider;
+
+            while (cursor > 0 && !map[pPId]) {
+              const last = pPId;
+
+              map[pPId] = {
+                id: pPId,
+                label:
+                  paths.slice(cursor - 2, cursor - 1).join(divider) || divider,
+                children: [pNode]
+              };
+              pNode = map[pPId];
+              pPId = paths.slice(0, cursor - 2).join(divider) || divider;
+
+              --cursor;
+            }
+            map[pPId].children.push(pNode);
+          }
+
+          map[pId].children.push({
+            id: page,
+            label: paths.slice(paths.length - 1).join(divider) || divider,
+            children: []
+          });
+        }
+
+        this.aside = [map[divider]];
       }
     });
 

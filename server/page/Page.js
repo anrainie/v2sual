@@ -194,7 +194,13 @@ class Page {
    *  @path
    */
   async analysis(filepath) {
-    const content = await new Promise(resolve => fs.readFile(path.join(this.pagePath, filepath), 'utf8', (error, response) => error ? Result.error(ctx, error) : resolve(response)));
+    const content = await new Promise(resolve => fs.readFile(path.join(this.pagePath, filepath), 'utf8', (error, response) => {
+      if(error){
+       throw error;
+      }else{
+        resolve(response)
+      }
+    }));
 
     const info = this.getPageInfo(filepath, content);
 
