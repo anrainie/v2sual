@@ -1,4 +1,8 @@
-<!--@desp 单页页面 -->
+<!--
+    @desp 汇总页面
+	@version 0.1
+	@author zhanghaixian@agree.com.cn
+-->
 <template>
   <section>
     <el-row>
@@ -11,6 +15,7 @@
 </template>
 <script>
 import { app } from "@/utils/app.js";
+import { setTimeout } from "timers";
 
 export default {
   data() {
@@ -42,6 +47,16 @@ export default {
         },
         cancelCallback: e => {
           console.log("点击取消");
+          setTimeout(
+            () =>
+              app.open({
+                status: true,
+                title: "404页面",
+                page: "spa/404",
+                type: "SUB"
+              }),
+            20
+          );
         }
       });
     },
