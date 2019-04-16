@@ -44,6 +44,7 @@ import Base from "./components/control/Base.vue";
 import v2Combo from "./components/input/Combo.vue";
 import v2Checkbox from "./components/input/Checkbox.vue";
 import ComplexWidget from "./components/ComplexWidget.vue";
+import echartComponent from "./components/chart/echartComponent.vue";
 
 import V2AuiComponent from "./components/AUIComponent.vue";
 
@@ -60,6 +61,7 @@ Vue.component('v2Combo', v2Combo);
 Vue.component('v2Checkbox', v2Checkbox);
 Vue.component('v2Table', v2Table);
 Vue.component('V2AuiComponent',V2AuiComponent);
+Vue.component('echart-cpt', echartComponent);
 
 Vue.directive('span', {})
 Vue.directive('tooltip', {})

@@ -17,7 +17,9 @@
       <el-container>
         <el-header style="background-color:#efefef;">页面流</el-header>
 
-        <el-main></el-main>
+        <el-main>
+          <div data-role="topo"></div>
+        </el-main>
 
         <!-- <el-footer></el-footer> -->
       </el-container>
@@ -26,6 +28,8 @@
 </template>
 
 <script>
+import "../assets/topology-jquery/index";
+
 const api = {
   list: "./v1/page/list",
   content: "./v1/page/content"
@@ -35,20 +39,35 @@ export default {
   data() {
     return {
       asideSearch: "",
-      aside: []
+      aside: [],
+      pageFlow: []
     };
   },
   watch: {
     asideSearch(val) {
       this.$refs.aside.filter(val);
+    },
+    pageFlow() {
+        
+        
+    //加载右侧内容
+      $("[data-role=topo]", this.$el)
+        .empty()
+        .topology({
+          data: [...this.pageFlow],
+          setType: item => item.type
+          //renderLabel: item => `自定义：${item.label}`
+        });
     }
   },
 
   methods: {
+    // 搜索
     filterPage(value, data) {
       if (!value) return true;
       return data.label.indexOf(value) !== -1;
     },
+    // 显示页面流
     showPageFlow(page) {
       this.apis(api.content, {
         params: {
@@ -56,18 +75,29 @@ export default {
         }
       }).then(r => {
         if (r.status) {
-          this.aside = r.content.map(f => {
-            return {
-              id: f,
-              label: f,
-              children: []
-            };
+          this.pageFlow.splice(0, this.pageFlow.length);
+          this.pageFlow.push({
+              label:r.content.label,
+              children:r.content.children.map(m=>{
+                  return {
+                      label:m.desp,
+                      children:[]
+                  }
+              })
           });
+          //   this.aside = r.content.map(f => {
+          //     return {
+          //       id: f,
+          //       label: f,
+          //       children: []
+          //     };
+          //   });
         }
       });
     }
   },
   mounted() {
+    //加载左侧菜单
     this.apis(api.list).then(r => {
       if (r.status) {
         this.aside = r.content.map(f => {
@@ -80,7 +110,87 @@ export default {
       }
     });
 
-    console.log("success");
+
+    this.pageFlow.push(
+        {
+          label: "业务事项名称",
+          children: [
+            {
+              label: "我要显示关闭按钮",
+              children: [
+                {
+                  label: "数据库名称",
+                  children: [
+                    {
+                      label: "数据表名称1"
+                    },
+                    {
+                      label: "我是成功类型",
+                      type: "success"
+                    },
+                    {
+                      label: "数据表名称3",
+                      children: [
+                        {
+                          label: "表字段已建"
+                        }
+                      ]
+                    },
+                    {
+                      label: "数据表名称3",
+                      children: [
+                        {
+                          label: "表字段已建"
+                        }
+                      ]
+                    },
+                    {
+                      label: "数据表名称3"
+                    },
+                    {
+                      label: "数据表名称3",
+                      children: [
+                        {
+                          label: "表字段已建"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              label: "应用系统2",
+              children: [
+                {
+                  label: "我是失败类型",
+                  type: "error"
+                }
+              ]
+            },
+            {
+              label: "信息资源1",
+              children: [
+                {
+                  label: "信息项已建"
+                },
+                {
+                  label: "应用系统1"
+                },
+                {
+                  label: "共享资源1"
+                },
+                {
+                  label: "共享资源2"
+                }
+              ]
+            },
+            {
+              label: "信息资源2"
+            }
+          ]
+        }
+      );
   }
 };
 </script>

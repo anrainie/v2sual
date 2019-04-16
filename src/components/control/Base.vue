@@ -122,9 +122,6 @@ export default {
       return this.$store.getters.firstSelection;
     },
     model() {
-      console.log(
-        this.$store.getters.model(this.$store.getters.firstSelection)
-      );
       return (
         this.$store.getters.model(this.$store.getters.firstSelection) || {}
       );
