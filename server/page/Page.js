@@ -1,96 +1,220 @@
-const reader = require('filelist_reader');
 const readDir = require('recursive-readdir');
 const path = require('path');
 const UglifyJS = require('uglify-es-web');
 const fs = require('fs');
 
+// const { Parser } = require("htmlparser2");
+// const ParseDom = Parser.parseDOM;
+
 const Result = require('../Result/Result');
 
 class Page {
-
-
 
   constructor(_path) {
     this.pagePath = _path;
   }
 
   /**
-   *  @desp 获取文件列表
-   *  @type GET
-   *  @url /list
+   * 
+   * @desp 截取匹配内容
+   * @param 文件内容 content 
+   * @param 开始 startTag 
+   * @param 结束 endTag 
    */
-  list() {
-    const pagePath = this.pagePath;
-    return async function (ctx, next) {
-      try {
-        const files = await readDir(pagePath);
+  getMatchPart(content, startTag, endTag) {
+    const start = content.indexOf(startTag);
+    const end = content.indexOf(endTag);
 
-        const vueFiles = files.filter(f => f.lastIndexOf('.vue') !== -1).map(f => f.replace(pagePath, ''));
+    return start !== -1 ? content.substring(start + startTag.length, end) : '';
+  }
 
-        Result.success(ctx, vueFiles);
-      } catch (e) {
-        Result.error(ctx, e);
+  /**
+   * 
+   * @desp 解析注解
+   * @param 方法信息 key
+   * 
+   */
+  getMethodComments(key) {
+    var ret = {
+      desp: ''
+    };
+    try {
+      const comments = key.start.comments_before[0];
+      var lines = comments.value.split('*').map(l => l !== undefined && l !== null ? l : '').map(l => l.trim()).filter(l => !!l.trim());
+
+
+      lines.forEach(l => {
+        var params = l.match(/@([^\s]+)\s([^$]+)/);
+
+        ret[params[1]] = params[2];
+      });
+    } catch (e) {
+      console.log(e);
+    } finally {
+      return ret;
+    }
+  }
+
+  /**
+   * @desp  获取文件信息
+   * @param 文件路径 filepath 
+   * @param 文件内容 content 
+   */
+  getPageInfo(filepath, content) {
+    let args = {
+      desp: filepath
+    };
+
+    try {
+      this.getMatchPart(content, '<!--', '-->')
+        .split(/[\n\r]/)
+        //去空行
+        .map(l => l.trim())
+        .filter(l => !!l)
+        //分词
+        .map(l => l.match(/@([^\s]+)([^$]+)/))
+        //去掉不匹配的字符
+        .filter(l => l && l.length === 3)
+        //生成map
+        .forEach(l => args[l[1]] = l[2]);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      return args;
+    }
+  }
+
+  /**
+   * @desp  获取脚本信息
+   * @param 文件路径 filepath 
+   * @param 文件内容 content 
+   */
+  async getPageScriptInfo(filepath, content) {
+    try {
+      const script = this.getMatchPart(content, '<script>', '</script>');
+
+      const ast = UglifyJS.parse(script);
+
+      const exportAst = ast.body.filter(b => !!b.exported_value);
+      const methodsAst = exportAst[0].exported_value.properties.filter(p => p.key === 'methods' && p.start.value === 'methods');
+      const methodList = methodsAst[0].value.properties;
+
+      const pageMap = {
+
+      };
+
+      const methods = methodList
+        //if m.key
+        .filter(m => m.key && m.key)
+        //if m.value
+        .filter(m => m && m.value && m.value.body && m.value.body.length)
+        // return key,body
+        .map(m => {
+          const params = this.getMethodComments(m.key);
+
+          const name = typeof m.key === 'object' ? m.key.name : m.key;
+
+
+          let list = [].concat(m.value.body);
+          let method;
+          let pages = [];
+
+          while (method = list.pop()) {
+            try {
+              if (method.expression && method.expression.start.value === 'app' && method.expression.end.value === 'open') {
+                let args = {};
+                try {
+                  method.args[0].properties.forEach(a => {
+                    args[a.start.value] = a.end.value;
+                  });
+                  console.log(args);
+                  pages.push(args);
+                } catch (e) {
+
+                }
+              }
+
+              if (method.body) {
+                list.push(method.body);
+              }
+
+              list = list.concat(Object.values(method).filter(e => Array.isArray(e)));
+            } catch (e) {
+
+            }
+
+
+          }
+
+
+          return {
+            catalog: 'method',
+            name: name,
+            label: params.desp || name,
+            children: pages.map(p => {
+              pageMap[p.page] = pageMap[p.page] || [];
+
+              return {
+                label: p.title,
+                children: pageMap[p.page],
+                catalog: 'page'
+              }
+            })
+          }
+        });
+
+      await new Promise(async resolve => {
+        let pages = Object.keys(pageMap);
+        let page;
+        while (page = pages.pop()) {
+
+          const content = await this.analysis(`${page}.vue`);
+          
+          pageMap[page].push(content);
+
+        }
+
+        resolve();
+      });
+
+      return {
+        methods: methods
+      }
+    } catch (e) {
+      console.log(e);
+      return {
+        methods: []
       }
     }
   }
 
-
-  getComments(comments) {
-    var lines = comments.value.split('*').map(l => l !== undefined && l !== null ? l : '').map(l => l.trim()).filter(l => !!l.trim());
-    var ret = {};
-
-    lines.forEach(l => {
-      var params = l.match(/@([^\s]+)\s([^$]+)/);
-
-      ret[params[1]] = params[2];
-    });
-
-    return ret;
-  }
   /**
    *  @desp 分析内容
    *  @type GET
    *  @path
    */
   async analysis(filepath) {
-    const content = await new Promise(resolve => fs.readFile(path.join(this.pagePath, filepath), 'utf8', (error, response) => error ? Result.error(ctx, error) : resolve(response)));
-
-    const startTag = '<script>';
-    const start = content.indexOf(startTag);
-    const endTag = '</script>';
-    const end = content.indexOf(endTag);
-
-    const script = start !== -1 ? content.substring(start + startTag.length, end) : '';
-
-    const ast = UglifyJS.parse(script);
-
-    //获取方法列表
-    let methodList;
-    try {
-      const exportAst = ast.body.filter(b => !!b.exported_value);
-      const methodsAst = exportAst[0].exported_value.properties.filter(p => p.key === 'methods' && p.start.value === 'methods');
-      methodList = methodsAst[0].value.properties;
-
-      return {
-        methods: methodList.map(m => m.key).map(p => {
-          const params=this.getComments(p.start.comments_before[0]);
-          return {
-            desp: params.desp,
-            name: p.name
-          }
-        }),
-      };
-    } catch (e) {
-      console.log(e);
-      return {
-        methods:[]
+    const content = await new Promise(resolve => fs.readFile(path.join(this.pagePath, filepath), 'utf8', (error, response) => {
+      if(error){
+       throw error;
+      }else{
+        resolve(response)
       }
-      
-      
-    }
+    }));
+
+    const info = this.getPageInfo(filepath, content);
+
+    const script = await this.getPageScriptInfo(filepath, content);
+
+    return {
+      ...info,
+      label: info.desp,
+      children: script.methods
+    };
   }
 
   /**
+   * @public
    * @desp 获取文件内容
    * @type GET
    * @url /content?path=[filepath]
@@ -112,12 +236,26 @@ class Page {
     }
   }
 
-
   /**
-   * @desp 获取文件内容方法与属性
-   * @type GET
+   *  @public
+   *  @desp 获取文件列表
+   *  @type GET
+   *  @url /list
    */
+  list() {
+    const pagePath = this.pagePath;
+    return async function (ctx, next) {
+      try {
+        const files = await readDir(pagePath);
 
+        const vueFiles = files.filter(f => f.lastIndexOf('.vue') !== -1).map(f => f.replace(pagePath, '')).sort();
+
+        Result.success(ctx, vueFiles);
+      } catch (e) {
+        Result.error(ctx, e);
+      }
+    }
+  }
 }
 
 module.exports = Page;

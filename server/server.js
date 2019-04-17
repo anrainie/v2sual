@@ -45,6 +45,10 @@ const page = new Page(path.resolve(path.join(RUNTIME_PATH, PAGE_PATH)));
 router.get('/v1/page/list', page.list());
 router.get('/v1/page/content', page.content());
 
+//测试表格数据
+const Table=require('./DictTest/table');
+router.get('/v1/dictTest/table',Table.getOption);
+
 // router.get('/v1/page',async(ctx,next)=>{
 //   debugger;
 //   console.log('ht');

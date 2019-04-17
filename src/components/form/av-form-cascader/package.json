@@ -1,0 +1,53 @@
+{
+  "author": {
+    "name": "fengjiarong@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "级联选择器",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconfont icon-password",
+    "type": "MDataDisplays",
+    "href": "av-form-cascader",
+    "author": "fengjiarong@agree.com.cn",
+    "version": 510000,
+    "accept": "foundationRowCtn divCtn",
+    "name": "级联选择器",
+    "option": [
+      {
+        "name": "placeholder",
+        "desp": "提示文本",
+        "type": "string_input"
+      },
+      {
+        "name": "filterable",
+        "desp": "是否使用搜索",
+        "type": "boolean"
+      },
+      {
+        "name": "value",
+        "desp": "选择值",
+        "type": "string_input"
+      },
+      {
+        "name": "trigger",
+        "desp": "触发子菜单方式",
+        "type": "string_input"
+      },
+      {
+        "name": "options",
+        "desp": "配置项",
+        "type": "array"
+      }
+    ]
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@aweb-components/av-form-cascader",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.4"
+}
