@@ -1,0 +1,70 @@
+{
+  "author": {
+    "name": "fengjiarong@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "时间选择器",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconfont icon-password",
+    "type": "MDataDisplays",
+    "href": "av-form-timePicker",
+    "author": "fengjiarong@agree.com.cn",
+    "version": 510000,
+    "accept": "foundationRowCtn divCtn",
+    "name": "时间选择器",
+    "option": [
+      {
+        "name": "type",
+        "type": "string_input",
+        "defaultValue":"select",
+        "desp": "类型"
+      },
+      {
+        "name": "value",
+        "type": "string_input",
+        "defaultValue":"",
+        "desp": "选择值"
+      },
+      {
+        "name": "placeholder",
+        "type": "string_input",
+        "defaultValue":"请选择",
+        "desp": "placeholder"
+      },
+      {
+        "name": "range",
+        "type": "boolean",
+        "defaultValue":false,
+        "desp": "是否为时间范围选择"
+      },
+      {
+        "name": "rangeSeparator",
+        "type": "string_input",
+        "defaultValue":"中部文本",
+        "desp": "时间范围中间文本"
+      },
+      {
+        "name": "startPlaceholder",
+        "type": "string_input",
+        "defaultValue":"起始文本",
+        "desp": "时间范围起始文本"
+      },
+      {
+        "name": "endPlaceholder",
+        "type": "string_input",
+        "defaultValue":"结束文本",
+        "desp": "时间范围结束文本"
+      }
+    ]
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@aweb-components/av-form-timePicker",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.4"
+}
