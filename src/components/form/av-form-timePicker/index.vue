@@ -1,5 +1,5 @@
 <template>
-  <div :style="model.style" ref="wrap" :class="wrapClass" class="v2TimePicker">
+  <div :style="model.style" ref="wrap" :class="wrapClass" class="av-form-timePicker">
     <el-time-select
       v-if="model.data.type==='select'"
       v-model="model.data.value"
@@ -26,7 +26,7 @@
   import {edit} from '../../../assets/js/edit.js'
 
   export default {
-    name: 'v2TimePicker',
+    name: 'av-form-timePicker',
     mixins: [widget, edit],
     mounted () {
     },

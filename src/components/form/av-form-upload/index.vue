@@ -1,5 +1,5 @@
 <template>
-  <div :style="model.style" ref="wrap" :class="wrapClass" class="v2Upload">
+  <div :style="model.style" ref="wrap" :class="wrapClass" class="av-form-updload">
     <el-upload
       class="upload-demo"
       :action="model.data.action"
@@ -20,7 +20,7 @@
   import {edit} from '../../../assets/js/edit.js'
 
   export default {
-    name: 'v2Upload',
+    name: 'av-form-updload',
     mixins: [widget, edit],
     mounted () {
     },

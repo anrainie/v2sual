@@ -1,5 +1,5 @@
 <template>
-  <div :style="model.style" ref="wrap" :class="wrapClass" class="v2Radio">
+  <div :style="model.style" ref="wrap" :class="wrapClass" class="av-form-radio">
     <el-radio-group v-model="model.data.value">
       <el-radio
         :disabled="model.data.disabled"
@@ -15,7 +15,7 @@
   import {edit} from '../../../assets/js/edit.js'
 
   export default {
-    name: 'v2Radio',
+    name: 'av-form-radio',
     mixins: [widget, edit],
     mounted () {
     },

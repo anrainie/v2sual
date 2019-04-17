@@ -1,5 +1,5 @@
 <template>
-  <div :style="model.style" ref="wrap" :class="wrapClass" class="v2Transfer">
+  <div :style="model.style" ref="wrap" :class="wrapClass" class="av-form-transfer">
     <el-transfer
       v-model="model.data.value"
       :filterable="Boolean(model.data.filterable)"
@@ -17,7 +17,7 @@
   import {edit} from '../../../assets/js/edit.js'
 
   export default {
-    name: 'v2Transfer',
+    name: 'av-form-transfer',
     mixins: [widget, edit],
     mounted () {
     },

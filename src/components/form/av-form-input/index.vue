@@ -1,5 +1,5 @@
 <template>
-  <div :style="model.style" ref="wrap" :class="wrapClass" style="display: flex" class="v2LableInput">
+  <div :style="model.style" ref="wrap" :class="wrapClass" style="display: flex" class="av-form-input">
     <label class="labelInput-label">{{model.data.label}}:</label>
     <el-input
       v-model="model.data.value"
@@ -16,7 +16,7 @@ import { edit } from "../../../assets/js/edit.js";
 import inputField from "../../../assets/js/inputField.js";
 
 export default {
-  name: "v2LableInput",
+  name: "av-form-input",
   mixins: [widget, inputField, edit],
   mounted() {
   },

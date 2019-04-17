@@ -1,5 +1,5 @@
 <template>
-  <div :style="model.style" ref="wrap" :class="wrapClass" class="v2DatePicker">
+  <div :style="model.style" ref="wrap" :class="wrapClass" class="av-form-datePicker">
     <el-date-picker
       v-model="model.data.value"
       type="date"
@@ -17,7 +17,7 @@
   import {edit} from '../../../assets/js/edit.js'
 
   export default {
-    name: 'v2DatePicker',
+    name: 'av-form-datePicker',
     mixins: [widget, edit],
     mounted () {
     },

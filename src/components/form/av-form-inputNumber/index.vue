@@ -1,5 +1,5 @@
 <template>
-  <div :style="model.style" ref="wrap" :class="wrapClass" class="v2InputNumber">
+  <div :style="model.style" ref="wrap" :class="wrapClass" class="av-form-inputNumber">
     <el-input-number
       v-model="model.data.value"
       @change="handleChange"
@@ -18,7 +18,7 @@
   import {edit} from '../../../assets/js/edit.js'
 
   export default {
-    name: 'v2InputNumber',
+    name: 'av-form-inputNumber',
     mixins: [widget, edit],
     data () {
       return {}
