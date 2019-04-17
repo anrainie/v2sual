@@ -27,6 +27,7 @@
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "mysql": "^2.16.0",
+    "nodemon": "^1.18.11",
     "npm": "^6.9.0",
     "popper.js": "^0.6.4",
     "recursive-readdir": "^2.2.2",

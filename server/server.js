@@ -16,9 +16,9 @@ const PORT = '3000'
 
 // Fake Data
 //const FAKE_DATA = require('./fakeData')
-const path =require('path')
-const RUNTIME_PATH=path.resolve(__dirname,'../runtime/');
-const PAGE_PATH='src/views';
+const path = require('path')
+const RUNTIME_PATH = path.resolve(__dirname, '../runtime/');
+const PAGE_PATH = 'src/views';
 
 
 // Dependences
@@ -40,10 +40,10 @@ const cors = require('koa-cors')
 
 
 //页面操作内容
-const Page=require('./page/Page');
-const page = new Page(path.resolve(path.join(RUNTIME_PATH,PAGE_PATH)));
-router.get('/v1/page/list',page.list());
-router.get('/v1/page/content',page.content());
+const Page = require('./page/Page');
+const page = new Page(path.resolve(path.join(RUNTIME_PATH, PAGE_PATH)));
+router.get('/v1/page/list', page.list());
+router.get('/v1/page/content', page.content());
 
 // router.get('/v1/page',async(ctx,next)=>{
 //   debugger;
@@ -51,7 +51,16 @@ router.get('/v1/page/content',page.content());
 //   ctx.response.body='Hello';
 // });
 
+//mysql操作
 
+const DB = require('./db/mysql-conn');
+const db = new DB({
+  database: "aweb_social"
+});
+
+router.get('/db/select',
+  db.select()
+);
 
 
 // app
@@ -66,7 +75,6 @@ app.use(koaBody())
 
 app.use(router.routes())
 
-app.listen(PORT,function(){
+app.listen(PORT, function () {
   console.log(`项目启动：http://localhost:${PORT}}`);
 })
-
