@@ -69,6 +69,7 @@
     @desp       描述
     @author     作者
     @version    版本
+    @prefix     页面前缀
     @props      属性
 -->
 <template></template>

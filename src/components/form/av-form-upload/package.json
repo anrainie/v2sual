@@ -1,0 +1,48 @@
+{
+  "author": {
+    "name": "fengjiarong@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "上传",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconfont icon-password",
+    "type": "MDataDisplays",
+    "href": "av-form-upload",
+    "author": "fengjiarong@agree.com.cn",
+    "version": 510000,
+    "accept": "foundationRowCtn divCtn",
+    "name": "上传",
+    "option": [
+      {
+        "name": "action",
+        "type": "string_input",
+        "desp": "上传的地址"
+      },
+      {
+        "name": "limit",
+        "type": "string_input",
+        "desp": "最大允许上传个数"
+      },
+      {
+        "name": "btnText",
+        "type": "string_input",
+        "desp": "按钮文本"
+      },
+      {
+        "name": "prompt",
+        "type": "string_input",
+        "desp": "提示文本"
+      }
+    ]
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@aweb-components/av-form-upload",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.4"
+}

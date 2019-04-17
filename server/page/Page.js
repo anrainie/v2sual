@@ -89,7 +89,7 @@ class Page {
    * @param 文件路径 filepath 
    * @param 文件内容 content 
    */
-  getPageScriptInfo(filepath, content) {
+  async getPageScriptInfo(filepath, content) {
     try {
       const script = this.getMatchPart(content, '<script>', '</script>');
 
@@ -99,7 +99,11 @@ class Page {
       const methodsAst = exportAst[0].exported_value.properties.filter(p => p.key === 'methods' && p.start.value === 'methods');
       const methodList = methodsAst[0].value.properties;
 
-      var t = methodList
+      const pageMap = {
+
+      };
+
+      const methods = methodList
         //if m.key
         .filter(m => m.key && m.key)
         //if m.value
@@ -110,18 +114,74 @@ class Page {
 
           const name = typeof m.key === 'object' ? m.key.name : m.key;
 
+
+          let list = [].concat(m.value.body);
+          let method;
+          let pages = [];
+
+          while (method = list.pop()) {
+            try {
+              if (method.expression && method.expression.start.value === 'app' && method.expression.end.value === 'open') {
+                let args = {};
+                try {
+                  method.args[0].properties.forEach(a => {
+                    args[a.start.value] = a.end.value;
+                  });
+                  console.log(args);
+                  pages.push(args);
+                } catch (e) {
+
+                }
+              }
+
+              if (method.body) {
+                list.push(method.body);
+              }
+
+              list = list.concat(Object.values(method).filter(e => Array.isArray(e)));
+            } catch (e) {
+
+            }
+
+
+          }
+
+
           return {
+            catalog: 'method',
             name: name,
-            desp: params.desp || name,
-            key: m.key,
-            body: m.value.body
+            label: params.desp || name,
+            children: pages.map(p => {
+              pageMap[p.page] = pageMap[p.page] || [];
+
+              return {
+                label: p.title,
+                children: pageMap[p.page],
+                catalog: 'page'
+              }
+            })
           }
         });
 
+      await new Promise(async resolve => {
+        let pages = Object.keys(pageMap);
+        let page;
+        while (page = pages.pop()) {
+
+          const content = await this.analysis(`${page}.vue`);
+          
+          pageMap[page].push(content);
+
+        }
+
+        resolve();
+      });
+
       return {
-        methods: t
+        methods: methods
       }
     } catch (e) {
+      console.log(e);
       return {
         methods: []
       }
@@ -134,15 +194,21 @@ class Page {
    *  @path
    */
   async analysis(filepath) {
-    const content = await new Promise(resolve => fs.readFile(path.join(this.pagePath, filepath), 'utf8', (error, response) => error ? Result.error(ctx, error) : resolve(response)));
+    const content = await new Promise(resolve => fs.readFile(path.join(this.pagePath, filepath), 'utf8', (error, response) => {
+      if(error){
+       throw error;
+      }else{
+        resolve(response)
+      }
+    }));
 
     const info = this.getPageInfo(filepath, content);
 
-    const script = this.getPageScriptInfo(filepath, content);
+    const script = await this.getPageScriptInfo(filepath, content);
 
     return {
       ...info,
-      label:info.desp,
+      label: info.desp,
       children: script.methods
     };
   }
@@ -182,7 +248,7 @@ class Page {
       try {
         const files = await readDir(pagePath);
 
-        const vueFiles = files.filter(f => f.lastIndexOf('.vue') !== -1).map(f => f.replace(pagePath, ''));
+        const vueFiles = files.filter(f => f.lastIndexOf('.vue') !== -1).map(f => f.replace(pagePath, '')).sort();
 
         Result.success(ctx, vueFiles);
       } catch (e) {

@@ -82,6 +82,7 @@
         <el-button size="mini" @click="selectFirstChild">向下选择</el-button>
         <el-button size="mini" @click="preview">预览</el-button>
       </div>
+      <chat style="left:70%;top:50%;"></chat>
       <div
         v-show="showDragHelper"
         style="position:fixed;width:10rem;height:5rem;box-shadow:0 0 5px black;"
@@ -102,7 +103,10 @@ import { constants } from "fs";
 import { data } from "../assets/js/dev.js";
 import util from "../base/utils/bridge.js";
 
+import chat from "./utils/chat.vue";
+
 export default {
+  components: { chat },
   mixins: [canvas],
   computed: {},
   // data(){}
@@ -576,7 +580,7 @@ export default {
                   option: {
                     tooltip: {},
                     legend: {
-                      data: ["级别","工资","工作年限"]
+                      data: ["级别", "工资", "工作年限"]
                     },
                     xAxis: {
                       data: [
@@ -595,16 +599,16 @@ export default {
                         type: "bar",
                         data: [5, 20, 36, 10, 10, 20]
                       },
-                      
+
                       {
                         name: "工资",
                         type: "bar",
                         data: [15, 10, 16, 13, 11, 22]
                       },
-                      
+
                       {
                         name: "工作年限",
-                        type:'bar',
+                        type: "bar",
                         data: [15, 10, 16, 13, 11, 22]
                       }
                     ]

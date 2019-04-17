@@ -42,9 +42,10 @@ const uuid4 = require('uuid/v4');
         init() {
             const { data } = this.options;
 
-            this.elem.html(
+            this.elem.off().empty().append(
                 $('<div class="ui-topology"></div>').html(this.renderDom(data))
             );
+
 
             this.addEvent();
 
@@ -62,6 +63,7 @@ const uuid4 = require('uuid/v4');
             for (let i = 0; i < data.length; i++) {
                 let item = data[i];
                 const label = renderLabel ? renderLabel(item) : item.label;
+                
                 topology += (`
                     <div class="item ${`level-${level}`}">
                         <div data-level="${level}" data-id="${item.__id__}" class="label 
@@ -70,7 +72,7 @@ const uuid4 = require('uuid/v4');
                             ${cursor === 'pointer' ? 'label-cursor ' : ''} ${setType(item) ? `label-type-${setType(item)} ` : ' '} ${setClassName(item) || ''}">
                             <span title="${label}">${label}</span>
                             ${typeof showCloseBtn === 'function' ? showCloseBtn(item, data) ? closeBtn(item) : '' : showCloseBtn ? closeBtn(item) : ''}
-                            ${0?'':`${!item.children || item.children.length <= 0 ? `<i title="${typeof expandedTitle === 'function' ? expandedTitle(item) : expandedTitle}" class="toggleBtn fa fa-plus-circle"></i>` : ''}`}
+                            ${1?'':`${!item.children || item.children.length <= 0 ? `<i title="${typeof expandedTitle === 'function' ? expandedTitle(item) : expandedTitle}" class="toggleBtn fa fa-plus-circle"></i>` : ''}`}
                             ${item.children && item.children.length > 0 ? `<i title="${collapsedTitle}" class="toggleBtn toggleBtn-collapse fa fa-minus-circle"></i>` : ''}
                         </div>
                         ${item.children && item.children.length > 0 ? `
@@ -132,10 +134,10 @@ const uuid4 = require('uuid/v4');
 
                 if($sub.length > 0){
                     if($sub.is(":visible")){
-                        $(curElem).parent().removeClass('label-border-right');
+                        //$(curElem).parent().removeClass('label-border-right');
                         $sub.hide();
                     }else{
-                        $(curElem).parent().addClass('label-border-right');
+                        //$(curElem).parent().addClass('label-border-right');
                         $sub.show();
                     }
                     self.adjustItem();
@@ -167,20 +169,21 @@ const uuid4 = require('uuid/v4');
             });
         }
 
+
         adjustItem(){
-            let items = $(this.elem).find('.label');
+            // let items = $(this.elem).find('.label');
 
-            items.each(function(){
-                const next = this.nextElementSibling;
-                if(next){
-                    const first = next.firstElementChild;
-                    const last = next.lastElementChild;
+            // items.each(function(){
+            //     const next = this.nextElementSibling;
+            //     if(next){
+            //         const first = next.firstElementChild;
+            //         const last = next.lastElementChild;
 
-                    if(first && last){
-                        next.style.marginBottom = (first.offsetHeight - last.offsetHeight) / 2 + 'px';
-                    }
-                }
-            });
+            //         if(first && last){
+            //             next.style.marginBottom = (first.offsetHeight - last.offsetHeight) / 2 + 'px';
+            //         }
+            //     }
+            // });
         }
     }
 
