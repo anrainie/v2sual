@@ -20,7 +20,7 @@
     "version": 510000,
     "desp": "数据展示面板",
     "name":"数据展示面板",
- 
+  
     "option": [
       {
         "componentType": "",
@@ -57,7 +57,7 @@
       {
         "componentType": "",
         "hidden": false,
-        "defaultValue": "",
+        "defaultValue": "列表标题",
         "valueArray": "",
         "type": "string_input",
         "appendNumber": 1,
@@ -523,7 +523,101 @@
               "errorMessage": "",
               "type": ""
             }
-          }
+          },
+           {
+                "desp": "test",
+                "name": "test",
+                "type": "object",
+                "titleKey": "",
+                "direction": "response",
+                "appendNumber": "",
+                "details": "",
+                "valueArray": "",
+                "despArray": "",
+                "edmKey": "",
+                "defaultValue": "",
+                "formatter": "",
+                "idUniqueSpace": "",
+                "hasEvent": false,
+                "dataList": "",
+                "placeholder": "",
+                "isAdvanced": true,
+                "hidden": false,
+                "require": {
+                    "sDom": [],
+                    "bLengthChange": "",
+                    "bInfo": "",
+                    "selectOption": [],
+                    "searching": "",
+                    "closeTitle": "",
+                    "bSateSave": "",
+                    "paging": "",
+                    "bDestroy": "",
+                    "closeAutoWidth": "",
+                    "sScrollX": "",
+                    "scrollCollapse": "",
+                    "bCheckState": "",
+                    "savePresentPage": "",
+                    "complexThead": ""
+                },
+                "validate": {
+                    "type": "",
+                    "errorMessage": ""
+                },
+                "attrInEachElement": [],
+                "attr": [
+                    {
+                        "desp": "test-1",
+                        "name": "test-1",
+                        "type": "string_input",
+                        "titleKey": "",
+                        "direction": "",
+                        "appendNumber": "",
+                        "details": "",
+                        "valueArray": "",
+                        "despArray": "",
+                        "edmKey": "",
+                        "defaultValue": "",
+                        "formatter": "",
+                        "idUniqueSpace": "",
+                        "hasEvent": false,
+                        "dataList": "",
+                        "placeholder": "",
+                        "isAdvanced": false,
+                        "hidden": false,
+                        "validate": {
+                            "type": "",
+                            "errorMessage": ""
+                        },
+                        "attrInEachElement": []
+                    },
+                    {
+                        "desp": "test-2",
+                        "name": "test-2",
+                        "type": "string_input",
+                        "titleKey": "",
+                        "direction": "",
+                        "appendNumber": "",
+                        "details": "",
+                        "valueArray": "",
+                        "despArray": "",
+                        "edmKey": "",
+                        "defaultValue": "",
+                        "formatter": "",
+                        "idUniqueSpace": "",
+                        "hasEvent": false,
+                        "dataList": "",
+                        "placeholder": "",
+                        "isAdvanced": false,
+                        "hidden": false,
+                        "validate": {
+                            "type": "",
+                            "errorMessage": ""
+                        },
+                        "attrInEachElement": []
+                    }
+                ]
+            }
         ],
         "details": "",
         "placeholder": "",

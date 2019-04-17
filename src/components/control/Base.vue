@@ -37,49 +37,7 @@ export default {
       spinShow: true,
       showOption: false,
 
-      //handlers
-      handler: {
-        showNextLevel: false,
-
-        handleValidate: function($event, item) {},
-        validate() {
-          return true;
-        },
-
-        getHeaderValue: function(value) {
-          if (typeof value === "string") {
-            return value;
-          } else {
-            return false;
-          }
-        },
-
-        getHeader: function(item, instanceItem, index, emdObj) {},
-
-        tabClicked: function(name, id) {},
-
-        panelCreated: function(panelInstance, optionItem) {},
-
-        // swapComponent: baseVueHandler.swapComponent,
-
-        // objAdd: baseVueHandler.objAdd,
-
-        // objDel: baseVueHandler.objDel,
-
-        // delItem: baseVueHandler.delItem,
-
-        panelChange: function() {},
-
-        handleChange: function(args) {},
-
-        edmSorted: function(edmObj, modelSelector) {},
-
-        panelOpen: function(event, args) {},
-
-        addBlock: function(event, args) {},
-
-        delBlock: function(event, item, modelSelector, edmCollectionObj) {}
-      }
+  
     };
   },
   destroyed: function() {

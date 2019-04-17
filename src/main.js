@@ -91,8 +91,6 @@ Vue.use(bundle, {});
 
 
 
-componentInstall(Vue);
-
 
 new Vue({
   el: '#app',

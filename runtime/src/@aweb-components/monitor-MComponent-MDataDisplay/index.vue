@@ -4,7 +4,7 @@
 		<div class="list-ctn">
 
 				<!--  列表总标题 -->
-				<div v-if="model.listTitle" v-text="model.listTitle"></div>
+				<div v-if="model.data.listTitle" v-text="model.data.listTitle"></div>
 
 		
 
