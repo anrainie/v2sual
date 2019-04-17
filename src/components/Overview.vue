@@ -87,40 +87,45 @@ export default {
     },
 
     script(script) {
-      const ast = UglifyJS.parse(script);
-      const exportAst = ast.body.filter(b => !!b.exported_value);
-      const methodsAst = exportAst[0].exported_value.properties.filter(
-        p => p.key === "methods" && p.start.value === "methods"
-      );
-      const methodList = methodsAst[0].value.properties;
+      let methods = [];
+      try {
+        const ast = UglifyJS.parse(script);
+        const exportAst = ast.body.filter(b => !!b.exported_value);
+        const methodsAst = exportAst[0].exported_value.properties.filter(
+          p => p.key === "methods" && p.start.value === "methods"
+        );
+        const methodList = methodsAst[0].value.properties;
 
-      const pageMap = {};
+        const pageMap = {};
 
-      const methods = methodList
-        //if m.key
-        .filter(m => m.key && m.key)
-        //if m.value
-        .filter(m => m && m.value && m.value.body && m.value.body.length)
-        // return key,body
-        .map(m => {
-          const params = this.getMethodComments(m.key);
+        methods = methodList
+          //if m.key
+          .filter(m => m.key && m.key)
+          //if m.value
+          .filter(m => m && m.value && m.value.body && m.value.body.length)
+          // return key,body
+          .map(m => {
+            const params = this.getMethodComments(m.key);
 
-          const name = typeof m.key === "object" ? m.key.name : m.key;
+            const name = typeof m.key === "object" ? m.key.name : m.key;
 
-          return {
-            id: name,
-            label: params.desp || name,
-            params: params,
-            code: m.print_to_string({ beautify: true })
-          };
-        });
-
+            return {
+              id: name,
+              label: params.desp || name,
+              params: params,
+              code: m.print_to_string({ beautify: true })
+            };
+          });
+      } catch (e) {
+        console.log(e);
+      }
+      
       this.methodAside = methods;
     },
     method_id(id) {
       const method = this.method;
       this.editor.setValue(
-`
+        `
 /**
 ${
   method.params
@@ -131,8 +136,9 @@ ${
 }
 */
 ${method.code}
-`)
-  //    console.log(method.code);
+`
+      );
+      //    console.log(method.code);
     }
   },
 
@@ -255,10 +261,10 @@ ${method.code}
     });
 
     //初始化代码编辑器
-    this.editor=monaco.editor.create($("#container", this.$el)[0], {
-        value: ``,
-        language: "javascript"
-      });
+    this.editor = monaco.editor.create($("#container", this.$el)[0], {
+      value: ``,
+      language: "javascript"
+    });
   }
 };
 </script>
