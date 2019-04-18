@@ -1,0 +1,46 @@
+{
+  "author": {
+    "name": "fengjiarong@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "输入框",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconfont icon-password",
+    "type": "MDataDisplays",
+    "href": "av-form-input",
+    "author": "fengjiarong@agree.com.cn",
+    "version": 510000,
+    "accept": "foundationRowCtn divCtn",
+    "name": "输入框",
+    "option": [
+      {
+        "name": "label",
+        "desp": "标题",
+        "defaultValue":"标题",
+        "type": "string_input"
+      },
+      {
+        "name": "placeholder",
+        "desp": "placeholder",
+        "defaultValue":"请选择",
+        "type": "string_input"
+      },
+      {
+        "name": "value",
+        "desp": "值",
+        "defaultValue":"",
+        "type": "string_input"
+      }
+    ]
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@aweb-components/av-form-input",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.4"
+}

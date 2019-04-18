@@ -1,0 +1,64 @@
+{
+  "author": {
+    "name": "fengjiarong@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "滑块",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconfont icon-password",
+    "type": "MDataDisplays",
+    "href": "av-form-slider",
+    "author": "fengjiarong@agree.com.cn",
+    "version": 510000,
+    "accept": "foundationRowCtn divCtn",
+    "name": "滑块",
+    "option": [
+      {
+        "name": "value",
+        "type": "string_input",
+        "defaultValue": 0,
+        "desp": "滑块值"
+      },
+      {
+        "name": "step",
+        "type": "string_input",
+        "defaultValue": 1,
+        "desp": "步长"
+      },
+      {
+        "name": "tooltip",
+        "type": "boolean",
+        "defaultValue": true,
+        "desp": "是否显示提示"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "defaultValue": false,
+        "desp": "是否禁用"
+      },
+      {
+        "name": "stops",
+        "type": "boolean",
+        "defaultValue": false,
+        "desp": "是否显示间断点"
+      },
+      {
+        "name": "input",
+        "type": "boolean",
+        "defaultValue": true,
+        "desp": "是否输入框"
+      }
+    ]
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@aweb-components/av-form-slider",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.4"
+}

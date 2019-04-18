@@ -1,0 +1,69 @@
+{
+  "author": {
+    "name": "fengjiarong@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "穿梭框",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconfont icon-password",
+    "type": "MDataDisplays",
+    "href": "av-form-transfer",
+    "author": "fengjiarong@agree.com.cn",
+    "version": 510000,
+    "accept": "foundationRowCtn divCtn",
+    "name": "穿梭框",
+    "option": [
+      {
+        "name": "value",
+        "desp": "选择值",
+        "defaultValue":"",
+        "type": "string_input"
+      },
+      {
+        "name": "filterable",
+        "desp": "是否可搜索",
+        "defaultValue": true,
+        "type": "boolean"
+      },
+      {
+        "name": "titleLeft",
+        "desp": "左标题",
+        "defaultValue":"左标题",
+        "type": "string_input"
+      },
+      {
+        "name": "titleRight",
+        "desp": "右标题",
+        "defaultValue":"右标题",
+        "type": "string_input"
+      },
+      {
+        "name": "btnLeft",
+        "desp": "左按钮文本",
+        "defaultValue":"左按钮文本",
+        "type": "string_input"
+      },
+      {
+        "name": "btnRight",
+        "desp": "右按钮文本",
+        "defaultValue":"右按钮文本",
+        "type": "string_input"
+      },
+      {
+        "name": "options",
+        "desp": "配置项",
+        "type": "array"
+      }
+    ]
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@aweb-components/av-form-transfer",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.4"
+}

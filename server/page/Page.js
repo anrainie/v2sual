@@ -215,6 +215,28 @@ class Page {
 
   /**
    * @public
+   * @desp 获取文件脚本内容
+   */
+  script(){
+    const context=this;
+    return async function(ctx){
+      try {
+        const query = ctx.request.query;
+        const filepath = query.path;
+        const content = await new Promise(resolve => fs.readFile(path.join(context.pagePath, filepath), 'utf8', (error, response) => error?Result.error(ctx,error):resolve(response)));
+        const script= context.getMatchPart(content,'<script>','</script>');
+
+        Result.success(ctx, {
+          script:script
+        })
+      } catch (e) {
+        Result.error(ctx, e);
+      }
+    }
+  }
+
+  /**
+   * @public
    * @desp 获取文件内容
    * @type GET
    * @url /content?path=[filepath]

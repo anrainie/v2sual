@@ -46,6 +46,9 @@ const page = new Page(path.resolve(path.join(RUNTIME_PATH, PAGE_PATH)));
 router.get('/v1/page/list', page.list());
 router.get('/v1/page/content', page.content());
 
+//方法
+router.get('/v1/page/script',page.script());
+
 //测试表格数据
 const Table=require('./DictTest/table');
 router.get('/v1/dictTest/table',Table.getOption);
@@ -79,6 +82,7 @@ router.get('/v1/aweb/getWidget',async (ctx)=>{
   ctx.response.body=menu;
 
 })
+
 //mysql操作
 
 const DB = require('./db/mysql-conn');
@@ -89,6 +93,7 @@ const db = new DB({
 router.get('/db/select',
   db.select()
 );
+
 
 
 // app
@@ -103,6 +108,13 @@ app.use(koaBody())
 
 app.use(router.routes())
 
+//异常处理
+app.on("error",(err,ctx)=>{//捕获异常记录错误日志
+  console.log(new Date(),":",err);
+});
+
 app.listen(PORT, function () {
   console.log(`项目启动：http://localhost:${PORT}}`);
 })
+
+
