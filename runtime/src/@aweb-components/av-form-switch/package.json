@@ -19,7 +19,7 @@
         "type": "string_input",
         "desp": "标题",
         "defaultValue":"标题",
-        "name": "title"
+        "name": "label"
       },
       {
         "name": "titleMode",
@@ -45,7 +45,10 @@
         "defaultValue":"关",
         "name": "inactiveText"
       }
-    ]
+    ],
+    "style":{
+      
+    }
   },
   "keywords": [],
   "license": "ISC",

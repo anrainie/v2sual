@@ -63,7 +63,10 @@
         "defaultValue": true,
         "desp": "是否输入框"
       }
-    ]
+    ],
+    "style":{
+      
+    }
   },
   "keywords": [],
   "license": "ISC",

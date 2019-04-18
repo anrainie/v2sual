@@ -51,7 +51,10 @@
         "defaultValue":"提示文本",
         "desp": "提示文本"
       }
-    ]
+    ],
+    "style":{
+      
+    }
   },
   "keywords": [],
   "license": "ISC",
