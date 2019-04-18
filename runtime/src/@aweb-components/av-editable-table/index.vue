@@ -38,9 +38,9 @@ import Handsontable from 'handsontable';
 import 'handsontable/dist/handsontable.full.css';
 import axios from 'axios';
 import avInput from '../av-form-input/index.vue'
-import avDatePicker from '../form/av-form-datePicker/index.vue'
-import avSelect from '../form/av-form-select/index.vue'
-import avNumber from '../form/av-form-inputNumber/index.vue'
+import avDatePicker from '../av-form-timePicker/index.vue'
+import avSelect from '../av-form-select/index.vue'
+import avNumber from '../av-form-inputNumber/index.vue'
 
 let lastChangeRow ='';
 const EDM_TYP_MAP={
