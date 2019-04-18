@@ -16,6 +16,18 @@
     "name": "数值输入框",
     "option": [
       {
+        "name": "label",
+        "desp": "标题",
+        "defaultValue":"标题",
+        "type": "string_input"
+      },
+      {
+        "name": "titleMode",
+        "desp": "标题排列方式",
+        "defaultValue":"row",
+        "type": "string_input"
+      },
+      {
         "name": "disabled",
         "desp": "是否禁用",
         "defaultValue":false,

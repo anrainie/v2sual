@@ -1,5 +1,5 @@
 <template>
-  <div :style="model.style" ref="wrap" :class="wrapClass" class="av-form-cascader">
+  <div :style="model.style" ref="wrap" :class="wrapClass" class="v2Cascader">
     <el-cascader
       :options="model.data.options"
       :trigger="model.data.trigger"
@@ -12,11 +12,11 @@
   </div>
 </template>
 <script>
-  import {widget, composite} from '../../../assets/js/v2-view.js'
-  import {edit} from '../../../assets/js/edit.js'
+  import {widget, composite} from '../../assets/js/v2-view.js'
+  import {edit} from '../../assets/js/edit.js'
 
   export default {
-    name: 'av-form-cascader',
+    name: 'v2Cascader',
     mixins: [widget, edit],
     mounted () {
     },

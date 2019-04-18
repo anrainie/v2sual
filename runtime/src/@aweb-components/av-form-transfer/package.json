@@ -16,6 +16,12 @@
     "name": "穿梭框",
     "option": [
       {
+        "name": "label",
+        "desp": "标题",
+        "defaultValue":"标题",
+        "type": "string_input"
+      },
+      {
         "name": "value",
         "desp": "选择值",
         "defaultValue":"",

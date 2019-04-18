@@ -260,26 +260,23 @@ export default{
   
                 case "edmCollection":
                   if (item["attrInEachElement"]) {
-                    instanceCache[name] = instanceCache[name] || {};
-                    if (
-                      !instanceCache[name].elements ||
-                      instanceCache[name].elements.length === 0
-                    ) {
-                      instanceCache[name].elements = [];
-                      instanceCache[name].elements.push(
+                    instanceCache[name] = instanceCache[name] || [];
+                    if (!instanceCache[name].length) {
+                      // instanceCache[name].elements = [];
+                      instanceCache[name].push(
                         context.baseConfigInitInstance(
                           {
                             active: true
                           },
                           item["attrInEachElement"],
                           {
-                            name: item.desp,
-                            widgetID: extrasCache && extrasCache.widgetID
+                         
                           },
                           notSendEdm,
                           noReplaceData
                         )
                       );
+
   
                       if (item.append) {
                         if (item.appendNumber) {
@@ -290,7 +287,7 @@ export default{
                         }
                         $.each(item.append, function(index, value) {
                           value.active = true;
-                          instanceCache[name].elements.push(
+                          instanceCache[name].push(
                             $.extend(
                               true,
                               {},
@@ -298,9 +295,6 @@ export default{
                                 {},
                                 item["attrInEachElement"],
                                 {
-                                  name: item.desp,
-                                  widgetID: extrasCache && extrasCache.widgetID,
-                                  order: index + 1
                                 },
                                 notSendEdm,
                                 noReplaceData
@@ -311,18 +305,16 @@ export default{
                         });
                       }
                     } else {
-                      if (!instanceCache[name].elements[0].active) {
+                      if (!instanceCache[name].active) {
                         //第一个元素的active不存在，说明已做过normalize处理
-                        instanceCache[name].elements.unshift(
+                        instanceCache[name].unshift(
                           context.baseConfigInitInstance(
                             {
                               active: true
                             },
                             item["attrInEachElement"],
                             {
-                              noreplace: true,
-                              name: item.desp,
-                              widgetID: extrasCache && extrasCache.widgetID
+                             
                             },
                             notSendEdm,
                             noReplaceData
@@ -330,7 +322,7 @@ export default{
                         );
                       }
                       //对数组的每个元素进行init处理
-                      $.each(instanceCache[name].elements, function(
+                      $.each(instanceCache[name], function(
                         index,
                         value
                       ) {
@@ -346,17 +338,15 @@ export default{
                             instance: value,
                             array: item["attrInEachElement"],
                             extras: {
-                              name: item.desp,
-                              widgetID: extrasCache && extrasCache.widgetID,
-                              order: index
+                            
                             }
                           });
                         }
                       });
                     }
                   } else {
-                    instanceCache[name] = {};
-                    instanceCache[name].elements = [];
+                    instanceCache[name] = [];
+                   //instanceCache[name].elements = [];
                   }
   
                   if (item.hasEvent && !noReplaceData) {
@@ -372,7 +362,7 @@ export default{
                     //     );
                     //   }
                   }
-                  instanceCache[name].edmKey = item["edmKey"];
+                 //instanceCache[name].edmKey = item["edmKey"];
   
                   //同步edm数据
                   // if (

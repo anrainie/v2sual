@@ -19,7 +19,13 @@
         "type": "string_input",
         "desp": "标题",
         "defaultValue":"标题",
-        "name": "title"
+        "name": "label"
+      },
+      {
+        "name": "titleMode",
+        "desp": "标题排列方式",
+        "defaultValue":"row",
+        "type": "string_input"
       },
       {
         "type": "boolean",
@@ -39,7 +45,10 @@
         "defaultValue":"关",
         "name": "inactiveText"
       }
-    ]
+    ],
+    "style":{
+      
+    }
   },
   "keywords": [],
   "license": "ISC",

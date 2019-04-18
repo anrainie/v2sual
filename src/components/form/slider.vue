@@ -1,5 +1,5 @@
 <template>
-  <div :style="model.style" ref="wrap" :class="wrapClass" class="av-form-slider">
+  <div :style="model.style" ref="wrap" :class="wrapClass" class="v2Slider">
     <el-slider
       v-model="model.data.value"
       :show-tooltip="model.data.tooltip"
@@ -14,11 +14,11 @@
   </div>
 </template>
 <script>
-  import {widget, composite} from '../../../assets/js/v2-view.js'
-  import {edit} from '../../../assets/js/edit.js'
+  import {widget, composite} from '../../assets/js/v2-view.js'
+  import {edit} from '../../assets/js/edit.js'
 
   export default {
-    name: 'av-form-slider',
+    name: 'v2Slider',
     mixins: [widget, edit],
     mounted () {
     },

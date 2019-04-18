@@ -38,7 +38,7 @@ import Handsontable from 'handsontable';
 import 'handsontable/dist/handsontable.full.css';
 import axios from 'axios';
 import avInput from '../av-form-input/index.vue'
-import avDatePicker from '../av-form-datePicker/index.vue'
+import avDatePicker from '../av-form-timePicker/index.vue'
 import avSelect from '../av-form-select/index.vue'
 import avNumber from '../av-form-inputNumber/index.vue'
 

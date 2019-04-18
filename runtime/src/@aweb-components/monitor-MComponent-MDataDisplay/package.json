@@ -1,26 +1,18 @@
 {
-
   "author": {
     "name": "fengjiarong@agree.com.cn"
   },
   "bundleDependencies": false,
-
- 
   "deprecated": false,
   "description": "数据展示面板",
   "docs": {
-    "belongTo":"aui",
+    "belongTo": "aui",
     "icon": "iconfont icon-password",
     "href": "monitor-MComponent-MDataDisplay",
-    
-    
     "author": "fengjiarong@agree.com.cn",
- 
-    
     "version": 510000,
     "desp": "数据展示面板",
-    "name":"数据展示面板",
-  
+    "name": "数据展示面板",
     "option": [
       {
         "componentType": "",
@@ -524,12 +516,54 @@
               "type": ""
             }
           },
-           {
-                "desp": "test",
-                "name": "test",
-                "type": "object",
+          {
+            "desp": "test",
+            "name": "test",
+            "type": "object",
+            "titleKey": "",
+            "direction": "response",
+            "appendNumber": "",
+            "details": "",
+            "valueArray": "",
+            "despArray": "",
+            "edmKey": "",
+            "defaultValue": "",
+            "formatter": "",
+            "idUniqueSpace": "",
+            "hasEvent": false,
+            "dataList": "",
+            "placeholder": "",
+            "isAdvanced": true,
+            "hidden": false,
+            "require": {
+              "sDom": [],
+              "bLengthChange": "",
+              "bInfo": "",
+              "selectOption": [],
+              "searching": "",
+              "closeTitle": "",
+              "bSateSave": "",
+              "paging": "",
+              "bDestroy": "",
+              "closeAutoWidth": "",
+              "sScrollX": "",
+              "scrollCollapse": "",
+              "bCheckState": "",
+              "savePresentPage": "",
+              "complexThead": ""
+            },
+            "validate": {
+              "type": "",
+              "errorMessage": ""
+            },
+            "attrInEachElement": [],
+            "attr": [
+              {
+                "desp": "test-1",
+                "name": "test-1",
+                "type": "string_input",
                 "titleKey": "",
-                "direction": "response",
+                "direction": "",
                 "appendNumber": "",
                 "details": "",
                 "valueArray": "",
@@ -541,83 +575,42 @@
                 "hasEvent": false,
                 "dataList": "",
                 "placeholder": "",
-                "isAdvanced": true,
+                "isAdvanced": false,
                 "hidden": false,
-                "require": {
-                    "sDom": [],
-                    "bLengthChange": "",
-                    "bInfo": "",
-                    "selectOption": [],
-                    "searching": "",
-                    "closeTitle": "",
-                    "bSateSave": "",
-                    "paging": "",
-                    "bDestroy": "",
-                    "closeAutoWidth": "",
-                    "sScrollX": "",
-                    "scrollCollapse": "",
-                    "bCheckState": "",
-                    "savePresentPage": "",
-                    "complexThead": ""
-                },
                 "validate": {
-                    "type": "",
-                    "errorMessage": ""
+                  "type": "",
+                  "errorMessage": ""
                 },
-                "attrInEachElement": [],
-                "attr": [
-                    {
-                        "desp": "test-1",
-                        "name": "test-1",
-                        "type": "string_input",
-                        "titleKey": "",
-                        "direction": "",
-                        "appendNumber": "",
-                        "details": "",
-                        "valueArray": "",
-                        "despArray": "",
-                        "edmKey": "",
-                        "defaultValue": "",
-                        "formatter": "",
-                        "idUniqueSpace": "",
-                        "hasEvent": false,
-                        "dataList": "",
-                        "placeholder": "",
-                        "isAdvanced": false,
-                        "hidden": false,
-                        "validate": {
-                            "type": "",
-                            "errorMessage": ""
-                        },
-                        "attrInEachElement": []
-                    },
-                    {
-                        "desp": "test-2",
-                        "name": "test-2",
-                        "type": "string_input",
-                        "titleKey": "",
-                        "direction": "",
-                        "appendNumber": "",
-                        "details": "",
-                        "valueArray": "",
-                        "despArray": "",
-                        "edmKey": "",
-                        "defaultValue": "",
-                        "formatter": "",
-                        "idUniqueSpace": "",
-                        "hasEvent": false,
-                        "dataList": "",
-                        "placeholder": "",
-                        "isAdvanced": false,
-                        "hidden": false,
-                        "validate": {
-                            "type": "",
-                            "errorMessage": ""
-                        },
-                        "attrInEachElement": []
-                    }
-                ]
-            }
+                "attrInEachElement": []
+              },
+              {
+                "desp": "test-2",
+                "name": "test-2",
+                "type": "string_input",
+                "titleKey": "",
+                "direction": "",
+                "appendNumber": "",
+                "details": "",
+                "valueArray": "",
+                "despArray": "",
+                "edmKey": "",
+                "defaultValue": "",
+                "formatter": "",
+                "idUniqueSpace": "",
+                "hasEvent": false,
+                "dataList": "",
+                "placeholder": "",
+                "isAdvanced": false,
+                "hidden": false,
+                "validate": {
+                  "type": "",
+                  "errorMessage": ""
+                },
+                "attrInEachElement": []
+              }
+            ]
+          }
+        
         ],
         "details": "",
         "placeholder": "",
@@ -628,9 +621,508 @@
           "errorMessage": "",
           "type": ""
         }
+      },
+      {
+        "componentType": "",
+        "hidden": false,
+        "defaultValue": "",
+        "require": {
+          "bInfo": "",
+          "searching": "",
+          "bSateSave": "",
+          "bDestroy": "",
+          "selectOption": [],
+          "sDom": [],
+          "paging": "",
+          "bLengthChange": "",
+          "bCheckState": "",
+          "sScrollX": ""
+        },
+        "valueArray": "",
+        "type": "edmCollection",
+        "appendNumber": 1,
+        "titleKey": "",
+        "desp": "列定义",
+        "formatter": "",
+        "isAdvanced": false,
+        "idUniqueSpace": "",
+        "dataList": "",
+        "hasEvent": true,
+        "name": "columns",
+        "attrInEachElement": [
+          {
+            "componentType": "",
+            "hidden": false,
+            "defaultValue": "",
+            "require": {
+              "columnType": [],
+              "isReturned": "",
+              "sortType": [],
+              "fixedColWidth": "",
+              "bSortable": "",
+              "bVisible": ""
+            },
+            "valueArray": "",
+            "type": "edm",
+            "appendNumber": 1,
+            "titleKey": "",
+            "desp": "表头",
+            "formatter": "",
+            "isAdvanced": false,
+            "idUniqueSpace": "",
+            "dataList": "",
+            "hasEvent": false,
+            "name": "sTitle",
+            "attrInEachElement": [],
+            "details": "",
+            "placeholder": "",
+            "edmKey": "",
+            "despArray": "",
+            "direction": "response",
+            "validate": {
+              "errorMessage": "",
+              "type": ""
+            }
+          },
+          {
+            "componentType": "",
+            "hidden": true,
+            "defaultValue": "%%_NAME%%%%_INDEX%%",
+            "display": true,
+            "valueArray": "",
+            "type": "string_input",
+            "appendNumber": 1,
+            "titleKey": "",
+            "desp": "名称",
+            "formatter": "selector",
+            "isAdvanced": false,
+            "idUniqueSpace": "",
+            "dataList": "",
+            "hasEvent": false,
+            "name": "name",
+            "attrInEachElement": [],
+            "details": "",
+            "placeholder": "",
+            "edmKey": "",
+            "despArray": "",
+            "direction": "",
+            "validate": {
+              "errorMessage": "",
+              "type": ""
+            }
+          },
+          {
+            "componentType": "",
+            "hidden": true,
+            "defaultValue": " table>tbody>tr>td:awosNth(%%_INDEX%%)",
+            "display": true,
+            "valueArray": "",
+            "type": "string_input",
+            "appendNumber": 1,
+            "titleKey": "",
+            "desp": "选择器",
+            "formatter": "selector",
+            "isAdvanced": false,
+            "idUniqueSpace": "",
+            "dataList": "",
+            "hasEvent": false,
+            "name": "selector",
+            "attrInEachElement": [],
+            "details": "",
+            "placeholder": "",
+            "edmKey": "",
+            "despArray": "",
+            "direction": "",
+            "validate": {
+              "errorMessage": "",
+              "type": ""
+            }
+          },
+          {
+            "componentType": "",
+            "hidden": false,
+            "defaultValue": "150px",
+            "valueArray": "",
+            "replaceTemp": true,
+            "type": "string_input",
+            "appendNumber": 1,
+            "titleKey": "",
+            "desp": "列宽度",
+            "formatter": "",
+            "isAdvanced": false,
+            "idUniqueSpace": "",
+            "dataList": "",
+            "hasEvent": false,
+            "name": "sWidth",
+            "attrInEachElement": [],
+            "details": "",
+            "placeholder": "",
+            "edmKey": "",
+            "despArray": "",
+            "direction": "",
+            "validate": {
+              "errorMessage": "",
+              "type": ""
+            }
+          },
+          {
+            "componentType": "",
+            "hidden": false,
+            "defaultValue": true,
+            "valueArray": "",
+            "replaceTemp": true,
+            "type": "boolean",
+            "appendNumber": 1,
+            "titleKey": "",
+            "desp": "是否显示",
+            "formatter": "",
+            "isAdvanced": false,
+            "idUniqueSpace": "",
+            "dataList": "",
+            "hasEvent": false,
+            "name": "bVisible",
+            "attrInEachElement": [],
+            "details": "",
+            "placeholder": "",
+            "edmKey": "",
+            "despArray": "",
+            "direction": "",
+            "validate": {
+              "errorMessage": "",
+              "type": ""
+            }
+          },
+          {
+            "componentType": "",
+            "hidden": false,
+            "defaultValue": false,
+            "valueArray": "",
+            "replaceTemp": true,
+            "type": "boolean",
+            "appendNumber": 1,
+            "titleKey": "",
+            "desp": "允许排序",
+            "formatter": "",
+            "isAdvanced": false,
+            "idUniqueSpace": "",
+            "dataList": "",
+            "hasEvent": false,
+            "name": "bSortable",
+            "attrInEachElement": [],
+            "details": "",
+            "placeholder": "",
+            "edmKey": "",
+            "despArray": "",
+            "direction": "",
+            "validate": {
+              "errorMessage": "",
+              "type": ""
+            }
+          },
+          {
+            "hidden": false,
+            "defaultValue": "asc",
+            "require": {
+              "columnType": [],
+              "isReturned": "",
+              "fixedColWidth": "",
+              "bSortable": true,
+              "bVisible": ""
+            },
+            "valueArray": [
+              "desc",
+              "asc"
+            ],
+            "type": "string_select",
+            "titleKey": "",
+            "appendNumber": "",
+            "desp": "初始排序类型",
+            "formatter": "",
+            "idUniqueSpace": "",
+            "hasEvent": false,
+            "dataList": "",
+            "name": "sortType",
+            "attrInEachElement": [],
+            "details": "",
+            "placeholder": "",
+            "edmKey": "",
+            "despArray": [
+              "降序",
+              "升序"
+            ],
+            "direction": "",
+            "validate": {
+              "errorMessage": "",
+              "type": ""
+            },
+            "isAdvanced": false
+          },
+          {
+            "componentType": "",
+            "hidden": false,
+            "defaultValue": false,
+            "valueArray": "",
+            "type": "boolean",
+            "appendNumber": 1,
+            "titleKey": "",
+            "desp": "是否作为返回值",
+            "formatter": "",
+            "isAdvanced": false,
+            "idUniqueSpace": "",
+            "dataList": "",
+            "hasEvent": false,
+            "name": "isReturned",
+            "attrInEachElement": [],
+            "details": "",
+            "placeholder": "",
+            "edmKey": "",
+            "despArray": "",
+            "direction": "",
+            "validate": {
+              "errorMessage": "",
+              "type": ""
+            }
+          },
+          {
+            "componentType": "",
+            "hidden": false,
+            "defaultValue": "",
+            "valueArray": [
+              "text",
+              "img",
+              "href",
+              "btn",
+              "checkbox",
+              "input",
+              "progress",
+              "select",
+              "number"
+            ],
+            "type": "string_select",
+            "appendNumber": 1,
+            "titleKey": "",
+            "desp": "列类型",
+            "formatter": "",
+            "isAdvanced": false,
+            "idUniqueSpace": "",
+            "dataList": "",
+            "hasEvent": false,
+            "name": "columnType",
+            "attrInEachElement": [],
+            "details": "",
+            "placeholder": "",
+            "edmKey": "",
+            "despArray": [
+              "文本",
+              "图片",
+              "链接",
+              "按钮",
+              "复选框",
+              "输入框",
+              "进度条",
+              "下拉框",
+              "数字"
+            ],
+            "direction": "",
+            "validate": {
+              "errorMessage": "",
+              "type": ""
+            }
+          },
+          {
+            "componentType": "",
+            "hidden": false,
+            "defaultValue": 30,
+            "require": {
+              "columnType": [
+                "img"
+              ]
+            },
+            "valueArray": "",
+            "type": "number",
+            "appendNumber": 1,
+            "titleKey": "",
+            "desp": "图片高度",
+            "formatter": "",
+            "isAdvanced": false,
+            "idUniqueSpace": "",
+            "dataList": "",
+            "hasEvent": false,
+            "name": "height",
+            "attrInEachElement": [],
+            "details": "",
+            "placeholder": "",
+            "edmKey": "",
+            "despArray": "",
+            "direction": "",
+            "validate": {
+              "errorMessage": "",
+              "type": ""
+            }
+          },
+          {
+            "componentType": "",
+            "hidden": false,
+            "defaultValue": 30,
+            "require": {
+              "columnType": [
+                "img"
+              ]
+            },
+            "valueArray": "",
+            "type": "number",
+            "appendNumber": 1,
+            "titleKey": "",
+            "desp": "图片宽度",
+            "formatter": "",
+            "isAdvanced": false,
+            "idUniqueSpace": "",
+            "dataList": "",
+            "hasEvent": false,
+            "name": "width",
+            "attrInEachElement": [],
+            "details": "",
+            "placeholder": "",
+            "edmKey": "",
+            "despArray": "",
+            "direction": "",
+            "validate": {
+              "errorMessage": "",
+              "type": ""
+            }
+          },
+          {
+            "hidden": false,
+            "defaultValue": "",
+            "require": {
+              "columnType": [
+                "select"
+              ],
+              "isReturned": "",
+              "useIcon": "",
+              "bSortable": "",
+              "type": [],
+              "isDropdown": "",
+              "bVisible": ""
+            },
+            "valueArray": "",
+            "type": "array",
+            "titleKey": "desp",
+            "appendNumber": 0,
+            "desp": "下拉选项",
+            "formatter": "",
+            "idUniqueSpace": "",
+            "hasEvent": false,
+            "dataList": "",
+            "name": "selectOptions",
+            "attrInEachElement": [
+              {
+                "hidden": false,
+                "defaultValue": "",
+                "require": {
+                  "iconPosition": [],
+                  "type": [],
+                  "isSeparator": ""
+                },
+                "valueArray": "",
+                "type": "string_input",
+                "titleKey": "",
+                "appendNumber": "",
+                "desp": "文本",
+                "formatter": "",
+                "idUniqueSpace": "",
+                "hasEvent": false,
+                "dataList": "",
+                "name": "desp",
+                "details": "",
+                "placeholder": "",
+                "edmKey": "",
+                "despArray": "",
+                "direction": "",
+                "validate": {
+                  "errorMessage": "",
+                  "type": ""
+                },
+                "isAdvanced": false
+              },
+              {
+                "hidden": false,
+                "defaultValue": "",
+                "require": {
+                  "iconPosition": [],
+                  "type": [],
+                  "isSeparator": ""
+                },
+                "valueArray": "",
+                "type": "string_input",
+                "titleKey": "",
+                "appendNumber": "",
+                "desp": "对应值",
+                "formatter": "",
+                "idUniqueSpace": "",
+                "hasEvent": false,
+                "dataList": "",
+                "name": "value",
+                "details": "",
+                "placeholder": "",
+                "edmKey": "",
+                "despArray": "",
+                "direction": "",
+                "validate": {
+                  "errorMessage": "",
+                  "type": ""
+                },
+                "isAdvanced": false
+              }
+            ],
+            "details": "",
+            "placeholder": "",
+            "edmKey": "",
+            "despArray": "",
+            "direction": "",
+            "validate": {
+              "errorMessage": "",
+              "type": ""
+            },
+            "isAdvanced": false
+          },
+          {
+            "hidden": false,
+            "defaultValue": false,
+            "valueArray": "",
+            "type": "boolean",
+            "titleKey": "",
+            "appendNumber": "",
+            "desp": "固定列宽",
+            "formatter": "",
+            "idUniqueSpace": "",
+            "hasEvent": false,
+            "dataList": "",
+            "name": "fixedColWidth",
+            "attrInEachElement": [],
+            "details": "固定列宽后，单元格文本溢出可以不换行，且省略号展示",
+            "placeholder": "",
+            "edmKey": "",
+            "despArray": "",
+            "direction": "",
+            "validate": {
+              "errorMessage": "",
+              "type": ""
+            },
+            "isAdvanced": false
+          }
+        ],
+        "details": "",
+        "placeholder": "",
+        "edmKey": "sTitle",
+        "despArray": "",
+        "direction": "",
+        "validate": {
+          "errorMessage": "",
+          "type": ""
+        }
       }
     ]
-  
   },
   "keywords": [],
   "license": "ISC",
