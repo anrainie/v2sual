@@ -56,7 +56,6 @@ router.get('/v1/dictTest/table',Table.getOption);
 //   ctx.response.body='Hello';
 // });
 
-<<<<<<< HEAD
 router.get('/v1/aweb/getWidget',async (ctx)=>{
   let target='./runtime/src/@aweb-components';
   let dir=await Util.readdir(target);
@@ -80,7 +79,6 @@ router.get('/v1/aweb/getWidget',async (ctx)=>{
   ctx.response.body=menu;
 
 })
-=======
 //mysql操作
 
 const DB = require('./db/mysql-conn');
@@ -91,7 +89,6 @@ const db = new DB({
 router.get('/db/select',
   db.select()
 );
->>>>>>> 6c12ed4c7a21cd3f0437fb016942cf7b6a032ebe
 
 
 // app

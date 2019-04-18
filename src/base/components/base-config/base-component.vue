@@ -15,8 +15,6 @@ let mixin = {
     array: Array,
     arraySelector: String,
     objSelector: String,
-
-
     edmCollectionObj: Object,
 
     value: {}
@@ -328,7 +326,10 @@ aui_edmCollection: {
                     </panel>
                     </collapse>`,
 
-      mixins: [mixin]
+      mixins: [mixin],
+      mounted(){
+        debugger;
+      }
     },
 
 aui_edm: {
