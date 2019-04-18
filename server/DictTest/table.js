@@ -34,7 +34,7 @@ class Table {
         },
         edmKey: 'GTU_ID',
         readonly: true,
-        pk: true
+        pk: true // 前端用这个外键判断该数据项是否为id列
       }, {
         __edm_collection: {
           PUBCODECNAME: '应用名称',
@@ -48,8 +48,8 @@ class Table {
         },
         edmKey: 'APP_NAME',
         type: 'text',
-        readonly: false,
-        pk: true
+        readonly: false
+
       }, {
         __edm_collection: {
           PUBCODECNAME: '任务创建人',
@@ -63,8 +63,8 @@ class Table {
         },
         edmKey: 'TASK_CREATE_USER',
         type: 'text',
-        readonly: false,
-        pk: true
+        readonly: false
+
       }, {
         __edm_collection: {
           PUBCODECNAME: '用户类型',
@@ -86,8 +86,8 @@ class Table {
           name: '普通用户',
           value: '1'
         }],
-        readonly: false,
-        pk: true
+        readonly: false
+
       }, {
         __edm_collection: {
           name: 'AMV_CREATE_TIME',
@@ -101,9 +101,7 @@ class Table {
         edmKey: 'AMV_CREATE_TIME',
         type: 'date',
         dateFormat: 'YYYY-MM-DD',
-        readonly: false,
-        pk: true
-
+        readonly: false
       }, {
         __edm_collection: {
           PUBCODECNAME: '总金币数',
@@ -119,8 +117,7 @@ class Table {
         edmKey: 'COINS_NUM',
         type: 'numeric',
         format: '$ 0,0.00',
-        readonly: false,
-        pk: true
+        readonly: false
       }],
       filter: ['AMV_CREATE_TIME', 'TASK_CREATE_USER'],
       add: 'add',
@@ -216,7 +213,7 @@ class Table {
     } = ctx.request.query;
 
     let mockTestData = TestData.filter(item => {
-      if ((AMV_CREATE_TIME && item.AMV_CREATE_TIME.indexOf(AMV_CREATE_TIME) === -1) || (TASK_CREATE_USER && item.TASK_CREATE_USER.indexOf(TASK_CREATE_USER) === -1)) {
+      if ((AMV_CREATE_TIME && item.AMV_CREATE_TIME.indexOf(AMV_CREATE_TIME) === -1) && (TASK_CREATE_USER && item.TASK_CREATE_USER.indexOf(TASK_CREATE_USER) === -1)) {
         return false;
       }
       return true;
