@@ -1,5 +1,6 @@
 <template>
   <div :style="model.style" class="av-form-updload">
+    <label class="av-form-slider-label">{{model.data.label}}</label>
     <el-upload
       class="upload-demo"
       :action="model.data.action"

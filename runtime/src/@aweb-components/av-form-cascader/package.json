@@ -16,6 +16,12 @@
     "name": "级联选择器",
     "option": [
       {
+        "name": "label",
+        "desp": "标题",
+        "defaultValue":"标题",
+        "type": "string_input"
+      },
+      {
         "name": "placeholder",
         "desp": "提示文本",
         "defaultValue":"提示文本",

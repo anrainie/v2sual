@@ -1,5 +1,6 @@
 <template>
   <div :style="model.style"  class="av-form-transfer">
+    <label class="av-form-transfer-label">{{model.data.label}}</label>
     <el-transfer
       v-model="model.data.value"
       :filterable="Boolean(model.data.filterable)"

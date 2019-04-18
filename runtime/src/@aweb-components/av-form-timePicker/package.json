@@ -16,6 +16,12 @@
     "name": "时间选择器",
     "option": [
       {
+        "name": "label",
+        "desp": "标题",
+        "defaultValue":"标题",
+        "type": "string_input"
+      },
+      {
         "name": "type",
         "type": "string_input",
         "defaultValue":"select",

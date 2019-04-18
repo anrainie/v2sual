@@ -1,5 +1,6 @@
 <template>
   <div :style="model.style" class="av-form-timePicker">
+    <label class="av-form-timePicker-label">{{model.data.label}}</label>
     <el-time-select
       v-if="model.data.type==='select'"
       v-model="model.data.value"

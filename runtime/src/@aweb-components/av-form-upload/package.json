@@ -16,6 +16,12 @@
     "name": "上传",
     "option": [
       {
+        "name": "label",
+        "desp": "标题",
+        "defaultValue":"标题",
+        "type": "string_input"
+      },
+      {
         "name": "action",
         "type": "string_input",
         "defaultValue":"",

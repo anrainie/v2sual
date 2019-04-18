@@ -1,5 +1,6 @@
 <template>
   <div :style="model.style"  class="av-form-slider">
+    <label class="av-form-slider-label">{{model.data.label}}</label>
     <el-slider
       v-model="model.data.value"
       :show-tooltip="model.data.tooltip"
