@@ -1,11 +1,10 @@
 <template>
-  <div :style="model.style"  style="display: flex" class="av-form-input">
-    <label class="labelInput-label">{{model.data.label}}:</label>
+  <div :style="flexStyle" class="av-form-input">
+        <label  class="av-form-input-label">{{model.data.label}}</label>
     <el-input
       v-model="model.data.value"
       style="flex:1"
       :placeholder="model.data.placeholder"
-      @focus="focusEven"
     ></el-input>
   </div>
 </template>
@@ -20,11 +19,17 @@ export default {
   mounted() {
   },
   computed: {
-    focusEven() {
-
-    }
+   
   },
   methods: {
+    flexStyle(){
+        let self = this;
+        if(self.model.data.titleMode==='col'){
+          return $.extend({}, self.model.data.style, {display:"flex"})
+        }else if(self.model.data.titleMode==='row'){
+          return self.model.data.style;
+        }
+      },
     $ArrowRight() {
       return true;
     },

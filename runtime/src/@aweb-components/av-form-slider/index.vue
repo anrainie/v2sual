@@ -1,6 +1,9 @@
 <template>
   <div :style="model.style"  class="av-form-slider">
-    <label class="av-form-slider-label">{{model.data.label}}</label>
+     <div v-if="model.data.titleMode==='row'">
+        <label class="av-form-cascader-label">{{model.data.label}}</label>
+    </div>
+        <label  v-if="model.data.titleMode==='col'" class="av-form-cascader-label">{{model.data.label}}</label>
     <el-slider
       v-model="model.data.value"
       :show-tooltip="model.data.tooltip"

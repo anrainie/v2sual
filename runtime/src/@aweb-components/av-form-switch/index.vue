@@ -1,6 +1,9 @@
 <template>
   <div :style="model.data.style" class="av-form-switch">
-    <div>{{model.data.title}}</div>
+     <div v-if="model.data.titleMode==='row'">
+        <label class="av-form-switch-label">{{model.data.label}}</label>
+    </div>
+        <label  v-if="model.data.titleMode==='col'" class="av-form-switch-label">{{model.data.label}}</label>
     <el-switch ref="switch"
                v-model="model.data.value"
                :active-text="model.data.activeText"

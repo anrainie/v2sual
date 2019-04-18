@@ -22,6 +22,12 @@
         "name": "title"
       },
       {
+        "name": "titleMode",
+        "desp": "标题排列方式",
+        "defaultValue":"row",
+        "type": "string_input"
+      },
+      {
         "type": "boolean",
         "desp": "开关的值",
         "defaultValue": false,

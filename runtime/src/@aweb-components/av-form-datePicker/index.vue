@@ -1,6 +1,9 @@
 <template>
   <div :style="model.data.style" ref="wrap" :class="wrapClass" class="av-form-datePicker">
-    <label class="av-form-datePicker-label">{{model.data.label}}:</label>
+     <div v-if="model.data.titleMode==='row'">
+        <label class="av-form-datePicker-label">{{model.data.label}}</label>
+    </div>
+        <label  v-if="model.data.titleMode==='col'" class="av-form-datePicker-label">{{model.data.label}}</label>
     <el-date-picker
       v-model="model.data.value"
       type="date"
