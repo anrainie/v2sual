@@ -3,26 +3,41 @@
    <div class="table-wrapper"  >
        <div class="table-tool-ctn">
            <el-form ref="form" label-width="100px">
-
+<el-row :gutter="20">
              <template v-for="item in filterConfig">
-            <el-form-item :label="item.desp" v-if="item.type ==='text'" :key="item.name">
+                 <el-col :span="6" v-if="item.columnType ==='text'" :key="item.name">
+            <el-form-item :label="item.desp"  >
               <avInput :model="{'data':item}" ></avInput>
             </el-form-item>
-            <el-form-item :label="item.desp" v-else-if="item.type ==='date'"  :key="item.name">
+                 </el-col>
+                   <el-col :span="6" v-else-if="item.columnType ==='date'"  :key="item.name">
+            <el-form-item :label="item.desp" >
               <avDatePicker :model="{'data':item}" ></avDatePicker>
             </el-form-item>
-            <el-form-item :label="item.desp" v-else-if="item.type ==='dropdown'" :key="item.name">
+             </el-col>
+                   <el-col :span="6"  v-else-if="item.columnType ==='dropdown'" :key="item.name" >
+            <el-form-item :label="item.desp">
               <avSelect :model="{'data':item}" ></avSelect>
             </el-form-item>
-              <el-form-item :label="item.desp" v-else-if="item.type ==='numeric'"  :key="item.name">
+             </el-col>
+                   <el-col :span="6" v-else-if="item.columnType ==='numeric'"  :key="item.name" >
+              <el-form-item :label="item.desp" >
               <avNumber :model="{'data':item}" ></avNumber>
             </el-form-item>
+             </el-col>
+                   <el-col :span="6" v-else-if="item.columnType ==='checkbox'"  :key="item.name">
+               <el-form-item :label="item.desp" >
+              <avCheckbox :model="{'data':item}" ></avCheckbox>
+            </el-form-item>
+             </el-col>
+                 
             </template>
-
+           <el-col :span="6">
             <el-form-item>
               <el-button type="primary" ref="searchBtn">查询</el-button>
             </el-form-item>
-
+           </el-col>
+</el-row>
            </el-form>
          
            <!-- <input type="text" name="search" ref="searchInput"><input type="button" value="查询"> -->
@@ -44,6 +59,7 @@ import avInput from '../av-form-input/index.vue'
 import avDatePicker from '../av-form-datePicker/index.vue'
 import avSelect from '../av-form-select/index.vue'
 import avNumber from '../av-form-inputNumber/index.vue'
+import avCheckbox from '../av-form-checkbox/index.vue'
 
 let lastChangeRow ='';
 let isAfterSelect='';
@@ -61,14 +77,16 @@ export default {
   },
   data: function () {
     return {
-      root: 'test-hot',
       hotTableID:'hot-table',
       hot:{},
       config:{},
       filterConfig:[],
       selectOptionAtProp:{},
+      propAtSelectOption:{},
       colName:[],
+      colType:[],
       IDColIdx:'',
+      selectProps:[],
       hotSettings: {
         // data: [        //数据可以是二维数组，也可以是数组对象
         //   [ 10,'20080101', 11, 12, 13,'文本'],
@@ -115,7 +133,7 @@ export default {
             }
           }
         },
-        fillHandle: true, //选中拖拽复制 possible values: true, false, "horizontal", "vertical"       
+       // fillHandle: true, //选中拖拽复制 possible values: true, false, "horizontal", "vertical"       
         fixedColumnsLeft: 0,//固定左边列数       
         fixedRowsTop: 0,//固定上边列数        
         columns: [     //添加每一列的数据类型和一些配置
@@ -148,7 +166,7 @@ export default {
       }
      }
    },
-    methods: {
+  methods: {
         afterSelection(row, column, row2, column2, preventScrolling, selectionLayerLevel){
             
                if(!lastChangeRow && lastChangeRow!==0){
@@ -249,35 +267,35 @@ export default {
         updateHotSetting(data){
             let that = this;
             let filterMap ={};
-            console.log(data);
             this.hotTableID = data.context;
-            that.config = data;
-
-  
+            that.config = data; 
     
             data.dict.forEach((ele,idx) => {
               let colOption = {};
               that.colName.push(ele.__edm_collection.name);
+              that.colType.push(ele.columnType);
               that.hotSettings.colHeaders.push(ele.__edm_collection.PUBCODECNAME||ele.__edm_collection.name);
               if(ele.pk){
                 that.IDColIdx = idx;
               }
-              switch(ele.type){
+              switch(ele.columnType){
                 case 'dropdown':
-                  if(ele.source && ele.source.length){
-                     
-                      colOption.source =  that.selectOption(ele.source||[],ele.name);
+                  if(ele.source && ele.source.length){                    
+                      colOption.source =  that.selectOption(ele.source||[],ele.__edm_collection.name);
+                      that.selectProps.push(ele.__edm_collection.name);
                   }
                   break;
                 case 'date':
                  colOption.correctFormat = true;
                  colOption.dateFormat = "YYYY-MM-DD";
                  break;
-      
+                case 'numberic':
+                  ele.numericFormat && (colOption.numericFormat = ele.numericFormat)
+                 break;
               }
 
               colOption.data = ele.__edm_collection.name;
-              colOption.type = ele.type;
+              colOption.type = ele.columnType;
               colOption.readOnly = ele.readonly ;
 
               that.hotSettings.columns.push(colOption);
@@ -285,30 +303,35 @@ export default {
           
               
               filterMap[ele.__edm_collection.name]={
-                type:ele.type,
+                columnType:ele.columnType,
                 desp:ele.__edm_collection.PUBCODECNAME||ele.__edm_collection.name,
                 name:ele.__edm_collection.name,
                 value:''
               };
 
             });
-             data.filter.forEach((item)=>{
+            if(data.filter && data.filter.length){
+               data.filter.forEach((item)=>{
                  that.filterConfig.push(filterMap[item]);
-             })
+               })
+            }
+            
              // 初始加载请求数据
        
-               axios.get(data.url,{params:{"action":data.query}}).then((res)=>{
+           this.$nextTick(()=>{
+                 axios.get(data.url,{params:{"action":data.query}}).then((res)=>{
                   console.log(res);
                     if(res.data.status){
-                       that.$refs.hotTable.hotInstance.loadData(res.data.content.data)
+                       that.$refs.hotTable.hotInstance.loadData(that.filterSelectOption(res.data.content.data));
                     } 
               })
+           })
               //假设请求到一行数据
              // this.$refs.hotTable.hotInstance.loadData([{'GTU_ID':'id12','APP_NAME':'某某','TASK_CREATE_USER':'某某','USR_USERTYPE':'某某','AMV_CREATE_TIME':'15/04/2019','COINS_NUM':'100'}])
            if(data.filter && data.filter.length){
                   console.log(this.$refs.searchBtn);
                   Handsontable.dom.addEvent(this.$refs.searchBtn.$el, 'click', function (event) {  
-                      console.log('data',that.filterConfig);
+                   
                       let queryData={}
                       that.filterConfig.forEach((item) => {
                          queryData[item.name] = item.value;
@@ -331,58 +354,60 @@ export default {
         selectOption(source,prop){
           let result =[];
            this.selectOptionAtProp[prop]={};
+           this.propAtSelectOption[prop]={};
            source.forEach((ele) => {
               this.selectOptionAtProp[prop][ele.name]=ele.value;
-              result.push(ele.value);
+              this.propAtSelectOption[prop][ele.value]=ele.name;
+              result.push(ele.name);
            })
            return result;
         },
-        mapToDataArray(dataMap){
-            var colName = this.colName, j, rowData, i, item, dataArr, result = [];
-
-            for (j = -1; rowData = dataMap[++j];) {
-                dataArr = [];
-                for (i = -1; item = colName[++i];) {
-                    if (rowData[item] === false) {
-                        rowData[item] = 'false';
-                    } else if (rowData[item] === true) {
-                        rowData[item] = 'true';
-                    }
-                    dataArr[i] = rowData[item] || '';
-                }
-                result.push(dataArr);
-            }
-
-            return result;
-        },
         dataArrToMap(dataArr){
-                var colName = this.colName, j, rowData, i, item, dataMap, result = [];
+                var colName = this.colName, colType = this.colType,j, i, item, dataMap, result = [];
 
               
                     dataMap = {};
                     for (i = -1; item = colName[++i];) {
-                        if (rowData === false) {
-                            rowData= 'false';
-                        } else if (rowData=== true) {
-                            rowData = 'true';
+                        if (dataArr[i] === false) {
+                            dataArr[i]= 'false';
+                        } else if (dataArr[i]=== true) {
+                            dataArr[i] = 'true';
                         }
-                        dataMap[item] = dataArr[i] || '';
+                        if(colType[i]==='dropdown'){   
+                          dataMap[item] = this.selectOptionAtProp[item][dataArr[i]]||'';
+                        }else{
+                           dataMap[item] = dataArr[i] || '';
+                        }
+                      
                     }
 
                 return dataMap;
+        },
+        filterSelectOption(data){
+               let that = this;
+               console.log(this.selectProps);
+               console.log(this.propAtSelectOption);
+          data.map((item)=>{
+              that.selectProps.forEach((ele)=>{
+                  item[ele] = that.propAtSelectOption[ele][item[ele]];
+              })
+          })
+          console.log(data);
+          return data;
         }
     },
-    mounted(){
+  mounted(){
          
            let that = this;
-    
-        axios.get('v1/dictTest/table').then((res)=>{
-         
-              if(res.data.status){
-                that.updateHotSetting(res.data.content);
-              }
+          console.log('filterConfig',this.filterConfig);
+
+          axios.get('v1/dictTest/table').then((res)=>{
+          
+                if(res.data.status){
+                  that.updateHotSetting(res.data.content);
+                }
           })   
-          console.log(this.$refs.hotTable.$el);
+
            Handsontable.dom.addEvent(this.$refs.hotTable.$el, 'keyup', function(e) {
                    let  theEvent = e || window.event,
 　               　    code = theEvent.keyCode || theEvent.which || theEvent.charCode;
@@ -396,17 +421,17 @@ export default {
           })
 
            this.hot = this.$refs.hotTable.hotInstance;
- 
-           
 
-     
+        console.log(this.model);
+
     },
     components: {
         HotTable,
         avInput,
         avDatePicker,
         avSelect,
-        avNumber
+        avNumber,
+        avCheckbox
     }
  }
 
