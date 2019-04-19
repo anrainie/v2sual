@@ -3,28 +3,33 @@ const path = require('path');
 const fs = require('fs');
 const listPath = path.resolve(__dirname, '../../runtime/src/views');
 
-function listDir (dirPath = listPath) {
+function listDir(dirPath = listPath) {
   let treeNode = [];
   try {
     let files = fs.readdirSync(dirPath);
-    // console.log(files);
     for (let i = 0; i < files.length; i++) {
       let filePath = dirPath + path.sep + files[i];
       let stat = fs.lstatSync(dirPath + path.sep + files[i]);
       if (stat.isDirectory()) {
         let DirInfo = listDir(filePath);
+        let name = path.basename(filePath);
         treeNode.push({
-          nodeName: path.dirname(filePath),
-          nodePath: filePath,
-          isDirectory: true,
+          name,
+          label: name,
+          path: filePath,
+          resId: 'category',
+          type: 'folder',
           children: DirInfo
         });
       } else {
         let nodeInfo = listFile(filePath);
         treeNode.push({
-          nodeName: nodeInfo,
-          isDirectory: false,
-          nodePath: filePath
+          name: nodeInfo,
+          label: nodeInfo,
+          resId: 'vue',
+          icon: "navi/file_ccf.gif",
+          type: 'file',
+          path: filePath
         });
       }
     }
@@ -34,7 +39,7 @@ function listDir (dirPath = listPath) {
   return treeNode;
 }
 
-function listFile (pagePath) {
+function listFile(pagePath) {
   if (pagePath.endsWith('.vue')) {
     return path.basename(pagePath);
   }

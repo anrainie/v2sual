@@ -81,13 +81,19 @@ router.get('/v1/aweb/getWidget', async (ctx) => {
 });
 
 // mysql操作
-
 const DB = require('./db/mysql-conn');
 const db = new DB({
   database: 'aweb_social'
 });
 
 router.get('/v1/db/select',db.select());
+
+//连接WEBIDE中台
+const Platform = require('./ide/platform');
+const platform= new Platform({
+  ip:'localhost',
+  port:8080,
+});
 
 // app
 const app = new Koa();

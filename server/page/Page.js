@@ -127,7 +127,6 @@ class Page {
                   method.args[0].properties.forEach(a => {
                     args[a.start.value] = a.end.value;
                   });
-                  console.log(args);
                   pages.push(args);
                 } catch (e) {
 
