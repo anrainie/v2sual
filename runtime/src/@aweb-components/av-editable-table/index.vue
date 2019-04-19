@@ -1,32 +1,35 @@
 <template>
-  <div :style="model.style" ref="wrap" :class="wrapClass">
+  <div :style="model.style" ref="wrap">
    <div class="table-wrapper"  >
        <div class="table-tool-ctn">
-           <!-- <el-form ref="form" label-width="80px">
+           <el-form ref="form" label-width="100px">
+
              <template v-for="item in filterConfig">
             <el-form-item :label="item.desp" v-if="item.type ==='text'" :key="item.name">
-              <avInput v-model="item.value" ></avInput>
+              <avInput :model="{'data':item}" ></avInput>
             </el-form-item>
             <el-form-item :label="item.desp" v-else-if="item.type ==='date'"  :key="item.name">
-              <avDatePicker v-model="item.value"></avDatePicker>
+              <avDatePicker :model="{'data':item}" ></avDatePicker>
             </el-form-item>
             <el-form-item :label="item.desp" v-else-if="item.type ==='dropdown'" :key="item.name">
-              <avSelect v-model="item.value"></avSelect>
+              <avSelect :model="{'data':item}" ></avSelect>
             </el-form-item>
               <el-form-item :label="item.desp" v-else-if="item.type ==='numeric'"  :key="item.name">
-              <avNumber v-model="item.value"></avNumber>
+              <avNumber :model="{'data':item}" ></avNumber>
             </el-form-item>
             </template>
+
             <el-form-item>
-              <el-button type="primary">查询</el-button>
+              <el-button type="primary" ref="searchBtn">查询</el-button>
             </el-form-item>
+
            </el-form>
-          -->
-           <input type="text" name="search" ref="searchInput"><input type="button" value="查询">
+         
+           <!-- <input type="text" name="search" ref="searchInput"><input type="button" value="查询"> -->
            <!-- <input type="button" value="新增"><input type="button" value="删除" class="etable-delete-btn"><input type="button" value="修改" class="etable-edit-btn"> -->
            </div>
         <div :id="hotTableID" class="hotTable">
-        <HotTable  ref="hotTable" :settings="hotSettings" @keyup.up="saveData" @keyup.down ="saveData"></HotTable>
+        <HotTable  ref="hotTable" :settings="hotSettings"></HotTable>
         </div>
    </div>
   </div>
@@ -38,11 +41,12 @@ import Handsontable from 'handsontable';
 import 'handsontable/dist/handsontable.full.css';
 import axios from 'axios';
 import avInput from '../av-form-input/index.vue'
-import avDatePicker from '../av-form-timePicker/index.vue'
+import avDatePicker from '../av-form-datePicker/index.vue'
 import avSelect from '../av-form-select/index.vue'
 import avNumber from '../av-form-inputNumber/index.vue'
 
 let lastChangeRow ='';
+let isAfterSelect='';
 const EDM_TYP_MAP={
   "String":'text',
   "Date":'date',
@@ -63,6 +67,8 @@ export default {
       config:{},
       filterConfig:[],
       selectOptionAtProp:{},
+      colName:[],
+      IDColIdx:'',
       hotSettings: {
         // data: [        //数据可以是二维数组，也可以是数组对象
         //   [ 10,'20080101', 11, 12, 13,'文本'],
@@ -144,27 +150,36 @@ export default {
    },
     methods: {
         afterSelection(row, column, row2, column2, preventScrolling, selectionLayerLevel){
-    
+            
                if(!lastChangeRow && lastChangeRow!==0){
                  lastChangeRow = row;
                }
                
              if(lastChangeRow !== 'hasSave' && row!==lastChangeRow){
-               
-                this.saveData(lastChangeRow);
+               console.log('afterSelection');
+              //  this.$nextTick(()=>{
+              //     this.saveData(lastChangeRow);
+              //  })
+               isAfterSelect = true;
                  
               }
         
         },
         afterChange(changes, source){
-           
+             console.log('afterChange');
             if(source=='loadData'){
               return;
             }
            if(lastChangeRow !== 'hasSave' && changes[0][0]!==lastChangeRow){
-               
+               console.log('afterChange');
                 this.saveData(lastChangeRow);
+                
                  lastChangeRow = changes[0][0];
+              }else if(isAfterSelect){
+
+                this.saveData(lastChangeRow);
+                isAfterSelect = false;
+
               }else{
                 lastChangeRow = changes[0][0];
               }
@@ -172,38 +187,62 @@ export default {
         beforeRemoveRow(index,amount,physicalRows){
             
             let rowData = this.$refs.hotTable.hotInstance.getData()[physicalRows[0]];
-            console.log('删除',rowData);
+            let that = this;
+              console.log('删除',rowData);
+             console.log('id下标',that.IDColIdx);
+              axios.get(that.config.url,{
+               params:{
+                    action:that.config.del,
+                    id:rowData[that.IDColIdx]
+               }
+             }).then((res)=>{
+            
+                if(res.data.status){
+                     console.log('删除成功');
+                }
+               
+             })
         },
         saveData (row){
-            console.log('save'+row);
+       
            lastChangeRow = 'hasSave';
             let config = this.config;
+            let that = this;
              
            let rowData = this.$refs.hotTable.hotInstance.getDataAtRow(row);
            
          
-           console.log(rowData);
-           
+         
+           console.log(that.dataArrToMap(rowData));
 
            if(!rowData[0]){ //新增,假设新增行后返回行id
-            //  axios(config.url,{
-            //    action:config.add,
-            //    data:rowData
-            //  }).then((res)=>{
-            //     console.log(res);
-            //  })
-           
-            let prop=this.$refs.hotTable.hotInstance.colToProp(0);
-             this.$refs.hotTable.hotInstance.setDataAtRowProp(row, prop, Number(Math.random().toString().substr(3,length) + Date.now()).toString(36))
-            console.log(prop)
+             axios.get(config.url,{
+               params:{
+                    action:config.add,
+                    ...that.dataArrToMap(rowData)
+               }
+             }).then((res)=>{
+               
+                if(res.data.status){
+                     console.log('新增成功',res.data.content.newId);
+                    let prop=this.$refs.hotTable.hotInstance.colToProp(0);
+                    this.$refs.hotTable.hotInstance.setDataAtRowProp(row, prop, res.data.content.newId)
+                }
+               
+             })
+
            }else{ //修改
-            //  axios(config.url,{
-            //    action:config.update,
-            //    data:rowData
-            //  }).then((res)=>{
-            //     console.log(res);
-            //  })
-            console.log('修改')
+             axios.get(config.url,{
+                params:{
+                  action:config.update,
+                  ...that.dataArrToMap(rowData)
+                }
+             }).then((res)=>{
+                 if(res.data.status){
+                       console.log('修改成功');
+                 }
+             })
+          
            }
           
         },
@@ -213,24 +252,42 @@ export default {
             console.log(data);
             this.hotTableID = data.context;
             that.config = data;
+
+  
     
-            data.dict.forEach((ele) => {
-              that.hotSettings.colHeaders.push(ele.PUBCODECNAME||ele.name);
-              if(ele.type==='String' && ele.source && ele.source.length){
-                ele.type = 'dropdown'
+            data.dict.forEach((ele,idx) => {
+              let colOption = {};
+              that.colName.push(ele.__edm_collection.name);
+              that.hotSettings.colHeaders.push(ele.__edm_collection.PUBCODECNAME||ele.__edm_collection.name);
+              if(ele.pk){
+                that.IDColIdx = idx;
               }
-        
-              that.hotSettings.columns.push({
-                data:ele.name,
-                type:EDM_TYP_MAP[ele.type],
-                source: that.selectOption(ele.source,ele.name) || [],
-                readOnly: ele.readonly     
-              })
+              switch(ele.type){
+                case 'dropdown':
+                  if(ele.source && ele.source.length){
+                     
+                      colOption.source =  that.selectOption(ele.source||[],ele.name);
+                  }
+                  break;
+                case 'date':
+                 colOption.correctFormat = true;
+                 colOption.dateFormat = "YYYY-MM-DD";
+                 break;
+      
+              }
+
+              colOption.data = ele.__edm_collection.name;
+              colOption.type = ele.type;
+              colOption.readOnly = ele.readonly ;
+
+              that.hotSettings.columns.push(colOption);
+
+          
               
-              filterMap[ele.name]={
-                type:EDM_TYP_MAP[ele.type],
-                desp:ele.PUBCODECNAME||ele.name,
-                name:ele.name,
+              filterMap[ele.__edm_collection.name]={
+                type:ele.type,
+                desp:ele.__edm_collection.PUBCODECNAME||ele.__edm_collection.name,
+                name:ele.__edm_collection.name,
                 value:''
               };
 
@@ -238,15 +295,38 @@ export default {
              data.filter.forEach((item)=>{
                  that.filterConfig.push(filterMap[item]);
              })
-              //初始加载请求数据
-              //  axios(data.url,{
-              //    action:config.query
-              //     }).then((res)=>{
-              //     console.log(res);
-              // })
+             // 初始加载请求数据
+       
+               axios.get(data.url,{params:{"action":data.query}}).then((res)=>{
+                  console.log(res);
+                    if(res.data.status){
+                       that.$refs.hotTable.hotInstance.loadData(res.data.content.data)
+                    } 
+              })
               //假设请求到一行数据
-              this.$refs.hotTable.hotInstance.loadData([{'GTU_ID':'id12','APP_NAME':'某某','TASK_CREATE_USER':'某某','USR_USERTYPE':'某某','AMV_CREATE_TIME':'某某','COINS_NUM':'100'}])
-               console.log(that.filterConfig)
+             // this.$refs.hotTable.hotInstance.loadData([{'GTU_ID':'id12','APP_NAME':'某某','TASK_CREATE_USER':'某某','USR_USERTYPE':'某某','AMV_CREATE_TIME':'15/04/2019','COINS_NUM':'100'}])
+           if(data.filter && data.filter.length){
+                  console.log(this.$refs.searchBtn);
+                  Handsontable.dom.addEvent(this.$refs.searchBtn.$el, 'click', function (event) {  
+                      console.log('data',that.filterConfig);
+                      let queryData={}
+                      that.filterConfig.forEach((item) => {
+                         queryData[item.name] = item.value;
+                      })
+                      axios.get(data.url,{params:{
+                        "action":data.query,
+                        ...queryData
+                        }}).then((res)=>{
+                          console.log('搜索结果',res);
+                            if(res.data.status){
+                              that.$refs.hotTable.hotInstance.loadData(res.data.content.data)
+                            } 
+                      })
+                      
+                  
+                      // that.hot.render();  
+                  }); 
+            }
         },
         selectOption(source,prop){
           let result =[];
@@ -256,10 +336,41 @@ export default {
               result.push(ele.value);
            })
            return result;
+        },
+        mapToDataArray(dataMap){
+            var colName = this.colName, j, rowData, i, item, dataArr, result = [];
+
+            for (j = -1; rowData = dataMap[++j];) {
+                dataArr = [];
+                for (i = -1; item = colName[++i];) {
+                    if (rowData[item] === false) {
+                        rowData[item] = 'false';
+                    } else if (rowData[item] === true) {
+                        rowData[item] = 'true';
+                    }
+                    dataArr[i] = rowData[item] || '';
+                }
+                result.push(dataArr);
+            }
+
+            return result;
+        },
+        dataArrToMap(dataArr){
+                var colName = this.colName, j, rowData, i, item, dataMap, result = [];
+
+              
+                    dataMap = {};
+                    for (i = -1; item = colName[++i];) {
+                        if (rowData === false) {
+                            rowData= 'false';
+                        } else if (rowData=== true) {
+                            rowData = 'true';
+                        }
+                        dataMap[item] = dataArr[i] || '';
+                    }
+
+                return dataMap;
         }
-    },
-    beforeMount(){
-      
     },
     mounted(){
          
@@ -271,7 +382,7 @@ export default {
                 that.updateHotSetting(res.data.content);
               }
           })   
-     
+          console.log(this.$refs.hotTable.$el);
            Handsontable.dom.addEvent(this.$refs.hotTable.$el, 'keyup', function(e) {
                    let  theEvent = e || window.event,
 　               　    code = theEvent.keyCode || theEvent.which || theEvent.charCode;
@@ -286,15 +397,8 @@ export default {
 
            this.hot = this.$refs.hotTable.hotInstance;
  
+           
 
-            Handsontable.dom.addEvent(this.$refs.searchInput, 'keyup', function (event) {  
-             
-                      var search = that.hot.getPlugin('search'),
-                          queryResult = search.query(this.value);
-
-                    
-                      that.hot.render();  
-           }); 
      
     },
     components: {
@@ -307,8 +411,8 @@ export default {
  }
 
 </script>
-<style lang="less" scoped>
-    .table-wrapper{
+<style lang="less">
+  .table-wrapper{
         width: 100%;
         height: 100%;
     }
@@ -342,5 +446,12 @@ export default {
              
         }
      }
+     .av-form-input > div{
+       width: 220px;
+     }
+  // .el-date-editor.el-input{
+  //     width: 100%;
+  //   }
  }
+
 </style>
