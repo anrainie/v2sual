@@ -12,8 +12,12 @@ class DB {
       database: 'aweb_social',
       ...this.config,
     });
-    this.client.connect(); //连接
-    console.log('数据库初始化成功', this.config.database);
+    try{
+      this.client.connect(); //连接
+      console.log('数据库初始化成功', this.config.database);
+    }catch(e){
+      console.log(e);
+    }
   }
   select() {
     let self = this;

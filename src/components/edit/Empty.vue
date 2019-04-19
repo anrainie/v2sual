@@ -33,6 +33,7 @@ export default {
     });
     let self = this;
     $(this.$el).droppable({
+      distance:30,
       drop(event, ui) {
         console.log(self.$store.state.activeTool);
         if (self.$store.state.activeTool == createTool) {

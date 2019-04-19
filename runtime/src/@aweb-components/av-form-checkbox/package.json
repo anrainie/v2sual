@@ -1,0 +1,53 @@
+{
+  "author": {
+    "name": "fengjiarong@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "多选框",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconfont icon-password",
+    "type": "MDataDisplays",
+    "href": "av-form-checkbox",
+    "author": "fengjiarong@agree.com.cn",
+    "version": 510000,
+    "accept": "foundationRowCtn divCtn",
+    "name": "多选框",
+    "style":{
+    },
+    "option": [
+      {
+        "name": "label",
+        "desp": "标题",
+        "defaultValue":"标题",
+        "type": "string_input"
+      },
+      {
+        "name": "titleMode",
+        "desp": "标题排列方式",
+        "defaultValue":"row",
+        "type": "string_input"
+      },
+      {
+        "name": "checkList",
+        "desp": "选中值",
+        "defaultValue":"",
+        "type": "string_input"
+      },
+      {
+        "name": "options",
+        "desp": "选择项",
+        "type": "array"
+      }
+    ]
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@aweb-components/av-form-checkbox",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.4"
+}

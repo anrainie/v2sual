@@ -1,4 +1,6 @@
 'use strict'
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
@@ -42,6 +44,7 @@ module.exports = {
     },
   },
   plugins: [
+    new MonacoWebpackPlugin(),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",

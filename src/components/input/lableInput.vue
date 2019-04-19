@@ -1,14 +1,12 @@
 <template>
-  <div :style="model.style" ref="wrap" :class="wrapClass" style="display: flex">
-    <label class="labelInput-label">{{model.label}}:</label>
+  <div :style="model.style" ref="wrap" :class="wrapClass" style="display: flex" class="v2LabelInput">
+    <label class="labelInput-label">{{model.data.label}}:</label>
     <el-input
-      v-model="model.data"
+      v-model="model.data.value"
       style="flex:1"
       @keyup.native="even"
-      :placeholder="model.placeholder"
+      :placeholder="model.data.placeholder"
       @focus="focusEven"
-      :index="model.index"
-      ref="input"
     ></el-input>
   </div>
 </template>
@@ -19,7 +17,7 @@ import { edit } from "../../assets/js/edit.js";
 import inputField from "../../assets/js/inputField.js";
 
 export default {
-  name: "v2LableInput",
+  name: "v2LabelInput",
   mixins: [widget, inputField, edit],
   mounted() {
     // let inputArr = this.$store.state.inputEl.inputArr;

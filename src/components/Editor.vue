@@ -101,6 +101,7 @@ import { setTimeout } from "timers";
 import { debug } from "util";
 import { constants } from "fs";
 import { data } from "../assets/js/dev.js";
+import util from "../base/utils/bridge.js";
 
 import chat from "./utils/chat.vue";
 
@@ -120,6 +121,28 @@ export default {
           : true;
       });
 
+    this.apis("/v1/aweb/getWidget")
+    .then(data=>{
+       data=data.map((item)=>{
+         let ret={
+              type:item.type,
+              icon: item.icon,
+              name: item.name,
+              element:{
+                data:util.baseConfigInitInstance({},item.option||[])||{},
+                ...item
+              }
+
+         }
+          if(item.type="aui"){
+              ret.element.component="V2AuiComponent"
+          } 
+          return ret;
+       })
+
+
+       this.palatteConfig[1].children=[... this.palatteConfig[1].children,...data];
+    })
     // $(".paletteItem").draggable({
     //   helper: function(event, ui) {
     //     console.log("help", event, ui);

@@ -171,19 +171,19 @@ const uuid4 = require('uuid/v4');
 
 
         adjustItem(){
-            let items = $(this.elem).find('.label');
+            // let items = $(this.elem).find('.label');
 
-            items.each(function(){
-                const next = this.nextElementSibling;
-                if(next){
-                    const first = next.firstElementChild;
-                    const last = next.lastElementChild;
+            // items.each(function(){
+            //     const next = this.nextElementSibling;
+            //     if(next){
+            //         const first = next.firstElementChild;
+            //         const last = next.lastElementChild;
 
-                    if(first && last){
-                        next.style.marginBottom = (first.offsetHeight - last.offsetHeight) / 2 + 'px';
-                    }
-                }
-            });
+            //         if(first && last){
+            //             next.style.marginBottom = (first.offsetHeight - last.offsetHeight) / 2 + 'px';
+            //         }
+            //     }
+            // });
         }
     }
 

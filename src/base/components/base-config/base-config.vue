@@ -8,7 +8,6 @@
       :edmCollectionObj="edmCollectionObj"
       :objSelector="objSelector"
       :obj="obj"
-      :handler="handler"
       :arraySelector="getArraySelector(index)"
     ></base-component>
   </div>
