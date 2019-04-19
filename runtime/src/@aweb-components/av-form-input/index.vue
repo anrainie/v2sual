@@ -1,15 +1,15 @@
 <template>
   <div :style="flexStyle" class="av-form-input">
-    <div v-if="model.data.titleMode==='row'">
-      <label class="av-form-input-label">{{model.data.label}}</label>
-    </div>
-     <label  v-if="model.data.titleMode==='col'" class="av-form-input-label">{{model.data.label}}</label>
+     <label
+        :class="model.data.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
+        :style="{width:model.data.labelWitdh}"
+      >{{model.data.label}}</label>
+     <div class="form-input-ctn" :style="model.data.titleMode ==='row'?{}:{marginLeft:model.data.labelWitdh}">
     <el-input
       v-model="model.data.value"
-      style="flex:1"
       :placeholder="model.data.placeholder"
-      width="80%"
     ></el-input>
+     </div>
   </div>
 </template>
 
@@ -41,7 +41,20 @@ export default {
 </script>
 
 <style>
-.av-form-input > div {
-  width: 80%;
+.form-label-col {
+  float: left;
+}
+.av-form-label {
+  text-align: right;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 40px;
+  padding-right: 12px;
+  box-sizing: border-box;
+}
+.form-input-ctn {
+  line-height: 40px;
+  position: relative;
+  font-size: 14px;
 }
 </style>

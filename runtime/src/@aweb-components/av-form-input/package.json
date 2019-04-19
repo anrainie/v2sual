@@ -18,31 +18,43 @@
       {
         "name": "label",
         "desp": "标题",
-        "defaultValue":"标题",
+        "defaultValue": "标题",
         "type": "string_input"
       },
       {
         "name": "titleMode",
         "desp": "标题排列方式",
-        "defaultValue":"row",
+        "defaultValue": "row",
+        "type": "string_select",
+        "valueArray": [
+          "row",
+          "col"
+        ],
+        "despArray": [
+          "横排",
+          "竖排"
+        ]
+      },
+      {
+        "name": "labelWitdh",
+        "desp": "标题宽度",
+        "defaultValue": "80px",
         "type": "string_input"
       },
       {
         "name": "placeholder",
         "desp": "placeholder",
-        "defaultValue":"请选择",
+        "defaultValue": "请选择",
         "type": "string_input"
       },
       {
         "name": "value",
         "desp": "值",
-        "defaultValue":"",
+        "defaultValue": "",
         "type": "string_input"
       }
     ],
-    "style":{
-      
-    }
+    "style": {}
   },
   "keywords": [],
   "license": "ISC",
