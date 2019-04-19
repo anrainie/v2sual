@@ -32,6 +32,7 @@ class Table {
           },
           type: 'String'
         },
+        columnType: 'text',
         edmKey: 'GTU_ID',
         readonly: true,
         pk: true // 前端用这个外键判断该数据项是否为id列
@@ -47,7 +48,7 @@ class Table {
           type: 'String'
         },
         edmKey: 'APP_NAME',
-        type: 'text',
+        columnType: 'text',
         readonly: false
 
       }, {
@@ -62,7 +63,7 @@ class Table {
           type: 'String'
         },
         edmKey: 'TASK_CREATE_USER',
-        type: 'text',
+        columnType: 'text',
         readonly: false
 
       }, {
@@ -78,7 +79,7 @@ class Table {
           type: 'String'
         },
         edmKey: 'USR_USERTYPE',
-        type: 'dropdown',
+        columnType: 'dropdown',
         source: [{
           name: '管理员',
           value: '0'
@@ -87,7 +88,6 @@ class Table {
           value: '1'
         }],
         readonly: false
-
       }, {
         __edm_collection: {
           name: 'AMV_CREATE_TIME',
@@ -99,7 +99,7 @@ class Table {
           type: 'Date'
         },
         edmKey: 'AMV_CREATE_TIME',
-        type: 'date',
+        columnType: 'date',
         dateFormat: 'YYYY-MM-DD',
         readonly: false
       }, {
@@ -115,11 +115,13 @@ class Table {
           }
         },
         edmKey: 'COINS_NUM',
-        type: 'numeric',
-        format: '$ 0,0.00',
+        columnType: 'numeric',
+        numericFormat: {
+          pattern: '$0,0.00'
+        },
         readonly: false
       }],
-      filter: ['AMV_CREATE_TIME', 'TASK_CREATE_USER'],
+      filter: ['AMV_CREATE_TIME', 'TASK_CREATE_USER', 'COINS_NUM'], // []
       add: 'add',
       del: 'del',
       update: 'update',
@@ -209,12 +211,19 @@ class Table {
   static queryRow (ctx) {
     let {
       AMV_CREATE_TIME,
-      TASK_CREATE_USER
+      TASK_CREATE_USER,
+      COINS_NUM
     } = ctx.request.query;
 
     let mockTestData = TestData.filter(item => {
-      if ((AMV_CREATE_TIME && item.AMV_CREATE_TIME.indexOf(AMV_CREATE_TIME) === -1) && (TASK_CREATE_USER && item.TASK_CREATE_USER.indexOf(TASK_CREATE_USER) === -1)) {
+      if ((AMV_CREATE_TIME && item.AMV_CREATE_TIME.indexOf(AMV_CREATE_TIME) === -1) && (TASK_CREATE_USER && item.TASK_CREATE_USER.indexOf(TASK_CREATE_USER) === -1) && (COINS_NUM && item.COINS_NUM.indexOf(COINS_NUM) === -1)) {
         return false;
+      } else if (AMV_CREATE_TIME && item.AMV_CREATE_TIME.indexOf(AMV_CREATE_TIME) !== -1) {
+        return true;
+      } else if (TASK_CREATE_USER && item.TASK_CREATE_USER.indexOf(TASK_CREATE_USER) === -1) {
+        return true;
+      } else if (COINS_NUM && item.COINS_NUM.indexOf(COINS_NUM) === -1) {
+        return true;
       }
       return true;
     });

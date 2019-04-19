@@ -10,7 +10,7 @@
       :min="model.data.min"
       :max="model.data.max"
       :step="model.data.step"
-      :precision="parseInt(model.data.precision)"
+      :precision="parseInt(model.data.precision||0)"
       :disabled="model.data.disabled"
       label="描述文字"
     >
