@@ -60,7 +60,28 @@
       {
         "name": "options",
         "desp": "配置项",
-        "type": "array"
+        "type": "array",
+        "appendNumber": 1,
+        "attrInEachElement": [
+          {
+            "name": "key",
+            "desp": "值",
+            "defaultValue": "1",
+            "type": "string_input"
+          },
+          {
+            "name": "label",
+            "desp": "文本",
+            "defaultValue": "选项1",
+            "type": "string_input"
+          },
+          {
+            "name": "disabled",
+            "desp": "是否禁用",
+            "defaultValue": false,
+            "type": "boolean"
+          }
+        ]
       }
     ]
   },

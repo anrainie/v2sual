@@ -22,10 +22,24 @@
         "type": "string_input"
       },
       {
+        "name": "labelWitdh",
+        "desp": "标题宽度",
+        "defaultValue": "80px",
+        "type": "string_input"
+      },
+      {
         "name": "titleMode",
         "desp": "标题排列方式",
         "defaultValue":"row",
-        "type": "string_input"
+        "type": "string_select",
+        "valueArray": [
+          "row",
+          "col"
+        ],
+        "despArray": [
+          "横排",
+          "竖排"
+        ]
       },
       {
         "name": "placeholder",

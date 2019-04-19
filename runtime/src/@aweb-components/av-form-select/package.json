@@ -55,9 +55,24 @@
       },
       {
         "name": "options",
-        "desp": "选择项",
-
-        "type": "array"
+        "desp": "配置项",
+        "defaultValue": "",
+        "type": "array",
+        "appendNumber": 1,
+        "attrInEachElement": [
+          {
+            "name": "value",
+            "desp": "值",
+            "defaultValue": "1",
+            "type": "string_input"
+          },
+          {
+            "name": "label",
+            "desp": "文本",
+            "defaultValue": "选项1",
+            "type": "string_input"
+          }
+        ]
       }
     ]
   },

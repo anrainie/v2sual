@@ -25,37 +25,54 @@
         "name": "titleMode",
         "desp": "标题排列方式",
         "defaultValue":"row",
-        "type": "string_input"
-      },
-      {
-        "name": "text",
-        "desp": "文本",
-        "defaultValue":"文本",
-        "type": "string_input"
-      },
-      {
-        "name": "disabled",
-        "desp": "是否禁用",
-        "defaultValue":false,
-        "type": "boolean"
-      },
-      {
-        "name": "border",
-        "desp": "是否有边框",
-        "defaultValue": false,
-        "type": "boolean"
-      },
-      {
-        "name": "label",
-        "desp": "选项的值",
-        "defaultValue": 0,
-        "type": "string_input"
+        "type": "string_select",
+        "valueArray": [
+          "row",
+          "col"
+        ],
+        "despArray": [
+          "横排",
+          "竖排"
+        ]
       },
       {
         "name": "value",
         "desp": "选中的值",
         "defaultValue": 0,
         "type": "string_input"
+      },
+      {
+        "name": "options",
+        "desp": "配置项",
+        "defaultValue": "",
+        "type": "array",
+        "appendNumber": 1,
+        "attrInEachElement": [
+          {
+            "name": "text",
+            "desp": "文本",
+            "defaultValue": "文本",
+            "type": "string_input"
+          },
+          {
+            "name": "disabled",
+            "desp": "是否禁用",
+            "defaultValue": false,
+            "type": "boolean"
+          },
+          {
+            "name": "border",
+            "desp": "是否带边框",
+            "defaultValue": false,
+            "type": "boolean"
+          },
+          {
+            "name": "label",
+            "desp": "对应值",
+            "defaultValue": false,
+            "type": "string_input"
+          }
+        ]
       }
     ]
   },

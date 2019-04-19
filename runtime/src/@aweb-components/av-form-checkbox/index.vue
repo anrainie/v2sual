@@ -8,8 +8,8 @@
       class="form-checkbox-ctn"
       :style="model.data.titleMode ==='row'?{}:{marginLeft:model.data.labelWitdh}"
     >
-      <el-checkbox-group v-model="model.data.checkList">
-        <el-checkbox v-for="item in options" :label="item" :key="item">{{item}}</el-checkbox>
+      <el-checkbox-group v-model="checkList">
+        <el-checkbox v-for="(item,index) in model.data.options" :label="item.value" :key="index" @chang="hi"></el-checkbox>
       </el-checkbox-group>
     </div>
   </div>
@@ -30,6 +30,9 @@ export default {
     $Enter() {
       this.model.data.checked = !this.model.data.checked;
       return false;
+    },
+    hi(){
+      console.log(this.data.model.options)
     }
   },
   computed: {
