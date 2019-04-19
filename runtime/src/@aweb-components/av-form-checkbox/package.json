@@ -14,6 +14,8 @@
     "version": 510000,
     "accept": "foundationRowCtn divCtn",
     "name": "多选框",
+    "style":{
+    },
     "option": [
       {
         "name": "label",
@@ -22,15 +24,39 @@
         "type": "string_input"
       },
       {
-        "name": "checkList",
-        "desp": "选中值",
-        "defaultValue":"",
-        "type": "string_input"
+        "name": "titleMode",
+        "desp": "标题排列方式",
+        "defaultValue":"row",
+        "type": "string_select",
+        "valueArray": [
+          "row",
+          "col"
+        ],
+        "despArray": [
+          "横排",
+          "竖排"
+        ]
       },
       {
         "name": "options",
-        "desp": "选择项",
-        "type": "array"
+        "desp": "配置项",
+        "defaultValue": "",
+        "type": "array",
+        "appendNumber": 1,
+        "attrInEachElement": [
+          {
+            "name": "value",
+            "desp": "文本",
+            "defaultValue": "备选项",
+            "type": "string_input"
+          },
+          {
+            "name": "disabled",
+            "desp": "是否禁用",
+            "defaultValue": false,
+            "type": "boolean"
+          }
+        ]
       }
     ]
   },

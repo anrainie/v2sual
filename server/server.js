@@ -7,19 +7,18 @@
  *  */
 
 // Remote Server Path
-//const SERVER_PATH = 'http://localhost:8081/QinM/'
+// const SERVER_PATH = 'http://localhost:8081/QinM/'
 
 // Local Server Path
-//const LOCAL_PATH = '../WebContent'
-//const WELCOME_PAGE_PATH = '/module/index/index/index.html'
-const PORT = '3000'
+// const LOCAL_PATH = '../WebContent'
+// const WELCOME_PAGE_PATH = '/module/index/index/index.html'
+const PORT = '3000';
 
 // Fake Data
-//const FAKE_DATA = require('./fakeData')
-const path = require('path')
+// const FAKE_DATA = require('./fakeData')
+const path = require('path');
 const RUNTIME_PATH = path.resolve(__dirname, '../runtime/');
 const PAGE_PATH = 'src/views';
-
 
 // Dependences
 const Koa = require('koa')
@@ -40,20 +39,20 @@ const external=require('./external/external');
 //   ctx.response.body = await fs.readFile(LOCAL_PATH + WELCOME_PAGE_PATH, 'utf8')
 // });
 
-
-//页面操作内容
+// 页面操作内容
 const Page = require('./page/Page');
 const page = new Page(path.resolve(path.join(RUNTIME_PATH, PAGE_PATH)));
 router.get('/v1/page/list', page.list());
 router.get('/v1/page/content', page.content());
 
-//方法
-router.get('/v1/page/script',page.script());
+// 方法
+router.get('/v1/page/script', page.script());
 
-//测试表格数据
-const Table=require('./DictTest/table');
-router.get('/v1/dictTest/table',Table.getOption);
+// 测试表格数据
+const Table = require('./DictTest/table');
+router.get('/v1/dictTest/table', Table.getOption);
 
+router.get('/v1/dictTest/tableOp', Table.tableOpera);
 // router.get('/v1/page',async(ctx,next)=>{
 //   debugger;
 //   console.log('ht');
@@ -61,31 +60,28 @@ router.get('/v1/dictTest/table',Table.getOption);
 // });
 
 
-
-//mysql操作
+// mysql操作
 
 const DB = require('./db/mysql-conn');
 const db = new DB({
-  database: "aweb_social"
+  database: 'aweb_social'
 });
 
 router.get('/db/select',
   db.select()
 );
 
-
-
 // app
-const app = new Koa()
-app.use(cors())
+const app = new Koa();
+app.use(cors());
 
 // parser
-app.use(koaBody())
+app.use(koaBody());
 
 // setting routers
-//app.use(main)
+// app.use(main)
 
-app.use(router.routes())
+app.use(router.routes());
 
 app.use(external.routes());
 
@@ -96,6 +92,4 @@ app.on("error",(err,ctx)=>{//捕获异常记录错误日志
 
 app.listen(PORT, function () {
   console.log(`项目启动：http://localhost:${PORT}}`);
-})
-
-
+});

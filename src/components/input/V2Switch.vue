@@ -1,5 +1,5 @@
 <template>
-  <div :style="model.style" :class="wrapClass">
+  <div :style="model.style" :class="wrapClass" class="v2Switch">
     <div>{{model.data.title}}</div>
     <el-switch ref="switch"
       v-model="model.data.value"
@@ -13,7 +13,7 @@ import { widget, composite } from "../../assets/js/v2-view.js";
 import { edit } from "../../assets/js/edit.js";
 import inputField from "../../assets/js/inputField";
 export default {
-  name: "v2Input",
+  name: "v2Switch",
   mixins: [widget, inputField, edit],
   methods: {
     $Enter() {

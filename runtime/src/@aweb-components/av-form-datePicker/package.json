@@ -16,6 +16,32 @@
     "name": "日期选择器",
     "option": [
       {
+        "name": "label",
+        "desp": "标题",
+        "defaultValue":"标题",
+        "type": "string_input"
+      },
+      {
+        "name": "labelWitdh",
+        "desp": "标题宽度",
+        "defaultValue": "80px",
+        "type": "string_input"
+      },
+      {
+        "name": "titleMode",
+        "desp": "标题排列方式",
+        "defaultValue":"row",
+        "type": "string_select",
+        "valueArray": [
+          "row",
+          "col"
+        ],
+        "despArray": [
+          "横排",
+          "竖排"
+        ]
+      },
+      {
         "name": "value",
         "desp": "选择值",
         "defaultValue":"",
@@ -28,6 +54,28 @@
         "type": "string_input"
       },
       {
+        "name": "type",
+        "desp": "日期单位",
+        "defaultValue":"date",
+        "type": "string_select",
+        "valueArray": [
+          "date",
+          "week",
+          "month",
+          "year",
+          "dates",
+          "daterange"
+        ],
+        "despArray": [
+          "日",
+          "周",
+          "月",
+          "年",
+          "多个日期",
+          "日期范围"
+        ]
+      },
+      {
         "name": "disabled",
         "desp": "是否禁用",
         "defaultValue":false,
@@ -36,13 +84,30 @@
       {
         "name": "clearable",
         "desp": "是否显示清除按钮",
+        "defaultValue":true,
         "type": "boolean"
+      },
+      {
+        "name": "format",
+        "desp": "显示格式",
+        "defaultValue":"yyyy 年 MM 月 dd 日",
+        "type": "string_input"
       },
       {
         "name": "align",
         "desp": "对齐方式",
         "defaultValue":"left",
-        "type": "string_input"
+        "type": "string_select",
+        "valueArray": [
+          "left",
+          "center",
+          "right"
+        ],
+        "despArray": [
+          "左",
+          "中",
+          "右"
+        ]
       }
     ]
   },

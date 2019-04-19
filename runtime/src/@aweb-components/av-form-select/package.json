@@ -22,6 +22,26 @@
         "type": "string_input"
       },
       {
+        "name": "labelWitdh",
+        "desp": "标题宽度",
+        "defaultValue":"80px",
+        "type": "string_input"
+      },
+      {
+        "name": "titleMode",
+        "desp": "标题排列方式",
+        "defaultValue":"row",
+        "type": "string_select",
+        "valueArray": [
+          "row",
+          "col"
+        ],
+        "despArray": [
+          "横排",
+          "竖排"
+        ]
+      },
+      {
         "name": "label",
         "desp": "标题",
         "defaultValue":"标题",
@@ -35,9 +55,36 @@
       },
       {
         "name": "options",
-        "desp": "选择项",
-
-        "type": "array"
+        "desp": "配置项",
+        "defaultValue": "",
+        "type": "array",
+        "appendNumber": 1,
+        "attrInEachElement": [
+          {
+            "name": "value",
+            "desp": "值",
+            "defaultValue": "1",
+            "type": "string_input"
+          },
+          {
+            "name": "label",
+            "desp": "文本",
+            "defaultValue": "选项1",
+            "type": "string_input"
+          }
+        ]
+      },
+      {
+        "name": "clearable",
+        "desp": "是否可清空",
+        "defaultValue":false,
+        "type": "boolean"
+      },
+      {
+        "name": "filterable",
+        "desp": "是否可搜索",
+        "defaultValue":false,
+        "type": "boolean"
       }
     ]
   },

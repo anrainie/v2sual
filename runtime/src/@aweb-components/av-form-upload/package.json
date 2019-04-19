@@ -16,6 +16,26 @@
     "name": "上传",
     "option": [
       {
+        "name": "label",
+        "desp": "标题",
+        "defaultValue":"标题",
+        "type": "string_input"
+      },
+      {
+        "name": "titleMode",
+        "desp": "标题排列方式",
+        "defaultValue":"row",
+        "type": "string_select",
+        "valueArray": [
+          "row",
+          "col"
+        ],
+        "despArray": [
+          "横排",
+          "竖排"
+        ]
+      },
+      {
         "name": "action",
         "type": "string_input",
         "defaultValue":"",
@@ -39,7 +59,10 @@
         "defaultValue":"提示文本",
         "desp": "提示文本"
       }
-    ]
+    ],
+    "style":{
+      
+    }
   },
   "keywords": [],
   "license": "ISC",
