@@ -62,9 +62,7 @@ const db = new DB({
   database: "aweb_social"
 });
 
-router.get('/db/select',
-  db.select()
-);
+router.get('/v1/db/select',db.select());
 
 
 // app
