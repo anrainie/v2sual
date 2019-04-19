@@ -13,6 +13,7 @@
     "version": 510000,
     "desp": "数据展示面板",
     "name": "数据展示面板",
+   
     "option": [
       {
         "componentType": "",
@@ -650,67 +651,8 @@
         "hasEvent": true,
         "name": "columns",
         "attrInEachElement": [
-          {
-            "componentType": "",
-            "hidden": false,
-            "defaultValue": "",
-            "require": {
-              "columnType": [],
-              "isReturned": "",
-              "sortType": [],
-              "fixedColWidth": "",
-              "bSortable": "",
-              "bVisible": ""
-            },
-            "valueArray": "",
-            "type": "edm",
-            "appendNumber": 1,
-            "titleKey": "",
-            "desp": "表头",
-            "formatter": "",
-            "isAdvanced": false,
-            "idUniqueSpace": "",
-            "dataList": "",
-            "hasEvent": false,
-            "name": "sTitle",
-            "attrInEachElement": [],
-            "details": "",
-            "placeholder": "",
-            "edmKey": "",
-            "despArray": "",
-            "direction": "response",
-            "validate": {
-              "errorMessage": "",
-              "type": ""
-            }
-          },
-          {
-            "componentType": "",
-            "hidden": true,
-            "defaultValue": "%%_NAME%%%%_INDEX%%",
-            "display": true,
-            "valueArray": "",
-            "type": "string_input",
-            "appendNumber": 1,
-            "titleKey": "",
-            "desp": "名称",
-            "formatter": "selector",
-            "isAdvanced": false,
-            "idUniqueSpace": "",
-            "dataList": "",
-            "hasEvent": false,
-            "name": "name",
-            "attrInEachElement": [],
-            "details": "",
-            "placeholder": "",
-            "edmKey": "",
-            "despArray": "",
-            "direction": "",
-            "validate": {
-              "errorMessage": "",
-              "type": ""
-            }
-          },
+         
+   
           {
             "componentType": "",
             "hidden": true,

@@ -30,7 +30,8 @@ const koaBody = require('koa-body')
 const httpRequest = require('request')
 const fs = require('fs.promised')
 const cors = require('koa-cors')
-const Util=require('./Util');
+
+const external=require('./external/external');
 
 //const main = serve(LOCAL_PATH)
 
@@ -59,29 +60,7 @@ router.get('/v1/dictTest/table',Table.getOption);
 //   ctx.response.body='Hello';
 // });
 
-router.get('/v1/aweb/getWidget',async (ctx)=>{
-  let target='./runtime/src/@aweb-components';
-  let dir=await Util.readdir(target);
-  let  menu=[];
-  for(let i=-1,item;item=dir[++i];){
-    let subDir=`${target}/${item}`;
-    let packageJsonPath=`${subDir}/package.json`;
-    let statItem=await Util.stat(subDir)
-      if(statItem.isDirectory() && fs.existsSync(packageJsonPath)){
-          let packageJsonData=await Util.readFile(packageJsonPath);
-          packageJsonData=JSON.parse(packageJsonData);
-          let docs=packageJsonData.docs;
-          if(docs){
-            
-            docs.target=path.resolve(subDir,packageJsonData.main);
-            menu=[...menu,docs]
-          }
-      }
-  }
 
-  ctx.response.body=menu;
-
-})
 
 //mysql操作
 
@@ -107,6 +86,8 @@ app.use(koaBody())
 //app.use(main)
 
 app.use(router.routes())
+
+app.use(external.routes());
 
 //异常处理
 app.on("error",(err,ctx)=>{//捕获异常记录错误日志
