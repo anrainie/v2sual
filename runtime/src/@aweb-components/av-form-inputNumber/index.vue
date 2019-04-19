@@ -8,12 +8,11 @@
     <el-input-number
       v-model="model.data.value"
       @change="handleChange"
-      :min="model.data.min"
-      :max="model.data.max"
-      :step="model.data.step"
+      :min="parseFloat(model.data.min)"
+      :max="parseFloat(model.data.max)"
+      :step="parseFloat(model.data.step)"
       :precision="parseInt(model.data.precision)||0"
       :disabled="model.data.disabled"
-      label="描述文字"
     >
     </el-input-number>
        </div>

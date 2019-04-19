@@ -22,6 +22,20 @@
         "type": "string_input"
       },
       {
+        "name": "titleMode",
+        "desp": "标题排列方式",
+        "defaultValue":"row",
+        "type": "string_select",
+        "valueArray": [
+          "row",
+          "col"
+        ],
+        "despArray": [
+          "横排",
+          "竖排"
+        ]
+      },
+      {
         "name": "value",
         "desp": "选择值",
         "defaultValue":"",

@@ -68,7 +68,64 @@
       {
         "name": "options",
         "desp": "配置项",
-        "type": "array"
+        "type": "array",
+        "appendNumber": 1,
+        "attrInEachElement": [
+          {
+            "name": "value",
+            "desp": "选项值",
+            "defaultValue": "1",
+            "type": "string_input"
+          },
+          {
+            "name": "label",
+            "desp": "选项文本",
+            "defaultValue": "选项1",
+            "type": "string_input"
+          },
+          {
+            "name": "children",
+            "desp": "子选项",
+            "defaultValue": "",
+            "type": "array",
+            "appendNumber": 1,
+            "attrInEachElement": [
+              {
+                "name": "value",
+                "desp": "选项值",
+                "defaultValue": "2",
+                "type": "string_input"
+              },
+              {
+                "name": "label",
+                "desp": "选项文本",
+                "defaultValue": "选项2",
+                "type": "string_input"
+              },
+              {
+                "name": "children",
+                "desp": "子选项",
+                "defaultValue": "",
+                "type": "array",
+                "appendNumber": 1,
+                "attrInEachElement": [
+                  {
+                    "name": "value",
+                    "desp": "选项值",
+                    "defaultValue": "3",
+                    "type": "string_input"
+                  },
+                  {
+                    "name": "label",
+                    "desp": "选项文本",
+                    "defaultValue": "选项3",
+                    "type": "string_input"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "style":{

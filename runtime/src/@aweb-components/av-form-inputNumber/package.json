@@ -36,6 +36,12 @@
         ]
       },
       {
+        "name": "value",
+        "desp": "值",
+        "defaultValue":1,
+        "type": "string_input"
+      },
+      {
         "name": "disabled",
         "desp": "是否禁用",
         "defaultValue":false,
@@ -44,7 +50,7 @@
       {
         "name": "min",
         "desp": "最小值",
-        "defaultValue":0,
+        "defaultValue":1,
         "type": "string_input"
       },
       {
@@ -62,7 +68,7 @@
       {
         "name": "precision",
         "desp": "精度",
-        "defaultValue":0,
+        "defaultValue":1,
         "type": "string_input"
       }
     ]
