@@ -63,7 +63,15 @@
         "name": "trigger",
         "desp": "触发子菜单方式",
         "defaultValue":"click",
-        "type": "string_input"
+        "type": "string_select",
+        "valueArray": [
+          "click",
+          "hover"
+        ],
+        "despArray": [
+          "click",
+          "hover"
+        ]
       },
       {
         "name": "options",

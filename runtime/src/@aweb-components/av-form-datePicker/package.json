@@ -54,6 +54,28 @@
         "type": "string_input"
       },
       {
+        "name": "type",
+        "desp": "日期单位",
+        "defaultValue":"date",
+        "type": "string_select",
+        "valueArray": [
+          "date",
+          "week",
+          "month",
+          "year",
+          "dates",
+          "daterange"
+        ],
+        "despArray": [
+          "日",
+          "周",
+          "月",
+          "年",
+          "多个日期",
+          "日期范围"
+        ]
+      },
+      {
         "name": "disabled",
         "desp": "是否禁用",
         "defaultValue":false,
@@ -62,7 +84,14 @@
       {
         "name": "clearable",
         "desp": "是否显示清除按钮",
+        "defaultValue":true,
         "type": "boolean"
+      },
+      {
+        "name": "format",
+        "desp": "显示格式",
+        "defaultValue":"yyyy 年 MM 月 dd 日",
+        "type": "string_input"
       },
       {
         "name": "align",

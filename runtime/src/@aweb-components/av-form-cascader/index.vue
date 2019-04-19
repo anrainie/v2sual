@@ -9,8 +9,8 @@
       :style="model.data.titleMode ==='row'?{}:{marginLeft:model.data.labelWitdh}"
     >
       <el-cascader
+        :expand-trigger="model.data.trigger"
         :options="model.data.options"
-        :trigger="model.data.trigger"
         v-model="model.data.value"
         @change="handleChange"
         :placeholder="model.data.placeholder"

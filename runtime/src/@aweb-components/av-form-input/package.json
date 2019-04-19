@@ -52,6 +52,12 @@
         "desp": "值",
         "defaultValue": "",
         "type": "string_input"
+      },
+      {
+        "name": "clearable",
+        "desp": "是否可清空",
+        "defaultValue": false,
+        "type": "boolean"
       }
     ],
     "style": {}

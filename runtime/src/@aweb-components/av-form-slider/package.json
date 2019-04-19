@@ -18,7 +18,7 @@
       {
         "name": "label",
         "desp": "标题",
-        "defaultValue":"标题",
+        "defaultValue": "标题",
         "type": "string_input"
       },
       {
@@ -30,7 +30,7 @@
       {
         "name": "titleMode",
         "desp": "标题排列方式",
-        "defaultValue":"row",
+        "defaultValue": "row",
         "type": "string_select",
         "valueArray": [
           "row",
@@ -74,13 +74,17 @@
       {
         "name": "input",
         "type": "boolean",
-        "defaultValue": true,
+        "defaultValue": false,
         "desp": "是否输入框"
+      },
+      {
+        "name": "range",
+        "type": "boolean",
+        "defaultValue": false,
+        "desp": "是否使用范围选择"
       }
     ],
-    "style":{
-      
-    }
+    "style": {}
   },
   "keywords": [],
   "license": "ISC",

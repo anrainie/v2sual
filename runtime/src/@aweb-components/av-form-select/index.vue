@@ -8,7 +8,12 @@
       class="form-select-ctn"
       :style="model.data.titleMode ==='row'?{}:{marginLeft:model.data.labelWitdh}"
     >
-      <el-select v-model="model.data.value" :placeholder="model.data.placeholder">
+      <el-select
+        v-model="model.data.value"
+        :clearable="model.data.clearable"
+        :placeholder="model.data.placeholder"
+        :filterable="model.data.filterable"
+      >
         <el-option
           v-for="item in model.data.options"
           :key="item.value"

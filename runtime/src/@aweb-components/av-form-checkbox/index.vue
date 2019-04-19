@@ -9,7 +9,12 @@
       :style="model.data.titleMode ==='row'?{}:{marginLeft:model.data.labelWitdh}"
     >
       <el-checkbox-group v-model="checkList">
-        <el-checkbox v-for="(item,index) in model.data.options" :label="item.value" :key="index" @chang="hi"></el-checkbox>
+        <el-checkbox 
+        v-for="(item,index) in model.data.options" 
+        :label="item.value" 
+        :key="index" 
+        :disabled="item.disabled"
+        ></el-checkbox>
       </el-checkbox-group>
     </div>
   </div>
@@ -31,9 +36,6 @@ export default {
       this.model.data.checked = !this.model.data.checked;
       return false;
     },
-    hi(){
-      console.log(this.data.model.options)
-    }
   },
   computed: {
     flexStyle() {

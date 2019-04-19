@@ -73,6 +73,18 @@
             "type": "string_input"
           }
         ]
+      },
+      {
+        "name": "clearable",
+        "desp": "是否可清空",
+        "defaultValue":false,
+        "type": "boolean"
+      },
+      {
+        "name": "filterable",
+        "desp": "是否可搜索",
+        "defaultValue":false,
+        "type": "boolean"
       }
     ]
   },
