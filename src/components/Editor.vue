@@ -121,7 +121,7 @@ export default {
           : true;
       });
 
-    this.apis("/v1/aweb/getWidget")
+    this.apis("/v1/external/widget")
     .then(data=>{
        data=data.map((item)=>{
          let ret={

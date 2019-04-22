@@ -46,8 +46,8 @@
 </template>
 
 <script>
-import { debug } from "util";
-import { setTimeout } from "timers";
+// import { debug } from "util";
+// import { setTimeout } from "timers";
 import UglifyJS from "uglify-es-web";
 import * as monaco from "monaco-editor";
 
@@ -87,40 +87,53 @@ export default {
     },
 
     script(script) {
-      let methods = [];
+      let tree = [];
       try {
         const ast = UglifyJS.parse(script);
         const exportAst = ast.body.filter(b => !!b.exported_value);
-        const methodsAst = exportAst[0].exported_value.properties.filter(
-          p => p.key === "methods" && p.start.value === "methods"
-        );
-        const methodList = methodsAst[0].value.properties;
 
-        const pageMap = {};
+        tree = ["watch", "computed", "methods"].map(key => {
+          let methods = [];
 
-        methods = methodList
-          //if m.key
-          .filter(m => m.key && m.key)
-          //if m.value
-          .filter(m => m && m.value && m.value.body && m.value.body.length)
-          // return key,body
-          .map(m => {
-            const params = this.getMethodComments(m.key);
+          try {
+            const methodsAst = exportAst[0].exported_value.properties.filter(
+              p => p.key === key && p.start.value === key
+            );
+            const methodList = methodsAst[0].value.properties;
 
-            const name = typeof m.key === "object" ? m.key.name : m.key;
+            methods = methodList
+              //if m.key
+              .filter(m => m.key && m.key)
+              //if m.value
+              .filter(m => m && m.value && m.value.body && m.value.body.length)
+              // return key,body
+              .map(m => {
+                const params = this.getMethodComments(m.key);
 
-            return {
-              id: name,
-              label: params.desp || name,
-              params: params,
-              code: m.print_to_string({ beautify: true })
-            };
-          });
+                const name = typeof m.key === "object" ? m.key.name : m.key;
+
+                return {
+                  id: name,
+                  label: params.desp || name,
+                  params: params,
+                  code: m.print_to_string({ beautify: true })
+                };
+              });
+          } catch (e) {
+            console.log(e);
+          }
+
+          return {
+            id: key,
+            label: key,
+            children: methods
+          };
+        });
       } catch (e) {
         console.log(e);
       }
-      
-      this.methodAside = methods;
+
+      this.methodAside = tree;
     },
     method_id(id) {
       const method = this.method;
@@ -259,6 +272,7 @@ ${method.code}
         this.pageAside = [map[divider]];
       }
     });
+    console.log("h11");
 
     //初始化代码编辑器
     this.editor = monaco.editor.create($("#container", this.$el)[0], {

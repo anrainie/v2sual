@@ -17,8 +17,7 @@ export default {
         created() {
             
          this.$options.components[this.model.href] =()=>import(`../../runtime/src/@aweb-components/${this.model.href}/index.vue`);
-            
-           
+         
         },
         computed:{
            

@@ -5,10 +5,8 @@
       v-for="(item, index) in array"
       :key="item.name"
       :item="item"
-      :edmCollectionObj="edmCollectionObj"
-      :objSelector="objSelector"
       :obj="obj"
-      :arraySelector="getArraySelector(index)"
+      
     ></base-component>
   </div>
 </template>
@@ -51,14 +49,7 @@ export default {
       default: false
     },
 
-    arraySelector: {
-      type: String,
-      default: "baseConfigArray"
-    },
-    objSelector: {
-      type: String,
-      default: "baseConfigObj"
-    },
+
 
     edmCollectionObj: Object,
 
@@ -66,13 +57,7 @@ export default {
   },
 
   methods: {
-    getArraySelector: function(index) {
-      if (this.fromTabPanes) {
-        return this.arraySelector;
-      } else {
-        return this.arraySelector + "---" + index;
-      }
-    }
+   
   }
 };
 </script>
