@@ -73,7 +73,7 @@
         <!-- <v2Container v-model="rootId"></v2Container> -->
         <iframe
           ref="editorFrame"
-          :src="`http://localhost:8080/static/vueEditor.html?id=${this._uid}`"
+          :src="`http://localhost:8080/v1/static/vueEditor.html?id=${this._uid}`"
           style="width:100%;height:100%;"
         ></iframe>
       </div>
