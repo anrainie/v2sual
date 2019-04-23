@@ -34,8 +34,11 @@ class Platform {
   init() {
     this.socket.on('getNaviItems', req => {
       this.sendSuccessResult(req, runtimeFiles());
-      console.log(req,
-        runtimeFiles())
+    })
+
+    this.socket.on('getFile',req=>{
+      console.log(req);
+      this.sendSuccessResult(req,{});
     })
   }
 

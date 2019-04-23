@@ -68,8 +68,4 @@ export default {
 };
 </script>
 <style>
-.V2Empty {
-  width: 100%;
-  height: 100%;
-}
 </style>

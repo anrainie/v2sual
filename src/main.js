@@ -13,6 +13,8 @@ import './assets/style/aui-editor.css';
 import 'jquery-ui/ui/widgets/draggable'
 import 'jquery-ui/ui/widgets/droppable'
 import 'jquery-ui/ui/widgets/resizable'
+window.Vue=Vue;
+window.App=App;
 
 
 Vue.prototype.apis = (url,params,type)=>{
@@ -62,6 +64,8 @@ Vue.component('v2Checkbox', v2Checkbox);
 Vue.component('v2Table', v2Table);
 Vue.component('V2AuiComponent',V2AuiComponent);
 Vue.component('echart-cpt', echartComponent);
+
+console.log('main.js loaded',Vue.component('v2Container'))
 
 Vue.directive('span', {})
 Vue.directive('tooltip', {})

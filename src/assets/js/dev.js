@@ -168,8 +168,8 @@ export const data = {
             data: "",
             label: "账户名称",
             placeholder: "请输入账户名称",
-            focusEven: this.mouseEven,
-            keyupEven: this.btnEven
+            // focusEven: this.mouseEven,
+            // keyupEven: this.btnEven
           },
           {
             id: "switch1",
