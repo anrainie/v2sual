@@ -1,6 +1,6 @@
 
 module.exports = {
-    baseUrl: './',
+    publicPath: './',
     // devServer: {
                 
     //     proxy: {
@@ -25,12 +25,13 @@ module.exports = {
     filenameHashing: false,
     css: {
        
-        modules: false,
+       // modules: false,
 
        
-        extract: false,
+        //extract: false,
 
       
         sourceMap: false
     }
+    
 }

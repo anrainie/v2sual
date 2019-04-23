@@ -1,0 +1,34 @@
+{
+    "shim": {
+        "awebApi": {
+            "deps": [
+                "jquery"
+            ]
+        }
+    },
+    "paths": {
+        "awebIndex": "module/index/index",
+        "awebFresher": "AWEB/js/aweb.fresher",
+        "awebEnvironment": "AWEB/js/aweb.environment",
+        "awebApi": "AWEB/js/aweb.api",
+        "awebDependence": "AWEB/js/aweb.dependence"
+    },
+    "css": [
+        "AWEB/css/am.css",
+        "AWEB/css/aweb.css",
+        "AWEB/css/aweb.page.css",
+        "AWEB/css/aweb.popover.css",
+        "AWEB/css/font-awesome.min.css",
+        "AWEB/css/icon-font.css",
+        "AWEB/css/soy.css"
+    ],
+    "cssMap": {
+        "AWEB/css/am.css": "AWEB/css/am.css",
+        "AWEB/css/aweb.css": "AWEB/css/aweb.css",
+        "AWEB/css/aweb.page.css": "AWEB/css/aweb.page.css",
+        "AWEB/css/aweb.popover.css": "AWEB/css/aweb.popover.css",
+        "AWEB/css/font-awesome.min.css": "AWEB/css/font-awesome.min.css",
+        "AWEB/css/icon-font.css": "AWEB/css/icon-font.css",
+        "AWEB/css/soy.css": "AWEB/css/soy.css"
+    }
+}

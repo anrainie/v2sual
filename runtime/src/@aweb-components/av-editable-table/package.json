@@ -8,8 +8,8 @@
   "docs": {
     "belongTo": "aui",
     "icon": "iconfont icon-password",
-    "type": "",
-    "href": "av-editable-table",
+    "type": "component",
+    "href": "av-component-eTable",
     "author": "zhanghaixian@agree.com.cn",
     "version": 610000,
     "accept": "divCtn",
@@ -157,7 +157,7 @@
   "keywords": [],
   "license": "ISC",
   "main": "index.vue",
-  "name": "@aweb-components/av-editable-table",
+  "name": "@aweb-components/av-component-eTable",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

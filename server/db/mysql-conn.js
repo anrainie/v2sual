@@ -12,15 +12,15 @@ class DB {
       database: 'aweb_social',
       ...this.config,
     });
-    try{
+    new Promise(resv => {
       this.client.connect(); //连接
       console.log('数据库初始化成功', this.config.database);
-    }catch(e){
+    }).catch(e => {
       console.log(e);
-    }
+    })
   }
   select() {
-    let self=this;
+    let self = this;
     return async function (ctx) {
 
       try {
@@ -29,22 +29,27 @@ class DB {
         } = ctx.request.query;
         console.log('select ', tableName);
 
-        const ret = await self.client.query(
-          'SELECT * FROM ' + tableName,
-          function selectCb(err, results, fields) {
-            if (err) {
-              throw err;
-            }
-            if (results) {
-              for (var i = 0; i < results.length; i++) {
-                console.log("%d\t%s\t%s", results[i].id, results[i].name, results[i].age);
+
+        await new Promise((res, rej) => {
+          self.client.query(
+            'SELECT * FROM ' + tableName,
+            function selectCb(err, results, fields) {
+              if (err) {
+                Result.error(ctx, err);
+                rej();
+                return;
               }
+              if (results) {
+                for (var i = 0; i < results.length; i++) {
+                  console.log(results[i]);
+                }
+              }
+              Result.success(ctx, results)
+              res();
             }
-          }
+          );
+        })
 
-        );
-
-        Result.success(ctx, ret)
       } catch (e) {
         Result.error(ctx, e);
       }

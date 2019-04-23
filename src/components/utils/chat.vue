@@ -63,7 +63,7 @@ export default {
     sendIntent() {
       this.result=this.input;
       this.input=null;
-      this.apis("./db/select", {
+      this.apis("/v1/db/select", {
         params: {
           tableName: this.result
         }

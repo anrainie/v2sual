@@ -1,0 +1,48 @@
+<html>
+
+<head>
+  <!--css-->
+  <script>
+    function getUrlParam(name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+      var r = window.location.search.substr(1).match(reg); //匹配目标参数
+      if (r != null) return unescape(r[2]);
+      return null; //返回参数值
+    }
+    console.log('iframe html', window.parent, window.location, window.parent__dataPool);
+    window.onload = () => {
+      window.$ = window.parent.$;
+      window.jQuery = window.parent.jQuery;
+      window.Vue = window.parent.Vue;
+      window.Vuex = window.parent.Vuex;
+
+      $(window)
+        .off(".keymap")
+        .on("keydown.keymap", e => {
+          return this.activeTool && this.activeTool.dispatchKeyEvent ?
+            this.activeTool.dispatchKeyEvent(this, e) :
+            true;
+        });
+
+      var t = Array.prototype.map.call($(window.parent.document).find('style'), function (e) {
+        return $('<style>' + $(e).html() + '</style>');
+      });
+      $('head', window.document).append(t);
+      var id = getUrlParam("id");
+      var parent = window.parent.__dataPool[id];
+      var container = new Vue({
+        store: parent.$store,
+        mixins: [window.parent.canvas],
+        template: `<v2Container v-model="rootId"></v2Container>`,
+      });
+      container.$mount(document.body.children[0]);
+    }
+
+  </script>
+</head>
+
+<body>
+  <div></div>
+</body>
+
+</html>

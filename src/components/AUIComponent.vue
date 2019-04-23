@@ -1,6 +1,6 @@
 <template>
     <div :class="wrapClass">
-        <components :is="model.href" :model="model"></components>
+        <components :is="model.href" :model="model" :wid="wid"></components>
     </div>
     
 </template>
