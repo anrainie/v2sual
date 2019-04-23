@@ -25,13 +25,7 @@
       window.Vue = window.parent.Vue;
       window.Vuex = window.parent.Vuex;
 
-      $(window)
-        .off(".keymap")
-        .on("keydown.keymap", e => {
-          return this.activeTool && this.activeTool.dispatchKeyEvent ?
-            this.activeTool.dispatchKeyEvent(this, e) :
-            true;
-        });
+
 
       var t = Array.prototype.map.call($(window.parent.document).find('style'), function (e) {
         return $('<style>' + $(e).html() + '</style>');
@@ -43,6 +37,33 @@
         store: parent.$store,
         mixins: [window.parent.canvas],
         template: `<v2Container v-model="rootId"></v2Container>`,
+        mounted() {
+          //TODO 以下内容是为了支撑iframe的键盘鼠标事件，考虑移动到一个特定js文件
+          //绑定键盘
+          $(window)
+            .off(".keymap")
+            .on("keydown.keymap", e => {
+              return this.activeTool && this.activeTool.dispatchKeyEvent ?
+                this.activeTool.dispatchKeyEvent(this, e) :
+                true;
+            });
+
+          //鼠标进入时通知activeTool
+          $(window).off("mouseenter").on("mousenter", e => {
+            console.log('mouseenter')
+            return this.activeTool && this.activeTool.mouseenter ?
+              this.activeTool.mouseenter(this, e) :
+              true;
+          })
+
+          $(window).off("mousein").on("mousein", e => {
+            console.log('mousein')
+            return this.activeTool && this.activeTool.mouseenter ?
+              this.activeTool.mouseenter(this, e) :
+              true;
+          })
+
+        }
       });
       container.$mount(document.body.children[0]);
     }

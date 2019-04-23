@@ -47,6 +47,7 @@ import v2Combo from "./components/input/Combo.vue";
 import v2Checkbox from "./components/input/Checkbox.vue";
 import ComplexWidget from "./components/ComplexWidget.vue";
 import echartComponent from "./components/chart/echartComponent.vue";
+import "jquery-ui-droppable-iframe"
 
 import V2AuiComponent from "./components/AUIComponent.vue";
 
@@ -72,14 +73,12 @@ Vue.directive('span', {
 Vue.directive('tooltip', {})
 Vue.directive('draggable', function (el, binding, vnode) {
   $(el).draggable({
-    // helper: function (e, ui) {
-    //   // return `<div style="position:fixed;border:1px solid black;padding:10px;">${binding.value.name}</div>`
-    //   return vnode.context.createDragHelper(binding);
-    // },
+    helper: function (e, ui) {
+      // return `<div style="position:fixed;border:1px solid black;padding:10px;">${binding.value.name}</div>`
+      return vnode.context.createDragHelper(binding);
+    },
     start(e, ui) {
-      vnode.context.$store.state.activeTool.dragHelper=vnode.context.createDragHelper(binding);
       vnode.context.startCreateElement(binding.value);
-      vnode.context.$store.state.activeTool.startDrag();
     },
     stop() {
       vnode.context.finishCreateElement();

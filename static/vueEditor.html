@@ -17,11 +17,10 @@
       window.Vuex = window.parent.Vuex;
 
 
-
-      var t = Array.prototype.map.call($(window.parent.document).find('style'), function (e) {
-        return $('<style>' + $(e).html() + '</style>');
-      });
-      $('head', window.document).append(t);
+    //   var t = Array.prototype.map.call($(window.parent.document).find('style'), function (e) {
+    //     return $('<style>' + $(e).html() + '</style>');
+    //   });
+    //   $('head', window.document).append(t);
       var id = getUrlParam("id");
       var parent = window.parent.__dataPool[id];
       var container = new Vue({
@@ -38,21 +37,6 @@
                 this.activeTool.dispatchKeyEvent(this, e) :
                 true;
             });
-
-          //鼠标进入时通知activeTool
-          $(window).off("mouseenter").on("mousenter", e => {
-            console.log('mouseenter')
-            return this.activeTool && this.activeTool.mouseenter ?
-              this.activeTool.mouseenter(this, e) :
-              true;
-          })
-
-          $(window).off("mousein").on("mousein", e => {
-            console.log('mousein')
-            return this.activeTool && this.activeTool.mouseenter ?
-              this.activeTool.mouseenter(this, e) :
-              true;
-          })
 
         }
       });

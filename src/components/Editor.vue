@@ -90,7 +90,7 @@
       <chat style="left:70%;top:50%;"></chat>
       <div
         v-show="showDragHelper"
-        style="position:fixed;width:10rem;height:5rem;box-shadow:0 0 5px black;opacity:.8;pointer-events:none;"
+        style="position:fixed;width:10rem;height:5rem;box-shadow:0 0 5px black;opacity:.8; "
         ref="dragHelper"
       >
         <component
@@ -173,6 +173,8 @@ export default {
       ];
     });
     $(".paletteItem").draggable({
+      iframeFix: true,
+      iframeScroll: true,
       helper: function(event, ui) {
         console.log("help", event, ui);
         return $(
