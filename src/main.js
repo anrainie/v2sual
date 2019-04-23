@@ -30,15 +30,16 @@ import echartComponent from './components/chart/echartComponent.vue';
 
 import V2AuiComponent from './components/AUIComponent.vue';
 
-
 import bundle from './base/index';
+window.Vue = Vue;
+window.App = App;
 
 Vue.prototype.apis = (url, params, type) => {
   return new Promise((resolve) => {
     axios[type || 'get'](url, params).then(r => {
       if (r.status) {
         resolve(r.data);
-      } else{
+      } else {
         throw r.data;
       }
     });

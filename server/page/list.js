@@ -3,13 +3,11 @@ const path = require('path');
 const fs = require('fs');
 const listPath = path.resolve(__dirname, '../../runtime/src/views');
 
-console.log(listPath);
-
 function listDir (dirPath = listPath) {
   let treeNode = [];
   try {
     let files = fs.readdirSync(dirPath);
-    console.log(files);
+    // console.log(files);
     for (let i = 0; i < files.length; i++) {
       let filePath = dirPath + path.sep + files[i];
       let stat = fs.lstatSync(dirPath + path.sep + files[i]);
@@ -44,6 +42,6 @@ function listFile (pagePath) {
 
 const dirList = listDir();
 
-console.log(JSON.stringify(dirList));
+// console.log(JSON.stringify(dirList));
 
 module.exports = listDir;

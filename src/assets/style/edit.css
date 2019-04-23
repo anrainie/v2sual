@@ -27,6 +27,8 @@
 
 .V2Empty{
   position:relative;
+  width: 100%;
+  height: 100%;
 }
 .V2Empty::before {
   content: "";

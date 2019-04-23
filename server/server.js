@@ -18,11 +18,13 @@ const PORT = '3000';
 // const FAKE_DATA = require('./fakeData')
 const path = require('path');
 const RUNTIME_PATH = path.resolve(__dirname, '../runtime/');
+const STATIC_PATH = path.resolve(__dirname, '../static/');
 const PAGE_PATH = 'src/views';
 
 // Dependences
 const Koa = require('koa')
 const serve = require('koa-static')
+const staticRouter = require('./Static/static-router')
 const proxyPass = require('@junyiz/koa-proxy-pass')
 const router = require('koa-router')()
 const koaBody = require('koa-body')
@@ -30,7 +32,7 @@ const httpRequest = require('request')
 const fs = require('fs.promised')
 const cors = require('koa-cors')
 
-const external=require('./external/external');
+const external = require('./external/external');
 
 //const main = serve(LOCAL_PATH)
 
@@ -57,19 +59,31 @@ router.get('/v1/dictTest/tableOp', Table.tableOpera);
 //   debugger;
 //   console.log('ht');
 //   ctx.response.body='Hello';
-// });
+// });r
+
+// 预览
+
+
+const Preview = require('./preview/Preview');
+const preview = new Preview(RUNTIME_PATH, STATIC_PATH);
+router.get('/v1/preview/init', preview.init());
+//router.get('/v1/preview/static/*', RouterStatic(path.resolve(path.join(RUNTIME_PATH, './dist/'))))
 
 
 // mysql操作
-
 const DB = require('./db/mysql-conn');
 const db = new DB({
   database: 'aweb_social'
 });
 
-router.get('/db/select',
-  db.select()
-);
+router.get('/v1/db/select', db.select());
+
+//连接WEBIDE中台
+const Platform = require('./ide/platform');
+const platform = new Platform({
+  ip: 'localhost',
+  port: 8080,
+});
 
 // app
 const app = new Koa();
@@ -85,9 +99,17 @@ app.use(router.routes());
 
 app.use(external.routes());
 
+//预览静态路由
+app.use(staticRouter([
+  {
+    router: '/v1/static/',     //dir:static resource directory
+    dir: path.resolve(path.join(RUNTIME_PATH,'./dist'))   //router:router
+  }
+]))
+
 //异常处理
-app.on("error",(err,ctx)=>{//捕获异常记录错误日志
-  console.log(new Date(),":",err);
+app.on("error", (err, ctx) => {//捕获异常记录错误日志
+  console.log(new Date(), ":", err);
 });
 
 app.listen(PORT, function () {

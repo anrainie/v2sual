@@ -30,7 +30,7 @@ export const widget = {
    * index：children数组index
    * pid: parent ID
    */
-  props: ["wid", "index", "pid"],
+  props: ["wid", "index", "pid", "readonly"],
   /**
    * 注入store
    */

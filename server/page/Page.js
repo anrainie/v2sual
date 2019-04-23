@@ -133,7 +133,6 @@ class Page {
                       list.push(a.value.body[0].body);
                     }
                   });
-                  console.log(args);
                   pages.push(args);
                 } catch (e) {
 

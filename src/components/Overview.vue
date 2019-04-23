@@ -137,8 +137,10 @@ export default {
     },
     method_id(id) {
       const method = this.method;
-      this.editor.setValue(
-        `
+
+      if (method.code) {
+        this.editor.setValue(
+          `
 /**
 ${
   method.params
@@ -150,8 +152,11 @@ ${
 */
 ${method.code}
 `
-      );
-      //    console.log(method.code);
+        );
+        //    console.log(method.code);
+      } else {
+        this.editor.setValue("");
+      }
     }
   },
 

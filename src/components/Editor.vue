@@ -13,8 +13,8 @@
         style="width:100%;height:100%;position:absolute;left:0;"
       ></iframe>
     </div>
-    <div v-else class="editorPart" onkeydown="console.log">
-      <div class="palatte">
+    <div v-else class="v2-editorPart" onkeydown="console.log">
+      <div class="v2-palatte">
         <div class="aui-menu-tilte">菜单</div>
         <div data-role="leftAside" id="auiMenuFrame" class="aui-aside-left aui-tab-pane active">
           <div id="asideTabCtn" class="aui-tabbable">
@@ -69,19 +69,23 @@
         </div>
       </div>
 
-      <div class="editor">
-        <v2Container v-model="rootId"></v2Container>
+      <div class="v2-editor">
+        <!-- <v2Container v-model="rootId"></v2Container> -->
+        <iframe
+          ref="editorFrame"
+          :src="`http://localhost:8080/v1/static/vueEditor.html?id=${this._uid}`"
+          style="width:100%;height:100%;"
+        ></iframe>
       </div>
 
-      <div class="control">
+      <div class="v2-control">
         <el-tabs type="border-card">
   <el-tab-pane label="参数配置"><Base/></el-tab-pane>
   <el-tab-pane label="样式配置"><Css/></el-tab-pane>
-
 </el-tabs>
   
-      </div>
-      <div class="toolbar">
+
+      <div class="v2-toolbar">
         <el-button size="mini" @click="deleteSelection">删除</el-button>
         <el-button size="mini" @click="selectParent">向上选择</el-button>
         <el-button size="mini" @click="selectFirstChild">向下选择</el-button>
@@ -93,7 +97,7 @@
         style="position:fixed;width:10rem;height:5rem;box-shadow:0 0 5px black;"
         ref="dragHelper"
       >
-        <component :is="dragHelper.component" :wid="'helper'"></component>
+        <component :is="dragHelper.component" :wid="'helper'" :readonly="true"></component>
       </div>
     </div>
   </div>
@@ -110,23 +114,25 @@ import util from "../base/utils/bridge.js";
 import Css from "./control/Css.vue";
 
 import chat from "./utils/chat.vue";
+import Vuex from "Vue";
 
 export default {
   components: { chat ,Css},
   mixins: [canvas],
   computed: {},
   // data(){}
+  beforeCreate(){
+    window.__dataPool = window.__dataPool || {};
+    window.__dataPool[this._uid]=this;
+    window.$=$;
+    window.jQuery=jQuery;
+    window.Vuex=Vuex;
+    window.canvas=canvas;
+  },
   mounted() {
-    this.$store.commit("setActiveTool", selectionTool);
     const self = this;
-    $(window)
-      .off(".keymap")
-      .on("keydown.keymap", e => {
-        return this.activeTool && this.activeTool.dispatchKeyEvent
-          ? this.activeTool.dispatchKeyEvent(this, e)
-          : true;
-      });
 
+    this.$store.commit("setActiveTool", selectionTool);
     this.apis("/v1/external/widget")
     .then(data=>{
        data=data.map((item)=>{
@@ -146,6 +152,7 @@ export default {
         
           return ret;
        })
+
        data.forEach(item => {
           switch(item.type){
             
@@ -179,6 +186,19 @@ export default {
     //     console.log(event, ui);
     //   }
     // });
+
+    $(".paletteItem").draggable({
+      helper: function(event, ui) {
+        console.log("help", event, ui);
+        return $(
+          `<div style='position:fixed;' class='ui-widget-header'>${event}</div>`
+        );
+      },
+      start(event, ui) {
+        ui.test = 123;
+        console.log(event, ui);
+      }
+    });
 
     //模拟异步读取数据
     setTimeout(() => {
@@ -215,9 +235,6 @@ export default {
         // self.$refs.previewFrame.reload();
       });
     },
-    initDraggable(e, item) {
-      // console.log(e, item);
-    },
     /**
      *创建元素，传入一个createTool，并且传入element
      */
@@ -232,32 +249,35 @@ export default {
       this.$store.commit("setActiveTool", tool);
       tool.setElement(item.element);
     },
+    /**
+     * 提供给main.js中定义的指令使用
+     */
+    finishCreateElement() {
+      this.showDragHelper = false;
+    },
     createDragHelper(item) {
       console.log(this.$refs.dragHelper);
       return this.$refs.dragHelper;
     },
-    finishCreateElement() {
-      this.showDragHelper = false;
-    },
-    /*设置聚焦节点*/
-    mouseEven(e) {
-      this.$store.commit("setInputActive", $(e.target).attr("index"));
-    },
-    /*按键事件*/
-    btnEven(e) {
-      let keyCode = e.keyCode,
-        focusIndex = parseInt(this.$store.state.inputEl.focusIndex),
-        inputArr = this.$store.state.inputEl.inputArr,
-        maxLen = inputArr.length;
+    // /*设置聚焦节点*/
+    // mouseEven(e) {
+    //   this.$store.commit("setInputActive", $(e.target).attr("index"));
+    // },
+    // /*按键事件*/
+    // btnEven(e) {
+    //   let keyCode = e.keyCode,
+    //     focusIndex = parseInt(this.$store.state.inputEl.focusIndex),
+    //     inputArr = this.$store.state.inputEl.inputArr,
+    //     maxLen = inputArr.length;
 
-      if (keyCode === 40 && focusIndex < 9) {
-        $(inputArr[focusIndex + 3]).focus();
-      } else if (keyCode === 38 && focusIndex > 2) {
-        $(inputArr[focusIndex - 3]).focus();
-      } else if (keyCode === 13 && focusIndex < maxLen - 1) {
-        $(inputArr[focusIndex + 1]).focus();
-      }
-    }
+    //   if (keyCode === 40 && focusIndex < 9) {
+    //     $(inputArr[focusIndex + 3]).focus();
+    //   } else if (keyCode === 38 && focusIndex > 2) {
+    //     $(inputArr[focusIndex - 3]).focus();
+    //   } else if (keyCode === 13 && focusIndex < maxLen - 1) {
+    //     $(inputArr[focusIndex + 1]).focus();
+    //   }
+    // }
   },
   data() {
     return {
@@ -655,6 +675,9 @@ export default {
 };
 </script>
 <style>
+iframe{
+  border:0;
+}
 .testInput {
   width: 100px;
   height: 40px;
@@ -662,14 +685,14 @@ export default {
   background: yellow;
   margin: 10px;
 }
-.editorPart {
+.v2-editorPart {
   margin: 0;
   display: flex;
   width: 100vw;
   height: 100vh;
 }
 
-.palatte {
+.v2-palatte {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -680,7 +703,7 @@ export default {
   box-shadow: 0 0 2px #000;
 }
 
-.editor {
+.v2-editor {
   flex: 6;
   height: 100%;
   overflow-y: auto;
@@ -689,7 +712,7 @@ export default {
   border: 1px solid #ccc;
   margin: 0 0.8em;
 }
-.control {
+.v2-control {
   flex: 2;
   height: 100%;
   overflow-y: auto;
@@ -699,7 +722,7 @@ export default {
   background: #eeeef2;
   border: 1px solid #ccc;
 }
-.toolbar {
+.v2-toolbar {
   position: fixed;
   padding: 2px;
   border: 1px solid darkcyan;
@@ -708,18 +731,18 @@ export default {
   opacity: 0.2;
 }
 
-.toolbar:hover {
+.v2-toolbar:hover {
   opacity: 1;
 }
 /* 打印样式 */
 @media print {
-  .palatte {
+  .v2-palatte {
     display: none;
   }
   .selected {
     border: none;
   }
-  .editor {
+  .v2-editor {
     margin: 0;
     padding: 0 5px;
     box-sizing: border-box;

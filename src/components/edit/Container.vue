@@ -5,7 +5,7 @@
     <template v-for="(lyt,index) of model.layout">
       <el-col
         class="V2ContainerBlock"
-        :span="layout(index)"
+        :span="parseInt(layout(index))"
         :key="index"
         style="height:100%;"
         v-if="model.direction=='col'"
