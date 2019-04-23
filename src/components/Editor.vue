@@ -80,9 +80,10 @@
 
       <div class="v2-control">
         <el-tabs type="border-card">
-  <el-tab-pane label="参数配置"><Base/></el-tab-pane>
-  <el-tab-pane label="样式配置"><Css/></el-tab-pane>
-</el-tabs>
+    <el-tab-pane label="参数配置"><Base/></el-tab-pane>
+    <el-tab-pane label="样式配置"><Css/></el-tab-pane>
+  </el-tabs>
+  </div>
   
 
       <div class="v2-toolbar">
