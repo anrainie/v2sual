@@ -27,7 +27,6 @@ router.get('/widget',async (ctx)=>{
   
   });
 
-
   router.get('/dict',async(ctx)=>{
         let target=`${entryPath}/src/datadict`;
         let dir=await Util.readdir(target);
