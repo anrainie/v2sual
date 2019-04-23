@@ -7,7 +7,6 @@
         class="aui-config-ctn"
         :arraySelector="arraySelector"
         :objSelector="objSelector"
-
         :array="arr"
         :obj="obj"
       ></base-config>

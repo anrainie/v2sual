@@ -71,7 +71,7 @@ const EDM_TYP_MAP={
 };
 
 export default {
-  name: "av-editable-table",
+  name: "av-component-eTable",
   props: {
     model: Object
   },
@@ -364,8 +364,7 @@ export default {
         },
         dataArrToMap(dataArr){
                 var colName = this.colName, colType = this.colType,j, i, item, dataMap, result = [];
-
-              
+             
                     dataMap = {};
                     for (i = -1; item = colName[++i];) {
                         if (dataArr[i] === false) {

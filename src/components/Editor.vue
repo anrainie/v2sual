@@ -79,8 +79,13 @@
       </div>
 
       <div class="v2-control">
-        <Base/>
-      </div>
+        <el-tabs type="border-card">
+    <el-tab-pane label="参数配置"><Base/></el-tab-pane>
+    <el-tab-pane label="样式配置"><Css/></el-tab-pane>
+  </el-tabs>
+  </div>
+  
+
       <div class="v2-toolbar">
         <el-button size="mini" @click="deleteSelection">删除</el-button>
         <el-button size="mini" @click="selectParent">向上选择</el-button>
@@ -112,12 +117,13 @@ import { debug } from "util";
 import { constants } from "fs";
 import { data } from "../assets/js/dev.js";
 import util from "../base/utils/bridge.js";
+import Css from "./control/Css.vue";
 
 import chat from "./utils/chat.vue";
 import Vuex from "Vue";
 
 export default {
-  components: { chat },
+  components: { chat ,Css},
   mixins: [canvas],
   computed: {},
   // data(){}
@@ -133,45 +139,60 @@ export default {
     const self = this;
 
     this.$store.commit("setActiveTool", selectionTool);
-    this.apis("/v1/external/widget").then(data => {
-      data = data.map(item => {
-        let ret = {
-          type: item.type,
-          icon: item.icon,
-          name: item.name,
-          element: {
-            data: util.baseConfigInitInstance({}, item.option || []) || {},
-            ...item
+    this.apis("/v1/external/widget")
+    .then(data=>{
+       data=data.map((item)=>{
+         let ret={
+              type:item.type,
+              icon: item.icon,
+              name: item.name,
+              element:{
+             //  style:util.cssConfigInitInstance({},item.css||{})||{},
+                data:util.baseConfigInitInstance({},item.option||[])||{},
+                ...item
+              }
+
+         }
+         
+          ret.element.component="V2AuiComponent"
+        
+          return ret;
+       })
+
+       data.forEach(item => {
+          switch(item.type){
+            
+            case 'layout':
+             self.palatteConfig[0].children.push(item);
+             break;
+            case 'form':
+            self.palatteConfig[1].children.push(item);
+              break;
+            case 'component':
+            self.palatteConfig[2].children.push(item);
+               break;
+            case 'echart':
+            self.palatteConfig[3].children.push(item);
+              break;
           }
-        };
-        if ((item.type = "aui")) {
-          ret.element.component = "V2AuiComponent";
-        }
-        return ret;
-      });
+       });
+       
+       
+      //  this.palatteConfig[1].children=[... this.palatteConfig[1].children,...data];
+    })
+    // $(".paletteItem").draggable({
+    //   helper: function(event, ui) {
+    //     console.log("help", event, ui);
+    //     return $(
+    //       `<div style='position:fixed;' class='ui-widget-header'>${event}</div>`
+    //     );
+    //   },
+    //   start(event, ui) {
+    //     ui.test = 123;
+    //     console.log(event, ui);
+    //   }
+    // });
 
-      // this.apis("/v1/aweb/getWidget").then(data => {
-      //   data = data.map(item => {
-      //     let ret = {
-      //       type: item.type,
-      //       icon: item.icon,
-      //       name: item.name,
-      //       element: {
-      //         data: util.baseConfigInitInstance({}, item.option || []) || {},
-      //         ...item
-      //       }
-      //     };
-      //     if ((item.type = "aui")) {
-      //       ret.element.component = "V2AuiComponent";
-      //     }
-      //     return ret;
-      //   });
-
-      this.palatteConfig[1].children = [
-        ...this.palatteConfig[1].children,
-        ...data
-      ];
-    });
     $(".paletteItem").draggable({
       iframeFix: true,
       iframeScroll: true,
@@ -277,55 +298,62 @@ export default {
       showPreview: false,
       palatteConfig: [
         {
-          type: "ctn",
+          type: "layout",
           name: "页面容器",
           icon: "fa fa-align-center",
           angleUp: "",
           collapse: "block",
           children: [
-            {
-              type: "v2Container",
-              icon: "fa fa-wrench",
-              angleUp: "",
-              collapse: "block",
-              name: "纵向布局",
-              element: {
-                component: "v2Container",
-                style: {
-                  width: "100%",
-                  height: "100%"
-                },
-                direction: "col",
-                layout: [50, 50],
-                children: []
-              },
-              factory() {
-                return {};
-              }
-            },
-            {
-              type: "v2Container",
-              icon: "fa fa-wrench",
-              angleUp: "",
-              collapse: "block",
-              name: "横向布局",
-              element: {
-                component: "v2Container",
-                style: {
-                  width: "100%",
-                  height: "100%"
-                },
-                direction: "row",
-                layout: [50, 50],
-                children: []
-              },
-              factory() {
-                return {};
-              }
-            }
+            // {
+            //   type: "v2Container",
+            //   icon: "fa fa-wrench",
+            //   angleUp: "",
+            //   collapse: "block",
+            //   name: "纵向布局",
+            //   element: {
+            //     component: "v2Container",
+            //     style: {
+            //       width: "100%",
+            //       height: "100%"
+            //     },
+            //     direction: "col",
+            //     layout: [50, 50],
+            //     children: []
+            //   },
+            //   factory() {
+            //     return {};
+            //   }
+            // },
+            // {
+            //   type: "v2Container",
+            //   icon: "fa fa-wrench",
+            //   angleUp: "",
+            //   collapse: "block",
+            //   name: "横向布局",
+            //   element: {
+            //     component: "v2Container",
+            //     style: {
+            //       width: "100%",
+            //       height: "100%"
+            //     },
+            //     direction: "row",
+            //     layout: [50, 50],
+            //     children: []
+            //   },
+            //   factory() {
+            //     return {};
+            //   }
+            // }
           ]
         },
-
+        {
+          type: "form",
+          name: "表单组件",
+          icon: "fa fa-align-center",
+          angleUp: "",
+          collapse: "block",
+          children:[]
+        },
         {
           type: "component",
           name: "功能组件",
@@ -333,320 +361,320 @@ export default {
           angleUp: "",
           collapse: "block",
           children: [
-            {
-              type: "v2Input",
-              name: "文本框",
-              icon: "fa fa-wrench",
-              angleUp: "",
-              collapse: "block",
-              element: {
-                component: "v2Input",
-                style: {
-                  width: "100%",
-                  height: "100%"
-                },
-                data: "文本框"
-              },
-              factory() {
-                return {};
-              }
-            },
-            {
-              name: "下拉框",
-              element: {
-                component: "v2Combo",
-                style: {
-                  width: "100%",
-                  height: "100%"
-                },
-                data: {
-                  name: "名称",
-                  value: 0,
-                  options: [
-                    { value: 0, label: "选项一" },
-                    { value: 1, label: "选项二" },
-                    { value: 2, label: "选项三" }
-                  ],
-                  placeholder: "请选择"
-                }
-              }
-            },
-            {
-              type: "v2Switch",
-              name: "开关",
-              icon: "fa fa-wrench",
-              angleUp: "",
-              collapse: "block",
-              element: {
-                component: "v2Switch",
-                children: [],
-                data: {
-                  title: "开关",
-                  value: true,
-                  activeText: "开",
-                  inactiveText: "关"
-                },
-                option: [
-                  {
-                    componentType: "",
-                    hidden: false,
-                    defaultValue: "switch1",
-                    valueArray: "",
-                    type: "string_input",
-                    appendNumber: 1,
-                    titleKey: "",
-                    desp: "标题",
-                    formatter: "",
-                    isAdvanced: false,
-                    idUniqueSpace: "",
-                    dataList: "",
-                    hasEvent: false,
-                    name: "title",
-                    details: "",
-                    placeholder: "",
-                    edmKey: "",
-                    despArray: "",
-                    direction: "",
-                    validate: {
-                      errorMessage: "",
-                      type: ""
-                    }
-                  },
-                  {
-                    componentType: "",
-                    hidden: false,
-                    defaultValue: true,
-                    valueArray: "",
-                    type: "boolean",
-                    appendNumber: 1,
-                    titleKey: "",
-                    desp: "开关的值",
-                    formatter: "",
-                    isAdvanced: false,
-                    idUniqueSpace: "",
-                    dataList: "",
-                    hasEvent: false,
-                    name: "value",
-                    details: "",
-                    placeholder: "",
-                    edmKey: "",
-                    despArray: "",
-                    direction: "",
-                    validate: {
-                      errorMessage: "",
-                      type: ""
-                    }
-                  },
-                  {
-                    componentType: "",
-                    hidden: false,
-                    defaultValue: "switch1",
-                    valueArray: "",
-                    type: "string_input",
-                    appendNumber: 1,
-                    titleKey: "",
-                    desp: "激活的文本",
-                    formatter: "",
-                    isAdvanced: false,
-                    idUniqueSpace: "",
-                    dataList: "",
-                    hasEvent: false,
-                    name: "activeText",
-                    details: "",
-                    placeholder: "",
-                    edmKey: "",
-                    despArray: "",
-                    direction: "",
-                    validate: {
-                      errorMessage: "",
-                      type: ""
-                    }
-                  },
-                  {
-                    componentType: "",
-                    hidden: false,
-                    defaultValue: "switch1",
-                    valueArray: "",
-                    type: "string_input",
-                    appendNumber: 1,
-                    titleKey: "",
-                    desp: "未激活的文本",
-                    formatter: "",
-                    isAdvanced: false,
-                    idUniqueSpace: "",
-                    dataList: "",
-                    hasEvent: false,
-                    name: "inactiveText",
-                    details: "",
-                    placeholder: "",
-                    edmKey: "",
-                    despArray: "",
-                    direction: "",
-                    validate: {
-                      errorMessage: "",
-                      type: ""
-                    }
-                  }
-                ]
-              },
+            // {
+            //   type: "v2Input",
+            //   name: "文本框",
+            //   icon: "fa fa-wrench",
+            //   angleUp: "",
+            //   collapse: "block",
+            //   element: {
+            //     component: "v2Input",
+            //     style: {
+            //       width: "100%",
+            //       height: "100%"
+            //     },
+            //     data: "文本框"
+            //   },
+            //   factory() {
+            //     return {};
+            //   }
+            // },
+            // {
+            //   name: "下拉框",
+            //   element: {
+            //     component: "v2Combo",
+            //     style: {
+            //       width: "100%",
+            //       height: "100%"
+            //     },
+            //     data: {
+            //       name: "名称",
+            //       value: 0,
+            //       options: [
+            //         { value: 0, label: "选项一" },
+            //         { value: 1, label: "选项二" },
+            //         { value: 2, label: "选项三" }
+            //       ],
+            //       placeholder: "请选择"
+            //     }
+            //   }
+            // },
+            // {
+            //   type: "v2Switch",
+            //   name: "开关",
+            //   icon: "fa fa-wrench",
+            //   angleUp: "",
+            //   collapse: "block",
+            //   element: {
+            //     component: "v2Switch",
+            //     children: [],
+            //     data: {
+            //       title: "开关",
+            //       value: true,
+            //       activeText: "开",
+            //       inactiveText: "关"
+            //     },
+            //     option: [
+            //       {
+            //         componentType: "",
+            //         hidden: false,
+            //         defaultValue: "switch1",
+            //         valueArray: "",
+            //         type: "string_input",
+            //         appendNumber: 1,
+            //         titleKey: "",
+            //         desp: "标题",
+            //         formatter: "",
+            //         isAdvanced: false,
+            //         idUniqueSpace: "",
+            //         dataList: "",
+            //         hasEvent: false,
+            //         name: "title",
+            //         details: "",
+            //         placeholder: "",
+            //         edmKey: "",
+            //         despArray: "",
+            //         direction: "",
+            //         validate: {
+            //           errorMessage: "",
+            //           type: ""
+            //         }
+            //       },
+            //       {
+            //         componentType: "",
+            //         hidden: false,
+            //         defaultValue: true,
+            //         valueArray: "",
+            //         type: "boolean",
+            //         appendNumber: 1,
+            //         titleKey: "",
+            //         desp: "开关的值",
+            //         formatter: "",
+            //         isAdvanced: false,
+            //         idUniqueSpace: "",
+            //         dataList: "",
+            //         hasEvent: false,
+            //         name: "value",
+            //         details: "",
+            //         placeholder: "",
+            //         edmKey: "",
+            //         despArray: "",
+            //         direction: "",
+            //         validate: {
+            //           errorMessage: "",
+            //           type: ""
+            //         }
+            //       },
+            //       {
+            //         componentType: "",
+            //         hidden: false,
+            //         defaultValue: "switch1",
+            //         valueArray: "",
+            //         type: "string_input",
+            //         appendNumber: 1,
+            //         titleKey: "",
+            //         desp: "激活的文本",
+            //         formatter: "",
+            //         isAdvanced: false,
+            //         idUniqueSpace: "",
+            //         dataList: "",
+            //         hasEvent: false,
+            //         name: "activeText",
+            //         details: "",
+            //         placeholder: "",
+            //         edmKey: "",
+            //         despArray: "",
+            //         direction: "",
+            //         validate: {
+            //           errorMessage: "",
+            //           type: ""
+            //         }
+            //       },
+            //       {
+            //         componentType: "",
+            //         hidden: false,
+            //         defaultValue: "switch1",
+            //         valueArray: "",
+            //         type: "string_input",
+            //         appendNumber: 1,
+            //         titleKey: "",
+            //         desp: "未激活的文本",
+            //         formatter: "",
+            //         isAdvanced: false,
+            //         idUniqueSpace: "",
+            //         dataList: "",
+            //         hasEvent: false,
+            //         name: "inactiveText",
+            //         details: "",
+            //         placeholder: "",
+            //         edmKey: "",
+            //         despArray: "",
+            //         direction: "",
+            //         validate: {
+            //           errorMessage: "",
+            //           type: ""
+            //         }
+            //       }
+            //     ]
+            //   },
 
-              factory() {
-                return {};
-              }
-            },
-            {
-              name: "多选框",
-              element: {
-                component: "v2Checkbox",
-                style: {
-                  width: "100%",
-                  height: "100%"
-                },
-                data: {
-                  checked: false,
-                  text: "文字"
-                }
-              }
-            },
-            {
-              name: "表格",
-              element: {
-                component: "v2Table",
-                style: {
-                  width: "100%",
-                  height: "100%",
-                  overflow: "auto"
-                },
-                data: {
-                  value: [
-                    {
-                      cname: "中文名1",
-                      ename: "英文名1",
-                      desc: "描述1"
-                    },
-                    {
-                      cname: "中文名2",
-                      ename: "英文名2",
-                      desc: "描述2"
-                    },
-                    {
-                      cname: "中文名3",
-                      ename: "英文名3",
-                      desc: "描述3"
-                    }
-                  ],
-                  columns: [
-                    {
-                      name: "英文名",
-                      key: "ename",
-                      width: 100
-                    },
-                    {
-                      name: "中文名",
-                      key: "cname",
-                      width: 100
-                    },
-                    {
-                      name: "描述",
-                      key: "desc",
-                      width: 200
-                    }
-                  ]
-                }
-              }
-            }
+            //   factory() {
+            //     return {};
+            //   }
+            // },
+            // {
+            //   name: "多选框",
+            //   element: {
+            //     component: "v2Checkbox",
+            //     style: {
+            //       width: "100%",
+            //       height: "100%"
+            //     },
+            //     data: {
+            //       checked: false,
+            //       text: "文字"
+            //     }
+            //   }
+            // },
+            // {
+            //   name: "表格",
+            //   element: {
+            //     component: "v2Table",
+            //     style: {
+            //       width: "100%",
+            //       height: "100%",
+            //       overflow: "auto"
+            //     },
+            //     data: {
+            //       value: [
+            //         {
+            //           cname: "中文名1",
+            //           ename: "英文名1",
+            //           desc: "描述1"
+            //         },
+            //         {
+            //           cname: "中文名2",
+            //           ename: "英文名2",
+            //           desc: "描述2"
+            //         },
+            //         {
+            //           cname: "中文名3",
+            //           ename: "英文名3",
+            //           desc: "描述3"
+            //         }
+            //       ],
+            //       columns: [
+            //         {
+            //           name: "英文名",
+            //           key: "ename",
+            //           width: 100
+            //         },
+            //         {
+            //           name: "中文名",
+            //           key: "cname",
+            //           width: 100
+            //         },
+            //         {
+            //           name: "描述",
+            //           key: "desc",
+            //           width: 200
+            //         }
+            //       ]
+            //     }
+            //   }
+            // }
           ]
         },
         {
-          type: "component",
+          type: "echart",
           name: "图表",
           icon: "fa fa-align-center",
           angleUp: "",
           collapse: "block",
           children: [
-            {
-              type: "echart-category",
-              icon: "fa fa-wrench",
-              angleUp: "",
-              collapse: "block",
-              name: "折线图",
-              element: {
-                component: "echart-cpt",
-                style: {
-                  width: "100%",
-                  height: "100%"
-                },
-                data: {
-                  option: {
-                    xAxis: {
-                      type: "category",
-                      data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-                    },
-                    yAxis: {
-                      type: "value"
-                    },
-                    series: [
-                      {
-                        data: [820, 932, 901, 934, 1290, 1330, 1320],
-                        type: "line"
-                      }
-                    ]
-                  }
-                }
-              }
-            },
-            {
-              type: "echart-bar",
-              icon: "fa fa-wrench",
-              angleUp: "",
-              collapse: "block",
-              name: "柱状图",
-              element: {
-                component: "echart-cpt",
-                style: {
-                  width: "100%",
-                  height: "100%"
-                },
-                data: {
-                  option: {
-                    tooltip: {},
-                    legend: {
-                      data: ["级别", "工资", "工作年限"]
-                    },
-                    xAxis: {
-                      data: [
-                        "衬衫",
-                        "羊毛衫",
-                        "雪纺衫",
-                        "裤子",
-                        "高跟鞋",
-                        "袜子"
-                      ]
-                    },
-                    yAxis: {},
-                    series: [
-                      {
-                        name: "级别",
-                        type: "bar",
-                        data: [5, 20, 36, 10, 10, 20]
-                      },
+            // {
+            //   type: "echart-category",
+            //   icon: "fa fa-wrench",
+            //   angleUp: "",
+            //   collapse: "block",
+            //   name: "折线图",
+            //   element: {
+            //     component: "echart-cpt",
+            //     style: {
+            //       width: "100%",
+            //       height: "100%"
+            //     },
+            //     data: {
+            //       option: {
+            //         xAxis: {
+            //           type: "category",
+            //           data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+            //         },
+            //         yAxis: {
+            //           type: "value"
+            //         },
+            //         series: [
+            //           {
+            //             data: [820, 932, 901, 934, 1290, 1330, 1320],
+            //             type: "line"
+            //           }
+            //         ]
+            //       }
+            //     }
+            //   }
+            // },
+            // {
+            //   type: "echart-bar",
+            //   icon: "fa fa-wrench",
+            //   angleUp: "",
+            //   collapse: "block",
+            //   name: "柱状图",
+            //   element: {
+            //     component: "echart-cpt",
+            //     style: {
+            //       width: "100%",
+            //       height: "100%"
+            //     },
+            //     data: {
+            //       option: {
+            //         tooltip: {},
+            //         legend: {
+            //           data: ["级别", "工资", "工作年限"]
+            //         },
+            //         xAxis: {
+            //           data: [
+            //             "衬衫",
+            //             "羊毛衫",
+            //             "雪纺衫",
+            //             "裤子",
+            //             "高跟鞋",
+            //             "袜子"
+            //           ]
+            //         },
+            //         yAxis: {},
+            //         series: [
+            //           {
+            //             name: "级别",
+            //             type: "bar",
+            //             data: [5, 20, 36, 10, 10, 20]
+            //           },
 
-                      {
-                        name: "工资",
-                        type: "bar",
-                        data: [15, 10, 16, 13, 11, 22]
-                      },
+            //           {
+            //             name: "工资",
+            //             type: "bar",
+            //             data: [15, 10, 16, 13, 11, 22]
+            //           },
 
-                      {
-                        name: "工作年限",
-                        type: "bar",
-                        data: [15, 10, 16, 13, 11, 22]
-                      }
-                    ]
-                  }
-                }
-              }
-            }
+            //           {
+            //             name: "工作年限",
+            //             type: "bar",
+            //             data: [15, 10, 16, 13, 11, 22]
+            //           }
+            //         ]
+            //       }
+            //     }
+            //   }
+            // }
           ]
         }
       ]

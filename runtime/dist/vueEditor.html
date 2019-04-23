@@ -27,10 +27,10 @@
 
 
 
-      var t = Array.prototype.map.call($(window.parent.document).find('style'), function (e) {
-        return $('<style>' + $(e).html() + '</style>');
-      });
-      $('head', window.document).append(t);
+      // var t = Array.prototype.map.call($(window.parent.document).find('style'), function (e) {
+      //   return $('<style>' + $(e).html() + '</style>');
+      // });
+      // $('head', window.document).append(t);
       var id = getUrlParam("id");
       var parent = window.parent.__dataPool[id];
       var container = new Vue({
