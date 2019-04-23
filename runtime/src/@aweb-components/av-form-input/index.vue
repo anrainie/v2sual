@@ -8,6 +8,7 @@
     <el-input
       v-model="model.data.value"
       :placeholder="model.data.placeholder"
+      :clearable="model.data.clearable"
     ></el-input>
      </div>
   </div>

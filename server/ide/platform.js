@@ -17,28 +17,32 @@ class Platform {
 
     let url = `http://${ip}:${port}?server=true&id=${id}&type=${ideType}&httpPort=${selfPort}&ip=${selfIP}`;
     console.log(`尝试连接${url}`);
-    this.socket = io(url);
+    try {
+      this.socket = io(url);
 
-    this.socket.on('connect', r => {
-      console.log('连接成功', r);
-    });
-    this.socket.on('disconnect', r => {
-      console.log('断连', r);
-    });
-    this.socket.on('connect_error', r => {
-      console.log('连接失败', r);
-    })
+      this.socket.on('connect', r => {
+        console.log('连接成功', r);
+      });
+      this.socket.on('disconnect', r => {
+        console.log('断连', r);
+      });
+      this.socket.on('connect_error', r => {
+        console.log('连接失败', r);
+      })
 
-    this.init();
+      this.init();
+    } catch (e) {
+      console.log(e)
+    }
   }
   init() {
     this.socket.on('getNaviItems', req => {
       this.sendSuccessResult(req, runtimeFiles());
     })
 
-    this.socket.on('getFile',req=>{
+    this.socket.on('getFile', req => {
       console.log(req);
-      this.sendSuccessResult(req,{});
+      this.sendSuccessResult(req, {});
     })
   }
 

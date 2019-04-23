@@ -93,7 +93,7 @@
         style="position:fixed;width:10rem;height:5rem;box-shadow:0 0 5px black;"
         ref="dragHelper"
       >
-        <component :is="dragHelper.component" :wid="'helper'"></component>
+        <component :is="dragHelper.component" :wid="'helper'" :readonly="true"></component>
       </div>
     </div>
   </div>
@@ -128,41 +128,59 @@ export default {
     const self = this;
 
     this.$store.commit("setActiveTool", selectionTool);
+    this.apis("/v1/external/widget")
+    .then(data=>{
+       data=data.map((item)=>{
+         let ret={
+              type:item.type,
+              icon: item.icon,
+              name: item.name,
+              element:{
+                data:util.baseConfigInitInstance({},item.option||[])||{},
+                ...item
+              }
 
-    this.apis("/v1/aweb/getWidget").then(data => {
-      data = data.map(item => {
-        let ret = {
-          type: item.type,
-          icon: item.icon,
-          name: item.name,
-          element: {
-            data: util.baseConfigInitInstance({}, item.option || []) || {},
-            ...item
-          }
-        };
-        if ((item.type = "aui")) {
-          ret.element.component = "V2AuiComponent";
-        }
-        return ret;
-      });
+         }
+          if(item.type="aui"){
+              ret.element.component="V2AuiComponent"
+          } 
+          return ret;
+       })
+
+    // this.apis("/v1/aweb/getWidget").then(data => {
+    //   data = data.map(item => {
+    //     let ret = {
+    //       type: item.type,
+    //       icon: item.icon,
+    //       name: item.name,
+    //       element: {
+    //         data: util.baseConfigInitInstance({}, item.option || []) || {},
+    //         ...item
+    //       }
+    //     };
+    //     if ((item.type = "aui")) {
+    //       ret.element.component = "V2AuiComponent";
+    //     }
+    //     return ret;
+    //   });
 
       this.palatteConfig[1].children = [
         ...this.palatteConfig[1].children,
         ...data
       ];
     });
-    // $(".paletteItem").draggable({
-    //   helper: function(event, ui) {
-    //     console.log("help", event, ui);
-    //     return $(
-    //       `<div style='position:fixed;' class='ui-widget-header'>${event}</div>`
-    //     );
-    //   },
-    //   start(event, ui) {
-    //     ui.test = 123;
-    //     console.log(event, ui);
-    //   }
-    // });
+    $(".paletteItem").draggable({
+      helper: function(event, ui) {
+        console.log("help", event, ui);
+        return $(
+          `<div style='position:fixed;' class='ui-widget-header'>${event}</div>`
+        );
+      },
+      start(event, ui) {
+        ui.test = 123;
+        console.log(event, ui);
+      }
+    });
 
     //模拟异步读取数据
     setTimeout(() => {

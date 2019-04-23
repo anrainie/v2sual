@@ -13,7 +13,26 @@ let CONST = {
       }
     }
   };
+  
 export default{
+    edm_collection_default(){
+      return JSON.stringify({
+        __edm_collection:{
+        "PUBCODECNAME": "_desp_",
+        "COLSCALE": "0",
+        "name": "_name_",
+        "desp":"_desp_",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "fieldLength": "50"
+      }
+    }
+    )
+      
+  },
     getDefaultValue(instance, item) {
         var defaultValue = item.defaultValue;
         if (typeof instance[item.name] === "number") {
@@ -259,47 +278,36 @@ export default{
                   break;
   
                 case "edmCollection":
+                  //  let edm_collection_default=context.edm_collection_default();
+                   
+                   
                   if (item["attrInEachElement"]) {
                     instanceCache[name] = instanceCache[name] || [];
                     if (!instanceCache[name].length) {
                       // instanceCache[name].elements = [];
-                      instanceCache[name].push(
-                        context.baseConfigInitInstance(
-                          {
-                            active: true
-                          },
-                          item["attrInEachElement"],
-                          {
-                         
-                          },
-                          notSendEdm,
-                          noReplaceData
-                        )
-                      );
+                     let initData= context.baseConfigInitInstance({ active: true},item["attrInEachElement"],{},notSendEdm,noReplaceData)
 
+                      instanceCache[name].push($.extend(true,{},initData, {[ item.edmKey]:item.name+0}));
+                    
   
-                      if (item.append) {
-                        if (item.appendNumber) {
+                      if (item.append||item.appendNumber) {
+                        if (item.appendNumber && !item.append) {
                           for (i = 0; i < item.appendNumber; i++) {
                             item.append = item.append || [];
                             item.append.push({});
                           }
                         }
+                     
                         $.each(item.append, function(index, value) {
+                          let i=index+1;
                           value.active = true;
                           instanceCache[name].push(
                             $.extend(
                               true,
                               {},
-                              context.baseConfigInitInstance(
-                                {},
-                                item["attrInEachElement"],
-                                {
-                                },
-                                notSendEdm,
-                                noReplaceData
-                              ),
-                              value
+                              context.baseConfigInitInstance({},item["attrInEachElement"],{},notSendEdm,noReplaceData),
+                              value,
+                              {[ item.edmKey]:item.name+i}
                             )
                           );
                         });
@@ -308,28 +316,26 @@ export default{
                       if (!instanceCache[name].active) {
                         //第一个元素的active不存在，说明已做过normalize处理
                         instanceCache[name].unshift(
-                          context.baseConfigInitInstance(
-                            {
-                              active: true
-                            },
-                            item["attrInEachElement"],
-                            {
-                             
-                            },
-                            notSendEdm,
-                            noReplaceData
-                          )
+                          $.extend(true,{},
+                              context.baseConfigInitInstance(
+                                {
+                                  active: true
+                                },
+                                item["attrInEachElement"],
+                                {
+                                
+                                },
+                                notSendEdm,
+                                noReplaceData,
+                                
+                              ),
+                              {[ item.edmKey]:item.name+0}
+                                )
                         );
                       }
                       //对数组的每个元素进行init处理
-                      $.each(instanceCache[name], function(
-                        index,
-                        value
-                      ) {
-                        value.active =
-                          typeof value.active === "string"
-                            ? JSON.parse(value.active)
-                            : value.active;
+                      $.each(instanceCache[name], function(index, value) {
+                        value.active =typeof value.active === "string" ? JSON.parse(value.active): value.active;
                         if (value.active === undefined) {
                           value.active = true;
                         }
@@ -337,9 +343,7 @@ export default{
                           caches.push({
                             instance: value,
                             array: item["attrInEachElement"],
-                            extras: {
-                            
-                            }
+                            extras: {}
                           });
                         }
                       });
@@ -349,20 +353,21 @@ export default{
                    //instanceCache[name].elements = [];
                   }
   
-                  if (item.hasEvent && !noReplaceData) {
-                    //   if (extrasCache) {
-                    //     eventUtil.eventSelectorUpdate(
-                    //       extrasCache.widgetID,
-                    //       instanceCache[name].elements
-                    //     );
-                    //   } else {
-                    //     eventUtil.eventSelectorUpdate(
-                    //       AUI.currentWidgetID,
-                    //       instanceCache[name].elements
-                    //     );
-                    //   }
-                  }
-                 //instanceCache[name].edmKey = item["edmKey"];
+                  // if (item.hasEvent && !noReplaceData) {
+                  //   //   if (extrasCache) {
+                  //   //     eventUtil.eventSelectorUpdate(
+                  //   //       extrasCache.widgetID,
+                  //   //       instanceCache[name].elements
+                  //   //     );
+                  //   //   } else {
+                  //   //     eventUtil.eventSelectorUpdate(
+                  //   //       AUI.currentWidgetID,
+                  //   //       instanceCache[name].elements
+                  //   //     );
+                  //   //   }
+                  // }
+
+                  // instanceCache[name].edmKey = item["edmKey"];
   
                   //同步edm数据
                   // if (

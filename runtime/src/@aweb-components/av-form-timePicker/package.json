@@ -37,9 +37,17 @@
       },
       {
         "name": "type",
-        "type": "string_input",
         "defaultValue":"select",
-        "desp": "类型"
+        "desp": "类型",
+        "type": "string_select",
+        "valueArray": [
+          "select",
+          "picker"
+        ],
+        "despArray": [
+          "固定时间范围",
+          "任意时间点"
+        ]
       },
       {
         "name": "value",

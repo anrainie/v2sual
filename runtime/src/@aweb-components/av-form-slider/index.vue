@@ -1,9 +1,10 @@
 <template>
   <div :style="flexStyle"  class="av-form-slider">
-     <div v-if="model.data.titleMode==='row'">
-        <label class="av-form-cascader-label">{{model.data.label}}</label>
-    </div>
-        <label  v-if="model.data.titleMode==='col'" class="av-form-cascader-label">{{model.data.label}}</label>
+     <label
+        :class="model.data.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
+        :style="{width:model.data.labelWitdh}"
+      >{{model.data.label}}</label>
+      <div class="form-slider-ctn" :style="model.data.titleMode ==='row'?{}:{marginLeft:model.data.labelWitdh}">
     <el-slider
       v-model="model.data.value"
       :show-tooltip="model.data.tooltip"
@@ -13,8 +14,8 @@
       :show-input="model.data.input"
       change="change"
     >
-
     </el-slider>
+    </div>
   </div>
 </template>
 <script>
@@ -44,3 +45,22 @@
     },
   }
 </script>
+<style>
+.form-label-col {
+  float: left;
+}
+.av-form-label {
+  text-align: right;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 40px;
+  padding-right: 12px;
+  box-sizing: border-box;
+}
+.form-slider-ctn {
+  line-height: 40px;
+  position: relative;
+  font-size: 14px;
+}
+</style>
+

@@ -38,15 +38,25 @@
         ]
       },
       {
-        "name": "checkList",
-        "desp": "选中值",
-        "defaultValue":"",
-        "type": "string_input"
-      },
-      {
         "name": "options",
-        "desp": "选择项",
-        "type": "array"
+        "desp": "配置项",
+        "defaultValue": "",
+        "type": "array",
+        "appendNumber": 1,
+        "attrInEachElement": [
+          {
+            "name": "value",
+            "desp": "文本",
+            "defaultValue": "备选项",
+            "type": "string_input"
+          },
+          {
+            "name": "disabled",
+            "desp": "是否禁用",
+            "defaultValue": false,
+            "type": "boolean"
+          }
+        ]
       }
     ]
   },

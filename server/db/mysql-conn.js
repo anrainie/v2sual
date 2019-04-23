@@ -12,12 +12,12 @@ class DB {
       database: 'aweb_social',
       ...this.config,
     });
-    try{
+    new Promise(resv => {
       this.client.connect(); //连接
       console.log('数据库初始化成功', this.config.database);
-    }catch(e){
+    }).catch(e => {
       console.log(e);
-    }
+    })
   }
   select() {
     let self = this;
@@ -29,8 +29,8 @@ class DB {
         } = ctx.request.query;
         console.log('select ', tableName);
 
-        
-        await new Promise((res,rej)=>{
+
+        await new Promise((res, rej) => {
           self.client.query(
             'SELECT * FROM ' + tableName,
             function selectCb(err, results, fields) {

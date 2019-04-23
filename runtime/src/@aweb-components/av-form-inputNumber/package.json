@@ -25,6 +25,20 @@
         "name": "titleMode",
         "desp": "标题排列方式",
         "defaultValue":"row",
+        "type": "string_select",
+        "valueArray": [
+          "row",
+          "col"
+        ],
+        "despArray": [
+          "横排",
+          "竖排"
+        ]
+      },
+      {
+        "name": "value",
+        "desp": "值",
+        "defaultValue":1,
         "type": "string_input"
       },
       {
@@ -36,7 +50,7 @@
       {
         "name": "min",
         "desp": "最小值",
-        "defaultValue":0,
+        "defaultValue":1,
         "type": "string_input"
       },
       {
@@ -54,7 +68,7 @@
       {
         "name": "precision",
         "desp": "精度",
-        "defaultValue":0,
+        "defaultValue":1,
         "type": "string_input"
       }
     ]

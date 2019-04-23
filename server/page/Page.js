@@ -120,20 +120,45 @@ class Page {
           let pages = [];
 
           while (method = list.pop()) {
+
             try {
+              // 检查appopen
               if (method.expression && method.expression.start.value === 'app' && method.expression.end.value === 'open') {
                 let args = {};
                 try {
                   method.args[0].properties.forEach(a => {
                     args[a.start.value] = a.end.value;
+                    // 检查appopen函数里的参数
+                    if (a.value.body) {
+                      list.push(a.value.body[0].body);
+                    }
                   });
                   pages.push(args);
                 } catch (e) {
 
                 }
+                // 检查method下的函数参数
+              } else if (method.expression && method.args && method.args.length) {
+                list = list.concat(method.args);
+                // 检查method下的声明类型
+              } else if (method.definitions && method.definitions.length) {
+                list = list.concat(method.definitions.filter(i => i.value)
+                  .map(i => i.value));
+                // 检查数组
+              } else if (method.elements && method.elements.length) {
+                list = list.concat(method.elements);
+                // 检查对象
+              } else if (method.properties && method.properties.length) {
+                list = list.concat(method.properties.map(i => i.value));
+                // 赋值
+              } else if (method.operator && method.operator === "=") {
+                list.push(method.right);
               }
 
-              if (method.body) {
+
+              if (method.body && Array.isArray(method.body)) {
+                list = list.concat(method.body);
+              } else if (method.body) {
                 list.push(method.body);
               }
 
@@ -168,7 +193,7 @@ class Page {
         while (page = pages.pop()) {
 
           const content = await this.analysis(`${page}.vue`);
-          
+
           pageMap[page].push(content);
 
         }
@@ -194,9 +219,9 @@ class Page {
    */
   async analysis(filepath) {
     const content = await new Promise(resolve => fs.readFile(path.join(this.pagePath, filepath), 'utf8', (error, response) => {
-      if(error){
-       throw error;
-      }else{
+      if (error) {
+        throw error;
+      } else {
         resolve(response)
       }
     }));
@@ -216,17 +241,17 @@ class Page {
    * @public
    * @desp 获取文件脚本内容
    */
-  script(){
-    const context=this;
-    return async function(ctx){
+  script() {
+    const context = this;
+    return async function (ctx) {
       try {
         const query = ctx.request.query;
         const filepath = query.path;
-        const content = await new Promise(resolve => fs.readFile(path.join(context.pagePath, filepath), 'utf8', (error, response) => error?Result.error(ctx,error):resolve(response)));
-        const script= context.getMatchPart(content,'<script>','</script>');
+        const content = await new Promise(resolve => fs.readFile(path.join(context.pagePath, filepath), 'utf8', (error, response) => error ? Result.error(ctx, error) : resolve(response)));
+        const script = context.getMatchPart(content, '<script>', '</script>');
 
         Result.success(ctx, {
-          script:script
+          script: script
         })
       } catch (e) {
         Result.error(ctx, e);

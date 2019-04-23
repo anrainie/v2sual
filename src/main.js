@@ -65,9 +65,10 @@ Vue.component('v2Table', v2Table);
 Vue.component('V2AuiComponent',V2AuiComponent);
 Vue.component('echart-cpt', echartComponent);
 
-console.log('main.js loaded',Vue.component('v2Container'))
+Vue.directive('span', {
 
-Vue.directive('span', {})
+  
+})
 Vue.directive('tooltip', {})
 Vue.directive('draggable', function (el, binding, vnode) {
   $(el).draggable({
@@ -102,5 +103,6 @@ new Vue({
   components: {
     App
   },
+  
   template: '<App/>'
 })
