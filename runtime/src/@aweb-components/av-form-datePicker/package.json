@@ -8,7 +8,7 @@
   "docs": {
     "belongTo": "aui",
     "icon": "iconfont icon-password",
-    "type": "MDataDisplays",
+    "type": "form",
     "href": "av-form-datePicker",
     "author": "fengjiarong@agree.com.cn",
     "version": 510000,

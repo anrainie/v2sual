@@ -564,6 +564,7 @@ export default {
 
     aui_tab: {
       template: `<tabs :placement="item.placement" @on-click="tabClicked" :animated="false" size="small">
+        
         <tab-pane v-for="(tabItem, index) in item.tabPanes" :id="tabItem.name" :label="tabItem.desp" :key="tabItem.name">
         <base-config fromTabPanes :array="[tabItem]" :obj="obj"></base-config>
         </tab-pane>

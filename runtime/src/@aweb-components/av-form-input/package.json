@@ -8,7 +8,7 @@
   "docs": {
     "belongTo": "aui",
     "icon": "iconfont icon-password",
-    "type": "MDataDisplays",
+    "type": "form",
     "href": "av-form-input",
     "author": "fengjiarong@agree.com.cn",
     "version": 510000,
@@ -60,7 +60,63 @@
         "type": "boolean"
       }
     ],
-    "style": {}
+    "css": {
+      "style": [{
+          "desp": "默认/focus背景色",
+          "cssAttrs": "background-color",
+          "name": "backgroundColor"
+        },
+        {
+          "desp": "描边",
+          "cssAttrs": "border-width border-radius border-color border-style",
+          "name": "border"
+        },
+        {
+          "desp": "尺寸",
+          "cssAttrs": "margin padding width height",
+          "name": "size"
+        },
+        {
+          "desp": "按钮文字",
+          "cssAttrs": "font-size color",
+          "name": "font"
+        },
+        {
+          "desp": "图标",
+          "cssAttrs": "font-weight font-size color",
+          "name": "icon"
+        },
+        {
+          "desp": "按钮hover",
+          "cssAttrs": "background-color border-width border-color color ",
+          "name": "hoverBtn"
+        },
+        {
+          "desp": "按钮激活",
+          "cssAttrs": "background-color border-width border-color color ",
+          "name": "activeBtn"
+        }
+      ],
+      "theme": [{
+        "template": "<button class='btn'></button>",
+        "desp": "功能",
+        "name": "functionClass",
+        "valueArray": [
+          "btn-focus",
+          "btn-normal",
+          "btn-textBtn",
+          "btn-danger",
+          "btn-custom"
+        ],
+        "despArray": [
+          "焦点",
+          "普通",
+          "文字",
+          "警告",
+          "自定义"
+        ]
+      }]
+    }
   },
   "keywords": [],
   "license": "ISC",
