@@ -67,6 +67,8 @@ class Preview {
 
         const css = html.match(/<link[^>]+>/g).filter(l => l.indexOf('.css') !== -1).map(e => e.match(/href=([^\s]+)/)).filter(e => !!e).map(e => e.input);
 
+        
+
         const vueEditor = Buffer.from(fs.readFileSync(path.resolve(path.join(staticPath, './vueEditor.html')))).toString();
 
         const newVueEditor = vueEditor.replace('<!--css-->', css.join('\n'));
