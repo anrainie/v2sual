@@ -25,22 +25,7 @@ export const data = {
           height: "100%"
         },
         data: {},
-        children: [{
-            id: "input_name",
-            component: "v2LableInput",
-            index: 0,
-            data: "",
-            label: "姓名",
-            placeholder: "请输入姓名"
-          },
-          {
-            id: "input_company",
-            index: 1,
-            component: "v2LableInput",
-            data: "",
-            label: "单位名称",
-            placeholder: "请输入单位名称"
-          },
+        children: [null, null,
           {
             id: "input_address",
             index: 2,
@@ -176,16 +161,15 @@ export const data = {
             index: 12,
             component: "v2Switch",
             data: {
-           
+
               title: "开关",
               value: true,
-              activeText:'开',
-              inactiveText:'关'
+              activeText: '开',
+              inactiveText: '关'
             },
             style: {},
 
-            option: [
-              {
+            option: [{
                 componentType: "",
                 hidden: false,
                 defaultValue: "switch1",
@@ -285,8 +269,8 @@ export const data = {
                   type: ""
                 }
               }
-             
-              
+
+
             ]
           }
         ]
@@ -295,7 +279,7 @@ export const data = {
         id: "row14",
         component: "v2Container",
         direction: "col",
-        layout: [50,50],
+        layout: [50, 50],
         style: {
           width: "100%",
           height: "100%"
@@ -303,7 +287,7 @@ export const data = {
         children: [{
             id: "complexComponent1",
             component: "v2ComplextWidget",
-            layout: [50,50],
+            layout: [50, 50],
             direction: "row",
             children: [{
                 id: "input_bank1",

@@ -90,10 +90,15 @@
       <chat style="left:70%;top:50%;"></chat>
       <div
         v-show="showDragHelper"
-        style="position:fixed;width:10rem;height:5rem;box-shadow:0 0 5px black;"
+        style="position:fixed;width:10rem;height:5rem;box-shadow:0 0 5px black;opacity:.8;pointer-events:none;"
         ref="dragHelper"
       >
-        <component :is="dragHelper.component" :wid="'helper'" :readonly="true"></component>
+        <component
+          :is="dragHelper.component"
+          :wid="'helper'"
+          :readonly="true"
+          style="pointer-events:none;"
+        ></component>
       </div>
     </div>
   </div>
@@ -116,53 +121,51 @@ export default {
   mixins: [canvas],
   computed: {},
   // data(){}
-  beforeCreate(){
+  beforeCreate() {
     window.__dataPool = window.__dataPool || {};
-    window.__dataPool[this._uid]=this;
-    window.$=$;
-    window.jQuery=jQuery;
-    window.Vuex=Vuex;
-    window.canvas=canvas;
+    window.__dataPool[this._uid] = this;
+    window.$ = $;
+    window.jQuery = jQuery;
+    window.Vuex = Vuex;
+    window.canvas = canvas;
   },
   mounted() {
     const self = this;
 
     this.$store.commit("setActiveTool", selectionTool);
-    this.apis("/v1/external/widget")
-    .then(data=>{
-       data=data.map((item)=>{
-         let ret={
-              type:item.type,
-              icon: item.icon,
-              name: item.name,
-              element:{
-                data:util.baseConfigInitInstance({},item.option||[])||{},
-                ...item
-              }
+    this.apis("/v1/external/widget").then(data => {
+      data = data.map(item => {
+        let ret = {
+          type: item.type,
+          icon: item.icon,
+          name: item.name,
+          element: {
+            data: util.baseConfigInitInstance({}, item.option || []) || {},
+            ...item
+          }
+        };
+        if ((item.type = "aui")) {
+          ret.element.component = "V2AuiComponent";
+        }
+        return ret;
+      });
 
-         }
-          if(item.type="aui"){
-              ret.element.component="V2AuiComponent"
-          } 
-          return ret;
-       })
-
-    // this.apis("/v1/aweb/getWidget").then(data => {
-    //   data = data.map(item => {
-    //     let ret = {
-    //       type: item.type,
-    //       icon: item.icon,
-    //       name: item.name,
-    //       element: {
-    //         data: util.baseConfigInitInstance({}, item.option || []) || {},
-    //         ...item
-    //       }
-    //     };
-    //     if ((item.type = "aui")) {
-    //       ret.element.component = "V2AuiComponent";
-    //     }
-    //     return ret;
-    //   });
+      // this.apis("/v1/aweb/getWidget").then(data => {
+      //   data = data.map(item => {
+      //     let ret = {
+      //       type: item.type,
+      //       icon: item.icon,
+      //       name: item.name,
+      //       element: {
+      //         data: util.baseConfigInitInstance({}, item.option || []) || {},
+      //         ...item
+      //       }
+      //     };
+      //     if ((item.type = "aui")) {
+      //       ret.element.component = "V2AuiComponent";
+      //     }
+      //     return ret;
+      //   });
 
       this.palatteConfig[1].children = [
         ...this.palatteConfig[1].children,
@@ -240,7 +243,7 @@ export default {
     createDragHelper(item) {
       console.log(this.$refs.dragHelper);
       return this.$refs.dragHelper;
-    },
+    }
     // /*设置聚焦节点*/
     // mouseEven(e) {
     //   this.$store.commit("setInputActive", $(e.target).attr("index"));
@@ -650,8 +653,8 @@ export default {
 };
 </script>
 <style>
-iframe{
-  border:0;
+iframe {
+  border: 0;
 }
 .testInput {
   width: 100px;

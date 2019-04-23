@@ -32,13 +32,26 @@ export default {
       }
     });
     let self = this;
-    $(this.$el).droppable({
-      distance:30,
-      drop(event, ui) {
-        console.log(self.$store.state.activeTool);
-        if (self.$store.state.activeTool == createTool) {
-          createTool.$selected(self, event);
+    // $(this.$el).droppable({
+    //   distance:30,
+    //   drop(event, ui) {
+    //     //helper是拖拽时的虚影助手
+    //     if(self.model && self.model.pid == 'helper'){
+    //       return;
+    //     }
+    //     console.log('drop',event,self)
+    //     if (self.$store.state.activeTool == createTool) {
+    //       createTool.$selected(self, event);
+    //     }
+    //   }
+    // });
+
+    $(this.$el).mouseup(e => {
+      if (self.$store.state.activeTool == createTool) {
+        if (self.model && self.model.pid == "helper") {
+          return;
         }
+        createTool.$selected(self, event);
       }
     });
 
