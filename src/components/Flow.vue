@@ -15,10 +15,25 @@
       </el-aside>
 
       <el-container>
-        <el-header style="background-color:#efefef;">页面流</el-header>
+        <el-header style="background-color:#efefef;">页面流
+          <div>
+            <button @click="toggleBtn(true)">全部展开</button>
+            <button @click="toggleBtn(false)">全部折叠</button>
+            <input v-model="searchWord">
+            <span v-if="searchWord">{{searchNum===0? 0:resutlIndex+1}}/{{searchNum}}</span>
+            <button @click="resulteach('last')">上一个</button>
+            <button @click="resulteach('next')">下一个</button>
+          </div>
+        </el-header>
 
         <el-main>
-          <div data-role="topo"></div>
+          <div style="flex:1" class="flowctn">
+            <div data-role="topo" id="flowtree"></div>
+          </div>
+          <div class="zoom">
+            <div class="zoomMask" :style="maskStyle"></div>
+            <div class="zoomcontrol"></div>
+          </div>
         </el-main>
 
         <!-- <el-footer></el-footer> -->
@@ -29,6 +44,10 @@
 
 <script>
 import "../assets/topology-jquery/index";
+import domtoimage from "dom-to-image";
+import { debug } from "util";
+import { setTimeout } from "timers";
+import { constants } from "fs";
 
 const api = {
   list: "./v1/page/list",
@@ -40,7 +59,21 @@ export default {
     return {
       asideSearch: "",
       aside: [],
-      pageFlow: []
+      pageFlow: [],
+      viewHeight: 0,
+      fullHeigth: 0,
+      ratio: 0,
+      maskHeight: 0,
+      imgHeight: 0,
+      maskStyle: {
+        height: 0,
+        display: "none"
+      },
+      isActive: false,
+      searchWord: "",
+      searchNum: 0,
+      resutlIndex:0,
+      searchResult:[]
     };
   },
   watch: {
@@ -48,23 +81,54 @@ export default {
       this.$refs.aside.filter(val);
     },
     pageFlow() {
+      let $topo = $("[data-role=topo]", this.$el),
+      self = this;
       //加载右侧内容
-      $("[data-role=topo]", this.$el)
-        .empty()
-        .topology({
-          data: [...this.pageFlow],
-          setType: item => item.type,
-          renderLabel: item => {
-            switch (item.catalog) {
-              case "method":
-                return `onEvent:${item.label}`;
-                break;
-              case "page":
-              default:
-                return item.label;
-            }
+      $topo.empty().topology({
+        data: [...this.pageFlow],
+        setType: item => item.type,
+        renderLabel: item => {
+          switch (item.catalog) {
+            case "method":
+              return `onEvent:${item.label}`;
+              break;
+            case "page":
+            default:
+              return item.label;
           }
-        });
+        }
+      });
+      self.searchWord= "",
+      
+      // this.toggleBtn(false);
+
+      $("i", $topo).click(() => {
+        setTimeout(() => {
+          self.refreshImg();
+        }, 10);
+      });
+    },
+    fullHeigth() {
+      console.log("fullHeigth");
+    },
+    searchWord() {
+      let resutl = [],
+        self = this;
+      
+      $(".label > span").each(function() {
+        $(this).html($(this).text());
+
+        if (self.searchWord && $(this).text().indexOf(self.searchWord) !== -1) {
+          $(this).wrapInner("<em class='highlighted'></em>");
+          resutl.push($(this));
+        }
+
+        self.searchNum = resutl.length;
+        self.searchResult = resutl;
+        self.resutlIndex = 0;
+        resutl.length && resutl[0].find("em").addClass("current");
+        resutl.length && $(".flowctn",self.$el).scrollTop(resutl[0].offset().top-70);
+      });
     }
   },
 
@@ -88,6 +152,7 @@ export default {
               label: r.content.label,
               children: r.content.children
             });
+            this.refreshImg();
             //   this.aside = r.content.map(f => {
             //     return {
             //       id: f,
@@ -97,6 +162,191 @@ export default {
             //   });
           }
         });
+      }
+    },
+    refreshImg() {
+      let self = this,
+        img,
+        node = document.getElementById("flowtree");
+
+      domtoimage
+        .toPng(node)
+        .then(function(dataUrl) {
+          img = new Image();
+          img.src = dataUrl;
+          $(".zoom>img",self.$el).remove();
+          $(".zoom",self.$el).append(img);
+          setTimeout(() => {
+            self.fullHeigth = $("#flowtree",self.$el).height();
+            self.ratio = self.viewHeight / self.fullHeigth;
+            self.imgHeight = $(".zoom>img",self.$el).height();
+            self.maskStyle.height = self.imgHeight * self.ratio + "px";
+            $(".zoomMask", self.$el).css("top", 0);
+          }, 10);
+        })
+        .catch(function(error) {
+          console.error("something went wrong!", error);
+        });
+    },
+    init() {
+      let self = this,
+        $mask = $(".zoomMask", this.$el),
+        $zoom = $(".zoom", this.$el),
+        $control = $(".zoomcontrol", this.$el);
+
+      self.viewHeight = $(".flowctn").height();
+
+      setTimeout(() => {
+        self.fullHeigth = $("#flowtree").height();
+        self.ratio = self.viewHeight / self.fullHeigth;
+        self.initZoom();
+      }, 10);
+    },
+    initZoom() {
+      let self = this,
+        $mask = $(".zoomMask", this.$el),
+        $zoom = $(".zoom", this.$el),
+        $control = $(".zoomcontrol", this.$el),
+        halfHeight,
+        offsetY,
+        imgHeight;
+
+      $control
+        .mousedown(e => {
+          halfHeight = parseFloat(self.maskStyle.height) / 2;
+          imgHeight = self.imgHeight;
+          offsetY = e.offsetY;
+
+          if (imgHeight > 2 * halfHeight && offsetY <= imgHeight) {
+            self.isActive = true;
+
+            if (offsetY + halfHeight > imgHeight) {
+              $mask.css("top", imgHeight - 2 * halfHeight + "px");
+              $(".flowctn").scrollTop(
+                (offsetY - halfHeight) /
+                  (parseFloat(self.maskStyle.height) / self.viewHeight)
+              );
+            } else if (offsetY < halfHeight) {
+              $mask.css("top", "0px");
+              $(".flowctn").scrollTop(0);
+            } else {
+              $mask.css("top", offsetY - halfHeight + "px");
+              $(".flowctn").scrollTop(
+                (offsetY - halfHeight) /
+                  (parseFloat(self.maskStyle.height) / self.viewHeight)
+              );
+            }
+          }
+        })
+        .mousemove(e => {
+          let offsetY = e.offsetY;
+
+          halfHeight = parseFloat(self.maskStyle.height) / 2;
+          imgHeight = self.imgHeight;
+
+          $mask.css(
+            "top",
+            $(".flowctn", self.$el).scrollTop() /
+              (self.fullHeigth / imgHeight) +
+              "px"
+          );
+          self.maskStyle.display = "block";
+
+          if (self.isActive) {
+            if (offsetY + halfHeight > imgHeight) {
+              $mask.css("top", imgHeight - 2 * halfHeight + "px");
+              $(".flowctn").scrollTop(
+                (offsetY - halfHeight) /
+                  (parseFloat(self.maskStyle.height) / self.viewHeight)
+              );
+            } else if (offsetY < halfHeight) {
+              $mask.css("top", "0px");
+              $(".flowctn").scrollTop(0);
+            } else {
+              $mask.css("top", offsetY - halfHeight + "px");
+              $(".flowctn").scrollTop(
+                (offsetY - halfHeight) /
+                  (parseFloat(self.maskStyle.height) / self.viewHeight)
+              );
+            }
+          }
+        })
+        .mouseup(e => {
+          self.isActive = false;
+        })
+        .mouseout(e => {
+          self.isActive = false;
+          self.maskStyle.display = "none";
+        });
+    },
+    toggleBtn(flag) {
+      let $target = $("[data-role=topo]", this.$el),
+        $i = $("i", $target);
+
+      const expandedTitle = "展开";
+      const collapsedTitle = "关闭";
+      const $sub = $i.parent().siblings(".sub");
+      const id = $i.parent().data("id");
+
+      if ($sub.length > 0) {
+        if (flag) {
+          $sub.show();
+        } else {
+          $sub.hide();
+        }
+      }
+
+      if ($i.hasClass("fa-plus-circle")) {
+        $i.attr("title", collapsedTitle);
+      } else {
+        $i.attr(
+          "title",
+          typeof expandedTitle === "function"
+            ? expandedTitle(self.find(self.tmpData, id))
+            : expandedTitle
+        );
+      }
+
+      $i.removeClass("fa-minus-circle fa-plus-circle");
+      if (flag) {
+        $i.addClass("fa-plus-circle");
+      } else {
+        $i.addClass("fa-minus-circle");
+      }
+      $("[data-role=topo]", this.$el).topologyTggle(false);
+    },
+    resulteach(floot){
+      let result = this.searchResult,
+        len = result.length,
+        $flowctn = $(".flowctn",this.$el);
+     
+
+      result.map(item=>{
+        item.find("em").removeClass("current");
+      })
+
+      if(floot==="next"){
+        console.log("next")
+        if(this.resutlIndex+1===len){
+          this.resutlIndex = 0;
+          $flowctn.scrollTop(result[0].offset().top-70);
+          result[0].find("em").addClass("current")
+        }else{
+          ++this.resutlIndex;
+          $flowctn.scrollTop(result[this.resutlIndex].offset().top-70);
+          result[this.resutlIndex].find("em").addClass("current");
+        }
+      }else if(floot==="last"){
+        console.log("last")
+        if(this.resutlIndex===0){
+          this.resutlIndex = len-1;
+          $flowctn.scrollTop(result[len-1].offset().top-70)
+          result[len-1].find("em").addClass("current");
+        }else{
+          --this.resutlIndex;
+           $flowctn.scrollTop(result[this.resutlIndex].offset().top-70)
+           result[this.resutlIndex].find("em").addClass("current");
+        }
       }
     }
   },
@@ -240,10 +490,12 @@ export default {
         }
       ]
     });
+    this.init();
+    this.refreshImg();
   }
 };
 </script>
-<style lang="less" scoped>
+<style lang="less">
 .frame {
   position: absolute;
   top: 0;
@@ -255,6 +507,45 @@ export default {
 .frame > .el-container {
   height: 100%;
   width: 100%;
+}
+.el-main {
+  display: flex;
+  padding: 0;
+
+  > div:first-child {
+    padding: 10px;
+    width: calc(100% - 130px);
+    overflow: auto;
+  }
+}
+.zoom {
+  position: relative;
+  border: 1px solid #ccc;
+  width: 130px;
+  background-color: #fff;
+  z-index: 99;
+
+  > canvas {
+    width: 100%;
+    height: unset;
+  }
+  .zoomMask {
+    position: absolute;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .zoomcontrol {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+  }
+}
+.highlighted {
+  background-color: yellow;
+}
+.current {
+  background-color: orange;
 }
 </style>
 
