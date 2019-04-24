@@ -142,7 +142,7 @@ export default {
               icon: item.icon,
               name: item.name,
               element:{
-             //  style:util.cssConfigInitInstance({},item.css||{})||{},
+                style:util.cssConfigInitInstance({},item.css||{})||{},
                 data:util.baseConfigInitInstance({},item.option||[])||{},
                 ...item
               }
