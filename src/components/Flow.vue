@@ -16,16 +16,16 @@
 
       <el-container>
         <el-header style="background-color:#efefef;">页面流
-          <div>
+          
+        </el-header>
+        <div class="searchBox">
             <button @click="toggleBtn(true)">全部展开</button>
             <button @click="toggleBtn(false)">全部折叠</button>
             <input v-model="searchWord">
-            <span v-if="searchWord">{{searchNum===0? 0:resutlIndex+1}}/{{searchNum}}</span>
+            <span v-if="searchWord">{{searchNum===0? 0:resultIndex+1}}/{{searchNum}}</span>
             <button @click="resulteach('last')">上一个</button>
             <button @click="resulteach('next')">下一个</button>
           </div>
-        </el-header>
-
         <el-main>
           <div style="flex:1" class="flowctn">
             <div data-role="topo" id="flowtree"></div>
@@ -48,6 +48,7 @@ import domtoimage from "dom-to-image";
 import { debug } from "util";
 import { setTimeout } from "timers";
 import { constants } from "fs";
+import { deflate } from "zlib";
 
 const api = {
   list: "./v1/page/list",
@@ -72,8 +73,8 @@ export default {
       isActive: false,
       searchWord: "",
       searchNum: 0,
-      resutlIndex:0,
-      searchResult:[]
+      resultIndex: 0,
+      searchResult: []
     };
   },
   watch: {
@@ -82,7 +83,7 @@ export default {
     },
     pageFlow() {
       let $topo = $("[data-role=topo]", this.$el),
-      self = this;
+        self = this;
       //加载右侧内容
       $topo.empty().topology({
         data: [...this.pageFlow],
@@ -98,37 +99,38 @@ export default {
           }
         }
       });
-      self.searchWord= "",
-      
-      // this.toggleBtn(false);
+      (self.searchWord = ""), self.refreshImg();
 
-      $("i", $topo).click(() => {
+      // this.toggleBtn(false);
+      $("i", $topo).click(function(e) {
         setTimeout(() => {
           self.refreshImg();
-        }, 10);
+        }, 0);
       });
     },
-    fullHeigth() {
-      console.log("fullHeigth");
-    },
     searchWord() {
-      let resutl = [],
+      let result = [],
         self = this;
-      
+
       $(".label > span").each(function() {
         $(this).html($(this).text());
 
-        if (self.searchWord && $(this).text().indexOf(self.searchWord) !== -1) {
+        if (
+          self.searchWord &&
+          $(this)
+            .text()
+            .indexOf(self.searchWord) !== -1
+        ) {
           $(this).wrapInner("<em class='highlighted'></em>");
-          resutl.push($(this));
+          result.push($(this));
         }
-
-        self.searchNum = resutl.length;
-        self.searchResult = resutl;
-        self.resutlIndex = 0;
-        resutl.length && resutl[0].find("em").addClass("current");
-        resutl.length && $(".flowctn",self.$el).scrollTop(resutl[0].offset().top-70);
       });
+      self.searchNum = result.length;
+      self.searchResult = result;
+      self.resultIndex = 0;
+      result.length && result[0].find("em").addClass("current");
+      result.length &&
+        $(".flowctn", self.$el).scrollTop(result[0].offset().top - 90);
     }
   },
 
@@ -152,7 +154,7 @@ export default {
               label: r.content.label,
               children: r.content.children
             });
-            this.refreshImg();
+
             //   this.aside = r.content.map(f => {
             //     return {
             //       id: f,
@@ -164,49 +166,45 @@ export default {
         });
       }
     },
+    // 刷新预览图
     refreshImg() {
       let self = this,
         img,
-        node = document.getElementById("flowtree");
+        $flowtree = $("#flowtree", self.$el);
 
       domtoimage
-        .toPng(node)
+        .toPng($flowtree[0])
         .then(function(dataUrl) {
           img = new Image();
           img.src = dataUrl;
-          $(".zoom>img",self.$el).remove();
-          $(".zoom",self.$el).append(img);
-          setTimeout(() => {
-            self.fullHeigth = $("#flowtree",self.$el).height();
+          $(".zoom>img", self.$el).remove();
+          $(".zoom", self.$el).append(img);
+          img.onload = function() {
+            self.fullHeigth = $flowtree.height();
             self.ratio = self.viewHeight / self.fullHeigth;
-            self.imgHeight = $(".zoom>img",self.$el).height();
+            self.imgHeight = img.height;
             self.maskStyle.height = self.imgHeight * self.ratio + "px";
             $(".zoomMask", self.$el).css("top", 0);
-          }, 10);
+          };
         })
         .catch(function(error) {
           console.error("something went wrong!", error);
         });
     },
+    // init
     init() {
-      let self = this,
-        $mask = $(".zoomMask", this.$el),
-        $zoom = $(".zoom", this.$el),
-        $control = $(".zoomcontrol", this.$el);
+      let self = this;
 
-      self.viewHeight = $(".flowctn").height();
-
-      setTimeout(() => {
-        self.fullHeigth = $("#flowtree").height();
-        self.ratio = self.viewHeight / self.fullHeigth;
-        self.initZoom();
-      }, 10);
+      self.viewHeight = $(".flowctn", self.$el).height();
+      self.initZoom();
     },
+    // init预览图
     initZoom() {
       let self = this,
-        $mask = $(".zoomMask", this.$el),
-        $zoom = $(".zoom", this.$el),
-        $control = $(".zoomcontrol", this.$el),
+        $mask = $(".zoomMask", self.$el),
+        $zoom = $(".zoom", self.$el),
+        $control = $(".zoomcontrol", self.$el),
+        $flowctn = $(".flowctn", self.$el),
         halfHeight,
         offsetY,
         imgHeight;
@@ -222,16 +220,16 @@ export default {
 
             if (offsetY + halfHeight > imgHeight) {
               $mask.css("top", imgHeight - 2 * halfHeight + "px");
-              $(".flowctn").scrollTop(
+              $flowctn.scrollTop(
                 (offsetY - halfHeight) /
                   (parseFloat(self.maskStyle.height) / self.viewHeight)
               );
             } else if (offsetY < halfHeight) {
               $mask.css("top", "0px");
-              $(".flowctn").scrollTop(0);
+              $flowctn.scrollTop(0);
             } else {
               $mask.css("top", offsetY - halfHeight + "px");
-              $(".flowctn").scrollTop(
+              $flowctn.scrollTop(
                 (offsetY - halfHeight) /
                   (parseFloat(self.maskStyle.height) / self.viewHeight)
               );
@@ -279,6 +277,7 @@ export default {
           self.maskStyle.display = "none";
         });
     },
+    // 节点展开，折叠
     toggleBtn(flag) {
       let $target = $("[data-role=topo]", this.$el),
         $i = $("i", $target);
@@ -313,40 +312,43 @@ export default {
       } else {
         $i.addClass("fa-minus-circle");
       }
-      $("[data-role=topo]", this.$el).topologyTggle(false);
+       this.refreshImg();
     },
-    resulteach(floot){
+    // 遍历搜索结果
+    resulteach(floot) {
       let result = this.searchResult,
         len = result.length,
-        $flowctn = $(".flowctn",this.$el);
-     
+        $flowctn = $(".flowctn", this.$el);
 
-      result.map(item=>{
+      result.map(item => {
         item.find("em").removeClass("current");
-      })
+      });
 
-      if(floot==="next"){
-        console.log("next")
-        if(this.resutlIndex+1===len){
-          this.resutlIndex = 0;
-          $flowctn.scrollTop(result[0].offset().top-70);
-          result[0].find("em").addClass("current")
-        }else{
-          ++this.resutlIndex;
-          $flowctn.scrollTop(result[this.resutlIndex].offset().top-70);
-          result[this.resutlIndex].find("em").addClass("current");
-        }
-      }else if(floot==="last"){
-        console.log("last")
-        if(this.resutlIndex===0){
-          this.resutlIndex = len-1;
-          $flowctn.scrollTop(result[len-1].offset().top-70)
-          result[len-1].find("em").addClass("current");
-        }else{
-          --this.resutlIndex;
-           $flowctn.scrollTop(result[this.resutlIndex].offset().top-70)
-           result[this.resutlIndex].find("em").addClass("current");
-        }
+      switch (floot) {
+        case "next":
+          if (this.resultIndex + 1 === len) {
+            this.resultIndex = 0;
+            $flowctn.scrollTop(result[0].offset().top - 90);
+            result[0].find("em").addClass("current");
+          } else {
+            ++this.resultIndex;
+            $flowctn.scrollTop(result[this.resultIndex].offset().top - 90);
+            result[this.resultIndex].find("em").addClass("current");
+          }
+          break;
+        case "last":
+          if (this.resultIndex === 0) {
+            this.resultIndex = len - 1;
+            $flowctn.scrollTop(result[len - 1].offset().top - 90);
+            result[len - 1].find("em").addClass("current");
+          } else {
+            --this.resultIndex;
+            $flowctn.scrollTop(result[this.resultIndex].offset().top - 90);
+            result[this.resultIndex].find("em").addClass("current");
+          }
+          break;
+        default:
+          break;
       }
     }
   },
@@ -496,13 +498,25 @@ export default {
 };
 </script>
 <style lang="less">
-.v2frame {
+.V2frame {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   overflow: hidden;
+
+  .searchBox{
+    position: fixed;
+    padding: 10px; 
+    top: 15px;
+    right: 200px;
+    background-color: #fff;
+    box-shadow: 3px 3px #ccc;
+    >input{
+      border-right: 1px solid #ccc;
+    }
+  }
 }
 .V2frame > .el-container {
   height: 100%;
