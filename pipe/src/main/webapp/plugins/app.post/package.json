@@ -1,10 +1,23 @@
 {
-  "name": "@aweb-plugins/app.get",
+  "name": "@aweb-plugins/app.post",
   "main": "index.js",
   "docs": {
-    "desp": "GET 请求",
-    "name": "get",
+    "desp": "POST 请求",
+    "name": "post",
     "belongTo": "function",
+    "params": [{
+      "name": "url",
+      "desp": "URL",
+      "type": "string",
+      "necessary": true,
+      "defaultValue": ""
+    }, {
+      "name": "data",
+      "desp": "参数",
+      "type": "object",
+      "necessary": true,
+      "defaultValue": ""
+    }],
     "hasReturn": true,
     "returnValue": {
       "name": "promise",
@@ -12,23 +25,10 @@
       "details": "Axios Promise 对象",
       "type": "object",
       "defaultValue": ""
-    },
-    "params": [{
-      "name": "url",
-      "desp": "url",
-      "type": "string",
-      "necessary": true,
-      "defaultValue": ""
-    }, {
-      "name": "data",
-      "desp": "参数",
-      "type": "string",
-      "necessary": true,
-      "defaultValue": ""
-    }]
+    }
   },
   "category": "数据交互",
-  "index":0,
+  "index":1,
   "description": "",
   "version": "6.0.0"
 }
