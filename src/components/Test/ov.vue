@@ -95,6 +95,8 @@ export default {
         )
         .then(result => (context.style.color = result ? "red" : "green"))
         .catch(e => console.log(e));
+
+      
     }
   }
 };

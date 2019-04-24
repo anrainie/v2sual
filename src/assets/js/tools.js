@@ -39,6 +39,27 @@ export const createTool = {
     return true;
   },
 
+  //创建元素时的拖拽虚影
+  dragHelper: null,
+  startDrag() {
+    if (this.dragHelper) {
+      $(window).off("mousemove").on("mousemove", e => {
+
+      })
+    }
+  },
+  mouseenter() {
+    console.log('enter')
+    if (this.dragHelper) {
+      $(window).off("mousemove").on("mousemove", e => {})
+    }
+  },
+  stopDrag() {
+    if (this.dragHelper) {
+      $(window).off("mousemove")
+    }
+  },
+
   //为了支持校验activeTool.type=='create'
   type: 'create',
   $wrapClass() {
@@ -86,7 +107,7 @@ export const createTool = {
   },
   tryCreate() {
     if (this.element && this.target) {
-      let _self=this.target
+      let _self = this.target
       this.__append().then(e => {
         //切换Tool
         _self.$store.commit('setActiveTool', selectionTool);
@@ -140,16 +161,12 @@ export const selectionTool = {
     if (!e.ctrlKey && !e.altKey && !e.shiftKey) {
       switch (e.key) {
         case "ArrowRight":
+        case "ArrowDown":
           _self.$store.commit("select.next");
           return false;
-        case "ArrowDown":
-          _self.$store.commit("select.firstChild");
-          return false;
         case "ArrowLeft":
-          _self.$store.commit("select.prev");
-          return false;
         case "ArrowUp":
-          _self.selectParent();
+          _self.$store.commit("select.prev");
           return false;
         case 'Esc':
         case 'Escape':
@@ -175,6 +192,14 @@ export const selectionTool = {
     }
     if (e.ctrlKey) {
       switch (e.key) {
+        case 'ArrowRight':
+        case 'ArrowDown':
+          _self.$store.commit("select.firstChild");
+          return false;
+        case 'ArrowLeft':
+        case 'ArrowUp':
+          _self.$store.commit("select.parent");
+          return false;
         case 's':
         case 'p':
           return false;

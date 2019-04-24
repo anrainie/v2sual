@@ -16,7 +16,7 @@ export default {
         this.$store.state.activeTool &&
         this.$store.state.activeTool.type == "create"
       ) {
-        s["dropable"] = true;
+        s["V2Dropable"] = true;
       }
       return s;
     }
@@ -33,9 +33,13 @@ export default {
     });
     let self = this;
     $(this.$el).droppable({
-      distance:30,
+      activeClass:'V2DropableHover',
       drop(event, ui) {
-        console.log(self.$store.state.activeTool);
+        //helper是拖拽时的虚影助手
+        if (self.model && self.model.pid == "helper") {
+          return;
+        }
+        console.log("drop", event, self);
         if (self.$store.state.activeTool == createTool) {
           createTool.$selected(self, event);
         }
