@@ -1,0 +1,34 @@
+{
+  "name": "@aweb-plugins/app.lt",
+  "main": "index.js",
+  "docs": {
+    "desp": "小于",
+    "name": "lt",
+    "belongTo": "function",
+    "params": [{
+      "name": "input1",
+      "desp": "输入1",
+      "type": "number",
+      "necessary": true,
+      "defaultValue": ""
+    }, {
+      "name": "innput2",
+      "desp": "输入2",
+      "type": "number",
+      "necessary": true,
+      "defaultValue": ""
+    }],
+    "hasReturn": true,
+    "returnValue": {
+      "name": "result",
+      "desp": "结果",
+      "details": "结果",
+      "type": "boolean",
+      "defaultValue": ""
+    }
+  },
+  "category": "比较",
+  "index":0,
+  "description": "",
+  "version": "6.0.0"
+}
