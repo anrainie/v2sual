@@ -3,7 +3,8 @@ const runtimeFiles = require('../page/ideFiles');
 class Platform {
   constructor({
     ip,
-    port
+    port,
+    preview
   }) {
     this.ip = ip;
     this.port = port;
@@ -29,6 +30,9 @@ class Platform {
       this.socket.on('connect_error', r => {
         console.log('连接失败', r);
       })
+      this.socket.on('data', r => {
+        console.log(r);
+      })
 
       this.init();
     } catch (e) {
@@ -52,6 +56,14 @@ class Platform {
       data,
     });
   }
+
+  sendErrorResult(req, error) {
+    this.send(req, {
+      state: 'fail',
+      error,
+    });
+  }
+
   send(req, result) {
     console.log(req);
     this.socket.emit(req.callbackId, result);
