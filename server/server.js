@@ -49,14 +49,6 @@ const platform = new Platform({
 
 
 
-const external = require('./external/external');
-
-//const main = serve(LOCAL_PATH)
-
-// router.get('/', async (ctx, next) => {
-//   ctx.response.type = 'html'
-//   ctx.response.body = await fs.readFile(LOCAL_PATH + WELCOME_PAGE_PATH, 'utf8')
-// });
 
 // 页面操作内容
 
@@ -101,6 +93,9 @@ app.use(koaBody());
 
 app.use(router.routes());
 
+
+
+const external = require('./external/external');
 app.use(external.routes());
 
 //预览静态路由
