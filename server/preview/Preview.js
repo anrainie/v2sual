@@ -2,6 +2,7 @@ const readDir = require('recursive-readdir');
 const path = require('path');
 const UglifyJS = require('uglify-es-web');
 const fs = require('fs');
+const camelcase=require('camelcase');
 
 const { exec } = require('child_process');
 
@@ -33,14 +34,20 @@ class Preview {
         const files = await readDir(componentPath);
 
         //组件列表
-        const vueFiles = files.filter(f => f.lastIndexOf('.vue') !== -1).map(f => f.replace(componentPath, '.')).sort();
+        const vueFiles = files.filter(f => f.lastIndexOf('.vue') !== -1).map(f => f.replace(componentPath, '.')).sort().map(f=>{
+          return {
+            name:camelcase(f.split(path.sep)[1]),
+            path:f
+          }
+        });
 
         //生成Vue Use
-        const content = `
-import _ from 'vue';
-const Vue = window.Vue || _;
-{${vueFiles.map(f => ` Vue.use("${f}")`).join('\n')}}
-`;
+        const content = `        
+${vueFiles.map(f => `import ${f.name}  from '${f.path}'`).join(';\n')}
+
+export default {
+  ${vueFiles.map(f => `${f.name}`).join(',\n\t')}
+}`;
 
         const list = await new Promise((res, rej) => fs.writeFile(path.join(componentPath, 'aweb.components.js'), content, err => err ? rej(err) : res('success')));
 
@@ -67,11 +74,31 @@ const Vue = window.Vue || _;
           });
         });
 
+        const jsdev=await new Promise((res,rej)=>{
+          const process = exec('vue build -t lib -d v2sual ./src/@aweb-components/aweb.components.js', { encoding: "utf8", cwd: path.resolve(projectPath) }, (error, stdout, stderr) => {
+            error ? rej(error) : res({
+              error,
+              stdout,
+              stderr
+            })
+          });
+          process.stderr.on('data', data => {
+            console.log(data);
+          });
+          process.stdout.on('data', data => {
+            console.log(data);
+          });
+          process.stdout.on('close', data => {
+            console.log(data);
+            res({
+              data
+            });
+          });
+        });
+
         const html = Buffer.from(fs.readFileSync(path.resolve(path.join(projectPath, './dist/index.html')))).toString();
 
         const css = html.match(/<link[^>]+>/g).filter(l => l.indexOf('.css') !== -1).map(e => e.match(/href=([^\s]+)/)).filter(e => !!e).map(e => e.input);
-
-        
 
         const vueEditor = Buffer.from(fs.readFileSync(path.resolve(path.join(staticPath, './vueEditor.html')))).toString();
 
@@ -125,7 +152,7 @@ const Vue = window.Vue || _;
     const staticPath = this.staticPath;    
     return function (req) {
       try {
-        const js = Buffer.from(fs.readFileSync(path.resolve(path.join(projectPath, './dist/js/app.js')))).toString();
+        const js = Buffer.from(fs.readFileSync(path.resolve(path.join(projectPath, './v2sual/aweb-components.umd.min.js')))).toString();
 
         platform.sendSuccessResult(req, js);
       } catch (e) {

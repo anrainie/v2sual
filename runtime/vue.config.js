@@ -25,13 +25,18 @@ module.exports = {
     filenameHashing: false,
     css: {
        
-       // modules: false,
+        modules: false,
 
        
-        //extract: false,
+        extract: false,
 
       
         sourceMap: false
-    }
+    },
+    configureWebpack: {
+        output: {
+          libraryExport: 'default'
+        }
+      }
     
 }
