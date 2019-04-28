@@ -23,10 +23,10 @@ class Preview {
    *  @type GET
    *  @url /init
    */
-  init() {
+  init(platform) {
     const projectPath = this.projectPath;
     const staticPath = this.staticPath;
-    return async function (ctx, next) {
+    return async function (req) {
       try {
         const componentPath = path.resolve(path.join(projectPath, 'src/@aweb-components'));
 
@@ -75,7 +75,7 @@ class Preview {
 
         const htmlResult = await new Promise((res, rej) =>  fs.writeFile(path.resolve(path.join(projectPath,'./dist/vueEditor.html')),newVueEditor, err => err ? rej(err) : res('success')));
        
-        Result.success(ctx, {
+        platform.sendSuccessResult(req, {
           content,
           result: {
             list,
@@ -86,7 +86,7 @@ class Preview {
           htmlResult
         });
       } catch (e) {
-        Result.error(ctx, e);
+        platform.sendErrorResult(req,e);
       }
     }
   }

@@ -241,20 +241,21 @@ class Page {
    * @public
    * @desp 获取文件脚本内容
    */
-  script() {
+  script(platform) {
     const context = this;
-    return async function (ctx) {
+    return async function (req) {
       try {
         const query = ctx.request.query;
         const filepath = query.path;
         const content = await new Promise(resolve => fs.readFile(path.join(context.pagePath, filepath), 'utf8', (error, response) => error ? Result.error(ctx, error) : resolve(response)));
         const script = context.getMatchPart(content, '<script>', '</script>');
 
-        Result.success(ctx, {
-          script: script
-        })
+        platform.sendSuccessResult(req,  {
+          script
+        });
+        
       } catch (e) {
-        Result.error(ctx, e);
+        platform.sendErrorResult(req,e);
       }
     }
   }
@@ -265,19 +266,19 @@ class Page {
    * @type GET
    * @url /content?path=[filepath]
    */
-  content() {
+  content(platform) {
     const analysis = this.analysis;
     const context = this;
-    return async function (ctx) {
+    return async function (req) {
 
       try {
         const query = ctx.request.query;
         const filepath = query.path;
         const ret = await analysis.call(context, filepath);
 
-        Result.success(ctx, ret)
+        platform.sendSuccessResult(req, ret);
       } catch (e) {
-        Result.error(ctx, e);
+        platform.sendErrorResult(req,e);
       }
     }
   }
@@ -288,17 +289,18 @@ class Page {
    *  @type GET
    *  @url /list
    */
-  list() {
+  list(platform) {
     const pagePath = this.pagePath;
-    return async function (ctx, next) {
+    return async function (req) {
       try {
         const files = await readDir(pagePath);
 
         const vueFiles = files.filter(f => f.lastIndexOf('.vue') !== -1).map(f => f.replace(pagePath, '')).sort();
 
-        Result.success(ctx, vueFiles);
+        platform.sendSuccessResult(req, vueFiles);
+        //Result.success(ctx, vueFiles);
       } catch (e) {
-        Result.error(ctx, e);
+        platform.sendErrorResult(req,e);
       }
     }
   }

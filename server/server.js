@@ -55,15 +55,12 @@ const platform = new Platform({
 const Page = require('./page/Page');
 const page = new Page(path.resolve(path.join(RUNTIME_PATH, PAGE_PATH)));
 
-platform.socket.on('getPageList',req=>{
+platform.socket.on('/v1/page/list',page.list(platform));
+platform.socket.on('/v1/page/content',page.content(platform));
 
-});
-
-router.get('/v1/page/list', page.list());
-router.get('/v1/page/content', page.content());
 
 // 方法
-router.get('/v1/page/script', page.script());
+platform.socket.on('/v1/page/script',page.script(platform));
 
 // 测试表格数据
 const Table = require('./DictTest/table');
@@ -77,8 +74,8 @@ router.get('/v1/dictTest/tableOp', Table.tableOpera);
 
 const Preview = require('./preview/Preview');
 const preview = new Preview(RUNTIME_PATH, STATIC_PATH);
-router.get('/v1/preview/init', preview.init());
 
+platform.socket.on('/v1/preview/init',preview.init(platform));
 platform.socket.on('getVueEditorStyles',preview.style(platform));
 
 // app
@@ -96,7 +93,8 @@ app.use(router.routes());
 
 
 const external = require('./external/external');
-app.use(external.routes());
+platform.socket.on('v1/external/widget',external.widget(platform));
+platform.socket.on('v1/external/dict',external.dict(platform));
 
 //预览静态路由
 app.use(staticRouter([
