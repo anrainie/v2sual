@@ -90,6 +90,31 @@ class Preview {
       }
     }
   }
+
+    /**
+   *  @public
+   *  @desp 获取style内容
+   *  @type GET
+   *  @url /style
+   */
+  style(platform) {
+    const projectPath = this.projectPath;
+    const staticPath = this.staticPath;    
+    return function (req) {
+      try {
+        const html = Buffer.from(fs.readFileSync(path.resolve(path.join(projectPath, './dist/index.html')))).toString();
+
+        const css = html.match(/<link[^>]+>/g).filter(l => l.indexOf('.css') !== -1).map(e => e.match(/href=([^\s]+)/)).filter(e => !!e).map(e => e[1]);
+
+
+        const content = Array.from(new Set(css)).map(f=>fs.readFileSync(path.resolve(path.join(projectPath,'./dist',f)).toString()));
+
+        platform.sendSuccessResult(req, `<style>${content.join('')}</style>`);
+      } catch (e) {
+        platform.sendErrorResult(req,e);
+      }
+    }
+  }
 }
 
 module.exports = Preview;

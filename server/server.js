@@ -13,6 +13,8 @@
 // const LOCAL_PATH = '../WebContent'
 // const WELCOME_PAGE_PATH = '/module/index/index/index.html'
 const PORT = '3000';
+const TARGET_PORT = 8080;
+const TARGET_IP = 'localhost';
 
 // Fake Data
 // const FAKE_DATA = require('./fakeData')
@@ -32,6 +34,21 @@ const httpRequest = require('request')
 const fs = require('fs.promised')
 const cors = require('koa-cors')
 
+
+// router.get('/v1/preview/style', preview.style());
+//router.get('/v1/preview/static/*', RouterStatic(path.resolve(path.join(RUNTIME_PATH, './dist/'))))
+
+
+//连接WEBIDE中台
+const Platform = require('./ide/platform');
+const platform = new Platform({
+  ip: TARGET_IP,
+  port: TARGET_PORT
+});
+
+
+
+
 const external = require('./external/external');
 
 //const main = serve(LOCAL_PATH)
@@ -42,8 +59,14 @@ const external = require('./external/external');
 // });
 
 // 页面操作内容
+
 const Page = require('./page/Page');
 const page = new Page(path.resolve(path.join(RUNTIME_PATH, PAGE_PATH)));
+
+platform.socket.on('getPageList',req=>{
+
+});
+
 router.get('/v1/page/list', page.list());
 router.get('/v1/page/content', page.content());
 
@@ -55,11 +78,7 @@ const Table = require('./DictTest/table');
 router.get('/v1/dictTest/table', Table.getOption);
 
 router.get('/v1/dictTest/tableOp', Table.tableOpera);
-// router.get('/v1/page',async(ctx,next)=>{
-//   debugger;
-//   console.log('ht');
-//   ctx.response.body='Hello';
-// });r
+
 
 // 预览
 
@@ -67,23 +86,8 @@ router.get('/v1/dictTest/tableOp', Table.tableOpera);
 const Preview = require('./preview/Preview');
 const preview = new Preview(RUNTIME_PATH, STATIC_PATH);
 router.get('/v1/preview/init', preview.init());
-//router.get('/v1/preview/static/*', RouterStatic(path.resolve(path.join(RUNTIME_PATH, './dist/'))))
 
-
-// mysql操作
-const DB = require('./db/mysql-conn');
-const db = new DB({
-  database: 'aweb_social'
-});
-
-router.get('/v1/db/select', db.select());
-
-//连接WEBIDE中台
-const Platform = require('./ide/platform');
-const platform = new Platform({
-  ip: 'localhost',
-  port: 8080,
-});
+platform.socket.on('getVueEditorStyles',preview.style(platform));
 
 // app
 const app = new Koa();
@@ -103,7 +107,7 @@ app.use(external.routes());
 app.use(staticRouter([
   {
     router: '/v1/static/',     //dir:static resource directory
-    dir: path.resolve(path.join(RUNTIME_PATH,'./dist'))   //router:router
+    dir: path.resolve(path.join(RUNTIME_PATH, './dist'))   //router:router
   }
 ]))
 
