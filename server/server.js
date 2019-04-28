@@ -93,8 +93,8 @@ app.use(router.routes());
 
 
 const external = require('./external/external');
-platform.socket.on('v1/external/widget',external.widget(platform));
-platform.socket.on('v1/external/dict',external.dict(platform));
+platform.socket.on('/v1/external/widget',external.widget(platform));
+platform.socket.on('/v1/external/dict',external.dict(platform));
 
 //预览静态路由
 app.use(staticRouter([
