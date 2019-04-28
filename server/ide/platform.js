@@ -1,5 +1,8 @@
 const io = require('socket.io-client'); //导入mysql模块
 const runtimeFiles = require('../page/ideFiles');
+const ExtListn= require('../external/socketListener');
+
+const extListn=new ExtListn();
 class Platform {
   constructor({
     ip,
@@ -48,6 +51,9 @@ class Platform {
       console.log(req);
       this.sendSuccessResult(req, {});
     })
+
+    //注册了画板相关的监听
+    extListn.observe(this);
   }
 
   sendSuccessResult(req, data) {
