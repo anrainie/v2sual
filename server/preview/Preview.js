@@ -36,7 +36,11 @@ class Preview {
         const vueFiles = files.filter(f => f.lastIndexOf('.vue') !== -1).map(f => f.replace(componentPath, '.')).sort();
 
         //生成Vue Use
-        const content = `import Vue from 'vue';${vueFiles.map(f => ` Vue.use("${f}")`).join('\n')}`;
+        const content = `
+import _ from 'vue';
+const Vue = window.Vue || _;
+{${vueFiles.map(f => ` Vue.use("${f}")`).join('\n')}}
+`;
 
         const list = await new Promise((res, rej) => fs.writeFile(path.join(componentPath, 'aweb.components.js'), content, err => err ? rej(err) : res('success')));
 
@@ -110,6 +114,20 @@ class Preview {
         const content = Array.from(new Set(css)).map(f=>fs.readFileSync(path.resolve(path.join(projectPath,'./dist',f)).toString()));
 
         platform.sendSuccessResult(req, `<style>${content.join('')}</style>`);
+      } catch (e) {
+        platform.sendErrorResult(req,e);
+      }
+    }
+  }
+
+  runtimeWidget(platform){
+    const projectPath = this.projectPath;
+    const staticPath = this.staticPath;    
+    return function (req) {
+      try {
+        const js = Buffer.from(fs.readFileSync(path.resolve(path.join(projectPath, './dist/js/app.js')))).toString();
+
+        platform.sendSuccessResult(req, js);
       } catch (e) {
         platform.sendErrorResult(req,e);
       }

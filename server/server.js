@@ -76,6 +76,7 @@ const Preview = require('./preview/Preview');
 const preview = new Preview(RUNTIME_PATH, STATIC_PATH);
 
 platform.socket.on('/v1/preview/init',preview.init(platform));
+platform.socket.on('/v1/external/runtimeWidget',preview.runtimeWidget(platform));
 platform.socket.on('getVueEditorStyles',preview.style(platform));
 
 // app
