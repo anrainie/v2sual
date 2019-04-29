@@ -1,4 +1,3 @@
-        
 import avEchartBar  from './av-echart-bar/index.vue';
 import avEchartLine  from './av-echart-line/index.vue';
 import avEditableTable  from './av-editable-table/index.vue';
@@ -18,6 +17,7 @@ import avLayoutColctn  from './av-layout-colctn/index.vue';
 import avLayoutRowctn  from './av-layout-rowctn/index.vue';
 import monitorMComponentMDataDisplay  from './monitor-MComponent-MDataDisplay/index.vue'
 
+
 export default {
   avEchartBar,
 	avEchartLine,
@@ -25,8 +25,8 @@ export default {
 	avFormCascader,
 	avFormCheckbox,
 	avFormDatePicker,
-	avFormInput,
 	avFormInputNumber,
+	avFormInput,
 	avFormRadio,
 	avFormSelect,
 	avFormSlider,
