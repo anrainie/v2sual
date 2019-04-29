@@ -11,18 +11,15 @@
 }
 
 
-.V2Dropable {
+.dropable {
   background-color: lightpink;
   border: 1px solid darkorange;
 }
 
-.V2Dropable:hover {
+.dropable:hover {
   background-color: lightcyan;
 }
 
-.V2DropableHover{
-  background-color: lightcyan;
-}
 
 .selectedContainer {
   box-shadow: 1px 1px 3px darkgray;
