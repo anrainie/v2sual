@@ -14,7 +14,8 @@ import avFormSwitch  from './av-form-switch/index.vue';
 import avFormTimePicker  from './av-form-timePicker/index.vue';
 import avFormTransfer  from './av-form-transfer/index.vue';
 import avFormUpload  from './av-form-upload/index.vue';
-import avLayoutCtn  from './av-layout-ctn/index.vue';
+import avLayoutColctn  from './av-layout-colctn/index.vue';
+import avLayoutRowctn  from './av-layout-rowctn/index.vue';
 import monitorMComponentMDataDisplay  from './monitor-MComponent-MDataDisplay/index.vue'
 
 export default {
@@ -33,6 +34,7 @@ export default {
 	avFormTimePicker,
 	avFormTransfer,
 	avFormUpload,
-	avLayoutCtn,
+	avLayoutColctn,
+	avLayoutRowctn,
 	monitorMComponentMDataDisplay
 }
