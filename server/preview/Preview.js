@@ -152,7 +152,7 @@ export default {
     const staticPath = this.staticPath;    
     return function (req) {
       try {
-        const js = Buffer.from(fs.readFileSync(path.resolve(path.join(projectPath, './v2sual/aweb-components.umd.min.js')))).toString();
+        const js = Buffer.from(fs.readFileSync(path.resolve(path.join(projectPath, './v2sual/@aweb-template/vue-spa.umd.min.js')))).toString();
 
         platform.sendSuccessResult(req, js);
       } catch (e) {
