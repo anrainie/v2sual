@@ -4,16 +4,16 @@
   },
   "bundleDependencies": false,
   "deprecated": false,
-  "description": "布局",
+  "description": "竖向布局",
   "docs": {
     "belongTo": "aui",
     "icon": "iconfont icon-password",
     "type": "layout",
-    "href": "av-layout-ctn",
+    "href": "av-layout-rowctn",
     "author": "zhanghaixian@agree.com.cn",
     "version": 510000,
     "accept": "",
-    "name": "布局",
+    "name": "竖向布局",
     "option": [
       {
         "name": "direction",
@@ -30,36 +30,26 @@
         ]
       },
       {
+          "name": "layout",
+          "desp": "栅格",
         "hidden": false,
-        "defaultValue": "",
-        "replaceTemp": true,
-        "valueArray": "",
-        "type": "array",
-        "titleKey": "",
-        "appendNumber": "",
-        "desp": "栅栏",
-        "formatter": "",
-        "idUniqueSpace": "",
-        "hasEvent": false,
-        "dataList": "",
-        "name": "layout",
-        "attrInEachElement": [{
-          "type": "string_input",
-          "desp": "占比",
-          "defaultValue": "50",
-          "name": "ctn"
-        }],
-        "details": "设置栅栏数",
-        "placeholder": "",
-        "edmKey": "",
-        "despArray": "",
-        "direction": "",
-        "validate": {
-          "errorMessage": "",
-          "type": ""
-        }
+        "defaultValue": [50,50],
+        "type": "tags_input"
       }
     ],
+    "css": {
+      "style": [{
+          "desp": "栅格",
+          "cssAttrs": "position margin padding border top left right bottom",
+          "name": "row"
+        },
+        {
+          "desp": "子容器",
+          "cssAttrs": "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+          "name": "divCtn"
+        }
+      ]
+    },
     "style":{
       
     }
@@ -67,7 +57,7 @@
   "keywords": [],
   "license": "ISC",
   "main": "index.vue",
-  "name": "@aweb-components/av-layout-ctn",
+  "name": "@aweb-components/av-layout-rowctn",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

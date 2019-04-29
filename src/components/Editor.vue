@@ -149,7 +149,8 @@ export default {
               element:{
              //  style:util.cssConfigInitInstance({},item.css||{})||{},
                 data:util.baseConfigInitInstance({},item.option||[])||{},
-                ...item
+                ...item,
+                children:[]
               }
 
          }
