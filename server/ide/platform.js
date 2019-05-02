@@ -1,8 +1,9 @@
 const io = require('socket.io-client'); //导入mysql模块
 const runtimeFiles = require('../page/ideFiles');
-const ExtListn= require('../external/socketListener');
+const ExtListn = require('../external/socketListener');
+const fileUtil = require('./fileUtil');
 
-const extListn=new ExtListn();
+const extListn = new ExtListn();
 class Platform {
   constructor({
     ip,
@@ -48,8 +49,22 @@ class Platform {
     })
 
     this.socket.on('getFile', req => {
-      console.log(req);
-      this.sendSuccessResult(req, {});
+      let path = req.data.path;
+      fileUtil.getFileContent(path).then(content => {
+        this.sendSuccessResult(req, content);
+      }).catch(e => {
+        this.sendErrorResult(e)
+      })
+    })
+
+    this.socket.on('saveFile', req => {
+      let path = req.data.path;
+      let content = req.data.content;
+      fileUtil.saveFile(path, content).then(() => {
+        this.sendSuccessResult(req, {});
+      }).catch(e => {
+        this.sendErrorResult(e)
+      })
     })
 
     //注册了画板相关的监听
