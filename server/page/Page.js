@@ -272,9 +272,8 @@ class Page {
     return async function (req) {
 
       try {
-        const query = ctx.request.query;
-        const filepath = query.path;
-        const ret = await analysis.call(context, filepath);
+        const filepath = req.data.path.replace('.flow','.vue');
+        const ret = await analysis.call(context, filepath.replace(context.pagePath,''));
 
         platform.sendSuccessResult(req, ret);
       } catch (e) {

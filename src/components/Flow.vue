@@ -45,10 +45,6 @@
 <script>
 import "../assets/topology-jquery/index";
 import domtoimage from "dom-to-image";
-import { debug } from "util";
-import { setTimeout } from "timers";
-import { constants } from "fs";
-import { deflate } from "zlib";
 
 const api = {
   list: "./v1/page/list",
