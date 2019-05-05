@@ -109,7 +109,40 @@
           "右"
         ]
       }
-    ]
+    ],
+     "css": {
+      "style": [
+        {
+          "desp": "标题",
+          "cssAttrs": "font-size font-weight color",
+          "name": "title"
+        }, {
+          "desp": "检验成功边框",
+          "cssAttrs": "border-color",
+          "name": "successBorder"
+        }, {
+          "desp": "检验失败边框",
+          "cssAttrs": "border-color",
+          "name": "errorBorder"
+        }, {
+          "desp": "校验警告边框",
+          "cssAttrs": "border-color",
+          "name": "warningBorder"
+        }, {
+          "desp": "检验成功文字",
+          "cssAttrs": "color",
+          "name": "successFont"
+        }, {
+          "desp": "检验失败文字",
+          "cssAttrs": "color",
+          "name": "errorFont"
+        }, {
+          "desp": "校验警告文字",
+          "cssAttrs": "color",
+          "name": "warningFont"
+        }
+      ]
+    }
   },
   "keywords": [],
   "license": "ISC",

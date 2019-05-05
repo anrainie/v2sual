@@ -1,6 +1,6 @@
 export const cssConfigDB = (function () {
   let cssTypeMap = {
-    css_input_select: {
+    input_append: {
       'top': '距离顶部（top）',
       'right': '距离右边（right）',
       'bottom': '距离底部（bottom）',
@@ -31,7 +31,7 @@ export const cssConfigDB = (function () {
       'border-bottom-right-radius': '右底角弧度（border-bottom-right-radius）',
       'border-bottom-left-radius': '左底角弧度（border-bottom-left-radius）'
     },
-    css_string_input: {
+    string_input: {
       'background-size': '背景大小（background-size）',
       'background-position': '背景位置（background-position）',
       'display': '显示（display）',
@@ -65,7 +65,7 @@ export const cssConfigDB = (function () {
       'flex-grow': '项目放大比例(flex-grow)'
 
     },
-    css_img_url: {
+    file: {
       'background-image': '背景图片(background-image)'
     },
     string_select: {
@@ -100,7 +100,7 @@ export const cssConfigDB = (function () {
       'align-content': '多轴上如何对齐(align-content)'
 
     },
-    color_pick: {
+    colorPicker: {
       'color': '字体颜色（color）',
       'icon-color': 'icon颜色（icon-color）', // 自定义类型，主要区分字体颜色和图标颜色
       'background-color': '背景颜色（background-color）',
@@ -114,13 +114,13 @@ export const cssConfigDB = (function () {
   };
   let cssTypeList = [
     // 带后缀选择输入框
-    'css_input_select',
+    'input_append',
     // 输入框
-    'css_string_input',
+    'string_input',
     // 调色板
-    'color_pick',
+    'colorPicker',
 
-    'css_img_url'
+    'file'
   ];
   let cssPropOrderList = [
     // 外部定位
@@ -144,7 +144,6 @@ export const cssConfigDB = (function () {
     'text-align',
     'text-layout',
     'word-break',
-    'align-content',
     'align-content',
     'align-items',
     'align-self',
@@ -238,11 +237,8 @@ export const cssConfigDB = (function () {
     'flex-direction',
     'flex-wrap',
     'justify-content',
-    'align-items',
-    'align-content',
     'order',
     'flex-grow',
-    'align-self',
     // 动画/3D
     'animation',
     'animation-delay',

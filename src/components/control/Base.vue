@@ -43,32 +43,33 @@ export default {
     console.log("destroy");
   },
   methods: {
-    add() {
-      this.model.children.push(null);
-      this.model.layout.push(10);
-    },
-    remove(index) {
-      this.model.children.splice(index, 1);
-      this.model.layout.splice(index, 1);
-    },
-    change(e) {
-      if (e && e.moved) {
-        let { oldIndex, newIndex } = e.moved;
-        //位置交换
-        this.model.layout.splice(
-          oldIndex,
-          1,
-          this.model.layout.splice(newIndex, 1, this.model.layout[oldIndex])
-        );
-      }
-    }
+    // add() {
+    //   this.model.children.push(null);
+    //   this.model.layout.push(10);
+    // },
+    // remove(index) {
+    //   this.model.children.splice(index, 1);
+    //   this.model.layout.splice(index, 1);
+    // },
+    // change(e) {
+    //   if (e && e.moved) {
+    //     let { oldIndex, newIndex } = e.moved;
+    //     //位置交换
+    //     this.model.layout.splice(
+    //       oldIndex,
+    //       1,
+    //       this.model.layout.splice(newIndex, 1, this.model.layout[oldIndex])
+    //     );
+    //   }
+    // }
   },
   computed: {
     arr() {
-      return this.model.option;
+      return this.model.widget ? this.model.widget.option :[];
     },
     obj() {
-      return this.model.data;
+      
+      return this.model;
     },
     wid() {
       // let st = this.$store.state.UIData.selectTarget;
@@ -79,6 +80,7 @@ export default {
       return this.$store.getters.firstSelection;
     },
     model() {
+        // console.log('lalb',this.$store.getters.model(this.$store.getters.firstSelection))
       return (
         this.$store.getters.model(this.$store.getters.firstSelection) || {}
       );

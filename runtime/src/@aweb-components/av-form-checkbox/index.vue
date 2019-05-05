@@ -1,16 +1,16 @@
 <template>
-  <div :style="flexStyle" class="av-form-checkbox">
+  <div :style="flexStyle" class="av-form-checkbox" >
     <label
-      :class="model.data.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
-      :style="{width:model.data.labelWitdh}"
-    >{{model.data.label}}</label>
+      :class="model.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
+      :style="labelStyle"
+    >{{model.label}}</label>
     <div
       class="form-checkbox-ctn"
-      :style="model.data.titleMode ==='row'?{}:{marginLeft:model.data.labelWitdh}"
+      :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"
     >
       <el-checkbox-group v-model="checkList">
-        <el-checkbox 
-        v-for="(item,index) in model.data.options" 
+        <el-checkbox  
+        v-for="(item,index) in model.options" 
         :label="item.value" 
         :key="index" 
         :disabled="item.disabled"
@@ -33,21 +33,32 @@ export default {
   },
   methods: {
     $Enter() {
-      this.model.data.checked = !this.model.data.checked;
+      this.model.checked = !this.model.checked;
       return false;
     },
   },
   computed: {
     flexStyle() {
       let self = this;
-      if (self.model.data.titleMode === "col") {
-        return $.extend({}, self.model.data.style, { display: "flex" });
-      } else if (self.model.data.titleMode === "row") {
-        return self.model.data.style;
+      if (self.model.titleMode === "col") {
+        return $.extend({}, self.model.style.position, { display: "flex" });
+      } else if (self.model.titleMode === "row") {
+        return self.model.style;
       }
+    },
+    labelStyle(){
+      return {
+        width:this.model.labelWitdh,
+        ...this.model.style.label
+      }
+    },
+    checkboxStyle(){
+
     }
   },
-  mounted() {}
+  mounted() {
+    console.log('mo',this.model)
+  }
 };
 </script>
 

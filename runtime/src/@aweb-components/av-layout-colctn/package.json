@@ -1,0 +1,64 @@
+{
+  "author": {
+    "name": "zhanghaixian@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "横向布局",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconfont icon-password",
+    "type": "layout",
+    "href": "av-layout-colctn",
+    "author": "zhanghaixian@agree.com.cn",
+    "version": 510000,
+    "accept": "",
+    "name": "横向布局",
+    "option": [
+      {
+        "name": "direction",
+        "desp": "排列方式",
+        "defaultValue":"row",
+        "type": "string_select",
+        "valueArray": [
+          "row",
+          "col"
+        ],
+        "despArray": [
+          "横排",
+          "竖排"
+        ]
+      }, {
+        "name": "layout",
+        "desp": "栅格",
+        "hidden": false,
+        "defaultValue": "[50,50]",
+        "type": "string_input"
+      }
+    ],
+    "css": {
+      "style": [{
+          "desp": "栅格",
+          "cssAttrs": "position margin padding border top left right bottom",
+          "name": "row"
+        },
+        {
+          "desp": "子容器",
+          "cssAttrs": "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+          "name": "divCtn"
+        }
+      ]
+    },
+    "style":{
+      
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@aweb-components/av-layout-colctn",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.4"
+}

@@ -1,21 +1,24 @@
 <template>
 <div>
-      <div class="aui-config-tilte">样式配置</div>
     <div class="aui-config-content">
-      <!-- <base-config
+      <!-- {{JSON.stringify(obj)}} -->
+      <base-config
         v-if="showOption"
-        class="aui-config-ctn"
+        class="aui-config-ctn "
         :arraySelector="arraySelector"
         :objSelector="objSelector"
         :array="arr"
         :obj="obj"
-      ></base-config> -->
+        :needMore="needMore"
+      ></base-config>
     </div>
 </div>
 
 </template>
 
 <script>
+import util from "../../base/utils/bridge.js";
+
 export default {
     data() {
     return {
@@ -26,36 +29,53 @@ export default {
 
       //model display control
       spinShow: true,
-      showOption: false
-     };
+      showOption: true
+     }
     },
-    mounted: function() {
-    this.showOption = true;
-    },
+
    computed: {
-    arr() {
-      return this.model.css;
+    arr(){
+ 
+      return  this.model.widget ? util.turnCssConfigToArr(this.model.widget.css||{}):[]
     },
     obj() {
-      return this.model.data;
+      return this.model;
     },
     wid() {
-      // let st = this.$store.state.UIData.selectTarget;
 
-      // if (!st || st.length != 1) {
-      //   return null;
-      // }
       return this.$store.getters.firstSelection;
     },
-    model() {
+    model() {      
       return (
         this.$store.getters.model(this.$store.getters.firstSelection) || {}
       );
     }
     },
-    components:{
+    methods:{
+     needMore(index){     
+       let  styleConfig = this.arrO.find(item => item.name==='style');
+       styleConfig.attr[0].tabPanes[index].attr = util.getAllCssAttrConfig();
+
+      // console.log(this.arrO);
+      
+     }
+    },
+    watch:{
+      arr(){
+         
+      },
+      obj:{
+         handler(newName, oldName) {
         
-    }
+       },
+        immediate: true,
+        deep: true
+      }
+      
+    },
+   mounted(){
+
+   }
 }
 </script>
 

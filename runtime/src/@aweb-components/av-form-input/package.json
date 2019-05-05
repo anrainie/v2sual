@@ -61,61 +61,39 @@
       }
     ],
     "css": {
-      "style": [{
-          "desp": "默认/focus背景色",
-          "cssAttrs": "background-color",
-          "name": "backgroundColor"
+      "style": [
+        {
+          "desp": "检验成功边框",
+          "cssAttrs": "border-color",
+          "name": "successBorder"
         },
         {
-          "desp": "描边",
-          "cssAttrs": "border-width border-radius border-color border-style",
-          "name": "border"
+          "desp": "检验失败边框",
+          "cssAttrs": "border-color",
+          "name": "errorBorder"
         },
         {
-          "desp": "尺寸",
-          "cssAttrs": "margin padding width height",
-          "name": "size"
-        },
-        {
-          "desp": "按钮文字",
-          "cssAttrs": "font-size color",
-          "name": "font"
-        },
-        {
-          "desp": "图标",
-          "cssAttrs": "font-weight font-size color",
-          "name": "icon"
-        },
-        {
-          "desp": "按钮hover",
-          "cssAttrs": "background-color border-width border-color color ",
-          "name": "hoverBtn"
-        },
-        {
-          "desp": "按钮激活",
-          "cssAttrs": "background-color border-width border-color color ",
-          "name": "activeBtn"
+          "desp": "校验警告边框",
+          "cssAttrs": "border-color",
+          "name": "warningBorder"
+        },{
+          "desp": "检验成功文字",
+          "cssAttrs": "color",
+          "name": "successFont"
+        }, {
+          "desp": "检验失败文字",
+          "cssAttrs": "color",
+          "name": "errorFont"
+        }, {
+          "desp": "校验警告文字",
+          "cssAttrs": "color",
+          "name": "warningFont"
+        }, {
+          "desp": "标题",
+          "cssAttrs": "font-size color font-weight",
+          "name": "label"
         }
-      ],
-      "theme": [{
-        "template": "<button class='btn'></button>",
-        "desp": "功能",
-        "name": "functionClass",
-        "valueArray": [
-          "btn-focus",
-          "btn-normal",
-          "btn-textBtn",
-          "btn-danger",
-          "btn-custom"
-        ],
-        "despArray": [
-          "焦点",
-          "普通",
-          "文字",
-          "警告",
-          "自定义"
-        ]
-      }]
+      ]
     }
   },
   "keywords": [],

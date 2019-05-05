@@ -54,9 +54,20 @@
         "name": "inactiveText"
       }
     ],
-    "style":{
-      
-    }
+    "css": {
+       "style": [
+         {
+           "desp": "标题",
+           "cssAttrs": "font-size font-weight color",
+           "name": "title"
+         },
+         {
+           "desp": "开关",
+           "cssAttrs": "height margin padding",
+           "name": "switch"
+         }
+       ]
+     }
   },
   "keywords": [],
   "license": "ISC",

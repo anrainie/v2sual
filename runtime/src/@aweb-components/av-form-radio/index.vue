@@ -1,16 +1,16 @@
 <template>
-  <div :style="model.data.style" class="av-form-radio">
+  <div :style="model.style" class="av-form-radio">
     <label
-      :class="model.data.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
-      :style="{width:model.data.labelWitdh}"
-    >{{model.data.label}}</label>
+      :class="model.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
+      :style="{width:model.labelWitdh}"
+    >{{model.label}}</label>
     <div
       class="form-radio-ctn"
-      :style="model.data.titleMode ==='row'?{}:{marginLeft:model.data.labelWitdh}"
+      :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"
     >
-      <el-radio-group v-model="model.data.value">
+      <el-radio-group v-model="model.value">
         <el-radio
-          v-for="(item,index) in model.data.options"
+          v-for="(item,index) in model.options"
           :key="'radio-'+index"
           :disabled="item.disabled"
           :border="item.border"

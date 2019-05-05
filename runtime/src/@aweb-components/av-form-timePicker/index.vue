@@ -1,27 +1,27 @@
 <template>
   <div :style="model.style" class="av-form-timePicker">
     <label
-      :class="model.data.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
-      :style="{width:model.data.labelWitdh}"
-    >{{model.data.label}}</label>
-    <div class="form-timePicker-ctn" :style="model.data.titleMode ==='row'?{}:{marginLeft:model.data.labelWitdh}">
+      :class="model.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
+      :style="{width:model.labelWitdh}"
+    >{{model.label}}</label>
+    <div class="form-timePicker-ctn" :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
       <el-time-select
-        v-if="model.data.type==='select'"
-        v-model="model.data.value"
-        :picker-options="model.data.options"
-        :placeholder="model.data.placeholder"
-        :arrow-control="model.data.arrow"
+        v-if="model.type==='select'"
+        v-model="model.value"
+        :picker-options="model.options"
+        :placeholder="model.placeholder"
+        :arrow-control="model.arrow"
       ></el-time-select>
 
       <el-time-picker
-        v-if="model.data.type==='picker'"
-        v-model="model.data.value"
-        :picker-options="model.data.options"
-        :placeholder="model.data.placeholder"
-        :is-range="model.data.range"
-        :range-separator="model.data.rangeSeparator"
-        :start-placeholder="model.data.startPlaceholder"
-        :end-placeholder="model.data.endPlaceholder"
+        v-if="model.type==='picker'"
+        v-model="model.value"
+        :picker-options="model.options"
+        :placeholder="model.placeholder"
+        :is-range="model.range"
+        :range-separator="model.rangeSeparator"
+        :start-placeholder="model.startPlaceholder"
+        :end-placeholder="model.endPlaceholder"
       ></el-time-picker>
     </div>
   </div>

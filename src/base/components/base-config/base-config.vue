@@ -6,6 +6,8 @@
       :key="item.name"
       :item="item"
       :obj="obj"
+      :needMore="needMore"
+      
       
     ></base-component>
   </div>
@@ -48,16 +50,22 @@ export default {
       type: Boolean,
       default: false
     },
-
+    showSearch:{
+      type: Boolean,
+      default: false
+    },
 
 
     edmCollectionObj: Object,
 
-    handler: Object
+     needMore: Function
   },
 
   methods: {
    
+  },
+  mounted(){
+    
   }
 };
 </script>

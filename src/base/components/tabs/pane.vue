@@ -28,6 +28,7 @@
                 type: Boolean,
                 default: null
             }
+           
         },
         data () {
             return {

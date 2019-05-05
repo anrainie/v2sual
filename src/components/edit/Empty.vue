@@ -32,6 +32,7 @@ export default {
       }
     });
     let self = this;
+ 
     $(this.$el).droppable({
       activeClass:'V2DropableHover',
       drop(event, ui) {

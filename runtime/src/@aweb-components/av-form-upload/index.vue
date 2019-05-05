@@ -1,21 +1,21 @@
 <template>
   <div :style="flexStyle" class="av-form-updload">
-     <div v-if="model.data.titleMode==='row'">
-        <label class="av-form-updload-label">{{model.data.label}}</label>
+     <div v-if="model.titleMode==='row'">
+        <label class="av-form-updload-label">{{model.label}}</label>
     </div>
-        <label  v-if="model.data.titleMode==='col'" class="av-form-updload-label">{{model.data.label}}</label>
+        <label  v-if="model.titleMode==='col'" class="av-form-updload-label">{{model.label}}</label>
     <el-upload
       class="upload-demo"
-      :action="model.data.action"
+      :action="model.action"
       :on-preview="handlePreview"
       :on-remove="handleRemove"
       :before-remove="beforeRemove"
       multiple
-      :limit="parseInt(model.data.limit)"
+      :limit="parseInt(model.limit)"
       :on-exceed="handleExceed"
       :file-list="fileList">
-      <el-button size="small" type="primary">{{model.data.btnText}}</el-button>
-      <div slot="tip" class="el-upload__tip">{{model.data.prompt}}</div>
+      <el-button size="small" type="primary">{{model.btnText}}</el-button>
+      <div slot="tip" class="el-upload__tip">{{model.prompt}}</div>
     </el-upload>
   </div>
 </template>
@@ -51,10 +51,10 @@
     computed:{
       flexStyle(){
         let self = this;
-        if(self.model.data.titleMode==='col'){
-          return $.extend({}, self.model.data.style, {display:"flex"})
-        }else if(self.model.data.titleMode==='row'){
-          return self.model.data.style;
+        if(self.model.titleMode==='col'){
+          return $.extend({}, self.model.style, {display:"flex"})
+        }else if(self.model.titleMode==='row'){
+          return self.model.style;
         }
       },
     }

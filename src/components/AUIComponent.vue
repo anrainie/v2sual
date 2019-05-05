@@ -15,13 +15,16 @@ export default {
             return {}
         },
         created() {
-            
+          
          this.$options.components[this.model.href] =()=>import(`../../runtime/src/@aweb-components/${this.model.href}/index.vue`);
          
         },
         computed:{
-           
         },
+        mounted(){
+           
+          console.log(this.model.href+'-',this.model);
+        }
     
     }
 

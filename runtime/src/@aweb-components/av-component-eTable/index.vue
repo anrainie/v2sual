@@ -269,7 +269,7 @@ export default {
             let filterMap ={};
             this.hotTableID = data.context;
             that.config = data; 
-    
+   
             data.dict.forEach((ele,idx) => {
               let colOption = {};
               that.colName.push(ele.__edm_collection.name);
@@ -318,11 +318,14 @@ export default {
             
              // 初始加载请求数据
        
-           this.$nextTick(()=>{
+            this.$nextTick(()=>{
                  axios.get(data.url,{params:{"action":data.query}}).then((res)=>{
                   console.log(res);
+                 
                     if(res.data.status){
-                       that.$refs.hotTable.hotInstance.loadData(that.filterSelectOption(res.data.content.data));
+                      console.log('hoinstance',that.$refs.hotTable.hotInstance);
+                      //that.filterSelectOption(res.data.content.data)
+                       that.$refs.hotTable.hotInstance.loadData(res.data.content.data);
                     } 
               })
            })
@@ -401,7 +404,7 @@ export default {
           console.log('filterConfig',this.filterConfig);
 
           axios.get('v1/dictTest/table').then((res)=>{
-          
+          debugger;
                 if(res.data.status){
                   that.updateHotSetting(res.data.content);
                 }

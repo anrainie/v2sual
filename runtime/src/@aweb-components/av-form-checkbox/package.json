@@ -58,7 +58,21 @@
           }
         ]
       }
-    ]
+    ],
+    "css": {
+      "style": [
+        {
+          "desp": "标题",
+          "cssAttrs": "font-size color font-weight",
+          "name": "label"
+        },
+        {
+          "desp": "选项文字",
+          "cssAttrs": "font-size  color padding-left",
+          "name": "font"
+        }
+      ]
+    }
   },
   "keywords": [],
   "license": "ISC",

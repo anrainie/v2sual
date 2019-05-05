@@ -55,7 +55,7 @@ import echarts from "echarts";
                 }
               ]
         };
-      this.chart.setOption(this.model.data.option || fakeData);
+      this.chart.setOption(fakeData);
       console.log('cpt mounted',this.chart)
     }
   }
