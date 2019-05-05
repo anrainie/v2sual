@@ -53,3 +53,6 @@
 
 ## License
 [Anti 996](https://github.com/996icu/996.ICU/blob/master/LICENSE) 
+
+log:
+4月30号，修改element-ui 的lib/util/popper.js 和vue-popper.js ,在editor.vue 文件添加window.editRoot 定义

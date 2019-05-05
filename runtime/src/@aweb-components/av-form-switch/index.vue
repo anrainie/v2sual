@@ -12,12 +12,10 @@
   </div>
 </template>
 <script>
-
+import {avMixin} from '../av.js'
   export default {
     name: 'av-form-switch',
-    props: {
-      model: Object
-    },
+    mixins:avMixin,
     methods: {
       $Enter () {
         this.model.value = !this.model.value
@@ -26,6 +24,14 @@
     },
     mounted () {
       $('.el-switch__core', this.$refs.switch.$el).attr('contenteditable', true)
+    },
+    computed:{
+
+      model() {
+        return (
+          this.$store.getters.model(this.wid) || {}
+        );
+      }
     }
   }
 </script>

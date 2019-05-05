@@ -1,6 +1,6 @@
 import avEchartBar  from './av-echart-bar/index.vue';
 import avEchartLine  from './av-echart-line/index.vue';
-import avEditableTable  from './av-editable-table/index.vue';
+import avEditableTable  from './av-component-eTable/index.vue';
 import avFormCascader  from './av-form-cascader/index.vue';
 import avFormCheckbox  from './av-form-checkbox/index.vue';
 import avFormDatePicker  from './av-form-datePicker/index.vue';
@@ -15,11 +15,11 @@ import avFormTransfer  from './av-form-transfer/index.vue';
 import avFormUpload  from './av-form-upload/index.vue';
 import avLayoutColctn  from './av-layout-colctn/index.vue';
 import avLayoutRowctn  from './av-layout-rowctn/index.vue';
-import monitorMComponentMDataDisplay  from './monitor-MComponent-MDataDisplay/index.vue'
+
 
 
 export default {
-  avEchartBar,
+    avEchartBar,
 	avEchartLine,
 	avEditableTable,
 	avFormCascader,
@@ -35,6 +35,5 @@ export default {
 	avFormTransfer,
 	avFormUpload,
 	avLayoutColctn,
-	avLayoutRowctn,
-	monitorMComponentMDataDisplay
+	avLayoutRowctn
 }

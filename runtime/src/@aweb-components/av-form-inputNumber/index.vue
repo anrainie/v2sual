@@ -19,12 +19,10 @@
   </div>
 </template>
 <script>
-
+import {avMixin} from '../av.js'
   export default {
     name: 'av-form-inputNumber',
-    props: {
-      model: Object
-    },
+    mixins:avMixin,
     data () {
       return {}
     },
@@ -34,6 +32,14 @@
       handleChange () {
       }
     },
+    computed:{
+
+      model() {
+        return (
+          this.$store.getters.model(this.wid) || {}
+        );
+      }
+    }
 
   }
 </script>

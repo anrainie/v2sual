@@ -27,16 +27,24 @@
   </div>
 </template>
 <script>
+import {avMixin} from '../av.js'
+
 export default {
   name: "av-form-timePicker",
-  props: {
-    model: Object
-  },
+  mixins:avMixin,
   mounted() {},
   data() {
     return {};
   },
-  methods: {}
+  methods: {},
+  computed:{
+
+      model() {
+        return (
+          this.$store.getters.model(this.wid) || {}
+        );
+      }
+  }
 };
 </script>
 <style>

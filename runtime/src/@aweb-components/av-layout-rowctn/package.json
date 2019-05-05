@@ -34,7 +34,7 @@
           "desp": "栅格",
         "hidden": false,
         "defaultValue": [50,50],
-        "type": "string_input"
+        "type": "tags_input"
       }
     ],
     "css": {
@@ -49,9 +49,6 @@
           "name": "divCtn"
         }
       ]
-    },
-    "style":{
-      
     }
   },
   "keywords": [],

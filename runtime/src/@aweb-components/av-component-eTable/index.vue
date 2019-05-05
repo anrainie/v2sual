@@ -50,7 +50,7 @@
   </div>
 </template>
 <script>
-
+import {avMixin} from '../av.js';
 import { HotTable } from '@handsontable/vue';
 import Handsontable from 'handsontable';
 import 'handsontable/dist/handsontable.full.css';
@@ -70,11 +70,10 @@ const EDM_TYP_MAP={
   "dropdown":'dropdown'
 };
 
+
 export default {
   name: "av-component-eTable",
-  props: {
-    model: Object
-  },
+  mixins:avMixin,
   data: function () {
     return {
       hotTableID:'hot-table',
@@ -166,6 +165,13 @@ export default {
       }
      }
    },
+   computed:{
+      model() {
+        return (
+          this.$store.getters.model(this.wid) || {}
+        );
+      }
+  },
   methods: {
         afterSelection(row, column, row2, column2, preventScrolling, selectionLayerLevel){
             
@@ -404,7 +410,7 @@ export default {
           console.log('filterConfig',this.filterConfig);
 
           axios.get('v1/dictTest/table').then((res)=>{
-          debugger;
+          
                 if(res.data.status){
                   that.updateHotSetting(res.data.content);
                 }

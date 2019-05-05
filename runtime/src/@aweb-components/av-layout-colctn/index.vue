@@ -1,55 +1,42 @@
 <template>
   <!-- 布局容器 -->
-
-  <div class="V2Container" ref="wrap" :style="model.style">
+  <div class="V2Container" ref="wrap" :style="model.style" >
     <!-- model来自widget -->
     <template v-for="(lyt,index) of layout_c">
-      <el-row
-          class="V2ContainerBlock"
-        :span="parseInt(layout(index))"
+
+       <el-row
+        class="V2ContainerBlock"
+        :style="{height:layout(index),width:'100%',}"
         :key="index"
-        style="height:100%;"
         v-if="!model.direction || model.direction=='row'"
       >
-        <component :is="component(index)" :wid="wigetId(index)" :index="index" :pid="wid"></component>
+           <component :is="component(index)" :wid="wigetId(index)" :index="index" :pid="wid"></component> 
       </el-row>
       <el-col
         class="V2ContainerBlock"
         :span="parseInt(layout(index))"
         :key="index"
-        v-else
-        style="height:100%;"
-      >
+          v-else
+        style="height:100%;">
+
         <component :is="component(index)" :wid="wigetId(index)" :index="index" :pid="wid"></component>
       </el-col>
+     
+  
     </template>
   </div>
 </template>
 <script>
-export default {
-  name: "av-layout-colctn",
+import {avMixin} from '../av.js'
 
-  props: {
-    model: Object,
-    wid: [String, Number]
-  },
-  data() {
-    return {
-      //  layoutConfig:[100]
-    };
-  },
-  mounted() {
-    console.log("ly", this);
-    //     this.model.data &&( this.model.data.children=[]);
-    //     let ctns =[];
-    // this.model.data && this.model.data.layout && this.model.data.layout.forEach(ele => {
-    //     ctns.push(ele.ctn);
-    //  });
-    //  this.layoutConfig = ctns;
-
-    // !this.model.layout && (this.model.layout=[50,50])
-  },
-  methods: {
+  export default {
+    name: 'av-layout-colctn',
+    mixins:avMixin,
+    data(){
+       return {
+       }
+    },
+    methods: {
     $selectedClass() {
       return {
         selectedContainer: true
@@ -72,7 +59,7 @@ export default {
     }
   },
   computed: {
-      layout_c() {
+       layout_c() {
       if(this.model.layout){
         if (typeof this.model.layout === "string") {
           return JSON.parse(this.model.layout);
@@ -85,7 +72,7 @@ export default {
 
     },
     component(index) {
-      return index => {
+     return index => {
         let item = this.model.children[index];
         if (item === undefined) {
           this.model.children[index] = null;
@@ -93,6 +80,7 @@ export default {
         if (item) return item.component;
         return "v2Empty";
       };
+
     },
     wigetId(index) {
       return index => {
@@ -102,13 +90,19 @@ export default {
         }
         return this.wid + "-" + index;
       };
-    }
+    },
+      model() {
+
+        return (
+          this.$store.getters.model(this.wid) || {}
+        );
+      }
   }
-};
+  }
 </script>
 <style lang="less" scoped>
 .V2Container,
-.V2ContainerBlock {
+.V2ContainerBlock{
   min-height: 30px;
 }
 </style>

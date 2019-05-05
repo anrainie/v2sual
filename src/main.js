@@ -3,8 +3,8 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import AwebUI from 'aweb-ui';
+import 'aweb-ui/lib/theme-chalk/index.css';
 import axios from 'axios';
 import './base/styles/bundle.css';
 import './base/styles/aui-iconfont.css';
@@ -28,7 +28,7 @@ import v2Checkbox from './components/input/Checkbox.vue';
 import ComplexWidget from './components/ComplexWidget.vue';
 import echartComponent from './components/chart/echartComponent.vue';
 
-import V2AuiComponent from './components/AUIComponent.vue';
+// import V2AuiComponent from './components/AUIComponent.vue';
 
 import bundle from './base/index';
 window.Vue = Vue;
@@ -47,7 +47,7 @@ Vue.prototype.apis = (url, params, type) => {
     console.log(url, e);
   });
 };
-Vue.use(ElementUI);
+Vue.use(AwebUI);
 Vue.config.productionTip = false;
 
 Vue.component('v2Container', v2Container);

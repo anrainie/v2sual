@@ -20,11 +20,10 @@
   </div>
 </template>
 <script>
+import {avMixin} from '../av.js';
 export default {
   name: "av-form-cascader",
-  props: {
-    model: Object
-  },
+  mixins:avMixin,
   mounted() {},
   data() {
     return {
@@ -298,6 +297,14 @@ export default {
       ],
       selectVal:[]
     };
+  },
+  computed:{
+
+      model() {
+        return (
+          this.$store.getters.model(this.wid) || {}
+        );
+      }
   },
   watch:{
     selectVal(value){

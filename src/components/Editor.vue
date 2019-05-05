@@ -150,6 +150,7 @@ export default {
                 ...util.cssConfigInitInstance(util.baseConfigInitInstance({},util.turnCssConfigToArr(item.css||{}))||{},item.css),
                 ...util.baseConfigInitInstance({},item.option||[])||{},
                 href:item.href,
+                component:item.href,
                 children:[],
                 widget:item
               }
@@ -157,7 +158,7 @@ export default {
          }
          console.log('widget',ret);
          
-        ret.element.component="V2AuiComponent"
+        // ret.element.component="V2AuiComponent"
         
           return ret;
        })

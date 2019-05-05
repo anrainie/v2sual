@@ -20,12 +20,10 @@
   </div>
 </template>
 <script>
-
+import {avMixin} from '../av.js'
   export default {
     name: 'av-form-updload',
-    props: {
-      model: Object
-    },
+    mixins:avMixin,
     mounted () {
     },
     data () {
@@ -57,6 +55,11 @@
           return self.model.style;
         }
       },
+      model() {
+        return (
+          this.$store.getters.model(this.wid) || {}
+        );
+      }
     }
   }
 </script>
