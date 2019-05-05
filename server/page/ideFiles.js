@@ -23,19 +23,24 @@ function listDir(dirPath = listPath) {
         });
       } else {
         let nodeInfo = listFile(filePath);
-        treeNode.push({
-          name: nodeInfo,
-          label: nodeInfo,
-          resId: 'vue',
-          icon: "navi/file_ccf.gif",
-          type: 'file',
-          path: filePath
-        });
+        if (nodeInfo) {
+          treeNode.push({
+            name: nodeInfo,
+            label: nodeInfo,
+            resId: 'vue',
+            icon: "navi/file_ccf.gif",
+            type: 'file',
+            path: filePath
+          });
+        }
       }
     }
   } catch (e) {
     console.error(e);
   }
+
+
+
   return treeNode;
 }
 
@@ -45,8 +50,44 @@ function listFile(pagePath) {
   }
 }
 
-const dirList = listDir();
+// const dirList = listDir();
 
 // console.log(JSON.stringify(dirList));
 
-module.exports = listDir;
+module.exports = (dirPath = listPath) => {
+  const viewPath = listDir(dirPath);
+  const flowPath=JSON.parse(JSON.stringify(viewPath));
+
+  //rename flow
+  let copy=[].concat(flowPath);
+  let item;
+
+  while(item=copy.pop()){
+    if(item.resId==='vue'){
+      item.resId='flow';
+      item.path=item.path.replace(/\.vue$/,'.flow');
+    }
+
+    if(item.children && item.children.length){
+      copy=copy.concat(item.children);
+    }
+  }
+
+  let ret = [{
+    name: 'views',
+    label: '页面',
+    path: 'views',
+    resId: 'virtualPath',
+    type: 'folder',
+    children: viewPath
+  }, {
+    name: 'flows',
+    label: '页面流',
+    path: 'flows',
+    resId: 'category',
+    type: 'folder',
+    children: flowPath
+  }];
+
+  return ret;
+};

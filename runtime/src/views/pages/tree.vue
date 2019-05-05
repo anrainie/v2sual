@@ -24,7 +24,7 @@ export default {
        app.open({
         status: true,
         title: "新页面",
-        page: "/A5/components/script/scriptManager"
+        page: "/example/table"
       });
     }
   }
