@@ -98,15 +98,10 @@
       <chat style="left:70%;top:50%;"></chat>
       <div
         v-show="showDragHelper"
-        style="position:fixed;width:10rem;height:5rem;box-shadow:0 0 5px black;opacity:.8; "
+        style="position:fixed;width:10rem;height:5rem;box-shadow:0 0 5px black;"
         ref="dragHelper"
       >
-        <component
-          :is="dragHelper.component"
-          :wid="'helper'"
-          :readonly="true"
-          style="pointer-events:none;"
-        ></component>
+        <component :is="dragHelper.component" :wid="'helper'" :readonly="true"></component>
       </div>
     </div>
   </div>
@@ -132,13 +127,13 @@ export default {
   mixins: [canvas],
   computed: {},
   // data(){}
-  beforeCreate() {
+  beforeCreate(){
     window.__dataPool = window.__dataPool || {};
-    window.__dataPool[this._uid] = this;
-    window.$ = $;
-    window.jQuery = jQuery;
-    window.Vuex = Vuex;
-    window.canvas = canvas;
+    window.__dataPool[this._uid]=this;
+    window.$=$;
+    window.jQuery=jQuery;
+    window.Vuex=Vuex;
+    window.canvas=canvas;
   },
   mounted() {
     const self = this;
@@ -202,8 +197,6 @@ export default {
     // });
 
     $(".paletteItem").draggable({
-      iframeFix: true,
-      iframeScroll: true,
       helper: function(event, ui) {
         console.log("help", event, ui);
         return $(
@@ -280,7 +273,7 @@ export default {
     createDragHelper(item) {
       console.log(this.$refs.dragHelper);
       return this.$refs.dragHelper;
-    }
+    },
     // /*设置聚焦节点*/
     // mouseEven(e) {
     //   this.$store.commit("setInputActive", $(e.target).attr("index"));
@@ -697,8 +690,8 @@ export default {
 };
 </script>
 <style>
-iframe {
-  border: 0;
+iframe{
+  border:0;
 }
 .config-ctn{
   height: 100%;

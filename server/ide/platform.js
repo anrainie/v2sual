@@ -1,5 +1,11 @@
 const io = require('socket.io-client'); //导入mysql模块
 const runtimeFiles = require('../page/ideFiles');
+const ExtListn = require('../external/socketListener');
+const fileUtil = require('./fileUtil');
+
+
+
+const extListn = new ExtListn();
 class Platform {
   constructor({
     ip,
@@ -28,7 +34,7 @@ class Platform {
         console.log('断连', r);
       });
       this.socket.on('connect_error', r => {
-        console.log('连接失败', r);
+       // console.log('连接失败', r);
       })
       this.socket.on('data', r => {
         console.log(r);
@@ -44,10 +50,28 @@ class Platform {
       this.sendSuccessResult(req, runtimeFiles());
     })
 
-    this.socket.on('getFile', req => {
-      console.log(req);
-      this.sendSuccessResult(req, {});
+    this.socket.on('getFile', async req => {
+      let path = req.data.path;
+
+      fileUtil.getFileContent(path).then(content => {
+        this.sendSuccessResult(req, content);
+      }).catch(e => {
+        this.sendErrorResult(e)
+      })
     })
+
+    this.socket.on('saveFile', req => {
+      let path = req.data.path;
+      let content = req.data.content;
+      fileUtil.saveFile(path, content).then(() => {
+        this.sendSuccessResult(req, {});
+      }).catch(e => {
+        this.sendErrorResult(e)
+      })
+    })
+
+    //注册了画板相关的监听
+    extListn.observe(this);
   }
 
   sendSuccessResult(req, data) {

@@ -1,12 +1,14 @@
 <template>
   <!-- 布局容器 -->
+
   <div class="V2Container" ref="wrap" :style="model.style">
     <!-- model来自widget -->
     <template v-for="(lyt,index) of layout_c">
       <el-row
-        class="V2ContainerBlock"
-        :style="{height:layout(index),width:'100%',}"
+          class="V2ContainerBlock"
+        :span="parseInt(layout(index))"
         :key="index"
+        style="height:100%;"
         v-if="!model.direction || model.direction=='row'"
       >
         <component :is="component(index)" :wid="wigetId(index)" :index="index" :pid="wid"></component>

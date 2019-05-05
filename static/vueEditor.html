@@ -2,56 +2,6 @@
 
 <head>
   <!--css-->
-  <style>
-    /* 考虑用before/after */
-    .selected {
-      box-shadow: 0px 0px 3px darkgray;
-    }
-
-    .unselected {
-      opacity: .5;
-    }
-
-    .transparent {
-      opacity: .8;
-    }
-
-
-    .V2Dropable {
-      background-color: lightpink;
-      border: 1px solid darkorange;
-    }
-
-    .V2Dropable:hover {
-      background-color: lightcyan;
-    }
-
-    .V2DropableHover {
-      background-color: lightcyan;
-    }
-
-    .selectedContainer {
-      box-shadow: 1px 1px 3px darkgray;
-    }
-
-    .V2Empty {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-
-    .V2Empty::before {
-      content: "";
-      width: calc(100% - 4px);
-      height: calc(100% - 4px);
-      left: 2px;
-      top: 2px;
-      opacity: .5;
-      position: absolute;
-      background: lightgreen;
-    }
-
-  </style>
   <script>
     function getUrlParam(name) {
       var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
@@ -66,29 +16,24 @@
       window.Vue = window.parent.Vue;
       window.Vuex = window.parent.Vuex;
 
+      $(window)
+        .off(".keymap")
+        .on("keydown.keymap", e => {
+          return this.activeTool && this.activeTool.dispatchKeyEvent ?
+            this.activeTool.dispatchKeyEvent(this, e) :
+            true;
+        });
 
-      //   var t = Array.prototype.map.call($(window.parent.document).find('style'), function (e) {
-      //     return $('<style>' + $(e).html() + '</style>');
-      //   });
-      //   $('head', window.document).append(t);
+      var t = Array.prototype.map.call($(window.parent.document).find('style'), function (e) {
+        return $('<style>' + $(e).html() + '</style>');
+      });
+      $('head', window.document).append(t);
       var id = getUrlParam("id");
       var parent = window.parent.__dataPool[id];
       var container = new Vue({
         store: parent.$store,
         mixins: [window.parent.canvas],
         template: `<v2Container v-model="rootId"></v2Container>`,
-        mounted() {
-          //TODO 以下内容是为了支撑iframe的键盘鼠标事件，考虑移动到一个特定js文件
-          //绑定键盘
-          $(window)
-            .off(".keymap")
-            .on("keydown.keymap", e => {
-              return this.activeTool && this.activeTool.dispatchKeyEvent ?
-                this.activeTool.dispatchKeyEvent(this, e) :
-                true;
-            });
-
-        }
       });
       container.$mount(document.body.children[0]);
     }

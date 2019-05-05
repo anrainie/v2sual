@@ -1,17 +1,40 @@
-import Vue from 'vue'; Vue.use("./av-echart-bar/index.vue")
- Vue.use("./av-echart-line/index.vue")
- Vue.use("./av-editable-table/index.vue")
- Vue.use("./av-form-cascader/index.vue")
- Vue.use("./av-form-checkbox/index.vue")
- Vue.use("./av-form-datePicker/index.vue")
- Vue.use("./av-form-input/index.vue")
- Vue.use("./av-form-inputNumber/index.vue")
- Vue.use("./av-form-radio/index.vue")
- Vue.use("./av-form-select/index.vue")
- Vue.use("./av-form-slider/index.vue")
- Vue.use("./av-form-switch/index.vue")
- Vue.use("./av-form-timePicker/index.vue")
- Vue.use("./av-form-transfer/index.vue")
- Vue.use("./av-form-upload/index.vue")
- Vue.use("./av-layout-ctn/index.vue")
- Vue.use("./monitor-MComponent-MDataDisplay/index.vue")
+import avEchartBar  from './av-echart-bar/index.vue';
+import avEchartLine  from './av-echart-line/index.vue';
+import avEditableTable  from './av-editable-table/index.vue';
+import avFormCascader  from './av-form-cascader/index.vue';
+import avFormCheckbox  from './av-form-checkbox/index.vue';
+import avFormDatePicker  from './av-form-datePicker/index.vue';
+import avFormInput  from './av-form-input/index.vue';
+import avFormInputNumber  from './av-form-inputNumber/index.vue';
+import avFormRadio  from './av-form-radio/index.vue';
+import avFormSelect  from './av-form-select/index.vue';
+import avFormSlider  from './av-form-slider/index.vue';
+import avFormSwitch  from './av-form-switch/index.vue';
+import avFormTimePicker  from './av-form-timePicker/index.vue';
+import avFormTransfer  from './av-form-transfer/index.vue';
+import avFormUpload  from './av-form-upload/index.vue';
+import avLayoutColctn  from './av-layout-colctn/index.vue';
+import avLayoutRowctn  from './av-layout-rowctn/index.vue';
+import monitorMComponentMDataDisplay  from './monitor-MComponent-MDataDisplay/index.vue'
+
+
+export default {
+  avEchartBar,
+	avEchartLine,
+	avEditableTable,
+	avFormCascader,
+	avFormCheckbox,
+	avFormDatePicker,
+	avFormInputNumber,
+	avFormInput,
+	avFormRadio,
+	avFormSelect,
+	avFormSlider,
+	avFormSwitch,
+	avFormTimePicker,
+	avFormTransfer,
+	avFormUpload,
+	avLayoutColctn,
+	avLayoutRowctn,
+	monitorMComponentMDataDisplay
+}

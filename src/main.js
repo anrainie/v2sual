@@ -13,7 +13,6 @@ import './assets/style/aui-editor.css';
 import 'jquery-ui/ui/widgets/draggable';
 import 'jquery-ui/ui/widgets/droppable';
 import 'jquery-ui/ui/widgets/resizable';
-import "jquery-ui-droppable-iframe"
 
 import v2Container from './components/edit/Container.vue';
 import v2Input from './components/input/Input.vue';
