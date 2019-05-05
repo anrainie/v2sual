@@ -269,16 +269,16 @@ class Page {
   content(platform) {
     const analysis = this.analysis;
     const context = this;
-    return async function (req) {
-
-      try {
-        const filepath = req.data.path.replace('.flow','.vue');
-        const ret = await analysis.call(context, filepath.replace(context.pagePath,''));
-
-        platform.sendSuccessResult(req, ret);
-      } catch (e) {
-        platform.sendErrorResult(req,e);
-      }
+    return function (filepath) {
+      return new Promise(async (res,rej)=>{
+        try {
+          const ret = await analysis.call(context, filepath.replace(context.pagePath,''));
+          res(ret);
+        } catch (e) {
+          rej(e)
+        }
+      })
+      
     }
   }
 

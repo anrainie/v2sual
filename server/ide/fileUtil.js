@@ -1,4 +1,14 @@
 const fs = require('fs')
+
+
+const path = require('path');
+const RUNTIME_PATH = path.resolve(__dirname, '../../runtime/');
+const PAGE_PATH = 'src/views';
+const PageFlow = require('../page/Page');
+
+const pageFlow = new PageFlow(path.resolve(path.join(RUNTIME_PATH, PAGE_PATH)));
+
+
 const fileUtil = {
   getFileReader(path) {
     if (path) {
@@ -13,6 +23,10 @@ const fileUtil = {
               res(data);
             });
           })
+          break;
+        case '.flow':
+          return (path) =>pageFlow.content(this)(path.replace('.flow','.vue'))   
+          break;
       }
     }
     return null;
@@ -37,7 +51,7 @@ const fileUtil = {
         case '.vue':
           return (p, content) => new Promise((res, rej) => {
             //针对vue文件，读取同名.def文件
-            fs.writeFile(p+'.def', JSON.stringify(content), function (err) {
+            fs.writeFile(p + '.def', JSON.stringify(content), function (err) {
               if (err) rej(err);
               else res();
             });

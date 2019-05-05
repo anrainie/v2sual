@@ -3,12 +3,7 @@ const runtimeFiles = require('../page/ideFiles');
 const ExtListn = require('../external/socketListener');
 const fileUtil = require('./fileUtil');
 
-const path = require('path');
-const RUNTIME_PATH = path.resolve(__dirname, '../../runtime/');
-const PAGE_PATH = 'src/views';
-const PageFlow =  require('../page/Page');
 
-const pageFlow = new PageFlow(path.resolve(path.join(RUNTIME_PATH, PAGE_PATH)));
 
 const extListn = new ExtListn();
 class Platform {
@@ -39,7 +34,7 @@ class Platform {
         console.log('断连', r);
       });
       this.socket.on('connect_error', r => {
-        console.log('连接失败', r);
+       // console.log('连接失败', r);
       })
       this.socket.on('data', r => {
         console.log(r);
@@ -58,15 +53,11 @@ class Platform {
     this.socket.on('getFile', async req => {
       let path = req.data.path;
 
-      if (path.indexOf('.flow')) {
-        await pageFlow.content(this)(req);
-      } else {
-        fileUtil.getFileContent(path).then(content => {
-          this.sendSuccessResult(req, content);
-        }).catch(e => {
-          this.sendErrorResult(e)
-        })
-      }
+      fileUtil.getFileContent(path).then(content => {
+        this.sendSuccessResult(req, content);
+      }).catch(e => {
+        this.sendErrorResult(e)
+      })
     })
 
     this.socket.on('saveFile', req => {
