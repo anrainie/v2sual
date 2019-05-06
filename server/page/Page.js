@@ -271,12 +271,13 @@ class Page {
         const filepath = query.path;
         const content = await new Promise(resolve => fs.readFile(filepath, 'utf8', (error, response) => error ? platform.sendErrorResult(req,error) : resolve(response)));
         const script = context.getMatchPart(content, '<script>', '</script>');
+        let methodRes=[],watchRes=[];
         if(script){
           const ast = UglifyJS.parse(script);
           const exportAst = ast.body.filter(b => !!b.exported_value);
           const methodsAst = exportAst[0].exported_value.properties.filter(p => p.key === 'methods' && p.start.value === 'methods');
           const methodList = methodsAst[0].value.properties;
-          const methodRes = methodList.map(item=>{
+          methodRes = methodList.map(item=>{
             let code = item.print_to_string({beautify:true});
             if(item.key.name){
               return {
@@ -292,7 +293,7 @@ class Page {
           })
           const watchAst = exportAst[0].exported_value.properties.filter(p => p.key === 'watch' && p.start.value === 'watch');
           const watchList = watchAst[0].value.properties;
-          const watchRes = watchList.map(item=>{
+          watchRes = watchList.map(item=>{
             let code = item.print_to_string({beautify:true});
             if(item.key.name){
               return {
@@ -306,9 +307,6 @@ class Page {
               };
             }
           })
-        }else{
-          const methodRes =[];
-          const watchRes =[];
         }
        
         platform.sendSuccessResult(req,  {
