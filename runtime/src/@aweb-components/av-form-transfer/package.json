@@ -97,7 +97,55 @@
           }
         ]
       }
-    ]
+    ],
+     "css": {
+       "style": [{
+           "desp": "标题",
+           "cssAttrs": "font-size font-weight color",
+           "name": "title"
+         },
+         {
+           "desp": "单个选项",
+           "cssAttrs": "font-size color",
+           "name": "menuList"
+         },
+         {
+           "desp": "单个选项Hover",
+           "cssAttrs": "background-color",
+           "name": "menuListHover"
+         },
+         {
+           "desp": "选项中的复选框",
+           "cssAttrs": "width height font-size color background-color border-color",
+           "name": "checkBox"
+         },
+         {
+           "desp": "穿梭框按钮",
+           "cssAttrs": "border-width height width border-radius font-size ",
+           "name": "button"
+         },
+         {
+           "desp": "穿梭框按钮激活",
+           "cssAttrs": "background-color color ",
+           "name": "active"
+         },
+         {
+           "desp": "搜索框",
+           "cssAttrs": "width height border-radius  border-width border-color background-color",
+           "name": "search"
+         },
+         {
+           "desp": "左右框",
+           "cssAttrs": "width color background-color",
+           "name": "listbox"
+         },
+         {
+           "desp": "列项",
+           "cssAttrs": "width background-color",
+           "name": "itemspan"
+         }
+       ]
+     }
   },
   "keywords": [],
   "license": "ISC",

@@ -44,82 +44,19 @@ const transformThemeVariables = (themeVar) => {
   return data;
 };
 const getAllCssAttr = () => {
-  let allCssAttrArray = cssConfigDB().get();
   let allCssAttr = [];
 
-  for (let i = 0, len = allCssAttrArray.length; i < len; i++) {
-    allCssAttr.push(allCssAttrArray[i].name);
+  for (let i = 0, len = cssConfigDB.length; i < len; i++) {
+    allCssAttr.push(cssConfigDB[i].name);
   }
 
   return allCssAttr;
 };
-const turnCssConfigToArr = (cssConfig) => {
-  let themeObj = {
-    expand: true,
-    name: 'theme',
-    type: 'object',
-    attr: [],
-    desp: '类名样式'
-  };
-  let styleObj = {
-    expand: true,
-    name: 'style',
-    type: 'object',
-    desp: '样式',
-    attr: []
-  };
-  let style, index, value;
-  let attrArray;
-  let allAttr;
-  let result = [];
 
-  if (cssConfig) {
-    if (style = cssConfig.style) {
-      for (index = -1; value = style[++index];) {
-        let cssAttrs = value.cssAttrs.split(' ');
-
-        attrArray = cssConfigDB.filter(item => cssAttrs.includes(item.name))
-          .concat([{
-            name: 'moreCss',
-            divType: 'moreCss',
-            type: 'more_btn',
-            desp: 'moreCss',
-            noAlert: true
-          }]);
-
-        styleObj.attr.push({
-          name: value.name,
-          desp: value.desp,
-          type: 'object',
-          attr: attrArray
-        });
-      }
-    }
-
-    // 添加一个自定义项，用于存储全量的css配置项
-
-    allAttr = cssConfigDB.filter(item => getAllCssAttr().includes(item.name));
-
-    styleObj.attr.push({
-      name: 'allAttr',
-      type: 'object',
-      attr: allAttr
-    });
-
-    if ($.isArray(cssConfig.theme)) {
-      cssConfig.theme.map(function (x) {
-        x.type = 'css_theme_select';
-        x.style = 'height: auto';
-      });
-      themeObj.attr = cssConfig.theme;
-    }
-  }
-  result = [themeObj, styleObj];
-
-  return result;
-};
-
-export default{
+export default {
+  getAllCssAttrConfig () {
+    return cssConfigDB.filter(item => getAllCssAttr().includes(item.name));
+  },
   edm_collection_default () {
     return JSON.stringify({
       __edm_collection: {
@@ -789,8 +726,8 @@ export default{
     let defaultTheme = {};
 
     let themeVar = transformThemeVariables(variables); // $AW.fresher && $AW.fresher.variablesCopy
-    let cssArr = turnCssConfigToArr(css);
-
+    let cssArr = this.turnCssConfigToArr(css);
+    // this.baseConfigInitInstance(instance, cssArr);
     let caches = [{
       cssObj: instance || {},
       cssArray: cssArr
@@ -819,9 +756,8 @@ export default{
               }
               break;
 
-            case 'css_input_select':
             case 'input_append':
-              item.type = 'input_append';
+
               item.appendOption = ['px', 'em', 'rem', '%', 'auto', ''];
               item.appendOptionDesp = ['px', 'em', 'rem', '%', 'auto', ''];
 
@@ -850,16 +786,6 @@ export default{
 
               break;
 
-            case 'css_string_input':
-              item.type = 'string_input';
-              if (instanceCache[name] === 0 || instanceCache[name] === '0') {
-                instanceCache[name] = instanceCache[name];
-              } else {
-                instanceCache[name] = instanceCache[name] || '';
-              }
-
-              break;
-
             case 'string_input':
 
               if (item.className) {
@@ -877,14 +803,14 @@ export default{
               }
               break;
 
-            case 'css_img_url':
-              item.type = 'file';
+            case 'file':
+
               instanceCache[name] = instanceCache[name] || '';
 
               break;
 
-            case 'color_pick':
-              item.type = 'colorPicker';
+            case 'colorPicker':
+
               instanceCache[name] = instanceCache[name] || '';
               break;
 
@@ -922,7 +848,7 @@ export default{
                   item.type = 'string_select';
                   item.oldType = itemType;
                 }
-              } else if (typeof instanceCache[name] === 'object' && !instanceCache[name].inputValue && !instanceCache[name].selectValue) {
+              } else if (instanceCache[name] && typeof instanceCache[name] === 'object' && !instanceCache[name].inputValue && !instanceCache[name].selectValue) {
                 if (!item.oldType) {
                   item.type = 'string_select';
                   item.oldType = itemType;
@@ -943,5 +869,84 @@ export default{
     }
 
     return instance;
+  },
+  turnCssConfigToArr (cssConfig) {
+    let themeObj = {
+      expand: true,
+      name: 'theme',
+      type: 'object',
+      isTab: true,
+      attr: [],
+      desp: '类名样式'
+    };
+    let styleObj = {
+      expand: true,
+      name: 'style',
+      type: 'object',
+      attr: [{
+        type: 'tab',
+        hasMoreBtn: true,
+        tabPanes: []
+      }],
+      showSearch: true,
+      desp: '样式'
+
+    };
+    let style, index, value;
+    let attrArray;
+    let allAttr;
+    let result = [];
+
+    if (cssConfig) {
+      if ($.isArray(cssConfig.theme)) {
+        cssConfig.theme.map(function (x) {
+          x.type = 'themeClass';
+          x.style = 'height: auto';
+        });
+        themeObj.attr = cssConfig.theme;
+        result.push(themeObj);
+      }
+
+      if (style = cssConfig.style) {
+        for (index = -1; value = style[++index];) {
+          let cssAttrs = value.cssAttrs.split(' ');
+
+          attrArray = cssConfigDB.filter(item => cssAttrs.includes(item.name));
+
+          attrArray.map((item) => {
+            if (item.type === 'input_append') {
+              item.appendOption = ['px', 'em', 'rem', '%', 'auto', ''];
+              item.appendOptionDesp = ['px', 'em', 'rem', '%', 'auto', ''];
+
+              item.selectNum = 1;
+              item.keepFormat = true;
+            }
+          });
+
+          styleObj.attr[0].tabPanes.push({
+            name: value.name,
+            desp: value.desp,
+            type: 'object',
+            isTab: true,
+            expand: true,
+            showName: false,
+            attr: attrArray
+          });
+        }
+        // 添加一个自定义项，用于存储全量的css配置项
+
+        allAttr = cssConfigDB.filter(item => getAllCssAttr().includes(item.name));
+
+        styleObj.attr[0].tabPanes.push({
+          name: 'allAttr',
+          type: 'object',
+          attr: allAttr
+        });
+
+        result.push(styleObj);
+      }
+    }
+    // console.log('cssconfig', result);
+    return result;
   }
 };

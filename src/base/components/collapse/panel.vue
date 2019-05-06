@@ -1,11 +1,12 @@
 <template>
     <div :class="itemClasses">
-        <div :class="headerClasses" class="ivu-panel-header" @click="toggle">
+        <div :class="headerClasses" class="ivu-panel-header" @click="toggle" v-show="showName">
             <i v-show="showIcon" class="aui aui-jiantou-shang"></i>
             <slot></slot>
         </div>
         <collapse-transition>
             <div :class="contentClasses" v-show="isActive">
+                <Search v-if="showSearch" :query="currentQuery" :placeholder="`请搜索...`"></Search>
                 <div :class="boxClasses"><slot name="content"></slot></div>
             </div>
         </collapse-transition>
@@ -14,11 +15,12 @@
 <script>
     import Icon from '../icon/icon.vue';
     import CollapseTransition from '../base/collapse-transition';
+    import Search from '../transfer/search.vue';
     const prefixCls = 'ivu-collapse';
 
     export default {
         name: 'Panel',
-        components: { Icon, CollapseTransition },
+        components: { Icon, CollapseTransition ,Search},
         props: {
             name: {
                 type: String
@@ -34,6 +36,14 @@
                 default: function() {
                     return {}
                 }
+            },
+            showName:{
+                 type: Boolean,
+                default: true
+            },
+            showSearch:{
+                  type: Boolean,
+                default: false
             }
         },
         
@@ -44,7 +54,8 @@
         data () {
             return {
                 index: 0, // use index for default when name is null
-                isActive: false
+                isActive: false,
+                currentQuery:''
             };
         },
         computed: {
@@ -86,6 +97,9 @@
                 });
                 }
             }
+        },
+        mounted(){
+          
         }
     };
 </script>

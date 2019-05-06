@@ -1,17 +1,17 @@
 <template>
   <div :style="flexStyle"  class="av-form-slider">
      <label
-        :class="model.data.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
-        :style="{width:model.data.labelWitdh}"
-      >{{model.data.label}}</label>
-      <div class="form-slider-ctn" :style="model.data.titleMode ==='row'?{}:{marginLeft:model.data.labelWitdh}">
+        :class="model.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
+        :style="{width:model.labelWitdh}"
+      >{{model.label}}</label>
+      <div class="form-slider-ctn" :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
     <el-slider
-      v-model="model.data.value"
-      :show-tooltip="model.data.tooltip"
-      :disabled="model.data.disabled"
-      :step="parseInt(model.data.step)"
-      :show-stops="model.data.stops"
-      :show-input="model.data.input"
+      v-model="model.value"
+      :show-tooltip="model.tooltip"
+      :disabled="model.disabled"
+      :step="parseInt(model.step)"
+      :show-stops="model.stops"
+      :show-input="model.input"
       change="change"
     >
     </el-slider>
@@ -19,11 +19,11 @@
   </div>
 </template>
 <script>
+import {avMixin} from '../av.js'
+
   export default {
     name: 'av-form-slider',
-    props: {
-      model: Object
-    },
+    mixins:avMixin,
     mounted () {
     },
     data () {
@@ -33,16 +33,24 @@
     methods: {
       flexStyle(){
         let self = this;
-        if(self.model.data.titleMode==='col'){
-          return $.extend({}, self.model.data.style, {display:"flex"})
-        }else if(self.model.data.titleMode==='row'){
-          return self.model.data.style;
+        if(self.model.titleMode==='col'){
+          return $.extend({}, self.model.style, {display:"flex"})
+        }else if(self.model.titleMode==='row'){
+          return self.model.style;
         }
       },
       change(){
 
       }
     },
+    computed:{
+
+      model() {
+        return (
+          this.$store.getters.model(this.wid) || {}
+        );
+      }
+    }
   }
 </script>
 <style>

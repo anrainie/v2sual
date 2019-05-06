@@ -1,30 +1,28 @@
 <template>
   <div :style="model.style" class="av-form-inputNumber">
       <label
-        :class="model.data.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
-        :style="{width:model.data.labelWitdh}"
-      >{{model.data.label}}</label>
-       <div class="form-inputNumber-ctn" :style="model.data.titleMode ==='row'?{}:{marginLeft:model.data.labelWitdh}">
+        :class="model.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
+        :style="{width:model.labelWitdh}"
+      >{{model.label}}</label>
+       <div class="form-inputNumber-ctn" :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
     <el-input-number
-      v-model="model.data.value"
+      v-model="model.value"
       @change="handleChange"
-      :min="parseFloat(model.data.min)"
-      :max="parseFloat(model.data.max)"
-      :step="parseFloat(model.data.step)"
-      :precision="parseInt(model.data.precision)||0"
-      :disabled="model.data.disabled"
+      :min="parseFloat(model.min)"
+      :max="parseFloat(model.max)"
+      :step="parseFloat(model.step)"
+      :precision="parseInt(model.precision)||0"
+      :disabled="model.disabled"
     >
     </el-input-number>
        </div>
   </div>
 </template>
 <script>
-
+import {avMixin} from '../av.js'
   export default {
     name: 'av-form-inputNumber',
-    props: {
-      model: Object
-    },
+    mixins:avMixin,
     data () {
       return {}
     },
@@ -34,6 +32,14 @@
       handleChange () {
       }
     },
+    computed:{
+
+      model() {
+        return (
+          this.$store.getters.model(this.wid) || {}
+        );
+      }
+    }
 
   }
 </script>

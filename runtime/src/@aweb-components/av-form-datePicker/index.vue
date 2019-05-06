@@ -1,22 +1,24 @@
 <template>
-  <div :style="model.data.style" ref="wrap" class="av-form-datePicker">
+  <div :style="model.style" ref="wrap" class="av-form-datePicker">
     <label
-      :class="model.data.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
-      :style="{width:model.data.labelWitdh}"
-    >{{model.data.label}}</label>
+      :class="model.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
+      :style="{width:model.labelWitdh}"
+    >{{model.label}}</label>
     <div
       class="form-datePicker-ctn"
-      :style="model.data.titleMode ==='row'?{}:{marginLeft:model.data.labelWitdh}"
+      :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"
     >
-      <el-date-picker
-        v-model="model.data.value"
-        :type="model.data.type"
-        :placeholder="model.data.placeholder"
-        :align="model.data.align"
+
+            <!-- :placeholder="model.placeholder"
+        :align="model.align"
         :picker-options="pickerOptions"
-        :disabled="model.data.disabled"
-        :clearable="model.data.clearable"
-        :format="model.data.format"
+        :disabled="model.disabled"
+        :clearable="model.clearable"
+        :format="model.format" -->
+      <el-date-picker
+        v-model="model.value"
+        :type="model.type"
+
         range-separator="至"
         start-placeholder="开始日期"
         end-placeholder="结束日期"
@@ -26,18 +28,19 @@
   </div>
 </template>
 <script>
+import { avMixin } from "../av.js";
 export default {
   name: "av-form-datePicker",
-  props: {
-    model: Object
-  },
+  mixins:avMixin,
   mounted() {},
   data() {
-    return {};
+    return {
+  
+    };
   },
   computed: {
     pickerOptions() {
-      if (this.model.data.type === "daterange") {
+      if (this.model.type === "daterange") {
         return {
           shortcuts: [
             {
@@ -97,6 +100,11 @@ export default {
           ]
         };
       }
+    },
+    model() {
+        return (
+          this.$store.getters.model(this.wid) || {}
+        );
     }
   },
   methods: {}

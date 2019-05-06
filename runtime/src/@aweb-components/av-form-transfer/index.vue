@@ -1,38 +1,47 @@
 <template>
   <div :style="model.style" class="av-form-transfer">
     <label
-      :class="model.data.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
-      :style="{width:model.data.labelWitdh}"
-    >{{model.data.label}}</label>
+      :class="model.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
+      :style="{width:model.labelWitdh}"
+    >{{model.label}}</label>
     <div
       class="form-transfer-ctn"
-      :style="model.data.titleMode ==='row'?{}:{marginLeft:model.data.labelWitdh}"
+      :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"
     >
       <el-transfer
-        v-model="model.data.value"
-        :filterable="Boolean(model.data.filterable)"
-        :titles="[model.data.titleLeft, model.data.titleRight]"
-        :button-texts="[model.data.btnLeft,model.data.btnRight ]"
+        v-model="model.value"
+        :filterable="Boolean(model.filterable)"
+        :titles="[model.titleLeft, model.titleRight]"
+        :button-texts="[model.btnLeft,model.btnRight ]"
         @change="handleChange"
-        :data="model.data.options"
+        :data="model.options"
       ></el-transfer>
     </div>
   </div>
 </template>
 
 <script>
+
+import {avMixin} from '../av.js'
+
 export default {
   name: "av-form-transfer",
-  props: {
-    model: Object
-  },
+  mixins:avMixin,
   mounted() {},
   data() {
     return {};
   },
   methods: {
     handleChange(e) {}
-  }
+  },
+ computed:{
+
+    model() {
+      return (
+        this.$store.getters.model(this.wid) || {}
+      );
+    }
+ }
 };
 </script>
 

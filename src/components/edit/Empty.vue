@@ -32,6 +32,7 @@ export default {
       }
     });
     let self = this;
+ 
     $(this.$el).droppable({
       distance:30,
       drop(event, ui) {

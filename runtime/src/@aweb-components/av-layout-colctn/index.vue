@@ -2,7 +2,7 @@
   <!-- 布局容器 -->
   <div class="V2Container" ref="wrap" :style="model.style" >
     <!-- model来自widget -->
-    <template v-for="(lyt,index) of model.layout ? model.layout:[50,50]">
+    <template v-for="(lyt,index) of layout_c">
 
        <el-row
         class="V2ContainerBlock"
@@ -27,30 +27,14 @@
   </div>
 </template>
 <script>
+import {avMixin} from '../av.js'
 
   export default {
     name: 'av-layout-colctn',
-
-    props: {
-      model: Object,
-      wid:[String, Number]
-    },
+    mixins:avMixin,
     data(){
        return {
-        //  layoutConfig:[100] 
        }
-    },
-    mounted(){
-
-        console.log('ly',this);
-      //     this.model.data &&( this.model.data.children=[]);
-      //     let ctns =[];
-      // this.model.data && this.model.data.layout && this.model.data.layout.forEach(ele => {
-      //     ctns.push(ele.ctn);
-      //  });
-      //  this.layoutConfig = ctns;
-      
-      // !this.model.layout && (this.model.layout=[50,50])
     },
     methods: {
     $selectedClass() {
@@ -58,20 +42,35 @@
         selectedContainer: true
       };
     },
-   layout(index) {
-     console.log('layout',this.model);
-      !this.model.layout && (this.model.layout = [50,50]);
-      !this.model.direction && (this.model.direction="row");
-       if (this.model.direction == 'col') {
+    layout(index) {
+      console.log("layout", this.model);
+      !this.model.direction && (this.model.direction = "row");
+      if (this.model.direction == "col") {
         // 列布局/横向布局，返回span
-        return this.model.layout instanceof Array ? Math.round(this.model.layout[index] * 24 / 100) : '2';
+        return this.layout_c instanceof Array
+          ? Math.round((this.layout_c[index] * 24) / 100)
+          : "2";
       } else {
         // 行布局/纵向布局，返回百分比
-        return this.model.layout instanceof Array ? this.model.layout[index] + '%' : '50%';
+        return this.layout_c instanceof Array
+          ? this.layout_c[index] + "%"
+          : "50%";
       }
     }
   },
   computed: {
+       layout_c() {
+      if(this.model.layout){
+        if (typeof this.model.layout === "string") {
+          return JSON.parse(this.model.layout);
+        }else{
+          return this.model.layout;
+        }
+      }else{
+        return [50,50];
+      }
+
+    },
     component(index) {
      return index => {
         let item = this.model.children[index];
@@ -91,7 +90,13 @@
         }
         return this.wid + "-" + index;
       };
-    }
+    },
+      model() {
+
+        return (
+          this.$store.getters.model(this.wid) || {}
+        );
+      }
   }
   }
 </script>

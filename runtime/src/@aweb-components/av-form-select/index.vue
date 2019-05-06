@@ -1,21 +1,21 @@
 <template>
   <div :style="model.style" class="av-form-select">
     <label
-      :class="model.data.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
-      :style="{width:model.data.labelWitdh}"
-    >{{model.data.label}}</label>
+      :class="model.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
+      :style="{width:model.labelWitdh}"
+    >{{model.label}}</label>
     <div
       class="form-select-ctn"
-      :style="model.data.titleMode ==='row'?{}:{marginLeft:model.data.labelWitdh}"
+      :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"
     >
       <el-select
-        v-model="model.data.value"
-        :clearable="model.data.clearable"
-        :placeholder="model.data.placeholder"
-        :filterable="model.data.filterable"
+        v-model="model.value"
+        :clearable="model.clearable"
+        :placeholder="model.placeholder"
+        :filterable="model.filterable"
       >
         <el-option
-          v-for="item in model.data.options"
+          v-for="item in model.options"
           :key="item.value"
           :label="item.label"
           :value="item.value"
@@ -26,15 +26,22 @@
 </template>
 
 <script>
+import {avMixin} from '../av.js'
+
 export default {
   name: "av-form-select",
-  props: {
-    model: Object
-  },
+  mixins:avMixin,
   data() {
     return {};
   },
-  mounted() {}
+  mounted() {},
+  computed:{
+      model() {
+        return (
+          this.$store.getters.model(this.wid) || {}
+        );
+      }
+  }
 };
 </script>
 

@@ -84,7 +84,7 @@
         "desp": "是否使用范围选择"
       }
     ],
-    "style": {}
+    "css": {}
   },
   "keywords": [],
   "license": "ISC",

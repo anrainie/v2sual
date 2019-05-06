@@ -1,41 +1,58 @@
 <template>
   <div :style="flexStyle" class="av-form-input">
      <label
-        :class="model.data.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
-        :style="{width:model.data.labelWitdh}"
-      >{{model.data.label}}</label>
-     <div class="form-input-ctn" :style="model.data.titleMode ==='row'?{}:{marginLeft:model.data.labelWitdh}">
+        :class="model.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
+        :style="{width:model.labelWitdh}"
+      >{{model.label}}</label>
+     <div class="form-input-ctn" :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
     <el-input
-      v-model="model.data.value"
-      :placeholder="model.data.placeholder"
-      :clearable="model.data.clearable"
+      ref="aInput"
+      v-model="model.value"
+      :placeholder="model.placeholder"
+      :clearable="model.clearable"
     ></el-input>
      </div>
   </div>
 </template>
 
 <script>
+import { avMixin } from "../av.js";
 export default {
   name: "av-form-input",
-  props: {
-    model: Object
+  mixins:avMixin,
+  mounted() {
+    console.log('input',this.model)
   },
-  mounted() {},
-  computed: {},
+  computed: {
+      model() {
+        return (
+          this.$store.getters.model(this.wid) || {}
+        );
+      }
+  },
   methods: {
     flexStyle() {
-      let self = this;
-      if (self.model.data.titleMode === "col") {
-        return $.extend({}, self.model.data.style, { display: "flex" });
-      } else if (self.model.data.titleMode === "row") {
-        return self.model.data.style;
-      }
+      // let self = this;
+      // if (self.model.data.titleMode === "col") {
+      //   return $.extend({}, self.model.data.style, { display: "flex" });
+      // } else if (self.model.data.titleMode === "row") {
+      //   return self.model.data.style;
+      // }
     },
     $ArrowRight() {
       return true;
     },
     $ArrowLeft() {
       return true;
+    }
+  },
+  watch:{
+    model:{
+      handler(newVal){
+         
+        //  this.$refs.aInput.getElementsByTagName('input').style=
+      },
+      deep:true
     }
   }
 };

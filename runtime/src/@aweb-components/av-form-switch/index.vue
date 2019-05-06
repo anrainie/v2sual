@@ -1,31 +1,37 @@
 <template>
-  <div :style="model.data.style" class="av-form-switch">
-     <div v-if="model.data.titleMode==='row'">
-        <label class="av-form-switch-label">{{model.data.label}}</label>
+  <div :style="model.style" class="av-form-switch">
+     <div v-if="model.titleMode==='row'">
+        <label class="av-form-switch-label">{{model.label}}</label>
     </div>
-        <label  v-if="model.data.titleMode==='col'" class="av-form-switch-label">{{model.data.label}}</label>
+        <label  v-if="model.titleMode==='col'" class="av-form-switch-label">{{model.label}}</label>
     <el-switch ref="switch"
-               v-model="model.data.value"
-               :active-text="model.data.activeText"
-               :inactive-text="model.data.inactiveText"
+               v-model="model.value"
+               :active-text="model.activeText"
+               :inactive-text="model.inactiveText"
     ></el-switch>
   </div>
 </template>
 <script>
-
+import {avMixin} from '../av.js'
   export default {
     name: 'av-form-switch',
-    props: {
-      model: Object
-    },
+    mixins:avMixin,
     methods: {
       $Enter () {
-        this.model.data.value = !this.model.data.value
+        this.model.value = !this.model.value
         return false
       }
     },
     mounted () {
       $('.el-switch__core', this.$refs.switch.$el).attr('contenteditable', true)
+    },
+    computed:{
+
+      model() {
+        return (
+          this.$store.getters.model(this.wid) || {}
+        );
+      }
     }
   }
 </script>

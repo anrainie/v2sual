@@ -74,7 +74,26 @@
           }
         ]
       }
-    ]
+    ],
+    "css": {
+      "style": [
+        {
+          "desp": "标题",
+          "cssAttrs": "font-size color font-weight",
+          "name": "label"
+        },
+        {
+          "desp": "单选框",
+          "cssAttrs": "width height border-width border-radius padding margin",
+          "name": "radio"
+        },
+        {
+          "desp": "选项文字",
+          "cssAttrs": "font-size  color padding-left",
+          "name": "font"
+        }
+      ]
+    }
   },
   "keywords": [],
   "license": "ISC",

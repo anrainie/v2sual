@@ -18,7 +18,7 @@
       {
         "name": "direction",
         "desp": "排列方式",
-        "defaultValue":"col",
+        "defaultValue":"row",
         "type": "string_select",
         "valueArray": [
           "row",

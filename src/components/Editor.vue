@@ -75,13 +75,16 @@
           ref="editorFrame"
           :src="`http://localhost:8080/v1/static/vueEditor.html?id=${this._uid}`"
           style="width:100%;height:100%;"
+          @load="loadSelfWindow"
         ></iframe>
       </div>
 
       <div class="v2-control">
-        <el-tabs type="border-card">
+        <el-tabs class="config-ctn" type="border-card">
+        
     <el-tab-pane label="参数配置"><Base/></el-tab-pane>
-    <el-tab-pane label="样式配置"><Css/></el-tab-pane>
+       <el-tab-pane label="样式配置"><Css/></el-tab-pane>
+   
   </el-tabs>
   </div>
   
@@ -112,13 +115,15 @@ import { debug } from "util";
 import { constants } from "fs";
 import { data } from "../assets/js/dev.js";
 import util from "../base/utils/bridge.js";
-import Css from "./control/Css.vue";
+
 
 import chat from "./utils/chat.vue";
 import Vuex from "Vue";
 
+
+
 export default {
-  components: { chat ,Css},
+  components: { chat},
   mixins: [canvas],
   computed: {},
   // data(){}
@@ -142,15 +147,18 @@ export default {
               icon: item.icon,
               name: item.name,
               element:{
-             //  style:util.cssConfigInitInstance({},item.css||{})||{},
-                data:util.baseConfigInitInstance({},item.option||[])||{},
-                ...item,
-                children:[]
+                ...util.cssConfigInitInstance(util.baseConfigInitInstance({},util.turnCssConfigToArr(item.css||{}))||{},item.css),
+                ...util.baseConfigInitInstance({},item.option||[])||{},
+                href:item.href,
+                component:item.href,
+                children:[],
+                widget:item
               }
 
          }
+         console.log('widget',ret);
          
-          ret.element.component="V2AuiComponent"
+        // ret.element.component="V2AuiComponent"
         
           return ret;
        })
@@ -236,6 +244,12 @@ export default {
         };
         // self.$refs.previewFrame.reload();
       });
+    },
+    loadSelfWindow(){
+        
+        let currentIframe = document.getElementsByTagName('iframe')[0];
+
+        window.editRoot = currentIframe.contentWindow;
     },
     /**
      *创建元素，传入一个createTool，并且传入element
@@ -679,6 +693,9 @@ export default {
 <style>
 iframe{
   border:0;
+}
+.config-ctn{
+  height: 100%;
 }
 .testInput {
   width: 100px;

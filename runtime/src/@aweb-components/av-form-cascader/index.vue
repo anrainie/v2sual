@@ -1,30 +1,29 @@
 <template>
   <div :style="flexStyle" class="av-form-cascader">
     <label
-      :class="model.data.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
-      :style="{width:model.data.labelWitdh}"
-    >{{model.data.label}}</label>
+      :class="model.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
+      :style="{width:model.labelWitdh}"
+    >{{model.label}}</label>
     <div
       class="form-cascader-ctn"
-      :style="model.data.titleMode ==='row'?{}:{marginLeft:model.data.labelWitdh}"
+      :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"
     >
       <el-cascader
-        :expand-trigger="model.data.trigger"
-        :options="model.data.options"
-        v-model="model.data.value"
+        :expand-trigger="model.trigger"
+        :options="model.options"
+        v-model="selectVal"
         @change="handleChange"
-        :placeholder="model.data.placeholder"
-        :filterable="model.data.filterable"
+        :placeholder="model.placeholder"
+        :filterable="model.filterable"
       ></el-cascader>
     </div>
   </div>
 </template>
 <script>
+import {avMixin} from '../av.js';
 export default {
   name: "av-form-cascader",
-  props: {
-    model: Object
-  },
+  mixins:avMixin,
   mounted() {},
   data() {
     return {
@@ -295,16 +294,30 @@ export default {
             }
           ]
         }
-      ]
+      ],
+      selectVal:[]
     };
+  },
+  computed:{
+
+      model() {
+        return (
+          this.$store.getters.model(this.wid) || {}
+        );
+      }
+  },
+  watch:{
+    selectVal(value){
+       this.model.value = value;
+    }
   },
   methods: {
     flexStyle() {
       let self = this;
-      if (self.model.data.titleMode === "col") {
-        return $.extend({}, self.model.data.style, { display: "flex" });
-      } else if (self.model.data.titleMode === "row") {
-        return self.model.data.style;
+      if (self.model.titleMode === "col") {
+        return $.extend({}, self.model.style, { display: "flex" });
+      } else if (self.model.titleMode === "row") {
+        return self.model.style;
       }
     },
     handleChange() {}

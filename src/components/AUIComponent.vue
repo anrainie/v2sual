@@ -1,6 +1,6 @@
 <template>
     <div :class="wrapClass">
-        <components :is="model.href" :model="model" :wid="wid"></components>
+        <components :is="model.href" ></components>
     </div>
     
 </template>
@@ -15,13 +15,16 @@ export default {
             return {}
         },
         created() {
-            
+          
          this.$options.components[this.model.href] =()=>import(`../../runtime/src/@aweb-components/${this.model.href}/index.vue`);
          
         },
         computed:{
-           
         },
+        mounted(){
+           
+          console.log(this.model.href+'-',this.model);
+        }
     
     }
 

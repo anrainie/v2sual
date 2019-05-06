@@ -1,5 +1,5 @@
 <template>
-    <component v-if="visible" :class="classes" :array="array" :is="componentName" :obj="obj" :value="obj[item.name]" :item="item">
+    <component v-if="visible" :class="classes" :array="array" :is="componentName" :obj="obj" :value="obj[item.name]" :item="item" :needMore="needMore">
     </component>
 </template>
 
@@ -11,7 +11,8 @@ let mixin = {
     obj: Object,
     item: Object,
     array: Array,
-    value: {}
+    value: {},
+    needMore:Function
   },
 
   created() {},
@@ -22,6 +23,7 @@ let mixin = {
     validate() {},
 
     handleValidate: function($event, item) {},
+    
     validate() {
       return true;
     },
@@ -39,7 +41,11 @@ let mixin = {
     },
 
     tabClicked: function(name, id) {},
-
+    moreBtnClicked:function(){
+            console.log('more',this);
+          this.needMore(this.$children[0].activeKey);
+          //  this.$emit('needMore',this.item);
+    },
     panelCreated: function(panelInstance, optionItem) {},
 
     objAdd() {},
@@ -52,6 +58,7 @@ let mixin = {
     edmSorted: function(edmObj, modelSelector) {},
 
     panelOpen: function(event, args) {},
+
     addBlock: function(event, args,edm) {
       var array = args.array,
         item = args.item,
@@ -106,7 +113,7 @@ const classPrefix = "aui-base-config-component",
         <span v-span="${handleChangeParamsStr}"></span>
         `,
   handleChangeParamsStrInputAppendType = `{
-        val:{inputValue:obj[item.name].inputValue,selectValue:obj[item.name].selectValue},
+        val:{inputValue: (obj[item.name] && obj[item.name].inputValue)||'',selectValue: (obj[item.name] && obj[item.name].selectValue)||''},
         optionItem: item,
         obj: obj
     }`;
@@ -149,13 +156,13 @@ export default {
 
     aui_object: {
       template: `<collapse :id.prop="item.name.replace(/#/g, '')" :value="item.expand ? ( item.name) : undefined" @on-open="panelOpen($event,${handleChangeParamsStr} )">
-                <panel @panelCreated="panelCreated($event,item)" :name="item.name">
+                <panel @panelCreated="panelCreated($event,item)" :name="item.name" :showName = "item.showName" :showSearch = "item.showSearch">
                     {{item.desp || item.name}}
                     <i v-if="item.addable" title="添加" class="array-add-btn aui aui-tianjia" @click.native.stop="objAdd($event,{array:array, item:item, obj:obj[item.name]})">
                     </i>
                     <i v-if="item.closable" title="刪除" class="array-del-span aui aui-guanbi"  @click.native.stop="objDel($event,{array:array, item:item, obj:obj[item.name]})"></i>
                     <div slot="content">
-                        <base-config  :array="item.attr"  :obj="obj[item.name]"></base-config>
+                        <base-config  :array="item.attr"  :obj="obj[item.name]" :needMore="needMore"></base-config>
                     </div>
                 </panel>
             </collapse>`,
@@ -175,7 +182,7 @@ export default {
                                 {{ (item.desp||item.name)+index}}
                                 <i title="删除" class="array-del-span aui aui-guanbi" @click.stop="delBlock($event,item.name,index)" ></i>
                                 <div slot="content">
-                                    <base-config  :array="item.attrInEachElement"  :obj="instanceItem"></base-config>
+                                    <base-config  :array="item.attrInEachElement"  :obj="instanceItem" :needMore="needMore"></base-config>
                                 </div>
                             </panel>
                         </draggable>
@@ -299,7 +306,7 @@ export default {
                     <i title="删除" class="array-del-span aui aui-guanbi" @click.stop="delBlock($event, item.name ,index, obj[item.name])"></i>
                     
                     <div slot="content">
-                    <base-config :array="item.attrInEachElement"   :obj="instanceItem"></base-config>
+                    <base-config :array="item.attrInEachElement"   :obj="instanceItem" ></base-config>
                     </div>
                     </panel>
                     </draggable>
@@ -551,8 +558,8 @@ export default {
          ${swapIconStr}
         </div>
         <div class="col-2">
-        <i-input size="small" v-model="obj[item.name].inputValue" @on-blur="handleChange(${handleChangeParamsStrInputAppendType})">
-        <i-select transfer size="small" v-model="obj[item.name].selectValue" @on-change="handleChange(${handleChangeParamsStrInputAppendType})" slot="append" style="width: 70px">
+        <i-input size="small" v-model="(obj[item.name]? obj[item.name]:obj[item.name] ={}) && obj[item.name].inputValue " @on-blur="handleChange(${handleChangeParamsStrInputAppendType})">
+        <i-select transfer size="small" v-model="(obj[item.name]? obj[item.name]:obj[item.name] ={}) && obj[item.name].selectValue" @on-change="handleChange(${handleChangeParamsStrInputAppendType})" slot="append" style="width: 70px">
         <i-option v-for="(appendItem, index) in item.appendOption" :key="appendItem" :value="appendItem">{{ (item.appendOptionDesp && item.appendOptionDesp[index]) || appendItem}}</i-option>
         </i-select>
         </i-input>
@@ -565,12 +572,26 @@ export default {
     aui_tab: {
       template: `<tabs :placement="item.placement" @on-click="tabClicked" :animated="false" size="small">
         
-        <tab-pane v-for="(tabItem, index) in item.tabPanes" :id="tabItem.name" :label="tabItem.desp" :key="tabItem.name">
-        <base-config fromTabPanes :array="[tabItem]" :obj="obj"></base-config>
+        <tab-pane v-for="(tabItem, index) in item.tabPanes" :id="tabItem.name" :label="tabItem.desp" :key="tabItem.name" >
+        <base-config fromTabPanes :array="[tabItem]" :obj="obj" :needMore="needMore"></base-config>
+        <div v-if="item.hasMoreBtn" class="aui-row aui-base-config-component aui-more-attr-link"  @click="moreBtnClicked">更多</div>
         </tab-pane>
         </tabs>`,
 
-      mixins: [mixin]
+      mixins: [mixin],
+
+    },
+     aui_themeClass: {
+      template: `<div class="aui-css-theme-ctn">
+     
+        <div class="ivu-collapse-content-box aui-css-template" v-for="value in item.despArray" :class="item.selected && aui-theme-select-borderColor">
+            <div class="aui-widget-title"><span style="font-size:0.9em">{{value}}</span></div>
+        </div>
+    </div>`,
+      mixins: [mixin],
+      methods:{
+        
+      }
     }
   },
 
