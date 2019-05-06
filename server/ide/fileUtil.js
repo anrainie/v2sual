@@ -8,6 +8,8 @@ const PageFlow = require('../page/Page');
 
 const pageFlow = new PageFlow(path.resolve(path.join(RUNTIME_PATH, PAGE_PATH)));
 
+const vueFileUtil=require('./vueFileUtil');
+
 
 const fileUtil = {
   getFileReader(path) {
@@ -15,18 +17,9 @@ const fileUtil = {
       let ext = this.getFileExtension(path)
       switch (ext) {
         case '.vue':
-          return (path) => new Promise((res, rej) => {
-            //针对vue文件，读取同名.def文件
-            fs.readFile(path + '.def', 'utf8', function (err, data) {
-              if (err)
-                rej(err)
-              res(data);
-            });
-          })
-          break;
+          return vueFileUtil.read;
         case '.flow':
           return (path) =>pageFlow.content(this)(path.replace('.flow','.vue'))   
-          break;
       }
     }
     return null;
@@ -49,14 +42,7 @@ const fileUtil = {
       let ext = this.getFileExtension(path)
       switch (ext) {
         case '.vue':
-          return (p, content) => new Promise((res, rej) => {
-            //针对vue文件，读取同名.def文件
-            fs.writeFile(p + '.def', JSON.stringify(content), function (err) {
-              if (err) rej(err);
-              else res();
-            });
-
-          })
+          return vueFileUtil.write;
       }
     }
     return null;
