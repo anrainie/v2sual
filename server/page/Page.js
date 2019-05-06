@@ -259,6 +259,49 @@ class Page {
       }
     }
   }
+   /**
+   * @public
+   * @desp 获取逻辑列表
+   */
+  logicList(platform) {
+    const context = this;
+    return async function (req) {
+      try {
+        const query = req.data;
+        const filepath = query.path;
+        const content = await new Promise(resolve => fs.readFile(filepath, 'utf8', (error, response) => error ? Result.error(ctx, error) : resolve(response)));
+        const script = context.getMatchPart(content, '<script>', '</script>');
+        const ast = UglifyJS.parse(script);
+        const exportAst = ast.body.filter(b => !!b.exported_value);
+        const methodsAst = exportAst[0].exported_value.properties.filter(p => p.key === 'methods' && p.start.value === 'methods');
+        const methodList = methodsAst[0].value.properties;
+        const methodRes = methodList.map(item=>{
+          if(item.key.name){
+            return item.key.name;
+          }else{
+            return item.key;
+          }
+        })
+        const watchAst = exportAst[0].exported_value.properties.filter(p => p.key === 'watch' && p.start.value === 'watch');
+        const watchList = watchAst[0].value.properties;
+        const watchRes = watchList.map(item=>{
+          if(item.key.name){
+            return item.key.name;
+          }else{
+            return item.key;
+          }
+        })
+        platform.sendSuccessResult(req,  {
+          methods:methodRes,
+          watch:watchRes
+        });
+        
+      } catch (e) {
+        platform.sendErrorResult(req,e);
+      }
+    }
+  }
+
 
   /**
    * @public
