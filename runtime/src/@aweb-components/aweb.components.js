@@ -1,6 +1,6 @@
 import avEchartBar  from './av-echart-bar/index.vue';
 import avEchartLine  from './av-echart-line/index.vue';
-import avEditableTable  from './av-component-eTable/index.vue';
+import avComponentEtable from './av-component-eTable/index.vue';
 import avFormCascader  from './av-form-cascader/index.vue';
 import avFormCheckbox  from './av-form-checkbox/index.vue';
 import avFormDatePicker  from './av-form-datePicker/index.vue';
@@ -21,7 +21,7 @@ import avLayoutRowctn  from './av-layout-rowctn/index.vue';
 export default {
     avEchartBar,
 	avEchartLine,
-	avEditableTable,
+	avComponentEtable,
 	avFormCascader,
 	avFormCheckbox,
 	avFormDatePicker,

@@ -2,7 +2,7 @@
   <div :style="flexStyle" class="av-form-input">
      <label
         :class="model.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
-        :style="{width:model.labelWitdh}"
+        :style="labelStyle"
       >{{model.label}}</label>
      <div class="form-input-ctn" :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
     <el-input
@@ -38,6 +38,9 @@ export default {
       // } else if (self.model.data.titleMode === "row") {
       //   return self.model.data.style;
       // }
+    },
+    labelStyle(){
+       return {width:this.model.labelWitdh,...this.model.style.label}
     },
     $ArrowRight() {
       return true;

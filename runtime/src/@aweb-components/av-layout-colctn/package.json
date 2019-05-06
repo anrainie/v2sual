@@ -33,7 +33,7 @@
         "desp": "栅格",
         "hidden": false,
         "defaultValue": [50, 50],
-        "type": "tags_input"
+        "type": "string_input"
       }
     ],
     "css": {

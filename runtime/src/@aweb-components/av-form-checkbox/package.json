@@ -14,8 +14,6 @@
     "version": 510000,
     "accept": "foundationRowCtn divCtn",
     "name": "多选框",
-    "style":{
-    },
     "option": [
       {
         "name": "label",

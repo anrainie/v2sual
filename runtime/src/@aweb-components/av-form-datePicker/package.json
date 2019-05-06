@@ -117,29 +117,13 @@
           "cssAttrs": "font-size font-weight color",
           "name": "title"
         }, {
-          "desp": "检验成功边框",
+          "desp": "检验边框",
           "cssAttrs": "border-color",
-          "name": "successBorder"
+          "name": "borderStyle"
         }, {
-          "desp": "检验失败边框",
-          "cssAttrs": "border-color",
-          "name": "errorBorder"
-        }, {
-          "desp": "校验警告边框",
-          "cssAttrs": "border-color",
-          "name": "warningBorder"
-        }, {
-          "desp": "检验成功文字",
+          "desp": "检验文字",
           "cssAttrs": "color",
-          "name": "successFont"
-        }, {
-          "desp": "检验失败文字",
-          "cssAttrs": "color",
-          "name": "errorFont"
-        }, {
-          "desp": "校验警告文字",
-          "cssAttrs": "color",
-          "name": "warningFont"
+          "name": "fontStyle"
         }
       ]
     }
