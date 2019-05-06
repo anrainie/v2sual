@@ -103,6 +103,9 @@ app.use(staticRouter([
   {
     router: '/v1/static/',     //dir:static resource directory
     dir: path.resolve(path.join(RUNTIME_PATH, './dist'))   //router:router
+  },{
+    router:'/v1/runtime/',
+    dir: path.resolve(path.join(RUNTIME_PATH, './dist'))   //router:router
   }
 ]))
 
