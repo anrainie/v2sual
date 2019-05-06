@@ -269,7 +269,7 @@ class Page {
       try {
         const query = req.data;
         const filepath = query.path;
-        const content = await new Promise(resolve => fs.readFile(filepath, 'utf8', (error, response) => error ? Result.error(ctx, error) : resolve(response)));
+        const content = await new Promise(resolve => fs.readFile(filepath, 'utf8', (error, response) => error ? platform.sendErrorResult(req,error) : resolve(response)));
         const script = context.getMatchPart(content, '<script>', '</script>');
         const ast = UglifyJS.parse(script);
         const exportAst = ast.body.filter(b => !!b.exported_value);
