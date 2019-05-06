@@ -2,19 +2,25 @@
   <div class="echartCpt" :style="model.style"></div>
 </template>
 <script>
+import { avMixin } from "../av.js";
 import echarts from "echarts";
   export default {
     name: 'av-echart-line',
-    props: {
-      model: Object
-    },
+    // props: {
+    //   model: Object
+    // },
+    mixins:avMixin,
     data(){
       return {
           chart:null,
       }
     },
-    updated() {
-        console.log( this.chart)
+    computed:{
+      model() {
+        return (
+          this.$store.getters.model(this.wid) || {}
+        );
+      }
     },
     mounted() {
       this.chart = echarts.init(this.$el);

@@ -19,11 +19,11 @@
   </div>
 </template>
 <script>
+import {avMixin} from '../av.js'
+
   export default {
     name: 'av-form-slider',
-    props: {
-      model: Object
-    },
+    mixins:avMixin,
     mounted () {
     },
     data () {
@@ -43,6 +43,14 @@
 
       }
     },
+    computed:{
+
+      model() {
+        return (
+          this.$store.getters.model(this.wid) || {}
+        );
+      }
+    }
   }
 </script>
 <style>

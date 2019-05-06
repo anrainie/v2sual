@@ -21,18 +21,27 @@
 </template>
 
 <script>
+
+import {avMixin} from '../av.js'
+
 export default {
   name: "av-form-transfer",
-  props: {
-    model: Object
-  },
+  mixins:avMixin,
   mounted() {},
   data() {
     return {};
   },
   methods: {
     handleChange(e) {}
-  }
+  },
+ computed:{
+
+    model() {
+      return (
+        this.$store.getters.model(this.wid) || {}
+      );
+    }
+ }
 };
 </script>
 

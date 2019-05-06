@@ -20,11 +20,10 @@
   </div>
 </template>
 <script>
+import {avMixin} from '../av.js'
 export default {
   name: "av-form-checkbox",
-  props: {
-    model: Object
-  },
+  mixins:avMixin,
   data() {
     return {
       options: ["备选项"],
@@ -54,7 +53,12 @@ export default {
     },
     checkboxStyle(){
 
-    }
+    },
+     model() {
+        return (
+          this.$store.getters.model(this.wid) || {}
+        );
+      }
   },
   mounted() {
     console.log('mo',this.model)

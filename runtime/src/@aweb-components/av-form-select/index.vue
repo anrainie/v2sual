@@ -26,15 +26,22 @@
 </template>
 
 <script>
+import {avMixin} from '../av.js'
+
 export default {
   name: "av-form-select",
-  props: {
-    model: Object
-  },
+  mixins:avMixin,
   data() {
     return {};
   },
-  mounted() {}
+  mounted() {},
+  computed:{
+      model() {
+        return (
+          this.$store.getters.model(this.wid) || {}
+        );
+      }
+  }
 };
 </script>
 

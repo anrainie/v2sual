@@ -32,8 +32,8 @@
         "name": "layout",
         "desp": "栅格",
         "hidden": false,
-        "defaultValue": "[50,50]",
-        "type": "string_input"
+        "defaultValue": [50, 50],
+        "type": "tags_input"
       }
     ],
     "css": {

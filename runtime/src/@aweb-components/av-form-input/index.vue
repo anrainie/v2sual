@@ -16,17 +16,19 @@
 </template>
 
 <script>
-
+import { avMixin } from "../av.js";
 export default {
   name: "av-form-input",
-  props: {
-    model: Object
-  },
+  mixins:avMixin,
   mounted() {
     console.log('input',this.model)
   },
   computed: {
-
+      model() {
+        return (
+          this.$store.getters.model(this.wid) || {}
+        );
+      }
   },
   methods: {
     flexStyle() {
