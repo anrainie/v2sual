@@ -43,7 +43,7 @@
       };
     },
     layout(index) {
-      console.log("layout", this.model);
+   
       !this.model.direction && (this.model.direction = "row");
       if (this.model.direction == "col") {
         // 列布局/横向布局，返回span

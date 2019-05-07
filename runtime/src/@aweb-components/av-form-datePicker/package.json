@@ -115,7 +115,7 @@
         {
           "desp": "标题",
           "cssAttrs": "font-size font-weight color",
-          "name": "title"
+          "name": "label"
         }, {
           "desp": "检验边框",
           "cssAttrs": "border-color",

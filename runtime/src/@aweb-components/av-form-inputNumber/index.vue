@@ -2,7 +2,7 @@
   <div :style="model.style" class="av-form-inputNumber">
       <label
         :class="model.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
-        :style="{width:model.labelWitdh}"
+        :style="labelStyle"
       >{{model.label}}</label>
        <div class="form-inputNumber-ctn" :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
     <el-input-number
@@ -38,6 +38,9 @@
         return (
           this.$store.getters.model(this.wid) || {}
         );
+      },
+      labelStyle(){
+        return {width:this.model.labelWitdh,...this.model.style.label}
       }
     }
 
