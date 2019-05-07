@@ -6,6 +6,7 @@
       <el-col
         class="V2ContainerBlock"
         :span="parseInt(layout(index))"
+        :class="blockClass(index,model)"
         :key="index"
         style="height:100%;"
         v-if="!model.direction || model.direction=='col'"
@@ -15,6 +16,7 @@
       <el-row
         class="V2ContainerBlock"
         :style="{height:parseInt(layout(index)),width:'100%',}"
+        :class="blockClass(index,model)"
         :key="index"
         v-else
       >

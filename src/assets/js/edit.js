@@ -11,6 +11,17 @@ export const edit = window.preview ? {} : {
       let activeTool = this.$store.state.activeTool || selectionTool;
       return activeTool.$wrapClass ? activeTool.$wrapClass(this) : {};
     },
+    blockClass() {
+      return (index, parent) => {
+        let c = {};
+        //令Empty以外的元素具备border，需要注意borderbox的影响
+        if (parent && parent.children[index] && !parent.children[index].layout) {
+          c.borderBox = true;
+          c.dashBorder = true;
+        }
+        return c
+      }
+    }
   },
   mounted() {
     $(this.$el).click(e => {
@@ -18,6 +29,14 @@ export const edit = window.preview ? {} : {
       e.stopPropagation();
     });
 
+    $(this.$el).mouseenter(e => {
+      if (this.$mouseenter(e))
+        e.stopPropagation();
+    });
+    $(this.$el).mouseleave(e => {
+      if (this.$mouseleave(e))
+        e.stopPropagation();
+    });
   },
   methods: {
     /**
@@ -26,6 +45,14 @@ export const edit = window.preview ? {} : {
     selected(e) {
       let activeTool = this.$store.state.activeTool || selectionTool;
       return activeTool.$selected(this, e);
+    },
+    $mouseleave(e) {
+      let activeTool = this.$store.state.activeTool || selectionTool;
+      return activeTool.$mouseleave && activeTool.$mouseleave(this, e);
+    },
+    $mouseenter(e) {
+      let activeTool = this.$store.state.activeTool || selectionTool;
+      return activeTool.$mouseenter && activeTool.$mouseenter(this, e);
     },
     $removeChild(index) {
       //   this.model.children.push(factory());

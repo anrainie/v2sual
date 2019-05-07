@@ -1,3 +1,4 @@
+
 /**
  * 预览工具集
  */
@@ -37,6 +38,27 @@ export const createTool = {
         return false;
     }
     return true;
+  },
+
+  //创建元素时的拖拽虚影
+  dragHelper: null,
+  startDrag() {
+    if (this.dragHelper) {
+      $(window).off("mousemove").on("mousemove", e => {
+
+      })
+    }
+  },
+  mouseenter() {
+    console.log('enter')
+    if (this.dragHelper) {
+      $(window).off("mousemove").on("mousemove", e => {})
+    }
+  },
+  stopDrag() {
+    if (this.dragHelper) {
+      $(window).off("mousemove")
+    }
   },
 
   //为了支持校验activeTool.type=='create'
@@ -86,7 +108,7 @@ export const createTool = {
   },
   tryCreate() {
     if (this.element && this.target) {
-      let _self=this.target
+      let _self = this.target
       this.__append().then(e => {
         //切换Tool
         _self.$store.commit('setActiveTool', selectionTool);
@@ -140,16 +162,12 @@ export const selectionTool = {
     if (!e.ctrlKey && !e.altKey && !e.shiftKey) {
       switch (e.key) {
         case "ArrowRight":
+        case "ArrowDown":
           _self.$store.commit("select.next");
           return false;
-        case "ArrowDown":
-          _self.$store.commit("select.firstChild");
-          return false;
         case "ArrowLeft":
-          _self.$store.commit("select.prev");
-          return false;
         case "ArrowUp":
-          _self.selectParent();
+          _self.$store.commit("select.prev");
           return false;
         case 'Esc':
         case 'Escape':
@@ -175,7 +193,17 @@ export const selectionTool = {
     }
     if (e.ctrlKey) {
       switch (e.key) {
+        case 'ArrowRight':
+        case 'ArrowDown':
+          _self.$store.commit("select.firstChild");
+          return false;
+        case 'ArrowLeft':
+        case 'ArrowUp':
+          _self.$store.commit("select.parent");
+          return false;
         case 's':
+          _self.$store.commit("save");
+          return false;
         case 'p':
           return false;
         case '=':
@@ -210,14 +238,18 @@ export const selectionTool = {
   $wrapClass(_self) {
     let c = {};
     //选中状态
-    if (_self.$store.getters.isSelected(_self.wid))
+    if (_self.$store.getters.isSelected(_self.wid)) {
       if (_self.$selectedClass) {
-        c = {
+        c = $.extend(c, {
           ..._self.$selectedClass(),
-        }
+        })
       } else {
         c.selected = true;
       }
+    } else if (_self == this.hoverElement) {
+      //自行维护的hover状态
+      c.hoveredElement = true
+    }
     // else if (!_self.$store.getters.isSelectedParent(_self.wid)) {
     //   c.unselected = true;
     // }
@@ -230,6 +262,16 @@ export const selectionTool = {
    */
   $selected(_self, event) {
     _self.$store.commit('select', _self.wid, event);
+  },
+  hoverElement: null,
+  $mouseenter(_self, event) {
+    console.log(_self)
+    this.hoverElement = _self;
+    return true;
+  },
+  $mouseleave(_self, event) {
+    this.hoverElement = null;
+    return true;
   },
   $getActions() {
     return [{

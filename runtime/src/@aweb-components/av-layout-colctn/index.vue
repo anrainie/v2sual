@@ -9,6 +9,7 @@
         :style="{height:layout(index),width:'100%',}"
         :key="index"
         v-if="!model.direction || model.direction=='row'"
+        :class="blockClass(index,model)"
       >
            <component :is="component(index)" :wid="wigetId(index)" :index="index" :pid="wid"></component> 
       </el-row>
@@ -16,6 +17,7 @@
         class="V2ContainerBlock"
         :span="parseInt(layout(index))"
         :key="index"
+        :class="blockClass(index,model)"
           v-else
         style="height:100%;">
 
