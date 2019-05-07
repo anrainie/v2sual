@@ -28,10 +28,10 @@
   </div>
 </template>
 <script>
-import { avMixin } from "../av.js";
+
 export default {
   name: "av-form-datePicker",
-  mixins:avMixin,
+
   mounted() {},
   data() {
     return {

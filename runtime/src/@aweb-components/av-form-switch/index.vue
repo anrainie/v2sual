@@ -12,10 +12,10 @@
   </div>
 </template>
 <script>
-import {avMixin} from '../av.js'
+
   export default {
     name: 'av-form-switch',
-    mixins:avMixin,
+ 
     methods: {
       $Enter () {
         this.model.value = !this.model.value

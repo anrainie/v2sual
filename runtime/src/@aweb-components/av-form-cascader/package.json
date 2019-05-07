@@ -137,7 +137,12 @@
       }
     ],
     "css":{
-      "style": [{
+      "style": [
+        {
+          "desp": "标题",
+          "cssAttrs": "font-size color font-weight",
+          "name": "label"
+        } ,{
           "desp": "检验边框",
           "cssAttrs": "border-color",
           "name": "borderStyle"

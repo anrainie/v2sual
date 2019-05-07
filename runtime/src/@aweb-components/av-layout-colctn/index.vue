@@ -27,11 +27,11 @@
   </div>
 </template>
 <script>
-import {avMixin} from '../av.js'
+
 
   export default {
     name: 'av-layout-colctn',
-    mixins:avMixin,
+
     data(){
        return {
        }

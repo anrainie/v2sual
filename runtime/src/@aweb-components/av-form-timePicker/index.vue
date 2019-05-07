@@ -27,11 +27,11 @@
   </div>
 </template>
 <script>
-import {avMixin} from '../av.js'
+
 
 export default {
   name: "av-form-timePicker",
-  mixins:avMixin,
+
   mounted() {},
   data() {
     return {};

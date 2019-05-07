@@ -16,10 +16,10 @@
 </template>
 
 <script>
-import { avMixin } from "../av.js";
+
 export default {
   name: "av-form-input",
-  mixins:avMixin,
+
   mounted() {
     console.log('input',this.model)
   },
@@ -28,7 +28,10 @@ export default {
         return (
           this.$store.getters.model(this.wid) || {}
         );
-      }
+      },
+    labelStyle(){
+       return {width:this.model.labelWitdh,...this.model.style.label}
+    }
   },
   methods: {
     flexStyle() {
@@ -39,9 +42,7 @@ export default {
       //   return self.model.data.style;
       // }
     },
-    labelStyle(){
-       return {width:this.model.labelWitdh,...this.model.style.label}
-    },
+
     $ArrowRight() {
       return true;
     },

@@ -20,10 +20,10 @@
   </div>
 </template>
 <script>
-import {avMixin} from '../av.js'
+
   export default {
     name: 'av-form-updload',
-    mixins:avMixin,
+ 
     mounted () {
     },
     data () {

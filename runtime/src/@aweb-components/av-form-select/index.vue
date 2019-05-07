@@ -26,11 +26,11 @@
 </template>
 
 <script>
-import {avMixin} from '../av.js'
+
 
 export default {
   name: "av-form-select",
-  mixins:avMixin,
+
   data() {
     return {};
   },
