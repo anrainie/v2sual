@@ -84,7 +84,15 @@
         "desp": "是否使用范围选择"
       }
     ],
-    "css": {}
+    "css": {
+      "style":[
+        {
+          "desp": "标题",
+          "cssAttrs": "font-size color font-weight",
+          "name": "label"
+        }
+      ]
+    }
   },
   "keywords": [],
   "license": "ISC",

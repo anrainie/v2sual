@@ -2,7 +2,7 @@
   <div :style="model.style" class="av-form-radio">
     <label
       :class="model.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
-      :style="{width:model.labelWitdh}"
+      :style="labelStyle"
     >{{model.label}}</label>
     <div
       class="form-radio-ctn"
@@ -60,7 +60,10 @@ export default {
         return (
           this.$store.getters.model(this.wid) || {}
         );
-      }
+      },
+    labelStyle(){
+       return {width:this.model.labelWitdh,...this.model.style.label}
+    }
   }
 };
 </script>

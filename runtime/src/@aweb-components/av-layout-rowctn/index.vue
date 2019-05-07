@@ -26,11 +26,11 @@
   </div>
 </template>
 <script>
-import {avMixin} from '../av.js'
+
 
   export default {
     name: 'av-layout-rowctn',
-    mixins:avMixin,
+  
     data(){
        return {
     
@@ -46,7 +46,7 @@ import {avMixin} from '../av.js'
       };
     },
     layout(index) {
-      console.log("layout", this.model);
+
       !this.model.direction && (this.model.direction = "col");
       if (this.model.direction == "col") {
         // 列布局/横向布局，返回span

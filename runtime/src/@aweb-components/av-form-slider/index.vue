@@ -2,7 +2,7 @@
   <div :style="flexStyle"  class="av-form-slider">
      <label
         :class="model.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
-        :style="{width:model.labelWitdh}"
+        :style="labelStyle"
       >{{model.label}}</label>
       <div class="form-slider-ctn" :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
     <el-slider
@@ -49,7 +49,10 @@
         return (
           this.$store.getters.model(this.wid) || {}
         );
-      }
+      },
+      labelStyle(){
+       return {width:this.model.labelWitdh,...this.model.style.label}
+    }
     }
   }
 </script>
