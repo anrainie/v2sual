@@ -20,10 +20,10 @@
   </div>
 </template>
 <script>
-import {avMixin} from '../av.js'
+
 export default {
   name: "av-form-checkbox",
-  mixins:avMixin,
+
   data() {
     return {
       options: ["备选项"],

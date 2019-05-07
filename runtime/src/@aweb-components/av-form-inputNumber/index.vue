@@ -19,10 +19,10 @@
   </div>
 </template>
 <script>
-import {avMixin} from '../av.js'
+
   export default {
     name: 'av-form-inputNumber',
-    mixins:avMixin,
+
     data () {
       return {}
     },

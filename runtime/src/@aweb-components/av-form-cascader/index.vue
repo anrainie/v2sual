@@ -2,7 +2,7 @@
   <div :style="flexStyle" class="av-form-cascader">
     <label
       :class="model.titleMode ==='row'?'av-form-label':'av-form-label form-label-col'"
-      :style="{width:model.labelWitdh}"
+      :style="labelStyle"
     >{{model.label}}</label>
     <div
       class="form-cascader-ctn"
@@ -20,10 +20,10 @@
   </div>
 </template>
 <script>
-import {avMixin} from '../av.js';
+
 export default {
   name: "av-form-cascader",
-  mixins:avMixin,
+
   mounted() {},
   data() {
     return {
@@ -304,7 +304,10 @@ export default {
         return (
           this.$store.getters.model(this.wid) || {}
         );
-      }
+      },
+     labelStyle(){
+       return {width:this.model.labelWitdh,...this.model.style.label}
+    }
   },
   watch:{
     selectVal(value){

@@ -50,7 +50,7 @@
   </div>
 </template>
 <script>
-import {avMixin} from '../av.js';
+
 import { HotTable } from '@handsontable/vue';
 import Handsontable from 'handsontable';
 import 'handsontable/dist/handsontable.full.css';
@@ -73,7 +73,7 @@ const EDM_TYP_MAP={
 
 export default {
   name: "av-component-eTable",
-  mixins:avMixin,
+
   data: function () {
     return {
       hotTableID:'hot-table',
