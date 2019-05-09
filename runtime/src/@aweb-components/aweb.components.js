@@ -14,12 +14,13 @@ import avFormTimePicker  from './av-form-timePicker/index.vue';
 import avFormTransfer  from './av-form-transfer/index.vue';
 import avFormUpload  from './av-form-upload/index.vue';
 import avLayoutColctn  from './av-layout-colctn/index.vue';
-import avLayoutRowctn  from './av-layout-rowctn/index.vue';
+import avLayoutRowctn from './av-layout-rowctn/index.vue';
+import avLayoutEditor from './av-layout-colctn/editor.vue';
 
 
 
 export default {
-    avEchartBar,
+  avEchartBar,
 	avEchartLine,
 	avComponentEtable,
 	avFormCascader,
@@ -35,5 +36,6 @@ export default {
 	avFormTransfer,
 	avFormUpload,
 	avLayoutColctn,
-	avLayoutRowctn
+  avLayoutRowctn,
+  avLayoutEditor
 }

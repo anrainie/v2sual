@@ -2238,14 +2238,14 @@ table {
     color: #ccc
 }
 
-.aui-css-config .aui-base-config .aui-css-style-config-list .aui-row .aui-more-attr-link {
+ .aui-base-config  .aui-row.aui-more-attr-link {
     padding: 1em;
     text-align: center;
     color: #2d8cf0;
     cursor: pointer
 }
 
-.aui-css-config .aui-base-config .aui-css-style-config-list .aui-row .aui-more-attr-link:hover {
+.aui-base-config  .aui-row.aui-more-attr-link:hover {
     color: #2d8cf0
 }
 

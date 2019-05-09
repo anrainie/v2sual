@@ -81,13 +81,13 @@
 
       <div class="v2-control">
         <el-tabs class="config-ctn" type="border-card">
-        
+
     <el-tab-pane label="参数配置"><Base/></el-tab-pane>
        <el-tab-pane label="样式配置"><Css/></el-tab-pane>
-   
+
   </el-tabs>
   </div>
-  
+
 
       <div class="v2-toolbar">
         <el-button size="mini" @click="deleteSelection">删除</el-button>
@@ -107,83 +107,79 @@
   </div>
 </template>
 <script>
-import { canvas } from "../assets/js/v2-view.js";
-import { createTool, selectionTool } from "../assets/js/tools.js";
-import { setTimeout } from "timers";
+import { canvas } from '../assets/js/v2-view.js';
+import { createTool, selectionTool } from '../assets/js/tools.js';
+import { setTimeout } from 'timers';
 
-import { debug } from "util";
-import { constants } from "fs";
-import { data } from "../assets/js/dev.js";
-import util from "../base/utils/bridge.js";
+import { debug } from 'util';
+import { constants } from 'fs';
+import { data } from '../assets/js/dev.js';
+import util from '../base/utils/bridge.js';
 
-
-import chat from "./utils/chat.vue";
-import Vuex from "Vue";
-
-
+import chat from './utils/chat.vue';
+import Vuex from 'Vue';
 
 export default {
   components: { chat},
   mixins: [canvas],
   computed: {},
   // data(){}
-  beforeCreate(){
+  beforeCreate () {
     window.__dataPool = window.__dataPool || {};
-    window.__dataPool[this._uid]=this;
-    window.$=$;
-    window.jQuery=jQuery;
-    window.Vuex=Vuex;
-    window.canvas=canvas;
+    window.__dataPool[this._uid] = this;
+    window.$ = $;
+    window.jQuery = jQuery;
+    window.Vuex = Vuex;
+    window.canvas = canvas;
   },
-  mounted() {
+  mounted () {
     const self = this;
 
-    this.$store.commit("setActiveTool", selectionTool);
-    this.apis("/v1/external/widget")
-    .then(data=>{
-       data=data.map((item)=>{
-         let ret={
-              type:item.type,
-              icon: item.icon,
-              name: item.name,
-              element:{
-                ...util.cssConfigInitInstance(util.baseConfigInitInstance({},util.turnCssConfigToArr(item.css||{}))||{},item.css),
-                ...util.baseConfigInitInstance({},item.option||[])||{},
-                href:item.href,
-                component:item.href,
-                children:[],
-                widget:item
-              }
+    this.$store.commit('setActiveTool', selectionTool);
+    this.apis('/v1/external/widget')
+      .then(data => {
+        data = data.map((item) => {
+          let ret = {
+            type: item.type,
+            icon: item.icon,
+            name: item.name,
+            element: {
+              ...util.baseConfigInitInstance({}, util.turnCssConfigToArr(item.css || {})),
+              ...util.baseConfigInitInstance({}, item.option || []) || {},
+              href: item.href,
+              component: item.href,
+              children: [],
+              widget: item
+            }
 
-         }
-         console.log('widget',ret);
-         
-        // ret.element.component="V2AuiComponent"
-        
+          };
+          console.log('widget', ret);
+
+          // ret.element.component="V2AuiComponent"
+
           return ret;
-       })
+        });
 
-       data.forEach(item => {
-          switch(item.type){
-            
+        data.forEach(item => {
+          switch (item.type) {
             case 'layout':
-             self.palatteConfig[0].children.push(item);
-             break;
+              self.palatteConfig[0].children.push(item);
+              break;
             case 'form':
-            self.palatteConfig[1].children.push(item);
+              self.palatteConfig[1].children.push(item);
               break;
             case 'component':
-            self.palatteConfig[2].children.push(item);
-               break;
+              self.palatteConfig[2].children.push(item);
+              break;
             case 'echart':
-            self.palatteConfig[3].children.push(item);
+              self.palatteConfig[3].children.push(item);
               break;
           }
-       });
-       
-       
+        });
+
+
       //  this.palatteConfig[1].children=[... this.palatteConfig[1].children,...data];
-    })
+      });
     // $(".paletteItem").draggable({
     //   helper: function(event, ui) {
     //     console.log("help", event, ui);
@@ -197,36 +193,36 @@ export default {
     //   }
     // });
 
-    $(".paletteItem").draggable({
-      helper: function(event, ui) {
-        console.log("help", event, ui);
+    $('.paletteItem').draggable({
+      helper: function (event, ui) {
+        console.log('help', event, ui);
         return $(
           `<div style='position:fixed;' class='ui-widget-header'>${event}</div>`
         );
       },
-      start(event, ui) {
+      start (event, ui) {
         ui.test = 123;
         console.log(event, ui);
       }
     });
 
-    //模拟异步读取数据
+    // 模拟异步读取数据
     setTimeout(() => {
-      this.$store.commit("init", data);
+      this.$store.commit('init', data);
       // this.rootId = "root";
     }, 100);
   },
   methods: {
-    deleteSelection() {
-      this.$store.commit("delete.select");
+    deleteSelection () {
+      this.$store.commit('delete.select');
     },
-    selectParent() {
-      this.$store.commit("select.parent");
+    selectParent () {
+      this.$store.commit('select.parent');
     },
-    selectFirstChild() {
-      this.$store.commit("select.firstChild");
+    selectFirstChild () {
+      this.$store.commit('select.firstChild');
     },
-    preview() {
+    preview () {
       this.showPreview = true;
       let self = this;
       self.previewLoading = true;
@@ -239,42 +235,41 @@ export default {
           self.showPreview = false;
         };
         self.$refs.previewFrame.contentWindow.onload = () => {
-          console.log("loaded");
+          console.log('loaded');
           self.previewLoading = false;
         };
         // self.$refs.previewFrame.reload();
       });
     },
-    loadSelfWindow(){
-        
-        let currentIframe = document.getElementsByTagName('iframe')[0];
+    loadSelfWindow () {
+      let currentIframe = document.getElementsByTagName('iframe')[0];
 
-        window.editRoot = currentIframe.contentWindow;
+      window.editRoot = currentIframe.contentWindow;
     },
     /**
      *创建元素，传入一个createTool，并且传入element
      */
-    startCreateElement(item) {
+    startCreateElement (item) {
       this.dragHelper = JSON.parse(JSON.stringify(item.element));
-      this.$store.commit("regist.index", {
-        id: "helper",
+      this.$store.commit('regist.index', {
+        id: 'helper',
         content: this.dragHelper
       });
       this.showDragHelper = true;
       let tool = createTool;
-      this.$store.commit("setActiveTool", tool);
+      this.$store.commit('setActiveTool', tool);
       tool.setElement(item.element);
     },
     /**
      * 提供给main.js中定义的指令使用
      */
-    finishCreateElement() {
+    finishCreateElement () {
       this.showDragHelper = false;
     },
-    createDragHelper(item) {
+    createDragHelper (item) {
       console.log(this.$refs.dragHelper);
       return this.$refs.dragHelper;
-    },
+    }
     // /*设置聚焦节点*/
     // mouseEven(e) {
     //   this.$store.commit("setInputActive", $(e.target).attr("index"));
@@ -295,22 +290,22 @@ export default {
     //   }
     // }
   },
-  data() {
+  data () {
     return {
       dragHelper: {
-        id: "helper",
-        component: ""
+        id: 'helper',
+        component: ''
       },
       showDragHelper: false,
       previewLoading: false,
       showPreview: false,
       palatteConfig: [
         {
-          type: "layout",
-          name: "页面容器",
-          icon: "fa fa-align-center",
-          angleUp: "",
-          collapse: "block",
+          type: 'layout',
+          name: '页面容器',
+          icon: 'fa fa-align-center',
+          angleUp: '',
+          collapse: 'block',
           children: [
             // {
             //   type: "v2Container",
@@ -355,19 +350,19 @@ export default {
           ]
         },
         {
-          type: "form",
-          name: "表单组件",
-          icon: "fa fa-align-center",
-          angleUp: "",
-          collapse: "block",
-          children:[]
+          type: 'form',
+          name: '表单组件',
+          icon: 'fa fa-align-center',
+          angleUp: '',
+          collapse: 'block',
+          children: []
         },
         {
-          type: "component",
-          name: "功能组件",
-          icon: "fa fa-align-center",
-          angleUp: "",
-          collapse: "block",
+          type: 'component',
+          name: '功能组件',
+          icon: 'fa fa-align-center',
+          angleUp: '',
+          collapse: 'block',
           children: [
             // {
             //   type: "v2Input",
@@ -594,11 +589,11 @@ export default {
           ]
         },
         {
-          type: "echart",
-          name: "图表",
-          icon: "fa fa-align-center",
-          angleUp: "",
-          collapse: "block",
+          type: 'echart',
+          name: '图表',
+          icon: 'fa fa-align-center',
+          angleUp: '',
+          collapse: 'block',
           children: [
             // {
             //   type: "echart-category",
@@ -690,7 +685,7 @@ export default {
   }
 };
 </script>
-<style>
+<style  lang="less">
 iframe{
   border:0;
 }
@@ -767,5 +762,19 @@ iframe{
     box-sizing: border-box;
     border: 1px solid #000;
   }
+}
+.config-ctn{
+ .el-tabs__item{
+      padding: 0 6px;
+      height: 32px;
+      line-height: 32px;
+      &:last-child,
+      &:nth-child(2){
+        padding:0 6px;
+      }
+ }
+ .el-tabs--border-card>.el-tabs__content{
+    padding: 6px;
+ }
 }
 </style>

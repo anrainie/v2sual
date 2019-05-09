@@ -6,7 +6,7 @@
         </div>
         <collapse-transition>
             <div :class="contentClasses" v-show="isActive">
-                <Search v-if="showSearch" :query="currentQuery" :placeholder="`请搜索...`"></Search>
+                <Search v-if="showSearch" :query="currentQuery" :placeholder="`请搜索...`" class="css-search-input"></Search>
                 <div :class="boxClasses"><slot name="content"></slot></div>
             </div>
         </collapse-transition>

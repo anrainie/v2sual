@@ -5,6 +5,7 @@
   "bundleDependencies": false,
   "deprecated": false,
   "description": "横向布局",
+
   "docs": {
     "belongTo": "aui",
     "icon": "iconfont icon-password",
@@ -49,9 +50,7 @@
         }
       ]
     },
-    "style":{
-      
-    }
+    "editor": "avLayoutEditor"
   },
   "keywords": [],
   "license": "ISC",
