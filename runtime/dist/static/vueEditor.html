@@ -3,9 +3,23 @@
 <head>
   <!--css-->
   <style>
+    .draghandle{
+      position: absolute;
+      right:0;
+      top:0;
+      height:20px;
+      width:20px;
+      background: lightblue;
+      z-index:999;
+    }
+
+    .V2ContainerBlock{
+      position: relative;
+    }
+
     /* 考虑用before/after */
     .selected {
-      box-shadow: 0px 0px 0px 1px darkgrey;
+      box-shadow: 0px 0px 0px 1px darkcyan;
     }
 
     .unselected {
