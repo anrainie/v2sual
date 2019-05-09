@@ -57,8 +57,11 @@ const page = new Page(path.resolve(path.join(RUNTIME_PATH, PAGE_PATH)));
 
 platform.socket.on('/v1/page/list',page.list(platform));
 platform.socket.on('/v1/page/content',page.content(platform));
+
 //获取逻辑方法
 platform.socket.on('/v1/logic/list',page.logicList(platform));
+// 逻辑概览保存
+platform.socket.on('/v1/logic/save',page.logicSave(platform));
 
 // 方法
 platform.socket.on('/v1/page/script',page.script(platform));
