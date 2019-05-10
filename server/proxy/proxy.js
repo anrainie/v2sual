@@ -6,7 +6,7 @@ const path =require('path');
 module.exports = (app) => {
 
   configs.proxy.map(config => {
-    
-    app.use(convert(proxy(path.resolve(configs.base,config.source), config)))
+    console.log(path.join(configs.base,config.source));
+    app.use(convert(proxy(path.join(configs.base,config.source), config)))
   });
 };
