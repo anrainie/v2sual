@@ -25,13 +25,9 @@ const PAGE_PATH = 'src/views';
 
 // Dependences
 const Koa = require('koa')
-const serve = require('koa-static')
 const staticRouter = require('./Static/static-router')
-const proxyPass = require('@junyiz/koa-proxy-pass')
 const router = require('koa-router')()
 const koaBody = require('koa-body')
-const httpRequest = require('request')
-const fs = require('fs.promised')
 const cors = require('koa-cors')
 
 
@@ -45,10 +41,6 @@ const platform = new Platform({
   ip: TARGET_IP,
   port: TARGET_PORT
 });
-
-
-
-
 
 // 页面操作内容
 
@@ -71,8 +63,6 @@ router.get('/v1/dictTest/tableOp', Table.tableOpera);
 
 
 // 预览
-
-
 const Preview = require('./preview/Preview');
 const preview = new Preview(RUNTIME_PATH, STATIC_PATH);
 
@@ -93,10 +83,9 @@ app.use(koaBody());
 app.use(router.routes());
 
 
+//代理
+require('./proxy/proxy')(app);
 
-const external = require('./external/external');
-platform.socket.on('/v1/external/widget',external.widget(platform));
-platform.socket.on('/v1/external/dict',external.dict(platform));
 
 //预览静态路由
 app.use(staticRouter([
@@ -108,6 +97,7 @@ app.use(staticRouter([
     dir: path.resolve(path.join(RUNTIME_PATH, './dist'))   //router:router
   }
 ]))
+
 
 //异常处理
 app.on("error", (err, ctx) => {//捕获异常记录错误日志
