@@ -1,0 +1,99 @@
+{
+    "server": {
+        "id": 123123,
+        "name": "v2sual",
+        "port": 3000,
+        "host": "localhost"
+    },
+    "webide": {
+        "port": 8080,
+        "host": "localhost"
+    },
+    "runtime": {
+        "base": "../runtime",
+        "component": "./src/@aweb-components",
+        "pipe": "../pipe/src/main/webapp/plugins",
+        "page": "./src/views",
+        "datadict": "./src/datadict"
+    },
+    "module": {
+        "navigator": {
+            "consumption": {
+                "getNaviItems": "getNaviItems"
+            }
+        },
+        "pageFlow": {
+            "consumption": {
+                "/v1/page/list": "list",
+                "/v1/page/content": "content",
+                "/v1/logic/list": "logicList",
+                "/v1/page/script": "script"
+            }
+        },
+        "page": {
+            "consumption": {
+                "/v1/external/widget": "widget",
+                "/v1/external/dict": "dict"
+            }
+        },
+        "preview": {
+            "consumption": {
+                "/v1/preview/init": "init",
+                "/v1/external/runtimeWidget": "runtimeWidget",
+                "getVueEditorStyles": "style"
+            }
+        },
+        "logic": {
+            "consumption": {}
+        },
+        "reader": {
+            "consumption": {
+                "getFile": "getFile",
+                "saveFile": "saveFile"
+            }
+        },
+        "test": {
+            "table": {
+                "http": {
+                    "/v1/dictTest/table": "getOption",
+                    "/v1/dictTest/tableOp": "tableOpera"
+                }
+            }
+        }
+    },
+    "static": [
+        {
+            "router": "/v1/static/",
+            "dir": "./dist"
+        },
+        {
+            "router": "/v1/runtime/",
+            "dir": "./dist"
+        }
+    ],
+    "dataSource": {
+        "base": "/v1/ds",
+        "proxy": [
+            {
+                "name": "AFA 测试连接",
+                "source": "/afa",
+                "target": "https://afa-api.awebide.com",
+                "changeOrigin": true,
+                "pathRewrite": {
+                    "v1/ds/afa": ""
+                },
+                "logLevel": "debug"
+            },
+            {
+                "name": "Excel 测试连接",
+                "source": "/excel",
+                "target": "http://localhost:10240",
+                "changeOrigin": true,
+                "pathRewrite": {
+                    "v1/ds/": ""
+                },
+                "logLevel": "debug"
+            }
+        ]
+    }
+}

@@ -1,1 +1,0 @@
-define(["jquery"],function($){return{debug:true,log:true,error:true,translate:false,fresher:true,preloading:false,requireConfig:{waitSeconds:30,urlArgs:true}}});
