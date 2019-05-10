@@ -95,16 +95,21 @@ app.use(router.routes());
 
 require('./proxy/proxy')(app);
 
+const external = require('./external/external');
+platform.socket.on('/v1/external/widget',external.widget(platform));
+platform.socket.on('/v1/external/dict',external.dict(platform));
+
+
 //预览静态路由
-// app.use(staticRouter([
-//   {
-//     router: '/v1/static/',     //dir:static resource directory
-//     dir: path.resolve(path.join(RUNTIME_PATH, './dist'))   //router:router
-//   },{
-//     router:'/v1/runtime/',
-//     dir: path.resolve(path.join(RUNTIME_PATH, './dist'))   //router:router
-//   }
-// ]))
+app.use(staticRouter([
+  {
+    router: '/v1/static/',     //dir:static resource directory
+    dir: path.resolve(path.join(RUNTIME_PATH, './dist'))   //router:router
+  },{
+    router:'/v1/runtime/',
+    dir: path.resolve(path.join(RUNTIME_PATH, './dist'))   //router:router
+  }
+]))
 
 //异常处理
 app.on("error", (err, ctx) => {//捕获异常记录错误日志
