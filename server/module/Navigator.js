@@ -40,8 +40,6 @@ const listDir = (dirPath = listPath) => {
         console.error(e);
     }
 
-
-
     return treeNode;
 }
 
@@ -52,42 +50,50 @@ const listFile = (pagePath) => {
 }
 
 const Navigator = {
-    getNaviItems(dirPath = listPath) {
-        const viewPath = listDir(dirPath);
-        const flowPath = JSON.parse(JSON.stringify(viewPath));
+    getNaviItems(platform) {
+        return async (req) => {
+            try {
+                const dirPath = listPath;
+                const viewPath = listDir(dirPath);
+                const flowPath = JSON.parse(JSON.stringify(viewPath));
 
-        //rename flow
-        let copy = [].concat(flowPath);
-        let item;
+                //rename flow
+                let copy = [].concat(flowPath);
+                let item;
 
-        while (item = copy.pop()) {
-            if (item.resId === 'vue') {
-                item.resId = 'flow';
-                item.path = item.path.replace(/\.vue$/, '.flow');
+                while (item = copy.pop()) {
+                    if (item.resId === 'vue') {
+                        item.resId = 'flow';
+                        item.path = item.path.replace(/\.vue$/, '.flow');
+                    }
+
+                    if (item.children && item.children.length) {
+                        copy = copy.concat(item.children);
+                    }
+                }
+
+                let ret = [{
+                    name: 'views',
+                    label: '页面',
+                    path: 'views',
+                    resId: 'virtualPath',
+                    type: 'folder',
+                    children: viewPath
+                }, {
+                    name: 'flows',
+                    label: '页面流',
+                    path: 'flows',
+                    resId: 'category',
+                    type: 'folder',
+                    children: flowPath
+                }];
+
+                platform.sendSuccessResult(req, ret);
+            } catch (e) {
+                platform.sendErrorResult(e)
             }
 
-            if (item.children && item.children.length) {
-                copy = copy.concat(item.children);
-            }
         }
-
-        let ret = [{
-            name: 'views',
-            label: '页面',
-            path: 'views',
-            resId: 'virtualPath',
-            type: 'folder',
-            children: viewPath
-        }, {
-            name: 'flows',
-            label: '页面流',
-            path: 'flows',
-            resId: 'category',
-            type: 'folder',
-            children: flowPath
-        }];
-
-        return ret;
     }
 }
 

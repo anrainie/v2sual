@@ -4,8 +4,7 @@ const config = require('./config/config.base');
 
 // Dependences
 const Koa = require('koa')
-const staticRouter = require('./Static/static-router')
-const router = require('koa-router')()
+const staticRouter = require('./util/static-router');
 const koaBody = require('koa-body')
 const cors = require('koa-cors')
 
@@ -53,4 +52,4 @@ app.use(tableRouter.routes());
 app.on("error", (err, ctx) => console.log(new Date(), ":", err));
 
 //启动
-app.listen(PORT, () => console.log(`项目启动：http://localhost:${PORT}}`));
+app.listen(config.server.port, () => console.log(`项目启动：http://localhost:${config.server.port}}`));
