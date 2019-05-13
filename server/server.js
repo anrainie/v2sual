@@ -32,11 +32,14 @@ require('./module/Reader/fileUtil').consume(platform, config.module.reader.consu
 // 页面流、逻辑概览、管道
 require('./module/PageFlow').consume(platform, config.module.pageFlow.consumption);
 
+require('./module/Pipe').consume(platform, config.module.pipe.consumption, config.runtime.pipe);
+
 // 页面
 require('./module/Editor').consume(platform, config.module.page.consumption);
 
 // 预览
 require('./module/Preview').consume(platform, config.module.preview.consumption, config.runtime.base);
+
 
 //数据源代理
 require('./module/dataSource')(app, config.dataSource);

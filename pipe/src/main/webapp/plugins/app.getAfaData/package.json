@@ -1,9 +1,9 @@
 {
-    "name": "@aweb-plugins/app.getExcelData",
+    "name": "@aweb-plugins/app.getAfaData",
     "main": "index.js",
     "docs": {
-        "desp": "从Excel获取数据",
-        "name": "getExcelData",
+        "desp": "从 AFA 获取数据",
+        "name": "app.getAfaData",
         "belongTo": "function",
         "params": [
             {
@@ -11,7 +11,7 @@
                 "desp": "参数",
                 "type": "string",
                 "necessary": true,
-                "defaultValue": ""
+                "defaultValue": "{\n    t:'tc',\n    m:'mc',\n    url:'url',\n    data:{}\n}"
             }
         ],
         "hasReturn": true,
