@@ -121,7 +121,7 @@ class Page {
 
             try {
               // 检查appopen
-              if (method.expression && method.expression.start.value === 'app' && method.expression.end.value === 'open') {
+              if (method.expression && (method.expression.start.value === 'app' || method.expression.start.value === 'this') && method.expression.end.value === 'open') {
                 let args = {};
                 try {
                   method.args[0].properties.forEach(a => {
