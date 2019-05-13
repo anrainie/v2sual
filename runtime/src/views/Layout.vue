@@ -1,19 +1,25 @@
 	<template>
-  <el-row class="container">
-    <el-col :span="24" class="header">
+  <el-row class="aweb-container">
+    <el-col :span="24" class="aweb-header">
       <el-col
         :span="10"
-        class="logo"
+        class="aweb-logo"
         :class="collapsed?'logo-collapse-width':'logo-width'"
       >{{collapsed?'':sysName}}</el-col>
       <el-col :span="10">
-        <div class="tools" @click.prevent="collapse">
+        <div class="aweb-tools" @click.prevent="collapse">
           <i class="el-icon-menu"></i>
         </div>
       </el-col>
-      <el-col :span="4" class="userinfo">
+
+      <el-col :span="4" class="aweb-userinfo">
+
+        <el-tooltip  effect="dark" content="下载案例" placement="left">
+            <el-button icon="el-icon-sold-out" circle class="aweb-download-btn" @click="openMarket"></el-button>
+        </el-tooltip>
+
         <el-dropdown trigger="hover">
-          <span class="el-dropdown-link userinfo-inner">
+          <span class="el-dropdown-link aweb-userinfo-inner">
             <img :src="sysUserAvatar">
             {{sysUserName}}
           </span>
@@ -26,7 +32,7 @@
       </el-col>
     </el-col>
 
-    <el-col :span="24" class="main">
+    <el-col :span="24" class="aweb-body">
  <!-- 侧边导航 -->
       <aside :class="collapsed?'menu-collapsed':'menu-expanded'">
 
@@ -37,13 +43,13 @@
           text-color="#fff"
           active-text-color="#04bebd"
           hoverbgColor ="#04bebd"
-          router
           :collapse="collapsed"
+          @select="handleSelectMenu"
         >
 
           <template v-for="item in routerData" v-if="!item.hidden">
             
-              <el-submenu  v-if="item.children && item.children.length && !item.isLeaf || (item.isLeaf && item.isRedirect)" :index="item.path" :key="item.path">
+              <el-submenu  v-if="item.children && item.children.length && !item.isLeaf || (item.isLeaf && item.isRedirect)" :index="item.path+'#'+item.componentUrl+'#'+(item.meta && item.meta.title && item.meta.title)" :key="item.path">
                 <template slot="title">
                   <i v-if="item.meta && item.meta.icon" :class="item.meta.icon"></i>
                   <span v-if="item.meta && item.meta.title">{{item.meta.title}}</span>
@@ -51,7 +57,7 @@
 
                 <template v-for="child in item.children" v-if="!child.hidden">
 
-                      <el-submenu  v-if="child.children" :index="item.path+'/'+child.path" :key="item.path+'/'+child.path">
+                      <el-submenu  v-if="child.children" :index="item.path+'/'+child.path+'#'+child.componentUrl+'#'+(child.meta && child.meta.title && child.meta.title)" :key="item.path+'/'+child.path">
                               
                                     <template slot="title">
                                       <i v-if="child.meta && child.meta.icon" :class="child.meta.icon"></i>
@@ -60,14 +66,14 @@
 
                                     <template v-for="child3 in child.children" v-if="!child3.hidden">
 
-                                            <el-submenu  v-if="child3.children" :index="item.path+'/'+child.path+'/'+child3.path+'/'+child3.children[0].path" :key="item.path+'/'+child.path+'/'+child3.path">                              
+                                            <el-submenu  v-if="child3.children" :index="item.path+'/'+child.path+'/'+child3.path+'#'+child3.componentUrl+'#'+(child3.meta && child3.meta.title && child3.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path">                              
                                                     <template slot="title">
                                                       <i v-if="child3.meta && child3.meta.icon" :class="child3.meta.icon"></i>
                                                       <span v-if="child3.meta && child3.meta.title">{{child3.meta.title}}</span>
                                                     </template>
 
                                                     <template v-for="child4 in child3.children" v-if="!child4.hidden">                                         
-                                                          <el-menu-item :index="item.path+'/'+child.path+'/'+child3.path+'/'+child4.path" :key="item.path+'/'+child.path+'/'+child3.path+'/'+child4.path">
+                                                          <el-menu-item :index="item.path+'/'+child.path+'/'+child3.path+'/'+child4.path+'#'+child4.componentUrl+'#'+(child4.meta && child4.meta.title && child4.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path+'/'+child4.path">
                                                             <i v-if="child4.meta && child4.meta.icon" :class="child4.meta.icon"></i>
                                                             <span v-if="child4.meta&&child4.meta.title">{{child4.meta.title}}</span>
                                                           </el-menu-item>
@@ -75,7 +81,7 @@
                                               </el-submenu>
 
 
-                                          <el-menu-item v-else :index="item.path+'/'+child.path+'/'+child3.path" :key="item.path+'/'+child.path+'/'+child3.path">
+                                          <el-menu-item v-else :index="item.path+'/'+child.path+'/'+child3.path+'#'+child3.componentUrl+'#'+(child3.meta && child3.meta.title && child3.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path">
                                             <i v-if="child3.meta && child3.meta.icon" :class="child3.meta.icon"></i>
                                             <span v-if="child3.meta&&child3.meta.title">{{child3.meta.title}}</span>
                                           </el-menu-item>
@@ -86,7 +92,7 @@
                       </el-submenu>
 
 
-                    <el-menu-item v-else  :index="item.path+'/'+child.path" :key="item.path+'/'+child.path">
+                    <el-menu-item v-else  :index="item.path+'/'+child.path+'#'+child.componentUrl+'#'+(child.meta && child.meta.title && child.meta.title)" :key="item.path+'/'+child.path">
                       <i v-if="child.meta && child.meta.icon" :class="child.meta.icon"></i>
                       <span v-if="child.meta && child.meta.title" :data-role="item.path+'/'+child.path">{{child.meta.title}}</span>
                     </el-menu-item>
@@ -95,12 +101,12 @@
               </el-submenu>
 
              
-                <el-menu-item  v-else-if="item.isLeaf && !item.children[0].children"  :index="item.path+'/'+item.children[0].path" :key="item.path+'/'+item.children[0].path" >  
+                <el-menu-item  v-else-if="item.isLeaf && !item.children[0].children"  :index="item.children[0].path+'#'+item.children[0].componentUrl+'#'+(item.children[0].meta && item.children[0].meta.title && item.children[0].meta.title)" :key="item.path+'/'+item.children[0].path" >  
                   <i v-if="item.children[0].meta && item.children[0].meta.icon" :class="item.children[0].meta.icon"></i>          
                     <span v-if="item.children[0].meta && item.children[0].meta.title">{{item.children[0].meta.title}}</span>
                   </el-menu-item>
 
-                 <el-menu-item  v-else  :index="item.path" :key="item.path" >  
+                 <el-menu-item  v-else  :index="item.path+'#'+item.componentUrl+'#'+(item.meta && item.meta.title && item.meta.title)" :key="item.path" >  
                   <i v-if="item.meta && item.meta.icon" :class="item.meta.icon"></i>          
                     <span v-if="item.meta && item.meta.title">{{item.meta.title}}</span>
                   </el-menu-item>
@@ -110,28 +116,10 @@
         </el-menu>
       </aside>
  <!-- 侧边导航-->
-      <section class="content-container">
+      <section class="aweb-ctt">
         <div class="grid-content bg-purple-light">
           <div>
-             <!-- tab 右键菜单 -->
-             <div v-show="menuVisible" class="aw-right-menu" ref="rightClickMenu">
-                <el-menu
-                   class="el-menu-vertical"
-                   @select="handleRightSelect"
-                    background-color="#545c64"
-                    text-color="#fff"
-                    active-text-color="#04bebd"
-                     >
-                  
-                  <template v-for="(mItem,idx) in rightMenuData">
-                    <el-menu-item :index="mItem.key" class="menuItem" :key="idx">
-                    <span slot="title">{{mItem.name}}</span>
-                     </el-menu-item>
-                  </template>
-                   
-                </el-menu>
-            </div>
-         <!-- tab 右键菜单end -->
+  
             <el-tabs
               v-model="activeIndex"
               type="border-card"
@@ -139,7 +127,7 @@
               v-if="openedTabs.length"
               @tab-click="tabClick"
               @tab-remove="tabRemove"
-              @contextmenu.native.prevent="tabRightClick"
+              @contextmenu.native.stop.prevent="tabRightClick"
             >
    
               <el-tab-pane
@@ -148,16 +136,12 @@
                 :label="item.name"
                 :name="item.route"
               >
-              <el-col :span="24" class="content-wrapper">
-                <!-- <el-col :span="24" class="breadcrumb-container">
-                  <el-breadcrumb separator="/" class="breadcrumb-inner">
-                    <el-breadcrumb-item v-for="item in $route.matched" :key="item.path">{{ item.name }}</el-breadcrumb-item>
-                  </el-breadcrumb>
-                </el-col> -->
-                <transition name="fade" mode="out-in" v-if="activeIndex===item.route" > 
+              <el-col :span="24" class="aweb-ctt-wrap">
+         
+                <transition name="fade" mode="out-in" v-if="activeIndex===item.route"> 
                  
-                      <router-view v-if="isRouterAlive" ></router-view>
-                  
+                      <router-view v-if="isRouterAlive"></router-view>
+                 
                 </transition>
               </el-col>
          
@@ -166,9 +150,10 @@
 
           </div>
               <!-- 子页面容器 -->
-              <el-dialog :visible.sync='dialogVisible' @close="closeDialog">
-                <transition name="fade" mode="out-in">
-                  <router-view></router-view>
+              <el-dialog   :title="subPageTitle" :visible.sync='dialogVisible' @close="closeDialog">
+                <transition name="fade" mode="out-in" v-if="dialogVisible">
+                  <!-- <router-view></router-view> -->
+                  <async-component :page="subPageHref" :params="subPageParams"></async-component>
                 </transition>           
                 <div slot='footer' class='dialog-footer'>
                 <el-button @click="cancel">取消</el-button>
@@ -179,31 +164,55 @@
         </div>
       </section>
     </el-col>
+      <right-menu :menuData="rightMenuData"  :eventHandler=rightClickHandler  v-on:handleSelect= "handleRightSelect"></right-menu> 
   </el-row>
 </template>
 <script>
 
-import {getObjArr, getRouter,saveRouter} from '../promission.js'
-import { app } from '@/utils/app.js'
+import {getRouter,saveRouter} from '../promission.js'
+
+import rightMenu from '@/components/rightMenu'
+import asyncComponent from '@/components/asyncComponent'
+
 export default {
   name:'layout',
   data() {
     return {
-      routerData:global.antRouter?global.antRouter:getRouter(),
+      routerData:global.menu?global.menu:getRouter('menu'),
       sysLogo:"img/logo.png",
       sysName: "AWEB_ADMIN",
       collapsed: false,
       sysUserName: "admin",
-      sysUserAvatar: "https://s.gravatar.com/avatar/f30a9191dda93b5389965ed99f57f850?s=50&d=retro",
-      menuVisible:false,
+      sysUserAvatar: "https://s.gravatar.com/avatar/f30a9191dda93b5389965ed99f57f850?s=50&d=retro",  
+      rightClickHandler:null,
       isRouterAlive: true
+
     };
   },
   methods: {
+    handleSelectMenu:function(key, keyPath){
+       console.log('key',key);
+
+      let keys = key.split('#'),
+          path = keys[0],
+          page = keys[1],
+          title= keys[2];
+
+
+       this.open({
+         path:'/'+path,
+         page:page,
+         status:true,
+         type:'BLANK',
+         title:title||'标题'
+       })
+
+
+    },
     tabRightClick:function(e){
        if(e.target.classList[0] ==='el-tabs__item'){
-            this.menuVisible = true;
-            this.$refs.rightClickMenu.style.left = e.clientX +'px';
+
+            this.rightClickHandler = e;  
        }
     },
      reload() {
@@ -212,8 +221,7 @@ export default {
               this.isRouterAlive = true
           })
         },
-    handleRightSelect:function(key, keyPath){
-       this.menuVisible = false;
+    handleRightSelect:function(key){
 
        switch(key){
          case'refresh':
@@ -228,7 +236,7 @@ export default {
 
               this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
 
-              this.$router.push({ path: this.activeIndex });
+              this.$router.push({ path: this.activeIndex,query:this.URLQueryMap[this.activeIndex] ||{}});
 
             }
            break;
@@ -249,7 +257,10 @@ export default {
           sessionStorage.removeItem("user");
           _this.$router.push("/login");
            saveRouter('router','');
-           saveRouter('menuRouter','');
+           saveRouter('menu','');
+           global.antRouter = '';
+          global.pageMap = {};
+          global.hasLogin = false;
         })
         .catch(() => {});
     },
@@ -258,7 +269,7 @@ export default {
     },
     tabClick(tab) {
 
-      this.$router.push({ path: this.activeIndex });
+      this.$router.push({ path: this.activeIndex,query:this.URLQueryMap[this.activeIndex] ||{}});
 
     },
     tabRemove(targetName) {
@@ -269,7 +280,7 @@ export default {
 
           this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
 
-          this.$router.push({ path: this.activeIndex });
+          this.$router.push({ path: this.activeIndex ,query:this.URLQueryMap[this.activeIndex] ||{}});
 
         }
       }
@@ -277,22 +288,27 @@ export default {
     cancel(){
            this.$store.commit("set_D_visible",false);
            this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
-           this.$router.push({ path: this.activeIndex });
+           this.$router.push({ path: this.activeIndex,query:this.URLQueryMap[this.activeIndex] ||{} });
            this.$store.commit("do_cancel");
+         
     },
     confirm(){
          this.$store.commit("set_D_visible",false);
           this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
-          this.$router.push({ path: this.activeIndex });
+          this.$router.push({ path: this.activeIndex,query:this.URLQueryMap[this.activeIndex] ||{} });
           this.$store.commit("do_confirm");
+      
     },
     closeDialog(){
 
-       this.$store.commit("set_D_visible",false);
-    
+       this.$store.commit("set_D_visible",false);    
        this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
-       this.$router.push({ path: this.activeIndex });
+       this.$router.push({ path: this.activeIndex ,query:this.URLQueryMap[this.activeIndex] ||{}});
+    
   
+    },
+    openMarket(){
+      window.open('https://www.awebide.com:7002/package/@aweb-template/vue-spa');
     }
   },
   mounted() {
@@ -307,12 +323,15 @@ export default {
      this.$store.commit("add_tabs", {
         route: this.$route.path,
         name: this.$route.meta.title,
-        id:app.getUID()
+        id:this.getUID()
       });
-      this.$store.commit("set_active_index", this.$route.path);
+    
+  this.$store.commit("set_active_index", this.$route.path);
+
   },
   computed: {
     openedTabs() {
+
       return this.$store.state.openedTabs;
     },
     activeIndex: {
@@ -323,17 +342,60 @@ export default {
         this.$store.commit("set_active_index", val);
       }
     },
-     dialogVisible(){
-       return this.$store.state.dialogVisible;
+     dialogVisible: {
+        get() {
+          return this.$store.state.dialogVisible;
+        },
+        set(val) {
+          this.$store.commit("set_D_visible", val);
+        }
+     },
+     subPageHref: {
+        get() {
+          return this.$store.state.subPageHref;
+        },
+        set(val) {
+          this.$store.commit("set_subPageHref", val);
+        }
+     },
+    subPageParams: {
+        get() {
+          return this.$store.state.subPageParams;
+        },
+        set(val) {
+          this.$store.commit("set_subPageParams", val);
+        }
+     },
+     subPageTitle:{
+       get() {
+          return this.$store.state.subPageTitle;
+        },
+        set(val) {
+          this.$store.commit("set_subPageTitle", val);
+        }
      },
     rightMenuData() {
        return this.$store.state.rightMenuData;
+    },
+    URLQueryMap:{
+      get() {
+        return this.$store.state.URLQueryMap;
+      },
+      set(val) {
+        this.$store.commit("set_url_map", val);
+      }
     }
   },
   watch: {
     $route(to, from) {
       let flag = false;
 
+      if(to.meta.type ==='BLANK'){
+        if(Object.keys(to.query).length){
+            this.$store.commit("set_url_map",({path:to.path,query:to.query}))
+          }
+      }
+   
       if(to.meta.type==='BLANK' || !to.meta.type){
         for (let item of this.openedTabs) {
                 if (item.name === to.meta.title) {
@@ -362,18 +424,22 @@ export default {
       }
      
     }
+  },
+  components:{
+    rightMenu,
+    asyncComponent
   }
 };
 </script>
 
 <style  lang="less">
-.container {
+.aweb-container {
   position: absolute;
   top: 0px;
   bottom: 0px;
   width: 100%;
   background-color: #f0f2f5;
-  .header {
+  .aweb-header {
     line-height: 64px;
     background: #fff;
     height: 64px;
@@ -384,11 +450,11 @@ export default {
     position: relative;
     margin: 0;
     padding-left: 0;
-    .userinfo {
+    .aweb-userinfo {
       text-align: right;
       padding-right: 35px;
       float: right;
-      .userinfo-inner {
+      .aweb-userinfo-inner {
         cursor: pointer;
         img {
           width: 40px;
@@ -398,8 +464,11 @@ export default {
           float: right;
         }
       }
+      .aweb-download-btn{
+        margin-right: 1em;
+      }
     }
-    .logo {
+    .aweb-logo {
       height: 64px;
       font-size: 22px;
       padding-left: 20px;
@@ -426,7 +495,7 @@ export default {
       .logo-width {
       width: 230px;
       }
-    .tools {
+    .aweb-tools {
       padding: 0px 23px;
       width: 14px;
       height: 64px;
@@ -434,7 +503,7 @@ export default {
       cursor: pointer;
     }
   }
-  .main {
+  .aweb-body {
     display: flex;
     position: absolute;
     top: 64px;
@@ -480,9 +549,9 @@ export default {
     }
 
   }
-   .content-container {
+   .aweb-ctt {
       flex: 1;
-      overflow-y: scroll;
+      overflow: auto;
       padding: 10px;
       .breadcrumb-container {
         .title {
@@ -494,18 +563,19 @@ export default {
           float: right;
         }
       }
-      .content-wrapper {
+      .aweb-ctt-wrap {
         background-color: #fff;
         box-sizing: border-box;
       }
       .grid-content{
-          .el-tabs__content{
+           >div>div.el-tabs>.el-tabs__content{
               height: calc(100vh - 125px);
               overflow: auto;
               padding: 0;
            }
            .el-tabs__item:focus, 
-           .el-tabs__item:focus:active{
+           .el-tabs__item:focus:active,
+           .el-tabs__item:active:focus{
                  outline: none;
                 outline-color: transparent;
            }
@@ -516,21 +586,21 @@ export default {
     width: 230px;
     min-height: 400px;
   }
-  .aw-right-menu{
-    position: absolute;
-    top: 28px;
+  // .aweb-right-menu{
+  //   position: absolute;
+  //   top: 28px;
 
-     .el-menu-vertical{
-         border:1px solid transparent;
-        border-radius: 4px;
-        z-index: 100;
-    }
+  //    .el-menu-vertical{
+  //        border:1px solid transparent;
+  //       border-radius: 4px;
+  //       z-index: 100;
+  //   }
   
-    .menuItem{
-      height: 32px;
-      line-height: 32px;
-      font-size: 14px;
-    }
-  }
+  //   .menuItem{
+  //     height: 32px;
+  //     line-height: 32px;
+  //     font-size: 14px;
+  //   }
+  // }
 }
 </style>
