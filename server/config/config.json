@@ -10,7 +10,7 @@
         "host": "localhost"
     },
     "runtime": {
-        "base": "./runtime",
+        "base": "../runtime",
         "component": "./src/@aweb-components",
         "pipe": "../pipe/src/main/webapp/plugins",
         "page": "./src/views",
