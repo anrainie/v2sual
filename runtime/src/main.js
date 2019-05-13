@@ -1,27 +1,22 @@
 
 import Vue from 'vue'
 import App from './App'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
-
 
 import router from './router'
-
 import './utils/global.js'
 import './promission.js'
 
 Vue.config.productionTip = false
 
-
 import store from './store'
 
-//全局混入通用app接口
-import mixin from '@/utils/app.js'
-
-Vue.mixin(mixin);
-
-
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
+
+
+import './@aweb-components/aweb.components';
+
 
 
 router.beforeEach((to, from, next) => {

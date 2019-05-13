@@ -1,22 +1,26 @@
-var fs = require('fs');
-var path = require('path');
-var afa = require('./proxy/proxy.afa.js')
-var nodeServer = require('./proxy/proxy.node.js')
+
 module.exports = {
-    baseUrl: './',
+    publicPath: './',
+    // devServer: {
+                
+    //     proxy: {
+    //          '/': {
+    //              ws: false, 
+    //             target: 'https://www.awebide.com:7001',
+    //              secure: false,
+    //             changeOrigin: true,
+    //             pathRewrite: {
+    //                 '^/': ''
+    //             }
+    //          }
+    //     }
+    // },
+
     devServer: {
-          open: true,
-          host: '0.0.0.0',
-          port: 7007,
-          https: true,
-          disableHostCheck: true,
-          hotOnly: false,
-            proxy: {
-               ...afa,
-               ...nodeServer
-            }
-        
+        // proxy: 'https://www.awebide.com:7001'
+        proxy: 'http://localhost:8086'
     },
+    
     productionSourceMap: false,
     filenameHashing: false,
     css: {
@@ -28,5 +32,11 @@ module.exports = {
 
       
         sourceMap: false
-    }
+    },
+    configureWebpack: {
+        output: {
+          libraryExport: 'default'
+        }
+      }
+    
 }

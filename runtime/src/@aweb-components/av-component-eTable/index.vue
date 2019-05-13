@@ -61,7 +61,6 @@ import avSelect from '../av-form-select/index.vue'
 import avNumber from '../av-form-inputNumber/index.vue'
 import avCheckbox from '../av-form-checkbox/index.vue'
 
-
 let lastChangeRow ='';
 let isAfterSelect='';
 const EDM_TYP_MAP={

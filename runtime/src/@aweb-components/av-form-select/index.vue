@@ -16,7 +16,7 @@
       >
         <el-option
           v-for="item in model.options"
-          :key="item.label"
+          :key="item.value"
           :label="item.label"
           :value="item.value"
         ></el-option>
