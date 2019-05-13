@@ -88,7 +88,6 @@
   </el-tabs>
   </div>
 
-
       <div class="v2-toolbar">
         <el-button size="mini" @click="deleteSelection">删除</el-button>
         <el-button size="mini" @click="selectParent">向上选择</el-button>
@@ -177,7 +176,6 @@ export default {
           }
         });
 
-
       //  this.palatteConfig[1].children=[... this.palatteConfig[1].children,...data];
       });
     // $(".paletteItem").draggable({
@@ -244,7 +242,7 @@ export default {
     loadSelfWindow () {
       let currentIframe = document.getElementsByTagName('iframe')[0];
 
-      window.editRoot = currentIframe.contentWindow;
+      // window.editRoot = currentIframe.contentWindow;
     },
     /**
      *创建元素，传入一个createTool，并且传入element

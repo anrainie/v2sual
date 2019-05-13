@@ -38,19 +38,38 @@
       }
     ],
     "css": {
-      "style": [{
-          "desp": "栅格",
-          "cssAttrs": "position margin padding border top left right bottom",
-          "name": "row"
-        },
+      "style": [
         {
-          "desp": "子容器",
+          "desp": "容器",
           "cssAttrs": "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
           "name": "divCtn"
         }
       ]
     },
-    "editor": "avLayoutEditor"
+    "editor": {
+      "name": "avLayoutEditor",
+      "model":{
+             "def":{
+             "defheight":true,
+             "defborder": true,
+             "defbackgroundStyle":true,
+             "defpaddingStyle":true
+           },
+           "defaultValue":{
+              "background-color": "#fff",
+              "background-image": "",
+              "padding-top": 0,
+              "padding-bottom": 0,
+              "padding-left": 0,
+              "padding-right": 0,
+              "showBorderLeft": false,
+              "showBorderRight": false,
+              "showBorderTop": false,
+              "showBorderBottom": false
+           },
+           "customStyle":{}
+       }
+    }
   },
   "keywords": [],
   "license": "ISC",

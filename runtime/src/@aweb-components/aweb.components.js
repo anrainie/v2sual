@@ -1,4 +1,5 @@
-import avEchartBar  from './av-echart-bar/index.vue';
+
+import avEchartBar from './av-echart-bar/index.vue';
 import avEchartLine  from './av-echart-line/index.vue';
 import avComponentEtable from './av-component-eTable/index.vue';
 import avFormCascader  from './av-form-cascader/index.vue';
