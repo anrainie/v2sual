@@ -9,8 +9,6 @@ const { exec } = require('child_process');
 // const { Parser } = require("htmlparser2");
 // const ParseDom = Parser.parseDOM;
 
-const Result = require('../../util/Result/Result');
-
 class Preview {
 
   constructor(projectPath) {
