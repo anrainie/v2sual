@@ -1,5 +1,5 @@
 const router = require('koa-router')()
-const Util = require('./Util');
+const Util = require('../Util');
 const fs = require('fs');
 const path = require('path');
 const entryPath = './runtime';

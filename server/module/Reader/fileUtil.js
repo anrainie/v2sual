@@ -1,9 +1,12 @@
-const config = require('../../config/config.base');
 const fs = require('fs')
 
-const PageFlow = require('../PageFlow').PageFlow;
 
-const pageFlow = new PageFlow(config.runtime.page);
+const path = require('path');
+const RUNTIME_PATH = path.resolve(__dirname, '../../runtime/');
+const PAGE_PATH = 'src/views';
+const PageFlow = require('../PageFlow');
+
+const pageFlow = new PageFlow(path.resolve(path.join(RUNTIME_PATH, PAGE_PATH)));
 
 const vueFileUtil = require('./vueFileUtil');
 
@@ -55,37 +58,27 @@ const fileUtil = {
       fs.writeFileSync(path, content);
     });
   }
-};
-
-
-const reader = {
-  getFile(platform) {
-    return async req => {
+}
+module.exports = {
+  com(platfrom, consumption) {
+    platfrom.socket.on('getFile', async req => {
       let path = req.data.path;
 
       fileUtil.getFileContent(path).then(content => {
-        platform.sendSuccessResult(req, content);
+        platfrom.sendSuccessResult(req, content);
       }).catch(e => {
-        platform.sendErrorResult(e)
+        platfrom.sendErrorResult(e)
       })
-    }
-  },
+    })
 
-  saveFile(platform) {
-    return async req => {
+    platfrom.socket.on('saveFile', req => {
       let path = req.data.path;
       let content = req.data.content;
       fileUtil.saveFile(path, content).then(() => {
-        platform.sendSuccessResult(req, {});
+        platfrom.sendSuccessResult(req, {});
       }).catch(e => {
-        platform.sendErrorResult(e)
+        platfrom.sendErrorResult(e)
       })
-    }
-  }
-};
-
-module.exports = {
-  consume(platform, consumption) {
-    Object.keys(consumption).map(c => platform.socket.on(c, reader[consumption[c]](platform)));
+    })
   }
 };

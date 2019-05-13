@@ -430,7 +430,6 @@ class Page {
 }
 
 module.exports = {
-  PageFlow: Page,
   consume(platform, consumption) {
     const page = new Page(config.runtime.page);
     Object.keys(consumption).map(c => platform.socket.on(c, page[consumption[c]](platform)));
