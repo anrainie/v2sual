@@ -1,12 +1,12 @@
 <template>
   <!-- 布局容器 -->
-  <div class="V2Container" ref="wrap" :style="wrapStyle" >
+  <div class="V2Container" ref="wrap" :style="model.style" >
     <!-- model来自widget -->
     <template v-for="(lyt,index) of layout_c">
 
        <el-row
         class="V2ContainerBlock"
-        :style="{'min-height':layout(index),width:'100%',}"
+        :style="{height:layout(index),width:'100%',}"
         :key="index"
         v-if="!model.direction || model.direction=='row'"
         :class="blockClass(index,model)"
@@ -19,7 +19,7 @@
         :key="index"
         :class="blockClass(index,model)"
           v-else
-        style="min-height:100%;">
+        style="height:100%;">
 
         <component :is="component(index)" :wid="wigetId(index)" :index="index" :pid="wid"></component>
       </el-col>
@@ -98,10 +98,6 @@
         return (
           this.$store.getters.model(this.wid) || {}
         );
-      },
-      wrapStyle(){
-      
-       return {...this.model.customStyle,...this.model.style.divCtn}
       }
   }
   }

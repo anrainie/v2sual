@@ -56,12 +56,14 @@
       {
         "name": "options",
         "desp": "配置项",
+        "defaultValue": "",
         "type": "array",
+        "appendNumber": 1,
         "attrInEachElement": [
           {
             "name": "value",
             "desp": "值",
-            "defaultValue": "one1",
+            "defaultValue": "1",
             "type": "string_input"
           },
           {

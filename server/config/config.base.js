@@ -3,10 +3,9 @@ const config = require('./config.json');
 
 //runtime
 const base = path.resolve(process.cwd(), config.runtime.base);
-const component = path.resolve(base, config.runtime.component);
-const pipe = path.resolve(base, config.runtime.pipe);
-const datadict = path.resolve(base, config.runtime.datadict);
-const page=path.resolve(base,config.runtime.page);
+const component = path.resolve(runtime, config.runtime.component);
+const pipe = path.resolve(runtime, config.runtime.pipe);
+const datadict = path.resolve(runtime, config.runtime.datadict);
 
 
 module.exports = {
@@ -16,8 +15,7 @@ module.exports = {
         base,
         component,
         pipe,
-        datadict,
-        page
+        datadict
     },
 
     static: config.static.map(s => {
