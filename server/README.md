@@ -12,8 +12,6 @@
     npm run test
 ```
 
-
-
 ## 调试
 在 VSCode 中配置
 ```sh
@@ -37,32 +35,28 @@
     }
 ```
 
+## 目录结构
+```
+|- server
+    |- config 配置
+    |- util 工具类
+    |- module 模块
+    |- server.js 服务器入口
+|- runtime
+    |- src
+        |- @aweb-components 组件
+    |- v2sual  配置时，资源打包位置
+    |- dist
+        |- static 预览窗口位置，方便配置预览时与真实环境一致
+|- pipe 管道
+```
+
 ## API 接口
 
-1. 获取页面列表
-
-    >URL
-
-    <keymap>GET</keymap> v1/page/list
-
-    >返回
-    
-    ```
-        [pagename,...,pagename]
-    ```
-
-2. 获取文件 AST
-
-    > URL
-
-    <keymap>content</keymap> v1/page/content/:filepath
-
-    ```
-        AST 内容
-    ```
+见  `server/config/config.json`
 
 
-## Vue 文件格式
+## Runtime Vue 文件格式
 
 ```vue
 <!--
