@@ -38,6 +38,11 @@ require('./module/Editor').consume(platform, config.module.page.consumption);
 // 预览
 require('./module/Preview').consume(platform, config.module.preview.consumption, config.runtime.base);
 
+// //获取逻辑方法
+// platform.socket.on('/v1/logic/list',page.logicList(platform));
+// // 逻辑概览保存
+// platform.socket.on('/v1/logic/save',page.logicSave(platform));
+
 //预览静态路由
 app.use(staticRouter(config.static));
 
