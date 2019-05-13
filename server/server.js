@@ -1,49 +1,19 @@
-/**
- *  AWEB Node.js Static Server
- *  version:6.0.0
- *  author:lijiancheng@agree.com.cn
- *  date:2018/12/21
- *
- *  */
+//config
+const config = require('./config/config.base');
 
-// Remote Server Path
-// const SERVER_PATH = 'http://localhost:8081/QinM/'
-
-// Local Server Path
-// const LOCAL_PATH = '../WebContent'
-// const WELCOME_PAGE_PATH = '/module/index/index/index.html'
-const PORT = '3000';
-const TARGET_PORT = 8080;
-const TARGET_IP = 'localhost';
-
-// Fake Data
-// const FAKE_DATA = require('./fakeData')
-const path = require('path');
-const RUNTIME_PATH = path.resolve(__dirname, '../runtime/');
-const STATIC_PATH = path.resolve(__dirname, '../static/');
-const PAGE_PATH = 'src/views';
 
 // Dependences
 const Koa = require('koa')
-const serve = require('koa-static')
-const staticRouter = require('./Static/static-router')
-const proxyPass = require('@junyiz/koa-proxy-pass')
-const router = require('koa-router')()
+const staticRouter = require('./util/static-router');
 const koaBody = require('koa-body')
-const httpRequest = require('request')
-const fs = require('fs.promised')
 const cors = require('koa-cors')
 
 
-// router.get('/v1/preview/style', preview.style());
-//router.get('/v1/preview/static/*', RouterStatic(path.resolve(path.join(RUNTIME_PATH, './dist/'))))
-
-
-//连接WEBIDE中台
-const Platform = require('./ide/platform');
+//WEB IDE 模块
+const Platform = require('./module/ide/platform');
 const platform = new Platform({
-  ip: TARGET_IP,
-  port: TARGET_PORT
+  ip: config.webide.host,
+  port: config.webide.port
 });
 
 
@@ -85,38 +55,38 @@ platform.socket.on('getVueEditorStyles',preview.style(platform));
 
 // app
 const app = new Koa();
+// 跨域
 app.use(cors());
-
 // parser
 app.use(koaBody());
 
-// setting routers
-// app.use(main)
+//导航
+require('./module/Navigator').consume(platform, config.module.navigator.consumption);
 
-app.use(router.routes());
+//文件处理模块
+require('./module/Reader/fileUtil').consume(platform, config.module.reader.consumption);
 
+// 页面流、逻辑概览、管道
+require('./module/PageFlow').consume(platform, config.module.pageFlow.consumption);
 
+// 页面
+require('./module/Editor').consume(platform, config.module.page.consumption);
 
-const external = require('./external/external');
-platform.socket.on('/v1/external/widget',external.widget(platform));
-platform.socket.on('/v1/external/dict',external.dict(platform));
+// 预览
+require('./module/Preview').consume(platform, config.module.preview.consumption, config.runtime.base);
 
 //预览静态路由
-app.use(staticRouter([
-  {
-    router: '/v1/static/',     //dir:static resource directory
-    dir: path.resolve(path.join(RUNTIME_PATH, './dist'))   //router:router
-  },{
-    router:'/v1/runtime/',
-    dir: path.resolve(path.join(RUNTIME_PATH, './dist'))   //router:router
-  }
-]))
+app.use(staticRouter(config.static));
+
+//数据源代理
+require('./module/dataSource')(app, config.dataSource);
+
+// 测试表格数据
+const tableRouter = require('./module/test/table').router(config.module.test.table.http);
+app.use(tableRouter.routes());
 
 //异常处理
-app.on("error", (err, ctx) => {//捕获异常记录错误日志
-  console.log(new Date(), ":", err);
-});
+app.on("error", (err, ctx) => console.log(new Date(), ":", err));
 
-app.listen(PORT, function () {
-  console.log(`项目启动：http://localhost:${PORT}}`);
-});
+//启动
+app.listen(config.server.port, () => console.log(`项目启动：http://localhost:${config.server.port}}`));
