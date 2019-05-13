@@ -38,16 +38,12 @@ require('./module/Editor').consume(platform, config.module.page.consumption);
 // 预览
 require('./module/Preview').consume(platform, config.module.preview.consumption, config.runtime.base);
 
-// //获取逻辑方法
-// platform.socket.on('/v1/logic/list',page.logicList(platform));
-// // 逻辑概览保存
-// platform.socket.on('/v1/logic/save',page.logicSave(platform));
-
-//预览静态路由
-app.use(staticRouter(config.static));
-
 //数据源代理
 require('./module/dataSource')(app, config.dataSource);
+
+//预览静态路由(静态代理要在数据代理之后)
+app.use(staticRouter(config.static));
+
 
 // 测试表格数据
 const tableRouter = require('./module/test/table').router(config.module.test.table.http);

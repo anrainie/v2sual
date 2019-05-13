@@ -1,0 +1,11 @@
+module.exports={
+	'/afa':{
+		target:'https://afa.awebide.com',
+		changeOrigin:true,
+		secure:false,
+		ws:false,
+		pathRewrite:{
+			'/afa':''
+		}
+	}
+}
