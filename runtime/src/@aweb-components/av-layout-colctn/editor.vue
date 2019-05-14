@@ -797,15 +797,15 @@ export default {
   }
   .blod-label {
     font-style: normal;
-    background: url('./img/B.png') no-repeat center center;
+    // background: url('./img/B.png') no-repeat center center;
   }
   .italic-label {
     font-style: italic;
-    background: url('./img/I.png') no-repeat center center;
+    // background: url('./img/I.png') no-repeat center center;
   }
   .oblique-label {
     font-style: oblique;
-    background: url('./img/U.png') no-repeat center center;
+    // background: url('./img/U.png') no-repeat center center;
   }
   /* 样式面板 */
   /* 字体下拉框 */
