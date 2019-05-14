@@ -61,7 +61,8 @@
         <div class="color-item mar-bot">
             <span class="subtitle displayI"></span>
               <span class="self-subtitle">颜色&nbsp;:</span>
-               <el-color-picker v-model="eModel.customStyle['border-color']"  @active-change="colorChanged(eModel.customStyle,'border-color')"></el-color-picker>
+               <color-picker transfer recommend size="small" v-model="eModel.customStyle['border-color']"  alpha></color-picker>
+               <!-- <el-color-picker v-model="eModel.customStyle['border-color']"  @active-change="colorChanged(eModel.customStyle,'border-color')"></el-color-picker> -->
             <input type="text" v-model="eModel.customStyle['border-color']" class="time-number input-set">
         </div>
         <div class="width-item mar-bot">
@@ -91,7 +92,7 @@
         <div class="show-item mar-bot">
           
                 <span class="subtitle displayI"></span>
-                <span class="self-subtitle pic-text">显示&nbsp;:</span>
+                <span class="self-subtitle pic-text">隐藏&nbsp;:</span>
             
             <div class="displayI">
                 <el-row>
@@ -154,7 +155,8 @@
           <div class="color-item mar-bot">
               <span class="subtitle displayI"></span>
               <span class="self-subtitle">颜色&nbsp;:</span>
-              <el-color-picker v-model="eModel.customStyle['background-color']"></el-color-picker>
+                <color-picker transfer recommend size="small" v-model="eModel.customStyle['background-color']"  alpha></color-picker>
+              <!-- <el-color-picker v-model="eModel.customStyle['background-color']"></el-color-picker> -->
               <!-- <span class="well-number displayI">#</span> -->
               <input type="text" v-model="eModel.customStyle['background-color']" class="time-number  input-set">
           </div>.
@@ -192,45 +194,49 @@ export default {
 
                    if(list.length===1){
                      if(list[0]==='left'){
-                        this.eModel.customStyle['border-right'] = 'none'
-                          this.eModel.customStyle['border-left'] = '';
+                         
+                          this.eModel.customStyle = {...this.eModel.customStyle,'border-right-width':this.eModel.customStyle['border-width'],"border-left-width":'0'}
                      }else{
-                       this.eModel.customStyle['border-left'] = 'none';
-                        this.eModel.customStyle['border-right'] = '';
+             
+                         this.eModel.customStyle = {...this.eModel.customStyle,'border-right-width':'0',"border-left-width":this.eModel.customStyle['border-width']}
                      }
                    }else if(list.length===0){
-                      this.eModel.customStyle['border-right'] = 'none';
-                      this.eModel.customStyle['border-left'] = 'none'
+                   
+                       this.eModel.customStyle = {...this.eModel.customStyle,'border-right-width':this.eModel.customStyle['border-width'],"border-left-width":this.eModel.customStyle['border-width']}
                    }else{
-                      this.eModel.customStyle['border-left'] = '';
-                      this.eModel.customStyle['border-right'] = '';
+                 
+                       this.eModel.customStyle = {...this.eModel.customStyle,'border-right-width':'0',"border-left-width":'0'}
                    }
+                      this.$forceUpdate();
 
             },
             VborderList(list){
-                   
+              
                    if(list.length===1){
-                     if(list[0]==='top'){
-                        this.eModel.customStyle['border-bottom'] = 'none'
-                          this.eModel.customStyle['border-top'] = '';
-                     }else{
-                       this.eModel.customStyle['border-top'] = 'none';
-                        this.eModel.customStyle['border-bottom'] = '';
-                     }
+                      if(list[0]==='top'){
+            
+                         this.eModel.customStyle = {...this.eModel.customStyle,'border-bottom-width':this.eModel.customStyle['border-width'],"border-top-width":'0'}
+                       }else{
+                   
+                         this.eModel.customStyle = {...this.eModel.customStyle,'border-bottom-width':'0',"border-top":this.eModel.customStyle['border-width']}
+                      }
                    }else if(list.length===0){
-                      this.eModel.customStyle['border-bottom'] = 'none';
-                      this.eModel.customStyle['border-top'] = 'none'
+
+                      this.eModel.customStyle = {...this.eModel.customStyle,'border-bottom-width':this.eModel.customStyle['border-width'],"border-top-width":this.eModel.customStyle['border-width']}
                    }else{
-                      this.eModel.customStyle['border-bottom'] = '';
-                      this.eModel.customStyle['border-top'] = '';
+            
+                      this.eModel.customStyle = {...this.eModel.customStyle,'border-bottom-width':'0',"border-top-width":'0'}
                    }
+                      this.$forceUpdate();
             },
             //这句也别删除
             'eModel.customStyle': {
-                // deep:true,
-                // handler(){
-                //     this.parent.$forceUpdate();
-                // },
+                immediate:true,
+                deep:true,
+                handler(){
+            
+                    this.$forceUpdate();
+                }
             }
         },
         methods: {
@@ -244,20 +250,18 @@ export default {
                     _this.eModel.customStyle[k] = _this.eModel.defaultValue[k] 
                 })
                 if(isBorder){
-                   this.eModel.customStyle['border-left'] ='';
+                    this.eModel.customStyle['border-left'] ='';
                     this.eModel.customStyle['border-top'] = '';
                     this.eModel.customStyle['border-bottom'] ='';
                     this.eModel.customStyle['border-right'] = '';
                 }
-    
+              this.$forceUpdate();
             },
             selectBorderStyle:function(type){
-                   console.log('点击边框', this.eModel.customStyle);
-                  this.eModel.customStyle['border-style']=type;
+                  // this.eModel.customStyle['border-style']=type;
+                  // this.$forceUpdate();
                 
-            },
-            showBorder:function(type,val){
-                this.eModel.customStyle['border-'+type] = val?'':'none';
+                  this.$set(this.eModel.customStyle,'border-style',type);
             },
               clearImage: function clearImage() {
                 // this.model['background-image'] = null;
@@ -280,12 +284,13 @@ export default {
         computed: {
             opacity: {
                 get: function get() {
-                  
-                    
+                                    
                     return Math.round((this.eModel.customStyle.opacity||1) * 100);
                 },
                 set: function set(v) {
-                    this.eModel.customStyle.opacity = v / 100;
+                    // this.eModel.customStyle.opacity = v / 100;
+                    this.$set(this.eModel.customStyle,'opacity',  v / 100);
+                    this.$forceUpdate();
                 }
             },
             radius: {
@@ -295,7 +300,9 @@ export default {
                     return parseInt(ra);
                 },
                 set: function set(v) {
-                    this.eModel.customStyle['border-radius'] = v + 'px';
+                    // this.eModel.customStyle['border-radius'] = v + 'px';
+                    this.$set(this.eModel.customStyle,'border-radius', v + 'px');
+                    this.$forceUpdate();
                 }
             }
         }
@@ -311,6 +318,26 @@ export default {
   color: #4d4d4d;
   // width: 360px;
   // box-shadow: 4px 3px 8px 0px rgba(0, 0, 0, 0.2);
+  .ivu-input-wrapper-small .ivu-input-icon{
+        width: 24px;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+  }
+  .ivu-input-small{
+        padding: 1px 7px;
+    height: 30px;
+    border-radius: 3px;
+  }
+  .ivu-color-picker-small .ivu-color-picker-color {
+      width: 19px;
+      height: 19px;
+      top: 3px;
+  }
+  .ivu-input-icon-normal+.ivu-input {
+      padding-right: 27px;
+  }
+
   .dialog-nav {
     height: 42px;
     line-height: 42px;
@@ -795,18 +822,18 @@ export default {
       display: none;
     }
   }
-  // .blod-label {
-  //   font-style: normal;
-  //   background: url('./img/B.png') no-repeat center center;
-  // }
-  // .italic-label {
-  //   font-style: italic;
-  //   background: url('./img/I.png') no-repeat center center;
-  // }
-  // .oblique-label {
-  //   font-style: oblique;
-  //   background: url('./img/U.png') no-repeat center center;
-  // }
+  .blod-label {
+    font-style: normal;
+    // background: url('./img/B.png') no-repeat center center;
+  }
+  .italic-label {
+    font-style: italic;
+    // background: url('./img/I.png') no-repeat center center;
+  }
+  .oblique-label {
+    font-style: oblique;
+    // background: url('./img/U.png') no-repeat center center;
+  }
   /* 样式面板 */
   /* 字体下拉框 */
   .select-dropdown {
@@ -843,7 +870,7 @@ export default {
   input[type="text"].time-number {
     display: inline-block;
     vertical-align: middle;
-    width: 50px;
+    width: 66px;
     height: 30px;
     color: #4d4d4d;
     border: 1px solid #cccccc;

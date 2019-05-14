@@ -16,7 +16,8 @@ import avFormUpload from './av-form-upload/index.vue';
 import avLayoutColctn from './av-layout-colctn/index.vue';
 import avLayoutRowctn from './av-layout-rowctn/index.vue';
 import avLayoutEditor from './av-layout-colctn/editor.vue';
-
+import avComponentTable from './av-component-table/index.vue';
+import avComponentBtn from './av-component-btn/index.vue';
 import getExcelData from '../../../pipe/src/main/webapp//plugins/app.getExcelData';
 
 let app = {
@@ -45,5 +46,7 @@ export default {
 	avFormUpload,
 	avLayoutColctn,
   avLayoutRowctn,
-  avLayoutEditor
+  avLayoutEditor,
+  avComponentTable,
+  avComponentBtn
 }

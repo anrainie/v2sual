@@ -6,7 +6,7 @@
 
        <el-row
         class="V2ContainerBlock"
-        :style="{'height':layout(index),width:'100%',}"
+        :style="{'height':layout(index),width:'100%'}"
         :key="index"
         v-if="!model.direction || model.direction=='row'"
         :class="blockClass(index,model)"
@@ -19,7 +19,7 @@
         :key="index"
         :class="blockClass(index,model)"
           v-else
-        style="min-height:100%;">
+        style="height:100%;">
 
         <component :is="component(index)" :wid="wigetId(index)" :index="index" :pid="wid"></component>
       </el-col>
@@ -93,15 +93,10 @@
         return this.wid + "-" + index;
       };
     },
-      model() {
-
-        return (
-          this.$store.getters.model(this.wid) || {}
-        );
-      },
       wrapStyle(){
+     
+       return {...this.model.style.divCtn,...this.model.customStyle}
       
-       return {...this.model.customStyle,...this.model.style.divCtn}
       }
   }
   }
