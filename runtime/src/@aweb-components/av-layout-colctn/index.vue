@@ -6,7 +6,7 @@
 
        <el-row
         class="V2ContainerBlock"
-        :style="{'min-height':layout(index),width:'100%',}"
+        :style="{'height':layout(index),width:'100%',}"
         :key="index"
         v-if="!model.direction || model.direction=='row'"
         :class="blockClass(index,model)"
