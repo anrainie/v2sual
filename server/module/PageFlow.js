@@ -13,6 +13,7 @@ class Page {
   }
 
   /**
+   * /Users/lijiancheng/Agree/v2sual/runtime/src/views/page.vue
    * 
    * @desp 截取匹配内容
    * @param 文件内容 content 
@@ -218,7 +219,9 @@ class Page {
   async analysis(filepath) {
     const content = await new Promise(resolve => fs.readFile(path.join(this.pagePath, filepath), 'utf8', (error, response) => {
       if (error) {
-        throw error;
+        console.log(error);
+        resolve('');
+        //throw error;
       } else {
         resolve(response)
       }
