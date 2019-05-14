@@ -47,6 +47,11 @@
         "logic": {
             "consumption": {}
         },
+        "pipe": {
+            "consumption": {
+                "/v1/pipe/list": "list"
+            }
+        },
         "reader": {
             "consumption": {
                 "getFile": "getFile",

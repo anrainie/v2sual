@@ -1,12 +1,7 @@
-<!--
-    @desp 表格
-    @version 0.1
-    @author zhanghaixian@agree.com.cn
--->
 <template>
 	<section>
 		<!--工具条-->
-		<el-col :span="24" class="aweb-toolbar" style="padding-bottom: 0px;">
+		<el-col :span="24" class="aweb-table-toolbar" style="padding-bottom: 0px;">
 			<el-form :inline="true" :model="filters">
 				<el-form-item>
 					<el-input v-model="filters.name" placeholder="姓名"></el-input>
@@ -45,7 +40,7 @@
 		</el-table>
 
 		<!--工具条-->
-		<el-col :span="24" class="aweb-toolbar">
+		<el-col :span="24" class="aweb-table-toolbar">
 			<!-- <el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量删除</el-button> -->
 			<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
 			</el-pagination>
@@ -160,6 +155,9 @@
 				}
 
 			}
+		},
+		props:{
+			params:String //父组件传过来的参数
 		},
 		methods: {
 			//性别显示转换
@@ -277,13 +275,14 @@
 		},
 		mounted() {
 			this.getUsers();
+			console.log('刷新表格页面,参数',this.params)
 		}
 	}
 
 </script>
 
-<style scoped>
-.aweb-toolbar{
+<style lang="less">
+.aweb-table-toolbar{
     padding: 12px;
     text-align: left;
 }

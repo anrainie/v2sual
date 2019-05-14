@@ -32,17 +32,21 @@ require('./module/Reader/fileUtil').consume(platform, config.module.reader.consu
 // 页面流、逻辑概览、管道
 require('./module/PageFlow').consume(platform, config.module.pageFlow.consumption);
 
+require('./module/Pipe').consume(platform, config.module.pipe.consumption, config.runtime.pipe);
+
 // 页面
 require('./module/Editor').consume(platform, config.module.page.consumption);
 
 // 预览
 require('./module/Preview').consume(platform, config.module.preview.consumption, config.runtime.base);
 
-//预览静态路由
-app.use(staticRouter(config.static));
 
 //数据源代理
 require('./module/dataSource')(app, config.dataSource);
+
+//预览静态路由(静态代理要在数据代理之后)
+app.use(staticRouter(config.static));
+
 
 // 测试表格数据
 const tableRouter = require('./module/test/table').router(config.module.test.table.http);
