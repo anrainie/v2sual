@@ -4,9 +4,8 @@ const path = require('path');
 
 const config = require('../config/config.base');
 
-
 let editor = {
-  'widget'(platform) {
+  'widget' (platform) {
     return async (req) => {
       try {
         let target = config.runtime.component;
@@ -15,14 +14,14 @@ let editor = {
         for (let i = -1, item; item = dir[++i];) {
           let subDir = `${target}/${item}`;
           let packageJsonPath = `${subDir}/package.json`;
-          let statItem = await Util.stat(subDir)
+          let statItem = await Util.stat(subDir);
           if (statItem.isDirectory() && fs.existsSync(packageJsonPath)) {
             let packageJsonData = await Util.readFile(packageJsonPath);
             packageJsonData = JSON.parse(packageJsonData);
             let docs = packageJsonData.docs;
             if (docs) {
               docs.main = packageJsonData.main;
-              menu = [...menu, docs]
+              menu = [...menu, docs];
             }
           }
         }
@@ -31,9 +30,9 @@ let editor = {
       } catch (e) {
         platform.sendErrorResult(req, e);
       }
-    }
+    };
   },
-  'dict'(platform) {
+  'dict' (platform) {
     return async (req) => {
       try {
         let target = config.runtime.datadict;
@@ -41,12 +40,15 @@ let editor = {
         let ret = {};
         for (let i = -1, item; item = dir[++i];) {
           let subFile = `${target}/${item}`;
-          let statItem = await Util.stat(subFile)
+          let statItem = await Util.stat(subFile);
           if (statItem.isFile() && path.extname(subFile) === '.json') {
             let dictData = await Util.readFile(subFile);
             dictData = JSON.parse(dictData);
 
-            ret = { ...ret, ...dictData };;
+            ret = {
+              ...ret,
+              ...dictData
+            }; ;
           }
         }
 
@@ -54,14 +56,12 @@ let editor = {
       } catch (e) {
         platform.sendErrorResult(req, e);
       }
-
-
-    }
+    };
   }
 };
 
 module.exports = {
-  consume(platform, consumption) {
+  consume (platform, consumption) {
     Object.keys(consumption).map(c => platform.socket.on(c, editor[consumption[c]](platform)));
   }
-}
+};

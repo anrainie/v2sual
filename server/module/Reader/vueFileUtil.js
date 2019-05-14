@@ -6,6 +6,8 @@
  * 3、保存vue时，先生成def，然后通过def来构建vue
  */
 const fs = require('fs')
+const parseUtil = require('./parseUtil');
+
 module.exports = {
   read: (path) => new Promise((res, rej) => {
     //针对vue文件，读取同名.def文件
@@ -30,7 +32,11 @@ module.exports = {
       if (err) rej(err);
       else res();
     });
-
+    //将template写入vue文件中
+    fs.writeFile(path, parseUtil.json2html(JSON.stringify(content)), function (err) {
+      if (err) rej(err);
+      else res();
+    });
   })
 };
 

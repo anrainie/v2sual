@@ -1,4 +1,21 @@
 {
+      "startAndEndTime": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "起始结束时间",
+        "description": "起始结束时间",
+        "COLSCALE": "0",
+        "name": "startAndEndTime",
+        "Parameter": {
+          "pname": "字段长度",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77"
+      },
     "definer": {
         "CODINGRULE": "UTF-8",
         "DICTTYPE": "2",
