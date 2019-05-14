@@ -27,6 +27,7 @@
                 "/v1/page/list": "list",
                 "/v1/page/content": "content",
                 "/v1/logic/list": "logicList",
+                "/v1/logic/save": "logicSave",
                 "/v1/page/script": "script"
             }
         },

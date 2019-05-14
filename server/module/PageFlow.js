@@ -318,6 +318,53 @@ class Page {
     }
   }
 
+  /**
+  * @public
+  * @desp 保存逻辑概览
+  */
+ logicSave(platform) {
+  const context = this;
+  const obj =`data={
+    style: {
+      color: "green"
+    },
+    value1: "1",
+    value2: "2",
+
+    overview: {
+      color: 0
+    }
+  }`;
+  return async function (req) {
+    
+    const filepath = `D:/job/program/v2sual-master/src/components/Test/ov1.vue`
+    const content = await new Promise(resolve => fs.readFile(filepath, 'utf8', (error, response) => error ? platform.sendErrorResult(req, error) : resolve(response)));
+    const script = context.getMatchPart(content, '<script>', '</script>');
+    const ast = UglifyJS.parse(script);
+    const objast = UglifyJS.parse(obj);
+    
+    let exportAst = ast.body.filter(b => !!b.exported_value);
+    //data
+    let dataAst = exportAst[0].exported_value.properties.filter(p => p.key.name === 'data' && p.start.value === 'data');
+    dataAst[0].value.body[0].value = objast.body[0].body.right;
+    // watch
+    let watchAst = exportAst[0].exported_value.properties.filter(p => p.key === 'watch' && p.start.value === 'watch');
+    // methods
+    let methodsAst = exportAst[0].exported_value.properties.filter(p => p.key === 'methods' && p.start.value === 'methods');
+    // 写入vue
+    let res = ast.print_to_string({ beautify: true });
+    let test = context.changeMatchPart(content, '<script>', '</script>',res);
+    fs.writeFileSync(filepath,test,{ encoding: 'utf8'})
+    try {
+      platform.sendSuccessResult(req, {
+        status:true
+      });
+
+    } catch (e) {
+      platform.sendErrorResult(req, e);
+    }
+  }
+}
 
   /**
    * @public
