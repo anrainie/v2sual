@@ -61,11 +61,7 @@
           "padding-top": 0,
           "padding-bottom": 0,
           "padding-left": 0,
-          "padding-right": 0,
-          "showBorderLeft": false,
-          "showBorderRight": false,
-          "showBorderTop": false,
-          "showBorderBottom": false
+          "padding-right": 0
         },
         "customStyle": {}
       }
