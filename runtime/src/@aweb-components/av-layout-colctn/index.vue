@@ -93,15 +93,10 @@
         return this.wid + "-" + index;
       };
     },
-      model() {
-
-        return (
-          this.$store.getters.model(this.wid) || {}
-        );
-      },
       wrapStyle(){
+     
+       return {...this.model.style.divCtn,...this.model.customStyle}
       
-       return {...this.model.customStyle,...this.model.style.divCtn}
       }
   }
   }

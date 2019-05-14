@@ -1,6 +1,6 @@
 <template>
   <!-- 布局容器 -->
-  <div class="V2Container" ref="wrap" :style="model.style" >
+  <div class="V2Container" ref="wrap" :style="wrapStyle" >
     <!-- model来自widget -->
     <template v-for="(lyt,index) of layout_c">
       <el-col
@@ -98,6 +98,11 @@
 
         return (this.$store.getters.model(this.wid) || {});
        
+      },
+      wrapStyle(){
+     
+       return {...this.model.style.divCtn,...this.model.customStyle}
+      
       }
   }
   }
