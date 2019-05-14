@@ -16,3 +16,6 @@ selenium-debug.log
 *.njsproj
 *.sln
 package-lock.json
+runtime/v2sual/@aweb-template/vue-spa.common.js
+runtime/v2sual/@aweb-template/vue-spa.umd.js
+runtime/v2sual/@aweb-template/vue-spa.umd.min.js
