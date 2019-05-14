@@ -5,6 +5,10 @@
 </template>
 
 <script>
+//注册component
+//加载mixins widget
+//加载store store:...   this.$store=...
+//初始化store created -> this.$store.commit('init',{})
 
 export default {
     name: 'app'
