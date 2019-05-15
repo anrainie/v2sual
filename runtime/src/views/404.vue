@@ -117,7 +117,8 @@
       </v2container>
     </el-row>
   </div>
-</template><script>
+</template>
+<script>
 export default {
   data() {
     return {};

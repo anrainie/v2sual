@@ -12,8 +12,8 @@
 import Vue from 'vue';
 import components from "@/@aweb-components/aweb.components.js";
 
+//注册组件
 Object.keys(components).map(c => {
-  // console.log('cd',components[c].name);
   Vue.component(c, { mixins: /*avComponentMixin, ...*/components[c] });
 });
 
