@@ -6,8 +6,13 @@ const escodegen = require("escodegen");
  * @param {String} htmlStr 
  */
 let json2script = function(content){
-    const logic = JSON.parse(content).logic;
-    return `<script>export default${logic}</script>`
+    let logic = JSON.parse(content).logic,template;
+    if(logic){
+        return `<script>export default${logic}</script>`
+    }else{
+        template = `{data(){return{}},methods:{},watch:{}}`
+        return `<script>export default${template}</script>`
+    }
 }
 
 //======================================================================================================================
