@@ -66,7 +66,56 @@
       "type": "boolean",
       "name": "disabled",
       "desp": "是否禁用状态"
-    }]
+    },{
+      "name": "func",
+      "desp": "关联方法",
+      "defaultValue": "btnClick",
+      "type": "string_input"
+    }],
+    "css":{
+      	"style": [{
+      	    "desp": "按钮样式",
+      	    "cssAttrs": "background-color width height color",
+      	    "name": "backgroundColor"
+      	  },
+      	  {
+      	    "desp": "图标",
+      	    "cssAttrs": "font-weight font-size color",
+      	    "name": "icon"
+      	  },
+      	  {
+      	    "desp": "按钮hover",
+      	    "cssAttrs": "background-color border-width border-color color ",
+      	    "name": "hoverBtn"
+      	  },
+      	  {
+      	    "desp": "按钮激活",
+      	    "cssAttrs": "background-color border-width border-color color ",
+      	    "name": "activeBtn"
+      	  }
+      	],
+      	"theme": [{
+      	  "template": "<button class='btn'></button>",
+      	  "desp": "功能",
+      	  "cssAttrs": "",
+      	  "name": "function",
+      	  "zoom": 0.8,
+      	  "valueArray": [
+      	    "btn-focus",
+      	    "btn-normal",
+      	    "btn-textBtn",
+      	    "btn-danger",
+      	    "btn-custom"
+      	  ],
+      	  "despArray": [
+      	    "焦点",
+      	    "普通",
+      	    "文字",
+      	    "警告",
+      	    "自定义"
+      	  ]
+      	}]
+    }
   },
   "keywords": [],
   "license": "ISC",
