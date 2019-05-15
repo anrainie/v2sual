@@ -1,27 +1,27 @@
         
-          import avComponentBtn  from './av-component-btn/index.vue';
-import avComponentETable  from './av-component-eTable/index.vue';
-import avComponentTable  from './av-component-table/index.vue';
-import avEchartBar  from './av-echart-bar/index.vue';
-import avEchartLine  from './av-echart-line/index.vue';
-import avFormCascader  from './av-form-cascader/index.vue';
-import avFormCheckbox  from './av-form-checkbox/index.vue';
-import avFormDatePicker  from './av-form-datePicker/index.vue';
-import avFormInputNumber  from './av-form-inputNumber/index.vue';
-import avFormInput  from './av-form-input/index.vue';
-import avFormRadio  from './av-form-radio/index.vue';
-import avFormSelect  from './av-form-select/index.vue';
-import avFormSlider  from './av-form-slider/index.vue';
-import avFormSwitch  from './av-form-switch/index.vue';
-import avFormTimePicker  from './av-form-timePicker/index.vue';
-import avFormTransfer  from './av-form-transfer/index.vue';
-import avFormUpload  from './av-form-upload/index.vue';
-import avLayoutColctn  from './av-layout-colctn/index.vue';
-import avLayoutRowctn  from './av-layout-rowctn/index.vue'
+          import avComponentBtn  from './av-component-btn';
+import avComponentETable  from './av-component-eTable';
+import avComponentTable  from './av-component-table';
+import avEchartBar  from './av-echart-bar';
+import avEchartLine  from './av-echart-line';
+import avFormCascader  from './av-form-cascader';
+import avFormCheckbox  from './av-form-checkbox';
+import avFormDatePicker  from './av-form-datePicker';
+import avFormInput  from './av-form-input';
+import avFormInputNumber  from './av-form-inputNumber';
+import avFormRadio  from './av-form-radio';
+import avFormSelect  from './av-form-select';
+import avFormSlider  from './av-form-slider';
+import avFormSwitch  from './av-form-switch';
+import avFormTimePicker  from './av-form-timePicker';
+import avFormTransfer  from './av-form-transfer';
+import avFormUpload  from './av-form-upload';
+import avLayoutColctn  from './av-layout-colctn';
+import avLayoutRowctn  from './av-layout-rowctn'
 
-          import get  from 'D:/git_reps/forks/v2sual/pipe/src/main/webapp/plugins/app.get';
-import getAfaData  from 'D:/git_reps/forks/v2sual/pipe/src/main/webapp/plugins/app.getAfaData';
-import getExcelData  from 'D:/git_reps/forks/v2sual/pipe/src/main/webapp/plugins/app.getExcelData'
+          import get  from '/Users/lijiancheng/Agree/WebIDE/v2sual/pipe/src/main/webapp/plugins/app.get';
+import getAfaData  from '/Users/lijiancheng/Agree/WebIDE/v2sual/pipe/src/main/webapp/plugins/app.getAfaData';
+import getExcelData  from '/Users/lijiancheng/Agree/WebIDE/v2sual/pipe/src/main/webapp/plugins/app.getExcelData'
 
           let app = {
             get,
@@ -40,8 +40,8 @@ import getExcelData  from 'D:/git_reps/forks/v2sual/pipe/src/main/webapp/plugins
 	avFormCascader,
 	avFormCheckbox,
 	avFormDatePicker,
-	avFormInputNumber,
 	avFormInput,
+	avFormInputNumber,
 	avFormRadio,
 	avFormSelect,
 	avFormSlider,

@@ -68,20 +68,24 @@ class Preview {
 
           //组件列表
           let vueMap = {};
-          const vueFiles = files.filter(f => f.lastIndexOf('.vue') !== -1).map(f => f.replace(componentPath, '.')).sort().map(f => {
-            return {
-              name: camelcase(f.split(path.sep)[1]),
-              path: f
-            }
-          }).filter(f => {
-            if (vueMap[f.name]) {
-              return false;
-            } else {
-              vueMap[f.name] = true;
+          const vueFiles = files
+            .filter(f => f.lastIndexOf('package.json') !== -1)
+            .map(f => f.replace(path.sep + 'package.json', '').replace(componentPath, '.'))
+            .sort()
+            .map(f => {
+              return {
+                name: camelcase(f.split(path.sep)[1]),
+                path: f
+              }
+            }).filter(f => {
+              if (vueMap[f.name]) {
+                return false;
+              } else {
+                vueMap[f.name] = true;
 
-              return true;
-            }
-          })
+                return true;
+              }
+            })
 
           //pipe
           const pipes = await readDir(config.runtime.pipe);
