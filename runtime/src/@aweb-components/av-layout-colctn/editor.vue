@@ -179,6 +179,7 @@
 </template>
 <script>
 export default {
+   name:'av-layout-editor',
     
     props: {
         eModel: {}
