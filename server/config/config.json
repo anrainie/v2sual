@@ -14,7 +14,8 @@
         "component": "./src/@aweb-components",
         "pipe": "../pipe/src/main/webapp/plugins",
         "page": "./src/views",
-        "datadict": "./src/datadict"
+        "datadict": "./src/datadict",
+        "dist": "./dist"
     },
     "module": {
         "navigator": {
@@ -39,9 +40,11 @@
         },
         "preview": {
             "consumption": {
-                "/v1/preview/init": "init",
                 "/v1/external/runtimeWidget": "runtimeWidget",
                 "getVueEditorStyles": "style"
+            },
+            "http": {
+                "/v1/preview/init": "init"
             }
         },
         "logic": {

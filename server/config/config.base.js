@@ -6,7 +6,8 @@ const base = path.resolve(process.cwd(), config.runtime.base);
 const component = path.resolve(base, config.runtime.component);
 const pipe = path.resolve(base, config.runtime.pipe);
 const datadict = path.resolve(base, config.runtime.datadict);
-const page=path.resolve(base,config.runtime.page);
+const page = path.resolve(base, config.runtime.page);
+const dist = path.resolve(base, config.runtime.dist);
 
 
 module.exports = {
@@ -17,7 +18,8 @@ module.exports = {
         component,
         pipe,
         datadict,
-        page
+        page,
+        dist
     },
 
     static: config.static.map(s => {
