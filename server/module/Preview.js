@@ -4,7 +4,9 @@ const fs = require('fs');
 const camelcase = require('camelcase');
 const mkdirp = require("mkdirp");
 
-const { exec } = require('child_process');
+const {
+  exec
+} = require('child_process');
 const Result = require('../util/Result');
 const Router = require('koa-router');
 
@@ -21,13 +23,12 @@ class Preview {
 
   mddir(fpath) {
     return new Promise((res) => {
-      console.log('heleleleods',fpath);
+      console.log('heleleleods', fpath);
       mkdirp(fpath, function (err) {
         if (err) {
           res(false);
           console.log(err);
-        }
-        else {
+        } else {
           res(true);
         }
       });
@@ -67,26 +68,30 @@ class Preview {
 
           //组件列表
           let vueMap = {};
-          const vueFiles = files.filter(f => f.lastIndexOf('.vue') !== -1).map(f => f.replace(componentPath, '.')).sort().map(f => {
-            return {
-              name: camelcase(f.split(path.sep)[1]),
-              path: f
-            }
-          }).filter(f => {
-            if (vueMap[f.name]) {
-              return false;
-            } else {
-              vueMap[f.name] = true;
+          const vueFiles = files
+            .filter(f => f.lastIndexOf('package.json') !== -1)
+            .map(f => f.replace(path.sep + 'package.json', '').replace(componentPath, '.'))
+            .sort()
+            .map(f => {
+              return {
+                name: camelcase(f.split(path.sep)[1]),
+                path: f
+              }
+            }).filter(f => {
+              if (vueMap[f.name]) {
+                return false;
+              } else {
+                vueMap[f.name] = true;
 
-              return true;
-            }
-          })
+                return true;
+              }
+            })
 
           //pipe
           const pipes = await readDir(config.runtime.pipe);
           const pipeList = pipes
             .filter(f => f.lastIndexOf('package.json') !== -1)
-            .map(f => f.replace('/package.json', ''))
+            .map(f => f.replace(path.sep + 'package.json', ''))
             .sort()
             .map(f => {
               const paths = f.split(path.sep);
@@ -100,9 +105,9 @@ class Preview {
 
           //生成Vue Use
           const content = `        
-          ${vueFiles.map(f => `import ${f.name}  from '${f.path}'`).join(';\n')}
+          ${vueFiles.map(f => `import ${f.name}  from '${f.path.replace(/\\/g,'/')}'`).join(';\n')}
 
-          ${pipeList.map(f => `import ${f.name}  from '${f.path}'`).join(';\n')}
+          ${pipeList.map(f => `import ${f.name}  from '${f.path.replace(/\\/g,'/')}'`).join(';\n')}
 
           let app = {
             ${pipeList.map(f => f.name).join(',\n\t')}
@@ -118,7 +123,10 @@ class Preview {
 
           // //npm run build  生成样式
           const build = await new Promise((res, rej) => {
-            const process = exec('npm run build', { encoding: "utf8", cwd: path.resolve(projectPath) }, (error, stdout, stderr) => {
+            const process = exec('npm run build', {
+              encoding: "utf8",
+              cwd: path.resolve(projectPath)
+            }, (error, stdout, stderr) => {
               error ? rej(error) : res({
                 error,
                 stdout,
@@ -140,7 +148,10 @@ class Preview {
           });
 
           const jsdev = await new Promise((res, rej) => {
-            const process = exec('vue build -t lib -d v2sual ./src/@aweb-components/aweb.components.js', { encoding: "utf8", cwd: path.resolve(projectPath) }, async (error, stdout, stderr) => {
+            const process = exec('vue build -t lib -d v2sual ./src/@aweb-components/aweb.components.js', {
+              encoding: "utf8",
+              cwd: path.resolve(projectPath)
+            }, async (error, stdout, stderr) => {
               console.log('0');
               const makePath = await mddir(vueEditorPath);
               if (makePath) {
@@ -169,7 +180,7 @@ class Preview {
         } catch (e) {
           Result.error(ctx, e);
         } finally {
-         
+
         }
 
 
@@ -186,11 +197,11 @@ class Preview {
   }
 
   /**
- *  @public
- *  @desp 获取style内容
- *  @type GET
- *  @url /style
- */
+   *  @public
+   *  @desp 获取style内容
+   *  @type GET
+   *  @url /style
+   */
   style(platform) {
     const projectPath = this.projectPath;
     return function (req) {

@@ -276,7 +276,7 @@ class Page {
         const filepath = query.path+".def";
         const content = await new Promise(resolve => fs.readFile(filepath, 'utf8', (error, response) => error ? platform.sendErrorResult(req, error) : resolve(response)));
         const json = JSON.parse(content);
-        if(!json.logic) json.logic="{data(){return{}},methods:{},watch:{}}";
+        if(!json.logic) json.logic='{data(){return{batabasket:{user:{name:"",time:"",logs:[]}}}},methods:{},watch:{}}';
         let script = json.logic;
         let tempScript = `data=${script}`;
         let ast = esprima.parseScript(tempScript);
