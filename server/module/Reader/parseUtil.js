@@ -6,7 +6,7 @@ const JSDOM = jsdom.JSDOM;
 var document = new JSDOM('').window.document;
 
 //=================================================== json转html ===========================================================
-const ignoreKey = ['children','style','widget','data'];//先不作处理的属性
+const ignoreKey = ['children','style','widget','data','css','option','options','def','defaultValue','customStyle'];//先不作处理的属性
 const avLayout = ['av-layout-colctn','av-layout-rowctn'];//转为v2container
 
 let blockClass = function(index,parent){
@@ -37,7 +37,9 @@ let isEmptyJson = function(json){
 let parseAttrJson = function(attrJson){
     let attr = '';
     for(let key in attrJson){
-        attr += key+':'+attrJson[key]+';';
+        if(attrJson[key] != ''){
+            attr += key+':'+attrJson[key]+';';
+        }
     }
     return attr;
 }
@@ -60,7 +62,11 @@ let appendAttribute = function(json,element){
     }
     json.wid = json.id ; 
 }
-
+let wrapStyle = function(model){
+    let divCtn = parseAttrJson(model.style.divCtn);
+    let customStyle = parseAttrJson(model.customStyle);
+    return divCtn+customStyle;
+}
 let appendComponent = function(parent,index,element){
     let child = parent.children[index];
     if(child === undefined){
@@ -75,6 +81,10 @@ let appendComponent = function(parent,index,element){
         eCom.setAttribute('class','V2Empty');
     }else if(avLayout.includes(child.component)){
             eCom =  document.createElement('v2container');
+            let style = wrapStyle(child)
+            if(style != ''){
+                eCom.setAttribute('style',wrapStyle(child));
+            }
             isContainer = true;
     }else{
         eCom =  document.createElement(child.component);
