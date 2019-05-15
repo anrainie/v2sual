@@ -1,6 +1,8 @@
 const readDir = require('recursive-readdir');
 const path = require('path');
 const UglifyJS = require('uglify-es-web');
+const esprima = require("esprima");
+const escodegen = require("escodegen");
 const fs = require('fs');
 
 const config = require('../config/config.base');
@@ -13,6 +15,7 @@ class Page {
   }
 
   /**
+   * /Users/lijiancheng/Agree/v2sual/runtime/src/views/page.vue
    * 
    * @desp 截取匹配内容
    * @param 文件内容 content 
@@ -218,7 +221,9 @@ class Page {
   async analysis(filepath) {
     const content = await new Promise(resolve => fs.readFile(path.join(this.pagePath, filepath), 'utf8', (error, response) => {
       if (error) {
-        throw error;
+        console.log(error);
+        resolve('');
+        //throw error;
       } else {
         resolve(response)
       }
@@ -263,53 +268,39 @@ class Page {
   */
   logicList(platform) {
     const context = this;
+    
     return async function (req) {
       try {
         const query = req.data;
-        const filepath = query.path;
+        let methodRes=[],watchRes=[];
+        const filepath = query.path+".def";
         const content = await new Promise(resolve => fs.readFile(filepath, 'utf8', (error, response) => error ? platform.sendErrorResult(req, error) : resolve(response)));
-        const script = context.getMatchPart(content, '<script>', '</script>');
-        let methodRes = [], watchRes = [];
-        if (script) {
-          const ast = UglifyJS.parse(script);
-          const exportAst = ast.body.filter(b => !!b.exported_value);
-          const methodsAst = exportAst[0].exported_value.properties.filter(p => p.key === 'methods' && p.start.value === 'methods');
-          const methodList = methodsAst[0].value.properties;
-          methodRes = methodList.map(item => {
-            let code = item.print_to_string({ beautify: true });
-            if (item.key.name) {
-              return {
-                name: item.key.name,
-                code: code
-              };
-            } else {
-              return {
-                name: item.key,
-                code: code
-              };
-            }
-          })
-          const watchAst = exportAst[0].exported_value.properties.filter(p => p.key === 'watch' && p.start.value === 'watch');
-          const watchList = watchAst[0].value.properties;
-          watchRes = watchList.map(item => {
-            let code = item.print_to_string({ beautify: true });
-            if (item.key.name) {
-              return {
-                name: item.key.name,
-                code: code
-              };
-            } else {
-              return {
-                name: item.key,
-                code: code
-              };
-            }
-          })
-        }
-
+        const json = JSON.parse(content);
+        if(!json.logic) json.logic='{data(){return{batabasket:{user:{name:"",time:"",logs:[]}}}},methods:{},watch:{}}';
+        let script = json.logic;
+        let tempScript = `data=${script}`;
+        let ast = esprima.parseScript(tempScript);
+        let astContent = ast.body[0].expression.right.properties;
+        // methods
+        const methods = astContent.filter(item=>item.key.name==="methods");
+        methodRes = methods[0].value.properties.map(item=>{
+          return{
+            name: item.key.name,
+            code:escodegen.generate(item)
+          }
+        })
+        // watch
+        const watch = astContent.filter(item=>item.key.name==="watch");
+        watchRes = watch[0].value.properties.map(item=>{
+          return{
+            name: item.key.name,
+            code:escodegen.generate(item)
+          }
+        })
         platform.sendSuccessResult(req, {
           methods: methodRes,
-          watch: watchRes
+          watch: watchRes,
+          scriptCode: json.logic
         });
 
       } catch (e) {
@@ -317,7 +308,6 @@ class Page {
       }
     }
   }
-
 
   /**
    * @public

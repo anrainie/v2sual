@@ -38,7 +38,10 @@ require('./module/Pipe').consume(platform, config.module.pipe.consumption, confi
 require('./module/Editor').consume(platform, config.module.page.consumption);
 
 // 预览
-require('./module/Preview').consume(platform, config.module.preview.consumption, config.runtime.base);
+const Preview=require('./module/Preview');
+const previeRouter=Preview.router(config.runtime.base,config.module.preview.http);
+Preview.consume(platform, config.module.preview.consumption, config.runtime.base);
+app.use(previeRouter.routes());
 
 
 //数据源代理

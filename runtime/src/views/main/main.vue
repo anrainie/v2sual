@@ -2,7 +2,7 @@
   <div class="app-container">
     <div class="welcome-wrapper">
       <div class="welcome-ctn">
-          <img src="../../img/custom-aweb-logo.png">
+          <!-- <img src="../../img/custom-aweb-logo.png"> -->
           <h1 class="example-header"> 欢迎使用 AWEB！</h1>
       </div>
       <ul data-role="exampleLinkList" class="example-link-list">   
