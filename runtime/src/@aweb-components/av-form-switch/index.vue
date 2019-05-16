@@ -26,12 +26,6 @@
       $('.el-switch__core', this.$refs.switch.$el).attr('contenteditable', true)
     },
     computed:{
-
-      model() {
-        return (
-          this.$store.getters.model(this.wid) || {}
-        );
-      }
     }
   }
 </script>

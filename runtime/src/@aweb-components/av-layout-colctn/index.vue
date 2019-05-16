@@ -94,7 +94,7 @@
       };
     },
       wrapStyle(){
-     
+        debugger;
        return {...this.model.style.divCtn,...this.model.customStyle}
       
       }

@@ -12,13 +12,6 @@ import echarts from "echarts";
           chart:null,
       }
     },
-    computed:{
-      model() {
-        return (
-          this.$store.getters.model(this.wid) || {}
-        );
-      }
-    },
     mounted() {
       this.chart = echarts.init(this.$el);
       // 使用刚指定的配置项和数据显示图表。

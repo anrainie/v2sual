@@ -12,13 +12,6 @@ import echarts from "echarts";
           chart:null,
       }
     },
-    computed:{
-      model() {
-        return (
-          this.$store.getters.model(this.wid) || {}
-        );
-      }
-    },
     mounted() {
       this.chart = echarts.init(this.$el);
          console.log( this.$el)

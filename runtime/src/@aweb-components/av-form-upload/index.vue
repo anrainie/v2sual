@@ -55,11 +55,6 @@
           return self.model.style;
         }
       },
-      model() {
-        return (
-          this.$store.getters.model(this.wid) || {}
-        );
-      }
     }
   }
 </script>

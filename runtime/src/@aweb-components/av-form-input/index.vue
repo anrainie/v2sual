@@ -23,16 +23,6 @@ export default {
   mounted() {
     console.log('input',this.model)
   },
-  computed: {
-      model() {
-        return (
-          this.$store.getters.model(this.wid) || {}
-        );
-      },
-    labelStyle(){
-       return {width:this.model.labelWitdh,...this.model.style.label}
-    }
-  },
   methods: {
     flexStyle() {
       // let self = this;

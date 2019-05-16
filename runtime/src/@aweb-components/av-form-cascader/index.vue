@@ -20,7 +20,6 @@
   </div>
 </template>
 <script>
-
 export default {
   name: "av-form-cascader",
 
@@ -295,23 +294,12 @@ export default {
           ]
         }
       ],
-      selectVal:[]
+      selectVal: []
     };
   },
-  computed:{
-
-      model() {
-        return (
-          this.$store.getters.model(this.wid) || {}
-        );
-      },
-     labelStyle(){
-       return {width:this.model.labelWitdh,...this.model.style.label}
-    }
-  },
-  watch:{
-    selectVal(value){
-       this.model.value = value;
+  watch: {
+    selectVal(value) {
+      this.model.value = value;
     }
   },
   methods: {

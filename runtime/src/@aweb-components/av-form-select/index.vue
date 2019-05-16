@@ -36,14 +36,6 @@ export default {
   },
   mounted() {},
   computed:{
-      model() {
-        return (
-          this.$store.getters.model(this.wid) || {}
-        );
-      },
-    labelStyle(){
-       return {width:this.model.labelWitdh,...this.model.style.label}
-    }
   }
 };
 </script>

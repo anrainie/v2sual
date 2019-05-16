@@ -9,14 +9,18 @@
 //加载mixins widget
 //加载store store:...   this.$store=...
 //初始化store created -> this.$store.commit('init',{})
-import Vue from 'vue';
+import Vue from "vue";
 import components from "@/@aweb-components/aweb.components.js";
 import { widget } from "@/utils/v2-view";
+import container from "@/components/container.vue";
 
+console.log(components);
 //注册组件
 Object.keys(components).map(c => {
-  Vue.component(c, { mixins: widget, ...components[c] });
+  Vue.component(c, { mixins: [widget], ...components[c] });
 });
+
+Vue.component("v2container", container);
 
 export default {
   name: "app"

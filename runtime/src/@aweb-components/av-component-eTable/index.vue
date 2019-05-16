@@ -165,13 +165,6 @@ export default {
       }
      }
    },
-   computed:{
-      model() {
-        return (
-          this.$store.getters.model(this.wid) || {}
-        );
-      }
-  },
   methods: {
         afterSelection(row, column, row2, column2, preventScrolling, selectionLayerLevel){
             

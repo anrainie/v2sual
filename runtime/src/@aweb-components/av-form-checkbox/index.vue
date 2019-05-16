@@ -45,20 +45,9 @@ export default {
         return self.model.style;
       }
     },
-    labelStyle(){
-      return {
-        width:this.model.labelWitdh,
-        ...this.model.style.label
-      }
-    },
     checkboxStyle(){
 
     },
-     model() {
-        return (
-          this.$store.getters.model(this.wid) || {}
-        );
-      }
   },
   mounted() {
     console.log('mo',this.model)
