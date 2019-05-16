@@ -6,8 +6,8 @@ const JSDOM = jsdom.JSDOM;
 var document = new JSDOM('').window.document;
 
 //=================================================== json转html ===========================================================
-const ignoreKey = ['children', 'style', 'widget', 'data', 'css', 'option', 'options', 'def', 'defaultValue', 'customStyle'];//先不作处理的属性
-const avLayout = ['av-layout-colctn', 'av-layout-rowctn'];//转为v2container
+// const ignoreKey = ['children','style','widget','data','css','option','options','def','defaultValue','customStyle'];//先不作处理的属性
+// const avLayout = ['av-layout-colctn','av-layout-rowctn'];//转为v2container
 
 let blockClass = function (index, parent) {
     if (parent && parent.children[index] && !parent.children[index].layout) {
@@ -44,30 +44,104 @@ let parseAttrJson = function (attrJson) {
     return attr;
 }
 
-/**
- * 根据json往element中添加属性
- * @param {JSON} json 
- * @param {Element} element 
- */
-let appendAttribute = function (json, element) {
-    if (json === null) {
-        return;
-    }
-    for (let key in json) {
-        if (ignoreKey.includes(key)) {
-            continue;
-        } else {
-            element.setAttribute(key, json[key]);
-        }
-    }
-    json.wid = json.id;
-}
-let wrapStyle = function (model) {
-    let divCtn = model.style && model.style.divCtn && parseAttrJson(model.style.divCtn) || '';
-    let customStyle = model.customStyle && parseAttrJson(model.customStyle) || '';
-    return divCtn + customStyle;
-}
-let appendComponent = function (parent, index, element) {
+// /**
+//  * 根据json往element中添加属性
+//  * @param {JSON} json 
+//  * @param {Element} element 
+//  */
+// let appendAttribute = function(json,element){
+//     if(json === null){
+//         return;
+//     }
+//     for(let key in json){
+//         if(ignoreKey.includes(key)){
+//             continue;
+//         }else{
+//             element.setAttribute(key,json[key]);
+//         }
+//     }
+//     json.wid = json.id ; 
+// }
+// let wrapStyle = function(model){
+//     let divCtn = parseAttrJson(model.style.divCtn);
+//     let customStyle = parseAttrJson(model.customStyle);
+//     return divCtn+customStyle;
+// }
+// let appendComponent = function(parent,index,element){
+//     let child = parent.children[index];
+//     if(child === undefined){
+//         parent.children[index] = null;
+//     }
+//     let is = child ? child.component : "v2Empty";
+//     let wid = child ? child.id : parent.wid + '-' + index;
+//     let eCom = null;
+//     let isContainer = false;
+//     if(child === null){
+//         eCom =  document.createElement('div');
+//         eCom.setAttribute('class','V2Empty');
+//     }else if(avLayout.includes(child.component)){
+//             eCom =  document.createElement('v2container');
+//             let style = wrapStyle(child)
+//             if(style != ''){
+//                 eCom.setAttribute('style',wrapStyle(child));
+//             }
+//             isContainer = true;
+//     }else{
+//         eCom =  document.createElement(child.component);
+//     }
+//     eCom.setAttribute('is',is);
+//     eCom.setAttribute('wid',wid);
+//     eCom.setAttribute('index',index);
+//     eCom.setAttribute('pid',parent.wid);
+//     appendAttribute(child,eCom);
+//     appendChildren(child,eCom,isContainer);
+//     element.appendChild(eCom);
+// }
+
+// /**
+//  * 根据json往element中添加子节点,如果是容器类就先加<el-row>和<el-col>再添加子节点
+//  * @param {*} json 
+//  * @param {Element} element 
+//  * @param {Boolean} isContainer
+//  */
+// let appendChildren = function(parentJson,element,isContainer){
+//     if(!isContainer){
+//         if(isEmptyJson(parentJson) || isEmptyJson(parentJson.children)){
+//             return;
+//         }else{
+//             for(let i = 0,len = parentJson.children.length ; i<len ; i++){
+//                 appendComponent(parentJson,i,element);
+//             }
+//         }
+//     }else{
+//         let layout = layout_c(parentJson);
+//         if(parentJson.direction === undefined || parentJson.direction === null){
+//             parentJson.direction = parentJson.href === 'av-layout-colctn'? 'row' : 'col' ;
+//         }
+//         for(let i = 0,len = layout.length ; i<len ; i++){
+//             if(parentJson.direction === 'col'){
+//                 let span = parseInt(layout instanceof Array ? Math.round(layout[i] * 24 / 100) : '2');
+//                 let eCol = document.createElement('el-col');
+//                 eCol.setAttribute('class','V2ContainerBlock'+blockClass(i,parentJson));
+//                 eCol.setAttribute('span',span);
+//                 eCol.setAttribute('key',i);
+//                 eCol.setAttribute('style','height:100%;');
+//                 appendComponent(parentJson,i,eCol);
+//                 element.appendChild(eCol);
+//             }else{
+//                 let eRow = document.createElement('el-row');
+//                 let height = layout instanceof Array ? layout[i] + '%' : '50%';
+//                 eRow.setAttribute('class','V2ContainerBlock'+blockClass(i,parentJson));
+//                 eRow.setAttribute('style','height:'+ height + ';width:100%;');
+//                 eRow.setAttribute('key',i);
+//                 appendComponent(parentJson,i,eRow);
+//                 element.appendChild(eRow);
+//             }
+//         }
+//     }
+// }
+
+let addComponent = function(parent,index,element){
     let child = parent.children[index];
     if (child === undefined) {
         parent.children[index] = null;
@@ -75,68 +149,39 @@ let appendComponent = function (parent, index, element) {
     let is = child ? child.component : "v2Empty";
     let wid = child ? child.id : parent.wid + '-' + index;
     let eCom = null;
-    let isContainer = false;
-    if (child === null) {
-        eCom = document.createElement('div');
-        eCom.setAttribute('class', 'V2Empty');
-    } else if (avLayout.includes(child.component)) {
-        eCom = document.createElement('v2container');
-        let style = wrapStyle(child)
-        if (style != '') {
-            eCom.setAttribute('style', wrapStyle(child));
-        }
-        isContainer = true;
-    } else {
-        eCom = document.createElement(child.component);
+    if(child === null){
+        eCom =  document.createElement('div');
+        eCom.setAttribute('class','V2Empty');
+    }else{
+        eCom =  document.createElement(child.component);
     }
-    eCom.setAttribute('is', is);
-    eCom.setAttribute('wid', wid);
-    eCom.setAttribute('index', index);
-    eCom.setAttribute('pid', parent.wid);
-    appendAttribute(child, eCom);
-    appendChildren(child, eCom, isContainer);
+    eCom.setAttribute('is',is);
+    eCom.setAttribute('wid',wid);
+    eCom.setAttribute('index',index);
+    eCom.setAttribute('pid',parent.wid);
     element.appendChild(eCom);
 }
 
-/**
- * 根据json往element中添加子节点,如果是容器类就先加<el-row>和<el-col>再添加子节点
- * @param {*} json 
- * @param {Element} element 
- * @param {Boolean} isContainer
- */
-let appendChildren = function (parentJson, element, isContainer) {
-    if (!isContainer) {
-        if (isEmptyJson(parentJson) || isEmptyJson(parentJson.children)) {
-            return;
-        } else {
-            for (let i = 0, len = parentJson.children.length; i < len; i++) {
-                appendComponent(parentJson, i, element);
-            }
-        }
-    } else {
-        let layout = layout_c(parentJson);
-        if (parentJson.direction === undefined || parentJson.direction === null) {
-            parentJson.direction = parentJson.href === 'av-layout-colctn' ? 'row' : 'col';
-        }
-        for (let i = 0, len = layout.length; i < len; i++) {
-            if (parentJson.direction === 'col') {
-                let span = parseInt(layout instanceof Array ? Math.round(layout[i] * 24 / 100) : '2');
-                let eCol = document.createElement('el-col');
-                eCol.setAttribute('class', 'V2ContainerBlock' + blockClass(i, parentJson));
-                eCol.setAttribute('span', span);
-                eCol.setAttribute('key', i);
-                eCol.setAttribute('style', 'height:100%;');
-                appendComponent(parentJson, i, eCol);
-                element.appendChild(eCol);
-            } else {
-                let eRow = document.createElement('el-row');
-                let height = layout instanceof Array ? layout[i] + '%' : '50%';
-                eRow.setAttribute('class', 'V2ContainerBlock' + blockClass(i, parentJson));
-                eRow.setAttribute('style', 'height:' + height + ';width:100%;');
-                eRow.setAttribute('key', i);
-                appendComponent(parentJson, i, eRow);
-                element.appendChild(eRow);
-            }
+let addChild = function(parentJson,element){
+    let layout = layout_c(parentJson);
+    for(let i = 0,len = layout.length ; i<len ; i++){
+        if(parentJson.direction === 'col'){
+            let span = parseInt(layout instanceof Array ? Math.round(layout[i] * 24 / 100) : '2');
+            let eCol = document.createElement('el-col');
+            eCol.setAttribute('class','V2ContainerBlock'+blockClass(i,parentJson));
+            eCol.setAttribute('span',span);
+            eCol.setAttribute('key',i);
+            eCol.setAttribute('style','height:100%;');
+            addComponent(parentJson,i,eCol);
+            element.appendChild(eCol);
+        }else{
+            let eRow = document.createElement('el-row');
+            let height = layout instanceof Array ? layout[i] + '%' : '50%';
+            eRow.setAttribute('class','V2ContainerBlock'+blockClass(i,parentJson));
+            eRow.setAttribute('style','height:'+ height + ';width:100%;');
+            eRow.setAttribute('key',i);
+            addComponent(parentJson,i,eRow);
+            element.appendChild(eRow);
         }
     }
 }
@@ -156,10 +201,13 @@ let json2html = function (jsonStr) {
     eV2C.setAttribute('class', 'V2Container');
     eV2C.setAttribute('ref', 'wrap');
     eV2C.setAttribute('style', parseAttrJson(jsonV2C.style));
+    jsonV2C.wid = jsonV2C.id;
     //设置属性
-    appendAttribute(jsonV2C, eV2C);
+    // appendAttribute(jsonV2C,eV2C);
     //添加子节点
-    appendChildren(jsonV2C, eV2C, true);
+    // appendChildren(jsonV2C,eV2C,true);
+    //添加el-row/el-col
+    addChild(jsonV2C,eV2C);
     root.appendChild(eV2C);
     return '<template>' + root.innerHTML + '</template>';//获取<v2c>...</v2c>中内容
 }
