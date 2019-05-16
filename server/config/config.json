@@ -12,10 +12,13 @@
     "runtime": {
         "base": "./runtime",
         "component": "./src/@aweb-components",
+        "componentFile":"./src/@aweb-components/aweb.components.js",
         "pipe": "../pipe/src/main/webapp/plugins",
+
         "page": "./src/views",
         "datadict": "./src/datadict",
-        "dist": "./dist"
+        "dist": "./dist",
+        "homepage":"index.html"
     },
     "module": {
         "navigator": {
@@ -44,7 +47,12 @@
             },
             "http": {
                 "/v1/preview/init": "init"
-            }
+            },
+            "script":{
+                "style":"npm run style",
+                "script":"vue build -t lib -d v2sual ./src/@aweb-components/aweb.components.js"
+            },
+            "result":"./v2sual/@aweb-template/vue-spa.umd.min.js"
         },
         "logic": {
             "consumption": {}

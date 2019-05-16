@@ -38,5 +38,6 @@
         "gulp-rename": "1.4.0",
         "webpack-stream": "5.2.1",
         "node-fetch": "2.3.0"
-    }
+    },
+    "__projectType":"aweb"
 }

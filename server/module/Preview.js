@@ -2,7 +2,6 @@ const readDir = require('recursive-readdir');
 const path = require('path');
 const fs = require('fs');
 const camelcase = require('camelcase');
-const mkdirp = require("mkdirp");
 
 const {
   exec
@@ -17,26 +16,9 @@ const config = require('../config/config.base');
 
 class Preview {
 
-  constructor(projectPath) {
+  constructor(projectPath=config.runtime.base) {
     this.projectPath = projectPath;
   }
-
-  mddir(fpath) {
-    return new Promise((res) => {
-      console.log('heleleleods', fpath);
-      mkdirp(fpath, function (err) {
-        if (err) {
-          res(false);
-          console.log(err);
-        } else {
-          res(true);
-        }
-      });
-    })
-  }
-
-
-
   /**
    * @private
    * @desp 生成 Component 文件
@@ -50,38 +32,34 @@ class Preview {
    *  @url /init
    */
   init() {
-    // /Users/lijiancheng/Agree/v2sual/runtime/dist/static/vueEditor.html
-    // /Users/lijiancheng/Agree/v2sual/runtime/dist/static/vueEditor.html
     const projectPath = this.projectPath;
-    const mddir = this.mddir;
     return async function (ctx, next) {
       try {
-        //缓存vueEditor
-        const vueEditorPath = path.resolve(config.runtime.dist, './static/vueEditor.html');
-        const vueEditorCache = await fs.readFileSync(vueEditorPath);
         try {
-
-
-          const componentPath = path.resolve(path.join(projectPath, 'src/@aweb-components'));
+          const componentPath = config.runtime.component;
 
           const files = await readDir(componentPath);
 
           //组件列表
           let vueMap = {};
-          const vueFiles = files.filter(f => f.lastIndexOf('.vue') !== -1).map(f => f.replace(componentPath, '.')).sort().map(f => {
-            return {
-              name: camelcase(f.split(path.sep)[1]),
-              path: f
-            }
-          }).filter(f => {
-            if (vueMap[f.name]) {
-              return false;
-            } else {
-              vueMap[f.name] = true;
+          const vueFiles = files
+            .filter(f => f.lastIndexOf('package.json') !== -1)
+            .map(f => f.replace(path.sep + 'package.json', '').replace(componentPath, '.'))
+            .sort()
+            .map(f => {
+              return {
+                name: camelcase(f.split(path.sep)[1]),
+                path: f
+              }
+            }).filter(f => {
+              if (vueMap[f.name]) {
+                return false;
+              } else {
+                vueMap[f.name] = true;
 
-              return true;
-            }
-          })
+                return true;
+              }
+            })
 
           //pipe
           const pipes = await readDir(config.runtime.pipe);
@@ -101,9 +79,9 @@ class Preview {
 
           //生成Vue Use
           const content = `        
-          ${vueFiles.map(f => `import ${f.name}  from '${f.path.replace(/\\/g,'/')}'`).join(';\n')}
+          ${vueFiles.map(f => `import ${f.name}  from '${f.path.replace(/\\/g, '/')}'`).join(';\n')}
 
-          ${pipeList.map(f => `import ${f.name}  from '${f.path.replace(/\\/g,'/')}'`).join(';\n')}
+          ${pipeList.map(f => `import ${f.name}  from '${f.path.replace(/\\/g, '/')}'`).join(';\n')}
 
           let app = {
             ${pipeList.map(f => f.name).join(',\n\t')}
@@ -115,11 +93,11 @@ class Preview {
             ${vueFiles.map(f => `${f.name}`).join(',\n\t')}
           }`;
 
-          const list = await new Promise((res, rej) => fs.writeFile(path.join(componentPath, 'aweb.components.js'), content, err => err ? rej(err) : res('success')));
+          const list = await new Promise((res, rej) => fs.writeFile(config.runtime.componentFile, content, err => err ? rej(err) : res('success')));
 
           // //npm run build  生成样式
           const build = await new Promise((res, rej) => {
-            const process = exec('npm run build', {
+            const process = exec(config.module.preview.script.style, {
               encoding: "utf8",
               cwd: path.resolve(projectPath)
             }, (error, stdout, stderr) => {
@@ -144,16 +122,10 @@ class Preview {
           });
 
           const jsdev = await new Promise((res, rej) => {
-            const process = exec('vue build -t lib -d v2sual ./src/@aweb-components/aweb.components.js', {
+            const process = exec(config.module.preview.script.script, {
               encoding: "utf8",
               cwd: path.resolve(projectPath)
             }, async (error, stdout, stderr) => {
-              console.log('0');
-              const makePath = await mddir(vueEditorPath);
-              if (makePath) {
-                await fs.writeFileSync(vueEditorPath, vueEditorCache);
-              }
-
               error ? rej(error) : res({
                 error,
                 stdout,
@@ -161,16 +133,14 @@ class Preview {
               })
             });
             process.stderr.on('data', data => {
-              console.log('1');
+              console.log(data);
             });
             process.stdout.on('data', data => {
-              console.log('2');
+              console.log(data);
             });
             process.stdout.on('close', data => {
-              console.log('3');
-              res({
-                data
-              });
+              console.log(data);
+              res(data);
             });
           });
         } catch (e) {
@@ -202,12 +172,12 @@ class Preview {
     const projectPath = this.projectPath;
     return function (req) {
       try {
-        const html = Buffer.from(fs.readFileSync(path.resolve(path.join(projectPath, './dist/index.html')))).toString();
+        const html = Buffer.from(fs.readFileSync(config.runtime.homepage)).toString();
 
         const css = html.match(/<link[^>]+>/g).filter(l => l.indexOf('.css') !== -1).map(e => e.match(/href=([^\s]+)/)).filter(e => !!e).map(e => e[1]);
 
 
-        const content = Array.from(new Set(css)).map(f => fs.readFileSync(path.resolve(path.join(projectPath, './dist', f)).toString()));
+        const content = Array.from(new Set(css)).map(f => fs.readFileSync(path.resolve(path.join(config.runtime.dist, f)).toString()));
 
         platform.sendSuccessResult(req, `<style>${content.join('')}</style>`);
       } catch (e) {
@@ -220,7 +190,7 @@ class Preview {
     const projectPath = this.projectPath;
     return function (req) {
       try {
-        const js = Buffer.from(fs.readFileSync(path.resolve(path.join(projectPath, './v2sual/@aweb-template/vue-spa.umd.min.js')))).toString();
+        const js = Buffer.from(fs.readFileSync(path.resolve(path.join(projectPath, config.module.preview.result)))).toString();
 
         platform.sendSuccessResult(req, js);
       } catch (e) {

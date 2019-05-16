@@ -3,7 +3,7 @@ var path = require('path');
 var afa = require('./proxy/proxy.afa.js')
 var nodeServer = require('./proxy/proxy.node.js')
 module.exports = {
-    baseUrl: './',
+    publicPath: './',
     devServer: {
           open: true,
           host: '0.0.0.0',
@@ -21,12 +21,12 @@ module.exports = {
     filenameHashing: false,
     css: {
        
-        modules: false,
+        // modules: false,
 
        
-        extract: false,
+        // extract: false,
 
       
-        sourceMap: false
+        // sourceMap: false
     }
 }
