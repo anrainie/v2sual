@@ -11,7 +11,7 @@
 //初始化store created -> this.$store.commit('init',{})
 import Vue from 'vue';
 import components from "@/@aweb-components/aweb.components.js";
-import { widget } from "aweb-vue-mininx";
+import { widget } from "@/utils/v2-view";
 
 //注册组件
 Object.keys(components).map(c => {
