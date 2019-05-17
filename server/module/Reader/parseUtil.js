@@ -56,6 +56,8 @@ let appendAttribute = function(json,element){
     for(let key in json){
         if(ignoreKey.includes(key)){
             continue;
+        }else if(key === 'layout'){
+            element.setAttribute(key,layout_c(json));
         }else{
             element.setAttribute(key,json[key]);
         }
@@ -143,6 +145,7 @@ let json2html = function (jsonStr) {
         return '';
     }
     let root = document.createElement('v2c');
+    let temp = document.createElement('template');
     let eV2C = document.createElement('v2container');
     eV2C.setAttribute(':wid', '`'+jsonV2C.id+'`');
     eV2C.setAttribute('class', 'V2Container');
@@ -152,13 +155,14 @@ let json2html = function (jsonStr) {
     appendAttribute(jsonV2C,eV2C);
     //添加子节点
     appendChildren(jsonV2C,eV2C,true);
-    root.appendChild(eV2C);
-    return '<template>' + root.innerHTML + '</template>';//获取<v2c>...</v2c>中内容
+    temp.content.appendChild(eV2C);
+    root.appendChild(temp);
+    return root.innerHTML;
 }
 
 //====================================================== html转json ========================================================
 const ignoreTag = ['el-row', 'el-col'];
-const ignoreAttr = ['is', 'wid', 'index', 'class', 'ref'];
+const ignoreAttr = [':is',':wid',':index',':pid','class','ref'];
 
 /**
  * 将数组格式的属性转换成json格式
@@ -216,7 +220,7 @@ let parseChildren = function (json, element) {
             child = child.children[0];
         }
         let son = {};
-        if (child.getAttribute('is') === 'v2Empty') {
+        if (child.tagName === 'V2EMPTY') {
             son = null;
         } else {
             parseAttribute(son, child);
@@ -233,11 +237,13 @@ let parseChildren = function (json, element) {
  * @param {String} htmlStr 
  */
 let html2json = function (htmlStr) {
+    // debugger;
     let json = {};
     let jsonV2C = {};
     let root = document.createElement('v2c');
     root.innerHTML = htmlStr;
-    let eV2C = root.children[0];
+    let temp = root.firstElementChild;//<template>
+    let eV2C = temp.content.children[0];
     //转换属性
     parseAttribute(jsonV2C, eV2C);
     //转换子节点
