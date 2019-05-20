@@ -1,5 +1,5 @@
 <template>
-  <!-- 布局容器 -->
+  <!-- 展示时的布局容器 -->
   <div class="V2Container" ref="wrap" :style="wrapStyle">
     <slot></slot>
   </div>
