@@ -22,7 +22,12 @@
         "widget": "gulp widget",
         "pageModule": "gulp pageModule",
         "nsl": "gulp pageModule",
-        "plugins": "gulp plugins"
+        "plugins": "gulp plugins",
+        "components": "gulp components",
+        "initpageModule": "gulp initpageModule",
+        "initconfig": "gulp initconfig",
+        "initdependence": "gulp initdependence",
+        "initimg": "gulp initimg"
     },
     "keywords": [],
     "author": "wubingyu",
@@ -39,5 +44,5 @@
         "webpack-stream": "5.2.1",
         "node-fetch": "2.3.0"
     },
-    "__projectType":"aweb"
+    "__projectType": "aweb"
 }

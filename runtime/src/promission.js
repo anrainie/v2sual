@@ -226,7 +226,7 @@ function searchCurrentRouter(path) {
      cRoute = true;
      cRouteCopy = global.menu.filter((item) => (item.children && item.children.length === 1 && item.children[0].path === path));
   }
-  if (cRoute) {
+  if (cRoute && cRouteCopy && cRouteCopy.length) {
     result = getAsyncRouter(cRouteCopy)[0];
     result.path = '/' + result.path;
   }

@@ -12,13 +12,12 @@
     "runtime": {
         "base": "./runtime",
         "component": "./src/@aweb-components",
-        "componentFile":"./src/@aweb-components/aweb.components.js",
+        "componentFile": "./src/@aweb-components/aweb.components.js",
         "pipe": "../pipe/src/main/webapp/plugins",
-
         "page": "./src/views",
         "datadict": "./src/datadict",
         "dist": "./dist",
-        "homepage":"index.html"
+        "homepage": "index.html"
     },
     "module": {
         "navigator": {
@@ -48,11 +47,11 @@
             "http": {
                 "/v1/preview/init": "init"
             },
-            "script":{
-                "style":"npm run style",
-                "script":"vue build -t lib -d v2sual ./src/@aweb-components/aweb.components.js"
+            "script": {
+                "style": "npm run style",
+                "script": "vue build -t lib -d v2sual ./src/@aweb-components/aweb.components.js"
             },
-            "result":"./v2sual/@aweb-template/vue-spa.umd.min.js"
+            "result": "./v2sual/@aweb-template/vue-spa.umd.min.js"
         },
         "logic": {
             "consumption": {}
@@ -107,6 +106,16 @@
                 "changeOrigin": true,
                 "pathRewrite": {
                     "v1/ds/": ""
+                },
+                "logLevel": "debug"
+            },
+            {
+                "name": "预览",
+                "source": "/preview",
+                "target": "https://localhost:7007/",
+                "changeOrigin": true,
+                "pathRewrite": {
+                    "v1/ds/preview": ""
                 },
                 "logLevel": "debug"
             }
