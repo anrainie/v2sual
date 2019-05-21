@@ -53,6 +53,7 @@ export default () => {
       structure: {
 
       },
+      binder: [],
       // //组件
       // components: {
 
@@ -248,6 +249,23 @@ export default () => {
       save(state) {
         state.UIData.editor && state.UIData.editor.save && state.UIData.editor.save(state.structure);
       },
+      bind( state,{vueObj,data,dataStr,wid,modelKey}) {
+        let model = this.getters.model(wid);
+        let commentObj = this.getters.vueInstance(wid);
+        //改变state.baskect自动改变model
+        let vueBind = vueObj.$watch(dataStr, v => {
+          commentObj.$set(model, modelKey, v);
+        });
+        let last = dataStr.split(".").pop();
+        //改变model自动改变state.baskect
+        let commentBind =commentObj.$watch(`model.${modelKey}`, v => {
+          vueObj.$set(data,last,v)
+        })
+        vueObj.binder.push(vueBind,commentBind);
+      },
+      unbind(state,vueObj){
+        vueObj.binder.map(item=>{item()})
+      },
       /**
        * 初始化画布
        * @param {*} state 
@@ -321,7 +339,7 @@ export default () => {
               let c = p.children[i]
               if (c && c.id == s) {
                 this.commit("$remove.child", {
-                  parent:p,
+                  parent: p,
                   index: i,
                 });
                 return;
