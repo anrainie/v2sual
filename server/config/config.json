@@ -51,7 +51,7 @@
                 "style": "npm run style",
                 "script": "vue build -t lib -d v2sual ./src/@aweb-components/aweb.components.js"
             },
-            "result": "./v2sual/@aweb-template/vue-spa.umd.min.js"
+            "result": "./v2sual/@aweb-template/vue-spa.umd.js"
         },
         "logic": {
             "consumption": {}

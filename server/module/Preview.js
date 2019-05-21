@@ -190,11 +190,13 @@ class Preview {
     const projectPath = this.projectPath;
     return function (req) {
       try {
-        const js = Buffer.from(fs.readFileSync(path.resolve(path.join(projectPath, config.module.preview.result)))).toString();
+        let _path=path.resolve(path.join(projectPath, config.module.preview.result));
+        const js = Buffer.from(fs.readFileSync(_path)).toString();
 
         platform.sendSuccessResult(req, js);
       } catch (e) {
-        platform.sendErrorResult(req, e);
+        console.error(e)
+        platform.sendErrorResult(req, e.message||e);
       }
     }
   }

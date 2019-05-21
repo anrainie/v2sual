@@ -50,8 +50,8 @@ class Platform {
 
   sendErrorResult(req, error) {
     this.send(req, {
-      state: 'fail',
-      error,
+      state: 'error',
+      errorMsg: error,
     });
   }
 
