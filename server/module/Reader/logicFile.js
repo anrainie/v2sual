@@ -24,7 +24,7 @@ let json2script = function (content) {
                     temp[tar.desp] = "";
                 }
             });
-            datares[item.desp] = temp;
+            datares[item.name] = temp;
         });
         dataAst = UglifyJS.parse("data=" + JSON.stringify(datares));
         dataAstContent = dataAst.body[0].body.right.properties;
