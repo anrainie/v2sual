@@ -6,9 +6,33 @@ const UglifyJS = require('uglify-es-web');
  */
 let json2script = function (content) {
     let logic = JSON.parse(content).logic,
+        dataBasket = JSON.parse(content).dataBasket,
+        datares = {},dataAst,dataAstContent,ast,dataTar,str,
         template;
     if (logic) {
-        return `<script>${logic}</script>`
+
+        dataBasket.map(item => {
+            let temp = {};
+            item.item.map(tar => {
+                let temp1 = {};
+                if (tar.item) {
+                    tar.item.map(tar1 => {
+                        temp1[tar1.name] = "";
+                    });
+                    temp[tar.name] = temp1;
+                } else {
+                    temp[tar.name] = "";
+                }
+            });
+            datares[item.name] = temp;
+        });
+        dataAst = UglifyJS.parse("data=" + JSON.stringify(datares));
+        dataAstContent = dataAst.body[0].body.right.properties;
+        ast = UglifyJS.parse(logic);
+        dataTar = ast.body[0].exported_value.properties.filter(item => item.key && item.key.name === "data")[0];
+        dataTar.value.body[0].value.properties = dataAstContent;
+        str = ast.print_to_string({ beautify: true, comments: true });
+        return `<script>${str}</script>`
     } else {
         template = `export default{data(){return{}},methods:{},watch:{}}`
         return `<script>${template}</script>`
