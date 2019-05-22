@@ -19,9 +19,9 @@ import avFormUpload  from './av-form-upload';
 import avLayoutColctn  from './av-layout-colctn';
 import avLayoutRowctn  from './av-layout-rowctn'
 
-          import get  from '/Users/lijiancheng/Agree/v2sual/pipe/src/main/webapp/plugins/app.get';
-import getAfaData  from '/Users/lijiancheng/Agree/v2sual/pipe/src/main/webapp/plugins/app.getAfaData';
-import getExcelData  from '/Users/lijiancheng/Agree/v2sual/pipe/src/main/webapp/plugins/app.getExcelData'
+          import get  from '../../../pipe/src/main/webapp/plugins/app.get';
+import getAfaData  from '../../../pipe/src/main/webapp/plugins/app.getAfaData';
+import getExcelData  from '../../../pipe/src/main/webapp/plugins/app.getExcelData'
 
           let app = {
             get,

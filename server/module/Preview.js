@@ -72,7 +72,7 @@ class Preview {
               const name = (paths[paths.length - 1]).split('.');
               return {
                 name: name[name.length - 1],
-                path: f
+                path: path.relative(path.dirname(config.runtime.componentFile),f)
               }
             })
 
