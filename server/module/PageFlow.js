@@ -276,27 +276,30 @@ class Page {
         const filepath = query.path+".def";
         const content = await new Promise(resolve => fs.readFile(filepath, 'utf8', (error, response) => error ? platform.sendErrorResult(req, error) : resolve(response)));
         const json = JSON.parse(content);
-        if(!json.logic) json.logic='{data(){return{batabasket:{user:{name:"",time:"",logs:[]}}}},methods:{},watch:{}}';
+        if(!json.logic) json.logic='export default{data(){return{batabasket:{user:{name:"",time:"",logs:[]}}};},methods:{},watch:{},beforeCreate(){},created(){},beforeMount(){},mounted(){},beforeUpdate(){},updated(){},beforeDestroy(){},destroyed(){}};';
         let script = json.logic;
-        let tempScript = `data=${script}`;
-        let ast = esprima.parseScript(tempScript);
-        let astContent = ast.body[0].expression.right.properties;
+        // let tempScript = `data=${script}`;
+        // let ast = esprima.parseScript(tempScript);
+        let ast = UglifyJS.parse(script);
+        let astContent = ast.body[0].exported_value.properties;
         // methods
-        const methods = astContent.filter(item=>item.key.name==="methods");
+        const methods = astContent.filter(item=>item.key&&item.key==="methods");
         methodRes = methods[0].value.properties.map(item=>{
           return{
             name: item.key.name,
-            code:escodegen.generate(item)
+            code:item.print_to_string({beautify:true,comments:true}),
+            type: "methods"
           }
-        })
+        });
         // watch
-        const watch = astContent.filter(item=>item.key.name==="watch");
+        const watch = astContent.filter(item=>item.key&&item.key==="watch");
         watchRes = watch[0].value.properties.map(item=>{
           return{
             name: item.key.name,
-            code:escodegen.generate(item)
+            code:item.print_to_string({beautify:true,comments:true}),
+            type: "watch"
           }
-        })
+        });
         platform.sendSuccessResult(req, {
           methods: methodRes,
           watch: watchRes,
