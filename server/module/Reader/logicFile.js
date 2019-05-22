@@ -17,14 +17,14 @@ let json2script = function (content) {
                 let temp1 = {};
                 if (tar.item) {
                     tar.item.map(tar1 => {
-                        temp1[tar1.name] = "";
+                        temp1[tar1.desp] = "";
                     });
-                    temp[tar.name] = temp1;
+                    temp[tar.desp] = temp1;
                 } else {
-                    temp[tar.name] = "";
+                    temp[tar.desp] = "";
                 }
             });
-            datares[item.name] = temp;
+            datares[item.desp] = temp;
         });
         dataAst = UglifyJS.parse("data=" + JSON.stringify(datares));
         dataAstContent = dataAst.body[0].body.right.properties;
