@@ -8,6 +8,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "style": "vue-cli-service build --no-clean",
+    "component":"vue build -t lib -d v2sual ./src/@aweb-components/aweb.components.js",
     "lint": "vue-cli-service lint",
     "mock": "node ./server.js"
   },

@@ -249,6 +249,8 @@ router.get('/-/getMainList', function (ctx) {
 })
 
 
+require('../server/module/dataSource')(app,require('../server/config/config.json').dataSource);
+
 //parser
 app.use(KoaBody());
 
