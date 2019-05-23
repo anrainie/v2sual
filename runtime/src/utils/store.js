@@ -249,7 +249,7 @@ export default () => {
       save(state) {
         state.UIData.editor && state.UIData.editor.save && state.UIData.editor.save(state.structure);
       },
-      bind( state,{vueObj,data,dataStr,wid,modelKey}) {
+      bind(state, { vueObj, data, dataStr, wid, modelKey }) {
         let model = this.getters.model(wid);
         let commentObj = this.getters.vueInstance(wid);
         //改变state.baskect自动改变model
@@ -258,13 +258,13 @@ export default () => {
         });
         let last = dataStr.split(".").pop();
         //改变model自动改变state.baskect
-        let commentBind =commentObj.$watch(`model.${modelKey}`, v => {
-          vueObj.$set(data,last,v)
+        let commentBind = commentObj.$watch(`model.${modelKey}`, v => {
+          vueObj.$set(data, last, v)
         })
-        vueObj.binder.push(vueBind,commentBind);
+        vueObj.binder.push(vueBind, commentBind);
       },
-      unbind(state,vueObj){
-        vueObj.binder.map(item=>{item()})
+      unbind(state, vueObj) {
+        vueObj.binder.map(item => { item() })
       },
       /**
        * 初始化画布

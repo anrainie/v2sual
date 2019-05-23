@@ -55,10 +55,13 @@ export const widget = {
     //   return model;
     // },
     model() {
-      let m = this.$store.getters.model(this.wid);
-      if (m)
-        return m;
-      throw `找不到model${this.name}:${this.wid}`
+      try{
+        let m = this.$store.getters.model(this.wid);
+        if (m)
+          return m;
+        throw `找不到model${this.name}:${this.wid}`
+      }catch(e){
+      }
     },
     parentId() {
       return this.pid || (this.pid = this.$store.getters.parentId(this.wid));

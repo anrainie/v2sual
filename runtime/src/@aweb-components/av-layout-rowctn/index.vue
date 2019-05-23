@@ -90,7 +90,7 @@ export default {
       };
     },
     wrapStyle() {
-      return { ...this.model.style.divCtn, ...this.model.customStyle };
+      return { /*...this.model.style.divCtn, ...this.model.customStyle*/ };
     }
   }
 };

@@ -17,6 +17,7 @@ import avFormTimePicker from './av-form-timePicker';
 import avFormTransfer from './av-form-transfer';
 import avFormUpload from './av-form-upload';
 import avLayoutColctn from './av-layout-colctn';
+import avLayoutEditor from './av-layout-colctn/editor.vue';
 import avLayoutRowctn from './av-layout-rowctn'
 
 import get from '../../../pipe/src/main/webapp/plugins/app.get';
@@ -50,5 +51,6 @@ export default {
 	avFormTransfer,
 	avFormUpload,
 	avLayoutColctn,
-	avLayoutRowctn
+	avLayoutRowctn,
+	avLayoutEditor
 }

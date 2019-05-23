@@ -89,8 +89,8 @@ export default {
       };
     },
     wrapStyle() {
-      debugger;
-      return { ...this.model.style.divCtn, ...this.model.customStyle };
+      // debugger;
+      return { /*...this.model.style.divCtn, ...this.model.customStyle */};
     }
   }
 };

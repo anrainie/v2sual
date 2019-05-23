@@ -2,7 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var nodeServer = require('./proxy/proxy.node.js')
 
-require('./server');
+//require('./server');
 
 module.exports = {
     publicPath: './',
