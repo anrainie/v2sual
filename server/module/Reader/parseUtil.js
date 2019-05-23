@@ -69,7 +69,6 @@ let appendComponent = function(parent,index,element){
     if(child === undefined){
         parent.children[index] = null;
     }
-    let is = child ? child.component : "v2Empty";
     let wid = child ? child.id : parent.wid + '-' + index;
     let eCom = null;
     let isContainer = false;
@@ -77,16 +76,17 @@ let appendComponent = function(parent,index,element){
         eCom =  document.createElement('v2empty');
         eCom.setAttribute('class','V2Empty');
     }else if(avLayout.includes(child.component)){
-            eCom =  document.createElement('v2container');
-            isContainer = true;
+        eCom =  document.createElement('v2container');
+        isContainer = true;
+        child.wid = wid;
     }else{
         eCom =  document.createElement(child.component);
+        child.wid = wid;
     }
-    eCom.setAttribute(':is','`'+is+'`');
     eCom.setAttribute(':wid','`'+wid+'`');
     eCom.setAttribute(':index',index);
     eCom.setAttribute(':pid','`'+parent.wid+'`');
-    appendAttribute(child,eCom);
+    // appendAttribute(child,eCom);
     appendChildren(child,eCom,isContainer);
     element.appendChild(eCom);
 }
@@ -108,9 +108,6 @@ let appendChildren = function(parentJson,element,isContainer){
         }
     }else{
         let layout = layout_c(parentJson);
-        if(parentJson.direction === undefined || parentJson.direction === null){
-            parentJson.direction = parentJson.href === 'av-layout-colctn'? 'row' : 'col' ;
-        }
         for(let i = 0,len = layout.length ; i<len ; i++){
             if(parentJson.direction === 'col'){
                 let span = parseInt(layout instanceof Array ? Math.round(layout[i] * 24 / 100) : '2');
@@ -147,12 +144,13 @@ let json2html = function (jsonStr) {
     let root = document.createElement('v2c');
     let temp = document.createElement('template');
     let eV2C = document.createElement('v2container');
-    eV2C.setAttribute(':wid', '`'+jsonV2C.id+'`');
-    eV2C.setAttribute('class', 'V2Container');
-    eV2C.setAttribute('ref', 'wrap');
-    eV2C.setAttribute('style', parseAttrJson(jsonV2C.style));
+    jsonV2C.wid = jsonV2C.id;
+    eV2C.setAttribute(':wid', '`'+jsonV2C.wid+'`');
+    // eV2C.setAttribute('class', 'V2Container');
+    // eV2C.setAttribute('ref', 'wrap');
+    // eV2C.setAttribute('style', parseAttrJson(jsonV2C.style));
     //设置属性
-    appendAttribute(jsonV2C,eV2C);
+    // appendAttribute(jsonV2C,eV2C);
     //添加子节点
     appendChildren(jsonV2C,eV2C,true);
     temp.content.appendChild(eV2C);

@@ -268,35 +268,40 @@ class Page {
   */
   logicList(platform) {
     const context = this;
-    
+
     return async function (req) {
       try {
         const query = req.data;
-        let methodRes=[],watchRes=[];
-        const filepath = query.path+".def";
-        const content = await new Promise(resolve => fs.readFile(filepath, 'utf8', (error, response) => error ? platform.sendErrorResult(req, error) : resolve(response)));
+        let methodRes = [], watchRes = [];
+        const filepath = query.path + ".def";
+        const sample = 'export default{data(){return{batabasket:{user:{name:"",time:"",logs:[]}}};},methods:{},watch:{},beforeCreate(){},created(){},beforeMount(){},mounted(){},beforeUpdate(){},updated(){},beforeDestroy(){},destroyed(){}};';
+        const content = await new Promise(resolve => fs.readFile(filepath, 'utf8', (error, response) => error ? platform.sendSuccessResult(req, {
+          methods: [],
+          watch: [],
+          scriptCode: sample
+        }) : resolve(response)));
         const json = JSON.parse(content);
-        if(!json.logic) json.logic='export default{data(){return{batabasket:{user:{name:"",time:"",logs:[]}}};},methods:{},watch:{},beforeCreate(){},created(){},beforeMount(){},mounted(){},beforeUpdate(){},updated(){},beforeDestroy(){},destroyed(){}};';
+        if (!json.logic) json.logic = sample;
         let script = json.logic;
         // let tempScript = `data=${script}`;
         // let ast = esprima.parseScript(tempScript);
         let ast = UglifyJS.parse(script);
         let astContent = ast.body[0].exported_value.properties;
         // methods
-        const methods = astContent.filter(item=>item.key&&item.key==="methods");
-        methodRes = methods[0].value.properties.map(item=>{
-          return{
+        const methods = astContent.filter(item => item.key && item.key === "methods");
+        methodRes = methods[0].value.properties.map(item => {
+          return {
             name: item.key.name,
-            code:item.print_to_string({beautify:true,comments:true}),
+            code: item.print_to_string({ beautify: true, comments: true }),
             type: "methods"
           }
         });
         // watch
-        const watch = astContent.filter(item=>item.key&&item.key==="watch");
-        watchRes = watch[0].value.properties.map(item=>{
-          return{
+        const watch = astContent.filter(item => item.key && item.key === "watch");
+        watchRes = watch[0].value.properties.map(item => {
+          return {
             name: item.key.name,
-            code:item.print_to_string({beautify:true,comments:true}),
+            code: item.print_to_string({ beautify: true, comments: true }),
             type: "watch"
           }
         });

@@ -47,7 +47,7 @@ let changeDef = function (content, logicOptions) {
         name = logicOptions.name,
         code = logicOptions.code,
         type = logicOptions.type,
-        ast, astContent, methods, str, tempAst, hook;
+        ast, astContent, methods,watch, str, tempAst, hook;
 
     ast = UglifyJS.parse(logic);
     astContent = ast.body[0].exported_value.properties;
@@ -63,6 +63,16 @@ let changeDef = function (content, logicOptions) {
                 }
             });
             ast.body[0].exported_value.properties = hook;
+            break;
+        case "watch":
+            watch = astContent.filter(item => item.key && item.key === "watch")[0];
+            watch.value.properties = watch.value.properties.map(item => {
+                if (item.key.name === name) {
+                    return tempAst.body[0].body.right.properties[0];
+                } else {
+                    return item;
+                }
+            });
             break;
         default:
             methods = astContent.filter(item => item.key && item.key === "methods")[0];

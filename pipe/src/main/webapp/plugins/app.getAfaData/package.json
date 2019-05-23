@@ -5,6 +5,7 @@
         "desp": "从 AFA 获取数据",
         "name": "app.getAfaData",
         "belongTo": "function",
+        "category": "dataSource",
         "params": [
             {
                 "name": "params",
@@ -12,6 +13,13 @@
                 "type": "string",
                 "necessary": true,
                 "defaultValue": "{\n    t:'tc',\n    m:'mc',\n    url:'url',\n    data:{}\n}"
+            },
+            {
+                "name": "params2",
+                "desp": "参数2",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": ""
             }
         ],
         "hasReturn": true,
@@ -21,7 +29,9 @@
             "details": "",
             "type": "array",
             "defaultValue": ""
-        }
+        },
+        "label": "AFA",
+        "labelType": "front"
     },
     "category": "DataSource",
     "description": "",

@@ -187,7 +187,8 @@ export default {
     computed:{
         'databasket.A.user.name':{
             get(){
-                return this.$store.getters.model(id).value;
+              return false;
+               // return this.$store.getters.model(id).value;
             }
         }
     }
