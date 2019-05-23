@@ -7,6 +7,8 @@ const pageFlow = new PageFlow(config.runtime.page);
 
 const vueFileUtil = require('./vueFileUtil');
 
+const logicFile = require('./logicFile');
+
 
 const fileUtil = {
   getFileReader(path) {
@@ -49,7 +51,8 @@ const fileUtil = {
    * @param {*} path 
    * @param {*} content 
    */
-  saveFile(path, content) {
+  saveFile(path, content,logicOptions) {
+    content = logicFile.changeDef(content,logicOptions);
     let writer = this.getFileWriter(path);
     return writer ? writer(path, content) : new Promise((res, rej) => {
       fs.writeFileSync(path, content);
@@ -75,7 +78,8 @@ const reader = {
     return async req => {
       let path = req.data.path;
       let content = req.data.content;
-      fileUtil.saveFile(path, content).then(() => {
+      let logicOptions = req.data.logicOptions;
+      fileUtil.saveFile(path, content,logicOptions).then(() => {
         platform.sendSuccessResult(req, {});
       }).catch(e => {
         platform.sendErrorResult(e)

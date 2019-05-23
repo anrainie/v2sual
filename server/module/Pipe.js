@@ -14,7 +14,33 @@ class Pipe {
         return async (req) => {
             try {
                 const files = await readDir(path);
+                let res = [
+                    {
+                        desp: "数据源",
+                        item: []
+                    },
+                    {
+                        desp: "比较运算",
+                        item: []
+                    },
+                    {
+                        desp: "数字运算",
+                        item: []
+                    },
+                    {
+                        desp: "逻辑运算",
+                        item: []
+                    },
+                    {
+                        desp: "字符串",
+                        item: []
+                    },
+                    {
+                        desp: "接口",
+                        item: []
+                    }
 
+                ]
                 //文件列表
                 const pipeList = files.filter(f => f.lastIndexOf('package.json') !== -1);
 
@@ -29,14 +55,10 @@ class Pipe {
                         category: content.category,
                         desp: docs.desp,
                         name: docs.name,
-                        input: docs.params.map(p => {
-                            return {
-                                type: 'value',
-                                value: p.defaultValue,
-                                desp: p.desp,
-                                name: p.name,
-                            }
-                        }),
+                        label:"AFA",
+                        frontName:"",
+                        mode:"front",
+                        input: docs.params,
                         output: {
                             desp: docs.returnValue.desp,
                             name: docs.returnValue.name
