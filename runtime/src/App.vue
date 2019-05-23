@@ -12,13 +12,14 @@
 import Vue from "vue";
 import components from "@/@aweb-components/aweb.components.js";
 import { widget } from "@/utils/v2-view";
+import events from "@/utils/events";
 import container from "@/components/container.vue";
 import empty from "@/components/empty.vue";
 
 console.log(components);
 //注册组件
 Object.keys(components).map(c => {
-  Vue.component(c, { mixins: [widget], ...components[c] });
+  Vue.component(c, { mixins: [widget,events], ...components[c] });
 });
 
 Vue.component("v2container", container);

@@ -7,6 +7,8 @@
        <div class="form-inputNumber-ctn" :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
     <el-input-number
       v-model="model.value"
+      ref="__op_el-input-number_1"
+      events="change,click"
       @change="handleChange"
       :min="parseFloat(model.min)"
       :max="parseFloat(model.max)"
