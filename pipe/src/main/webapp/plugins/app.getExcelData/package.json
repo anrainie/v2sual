@@ -21,7 +21,10 @@
             "details": "",
             "type": "array",
             "defaultValue": ""
-        }
+        },
+        "category": "dataSource",
+        "label": "Excel",
+        "labelType": "front"
     },
     "category": "DataSource",
     "description": "",

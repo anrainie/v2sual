@@ -20,6 +20,20 @@ class Pipe {
                         item: []
                     },
                     {
+                        desp: "自定义",
+                        item: [
+                          {
+                            name: "diy",
+                            desp: "自定义代码",
+                            mode:"custom",
+                            input: [
+                              { type: "Value", value: "this.value1" },
+                              { type: "Value", value: "this.value2" }
+                            ]
+                          }
+                        ]
+                      },
+                    {
                         desp: "比较运算",
                         item: []
                     },
@@ -50,23 +64,56 @@ class Pipe {
                     const str = Buffer.from(buffer).toString();
                     const content = JSON.parse(str);
                     const docs = content.docs;
-
-                    return {
-                        category: content.category,
-                        desp: docs.desp,
+                    let obj = {
                         name: docs.name,
-                        label:"AFA",
+                        desp: docs.desp,
+                        label: docs.label,
                         frontName:"",
-                        mode:"front",
-                        input: docs.params,
-                        output: {
-                            desp: docs.returnValue.desp,
-                            name: docs.returnValue.name
-                        }
+                        mode: docs.labelType,
+                        input: docs.params.map(item=>{
+                            return{
+                                type:"Value",value:item.defaultValue
+                            }
+                        })
+                      };
+                    switch(docs.category){
+                        case"dataSource":
+                        res[0].item.push(obj);
+                        break;
+                        case "comparison":
+                        res[2].item.push(obj);
+                        break;
+                        case "number":
+                        res[3].item.push(obj);
+                        break;
+                        case "logic":
+                        res[4].item.push(obj);
+                        break;
+                        case "string":
+                        res[5].item.push(obj);
+                        break;
+                        case "api":
+                        res[6].item.push(obj);
+                        break;
+                        default:
+                        break;
                     }
+                    // return {
+                    //     category: content.category,
+                    //     desp: docs.desp,
+                    //     name: docs.name,
+                    //     label:"AFA",
+                    //     frontName:"",
+                    //     mode:"front",
+                    //     input: docs.params,
+                    //     output: {
+                    //         desp: docs.returnValue.desp,
+                    //         name: docs.returnValue.name
+                    //     }
+                    // }
                 });
 
-                platform.sendSuccessResult(req, pipeConfig);
+                platform.sendSuccessResult(req, res);
                 //Result.success(ctx, vueFiles);
             } catch (e) {
                 platform.sendErrorResult(req, e);

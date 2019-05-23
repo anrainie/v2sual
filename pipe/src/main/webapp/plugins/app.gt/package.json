@@ -1,0 +1,32 @@
+{
+    "name": "@aweb-plugins/app.gt",
+    "main": "index.js",
+    "docs": {
+        "desp": "大于",
+        "name": "R.gt",
+        "category": "comparison",
+        "label": ">",
+        "labelType": "normal",
+        "belongTo": "function",
+        "params": [
+            {
+                "name": "",
+                "desp": "",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": "value2"
+            }
+        ],
+        "hasReturn": false,
+        "returnValue": {
+            "name": "",
+            "desp": "",
+            "details": "",
+            "type": "string",
+            "defaultValue": ""
+        }
+    },
+    "category": "自定义",
+    "description": "",
+    "version": "6.0.0"
+}
