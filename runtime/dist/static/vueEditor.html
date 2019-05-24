@@ -3,6 +3,15 @@
 <head>
   <!--css-->
   <style>
+    .loadingPanel {
+      font-size: 22px;
+      text-align: center;
+      width: 100%;
+      height: 45%;
+      position: absolute;
+      top: 30%;
+    }
+
     .draghandle {
       position: absolute;
       right: 0;
@@ -157,19 +166,26 @@
       window.Vue = window.parent.Vue;
       window.Vuex = window.parent.Vuex;
 
-      console.log('getVueEditorStyles');
-      window.parent.IDE.socket.emitAndGetDeferred("getVueEditorStyles").done(e => {
-        $('head', window.document).append(e.data);
-      })
-
-
       var id = getUrlParam("id");
       console.log('iframe onload', id);
       var parent = window.parent.__dataPool[id];
+
+      parent.$store.commit('loading', true)
+      window.parent.IDE.socket.emitAndGetDeferred("getVueEditorStyles").done(e => {
+        $('head', window.document).append(e.data);
+        parent.$store.commit('loading', false)
+      })
+
+
       window.vueRoot = new Vue({
         store: parent.$store,
         mixins: [window.parent.mixins],
-        template: `<v2Container v-model="rootId"></v2Container>`,
+        template: `<template>
+            <transition name="el-fade-in-linear">
+          <div class="loadingPanel" v-if="$store.state.loading">加载中...</div>
+          <v2Container v-else="!$store.state.loading" v-model="rootId"></v2Container>
+          </<transition>
+          </template>`,
         mounted() {
           //TODO 以下内容是为了支撑iframe的键盘鼠标事件，考虑移动到一个特定js文件
           //绑定键盘
@@ -209,6 +225,7 @@
     ::-webkit-scrollbar-thumb:hover {
       background-color: rgba(41, 58, 86, 0.2);
     }
+
   </style>
 </body>
 
