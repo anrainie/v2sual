@@ -51,8 +51,8 @@ const fileUtil = {
    * @param {*} path 
    * @param {*} content 
    */
-  saveFile(path, content,logicOptions) {
-    content = logicFile.changeDef(content,logicOptions);
+  saveFile(path, content, logicOptions) {
+    content = logicFile.changeDef(content, logicOptions);
     let writer = this.getFileWriter(path);
     return writer ? writer(path, content) : new Promise((res, rej) => {
       fs.writeFileSync(path, content);
@@ -79,11 +79,15 @@ const reader = {
       let path = req.data.path;
       let content = req.data.content;
       let logicOptions = req.data.logicOptions;
-      fileUtil.saveFile(path, content,logicOptions).then(() => {
-        platform.sendSuccessResult(req, {});
-      }).catch(e => {
-        platform.sendErrorResult(e)
-      })
+      try {
+        fileUtil.saveFile(path, content, logicOptions).then(() => {
+          platform.sendSuccessResult(req, {});
+        }).catch(e => {
+          platform.sendErrorResult(e)
+        })
+      } catch (e) {
+        platform.sendErrorResult(e);
+      }
     }
   }
 };

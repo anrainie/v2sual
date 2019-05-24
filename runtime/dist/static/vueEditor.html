@@ -3,6 +3,10 @@
 <head>
   <!--css-->
   <style>
+    .dialogContent {
+      background: white;
+    }
+
     .loadingPanel {
       font-size: 22px;
       text-align: center;
@@ -69,6 +73,7 @@
       background: white;
       box-shadow: 0 0 6px 0 rgba(0, 0, 0, .2);
       border-radius: 2px;
+      transition: opacity .5s linear;
     }
 
 
@@ -180,12 +185,12 @@
       window.vueRoot = new Vue({
         store: parent.$store,
         mixins: [window.parent.mixins],
-        template: `<template>
-            <transition name="el-fade-in-linear">
-          <div class="loadingPanel" v-if="$store.state.loading">加载中...</div>
-          <v2Container v-else="!$store.state.loading" v-model="rootId"></v2Container>
-          </<transition>
-          </template>`,
+        template: `
+          <transition name="el-fade-in-linear">
+            <div class="loadingPanel" v-if="$store.state.loading">加载中...</div>
+            <v2Container v-else="!$store.state.loading" v-model="rootId"></v2Container>
+          </transition>
+          `,
         mounted() {
           //TODO 以下内容是为了支撑iframe的键盘鼠标事件，考虑移动到一个特定js文件
           //绑定键盘
