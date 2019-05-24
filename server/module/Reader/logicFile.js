@@ -6,31 +6,20 @@ const UglifyJS = require('uglify-es-web');
  */
 let json2script = function (content) {
     let logic = JSON.parse(content).logic,
-        dataBasket = JSON.parse(content).dataBasket,
-        datares = {},dataAst,dataAstContent,ast,dataTar,str,
+        data = JSON.parse(content).dataBasket.data,
+        datares = {},dataAst,dataAstContent,ast,dataTar,str,i,newData={},
         template;
     if (logic) {
-
-        dataBasket.map(item => {
-            let temp = {};
-            item.item.map(tar => {
-                let temp1 = {};
-                if (tar.item) {
-                    tar.item.map(tar1 => {
-                        temp1[tar1.desp] = "";
-                    });
-                    temp[tar.desp] = temp1;
-                } else {
-                    temp[tar.desp] = "";
-                }
-            });
-            datares[item.name] = temp;
-        });
-        dataAst = UglifyJS.parse("data=" + JSON.stringify(datares));
+        dataAst = UglifyJS.parse("data="+JSON.stringify(data));
         dataAstContent = dataAst.body[0].body.right.properties;
+
         ast = UglifyJS.parse(logic);
         dataTar = ast.body[0].exported_value.properties.filter(item => item.key && item.key.name === "data")[0];
-        dataTar.value.body[0].value.properties = dataAstContent;
+        dataTar.value.body[0].value.properties = dataAstContent.map(item=>{
+            let ast = UglifyJS.parse("data="+data[item.key]).body[0].body.right;
+            item.value = ast
+            return  item
+        });
         str = ast.print_to_string({ beautify: true, comments: true });
         return `<script>${str}</script>`
     } else {
@@ -39,7 +28,7 @@ let json2script = function (content) {
     }
 }
 /**
- * 修改def josn内容
+ * 修改def json内容
  * @param {String} htmlStr 
  */
 let changeDef = function (content, logicOptions) {
@@ -76,7 +65,7 @@ let changeDef = function (content, logicOptions) {
             break;
         default:
             methods = astContent.filter(item => item.key && item.key === "methods")[0];
-            methods.value.properties = methods.value.properties.map(item => {
+            methods.value.properties = methods.value.properties.map((item,index) => {
                 if (item.key.name === name) {
                     return tempAst.body[0].body.right.properties[0];
                 } else {
