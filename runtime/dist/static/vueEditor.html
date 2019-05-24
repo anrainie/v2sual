@@ -157,7 +157,7 @@
       window.Vue = window.parent.Vue;
       window.Vuex = window.parent.Vuex;
 
-
+      console.log('getVueEditorStyles');
       window.parent.IDE.socket.emitAndGetDeferred("getVueEditorStyles").done(e => {
         $('head', window.document).append(e.data);
       })
