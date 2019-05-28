@@ -261,10 +261,16 @@ export default () => {
         let commentBind = commentObj.$watch(`model.${modelKey}`, v => {
           vueObj.$set(data, last, v)
         })
-        vueObj.binder.push(vueBind, commentBind);
+        if(vueObj.binder){
+          vueObj.binder.push(vueBind, commentBind);
+        }else{
+          vueObj.binder = [vueBind, commentBind]
+        }
       },
       unbind(state, vueObj) {
-        vueObj.binder.map(item => { item() })
+        if(vueObj.binder){
+          vueObj.binder.map(item => { item() });
+        }
       },
       /**
        * 初始化画布
