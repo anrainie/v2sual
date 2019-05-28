@@ -3,19 +3,12 @@
     "main": "index.js",
     "docs": {
         "desp": "从Excel获取数据",
-        "name": "pipe.getExcelData",
+        "name": "getExcelData",
         "belongTo": "function",
         "params": [
             {
-                "name": "",
-                "desp": "",
-                "type": "string",
-                "necessary": true,
-                "defaultValue": "value2"
-            },
-            {
-                "name": "",
-                "desp": "",
+                "name": "params",
+                "desp": "参数",
                 "type": "string",
                 "necessary": true,
                 "defaultValue": ""

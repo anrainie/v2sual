@@ -15,13 +15,6 @@
                 "type": "string",
                 "necessary": true,
                 "defaultValue": "value2"
-            },
-            {
-                "name": "",
-                "desp": "",
-                "type": "string",
-                "necessary": true,
-                "defaultValue": ""
             }
         ],
         "hasReturn": false,

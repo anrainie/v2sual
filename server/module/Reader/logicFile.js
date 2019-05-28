@@ -126,7 +126,7 @@ let changeDef = function (content, logicOptions) {
             break;
     };
     // 添加绑定数据
-    beforeCreate = astContent.map(item => {
+    beforeCreate = ast.body[0].exported_value.properties.map(item => {
         if(item.key && item.key.name === "beforeCreate"){
             return bindData(item, content.structure);
         }else{
