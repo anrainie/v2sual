@@ -52,7 +52,7 @@ let bindData = function (hook, structure) {
             if(end.length)tabIndex.push(index);
         }
     });
-    hook.value.body = hook.value.body.filter((item,index)=>index<tabIndex[0]||index>tabIndex[1]);
+    if(tabIndex.length) hook.value.body = hook.value.body.filter((item,index)=>index<tabIndex[0]||index>tabIndex[1]);
     item = structure;
     while (key) {
         if (item && item.component !== "av-layout-colctn" && item.component !== "v2Container" && item.component !== "av-layout-rowctn" && item.mapping) {
@@ -87,11 +87,15 @@ let changeDef = function (content, logicOptions) {
         name = logicOptions.name,
         code = logicOptions.code,
         type = logicOptions.type,
-        ast, astContent, methods, watch, str, tempAst, hook, beforeCreate;
+        ast, astContent, methods,
+        watch, str, tempAst, hook,
+        beforeCreate,defini;
 
     ast = UglifyJS.parse(logic);
     astContent = ast.body[0].exported_value.properties;
     tempAst = UglifyJS.parse(`data={${code}}`);
+    defini = tempAst.body[0].body.right.properties[0].value.body[0];
+    if(defini&&defini.definitions&&defini.definitions[0].name.name==="ctx")tempAst.body[0].body.right.properties[0].value.body[0].end.comments_after=[];
 
     switch (type) {
         case "hook":
