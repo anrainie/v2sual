@@ -140,12 +140,12 @@ let changeDef = function (content, logicOptions = {}) {
   }
   if (astContent) {
     // 添加绑定数据
-    beforeCreate = astContent.map(item => {
-      if (item.key && item.key.name === "beforeCreate") {
-        return bindData(item, content.structure);
-      } else {
-        return item;
-      }
+    beforeCreate = ast.body[0].exported_value.properties.map(item => {
+        if(item.key && item.key.name === "beforeCreate"){
+            return bindData(item, content.structure);
+        }else{
+            return item;
+        }
     });
     ast.body[0].exported_value.properties = beforeCreate;
     str = ast.print_to_string({
