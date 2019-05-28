@@ -1,10 +1,13 @@
 {
-    //结构
-    structure:{
-        "id":"root","component":"v2Container","direction":"row","layout":[100],"style":{"width":"100%","height":"100%"},"data":{},"",
-    }
-    //逻辑概览
-    logic:{},
-    dataBaskect:{},
+    "structure":{
+        "id":"root","component":"v2Container",
+        "direction":"row",
+        "layout":[50,50],
+        "style":{"width":"100%","height":"100%"},"data":{},
+        "children":[]
+        
+    },
+    "logic":{},
+    "dataBaskect":{}
 
 }

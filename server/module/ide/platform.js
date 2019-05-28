@@ -49,14 +49,15 @@ class Platform {
   }
 
   sendErrorResult(req, error) {
+    console.error(error)
     this.send(req, {
       state: 'error',
-      errorMsg: error,
+      errorMsg: error ? error.toString() : null,
     });
   }
 
   send(req, result) {
-    console.log(req);
+    // console.log(req, result);
     this.socket.emit(req.callbackId, result);
   }
 }
