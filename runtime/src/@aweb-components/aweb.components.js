@@ -69,11 +69,6 @@ import avLayoutRowctn from './av-layout-rowctn'
 	avFormTransfer,
 	avFormUpload,
 	avLayoutColctn,
-<<<<<<< HEAD
-	avLayoutRowctn
-          }
-=======
 	avLayoutRowctn,
 	avLayoutEditor
 }
->>>>>>> d0b8b34aaca057534be59d653be98e2b73215bf5
