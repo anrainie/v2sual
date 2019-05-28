@@ -1,5 +1,8 @@
 const config = require('../../config/config.base');
 const fs = require('fs')
+//解决fs不支持递归删除问题
+const rmdir = require('rimraf');
+
 
 const PageFlow = require('../PageFlow').PageFlow;
 
@@ -57,6 +60,75 @@ const fileUtil = {
     return writer ? writer(path, content) : new Promise((res, rej) => {
       fs.writeFileSync(path, content);
     });
+  },
+  /**
+   * 创建新文件/文件夹
+   */
+  createFile({
+    path,
+    name,
+    template
+  }) {
+    if (path && name) {
+      let ext = this.getFileExtension(name)
+      switch (ext) {
+        case '.vue':
+          template = template || `<tempalte></tempalte>
+<script></script>
+<style></style>`;
+          break;
+        default:
+      }
+      return new Promise((res, rej) => {
+        fs.writeFileSync(path + '\\' + name, template || '', {
+          flag: 'wx+'
+        });
+        res();
+      });
+    }
+  },
+  createFolder({
+    path,
+    name,
+  }) {
+    return new Promise((res, rej) => {
+      try {
+        if (path && name)
+          fs.mkdirSync(path + '\\' + name, {
+            recursive: true
+          });
+        res();
+      } catch (e) {
+        rej(e);
+      }
+    });
+  },
+  deleteFile({
+    path,
+    isDirectory = false
+  }) {
+
+    let stat = fs.lstatSync(path);
+    return new Promise((res, rej) => {
+      try {
+        if (stat.isDirectory()) {
+
+          rmdir(path, function (error) {
+            if (error)
+              rej(error)
+          });
+        } else if (stat.isFile()) {
+          fs.unlinkSync(path)
+        } else {
+          rej('非法的文件类型' + path);
+          return;
+        }
+        res();
+      } catch (e) {
+        console.error(e)
+        rej(e)
+      }
+    })
   }
 };
 
@@ -69,11 +141,67 @@ const reader = {
       fileUtil.getFileContent(path).then(content => {
         platform.sendSuccessResult(req, content);
       }).catch(e => {
-        platform.sendErrorResult(e)
+        platform.sendErrorResult(req, e)
       })
     }
   },
-
+  deleteFile(platform) {
+    return async req => {
+      let path = req.data.path;
+      try {
+        fileUtil.deleteFile({
+          path,
+        }).then(() => {
+          platform.sendSuccessResult(req, {});
+        }).catch(e => {
+          console.log(e)
+          platform.sendErrorResult(req, e)
+        })
+      } catch (e) {
+        console.log(e)
+        platform.sendErrorResult(req, e);
+      }
+    }
+  },
+  createFile(platform) {
+    return async req => {
+      let path = req.data.path;
+      let name = req.data.name;
+      let template = req.data.template;
+      try {
+        fileUtil.createFile({
+          path,
+          name,
+          template,
+        }).then(() => {
+          platform.sendSuccessResult(req, {});
+        }).catch(e => {
+          platform.sendErrorResult(req, e)
+        })
+      } catch (e) {
+        console.log(e);
+        platform.sendErrorResult(req, e);
+      }
+    }
+  },
+  createFolder(platform) {
+    return async req => {
+      let path = req.data.path;
+      let name = req.data.name;
+      try {
+        fileUtil.createFolder({
+          path,
+          name,
+        }).then(() => {
+          platform.sendSuccessResult(req, {});
+        }).catch(e => {
+          platform.sendErrorResult(req, e)
+        })
+      } catch (e) {
+        platform.sendErrorResult(req, e);
+      }
+    }
+  },
   saveFile(platform) {
     return async req => {
       let path = req.data.path;
@@ -83,10 +211,10 @@ const reader = {
         fileUtil.saveFile(path, content, logicOptions).then(() => {
           platform.sendSuccessResult(req, {});
         }).catch(e => {
-          platform.sendErrorResult(e)
+          platform.sendErrorResult(req, e)
         })
       } catch (e) {
-        platform.sendErrorResult(e);
+        platform.sendErrorResult(req, e);
       }
     }
   }

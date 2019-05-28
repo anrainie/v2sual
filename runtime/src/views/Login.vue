@@ -3,8 +3,6 @@
     <!-- direction==row -->
     <el-row>
       <componentName :wid="`model.id`" :pid="`model.pid`">
-      
-
       </componentName>
     </el-row>
     <el-row>

@@ -64,7 +64,10 @@
         "reader": {
             "consumption": {
                 "getFile": "getFile",
-                "saveFile": "saveFile"
+                "saveFile": "saveFile",
+                "createFile": "createFile",
+                "createFolder": "createFolder",
+                "deleteFile": "deleteFile"
             }
         },
         "test": {
