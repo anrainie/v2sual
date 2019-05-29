@@ -140,7 +140,8 @@ const routerList = [
 				"component": "example/table",
 				"meta": {
 					"title": "表格",
-					"icon": "el-icon-goods"
+					"icon": "el-icon-goods",
+					"keepAlive":true
 				}
 			}, {
 				"path": "rightMenu",
@@ -164,14 +165,15 @@ const routerList = [
 				"component": "example/hasSubTab",
 				"meta": {
 					"title": "嵌套子页面",
-					"icon": "el-icon-setting"
+					"icon": "el-icon-setting",
+					"keepAlive":true
 				}
 			}, {
 				"path": "dycSubTab",
 				"name": "dycSubTab",
 				"component": "example/dycSubTab",
 				"meta": {
-					"title": "动态子页面",
+					"title": "测试",
 					"icon": "el-icon-setting"
 				}
 			}, {
@@ -180,6 +182,14 @@ const routerList = [
 				"component": "example/afaAjax",
 				"meta": {
 					"title": "afa直连",
+					"icon": "el-icon-setting"
+				}
+			}, {
+				"path": "test",
+				"name": "test",
+				"component": "example/upload",
+				"meta": {
+					"title": "测试",
 					"icon": "el-icon-setting"
 				}
 			}
@@ -248,8 +258,6 @@ router.get('/-/getMainList', function (ctx) {
 	ctx.body = mainList;
 })
 
-
-require('../server/module/dataSource')(app,require('../server/config/config.json').dataSource);
 
 //parser
 app.use(KoaBody());

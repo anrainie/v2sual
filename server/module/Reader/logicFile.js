@@ -7,9 +7,9 @@ const UglifyJS = require('uglify-es-web');
 let json2script = function (content) {
   let logic = JSON.parse(content).logic;
   let dataBasket = JSON.parse(content).dataBasket;
-  if(!logic||!dataBasket){
-      console.error('content缺少逻辑概览');
-      return `<script></script>`
+  if (!logic || !dataBasket) {
+    console.error('content缺少逻辑概览');
+    return `<script></script>`
   }
   let
     data = dataBasket.data,
@@ -53,31 +53,30 @@ let bindData = function (hook, structure) {
     tabIndex = [],
     key = true;
 
-    // 检查
-    hook.value.body.map((item,index) => {
-        if(item.start.comments_before.length){
-            let start = item.start.comments_before.filter(item=>item.value==="*bind*");
-            if(start.length)tabIndex.push(index);
-        }
-        if(item.end.comments_after.length){
-            let end = item.end.comments_after.filter(item=>item.value==="*bind over*");
-            if(end.length)tabIndex.push(index);
-        }
-    });
-    if(tabIndex.length) hook.value.body = hook.value.body.filter((item,index)=>index<tabIndex[0]||index>tabIndex[1]);
-    item = structure;
-    while (key) {
-        if (item && item.component !== "av-layout-colctn" && item.component !== "v2Container" && item.component !== "av-layout-rowctn" && item.mapping) {
-            item.mapping.map(item => {
-                newHook.push(`this.$store.commit("bind",{ vueObj:this, data:${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`)
-            })
-        }
-        if (item && item.children) list = list.concat(item.children);
-        if (list.length) {
-            item = list.pop();
-        } else {
-            key = false;
-        };
+  // 检查
+  hook.value.body.map((item, index) => {
+    if (item.start.comments_before.length) {
+      let start = item.start.comments_before.filter(item => item.value === "*bind*");
+      if (start.length) tabIndex.push(index);
+    }
+    if (item.end.comments_after.length) {
+      let end = item.end.comments_after.filter(item => item.value === "*bind over*");
+      if (end.length) tabIndex.push(index);
+    }
+  });
+  if (tabIndex.length) hook.value.body = hook.value.body.filter((item, index) => index < tabIndex[0] || index > tabIndex[1]);
+  item = structure;
+  while (key) {
+    if (item && item.component !== "av-layout-colctn" && item.component !== "v2Container" && item.component !== "av-layout-rowctn" && item.mapping) {
+      item.mapping.map(item => {
+        newHook.push(`this.$store.commit("bind",{ vueObj:this, data:${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`)
+      })
+    }
+    if (item && item.children) list = list.concat(item.children);
+    if (list.length) {
+      item = list.pop();
+    } else {
+      key = false;
     };
   };
   let template = `data = {beforeMout() {
@@ -96,61 +95,61 @@ let bindData = function (hook, structure) {
  * @param {String} htmlStr 
  */
 let changeDef = function (content, logicOptions) {
-    let logic = content.logic,
-        name = logicOptions.name,
-        code = logicOptions.code,
-        type = logicOptions.type,
-        ast, astContent, methods,
-        watch, str, tempAst, hook,
-        beforeCreate,defini;
+  if(!logicOptions)return content;
+  let logic = content.logic,
+    name = logicOptions.name,
+    code = logicOptions.code,
+    type = logicOptions.type,
+    ast, astContent, methods,
+    watch, str, tempAst, hook,
+    beforeCreate, defini;
 
-    ast = UglifyJS.parse(logic);
-    astContent = ast.body[0].exported_value.properties;
-    tempAst = UglifyJS.parse(`data={${code}}`);
-    defini = tempAst.body[0].body.right.properties[0].value.body[0];
-    if(defini&&defini.definitions&&defini.definitions[0].name.name==="ctx")tempAst.body[0].body.right.properties[0].value.body[0].end.comments_after=[];
+  ast = UglifyJS.parse(logic);
+  astContent = ast.body[0].exported_value.properties;
+  tempAst = UglifyJS.parse(`data={${code}}`);
+  defini = tempAst.body[0].body.right.properties[0].value.body[0];
+  if (defini && defini.definitions && defini.definitions[0].name.name === "ctx") tempAst.body[0].body.right.properties[0].value.body[0].end.comments_after = [];
 
-    switch (type) {
-      case "hook":
-        hook = astContent.map(item => {
-          if (item.key && item.key.name === name) {
-            return tempAst.body[0].body.right.properties[0];
-          } else {
-            return item;
-          }
-        });
-        ast.body[0].exported_value.properties = hook;
-        break;
-      case "watch":
-        watch = astContent.filter(item => item.key && item.key === "watch")[0];
-        watch.value.properties = watch.value.properties.map(item => {
-          if (item.key.name === name) {
-            return tempAst.body[0].body.right.properties[0];
-          } else {
-            return item;
-          }
-        });
-        break;
-      default:
-        methods = astContent.filter(item => item.key && item.key === "methods")[0];
-        methods.value.properties = methods.value.properties.map((item, index) => {
-          if (item.key.name === name) {
-            return tempAst.body[0].body.right.properties[0];
-          } else {
-            return item;
-          }
-        });
-        break;
-    };
-  }
+  switch (type) {
+    case "hook":
+      hook = astContent.map(item => {
+        if (item.key && item.key.name === name) {
+          return tempAst.body[0].body.right.properties[0];
+        } else {
+          return item;
+        }
+      });
+      ast.body[0].exported_value.properties = hook;
+      break;
+    case "watch":
+      watch = astContent.filter(item => item.key && item.key === "watch")[0];
+      watch.value.properties = watch.value.properties.map(item => {
+        if (item.key.name === name) {
+          return tempAst.body[0].body.right.properties[0];
+        } else {
+          return item;
+        }
+      });
+      break;
+    default:
+      methods = astContent.filter(item => item.key && item.key === "methods")[0];
+      methods.value.properties = methods.value.properties.map((item, index) => {
+        if (item.key.name === name) {
+          return tempAst.body[0].body.right.properties[0];
+        } else {
+          return item;
+        }
+      });
+      break;
+  };
   if (astContent) {
     // 添加绑定数据
     beforeCreate = ast.body[0].exported_value.properties.map(item => {
-        if(item.key && item.key.name === "beforeCreate"){
-            return bindData(item, content.structure);
-        }else{
-            return item;
-        }
+      if (item.key && item.key.name === "beforeCreate") {
+        return bindData(item, content.structure);
+      } else {
+        return item;
+      }
     });
     ast.body[0].exported_value.properties = beforeCreate;
     str = ast.print_to_string({

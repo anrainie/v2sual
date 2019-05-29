@@ -1,5 +1,4 @@
 <template>
-import Axios from 'axios';
   <div>
     <el-row class="aweb-component-info">
       <h3>典型表单</h3>
