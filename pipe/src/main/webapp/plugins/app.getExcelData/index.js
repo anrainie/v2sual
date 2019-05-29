@@ -1,3 +1,3 @@
 import axios from 'axios';
 
-export default (url, params) => axios.get(url, {params});
+export default (filterName, filterStr) => axios.get("/v1/ds/excel/get", { filterName, filterStr});

@@ -52,6 +52,8 @@ const TEMPLATE =`{
       
   },
   "logic":{},
-  "dataBaskect":{}
-
+  "dataBaskect":{
+    "data": {CONTENT:{"structure":{}}},
+    "list": []
+}
 }`

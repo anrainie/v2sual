@@ -1,0 +1,32 @@
+{
+    "name": "@aweb-plugins/app.open",
+    "main": "index.js",
+    "docs": {
+        "desp": "打开页面",
+        "name": "this.open",
+        "category": "api",
+        "label": "open",
+        "labelType": "front",
+        "belongTo": "function",
+        "hasReturn": false,
+        "returnValue": {
+            "name": "",
+            "desp": "",
+            "details": "",
+            "type": "string",
+            "defaultValue": ""
+        },
+        "params": [
+            {
+                "name": "",
+                "desp": "",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": ""
+            }
+        ]
+    },
+    "category": "自定义",
+    "description": "",
+    "version": "6.0.0"
+}

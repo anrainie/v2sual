@@ -17,6 +17,8 @@
         "node-requirejs": "^0.1.1",
         "shelljs": "^0.8.3",
         "systemjs": "^3.1.1",
+        "aweb-vue-mininx": "^1.0.0",
+        "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "vue": "^2.5.17",
         "vue-router": "^3.0.2",
         "vuex": "^3.0.1"
@@ -38,7 +40,11 @@
         "node-sass": "^4.11.0",
         "sass-loader": "^7.1.0",
         "vue-template-compiler": "^2.5.17",
+<<<<<<< HEAD
         "webpack": "^4.28.2"
+=======
+        "webpack": "^4.31.0"
+>>>>>>> 794dcfb8e04b85c9ec89bdc9b31a7b8e249175e7
     },
     "eslintConfig": {
         "root": true,
@@ -63,6 +69,10 @@
         "> 1%",
         "last 2 versions",
         "not ie <= 8"
+<<<<<<< HEAD
     ],
     "buildfolder": "./src/views/example"
+=======
+    ]
+>>>>>>> 794dcfb8e04b85c9ec89bdc9b31a7b8e249175e7
 }
