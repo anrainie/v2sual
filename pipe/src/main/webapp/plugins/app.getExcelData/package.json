@@ -23,6 +23,13 @@
                 "type": "string",
                 "necessary": true,
                 "defaultValue": ""
+            },
+            {
+                "name": "",
+                "desp": "",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": ""
             }
         ]
     },
