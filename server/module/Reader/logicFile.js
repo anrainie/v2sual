@@ -9,10 +9,10 @@ let json2script = function (content) {
         template;
     if (logic) {
 
-        return `<script>${logic}</script>`
+        return `<script>import {root} from '@/utils/v2-view';${logic}</script>`
     } else {
         template = `export default{data(){return{}},methods:{},watch:{}}`
-        return `<script>${template}</script>`
+        return `<script>import {root} from '@/utils/v2-view';${template}</script>`
     }
 }
 /**
@@ -66,6 +66,7 @@ let bindData = function (hook, structure) {
  */
 let changeDef = function (content, logicOptions) {
     let logic = content.logic,
+        structure = content.structure,
         name = logicOptions.name,
         code = logicOptions.code,
         type = logicOptions.type,
@@ -81,12 +82,15 @@ let changeDef = function (content, logicOptions) {
     defini = tempAst.body[0].body.right.properties[0].value.body[0];
     if (defini && defini.definitions && defini.definitions[0].name.name === "ctx") tempAst.body[0].body.right.properties[0].value.body[0].end.comments_after = [];
     // 处理data
+    data.CONTENT={"structure":structure};
     dataAst = UglifyJS.parse("data=" + JSON.stringify(data));
-    dataAstContent = dataAst.body[0].body.right.properties;
     dataTar = ast.body[0].exported_value.properties.filter(item => item.key && item.key.name === "data")[0];
+    dataAstContent = dataAst.body[0].body.right.properties;
     dataTar.value.body[0].value.properties = dataAstContent.map(item => {
         let ast;
-        if (data[item.key] === '') {
+        if (item.key === "CONTENT") {
+            ast = UglifyJS.parse("data="+ JSON.stringify(data.CONTENT));
+        }else if (data[item.key] === '') {
             ast = UglifyJS.parse("data=''");
         } else {
             ast = UglifyJS.parse("data=" + data[item.key]);
@@ -95,6 +99,8 @@ let changeDef = function (content, logicOptions) {
         item.value = ast
         return item
     });
+
+
     switch (type) {
         case "hook":
             hook = astContent.map(item => {
