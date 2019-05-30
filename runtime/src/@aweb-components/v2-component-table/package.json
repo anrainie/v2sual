@@ -1,0 +1,124 @@
+{
+  "author": {
+    "name": "zhanghaixian@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "表格",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconbiaoge",
+    "type": "component",
+    "href": "v2-component-table",
+    "author": "zhanghaixian@agree.com.cn",
+    "version": 610000,
+    "accept": "divCtn",
+    "name": "表格",
+    "option": [{
+      "type": "edmCollection",
+      "desp": "列定义",
+      "name": "columns",
+      "edmKey": "sTitle",
+      "appendNumber": 1,
+      "hidden": false,
+      "defaultValue": "",
+      "valueArray": "",
+      "replaceTemp": true,
+      "attrInEachElement": [{
+          "type": "string_input",
+          "desp": "列名",
+          "name": "sTitle"
+        }
+      ]
+    },
+    {
+          "defaultValue": "",
+          "valueArray": [
+            "",
+            "single",
+            "multi"
+          ],
+          "type": "string_select",
+           "desp": "选择器",
+           "despArray": [
+                   "无",
+                   "单选",
+                   "多选"
+                 ],
+            "name": "selection"
+    },
+     {
+       "defaultValue": false,
+       "type": "boolean",
+       "name": "toolBar",
+       "desp": "是否打开固定列"
+     },
+     {
+       "defaultValue": "操作列",
+       "type": "string_input",
+       "name": "toolTitle",
+       "desp": "固定列名"
+     },
+     {
+       "defaultValue": "right",
+       "valueArray": [
+  
+         "right",
+         "left"
+       ],
+       "type": "string_select",
+       "desp": "固定位置",
+       "despArray": [
+         "左边",
+         "右边"
+       ],
+       "name": "toolLocation"
+     },
+      {
+         "type": "string_input",
+         "name": "toolWidth",
+         "defaultValue": 100,
+         "desp": "固定列宽度"
+    },
+    {
+      "type": "array",
+      "name": "toolBtns",
+      "desp": "固定列按钮",
+       "appendNumber": 0,
+      "attrInEachElement":[{            
+          "name": "btnName",
+          "desp": "按钮名",
+          "defaultValue": "详情",
+          "type": "string_input"
+       },
+      {
+        "name": "func",
+        "desp": "关联方法",
+        "defaultValue": "btnClick",
+        "type": "string_input"
+      }]
+    },
+    {
+      "type": "string_input",
+      "name": "tableData",
+      "defaultValue": [],
+      "disabled": true,
+      "desp": "表格数据"
+    },
+    {
+      "type": "string_input",
+      "name": "selectedRow",
+      "defaultValue": [],
+      "desp": "选中行"
+    }
+  ]
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@aweb-components/v2-component-table",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.0"
+}

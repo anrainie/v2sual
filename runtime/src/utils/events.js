@@ -30,10 +30,10 @@ export default {
             dom.$on(eventType, e => {
               for (let logic of logics) {
                 let method = self.$store.state.editor[logic];
-                arguments = arguments || [];
-                method && method({
-                  context: this,
-                }, ...arguments);
+                // arguments = arguments || [];
+                // method && method({
+                //   context: this,
+                // }, ...arguments);
               }
             });
           }

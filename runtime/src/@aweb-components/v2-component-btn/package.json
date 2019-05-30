@@ -1,0 +1,128 @@
+{
+  "author": {
+    "name": "zhanghaixian@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "按钮",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconanniu",
+    "type": "component",
+    "href": "v2-component-btn",
+    "author": "zhanghaixian@agree.com.cn",
+    "version": 510000,
+    "accept": "divCtn",
+    "name": "按钮",
+    "option": [ {
+      "type": "string_input",
+      "name": "btnName",
+      "defaultValue": "按钮",
+      "disabled": true,
+      "desp": "按钮"
+    }, {
+      "defaultValue": "",
+      "valueArray": [
+        "primary",
+        "success",
+        "info",
+        "warning",
+        "danger",
+        "text"
+      ],
+      "type": "string_select",
+      "desp": "类型",
+      "despArray": [
+        "主要",
+        "成功",
+        "信息",
+        "警告",
+        "危险",
+        "文字"
+      ],
+      "name": "btnType"
+    }, {
+      "defaultValue": "",
+      "valueArray": [
+        "plain",
+        "round",
+        "circle"
+      ],
+      "type": "string_select",
+      "desp": "形状",
+      "despArray": [
+        "朴素",
+        "圆角",
+        "圆形"
+      ],
+      "name": "shape"
+    },{
+      "defaultValue": false,
+      "type": "boolean",
+      "name": "loading",
+      "desp":"是否加载状态"
+    }, {
+      "defaultValue": false,
+      "type": "boolean",
+      "name": "disabled",
+      "desp": "是否禁用状态"
+    },{
+      "name": "func",
+      "desp": "关联方法",
+      "defaultValue": "btnClick",
+      "type": "string_input"
+    }],
+    "css":{
+      	"style": [{
+      	    "desp": "按钮样式",
+      	    "cssAttrs": "background-color width height color",
+      	    "name": "backgroundColor"
+      	  },
+      	  {
+      	    "desp": "图标",
+      	    "cssAttrs": "font-weight font-size color",
+      	    "name": "icon"
+      	  },
+      	  {
+      	    "desp": "按钮hover",
+      	    "cssAttrs": "background-color border-width border-color color ",
+      	    "name": "hoverBtn"
+      	  },
+      	  {
+      	    "desp": "按钮激活",
+      	    "cssAttrs": "background-color border-width border-color color ",
+      	    "name": "activeBtn"
+      	  }
+      	],
+      	"theme": [{
+      	  "template": "<button class='btn'></button>",
+      	  "desp": "功能",
+      	  "cssAttrs": "",
+      	  "name": "function",
+      	  "zoom": 0.8,
+      	  "valueArray": [
+      	    "btn-focus",
+      	    "btn-normal",
+      	    "btn-textBtn",
+      	    "btn-danger",
+      	    "btn-custom"
+      	  ],
+      	  "despArray": [
+      	    "焦点",
+      	    "普通",
+      	    "文字",
+      	    "警告",
+      	    "自定义"
+      	  ]
+      	}]
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@aweb-components/v2-component-btn",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.4"
+}

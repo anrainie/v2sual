@@ -1,0 +1,167 @@
+{
+  "author": {
+    "name": "fengjiarong@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "级联选择器",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconjilianxuanze",
+    "type": "form",
+    "href": "v2-form-cascader",
+    "author": "fengjiarong@agree.com.cn",
+    "version": 510000,
+    "accept": "foundationRowCtn divCtn",
+    "name": "级联选择器",
+    "option": [
+      {
+        "name": "label",
+        "desp": "标题",
+        "defaultValue":"标题",
+        "type": "string_input"
+      },
+      {
+        "name": "labelWitdh",
+        "desp": "标题宽度",
+        "defaultValue": "80px",
+        "type": "string_input"
+      },
+      {
+        "name": "titleMode",
+        "desp": "标题排列方式",
+        "defaultValue": "col",
+        "type": "string_select",
+        "valueArray": [
+          "row",
+          "col"
+        ],
+        "despArray": [
+          "同列排列",
+          "同行排列"
+        ]
+      },
+      {
+        "name": "placeholder",
+        "desp": "提示文本",
+        "defaultValue":"提示文本",
+        "type": "string_input"
+      },
+      {
+        "name": "filterable",
+        "desp": "是否使用搜索",
+        "defaultValue":true,
+        "type": "boolean"
+      },
+      {
+        "name": "value",
+        "desp": "选择值",
+        "defaultValue":[],
+        "type": "string_input"
+      },
+      {
+        "name": "trigger",
+        "desp": "触发子菜单方式",
+        "defaultValue":"click",
+        "type": "string_select",
+        "valueArray": [
+          "click",
+          "hover"
+        ],
+        "despArray": [
+          "click",
+          "hover"
+        ]
+      },
+      {
+        "name": "options",
+        "desp": "配置项",
+        "type": "array",
+        "appendNumber": 1,
+        "attrInEachElement": [
+          {
+            "name": "value",
+            "desp": "选项值",
+            "defaultValue": "1",
+            "type": "string_input"
+          },
+          {
+            "name": "label",
+            "desp": "选项文本",
+            "defaultValue": "选项1",
+            "type": "string_input"
+          },
+          {
+            "name": "children",
+            "desp": "子选项",
+            "defaultValue": "",
+            "type": "array",
+            "appendNumber": 1,
+            "attrInEachElement": [
+              {
+                "name": "value",
+                "desp": "选项值",
+                "defaultValue": "2",
+                "type": "string_input"
+              },
+              {
+                "name": "label",
+                "desp": "选项文本",
+                "defaultValue": "选项2",
+                "type": "string_input"
+              },
+              {
+                "name": "children",
+                "desp": "子选项",
+                "defaultValue": "",
+                "type": "array",
+                "appendNumber": 1,
+                "attrInEachElement": [
+                  {
+                    "name": "value",
+                    "desp": "选项值",
+                    "defaultValue": "3",
+                    "type": "string_input"
+                  },
+                  {
+                    "name": "label",
+                    "desp": "选项文本",
+                    "defaultValue": "选项3",
+                    "type": "string_input"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "css":{
+      "style": [
+        {
+          "desp": "标题",
+          "cssAttrs": "font-size color font-weight",
+          "name": "label"
+        } ,{
+          "desp": "检验边框",
+          "cssAttrs": "border-color",
+          "name": "borderStyle"
+        },
+        {
+          "desp": "检验文字",
+          "cssAttrs": "color",
+          "name": "fontStyle"
+        }
+      ]
+      
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@aweb-components/v2-form-cascader",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.4"
+}

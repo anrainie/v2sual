@@ -1,57 +1,62 @@
         
-import avComponentBtn  from './av-component-btn';
-import avComponentETable  from './av-component-eTable';
-import avComponentTable  from './av-component-table';
-import avEchartBar  from './av-echart-bar';
-import avEchartLine  from './av-echart-line';
-import avFormCascader  from './av-form-cascader';
-import avFormCheckbox  from './av-form-checkbox';
-import avFormDatePicker  from './av-form-datePicker';
-import avFormInput  from './av-form-input';
-import avFormInputNumber  from './av-form-inputNumber';
-import avFormRadio  from './av-form-radio';
-import avFormSelect  from './av-form-select';
-import avFormSlider  from './av-form-slider';
-import avFormSwitch  from './av-form-switch';
-import avFormTimePicker  from './av-form-timePicker';
-import avFormTransfer  from './av-form-transfer';
-import avFormUpload  from './av-form-upload';
-import avLayoutColctn  from './av-layout-colctn';
-import avLayoutRowctn  from './av-layout-rowctn';
-import avLayoutEditor from './av-layout-colctn/editor.vue';
+          import v2ComponentBtn  from './v2-component-btn';
+import v2ComponentEtable  from './v2-component-etable';
+import v2ComponentTable  from './v2-component-table';
+import v2EchartBar  from './v2-echart-bar';
+import v2EchartLine  from './v2-echart-line';
+import v2FormCascader  from './v2-form-cascader';
+import v2FormCheckbox  from './v2-form-checkbox';
+import v2FormDatepicker  from './v2-form-datepicker';
+import v2FormInput  from './v2-form-input';
+import v2FormInputnumber  from './v2-form-inputnumber';
+import v2FormRadio  from './v2-form-radio';
+import v2FormSelect  from './v2-form-select';
+import v2FormSlider  from './v2-form-slider';
+import v2FormSwitch  from './v2-form-switch';
+import v2FormTimepicker  from './v2-form-timepicker';
+import v2FormTransfer  from './v2-form-transfer';
+import v2FormUpload  from './v2-form-upload';
+import v2LayoutColctn  from './v2-layout-colctn';
+import v2LayoutEditor  from './v2-layout-colctn/editor.vue';
+import v2LayoutRowctn  from './v2-layout-rowctn'
 
-import get  from '../../../pipe/src/main/webapp/plugins/app.get';
+          import get  from '../../../pipe/src/main/webapp/plugins/app.get';
 import getAfaData  from '../../../pipe/src/main/webapp/plugins/app.getAfaData';
 import getExcelData  from '../../../pipe/src/main/webapp/plugins/app.getExcelData';
+import gt  from '../../../pipe/src/main/webapp/plugins/app.gt';
+import map  from '../../../pipe/src/main/webapp/plugins/app.map';
+import open  from '../../../pipe/src/main/webapp/plugins/app.open'
 
-  //         let app = {
-  //           get,
-	// getAfaData,
-	// getExcelData
-  //         };
+          let app = {
+            get,
+	getAfaData,
+	getExcelData,
+	gt,
+	map,
+	open
+          };
           
-  //         window.pipe = app;
+          window.pipe = app;
 
           export default {
-
-            avComponentBtn,
-	avComponentETable,
-	avComponentTable,
-	avEchartBar,
-	avEchartLine,
-	avFormCascader,
-	avFormCheckbox,
-	avFormDatePicker,
-	avFormInput,
-	avFormInputNumber,
-	avFormRadio,
-	avFormSelect,
-	avFormSlider,
-	avFormSwitch,
-	avFormTimePicker,
-	avFormTransfer,
-	avFormUpload,
-	avLayoutColctn,
-	avLayoutRowctn,
-	avLayoutEditor
-}
+            v2ComponentBtn,
+	v2ComponentEtable,
+	v2ComponentTable,
+	v2EchartBar,
+	v2EchartLine,
+	v2FormCascader,
+	v2FormCheckbox,
+	v2FormDatepicker,
+	v2FormInput,
+	v2FormInputnumber,
+	v2FormRadio,
+	v2FormSelect,
+	v2FormSlider,
+	v2FormSwitch,
+	v2FormTimepicker,
+	v2FormTransfer,
+	v2FormUpload,
+	v2LayoutColctn,
+	v2LayoutRowctn,
+	v2LayoutEditor
+          }

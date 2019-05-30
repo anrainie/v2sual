@@ -1,0 +1,63 @@
+<template>
+  <div :style="model.style" class="v2-form-timePicker" :class="model.layoutClass">
+    <label
+      :class="model.titleMode ==='row'?'v2-form-label':'v2-form-label form-label-col'"
+      :style="labelStyle"
+    >{{model.label}}</label>
+    <div class="form-timePicker-ctn" :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
+      <el-time-select
+        v-if="model.type==='select'"
+        v-model="model.value"
+        :picker-options="model.options"
+        :placeholder="model.placeholder"
+        :arrow-control="model.arrow"
+         :disabled="model.disabled"
+      ></el-time-select>
+
+      <el-time-picker
+        v-if="model.type==='picker'"
+        v-model="model.value"
+        :picker-options="model.options"
+        :placeholder="model.placeholder"
+        :is-range="model.range"
+        :disabled="model.disabled"
+        :range-separator="model.rangeSeparator"
+        :start-placeholder="model.startPlaceholder"
+        :end-placeholder="model.endPlaceholder"
+      ></el-time-picker>
+    </div>
+  </div>
+</template>
+<script>
+
+
+export default {
+  name: "v2-form-timepicker",
+
+  mounted() {},
+  data() {
+    return {};
+  },
+  methods: {},
+  computed:{
+  }
+};
+</script>
+<style>
+.form-label-col {
+  float: left;
+}
+.v2-form-label {
+  text-align: right;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 40px;
+  padding-right: 12px;
+  box-sizing: border-box;
+}
+.form-timePicker-ctn {
+  line-height: 40px;
+  position: relative;
+  font-size: 14px;
+}
+</style>
