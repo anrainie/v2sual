@@ -37,7 +37,7 @@ let bindData = function (hook, structure) {
     if (tabIndex.length) hook.value.body = hook.value.body.filter((item, index) => index < tabIndex[0] || index > tabIndex[1]);
     item = structure;
     while (key) {
-        if (item && item.component !== "av-layout-colctn" && item.component !== "v2Container" && item.component !== "av-layout-rowctn" && item.mapping) {
+        if (item && item.component !== "v2-layout-colctn" && item.component !== "v2Container" && item.component !== "v2-layout-rowctn" && item.mapping) {
             item.mapping.map(item => {
                 newHook.push(`this.$store.commit("bind",{ vueObj:this, data:${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`)
             })

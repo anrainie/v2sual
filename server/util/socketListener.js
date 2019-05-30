@@ -45,11 +45,16 @@ class SocketListener {
           ret = {
             ...ret,
             ...dictData
-          };;
+          };
         }
       }
       this.platform.sendSuccessResult(req, ret)
     });
+    this.platform.socket.on('previewPath',async res=>{
+          console.log('res',res);
+      this.platform.socket.emit('preview-page',{});
+    });
+   
   }
 
 }

@@ -14,24 +14,24 @@
   >
     <el-row class="V2ContainerBlock" style="height:100%;width:100%;" key="0">
       <v2container
-        is="av-layout-colctn"
+        is="v2-layout-colctn"
         wid="1557729515923"
         index="0"
         pid="root"
         direction="row"
         layout="[50,50]"
-        href="av-layout-colctn"
-        component="av-layout-colctn"
+        href="v2-layout-colctn"
+        component="v2-layout-colctn"
         id="1557729515923"
       >
         <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0">
           <v2container
-            is="av-layout-colctn"
+            is="v2-layout-colctn"
             wid="1557909776144"
             index="0"
             pid="1557729515923"
-            component="av-layout-colctn"
-            href="av-layout-colctn"
+            component="v2-layout-colctn"
+            href="v2-layout-colctn"
             layout="50,50"
             direction="col"
             id="1557909776144"
@@ -42,8 +42,8 @@
               key="0"
               style="height:100%;"
             >
-              <av-form-cascader
-                is="av-form-cascader"
+              <v2-form-cascader
+                is="v2-form-cascader"
                 wid="1557909764093"
                 index="0"
                 pid="1557729515923"
@@ -55,10 +55,10 @@
                 value="[]"
                 trigger="click"
                 options="[object Object],[object Object]"
-                href="av-form-cascader"
-                component="av-form-cascader"
+                href="v2-form-cascader"
+                component="v2-form-cascader"
                 id="1557909764093"
-              ></av-form-cascader>
+              ></v2-form-cascader>
             </el-col>
             <el-col
               class="V2ContainerBlock borderBox dashBorder"
@@ -66,8 +66,8 @@
               key="1"
               style="height:100%;"
             >
-              <av-form-cascader
-                is="av-form-cascader"
+              <v2-form-cascader
+                is="v2-form-cascader"
                 wid="1557909776143"
                 index="1"
                 pid="1557909776144"
@@ -79,21 +79,21 @@
                 value="[]"
                 trigger="click"
                 options="[object Object],[object Object]"
-                href="av-form-cascader"
-                component="av-form-cascader"
+                href="v2-form-cascader"
+                component="v2-form-cascader"
                 id="1557909776143"
-              ></av-form-cascader>
+              ></v2-form-cascader>
             </el-col>
           </v2container>
         </el-row>
         <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1">
           <v2container
-            is="av-layout-colctn"
+            is="v2-layout-colctn"
             wid="1557761115858"
             index="1"
             pid="1557729515923"
-            component="av-layout-colctn"
-            href="av-layout-colctn"
+            component="v2-layout-colctn"
+            href="v2-layout-colctn"
             layout="50,50"
             direction="row"
             id="1557761115858"
@@ -103,8 +103,8 @@
               style="height:50%;width:100%;"
               key="0"
             >
-              <av-form-radio
-                is="av-form-radio"
+              <v2-form-radio
+                is="v2-form-radio"
                 wid="1557761115858"
                 index="0"
                 pid="1557760827010"
@@ -112,13 +112,13 @@
                 titlemode="row"
                 value
                 options="[object Object],[object Object]"
-                href="av-form-radio"
-                component="av-form-radio"
+                href="v2-form-radio"
+                component="v2-form-radio"
                 id="1557761115858"
                 direction="row"
               >
-                <av-form-inputnumber
-                  is="av-form-inputNumber"
+                <v2-form-inputnumber
+                  is="v2-form-inputNumber"
                   wid="1557909774435"
                   index="0"
                   pid="1557761115858"
@@ -130,10 +130,10 @@
                   max="10"
                   step="1"
                   precision="1"
-                  href="av-form-inputNumber"
-                  component="av-form-inputNumber"
+                  href="v2-form-inputNumber"
+                  component="v2-form-inputNumber"
                   id="1557909774435"
-                ></av-form-inputnumber>
+                ></v2-form-inputnumber>
                 <div
                   class="V2Empty"
                   is="v2Empty"
@@ -141,15 +141,15 @@
                   index="1"
                   pid="1557761115858"
                 ></div>
-              </av-form-radio>
+              </v2-form-radio>
             </el-row>
             <el-row
               class="V2ContainerBlock borderBox dashBorder"
               style="height:50%;width:100%;"
               key="1"
             >
-              <av-form-input
-                is="av-form-input"
+              <v2-form-input
+                is="v2-form-input"
                 wid="1557760827010"
                 index="1"
                 pid="1557729515923"
@@ -159,10 +159,10 @@
                 placeholder="请选择"
                 value
                 clearable="false"
-                href="av-form-input"
-                component="av-form-input"
+                href="v2-form-input"
+                component="v2-form-input"
                 id="1557760827010"
-              ></av-form-input>
+              ></v2-form-input>
             </el-row>
           </v2container>
         </el-row>
