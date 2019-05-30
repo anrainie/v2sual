@@ -24,7 +24,7 @@ export default {
       };
     },
     wrapStyle() {
-      return { ...this.model.style };
+      return this.model && { ...this.model.style };
     }
   }
 };

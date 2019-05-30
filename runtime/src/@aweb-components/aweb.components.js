@@ -17,23 +17,24 @@ import avFormTimePicker  from './av-form-timePicker';
 import avFormTransfer  from './av-form-transfer';
 import avFormUpload  from './av-form-upload';
 import avLayoutColctn  from './av-layout-colctn';
-import avLayoutRowctn  from './av-layout-rowctn'
+import avLayoutRowctn  from './av-layout-rowctn';
+import avLayoutEditor from './av-layout-colctn/editor.vue';
 
 import get  from '../../../pipe/src/main/webapp/plugins/app.get';
 import getAfaData  from '../../../pipe/src/main/webapp/plugins/app.getAfaData';
 import getExcelData  from '../../../pipe/src/main/webapp/plugins/app.getExcelData';
 
-let app = {
-	get,
-	getAfaData,
-	getExcelData
-};
+  //         let app = {
+  //           get,
+	// getAfaData,
+	// getExcelData
+  //         };
           
-window.pipe = app;
+  //         window.pipe = app;
 
-export default {
-	avLayoutEditor,
-	avComponentBtn,
+          export default {
+
+            avComponentBtn,
 	avComponentETable,
 	avComponentTable,
 	avEchartBar,
@@ -51,5 +52,6 @@ export default {
 	avFormTransfer,
 	avFormUpload,
 	avLayoutColctn,
-	avLayoutRowctn
+	avLayoutRowctn,
+	avLayoutEditor
 }

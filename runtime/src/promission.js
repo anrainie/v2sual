@@ -48,13 +48,28 @@ router.beforeEach((to, from, next) => {
    
   let wpath = window.location.hash.split('?')[0].replace('#/', '');
   
-  
-   if (localStorage.getItem('openWindow') && localStorage.getItem('openWindow') === wpath) {
+  if (localStorage.getItem('openWindow') && localStorage.getItem('openWindow') === wpath) {
 
+    router.options.routes.push({
+      path: '/'+wpath,
+      component: _import(wpath),
+      hidden: true
+    });
+   router.addRoutes(router.options.routes);
+   
+ }
+   
+   if (wpath && window.location.hash.split('?')[1].indexOf('IDE')!==-1) {
       router.options.routes.push({
-        path: '/'+wpath,
-        component: _import(wpath),
-        hidden: true
+        path: '/',
+        component: Layout,
+        children: [{
+          path: '/'+wpath,
+          component: _import(wpath),
+          meta: {
+            title: '预览'
+          }
+        }]
       });
      router.addRoutes(router.options.routes);
    }

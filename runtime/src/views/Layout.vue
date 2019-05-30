@@ -1,4 +1,4 @@
-<template>
+	<template>
   <el-row class="aweb-container">
     <el-col :span="24" class="aweb-header">
       <el-col
@@ -10,6 +10,7 @@
         <div class="aweb-tools" @click.prevent="collapse">
           <i class="el-icon-menu"></i>
         </div>
+      
       </el-col>
 
       <el-col :span="4" class="aweb-userinfo">
@@ -136,15 +137,23 @@
                 :label="item.name"
                 :name="item.route"
               >
-              <el-col :span="24" class="aweb-ctt-wrap">
-         
-                <transition name="fade" mode="out-in" v-if="activeIndex===item.route"> 
+              <el-col :span="24" class="aweb-ctt-wrap" >
+        
+                <transition name="fade" mode="out-in"> 
                  
-                      <router-view v-if="isRouterAlive"></router-view>
+                      <!-- <router-view  ></router-view> -->
+                    
+          
+                     <keep-alive v-if="isRouterAlive">                           
+                          <router-view  v-if="(activeIndex===item.route)"></router-view>
+                      </keep-alive>
+                                            
+                      <router-view  v-else-if="activeIndex===item.route"></router-view>
+                      
                  
                 </transition>
               </el-col>
-         
+          
 			        </el-tab-pane>
             </el-tabs>
 
@@ -173,7 +182,9 @@ import {getObjArr, getRouter,saveRouter} from '../promission.js'
 
 import rightMenu from '@/components/rightMenu'
 import asyncComponent from '@/components/asyncComponent'
+import io from 'socket.io-client';
 
+window.io = io;
 export default {
   name:'layout',
   data() {
@@ -204,7 +215,8 @@ export default {
          page:page,
          status:true,
          type:'BLANK',
-         title:title||'标题'
+         title:title||'标题',
+         keepAlive:true
        })
 
 
@@ -216,7 +228,9 @@ export default {
        }
     },
      reload() {
+   
           this.isRouterAlive = false;
+         
           this.$nextTick(function () {
               this.isRouterAlive = true
           })
@@ -273,7 +287,6 @@ export default {
 
     },
     tabRemove(targetName) {
-         
       this.$store.commit("delete_tabs", targetName);
       if (this.activeIndex === targetName) {
         if (this.openedTabs && this.openedTabs.length >= 1) {
@@ -290,21 +303,21 @@ export default {
            this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
            this.$router.push({ path: this.activeIndex,query:this.URLQueryMap[this.activeIndex] ||{} });
            this.$store.commit("do_cancel");
-           this.isRouterAlive = true;
+         
     },
     confirm(){
          this.$store.commit("set_D_visible",false);
           this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
           this.$router.push({ path: this.activeIndex,query:this.URLQueryMap[this.activeIndex] ||{} });
           this.$store.commit("do_confirm");
-          this.isRouterAlive = true;
+      
     },
     closeDialog(){
 
        this.$store.commit("set_D_visible",false);    
        this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
        this.$router.push({ path: this.activeIndex ,query:this.URLQueryMap[this.activeIndex] ||{}});
-       this.isRouterAlive = true;
+    
   
     },
     openMarket(){
@@ -319,14 +332,32 @@ export default {
       this.sysUserName = user.name || "";
       this.sysUserAvatar = user.avatar || "";
     }
- 
      this.$store.commit("add_tabs", {
         route: this.$route.path,
         name: this.$route.meta.title,
-        id:this.getUID()
+        keepAlive:this.$route.meta.keepAlive       
       });
     
-  this.$store.commit("set_active_index", this.$route.path);
+    this.$store.commit("set_active_index", this.$route.path);
+
+
+    let  socket = io();
+
+    socket.on('connect', ()=> {
+      console.log('连接成功');
+      });
+    socket.on('disconnect', ()=> {
+      console.log('断开连接');
+      });
+    socket.on('connect_error', () => {
+      console.log('连接失败');
+      })
+
+    socket.on('preview', (data) => {
+      
+         console.log('打开页面',data);
+      });
+
 
   },
   computed: {
@@ -389,8 +420,7 @@ export default {
   watch: {
     $route(to, from) {
       let flag = false;
-
-      console.log(this.isRouterAlive);
+      
       if(to.meta.type ==='BLANK'){
         if(Object.keys(to.query).length){
             this.$store.commit("set_url_map",({path:to.path,query:to.query}))
@@ -399,7 +429,7 @@ export default {
    
       if(to.meta.type==='BLANK' || !to.meta.type){
         for (let item of this.openedTabs) {
-                if (item.name === to.meta.title) {
+                if (item.route === to.path) {
                   this.$store.commit("set_active_index", to.path);
                   flag = true;
                   break;
@@ -409,7 +439,9 @@ export default {
           if (!flag) {
             this.$store.commit("add_tabs", { 
               route: to.path, 
-              name: to.meta.title
+              name: to.meta.title,
+              keepAlive:to.meta.keepAlive
+
             });
             this.$store.commit("set_active_index", to.path);
           }
@@ -417,20 +449,12 @@ export default {
     
           this.$store.commit("add_tabs", {
              route: to.path,
-             name: to.meta.title 
+             name: to.meta.title,
+             keepAlive:to.meta.keepAlive
            });
           this.$store.commit("set_active_index",to.path);
           this.$store.commit("delete_tabs", from.path);
        
-      }else if(to.meta.type==='SUB'){
-        this.isRouterAlive = false;
-        // this.$nextTick(()=>{
-		    //    this.isRouterAlive = true;
-        //   });
-     
-          console.log(this.activeIndex);
-          console.log(this.openedTabs);
-
       }
      
     }
@@ -561,7 +585,7 @@ export default {
   }
    .aweb-ctt {
       flex: 1;
-      overflow-y: scroll;
+      overflow: auto;
       padding: 10px;
       .breadcrumb-container {
         .title {
@@ -578,7 +602,7 @@ export default {
         box-sizing: border-box;
       }
       .grid-content{
-          .el-tabs__content{
+           >div>div.el-tabs>.el-tabs__content{
               height: calc(100vh - 125px);
               overflow: auto;
               padding: 0;
