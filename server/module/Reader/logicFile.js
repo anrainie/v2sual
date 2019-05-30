@@ -11,8 +11,8 @@ let json2script = function (content) {
       console.error('content缺少逻辑概览');
       return `<script></script>`
   }
-  let
-    data = dataBasket.data,
+  
+  let  data = dataBasket.data,
     datares = {},
     dataAst, dataAstContent, ast, dataTar, str, i, newData = {},
     template;
@@ -79,7 +79,7 @@ let bindData = function (hook, structure) {
             key = false;
         };
     };
-  };
+  
   let template = `data = {beforeMout() {
         /**bind**/ 
         ${newHook}
@@ -94,6 +94,7 @@ let bindData = function (hook, structure) {
 /**
  * 修改def json内容
  * @param {String} htmlStr 
+ * 
  */
 let changeDef = function (content, logicOptions) {
     let logic = content.logic,
@@ -142,7 +143,7 @@ let changeDef = function (content, logicOptions) {
         });
         break;
     };
-  }
+  
   if (astContent) {
     // 添加绑定数据
     beforeCreate = ast.body[0].exported_value.properties.map(item => {

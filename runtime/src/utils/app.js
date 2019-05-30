@@ -14,7 +14,7 @@ export default {
         // console.log('mixin...', this.name);
     },
     mounted() {
-        console.log('mixin');
+        // console.log('mixin');
 
         // new Vue({
         //     router,

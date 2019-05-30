@@ -3,11 +3,34 @@ const Router = require('koa-router')
 const KoaBody = require('koa-body')
 KoaBody({ multipart: true })
 const Mock = require('mockjs')
-const app = new Koa()
+// const app = new Koa()
 const router = new Router()
 const shell = require('shelljs')
 
-const fs = require('fs')
+
+
+const app = new Koa();
+
+const fs = require('fs');
+
+// const Server = require('socket.io');
+// const io = new Server();
+
+const server = require('http').createServer(app.callback());
+
+const io = require('socket.io')(server);
+
+
+io.on('connection', (socket) => {
+
+  
+	socket.emit('preview', {
+		
+		message: 'sdsdddds'
+	  });
+	  
+});
+
 // var http = require('http');
 // var https = require('https');
 
@@ -140,7 +163,8 @@ const routerList = [
 				"component": "example/table",
 				"meta": {
 					"title": "表格",
-					"icon": "el-icon-goods"
+					"icon": "el-icon-goods",
+					"keepAlive":true
 				}
 			}, {
 				"path": "rightMenu",
@@ -164,14 +188,15 @@ const routerList = [
 				"component": "example/hasSubTab",
 				"meta": {
 					"title": "嵌套子页面",
-					"icon": "el-icon-setting"
+					"icon": "el-icon-setting",
+					"keepAlive":true
 				}
 			}, {
 				"path": "dycSubTab",
 				"name": "dycSubTab",
 				"component": "example/dycSubTab",
 				"meta": {
-					"title": "动态子页面",
+					"title": "测试",
 					"icon": "el-icon-setting"
 				}
 			}, {
@@ -180,6 +205,14 @@ const routerList = [
 				"component": "example/afaAjax",
 				"meta": {
 					"title": "afa直连",
+					"icon": "el-icon-setting"
+				}
+			}, {
+				"path": "test",
+				"name": "test",
+				"component": "example/upload",
+				"meta": {
+					"title": "测试",
 					"icon": "el-icon-setting"
 				}
 			}
@@ -249,7 +282,6 @@ router.get('/-/getMainList', function (ctx) {
 })
 
 
-require('../server/module/dataSource')(app,require('../server/config/config.json').dataSource);
 
 //parser
 app.use(KoaBody());
@@ -268,8 +300,8 @@ app.use(require('koa-static')(__dirname + '/public'))
 // http.createServer(app.callback()).listen(80);
 // https.createServer(options, app.callback()).listen(443);
 
-app.listen(7008, () => {
-	console.error(`服务器启动成功：7008`);
-});
+// app.listen(7008, () => {
+// 	console.error(`服务器启动成功：7008`);
+// });
 
-
+server.listen(7008);

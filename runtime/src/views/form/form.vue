@@ -1,5 +1,4 @@
 <template>
-import Axios from 'axios';
   <div>
     <el-row class="aweb-component-info">
       <h3>典型表单</h3>
@@ -166,7 +165,7 @@ export default {
             return false;
           }
         });
-        Axios('/afa/tx').then
+      
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
