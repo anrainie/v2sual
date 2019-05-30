@@ -23,22 +23,23 @@ Vue.mixin(mixin);
 
 Vue.use(ElementUI)
 
+sessionStorage.setItem('user', JSON.stringify({'user':'test'}));
 
 router.beforeEach((to, from, next) => {
 
   
-  if (to.path == '/login') {
-    sessionStorage.removeItem('user');
-  }
-  let user = JSON.parse(sessionStorage.getItem('user'));
+  // if (to.path == '/main') {
+  //   sessionStorage.removeItem('user');
+  // }
+  // let user = JSON.parse(sessionStorage.getItem('user'));
 
-  if (!user && to.path != '/login') {
-    next({
-      path: '/login'
-    })
-  } else {
+  // if (!user && to.path != '/main') {
+  //   next({
+  //     path: '/main'
+  //   })
+  // } else {
       next()
-    }
+  //   }
 })
 
 new Vue({

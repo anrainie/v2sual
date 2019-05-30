@@ -166,7 +166,7 @@ export default {
             return false;
           }
         });
-        Axios('/afa/tx').then
+      
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();

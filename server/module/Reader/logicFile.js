@@ -63,6 +63,7 @@ let bindData = function (hook, structure) {
 /**
  * 修改def json内容
  * @param {String} htmlStr 
+ * 
  */
 let changeDef = function (content, logicOptions) {
   if(!logicOptions)
