@@ -58,8 +58,12 @@ router.beforeEach((to, from, next) => {
    router.addRoutes(router.options.routes);
    
  }
+ let urlParam = window.location.hash.split('?')[1];
    
-   if (wpath && window.location.hash.split('?')[1].indexOf('IDE')!==-1) {
+   if (wpath && urlParam && urlParam.indexOf('IDE')!==-1) {
+ 
+     console.log('预览页面路径',wpath);
+
       router.options.routes.push({
         path: '/',
         component: Layout,
@@ -71,6 +75,8 @@ router.beforeEach((to, from, next) => {
           }
         }]
       });
+      console.log(router.options.routes);
+
      router.addRoutes(router.options.routes);
    }
        
