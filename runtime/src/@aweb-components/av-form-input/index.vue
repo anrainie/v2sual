@@ -6,7 +6,7 @@
       >{{model.label}}</label>
      <div class="form-input-ctn" :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
     <el-input
-      ref="aInput"
+      ref="__op_formInput_input"
       v-model="model.value"
       :placeholder="model.placeholder"
       :clearable="model.clearable"

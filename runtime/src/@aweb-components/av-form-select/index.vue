@@ -9,6 +9,7 @@
       :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"
     >
       <el-select
+        ref="__op_formSelect_select"
         v-model="model.value"
         :clearable="model.clearable"
         :placeholder="model.placeholder"
