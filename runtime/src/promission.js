@@ -48,14 +48,35 @@ router.beforeEach((to, from, next) => {
    
   let wpath = window.location.hash.split('?')[0].replace('#/', '');
   
-  
-   if (localStorage.getItem('openWindow') && localStorage.getItem('openWindow') === wpath) {
+  if (localStorage.getItem('openWindow') && localStorage.getItem('openWindow') === wpath) {
+
+    router.options.routes.push({
+      path: '/'+wpath,
+      component: _import(wpath),
+      hidden: true
+    });
+   router.addRoutes(router.options.routes);
+   
+ }
+ let urlParam = window.location.hash.split('?')[1];
+   
+   if (wpath && urlParam && urlParam.indexOf('IDE')!==-1) {
+ 
+     console.log('预览页面路径',wpath);
 
       router.options.routes.push({
-        path: '/'+wpath,
-        component: _import(wpath),
-        hidden: true
+        path: '/',
+        component: Layout,
+        children: [{
+          path: '/'+wpath,
+          component: _import(wpath),
+          meta: {
+            title: '预览'
+          }
+        }]
       });
+      console.log(router.options.routes);
+
      router.addRoutes(router.options.routes);
    }
        

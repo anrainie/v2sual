@@ -3,11 +3,34 @@ const Router = require('koa-router')
 const KoaBody = require('koa-body')
 KoaBody({ multipart: true })
 const Mock = require('mockjs')
-const app = new Koa()
+// const app = new Koa()
 const router = new Router()
 const shell = require('shelljs')
 
-const fs = require('fs')
+
+
+const app = new Koa();
+
+const fs = require('fs');
+
+// const Server = require('socket.io');
+// const io = new Server();
+
+const server = require('http').createServer(app.callback());
+
+const io = require('socket.io')(server);
+
+
+io.on('connection', (socket) => {
+
+  
+	socket.emit('preview', {
+		
+		message: 'sdsdddds'
+	  });
+	  
+});
+
 // var http = require('http');
 // var https = require('https');
 
@@ -276,8 +299,8 @@ app.use(require('koa-static')(__dirname + '/public'))
 // http.createServer(app.callback()).listen(80);
 // https.createServer(options, app.callback()).listen(443);
 
-app.listen(7008, () => {
-	console.error(`服务器启动成功：7008`);
-});
+// app.listen(7008, () => {
+// 	console.error(`服务器启动成功：7008`);
+// });
 
-
+server.listen(7008);

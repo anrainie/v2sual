@@ -12,7 +12,7 @@
                   key="0"
                   style="height:100%;"
                 >
-                  <av-form-input :wid="`1559122109526`" :index="0" :pid="`1559122089268`"></av-form-input>
+                  <v2-form-input :wid="`1559122109526`" :index="0" :pid="`1559122089268`"></v2-form-input>
                 </el-col>
                 <el-col
                   class="V2ContainerBlock borderBox dashBorder"
@@ -20,7 +20,7 @@
                   key="1"
                   style="height:100%;"
                 >
-                  <av-form-input :wid="`1559122167997`" :index="1" :pid="`1559122089268`"></av-form-input>
+                  <v2-form-input :wid="`1559122167997`" :index="1" :pid="`1559122089268`"></v2-form-input>
                 </el-col>
               </v2container>
             </el-row>
@@ -32,7 +32,7 @@
                   key="0"
                   style="height:100%;"
                 >
-                  <av-form-select :wid="`1559122397328`" :index="0" :pid="`1559122093860`"></av-form-select>
+                  <v2-form-select :wid="`1559122397328`" :index="0" :pid="`1559122093860`"></v2-form-select>
                 </el-col>
                 <el-col
                   class="V2ContainerBlock borderBox dashBorder"
@@ -40,7 +40,7 @@
                   key="1"
                   style="height:100%;"
                 >
-                  <av-form-input :wid="`1559122410553`" :index="1" :pid="`1559122093860`"></av-form-input>
+                  <v2-form-input :wid="`1559122410553`" :index="1" :pid="`1559122093860`"></v2-form-input>
                 </el-col>
               </v2container>
             </el-row>
@@ -52,7 +52,7 @@
                   key="0"
                   style="height:100%;"
                 >
-                  <av-form-input :wid="`1559122412795`" :index="0" :pid="`1559122096277`"></av-form-input>
+                  <v2-form-input :wid="`1559122412795`" :index="0" :pid="`1559122096277`"></v2-form-input>
                 </el-col>
                 <el-col
                   class="V2ContainerBlock borderBox dashBorder"
@@ -60,7 +60,7 @@
                   key="1"
                   style="height:100%;"
                 >
-                  <av-form-input :wid="`1559122436617`" :index="1" :pid="`1559122096277`"></av-form-input>
+                  <v2-form-input :wid="`1559122436617`" :index="1" :pid="`1559122096277`"></v2-form-input>
                 </el-col>
               </v2container>
             </el-row>
@@ -72,7 +72,7 @@
                   key="0"
                   style="height:100%;"
                 >
-                  <av-form-input :wid="`1559122425458`" :index="0" :pid="`1559122098885`"></av-form-input>
+                  <v2-form-input :wid="`1559122425458`" :index="0" :pid="`1559122098885`"></v2-form-input>
                 </el-col>
                 <el-col
                   class="V2ContainerBlock borderBox dashBorder"
@@ -80,7 +80,7 @@
                   key="1"
                   style="height:100%;"
                 >
-                  <av-form-input :wid="`1559122440698`" :index="1" :pid="`1559122098885`"></av-form-input>
+                  <v2-form-input :wid="`1559122440698`" :index="1" :pid="`1559122098885`"></v2-form-input>
                 </el-col>
               </v2container>
             </el-row>
@@ -92,7 +92,7 @@
                   key="0"
                   style="height:100%;"
                 >
-                  <av-form-datePicker :wid="`1559122443506`" :index="0" :pid="`1559122103444`"></av-form-datePicker>
+                  <v2-form-datePicker :wid="`1559122443506`" :index="0" :pid="`1559122103444`"></v2-form-datePicker>
                 </el-col>
                 <el-col
                   class="V2ContainerBlock borderBox dashBorder"
@@ -100,7 +100,7 @@
                   key="1"
                   style="height:100%;"
                 >
-                  <av-form-datePicker :wid="`1559122445721`" :index="1" :pid="`1559122103444`"></av-form-datePicker>
+                  <v2-form-datePicker :wid="`1559122445721`" :index="1" :pid="`1559122103444`"></v2-form-datePicker>
                 </el-col>
               </v2container>
             </el-row>
@@ -167,13 +167,13 @@ export default {
                 "padding-right": 0
               },
               customStyle: {},
-              href: "av-layout-colctn",
-              component: "av-layout-colctn",
+              href: "v2-layout-colctn",
+              component: "v2-layout-colctn",
               widget: {
                 belongTo: "aui",
                 icon: "iconfont icon-password",
                 type: "layout",
-                href: "av-layout-colctn",
+                href: "v2-layout-colctn",
                 author: "zhanghaixian@agree.com.cn",
                 version: 51e4,
                 accept: "",
@@ -267,13 +267,13 @@ export default {
                     opacity: 1,
                     "border-radius": "0px"
                   },
-                  href: "av-layout-colctn",
-                  component: "av-layout-colctn",
+                  href: "v2-layout-colctn",
+                  component: "v2-layout-colctn",
                   widget: {
                     belongTo: "aui",
                     icon: "iconfont icon-password",
                     type: "layout",
-                    href: "av-layout-colctn",
+                    href: "v2-layout-colctn",
                     author: "zhanghaixian@agree.com.cn",
                     version: 51e4,
                     accept: "",
@@ -364,13 +364,13 @@ export default {
                         "padding-right": 0
                       },
                       customStyle: {},
-                      href: "av-layout-rowctn",
-                      component: "av-layout-rowctn",
+                      href: "v2-layout-rowctn",
+                      component: "v2-layout-rowctn",
                       widget: {
                         belongTo: "aui",
                         icon: "iconfont icon-password",
                         type: "layout",
-                        href: "av-layout-rowctn",
+                        href: "v2-layout-rowctn",
                         author: "zhanghaixian@agree.com.cn",
                         version: 51e4,
                         accept: "",
@@ -446,13 +446,13 @@ export default {
                           placeholder: "请选择",
                           value: "",
                           clearable: false,
-                          href: "av-form-input",
-                          component: "av-form-input",
+                          href: "v2-form-input",
+                          component: "v2-form-input",
                           widget: {
                             belongTo: "aui",
                             icon: "iconfont icon-password",
                             type: "form",
-                            href: "av-form-input",
+                            href: "v2-form-input",
                             author: "fengjiarong@agree.com.cn",
                             version: 51e4,
                             accept: "foundationRowCtn divCtn",
@@ -545,13 +545,13 @@ export default {
                           placeholder: "请选择",
                           value: "",
                           clearable: false,
-                          href: "av-form-input",
-                          component: "av-form-input",
+                          href: "v2-form-input",
+                          component: "v2-form-input",
                           widget: {
                             belongTo: "aui",
                             icon: "iconfont icon-password",
                             type: "form",
-                            href: "av-form-input",
+                            href: "v2-form-input",
                             author: "fengjiarong@agree.com.cn",
                             version: 51e4,
                             accept: "foundationRowCtn divCtn",
@@ -663,13 +663,13 @@ export default {
                         "padding-right": 0
                       },
                       customStyle: {},
-                      href: "av-layout-rowctn",
-                      component: "av-layout-rowctn",
+                      href: "v2-layout-rowctn",
+                      component: "v2-layout-rowctn",
                       widget: {
                         belongTo: "aui",
                         icon: "iconfont icon-password",
                         type: "layout",
-                        href: "av-layout-rowctn",
+                        href: "v2-layout-rowctn",
                         author: "zhanghaixian@agree.com.cn",
                         version: 51e4,
                         accept: "",
@@ -757,13 +757,13 @@ export default {
                           ],
                           clearable: false,
                           filterable: false,
-                          href: "av-form-select",
-                          component: "av-form-select",
+                          href: "v2-form-select",
+                          component: "v2-form-select",
                           widget: {
                             belongTo: "aui",
                             icon: "iconfont icon-password",
                             type: "form",
-                            href: "av-form-select",
+                            href: "v2-form-select",
                             author: "fengjiarong@agree.com.cn",
                             version: 51e4,
                             accept: "foundationRowCtn divCtn",
@@ -882,13 +882,13 @@ export default {
                           placeholder: "请选择",
                           value: "",
                           clearable: false,
-                          href: "av-form-input",
-                          component: "av-form-input",
+                          href: "v2-form-input",
+                          component: "v2-form-input",
                           widget: {
                             belongTo: "aui",
                             icon: "iconfont icon-password",
                             type: "form",
-                            href: "av-form-input",
+                            href: "v2-form-input",
                             author: "fengjiarong@agree.com.cn",
                             version: 51e4,
                             accept: "foundationRowCtn divCtn",
@@ -1000,13 +1000,13 @@ export default {
                         "padding-right": 0
                       },
                       customStyle: {},
-                      href: "av-layout-rowctn",
-                      component: "av-layout-rowctn",
+                      href: "v2-layout-rowctn",
+                      component: "v2-layout-rowctn",
                       widget: {
                         belongTo: "aui",
                         icon: "iconfont icon-password",
                         type: "layout",
-                        href: "av-layout-rowctn",
+                        href: "v2-layout-rowctn",
                         author: "zhanghaixian@agree.com.cn",
                         version: 51e4,
                         accept: "",
@@ -1081,13 +1081,13 @@ export default {
                           placeholder: "请选择",
                           value: "",
                           clearable: false,
-                          href: "av-form-input",
-                          component: "av-form-input",
+                          href: "v2-form-input",
+                          component: "v2-form-input",
                           widget: {
                             belongTo: "aui",
                             icon: "iconfont icon-password",
                             type: "form",
-                            href: "av-form-input",
+                            href: "v2-form-input",
                             author: "fengjiarong@agree.com.cn",
                             version: 51e4,
                             accept: "foundationRowCtn divCtn",
@@ -1178,13 +1178,13 @@ export default {
                           placeholder: "请选择",
                           value: "",
                           clearable: false,
-                          href: "av-form-input",
-                          component: "av-form-input",
+                          href: "v2-form-input",
+                          component: "v2-form-input",
                           widget: {
                             belongTo: "aui",
                             icon: "iconfont icon-password",
                             type: "form",
-                            href: "av-form-input",
+                            href: "v2-form-input",
                             author: "fengjiarong@agree.com.cn",
                             version: 51e4,
                             accept: "foundationRowCtn divCtn",
@@ -1296,13 +1296,13 @@ export default {
                         "padding-right": 0
                       },
                       customStyle: {},
-                      href: "av-layout-rowctn",
-                      component: "av-layout-rowctn",
+                      href: "v2-layout-rowctn",
+                      component: "v2-layout-rowctn",
                       widget: {
                         belongTo: "aui",
                         icon: "iconfont icon-password",
                         type: "layout",
-                        href: "av-layout-rowctn",
+                        href: "v2-layout-rowctn",
                         author: "zhanghaixian@agree.com.cn",
                         version: 51e4,
                         accept: "",
@@ -1377,13 +1377,13 @@ export default {
                           placeholder: "请选择",
                           value: "",
                           clearable: false,
-                          href: "av-form-input",
-                          component: "av-form-input",
+                          href: "v2-form-input",
+                          component: "v2-form-input",
                           widget: {
                             belongTo: "aui",
                             icon: "iconfont icon-password",
                             type: "form",
-                            href: "av-form-input",
+                            href: "v2-form-input",
                             author: "fengjiarong@agree.com.cn",
                             version: 51e4,
                             accept: "foundationRowCtn divCtn",
@@ -1474,13 +1474,13 @@ export default {
                           placeholder: "请选择",
                           value: "",
                           clearable: false,
-                          href: "av-form-input",
-                          component: "av-form-input",
+                          href: "v2-form-input",
+                          component: "v2-form-input",
                           widget: {
                             belongTo: "aui",
                             icon: "iconfont icon-password",
                             type: "form",
-                            href: "av-form-input",
+                            href: "v2-form-input",
                             author: "fengjiarong@agree.com.cn",
                             version: 51e4,
                             accept: "foundationRowCtn divCtn",
@@ -1592,13 +1592,13 @@ export default {
                         "padding-right": 0
                       },
                       customStyle: {},
-                      href: "av-layout-rowctn",
-                      component: "av-layout-rowctn",
+                      href: "v2-layout-rowctn",
+                      component: "v2-layout-rowctn",
                       widget: {
                         belongTo: "aui",
                         icon: "iconfont icon-password",
                         type: "layout",
-                        href: "av-layout-rowctn",
+                        href: "v2-layout-rowctn",
                         author: "zhanghaixian@agree.com.cn",
                         version: 51e4,
                         accept: "",
@@ -1677,13 +1677,13 @@ export default {
                           clearable: true,
                           format: "yyyy 年 MM 月 dd 日",
                           align: "left",
-                          href: "av-form-datePicker",
-                          component: "av-form-datePicker",
+                          href: "v2-form-datePicker",
+                          component: "v2-form-datePicker",
                           widget: {
                             belongTo: "aui",
                             icon: "iconfont icon-password",
                             type: "form",
-                            href: "av-form-datePicker",
+                            href: "v2-form-datePicker",
                             author: "fengjiarong@agree.com.cn",
                             version: 51e4,
                             accept: "foundationRowCtn divCtn",
@@ -1820,13 +1820,13 @@ export default {
                           clearable: true,
                           format: "yyyy 年 MM 月 dd 日",
                           align: "left",
-                          href: "av-form-datePicker",
-                          component: "av-form-datePicker",
+                          href: "v2-form-datePicker",
+                          component: "v2-form-datePicker",
                           widget: {
                             belongTo: "aui",
                             icon: "iconfont icon-password",
                             type: "form",
-                            href: "av-form-datePicker",
+                            href: "v2-form-datePicker",
                             author: "fengjiarong@agree.com.cn",
                             version: 51e4,
                             accept: "foundationRowCtn divCtn",

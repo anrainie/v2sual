@@ -7,7 +7,7 @@ var document = new JSDOM('').window.document;
 
 //=================================================== json转html ===========================================================
 const ignoreKey = ['children','style','widget','data','css','option','options','def','defaultValue','customStyle','pid'];//先不作处理的属性
-const avLayout = ['av-layout-colctn','av-layout-rowctn'];//转为v2container
+const avLayout = ['v2-layout-colctn','v2-layout-rowctn'];//转为v2container
 
 let blockClass = function (index, parent) {
     if (parent && parent.children[index] && !parent.children[index].layout) {
@@ -82,7 +82,9 @@ let appendComponent = function(parent,index,element){
     }else{
         eCom =  document.createElement(child.component);
         child.wid = wid;
+        eCom.setAttribute('class','V2Widget');
     }
+    eCom.setAttribute('id','`'+wid+'`');
     eCom.setAttribute(':wid','`'+wid+'`');
     eCom.setAttribute(':index',index);
     eCom.setAttribute(':pid','`'+parent.wid+'`');

@@ -1,0 +1,86 @@
+{
+  "author": {
+    "name": "fengjiarong@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "开关",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconkaiguan",
+    "type": "form",
+    "href": "v2-form-switch",
+    "author": "fengjiarong@agree.com.cn",
+    "version": 510000,
+    "accept": "foundationRowCtn divCtn",
+    "name": "开关",
+    "option": [
+      {
+        "type": "string_input",
+        "desp": "标题",
+        "defaultValue":"标题",
+        "name": "label"
+      },
+      {
+        "name": "titleMode",
+        "desp": "标题排列方式",
+        "defaultValue": "col",
+        "type": "string_select",
+        "valueArray": [
+          "row",
+          "col"
+        ],
+        "despArray": [
+          "同列排列",
+          "同行排列"
+        ]
+      },
+      {
+        "type": "boolean",
+        "desp": "开关的值",
+        "defaultValue": false,
+        "name": "value"
+      },
+      {
+        "type": "string_input",
+        "desp": "激活的文本",
+        "defaultValue":"开",
+        "name": "activeText"
+      },
+      {
+        "type": "string_input",
+        "desp": "未激活的文本",
+        "defaultValue":"关",
+        "name": "inactiveText"
+      },
+      {
+        "name": "disabled",
+        "desp": "是否禁填",
+        "defaultValue": false,
+        "type": "boolean"
+      }
+    ],
+    "css": {
+       "style": [
+         {
+           "desp": "标题",
+           "cssAttrs": "font-size font-weight color",
+           "name": "title"
+         },
+         {
+           "desp": "开关",
+           "cssAttrs": "height margin padding",
+           "name": "switch"
+         }
+       ]
+     }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@aweb-components/v2-form-switch",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.4"
+}
