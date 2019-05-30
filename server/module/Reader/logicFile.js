@@ -5,7 +5,7 @@ const UglifyJS = require('uglify-es-web');
  * @param {String} htmlStr 
  */
 let json2script = function (content) {
-    let logic = JSON.parse(content).logic,
+    let logic = JSON.parse(content).logic.content,
         template;
     if (logic) {
 

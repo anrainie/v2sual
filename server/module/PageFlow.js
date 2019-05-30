@@ -275,6 +275,11 @@ class Page {
         const filepath = query.path + ".def";
         const content = await new Promise(resolve => fs.readFile(filepath, 'utf8', (error, response) => resolve(response)));
         const json = JSON.parse(content);
+        if (!json.logic) json.logic = {
+          content: `export default{data(){return{batabasket:{user:{name:"",time:"",logs:[]}}};},mixins:[root],methods:{},watch:{},beforeCreate(){},created(){},beforeMount(){},mounted(){},beforeUpdate(){},updated(){},beforeDestroy(){ /**unBind**/this.$store("unbind",this)/**unBind over**/},destroyed(){}};`,
+          methods: [],
+          watch: []
+        }
         platform.sendSuccessResult(req, {
           methods: json.logic.methods || [],
           watch: json.logic.watch || [],
