@@ -82,7 +82,9 @@ let appendComponent = function(parent,index,element){
     }else{
         eCom =  document.createElement(child.component);
         child.wid = wid;
+        eCom.setAttribute('class','V2Widget');
     }
+    eCom.setAttribute('id','`'+wid+'`');
     eCom.setAttribute(':wid','`'+wid+'`');
     eCom.setAttribute(':index',index);
     eCom.setAttribute(':pid','`'+parent.wid+'`');
