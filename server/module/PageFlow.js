@@ -274,7 +274,7 @@ class Page {
         const query = req.data;
         let methodRes = [], watchRes = [];
         const filepath = query.path + ".def";
-        const sample = 'export default{data(){return{batabasket:{user:{name:"",time:"",logs:[]}}};},methods:{},watch:{},beforeCreate(){},created(){},beforeMount(){},mounted(){},beforeUpdate(){},updated(){},beforeDestroy(){ /**unBind**/this.$store("unbind",this)/**unBind over**/},destroyed(){}};';
+        const sample = 'export default{data(){return{batabasket:{user:{name:"",time:"",logs:[]}}};},mixins:[root],methods:{},watch:{},beforeCreate(){},created(){},beforeMount(){},mounted(){},beforeUpdate(){},updated(){},beforeDestroy(){ /**unBind**/this.$store("unbind",this)/**unBind over**/},destroyed(){}};';
         const content = await new Promise(resolve => fs.readFile(filepath, 'utf8', (error, response) => error ? platform.sendSuccessResult(req, {
           methods: [],
           watch: [],

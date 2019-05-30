@@ -1,130 +1,1984 @@
 <template>
-  <v2container
-    class="V2Container"
-    ref="wrap"
-    style="width:100%;height:100%;"
-    id="root"
-    :wid="`root`"
-    component="v2container"
-    direction="row"
-    layout="100"
-  > 
+  <v2container :wid="`root`">
     <el-row class="V2ContainerBlock" style="height:100%;width:100%;" key="0">
-      <v2container
-        :wid="`1557729515923`"
-        :index="0"
-        :pid="`root`"
-        direction="row"
-        layout="[50,50]"
-        href="av-layout-colctn"
-        component="av-layout-colctn"
-        id="1557729515923"
-      >
-        <el-row
-          class="V2ContainerBlock borderBox dashBorder"
-          style="height:50%;width:100%;"
-          key="0"
-        >
-          <av-form-datePicker
-            :wid="`1557919551218`"
-            :index="0"
-            :pid="`1557729515923`"
-            label="标题"
-            labelwitdh="80px"
-            titlemode="row"
-            value="user.name"
-            placeholder="请选择"
-            type="date"
-            disabled="false"
-            clearable="true"
-            format="yyyy 年 MM 月 dd 日"
-            align="left"
-            href="av-form-datePicker"
-            component="av-form-datePicker"
-            id="1557919551218"
-          ></av-form-datePicker>
-        </el-row>
-        <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1">
-          <v2container
-            :wid="`1557761115858`"
-            :index="1"
-            :pid="`1557729515923`"
-            component="av-layout-colctn"
-            href="av-layout-colctn"
-            layout="50,50"
-            direction="row"
-            id="1557761115858"
-          >
-            <el-row
-              class="V2ContainerBlock borderBox dashBorder"
-              style="height:50%;width:100%;"
-              key="0"
-            >
-              <av-form-radio
-                is="av-form-radio"
-                :wid="`1557761115858`"
-                :index="0"
-                :pid="`1557760827010`"
-                label="标题"
-                titlemode="row"
-                value
-                href="av-form-radio"
-                component="av-form-radio"
-                id="1557761115858"
-                direction="row"
-              >
-                <div
-                  class="V2Empty"
-                  is="v2Empty"
-                  :wid="`1557761115858-0`"
-                  :index="0"
-                  :pid="`1557761115858`"
-                ></div>
-                <div
-                  class="V2Empty"
-                  is="v2Empty"
-                  :wid="`1557761115858-1`"
-                  :index="1"
-                  :pid="`1557761115858`"
-                ></div>
-              </av-form-radio>
+      <v2container :wid="`1559122029661`" :index="0" :pid="`root`">
+        <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0">
+          <v2container :wid="`1559122031164`" :index="0" :pid="`1559122029661`">
+            <el-row class="V2ContainerBlock" style="height:20%;width:100%;" key="0">
+              <v2container :wid="`1559122089268`" :index="0" :pid="`1559122031164`">
+                <el-col
+                  class="V2ContainerBlock borderBox dashBorder"
+                  span="12"
+                  key="0"
+                  style="height:100%;"
+                >
+                  <av-form-input :wid="`1559122109526`" :index="0" :pid="`1559122089268`"></av-form-input>
+                </el-col>
+                <el-col
+                  class="V2ContainerBlock borderBox dashBorder"
+                  span="12"
+                  key="1"
+                  style="height:100%;"
+                >
+                  <av-form-input :wid="`1559122167997`" :index="1" :pid="`1559122089268`"></av-form-input>
+                </el-col>
+              </v2container>
             </el-row>
-            <el-row
-              class="V2ContainerBlock borderBox dashBorder"
-              style="height:50%;width:100%;"
-              key="1"
-            >
-              <av-form-input
-                :wid="`1557760827010`"
-                index="1"
-                pid="1557729515923"
-                label="标题"
-                titlemode="row"
-                labelwitdh="80px"
-                placeholder="请选择"
-                
-                clearable="false"
-                href="av-form-input"
-                component="av-form-input"
-                id="1557760827010"
-              ></av-form-input>
+            <el-row class="V2ContainerBlock" style="height:20%;width:100%;" key="1">
+              <v2container :wid="`1559122093860`" :index="1" :pid="`1559122031164`">
+                <el-col
+                  class="V2ContainerBlock borderBox dashBorder"
+                  span="12"
+                  key="0"
+                  style="height:100%;"
+                >
+                  <av-form-select :wid="`1559122397328`" :index="0" :pid="`1559122093860`"></av-form-select>
+                </el-col>
+                <el-col
+                  class="V2ContainerBlock borderBox dashBorder"
+                  span="12"
+                  key="1"
+                  style="height:100%;"
+                >
+                  <av-form-input :wid="`1559122410553`" :index="1" :pid="`1559122093860`"></av-form-input>
+                </el-col>
+              </v2container>
+            </el-row>
+            <el-row class="V2ContainerBlock" style="height:20%;width:100%;" key="2">
+              <v2container :wid="`1559122096277`" :index="2" :pid="`1559122031164`">
+                <el-col
+                  class="V2ContainerBlock borderBox dashBorder"
+                  span="12"
+                  key="0"
+                  style="height:100%;"
+                >
+                  <av-form-input :wid="`1559122412795`" :index="0" :pid="`1559122096277`"></av-form-input>
+                </el-col>
+                <el-col
+                  class="V2ContainerBlock borderBox dashBorder"
+                  span="12"
+                  key="1"
+                  style="height:100%;"
+                >
+                  <av-form-input :wid="`1559122436617`" :index="1" :pid="`1559122096277`"></av-form-input>
+                </el-col>
+              </v2container>
+            </el-row>
+            <el-row class="V2ContainerBlock" style="height:20%;width:100%;" key="3">
+              <v2container :wid="`1559122098885`" :index="3" :pid="`1559122031164`">
+                <el-col
+                  class="V2ContainerBlock borderBox dashBorder"
+                  span="12"
+                  key="0"
+                  style="height:100%;"
+                >
+                  <av-form-input :wid="`1559122425458`" :index="0" :pid="`1559122098885`"></av-form-input>
+                </el-col>
+                <el-col
+                  class="V2ContainerBlock borderBox dashBorder"
+                  span="12"
+                  key="1"
+                  style="height:100%;"
+                >
+                  <av-form-input :wid="`1559122440698`" :index="1" :pid="`1559122098885`"></av-form-input>
+                </el-col>
+              </v2container>
+            </el-row>
+            <el-row class="V2ContainerBlock" style="height:20%;width:100%;" key="4">
+              <v2container :wid="`1559122103444`" :index="4" :pid="`1559122031164`">
+                <el-col
+                  class="V2ContainerBlock borderBox dashBorder"
+                  span="12"
+                  key="0"
+                  style="height:100%;"
+                >
+                  <av-form-datePicker :wid="`1559122443506`" :index="0" :pid="`1559122103444`"></av-form-datePicker>
+                </el-col>
+                <el-col
+                  class="V2ContainerBlock borderBox dashBorder"
+                  span="12"
+                  key="1"
+                  style="height:100%;"
+                >
+                  <av-form-datePicker :wid="`1559122445721`" :index="1" :pid="`1559122103444`"></av-form-datePicker>
+                </el-col>
+              </v2container>
             </el-row>
           </v2container>
+        </el-row>
+        <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1">
+          <v2empty class="V2Empty" :wid="`1559122029661-1`" :index="1" :pid="`1559122029661`"></v2empty>
         </el-row>
       </v2container>
     </el-row>
   </v2container>
-</template><script>
-import {root} from '@/utils/v2-view';
+</template>
+<script>
+import { root } from "@/utils/v2-view";
 export default {
   data() {
     return {
-        CONTENT:{"structure":{"id":"root","component":"v2container","direction":"row","layout":[100],"style":{"width":"100%","height":"100%"},"data":{},"children":[{"style":{"row":{"position":"","top":"","right":"","bottom":"","left":"","margin":"","border":"","padding":""},"divCtn":{"position":"","top":"","right":"","bottom":"","left":"","overflow":"","margin":"","padding":"","height":"","width":"","max-height":"","max-width":"","min-height":"","min-width":""}},"direction":"row","layout":"[50,50]","href":"av-layout-colctn","component":"av-layout-colctn","widget":{"belongTo":"aui","icon":"iconfont icon-password","type":"layout","href":"av-layout-colctn","author":"zhanghaixian@agree.com.cn","version":510000,"accept":"","name":"横向布局","option":[{"name":"direction","desp":"排列方式","defaultValue":"row","type":"string_select","valueArray":["row","col"],"despArray":["横排","竖排"]},{"name":"layout","desp":"栅格","hidden":false,"defaultValue":[50,50],"type":"string_input"}],"css":{"style":[{"desp":"栅格","cssAttrs":"position margin padding border top left right bottom","name":"row"},{"desp":"子容器","cssAttrs":"top right bottom left width height min-width max-width min-height max-height position overflow margin padding","name":"divCtn"}]},"style":{},"main":"index.vue"},"children":[{"style":{"label":{"font-size":"","font-weight":"","color":""},"borderStyle":{"border-color":""},"fontStyle":{"color":""}},"label":"标题","labelWitdh":"80px","titleMode":"row","value":"user.name","placeholder":"请选择","type":"date","disabled":false,"clearable":true,"format":"yyyy 年 MM 月 dd 日","align":"left","href":"av-form-datePicker","component":"av-form-datePicker","widget":{"belongTo":"aui","icon":"iconfont icon-password","type":"form","href":"av-form-datePicker","author":"fengjiarong@agree.com.cn","version":510000,"accept":"foundationRowCtn divCtn","name":"日期选择器","option":[{"name":"label","desp":"标题","defaultValue":"标题","type":"string_input"},{"name":"labelWitdh","desp":"标题宽度","defaultValue":"80px","type":"string_input"},{"name":"titleMode","desp":"标题排列方式","defaultValue":"row","type":"string_select","valueArray":["row","col"],"despArray":["横排","竖排"]},{"name":"value","desp":"选择值","defaultValue":"","type":"string_input"},{"name":"placeholder","desp":"placeholder","defaultValue":"请选择","type":"string_input"},{"name":"type","desp":"日期单位","defaultValue":"date","type":"string_select","valueArray":["date","week","month","year","dates","daterange"],"despArray":["日","周","月","年","多个日期","日期范围"]},{"name":"disabled","desp":"是否禁用","defaultValue":false,"type":"boolean"},{"name":"clearable","desp":"是否显示清除按钮","defaultValue":true,"type":"boolean"},{"name":"format","desp":"显示格式","defaultValue":"yyyy 年 MM 月 dd 日","type":"string_input"},{"name":"align","desp":"对齐方式","defaultValue":"left","type":"string_select","valueArray":["left","center","right"],"despArray":["左","中","右"]}],"css":{"style":[{"desp":"标题","cssAttrs":"font-size font-weight color","name":"label"},{"desp":"检验边框","cssAttrs":"border-color","name":"borderStyle"},{"desp":"检验文字","cssAttrs":"color","name":"fontStyle"}]},"main":"index.vue"},"children":[],"id":1557919551218,"pid":1557729515923},{"component":"av-layout-colctn","href":"av-layout-colctn","layout":[50,50],"direction":"row","children":[{"style":{"label":{"font-size":"","font-weight":"","color":""},"radio":{"margin":"","border-width":"","border-radius":"","padding":"","height":"","width":""},"font":{"padding-left":"","font-size":"","color":""}},"label":"标题","titleMode":"row","value":"","options":[{"active":"true","text":"文本","disabled":false,"border":false,"label":""},{"active":true,"text":"文本","disabled":false,"border":false,"label":""}],"href":"av-form-radio","component":"av-form-radio","widget":{"belongTo":"aui","icon":"iconfont icon-password","type":"form","href":"av-form-radio","author":"fengjiarong@agree.com.cn","version":510000,"accept":"foundationRowCtn divCtn","name":"单选框","option":[{"name":"label","desp":"标题","defaultValue":"标题","type":"string_input"},{"name":"titleMode","desp":"标题排列方式","defaultValue":"row","type":"string_select","valueArray":["row","col"],"despArray":["横排","竖排"]},{"name":"value","desp":"选中的值","defaultValue":0,"type":"string_input"},{"name":"options","desp":"配置项","defaultValue":"","type":"array","appendNumber":1,"attrInEachElement":[{"name":"text","desp":"文本","defaultValue":"文本","type":"string_input"},{"name":"disabled","desp":"是否禁用","defaultValue":false,"type":"boolean"},{"name":"border","desp":"是否带边框","defaultValue":false,"type":"boolean"},{"name":"label","desp":"对应值","defaultValue":false,"type":"string_input"}],"append":[{}]}],"css":{"style":[{"desp":"标题","cssAttrs":"font-size color font-weight","name":"label"},{"desp":"单选框","cssAttrs":"width height border-width border-radius padding margin","name":"radio"},{"desp":"选项文字","cssAttrs":"font-size  color padding-left","name":"font"}]},"main":"index.vue"},"children":[null,null],"id":1557761115858,"pid":1557760827010,"direction":"row"},{"style":{"label":{"font-size":"","font-weight":"","color":""},"borderStyle":{"border-color":""},"fontStyle":{"color":""}},"label":"标题","titleMode":"row","labelWitdh":"80px","placeholder":"请选择","value":"","clearable":false,"href":"av-form-input","component":"av-form-input","widget":{"belongTo":"aui","icon":"iconfont icon-password","type":"form","href":"av-form-input","author":"fengjiarong@agree.com.cn","version":510000,"accept":"foundationRowCtn divCtn","name":"输入框","option":[{"name":"label","desp":"标题","defaultValue":"标题","type":"string_input"},{"name":"titleMode","desp":"标题排列方式","defaultValue":"row","type":"string_select","valueArray":["row","col"],"despArray":["横排","竖排"]},{"name":"labelWitdh","desp":"标题宽度","defaultValue":"80px","type":"string_input"},{"name":"placeholder","desp":"placeholder","defaultValue":"请选择","type":"string_input"},{"name":"value","desp":"值","defaultValue":"","type":"string_input"},{"name":"clearable","desp":"是否可清空","defaultValue":false,"type":"boolean"}],"css":{"style":[{"desp":"标题","cssAttrs":"font-size color font-weight","name":"label"},{"desp":"检验边框","cssAttrs":"border-color","name":"borderStyle"},{"desp":"检验文字","cssAttrs":"color","name":"fontStyle"}]},"main":"index.vue"},"children":[],"id":1557760827010,"pid":1557729515923}],"id":1557761115858,"pid":1557729515923}],"id":1557729515923,"pid":"root"}]}}
-    
+      organId: {},
+      CONTENT: {
+        structure: {
+          id: "root",
+          component: "v2Container",
+          direction: "row",
+          layout: [100],
+          style: {
+            width: "100%",
+            height: "100%"
+          },
+          data: {},
+          children: [
+            {
+              style: {
+                divCtn: {
+                  position: "",
+                  top: "",
+                  right: "",
+                  bottom: "",
+                  left: "",
+                  overflow: "",
+                  margin: "",
+                  padding: "",
+                  height: "",
+                  width: "",
+                  "max-height": "",
+                  "max-width": "",
+                  "min-height": "",
+                  "min-width": ""
+                }
+              },
+              direction: "row",
+              layout: "[50,50]",
+              def: {
+                defheight: true,
+                defborder: true,
+                defbackgroundStyle: true,
+                defpaddingStyle: true
+              },
+              defaultValue: {
+                "background-color": "#fff",
+                "background-image": "",
+                "padding-top": 0,
+                "padding-bottom": 0,
+                "padding-left": 0,
+                "padding-right": 0
+              },
+              customStyle: {},
+              href: "av-layout-colctn",
+              component: "av-layout-colctn",
+              widget: {
+                belongTo: "aui",
+                icon: "iconfont icon-password",
+                type: "layout",
+                href: "av-layout-colctn",
+                author: "zhanghaixian@agree.com.cn",
+                version: 51e4,
+                accept: "",
+                name: "横向布局",
+                option: [
+                  {
+                    name: "direction",
+                    desp: "排列方式",
+                    defaultValue: "row",
+                    type: "string_select",
+                    valueArray: ["row", "col"],
+                    despArray: ["横排", "竖排"]
+                  },
+                  {
+                    name: "layout",
+                    desp: "栅格",
+                    hidden: false,
+                    defaultValue: [50, 50],
+                    type: "string_input"
+                  }
+                ],
+                css: {
+                  style: [
+                    {
+                      desp: "容器",
+                      cssAttrs:
+                        "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                      name: "divCtn"
+                    }
+                  ]
+                },
+                editor: {
+                  name: "avLayoutEditor",
+                  model: {
+                    def: {
+                      defheight: true,
+                      defborder: true,
+                      defbackgroundStyle: true,
+                      defpaddingStyle: true
+                    },
+                    defaultValue: {
+                      "background-color": "#fff",
+                      "background-image": "",
+                      "padding-top": 0,
+                      "padding-bottom": 0,
+                      "padding-left": 0,
+                      "padding-right": 0
+                    },
+                    customStyle: {}
+                  }
+                },
+                main: "index.vue"
+              },
+              children: [
+                {
+                  style: {
+                    divCtn: {
+                      position: "",
+                      top: "",
+                      right: "",
+                      bottom: "",
+                      left: "",
+                      overflow: "",
+                      margin: "",
+                      padding: "",
+                      height: "",
+                      width: "",
+                      "max-height": "",
+                      "max-width": "",
+                      "min-height": "",
+                      "min-width": ""
+                    }
+                  },
+                  direction: "row",
+                  layout: [20, 20, 20, 20, 20],
+                  def: {
+                    defheight: true,
+                    defborder: true,
+                    defbackgroundStyle: true,
+                    defpaddingStyle: true
+                  },
+                  defaultValue: {
+                    "background-color": "#fff",
+                    "background-image": "",
+                    "padding-top": 0,
+                    "padding-bottom": 0,
+                    "padding-left": 0,
+                    "padding-right": 0
+                  },
+                  customStyle: {
+                    opacity: 1,
+                    "border-radius": "0px"
+                  },
+                  href: "av-layout-colctn",
+                  component: "av-layout-colctn",
+                  widget: {
+                    belongTo: "aui",
+                    icon: "iconfont icon-password",
+                    type: "layout",
+                    href: "av-layout-colctn",
+                    author: "zhanghaixian@agree.com.cn",
+                    version: 51e4,
+                    accept: "",
+                    name: "横向布局",
+                    option: [
+                      {
+                        name: "direction",
+                        desp: "排列方式",
+                        defaultValue: "row",
+                        type: "string_select",
+                        valueArray: ["row", "col"],
+                        despArray: ["横排", "竖排"]
+                      },
+                      {
+                        name: "layout",
+                        desp: "栅格",
+                        hidden: false,
+                        defaultValue: [50, 50],
+                        type: "string_input"
+                      }
+                    ],
+                    css: {
+                      style: [
+                        {
+                          desp: "容器",
+                          cssAttrs:
+                            "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                          name: "divCtn"
+                        }
+                      ]
+                    },
+                    editor: {
+                      name: "avLayoutEditor",
+                      model: {
+                        def: {
+                          defheight: true,
+                          defborder: true,
+                          defbackgroundStyle: true,
+                          defpaddingStyle: true
+                        },
+                        defaultValue: {
+                          "background-color": "#fff",
+                          "background-image": "",
+                          "padding-top": 0,
+                          "padding-bottom": 0,
+                          "padding-left": 0,
+                          "padding-right": 0
+                        },
+                        customStyle: {}
+                      }
+                    },
+                    main: "index.vue"
+                  },
+                  children: [
+                    {
+                      style: {
+                        divCtn: {
+                          position: "",
+                          top: "",
+                          right: "",
+                          bottom: "",
+                          left: "",
+                          overflow: "",
+                          margin: "",
+                          padding: "",
+                          height: "",
+                          width: "",
+                          "max-height": "",
+                          "max-width": "",
+                          "min-height": "",
+                          "min-width": ""
+                        }
+                      },
+                      direction: "col",
+                      layout: "[50,50]",
+                      def: {
+                        defheight: true,
+                        defborder: true,
+                        defbackgroundStyle: true,
+                        defpaddingStyle: true
+                      },
+                      defaultValue: {
+                        "background-color": "#fff",
+                        "background-image": "",
+                        "padding-top": 0,
+                        "padding-bottom": 0,
+                        "padding-left": 0,
+                        "padding-right": 0
+                      },
+                      customStyle: {},
+                      href: "av-layout-rowctn",
+                      component: "av-layout-rowctn",
+                      widget: {
+                        belongTo: "aui",
+                        icon: "iconfont icon-password",
+                        type: "layout",
+                        href: "av-layout-rowctn",
+                        author: "zhanghaixian@agree.com.cn",
+                        version: 51e4,
+                        accept: "",
+                        name: "竖向布局",
+                        option: [
+                          {
+                            name: "direction",
+                            desp: "排列方式",
+                            defaultValue: "col",
+                            type: "string_select",
+                            valueArray: ["row", "col"],
+                            despArray: ["横排", "竖排"]
+                          },
+                          {
+                            name: "layout",
+                            desp: "栅格",
+                            hidden: false,
+                            defaultValue: [50, 50],
+                            type: "string_input"
+                          }
+                        ],
+                        css: {
+                          style: [
+                            {
+                              desp: "子容器",
+                              cssAttrs:
+                                "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                              name: "divCtn"
+                            }
+                          ]
+                        },
+                        editor: {
+                          name: "avLayoutEditor",
+                          model: {
+                            def: {
+                              defheight: true,
+                              defborder: true,
+                              defbackgroundStyle: true,
+                              defpaddingStyle: true
+                            },
+                            defaultValue: {
+                              "background-color": "#fff",
+                              "background-image": "",
+                              "padding-top": 0,
+                              "padding-bottom": 0,
+                              "padding-left": 0,
+                              "padding-right": 0
+                            },
+                            customStyle: {}
+                          }
+                        },
+                        main: "index.vue"
+                      },
+                      children: [
+                        {
+                          style: {
+                            label: {
+                              "font-size": "",
+                              "font-weight": "",
+                              color: "",
+                              right: "2px"
+                            },
+                            borderStyle: {
+                              "border-color": ""
+                            },
+                            fontStyle: {
+                              color: ""
+                            }
+                          },
+                          label: "机构号",
+                          titleMode: "col",
+                          labelWitdh: "80px",
+                          placeholder: "请选择",
+                          value: "",
+                          clearable: false,
+                          href: "av-form-input",
+                          component: "av-form-input",
+                          widget: {
+                            belongTo: "aui",
+                            icon: "iconfont icon-password",
+                            type: "form",
+                            href: "av-form-input",
+                            author: "fengjiarong@agree.com.cn",
+                            version: 51e4,
+                            accept: "foundationRowCtn divCtn",
+                            name: "输入框",
+                            option: [
+                              {
+                                name: "label",
+                                desp: "标题",
+                                defaultValue: "标题",
+                                type: "string_input"
+                              },
+                              {
+                                name: "titleMode",
+                                desp: "标题排列方式",
+                                defaultValue: "row",
+                                type: "string_select",
+                                valueArray: ["row", "col"],
+                                despArray: ["横排", "竖排"]
+                              },
+                              {
+                                name: "labelWitdh",
+                                desp: "标题宽度",
+                                defaultValue: "80px",
+                                type: "string_input"
+                              },
+                              {
+                                name: "placeholder",
+                                desp: "placeholder",
+                                defaultValue: "请选择",
+                                type: "string_input"
+                              },
+                              {
+                                name: "value",
+                                desp: "值",
+                                defaultValue: "",
+                                type: "string_input"
+                              },
+                              {
+                                name: "clearable",
+                                desp: "是否可清空",
+                                defaultValue: false,
+                                type: "boolean"
+                              }
+                            ],
+                            css: {
+                              style: [
+                                {
+                                  desp: "标题",
+                                  cssAttrs: "font-size color font-weight",
+                                  name: "label"
+                                },
+                                {
+                                  desp: "检验边框",
+                                  cssAttrs: "border-color",
+                                  name: "borderStyle"
+                                },
+                                {
+                                  desp: "检验文字",
+                                  cssAttrs: "color",
+                                  name: "fontStyle"
+                                }
+                              ]
+                            },
+                            main: "index.vue"
+                          },
+                          children: [],
+                          events: [],
+                          id: 1559122109526,
+                          pid: 1559122089268
+                        },
+                        {
+                          style: {
+                            label: {
+                              "font-size": "",
+                              "font-weight": "",
+                              color: "",
+                              right: "px",
+                              top: "10px"
+                            },
+                            borderStyle: {
+                              "border-color": ""
+                            },
+                            fontStyle: {
+                              color: ""
+                            }
+                          },
+                          label: "柜员号",
+                          titleMode: "col",
+                          labelWitdh: "80px",
+                          placeholder: "请选择",
+                          value: "",
+                          clearable: false,
+                          href: "av-form-input",
+                          component: "av-form-input",
+                          widget: {
+                            belongTo: "aui",
+                            icon: "iconfont icon-password",
+                            type: "form",
+                            href: "av-form-input",
+                            author: "fengjiarong@agree.com.cn",
+                            version: 51e4,
+                            accept: "foundationRowCtn divCtn",
+                            name: "输入框",
+                            option: [
+                              {
+                                name: "label",
+                                desp: "标题",
+                                defaultValue: "标题",
+                                type: "string_input"
+                              },
+                              {
+                                name: "titleMode",
+                                desp: "标题排列方式",
+                                defaultValue: "row",
+                                type: "string_select",
+                                valueArray: ["row", "col"],
+                                despArray: ["横排", "竖排"]
+                              },
+                              {
+                                name: "labelWitdh",
+                                desp: "标题宽度",
+                                defaultValue: "80px",
+                                type: "string_input"
+                              },
+                              {
+                                name: "placeholder",
+                                desp: "placeholder",
+                                defaultValue: "请选择",
+                                type: "string_input"
+                              },
+                              {
+                                name: "value",
+                                desp: "值",
+                                defaultValue: "",
+                                type: "string_input"
+                              },
+                              {
+                                name: "clearable",
+                                desp: "是否可清空",
+                                defaultValue: false,
+                                type: "boolean"
+                              }
+                            ],
+                            css: {
+                              style: [
+                                {
+                                  desp: "标题",
+                                  cssAttrs: "font-size color font-weight",
+                                  name: "label"
+                                },
+                                {
+                                  desp: "检验边框",
+                                  cssAttrs: "border-color",
+                                  name: "borderStyle"
+                                },
+                                {
+                                  desp: "检验文字",
+                                  cssAttrs: "color",
+                                  name: "fontStyle"
+                                }
+                              ]
+                            },
+                            main: "index.vue"
+                          },
+                          children: [],
+                          events: [],
+                          id: 1559122167997,
+                          pid: 1559122089268
+                        }
+                      ],
+                      events: [],
+                      id: 1559122089268,
+                      pid: 1559122031164
+                    },
+                    {
+                      style: {
+                        divCtn: {
+                          position: "",
+                          top: "",
+                          right: "",
+                          bottom: "",
+                          left: "",
+                          overflow: "",
+                          margin: "",
+                          padding: "",
+                          height: "",
+                          width: "",
+                          "max-height": "",
+                          "max-width": "",
+                          "min-height": "",
+                          "min-width": ""
+                        }
+                      },
+                      direction: "col",
+                      layout: "[50,50]",
+                      def: {
+                        defheight: true,
+                        defborder: true,
+                        defbackgroundStyle: true,
+                        defpaddingStyle: true
+                      },
+                      defaultValue: {
+                        "background-color": "#fff",
+                        "background-image": "",
+                        "padding-top": 0,
+                        "padding-bottom": 0,
+                        "padding-left": 0,
+                        "padding-right": 0
+                      },
+                      customStyle: {},
+                      href: "av-layout-rowctn",
+                      component: "av-layout-rowctn",
+                      widget: {
+                        belongTo: "aui",
+                        icon: "iconfont icon-password",
+                        type: "layout",
+                        href: "av-layout-rowctn",
+                        author: "zhanghaixian@agree.com.cn",
+                        version: 51e4,
+                        accept: "",
+                        name: "竖向布局",
+                        option: [
+                          {
+                            name: "direction",
+                            desp: "排列方式",
+                            defaultValue: "col",
+                            type: "string_select",
+                            valueArray: ["row", "col"],
+                            despArray: ["横排", "竖排"]
+                          },
+                          {
+                            name: "layout",
+                            desp: "栅格",
+                            hidden: false,
+                            defaultValue: [50, 50],
+                            type: "string_input"
+                          }
+                        ],
+                        css: {
+                          style: [
+                            {
+                              desp: "子容器",
+                              cssAttrs:
+                                "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                              name: "divCtn"
+                            }
+                          ]
+                        },
+                        editor: {
+                          name: "avLayoutEditor",
+                          model: {
+                            def: {
+                              defheight: true,
+                              defborder: true,
+                              defbackgroundStyle: true,
+                              defpaddingStyle: true
+                            },
+                            defaultValue: {
+                              "background-color": "#fff",
+                              "background-image": "",
+                              "padding-top": 0,
+                              "padding-bottom": 0,
+                              "padding-left": 0,
+                              "padding-right": 0
+                            },
+                            customStyle: {}
+                          }
+                        },
+                        main: "index.vue"
+                      },
+                      children: [
+                        {
+                          style: {
+                            label: {
+                              "font-size": "",
+                              "font-weight": "",
+                              color: ""
+                            },
+                            borderStyle: {
+                              "border-color": ""
+                            },
+                            fontStyle: {
+                              color: ""
+                            }
+                          },
+                          value: "1",
+                          labelWitdh: "80px",
+                          titleMode: "col",
+                          label: "交易状态",
+                          placeholder: "请选择",
+                          options: [
+                            {
+                              active: "true",
+                              value: "1",
+                              label: "选项1"
+                            },
+                            {
+                              active: true,
+                              value: "1",
+                              label: "选项1"
+                            }
+                          ],
+                          clearable: false,
+                          filterable: false,
+                          href: "av-form-select",
+                          component: "av-form-select",
+                          widget: {
+                            belongTo: "aui",
+                            icon: "iconfont icon-password",
+                            type: "form",
+                            href: "av-form-select",
+                            author: "fengjiarong@agree.com.cn",
+                            version: 51e4,
+                            accept: "foundationRowCtn divCtn",
+                            name: "选择器",
+                            option: [
+                              {
+                                name: "value",
+                                desp: "选择值",
+                                defaultValue: "",
+                                type: "string_input"
+                              },
+                              {
+                                name: "labelWitdh",
+                                desp: "标题宽度",
+                                defaultValue: "80px",
+                                type: "string_input"
+                              },
+                              {
+                                name: "titleMode",
+                                desp: "标题排列方式",
+                                defaultValue: "row",
+                                type: "string_select",
+                                valueArray: ["row", "col"],
+                                despArray: ["横排", "竖排"]
+                              },
+                              {
+                                name: "label",
+                                desp: "标题",
+                                defaultValue: "标题",
+                                type: "string_input"
+                              },
+                              {
+                                name: "placeholder",
+                                desp: "placeholder",
+                                defaultValue: "请选择",
+                                type: "string_input"
+                              },
+                              {
+                                name: "options",
+                                desp: "配置项",
+                                defaultValue: "",
+                                type: "array",
+                                appendNumber: 1,
+                                attrInEachElement: [
+                                  {
+                                    name: "value",
+                                    desp: "值",
+                                    defaultValue: "1",
+                                    type: "string_input"
+                                  },
+                                  {
+                                    name: "label",
+                                    desp: "文本",
+                                    defaultValue: "选项1",
+                                    type: "string_input"
+                                  }
+                                ],
+                                append: [{}]
+                              },
+                              {
+                                name: "clearable",
+                                desp: "是否可清空",
+                                defaultValue: false,
+                                type: "boolean"
+                              },
+                              {
+                                name: "filterable",
+                                desp: "是否可搜索",
+                                defaultValue: false,
+                                type: "boolean"
+                              }
+                            ],
+                            css: {
+                              style: [
+                                {
+                                  desp: "标题",
+                                  cssAttrs: "font-size color font-weight",
+                                  name: "label"
+                                },
+                                {
+                                  desp: "检验边框",
+                                  cssAttrs: "border-color",
+                                  name: "borderStyle"
+                                },
+                                {
+                                  desp: "检验文字",
+                                  cssAttrs: "color",
+                                  name: "fontStyle"
+                                }
+                              ]
+                            },
+                            main: "index.vue"
+                          },
+                          children: [],
+                          events: [],
+                          id: 1559122397328,
+                          pid: 1559122093860
+                        },
+                        {
+                          style: {
+                            label: {
+                              "font-size": "",
+                              "font-weight": "",
+                              color: ""
+                            },
+                            borderStyle: {
+                              "border-color": ""
+                            },
+                            fontStyle: {
+                              color: ""
+                            }
+                          },
+                          label: "交易类型",
+                          titleMode: "col",
+                          labelWitdh: "80px",
+                          placeholder: "请选择",
+                          value: "",
+                          clearable: false,
+                          href: "av-form-input",
+                          component: "av-form-input",
+                          widget: {
+                            belongTo: "aui",
+                            icon: "iconfont icon-password",
+                            type: "form",
+                            href: "av-form-input",
+                            author: "fengjiarong@agree.com.cn",
+                            version: 51e4,
+                            accept: "foundationRowCtn divCtn",
+                            name: "输入框",
+                            option: [
+                              {
+                                name: "label",
+                                desp: "标题",
+                                defaultValue: "标题",
+                                type: "string_input"
+                              },
+                              {
+                                name: "titleMode",
+                                desp: "标题排列方式",
+                                defaultValue: "row",
+                                type: "string_select",
+                                valueArray: ["row", "col"],
+                                despArray: ["横排", "竖排"]
+                              },
+                              {
+                                name: "labelWitdh",
+                                desp: "标题宽度",
+                                defaultValue: "80px",
+                                type: "string_input"
+                              },
+                              {
+                                name: "placeholder",
+                                desp: "placeholder",
+                                defaultValue: "请选择",
+                                type: "string_input"
+                              },
+                              {
+                                name: "value",
+                                desp: "值",
+                                defaultValue: "",
+                                type: "string_input"
+                              },
+                              {
+                                name: "clearable",
+                                desp: "是否可清空",
+                                defaultValue: false,
+                                type: "boolean"
+                              }
+                            ],
+                            css: {
+                              style: [
+                                {
+                                  desp: "标题",
+                                  cssAttrs: "font-size color font-weight",
+                                  name: "label"
+                                },
+                                {
+                                  desp: "检验边框",
+                                  cssAttrs: "border-color",
+                                  name: "borderStyle"
+                                },
+                                {
+                                  desp: "检验文字",
+                                  cssAttrs: "color",
+                                  name: "fontStyle"
+                                }
+                              ]
+                            },
+                            main: "index.vue"
+                          },
+                          children: [],
+                          events: [],
+                          id: 1559122410553,
+                          pid: 1559122093860
+                        }
+                      ],
+                      events: [],
+                      id: 1559122093860,
+                      pid: 1559122031164
+                    },
+                    {
+                      style: {
+                        divCtn: {
+                          position: "",
+                          top: "",
+                          right: "",
+                          bottom: "",
+                          left: "",
+                          overflow: "",
+                          margin: "",
+                          padding: "",
+                          height: "",
+                          width: "",
+                          "max-height": "",
+                          "max-width": "",
+                          "min-height": "",
+                          "min-width": ""
+                        }
+                      },
+                      direction: "col",
+                      layout: "[50,50]",
+                      def: {
+                        defheight: true,
+                        defborder: true,
+                        defbackgroundStyle: true,
+                        defpaddingStyle: true
+                      },
+                      defaultValue: {
+                        "background-color": "#fff",
+                        "background-image": "",
+                        "padding-top": 0,
+                        "padding-bottom": 0,
+                        "padding-left": 0,
+                        "padding-right": 0
+                      },
+                      customStyle: {},
+                      href: "av-layout-rowctn",
+                      component: "av-layout-rowctn",
+                      widget: {
+                        belongTo: "aui",
+                        icon: "iconfont icon-password",
+                        type: "layout",
+                        href: "av-layout-rowctn",
+                        author: "zhanghaixian@agree.com.cn",
+                        version: 51e4,
+                        accept: "",
+                        name: "竖向布局",
+                        option: [
+                          {
+                            name: "direction",
+                            desp: "排列方式",
+                            defaultValue: "col",
+                            type: "string_select",
+                            valueArray: ["row", "col"],
+                            despArray: ["横排", "竖排"]
+                          },
+                          {
+                            name: "layout",
+                            desp: "栅格",
+                            hidden: false,
+                            defaultValue: [50, 50],
+                            type: "string_input"
+                          }
+                        ],
+                        css: {
+                          style: [
+                            {
+                              desp: "子容器",
+                              cssAttrs:
+                                "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                              name: "divCtn"
+                            }
+                          ]
+                        },
+                        editor: {
+                          name: "avLayoutEditor",
+                          model: {
+                            def: {
+                              defheight: true,
+                              defborder: true,
+                              defbackgroundStyle: true,
+                              defpaddingStyle: true
+                            },
+                            defaultValue: {
+                              "background-color": "#fff",
+                              "background-image": "",
+                              "padding-top": 0,
+                              "padding-bottom": 0,
+                              "padding-left": 0,
+                              "padding-right": 0
+                            },
+                            customStyle: {}
+                          }
+                        },
+                        main: "index.vue"
+                      },
+                      children: [
+                        {
+                          style: {
+                            label: {
+                              "font-size": "",
+                              "font-weight": "",
+                              color: ""
+                            },
+                            borderStyle: {
+                              "border-color": ""
+                            },
+                            fontStyle: {
+                              color: ""
+                            }
+                          },
+                          label: "交易码",
+                          titleMode: "col",
+                          labelWitdh: "80px",
+                          placeholder: "请选择",
+                          value: "",
+                          clearable: false,
+                          href: "av-form-input",
+                          component: "av-form-input",
+                          widget: {
+                            belongTo: "aui",
+                            icon: "iconfont icon-password",
+                            type: "form",
+                            href: "av-form-input",
+                            author: "fengjiarong@agree.com.cn",
+                            version: 51e4,
+                            accept: "foundationRowCtn divCtn",
+                            name: "输入框",
+                            option: [
+                              {
+                                name: "label",
+                                desp: "标题",
+                                defaultValue: "标题",
+                                type: "string_input"
+                              },
+                              {
+                                name: "titleMode",
+                                desp: "标题排列方式",
+                                defaultValue: "row",
+                                type: "string_select",
+                                valueArray: ["row", "col"],
+                                despArray: ["横排", "竖排"]
+                              },
+                              {
+                                name: "labelWitdh",
+                                desp: "标题宽度",
+                                defaultValue: "80px",
+                                type: "string_input"
+                              },
+                              {
+                                name: "placeholder",
+                                desp: "placeholder",
+                                defaultValue: "请选择",
+                                type: "string_input"
+                              },
+                              {
+                                name: "value",
+                                desp: "值",
+                                defaultValue: "",
+                                type: "string_input"
+                              },
+                              {
+                                name: "clearable",
+                                desp: "是否可清空",
+                                defaultValue: false,
+                                type: "boolean"
+                              }
+                            ],
+                            css: {
+                              style: [
+                                {
+                                  desp: "标题",
+                                  cssAttrs: "font-size color font-weight",
+                                  name: "label"
+                                },
+                                {
+                                  desp: "检验边框",
+                                  cssAttrs: "border-color",
+                                  name: "borderStyle"
+                                },
+                                {
+                                  desp: "检验文字",
+                                  cssAttrs: "color",
+                                  name: "fontStyle"
+                                }
+                              ]
+                            },
+                            main: "index.vue"
+                          },
+                          children: [],
+                          events: [],
+                          id: 1559122412795,
+                          pid: 1559122096277
+                        },
+                        {
+                          style: {
+                            label: {
+                              "font-size": "",
+                              "font-weight": "",
+                              color: ""
+                            },
+                            borderStyle: {
+                              "border-color": ""
+                            },
+                            fontStyle: {
+                              color: ""
+                            }
+                          },
+                          label: "交易名称",
+                          titleMode: "col",
+                          labelWitdh: "80px",
+                          placeholder: "请选择",
+                          value: "",
+                          clearable: false,
+                          href: "av-form-input",
+                          component: "av-form-input",
+                          widget: {
+                            belongTo: "aui",
+                            icon: "iconfont icon-password",
+                            type: "form",
+                            href: "av-form-input",
+                            author: "fengjiarong@agree.com.cn",
+                            version: 51e4,
+                            accept: "foundationRowCtn divCtn",
+                            name: "输入框",
+                            option: [
+                              {
+                                name: "label",
+                                desp: "标题",
+                                defaultValue: "标题",
+                                type: "string_input"
+                              },
+                              {
+                                name: "titleMode",
+                                desp: "标题排列方式",
+                                defaultValue: "row",
+                                type: "string_select",
+                                valueArray: ["row", "col"],
+                                despArray: ["横排", "竖排"]
+                              },
+                              {
+                                name: "labelWitdh",
+                                desp: "标题宽度",
+                                defaultValue: "80px",
+                                type: "string_input"
+                              },
+                              {
+                                name: "placeholder",
+                                desp: "placeholder",
+                                defaultValue: "请选择",
+                                type: "string_input"
+                              },
+                              {
+                                name: "value",
+                                desp: "值",
+                                defaultValue: "",
+                                type: "string_input"
+                              },
+                              {
+                                name: "clearable",
+                                desp: "是否可清空",
+                                defaultValue: false,
+                                type: "boolean"
+                              }
+                            ],
+                            css: {
+                              style: [
+                                {
+                                  desp: "标题",
+                                  cssAttrs: "font-size color font-weight",
+                                  name: "label"
+                                },
+                                {
+                                  desp: "检验边框",
+                                  cssAttrs: "border-color",
+                                  name: "borderStyle"
+                                },
+                                {
+                                  desp: "检验文字",
+                                  cssAttrs: "color",
+                                  name: "fontStyle"
+                                }
+                              ]
+                            },
+                            main: "index.vue"
+                          },
+                          children: [],
+                          events: [],
+                          id: 1559122436617,
+                          pid: 1559122096277
+                        }
+                      ],
+                      events: [],
+                      id: 1559122096277,
+                      pid: 1559122031164
+                    },
+                    {
+                      style: {
+                        divCtn: {
+                          position: "",
+                          top: "",
+                          right: "",
+                          bottom: "",
+                          left: "",
+                          overflow: "",
+                          margin: "",
+                          padding: "",
+                          height: "",
+                          width: "",
+                          "max-height": "",
+                          "max-width": "",
+                          "min-height": "",
+                          "min-width": ""
+                        }
+                      },
+                      direction: "col",
+                      layout: "[50,50]",
+                      def: {
+                        defheight: true,
+                        defborder: true,
+                        defbackgroundStyle: true,
+                        defpaddingStyle: true
+                      },
+                      defaultValue: {
+                        "background-color": "#fff",
+                        "background-image": "",
+                        "padding-top": 0,
+                        "padding-bottom": 0,
+                        "padding-left": 0,
+                        "padding-right": 0
+                      },
+                      customStyle: {},
+                      href: "av-layout-rowctn",
+                      component: "av-layout-rowctn",
+                      widget: {
+                        belongTo: "aui",
+                        icon: "iconfont icon-password",
+                        type: "layout",
+                        href: "av-layout-rowctn",
+                        author: "zhanghaixian@agree.com.cn",
+                        version: 51e4,
+                        accept: "",
+                        name: "竖向布局",
+                        option: [
+                          {
+                            name: "direction",
+                            desp: "排列方式",
+                            defaultValue: "col",
+                            type: "string_select",
+                            valueArray: ["row", "col"],
+                            despArray: ["横排", "竖排"]
+                          },
+                          {
+                            name: "layout",
+                            desp: "栅格",
+                            hidden: false,
+                            defaultValue: [50, 50],
+                            type: "string_input"
+                          }
+                        ],
+                        css: {
+                          style: [
+                            {
+                              desp: "子容器",
+                              cssAttrs:
+                                "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                              name: "divCtn"
+                            }
+                          ]
+                        },
+                        editor: {
+                          name: "avLayoutEditor",
+                          model: {
+                            def: {
+                              defheight: true,
+                              defborder: true,
+                              defbackgroundStyle: true,
+                              defpaddingStyle: true
+                            },
+                            defaultValue: {
+                              "background-color": "#fff",
+                              "background-image": "",
+                              "padding-top": 0,
+                              "padding-bottom": 0,
+                              "padding-left": 0,
+                              "padding-right": 0
+                            },
+                            customStyle: {}
+                          }
+                        },
+                        main: "index.vue"
+                      },
+                      children: [
+                        {
+                          style: {
+                            label: {
+                              "font-size": "",
+                              "font-weight": "",
+                              color: ""
+                            },
+                            borderStyle: {
+                              "border-color": ""
+                            },
+                            fontStyle: {
+                              color: ""
+                            }
+                          },
+                          label: "关联系统流水号",
+                          titleMode: "col",
+                          labelWitdh: "80px",
+                          placeholder: "请选择",
+                          value: "",
+                          clearable: false,
+                          href: "av-form-input",
+                          component: "av-form-input",
+                          widget: {
+                            belongTo: "aui",
+                            icon: "iconfont icon-password",
+                            type: "form",
+                            href: "av-form-input",
+                            author: "fengjiarong@agree.com.cn",
+                            version: 51e4,
+                            accept: "foundationRowCtn divCtn",
+                            name: "输入框",
+                            option: [
+                              {
+                                name: "label",
+                                desp: "标题",
+                                defaultValue: "标题",
+                                type: "string_input"
+                              },
+                              {
+                                name: "titleMode",
+                                desp: "标题排列方式",
+                                defaultValue: "row",
+                                type: "string_select",
+                                valueArray: ["row", "col"],
+                                despArray: ["横排", "竖排"]
+                              },
+                              {
+                                name: "labelWitdh",
+                                desp: "标题宽度",
+                                defaultValue: "80px",
+                                type: "string_input"
+                              },
+                              {
+                                name: "placeholder",
+                                desp: "placeholder",
+                                defaultValue: "请选择",
+                                type: "string_input"
+                              },
+                              {
+                                name: "value",
+                                desp: "值",
+                                defaultValue: "",
+                                type: "string_input"
+                              },
+                              {
+                                name: "clearable",
+                                desp: "是否可清空",
+                                defaultValue: false,
+                                type: "boolean"
+                              }
+                            ],
+                            css: {
+                              style: [
+                                {
+                                  desp: "标题",
+                                  cssAttrs: "font-size color font-weight",
+                                  name: "label"
+                                },
+                                {
+                                  desp: "检验边框",
+                                  cssAttrs: "border-color",
+                                  name: "borderStyle"
+                                },
+                                {
+                                  desp: "检验文字",
+                                  cssAttrs: "color",
+                                  name: "fontStyle"
+                                }
+                              ]
+                            },
+                            main: "index.vue"
+                          },
+                          children: [],
+                          events: [],
+                          id: 1559122425458,
+                          pid: 1559122098885
+                        },
+                        {
+                          style: {
+                            label: {
+                              "font-size": "",
+                              "font-weight": "",
+                              color: ""
+                            },
+                            borderStyle: {
+                              "border-color": ""
+                            },
+                            fontStyle: {
+                              color: ""
+                            }
+                          },
+                          label: "业务流水号",
+                          titleMode: "col",
+                          labelWitdh: "80px",
+                          placeholder: "请选择",
+                          value: "",
+                          clearable: false,
+                          href: "av-form-input",
+                          component: "av-form-input",
+                          widget: {
+                            belongTo: "aui",
+                            icon: "iconfont icon-password",
+                            type: "form",
+                            href: "av-form-input",
+                            author: "fengjiarong@agree.com.cn",
+                            version: 51e4,
+                            accept: "foundationRowCtn divCtn",
+                            name: "输入框",
+                            option: [
+                              {
+                                name: "label",
+                                desp: "标题",
+                                defaultValue: "标题",
+                                type: "string_input"
+                              },
+                              {
+                                name: "titleMode",
+                                desp: "标题排列方式",
+                                defaultValue: "row",
+                                type: "string_select",
+                                valueArray: ["row", "col"],
+                                despArray: ["横排", "竖排"]
+                              },
+                              {
+                                name: "labelWitdh",
+                                desp: "标题宽度",
+                                defaultValue: "80px",
+                                type: "string_input"
+                              },
+                              {
+                                name: "placeholder",
+                                desp: "placeholder",
+                                defaultValue: "请选择",
+                                type: "string_input"
+                              },
+                              {
+                                name: "value",
+                                desp: "值",
+                                defaultValue: "",
+                                type: "string_input"
+                              },
+                              {
+                                name: "clearable",
+                                desp: "是否可清空",
+                                defaultValue: false,
+                                type: "boolean"
+                              }
+                            ],
+                            css: {
+                              style: [
+                                {
+                                  desp: "标题",
+                                  cssAttrs: "font-size color font-weight",
+                                  name: "label"
+                                },
+                                {
+                                  desp: "检验边框",
+                                  cssAttrs: "border-color",
+                                  name: "borderStyle"
+                                },
+                                {
+                                  desp: "检验文字",
+                                  cssAttrs: "color",
+                                  name: "fontStyle"
+                                }
+                              ]
+                            },
+                            main: "index.vue"
+                          },
+                          children: [],
+                          events: [],
+                          id: 1559122440698,
+                          pid: 1559122098885
+                        }
+                      ],
+                      events: [],
+                      id: 1559122098885,
+                      pid: 1559122031164
+                    },
+                    {
+                      style: {
+                        divCtn: {
+                          position: "",
+                          top: "",
+                          right: "",
+                          bottom: "",
+                          left: "",
+                          overflow: "",
+                          margin: "",
+                          padding: "",
+                          height: "",
+                          width: "",
+                          "max-height": "",
+                          "max-width": "",
+                          "min-height": "",
+                          "min-width": ""
+                        }
+                      },
+                      direction: "col",
+                      layout: "[50,50]",
+                      def: {
+                        defheight: true,
+                        defborder: true,
+                        defbackgroundStyle: true,
+                        defpaddingStyle: true
+                      },
+                      defaultValue: {
+                        "background-color": "#fff",
+                        "background-image": "",
+                        "padding-top": 0,
+                        "padding-bottom": 0,
+                        "padding-left": 0,
+                        "padding-right": 0
+                      },
+                      customStyle: {},
+                      href: "av-layout-rowctn",
+                      component: "av-layout-rowctn",
+                      widget: {
+                        belongTo: "aui",
+                        icon: "iconfont icon-password",
+                        type: "layout",
+                        href: "av-layout-rowctn",
+                        author: "zhanghaixian@agree.com.cn",
+                        version: 51e4,
+                        accept: "",
+                        name: "竖向布局",
+                        option: [
+                          {
+                            name: "direction",
+                            desp: "排列方式",
+                            defaultValue: "col",
+                            type: "string_select",
+                            valueArray: ["row", "col"],
+                            despArray: ["横排", "竖排"]
+                          },
+                          {
+                            name: "layout",
+                            desp: "栅格",
+                            hidden: false,
+                            defaultValue: [50, 50],
+                            type: "string_input"
+                          }
+                        ],
+                        css: {
+                          style: [
+                            {
+                              desp: "子容器",
+                              cssAttrs:
+                                "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                              name: "divCtn"
+                            }
+                          ]
+                        },
+                        editor: {
+                          name: "avLayoutEditor",
+                          model: {
+                            def: {
+                              defheight: true,
+                              defborder: true,
+                              defbackgroundStyle: true,
+                              defpaddingStyle: true
+                            },
+                            defaultValue: {
+                              "background-color": "#fff",
+                              "background-image": "",
+                              "padding-top": 0,
+                              "padding-bottom": 0,
+                              "padding-left": 0,
+                              "padding-right": 0
+                            },
+                            customStyle: {}
+                          }
+                        },
+                        main: "index.vue"
+                      },
+                      children: [
+                        {
+                          style: {
+                            label: {
+                              "font-size": "",
+                              "font-weight": "",
+                              color: ""
+                            },
+                            borderStyle: {
+                              "border-color": ""
+                            },
+                            fontStyle: {
+                              color: ""
+                            }
+                          },
+                          label: "交易开始日期",
+                          labelWitdh: "80px",
+                          titleMode: "col",
+                          value: "2019-05-29",
+                          placeholder: "请选择",
+                          type: "date",
+                          disabled: false,
+                          clearable: true,
+                          format: "yyyy 年 MM 月 dd 日",
+                          align: "left",
+                          href: "av-form-datePicker",
+                          component: "av-form-datePicker",
+                          widget: {
+                            belongTo: "aui",
+                            icon: "iconfont icon-password",
+                            type: "form",
+                            href: "av-form-datePicker",
+                            author: "fengjiarong@agree.com.cn",
+                            version: 51e4,
+                            accept: "foundationRowCtn divCtn",
+                            name: "日期选择器",
+                            option: [
+                              {
+                                name: "label",
+                                desp: "标题",
+                                defaultValue: "标题",
+                                type: "string_input"
+                              },
+                              {
+                                name: "labelWitdh",
+                                desp: "标题宽度",
+                                defaultValue: "80px",
+                                type: "string_input"
+                              },
+                              {
+                                name: "titleMode",
+                                desp: "标题排列方式",
+                                defaultValue: "row",
+                                type: "string_select",
+                                valueArray: ["row", "col"],
+                                despArray: ["横排", "竖排"]
+                              },
+                              {
+                                name: "value",
+                                desp: "选择值",
+                                defaultValue: "",
+                                type: "string_input"
+                              },
+                              {
+                                name: "placeholder",
+                                desp: "placeholder",
+                                defaultValue: "请选择",
+                                type: "string_input"
+                              },
+                              {
+                                name: "type",
+                                desp: "日期单位",
+                                defaultValue: "date",
+                                type: "string_select",
+                                valueArray: [
+                                  "date",
+                                  "week",
+                                  "month",
+                                  "year",
+                                  "dates",
+                                  "daterange"
+                                ],
+                                despArray: [
+                                  "日",
+                                  "周",
+                                  "月",
+                                  "年",
+                                  "多个日期",
+                                  "日期范围"
+                                ]
+                              },
+                              {
+                                name: "disabled",
+                                desp: "是否禁用",
+                                defaultValue: false,
+                                type: "boolean"
+                              },
+                              {
+                                name: "clearable",
+                                desp: "是否显示清除按钮",
+                                defaultValue: true,
+                                type: "boolean"
+                              },
+                              {
+                                name: "format",
+                                desp: "显示格式",
+                                defaultValue: "yyyy 年 MM 月 dd 日",
+                                type: "string_input"
+                              },
+                              {
+                                name: "align",
+                                desp: "对齐方式",
+                                defaultValue: "left",
+                                type: "string_select",
+                                valueArray: ["left", "center", "right"],
+                                despArray: ["左", "中", "右"]
+                              }
+                            ],
+                            css: {
+                              style: [
+                                {
+                                  desp: "标题",
+                                  cssAttrs: "font-size font-weight color",
+                                  name: "label"
+                                },
+                                {
+                                  desp: "检验边框",
+                                  cssAttrs: "border-color",
+                                  name: "borderStyle"
+                                },
+                                {
+                                  desp: "检验文字",
+                                  cssAttrs: "color",
+                                  name: "fontStyle"
+                                }
+                              ]
+                            },
+                            main: "index.vue"
+                          },
+                          children: [],
+                          events: [],
+                          id: 1559122443506,
+                          pid: 1559122103444
+                        },
+                        {
+                          style: {
+                            label: {
+                              "font-size": "",
+                              "font-weight": "",
+                              color: ""
+                            },
+                            borderStyle: {
+                              "border-color": ""
+                            },
+                            fontStyle: {
+                              color: ""
+                            }
+                          },
+                          label: "交易结束日期",
+                          labelWitdh: "80px",
+                          titleMode: "col",
+                          value: "2019-05-30",
+                          placeholder: "请选择",
+                          type: "date",
+                          disabled: false,
+                          clearable: true,
+                          format: "yyyy 年 MM 月 dd 日",
+                          align: "left",
+                          href: "av-form-datePicker",
+                          component: "av-form-datePicker",
+                          widget: {
+                            belongTo: "aui",
+                            icon: "iconfont icon-password",
+                            type: "form",
+                            href: "av-form-datePicker",
+                            author: "fengjiarong@agree.com.cn",
+                            version: 51e4,
+                            accept: "foundationRowCtn divCtn",
+                            name: "日期选择器",
+                            option: [
+                              {
+                                name: "label",
+                                desp: "标题",
+                                defaultValue: "标题",
+                                type: "string_input"
+                              },
+                              {
+                                name: "labelWitdh",
+                                desp: "标题宽度",
+                                defaultValue: "80px",
+                                type: "string_input"
+                              },
+                              {
+                                name: "titleMode",
+                                desp: "标题排列方式",
+                                defaultValue: "row",
+                                type: "string_select",
+                                valueArray: ["row", "col"],
+                                despArray: ["横排", "竖排"]
+                              },
+                              {
+                                name: "value",
+                                desp: "选择值",
+                                defaultValue: "",
+                                type: "string_input"
+                              },
+                              {
+                                name: "placeholder",
+                                desp: "placeholder",
+                                defaultValue: "请选择",
+                                type: "string_input"
+                              },
+                              {
+                                name: "type",
+                                desp: "日期单位",
+                                defaultValue: "date",
+                                type: "string_select",
+                                valueArray: [
+                                  "date",
+                                  "week",
+                                  "month",
+                                  "year",
+                                  "dates",
+                                  "daterange"
+                                ],
+                                despArray: [
+                                  "日",
+                                  "周",
+                                  "月",
+                                  "年",
+                                  "多个日期",
+                                  "日期范围"
+                                ]
+                              },
+                              {
+                                name: "disabled",
+                                desp: "是否禁用",
+                                defaultValue: false,
+                                type: "boolean"
+                              },
+                              {
+                                name: "clearable",
+                                desp: "是否显示清除按钮",
+                                defaultValue: true,
+                                type: "boolean"
+                              },
+                              {
+                                name: "format",
+                                desp: "显示格式",
+                                defaultValue: "yyyy 年 MM 月 dd 日",
+                                type: "string_input"
+                              },
+                              {
+                                name: "align",
+                                desp: "对齐方式",
+                                defaultValue: "left",
+                                type: "string_select",
+                                valueArray: ["left", "center", "right"],
+                                despArray: ["左", "中", "右"]
+                              }
+                            ],
+                            css: {
+                              style: [
+                                {
+                                  desp: "标题",
+                                  cssAttrs: "font-size font-weight color",
+                                  name: "label"
+                                },
+                                {
+                                  desp: "检验边框",
+                                  cssAttrs: "border-color",
+                                  name: "borderStyle"
+                                },
+                                {
+                                  desp: "检验文字",
+                                  cssAttrs: "color",
+                                  name: "fontStyle"
+                                }
+                              ]
+                            },
+                            main: "index.vue"
+                          },
+                          children: [],
+                          events: [],
+                          id: 1559122445721,
+                          pid: 1559122103444
+                        }
+                      ],
+                      events: [],
+                      id: 1559122103444,
+                      pid: 1559122031164
+                    }
+                  ],
+                  events: [],
+                  id: 1559122031164,
+                  pid: 1559122029661
+                },
+                null
+              ],
+              events: [],
+              id: 1559122029661,
+              pid: "root"
+            }
+          ]
+        }
+      }
     };
   },
-  mixins:[root],
+  mixins: [root],
   methods: {},
-  watch: {}
+  watch: {},
+  beforeCreate() {
+    const ctx = this;
+    /**overView beforeCreate**/ (async () => {
+      const t1 = await pipe.getExcelData("机构表", "");
+      organId = t1;
+    })();
+    /**overView over**/
+  },
+  created() {},
+  beforeMount() {},
+  mounted() {},
+  beforeUpdate() {},
+  updated() {},
+  beforeDestroy() {
+    /**unBind**/ this.$store("unbind", this) /**unBind over**/;
+  },
+  destroyed() {}
 };
 </script>

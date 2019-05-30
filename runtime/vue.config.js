@@ -1,4 +1,4 @@
-// var afa = require('./proxy/proxy.afa.js')
+
 var nodeServer = require('./proxy/proxy.node.js')
 module.exports = {
     baseUrl: './',
@@ -9,7 +9,7 @@ module.exports = {
           disableHostCheck: true,
           hotOnly: false,
             proxy: {
-            //    ...afa,
+    
                ...nodeServer
             }
         

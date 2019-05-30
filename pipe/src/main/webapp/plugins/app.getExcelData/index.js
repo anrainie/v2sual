@@ -1,3 +1,10 @@
 import axios from 'axios';
 
-export default (url, params) => axios.get(url, {params});
+export default (filename, filter) => axios.get("/v1/ds/excel/get", { 
+    params:{
+        filename:filename,
+        filter:filter
+    }
+}).then(function(response){
+    return response.data.content.content;
+})
