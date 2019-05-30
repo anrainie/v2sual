@@ -32,7 +32,6 @@ let app = {
 window.pipe = app;
 
 export default {
-	avLayoutEditor,
 	avComponentBtn,
 	avComponentETable,
 	avComponentTable,
