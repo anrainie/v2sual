@@ -1,4 +1,5 @@
 import store from './store.js'
+import FocusManager from './focusManager'
 
 export const root = {
   computed: {
@@ -12,8 +13,12 @@ export const root = {
   beforeMount() {
     console.log(1..toString().repeat(100));
     this.$store.commit('init', this.CONTENT)
+  },
+  mounted() {
+    //找到所有的作用域
+    // $(':input',this.$el)
+    this.focusMananger = new FocusManager(this);
   }
-
 }
 
 export const complexWidget = {
@@ -55,13 +60,12 @@ export const widget = {
     //   return model;
     // },
     model() {
-      try{
+      try {
         let m = this.$store.getters.model(this.wid);
         if (m)
           return m;
         throw `找不到model${this.name}:${this.wid}`
-      }catch(e){
-      }
+      } catch (e) {}
     },
     parentId() {
       return this.pid || (this.pid = this.$store.getters.parentId(this.wid));
