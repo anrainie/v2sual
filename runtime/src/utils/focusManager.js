@@ -11,36 +11,38 @@ export default class FocusManager {
     this.host = host;
     this.timeout = -1;
     this.widgetRegistry = {};
-    this.reset();
+
   }
   dispose() {
-    $('input', widget.$el).off('blur.focusManager');
-    $('input', widget.$el).off('focus.focusManager');
+    $('input', this.host.$el).not(":button").off('blur.focusManager');
+    $('input', this.host.$el).not(":button").off('focus.focusManager');
   }
   unbind(widget, eventType) {
-    let inputFields = $(':input', widget.$el);
+    let inputFields = $(':input', widget.$el).not(":button")
+    ;
     inputFields.off(`${eventType}.focusManager`)
   }
   unregist(widget) {
     delete this.widgetRegistry[widget.wid]
-    let inputFields = $(':input', widget.$el);
+    let inputFields = $(':input', widget.$el).not(":button");
     inputFields.off('blur.focusManager')
     inputFields.off('focus.focusManager')
   }
   regist(widget) {
+    let self=this;
     this.widgetRegistry[widget.wid] = widget;
-    let inputFields = $(':input', widget.$el);
+    let inputFields = $(':input', widget.$el).not(":button");
     inputFields.on('blur.focusManager', event => {
       self.valid('blur', {
         widget,
-        target: e.currentTarget,
+        target: event.currentTarget,
         event,
       })
     })
-    inputFields.on('focus.focusManager', e => {
+    inputFields.on('focus.focusManager', event => {
       self.valid('focus', {
         widget,
-        target: e.currentTarget,
+        target: event.currentTarget,
         event,
       })
     })
@@ -95,13 +97,13 @@ export default class FocusManager {
     let rulePromise = [];
     for (let rule of rules) {
       if (rule && rule.constructor == Function) {
-        r = rule({
+        let r = rule({
           mgr: self,
           widget,
           target,
           event,
         });
-        r && r.constructor == Promise && rulerulePromise.push(r);
+        r && r.constructor == Promise && rulePromise.push(r);
       }
     }
     Promise.all(rulePromise).then(values => {

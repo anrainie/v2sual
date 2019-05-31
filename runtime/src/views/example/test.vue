@@ -1011,7 +1011,9 @@ export default {
                                 main: "index.vue"
                               },
                               children: [],
-                              events: [],
+                              events: {
+                                "_op_componentBtn_btn":{'click':['click_0_1559272065466']}
+                              },
                               id: 1559272065466,
                               pid: 1559270080534
                             },
