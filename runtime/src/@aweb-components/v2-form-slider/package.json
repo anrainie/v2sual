@@ -82,6 +82,11 @@
         "type": "boolean",
         "defaultValue": false,
         "desp": "是否使用范围选择"
+      },{
+        "name": "isRequired",
+        "desp": "是否必填",
+        "defaultValue": false,
+        "type": "boolean"
       }
     ],
     "css": {

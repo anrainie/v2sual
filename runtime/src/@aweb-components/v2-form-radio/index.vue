@@ -3,7 +3,9 @@
     <label
       :class="model.titleMode ==='row'?'v2-form-label':'v2-form-label form-label-col'"
       :style="labelStyle"
-    >{{model.label}}</label>
+    >
+    <span class="must-input" v-if="model.isRequired">*</span>
+    {{model.label}}</label>
     <div
       class="form-radio-ctn"
       :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"

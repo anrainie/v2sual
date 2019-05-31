@@ -42,6 +42,12 @@
         "type": "string_input"
       },
       {
+        "name": "isRequired",
+        "desp": "是否必填",
+        "defaultValue": false,
+        "type": "boolean"
+      },
+      {
         "name": "options",
         "desp": "配置项",
         "defaultValue": "",

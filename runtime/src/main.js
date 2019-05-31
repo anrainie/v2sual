@@ -4,6 +4,8 @@ import App from './App'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+import $ from "jquery"
+
 
 import router from './router'
 
@@ -17,6 +19,8 @@ import store from './store'
 
 //全局混入通用app接口
 import mixin from '@/utils/app.js'
+
+window.$ = $;
 
 Vue.mixin(mixin);
 

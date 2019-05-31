@@ -3,7 +3,10 @@
     <label
       :class="model.titleMode ==='row'?'v2-form-label':'v2-form-label form-label-col'"
       :style="labelStyle"
-    >{{model.label}}</label>
+    >
+    <span class="must-input" v-if="model.isRequired">*</span>
+    {{model.label}}
+    </label>
     <div
       class="form-cascader-ctn"
       :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"
@@ -315,7 +318,8 @@ export default {
   }
 };
 </script>
-<style>
+<style lang="less">
+
 .form-label-col {
   float: left;
 }

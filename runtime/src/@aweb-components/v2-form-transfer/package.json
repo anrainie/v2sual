@@ -46,6 +46,11 @@
         "desp": "是否可搜索",
         "defaultValue": true,
         "type": "boolean"
+      },{
+        "name": "isRequired",
+        "desp": "是否必填",
+        "defaultValue": false,
+        "type": "boolean"
       },
       {
         "name": "titleLeft",

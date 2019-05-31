@@ -1,9 +1,13 @@
 <template>
   <div :style="flexStyle" class="v2-form-updload" :class="model.layoutClass">
      <div v-if="model.titleMode==='row'">
-        <label class="v2-form-updload-label">{{model.label}}</label>
+        <label class="v2-form-updload-label">
+           <span class="must-input" v-if="model.isRequired">*</span>
+          {{model.label}}</label>
     </div>
-        <label  v-if="model.titleMode==='col'" class="v2-form-updload-label">{{model.label}}</label>
+        <label  v-if="model.titleMode==='col'" class="v2-form-updload-label">
+           <span class="must-input" v-if="model.isRequired">*</span>
+          {{model.label}}</label>
     <el-upload
       class="upload-demo"
       :action="model.action"
