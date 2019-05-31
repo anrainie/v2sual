@@ -10,15 +10,11 @@
         <div class="aweb-tools" @click.prevent="collapse">
           <i class="el-icon-menu"></i>
         </div>
-      
       </el-col>
-
       <el-col :span="4" class="aweb-userinfo">
-
-        <el-tooltip  effect="dark" content="下载案例" placement="left">
+        <!-- <el-tooltip  effect="dark" content="下载案例" placement="left"> -->
             <el-button icon="el-icon-sold-out" circle class="aweb-download-btn" @click="openMarket"></el-button>
-        </el-tooltip>
-
+        <!-- </el-tooltip> -->
         <el-dropdown trigger="hover">
           <span class="el-dropdown-link aweb-userinfo-inner">
             <img :src="sysUserAvatar">
@@ -182,9 +178,9 @@ import {getObjArr, getRouter,saveRouter} from '../promission.js'
 
 import rightMenu from '@/components/rightMenu'
 import asyncComponent from '@/components/asyncComponent'
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 
-window.io = io;
+// window.io = io;
 export default {
   name:'layout',
   data() {
@@ -194,7 +190,7 @@ export default {
       sysName: "AWEB_ADMIN",
       collapsed: false,
       sysUserName: "admin",
-      sysUserAvatar: "https://s.gravatar.com/avatar/f30a9191dda93b5389965ed99f57f850?s=50&d=retro",  
+      sysUserAvatar: "http://localhost:7007/img/user.png",  
       rightClickHandler:null,
       isRouterAlive: true
 
@@ -329,8 +325,8 @@ export default {
     let user = sessionStorage.getItem("user");
     if (user) {
       user = JSON.parse(user);
-      this.sysUserName = user.name || "";
-      this.sysUserAvatar = user.avatar || "";
+      this.sysUserName = user.name || "admin";
+      this.sysUserAvatar = user.avatar || "http://localhost:7007/img/user.png";
     }
      this.$store.commit("add_tabs", {
         route: this.$route.path,
@@ -341,22 +337,22 @@ export default {
     this.$store.commit("set_active_index", this.$route.path);
 
 
-    let  socket = io();
+    // let  socket = io();
 
-    socket.on('connect', ()=> {
-      console.log('连接成功');
-      });
-    socket.on('disconnect', ()=> {
-      console.log('断开连接');
-      });
-    socket.on('connect_error', () => {
-      console.log('连接失败');
-      })
+    // socket.on('connect', ()=> {
+    //   console.log('连接成功');
+    //   });
+    // socket.on('disconnect', ()=> {
+    //   console.log('断开连接');
+    //   });
+    // socket.on('connect_error', () => {
+    //   console.log('连接失败');
+    //   })
 
-    socket.on('preview', (data) => {
+    // socket.on('preview', (data) => {
       
-         console.log('打开页面',data);
-      });
+    //      console.log('打开页面',data);
+    //   });
 
 
   },

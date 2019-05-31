@@ -73,7 +73,7 @@ export default class FocusManager {
   findWidgetModel(dom) {
     dom = dom.$el || $(dom);
     //找到最接近的组件
-    let wid = dom.closest('.v2widget')[0].id;
+    let wid = dom.closest('.V2Widget')[0].id;
     let model = this.host.$store.getters.model(wid);
     model || console.log('找不到组件', dom);
     return model;
