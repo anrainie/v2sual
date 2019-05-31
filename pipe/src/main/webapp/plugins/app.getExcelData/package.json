@@ -5,6 +5,22 @@
         "desp": "从Excel获取数据",
         "name": "pipe.getExcelData",
         "belongTo": "function",
+        "params": [
+            {
+                "name": "params",
+                "desp": "参数",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": ""
+            },
+            {
+                "name": "params2",
+                "desp": "参数2",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": ""
+            }
+        ],
         "hasReturn": true,
         "returnValue": {
             "name": "data",
@@ -14,24 +30,8 @@
             "defaultValue": ""
         },
         "category": "dataSource",
-        "label": "Excel",
-        "labelType": "function",
-        "params": [
-            {
-                "name": "",
-                "desp": "",
-                "type": "string",
-                "necessary": true,
-                "defaultValue": ""
-            },
-            {
-                "name": "",
-                "desp": "",
-                "type": "string",
-                "necessary": true,
-                "defaultValue": ""
-            }
-        ]
+        "label": "excel",
+        "labelType": "excel"
     },
     "category": "DataSource",
     "description": "",
