@@ -1,7 +1,7 @@
 <template>
  <el-row :class="model.layoutClass">
  
-  <el-button :type="model.btnType" :plain="shapMap['plain']" :circle="shapMap['circle']" :round="shapMap['round']" :loading="model.loading" :disabled="model.disabled" @click="model.func" >{{model.btnName}}</el-button>
+  <el-button ref="_op_componentBtn_btn" :type="model.btnType" :plain="shapMap['plain']" :circle="shapMap['circle']" :round="shapMap['round']" :loading="model.loading" :disabled="model.disabled" @click="model.func" >{{model.btnName}}</el-button>
   
 </el-row>
 </template>

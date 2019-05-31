@@ -27,6 +27,7 @@ import gt  from '../../../pipe/src/main/webapp/plugins/app.gt';
 import map  from '../../../pipe/src/main/webapp/plugins/app.map';
 import open  from '../../../pipe/src/main/webapp/plugins/app.open'
 
+
           let app = {
             get,
 	getAfaData,

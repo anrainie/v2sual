@@ -53,6 +53,12 @@
             "desp": "是否禁用",
             "defaultValue": false,
             "type": "boolean"
+          },
+          {
+            "name": "isRequired",
+            "desp": "是否必填",
+            "defaultValue": false,
+            "type": "boolean"
           }
         ]
       }

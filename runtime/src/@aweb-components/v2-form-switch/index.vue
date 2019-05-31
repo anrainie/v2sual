@@ -1,9 +1,13 @@
 <template>
   <div :style="model.style" class="v2-form-switch" :class="model.layoutClass">
      <div v-if="model.titleMode==='row'">
-        <label class="v2-form-switch-label">{{model.label}}</label>
+        <label class="v2-form-switch-label">
+          <span class="must-input" v-if="model.isRequired">*</span>
+          {{model.label}}</label>
     </div>
-        <label  v-if="model.titleMode==='col'" class="v2-form-switch-label">{{model.label}}</label>
+        <label  v-if="model.titleMode==='col'" class="v2-form-switch-label">
+          <span class="must-input" v-if="model.isRequired">*</span>
+          {{model.label}}</label>
     <el-switch ref="switch"
                v-model="model.value"
                :active-text="model.activeText"

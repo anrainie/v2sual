@@ -54,6 +54,12 @@
         "type": "boolean"
       },
       {
+        "name": "isRequired",
+        "desp": "是否必填",
+        "defaultValue": false,
+        "type": "boolean"
+      },
+      {
         "name": "value",
         "desp": "选择值",
         "defaultValue":[],
