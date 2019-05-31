@@ -39,7 +39,7 @@ let bindData = function (hook, structure) {
     while (key) {
         if (item && item.component !== "v2-layout-colctn" && item.component !== "v2Container" && item.component !== "v2-layout-rowctn" && item.mapping) {
             item.mapping.map(item => {
-                newHook.push(`this.$store.commit("bind",{ vueObj:this, data:${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`)
+                newHook.push(`this.$store.commit("bind",{ vueObj:this, data:this.${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`)
             })
         }
         if (item && item.children) list = list.concat(item.children);
@@ -142,7 +142,7 @@ let changeDef = function (content, logicOptions) {
     
     // 添加绑定数据
     beforeCreate = ast.body[0].exported_value.properties.map(item => {
-        if (item.key && item.key.name === "beforeCreate") {
+        if (item.key && item.key.name === "mounted") {
             return bindData(item, content.structure);
         } else {
             return item;
