@@ -1,113 +1,209 @@
 <template>
   <v2container :wid="`root`">
     <el-row class="V2ContainerBlock" style="height:100%;width:100%;" key="0">
-      <v2container :wid="`1559122029661`" :index="0" :pid="`root`">
+      <v2container id="`1559122029661`" :wid="`1559122029661`" :index="0" :pid="`root`">
         <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0">
-          <v2container :wid="`1559122031164`" :index="0" :pid="`1559122029661`">
+          <v2container
+            id="`1559122031164`"
+            :wid="`1559122031164`"
+            :index="0"
+            :pid="`1559122029661`"
+          >
             <el-row class="V2ContainerBlock" style="height:20%;width:100%;" key="0">
-              <v2container :wid="`1559122089268`" :index="0" :pid="`1559122031164`">
+              <v2container
+                id="`1559122089268`"
+                :wid="`1559122089268`"
+                :index="0"
+                :pid="`1559122031164`"
+              >
                 <el-col
                   class="V2ContainerBlock borderBox dashBorder"
-                  span="12"
+                  :span="12"
                   key="0"
                   style="height:100%;"
                 >
-                  <v2-form-input :wid="`1559122109526`" :index="0" :pid="`1559122089268`"></v2-form-input>
+                  <v2-form-input
+                    class="V2Widget"
+                    id="`1559122109526`"
+                    :wid="`1559122109526`"
+                    :index="0"
+                    :pid="`1559122089268`"
+                  ></v2-form-input>
                 </el-col>
                 <el-col
                   class="V2ContainerBlock borderBox dashBorder"
-                  span="12"
+                  :span="12"
                   key="1"
                   style="height:100%;"
                 >
-                  <v2-form-input :wid="`1559122167997`" :index="1" :pid="`1559122089268`"></v2-form-input>
+                  <v2-form-input
+                    class="V2Widget"
+                    id="`1559122167997`"
+                    :wid="`1559122167997`"
+                    :index="1"
+                    :pid="`1559122089268`"
+                  ></v2-form-input>
                 </el-col>
               </v2container>
             </el-row>
             <el-row class="V2ContainerBlock" style="height:20%;width:100%;" key="1">
-              <v2container :wid="`1559122093860`" :index="1" :pid="`1559122031164`">
+              <v2container
+                id="`1559122093860`"
+                :wid="`1559122093860`"
+                :index="1"
+                :pid="`1559122031164`"
+              >
                 <el-col
                   class="V2ContainerBlock borderBox dashBorder"
-                  span="12"
+                  :span="12"
                   key="0"
                   style="height:100%;"
                 >
-                  <v2-form-select :wid="`1559122397328`" :index="0" :pid="`1559122093860`"></v2-form-select>
+                  <v2-form-select
+                    class="V2Widget"
+                    id="`1559122397328`"
+                    :wid="`1559122397328`"
+                    :index="0"
+                    :pid="`1559122093860`"
+                  ></v2-form-select>
                 </el-col>
                 <el-col
                   class="V2ContainerBlock borderBox dashBorder"
-                  span="12"
+                  :span="12"
                   key="1"
                   style="height:100%;"
                 >
-                  <v2-form-input :wid="`1559122410553`" :index="1" :pid="`1559122093860`"></v2-form-input>
+                  <v2-form-input
+                    class="V2Widget"
+                    id="`1559122410553`"
+                    :wid="`1559122410553`"
+                    :index="1"
+                    :pid="`1559122093860`"
+                  ></v2-form-input>
                 </el-col>
               </v2container>
             </el-row>
             <el-row class="V2ContainerBlock" style="height:20%;width:100%;" key="2">
-              <v2container :wid="`1559122096277`" :index="2" :pid="`1559122031164`">
+              <v2container
+                id="`1559122096277`"
+                :wid="`1559122096277`"
+                :index="2"
+                :pid="`1559122031164`"
+              >
                 <el-col
                   class="V2ContainerBlock borderBox dashBorder"
-                  span="12"
+                  :span="12"
                   key="0"
                   style="height:100%;"
                 >
-                  <v2-form-input :wid="`1559122412795`" :index="0" :pid="`1559122096277`"></v2-form-input>
+                  <v2-form-input
+                    class="V2Widget"
+                    id="`1559122412795`"
+                    :wid="`1559122412795`"
+                    :index="0"
+                    :pid="`1559122096277`"
+                  ></v2-form-input>
                 </el-col>
                 <el-col
                   class="V2ContainerBlock borderBox dashBorder"
-                  span="12"
+                  :span="12"
                   key="1"
                   style="height:100%;"
                 >
-                  <v2-form-input :wid="`1559122436617`" :index="1" :pid="`1559122096277`"></v2-form-input>
+                  <v2-form-input
+                    class="V2Widget"
+                    id="`1559122436617`"
+                    :wid="`1559122436617`"
+                    :index="1"
+                    :pid="`1559122096277`"
+                  ></v2-form-input>
                 </el-col>
               </v2container>
             </el-row>
             <el-row class="V2ContainerBlock" style="height:20%;width:100%;" key="3">
-              <v2container :wid="`1559122098885`" :index="3" :pid="`1559122031164`">
+              <v2container
+                id="`1559122098885`"
+                :wid="`1559122098885`"
+                :index="3"
+                :pid="`1559122031164`"
+              >
                 <el-col
                   class="V2ContainerBlock borderBox dashBorder"
-                  span="12"
+                  :span="12"
                   key="0"
                   style="height:100%;"
                 >
-                  <v2-form-input :wid="`1559122425458`" :index="0" :pid="`1559122098885`"></v2-form-input>
+                  <v2-form-input
+                    class="V2Widget"
+                    id="`1559122425458`"
+                    :wid="`1559122425458`"
+                    :index="0"
+                    :pid="`1559122098885`"
+                  ></v2-form-input>
                 </el-col>
                 <el-col
                   class="V2ContainerBlock borderBox dashBorder"
-                  span="12"
+                  :span="12"
                   key="1"
                   style="height:100%;"
                 >
-                  <v2-form-input :wid="`1559122440698`" :index="1" :pid="`1559122098885`"></v2-form-input>
+                  <v2-form-input
+                    class="V2Widget"
+                    id="`1559122440698`"
+                    :wid="`1559122440698`"
+                    :index="1"
+                    :pid="`1559122098885`"
+                  ></v2-form-input>
                 </el-col>
               </v2container>
             </el-row>
             <el-row class="V2ContainerBlock" style="height:20%;width:100%;" key="4">
-              <v2container :wid="`1559122103444`" :index="4" :pid="`1559122031164`">
+              <v2container
+                id="`1559122103444`"
+                :wid="`1559122103444`"
+                :index="4"
+                :pid="`1559122031164`"
+              >
                 <el-col
                   class="V2ContainerBlock borderBox dashBorder"
-                  span="12"
+                  :span="12"
                   key="0"
                   style="height:100%;"
                 >
-                  <v2-form-datePicker :wid="`1559122443506`" :index="0" :pid="`1559122103444`"></v2-form-datePicker>
+                  <v2-form-datepicker
+                    class="V2Widget"
+                    id="`1559122443506`"
+                    :wid="`1559122443506`"
+                    :index="0"
+                    :pid="`1559122103444`"
+                  ></v2-form-datepicker>
                 </el-col>
                 <el-col
                   class="V2ContainerBlock borderBox dashBorder"
-                  span="12"
+                  :span="12"
                   key="1"
                   style="height:100%;"
                 >
-                  <v2-form-datePicker :wid="`1559122445721`" :index="1" :pid="`1559122103444`"></v2-form-datePicker>
+                  <v2-form-datepicker
+                    class="V2Widget"
+                    id="`1559122445721`"
+                    :wid="`1559122445721`"
+                    :index="1"
+                    :pid="`1559122103444`"
+                  ></v2-form-datepicker>
                 </el-col>
               </v2container>
             </el-row>
           </v2container>
         </el-row>
         <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1">
-          <v2empty class="V2Empty" :wid="`1559122029661-1`" :index="1" :pid="`1559122029661`"></v2empty>
+          <v2empty
+            class="V2Empty"
+            id="`1559122029661-1`"
+            :wid="`1559122029661-1`"
+            :index="1"
+            :pid="`1559122029661`"
+          ></v2empty>
         </el-row>
       </v2container>
     </el-row>
@@ -118,7 +214,7 @@ import { root } from "@/utils/v2-view";
 export default {
   data() {
     return {
-      organId: {},
+      organList: {},
       CONTENT: {
         structure: {
           id: "root",
@@ -1967,7 +2063,8 @@ export default {
     const ctx = this;
     /**overView beforeCreate**/ (async () => {
       const t1 = await pipe.getExcelData("机构表", "");
-      organId = t1;
+      ctx.organList = t1;
+      console.log(ctx.organList)
     })();
     /**overView over**/
   },
