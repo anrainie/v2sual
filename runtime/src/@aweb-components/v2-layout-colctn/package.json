@@ -43,7 +43,7 @@
       }]
     },
     "editor": {
-      "name": "avLayoutEditor",
+      "name": "v2LayoutEditor",
       "model": {
         "def": {
           "defheight": true,

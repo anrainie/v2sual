@@ -45,7 +45,7 @@ export default {
   }
 };
 </script>
-<style>
+<style lang="less">
 .form-label-col {
   float: left;
 }
@@ -61,5 +61,9 @@ export default {
   line-height: 40px;
   position: relative;
   font-size: 14px;
+  .el-date-editor.el-input, 
+  .el-date-editor.el-input__inner{
+    width: 100%;
+  }
 }
 </style>

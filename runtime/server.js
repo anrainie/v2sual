@@ -210,7 +210,7 @@ const routerList = [
 			}, {
 				"path": "test",
 				"name": "test",
-				"component": "example/upload",
+				"component": "example/appmanagement",
 				"meta": {
 					"title": "测试",
 					"icon": "el-icon-setting"
