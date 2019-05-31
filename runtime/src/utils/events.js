@@ -17,7 +17,7 @@ export default {
     //   }
     // }
     let self = this;
-    let events = this.model.events;
+    let events = (this.model && this.model.events )|| [];
     for (let ref in events) {
       let dom = this.$refs[ref];
       if (dom) {

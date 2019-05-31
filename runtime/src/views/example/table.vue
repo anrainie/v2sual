@@ -1,289 +1,418 @@
-<template>
-	<section>
-		<!--工具条-->
-		<el-col :span="24" class="aweb-table-toolbar" style="padding-bottom: 0px;">
-			<el-form :inline="true" :model="filters">
-				<el-form-item>
-					<el-input v-model="filters.name" placeholder="姓名"></el-input>
-				</el-form-item>
-				<el-form-item>
-					<el-button type="primary" v-on:click="getUsers">查询</el-button>
-				</el-form-item>
-				<el-form-item>
-					<el-button type="primary" @click="handleAdd">新增</el-button>
-				</el-form-item>
-			</el-form>
-		</el-col>
-
-		<!--列表-->
-		<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;" max-height="500">
-			<el-table-column type="selection" width="55">
-			</el-table-column>
-			<el-table-column type="index" width="60">
-			</el-table-column>
-			<el-table-column prop="name" label="姓名" width="120" sortable>
-			</el-table-column>
-			<el-table-column prop="sex" label="性别" width="100" :formatter="formatSex" sortable>
-			</el-table-column>
-			<el-table-column prop="age" label="年龄" width="100" sortable>
-			</el-table-column>
-			<el-table-column prop="birth" label="生日" width="120" sortable>
-			</el-table-column>
-			<el-table-column prop="addr" label="地址" min-width="180" sortable>
-			</el-table-column>
-			<el-table-column label="操作" width="150">
-				<template scope="scope">
-					<el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-					<el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
-				</template>
-			</el-table-column>
-		</el-table>
-
-		<!--工具条-->
-		<el-col :span="24" class="aweb-table-toolbar">
-			<!-- <el-button type="danger" @click="batchRemove" :disabled="this.sels.length===0">批量删除</el-button> -->
-			<el-pagination layout="prev, pager, next" @current-change="handleCurrentChange" :page-size="20" :total="total" style="float:right;">
-			</el-pagination>
-		</el-col>
-
-		<!--编辑界面-->
-		<el-dialog title="编辑" :visible.sync="editFormVisible" :close-on-click-modal="false">
-			<el-form :model="editForm" label-width="80px" :rules="editFormRules" ref="editForm">
-				<el-form-item label="姓名" prop="name">
-					<el-input v-model="editForm.name" auto-complete="off"></el-input>
-				</el-form-item>
-				<el-form-item label="性别">
-					<el-radio-group v-model="editForm.sex">
-						<el-radio class="radio" :label="1">男</el-radio>
-						<el-radio class="radio" :label="0">女</el-radio>
-					</el-radio-group>
-				</el-form-item>
-				<el-form-item label="年龄">
-					<el-input-number v-model="editForm.age" :min="0" :max="200"></el-input-number>
-				</el-form-item>
-				<el-form-item label="生日">
-					<el-date-picker type="date" placeholder="选择日期" v-model="editForm.birth"></el-date-picker>
-				</el-form-item>
-				<el-form-item label="地址">
-					<el-input type="textarea" v-model="editForm.addr"></el-input>
-				</el-form-item>
-			</el-form>
-			<div slot="footer" class="dialog-footer">
-				<el-button @click.native="editFormVisible = false">取消</el-button>
-				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
-			</div>
-		</el-dialog>
-
-		<!--新增界面-->
-		<el-dialog title="新增" :visible.sync="addFormVisible" :close-on-click-modal="false">
-			<el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm">
-				<el-form-item label="姓名" prop="name">
-					<el-input v-model="addForm.name" auto-complete="off"></el-input>
-				</el-form-item>
-				<el-form-item label="性别">
-					<el-radio-group v-model="addForm.sex">
-						<el-radio class="radio" :label="1">男</el-radio>
-						<el-radio class="radio" :label="0">女</el-radio>
-					</el-radio-group>
-				</el-form-item>
-				<el-form-item label="年龄">
-					<el-input-number v-model="addForm.age" :min="0" :max="200"></el-input-number>
-				</el-form-item>
-				<el-form-item label="生日">
-					<el-date-picker type="date" placeholder="选择日期" v-model="addForm.birth"></el-date-picker>
-				</el-form-item>
-				<el-form-item label="地址">
-					<el-input type="textarea" v-model="addForm.addr"></el-input>
-				</el-form-item>
-			</el-form>
-			<div slot="footer" class="dialog-footer">
-				<el-button @click.native="addFormVisible = false">取消</el-button>
-				<el-button type="primary" @click.native="addSubmit" :loading="addLoading">提交</el-button>
-			</div>
-		</el-dialog>
-
-	</section>
-</template>
-
-<script>
-
-	import { getUserListPage, removeUser, editUser, addUser } from '../../api/api.js';
-
-	export default {
-		data() {
-			return {
-				filters: {
-					name: ''
-				},
-				users: [],
-				total: 0,
-				page: 1,
-				listLoading: false,
-				sels: [],//列表选中列
-
-				editFormVisible: false,//编辑界面是否显示
-				editLoading: false,
-				editFormRules: {
-					name: [
-						{ required: true, message: '请输入姓名', trigger: 'blur' }
-					]
-				},
-				//编辑界面数据
-				editForm: {
-					id: 0,
-					name: '',
-					sex: -1,
-					age: 0,
-					birth: '',
-					addr: ''
-				},
-
-				addFormVisible: false,//新增界面是否显示
-				addLoading: false,
-				addFormRules: {
-					name: [
-						{ required: true, message: '请输入姓名', trigger: 'blur' }
-					]
-				},
-				//新增界面数据
-				addForm: {
-					name: '',
-					sex: -1,
-					age: 0,
-					birth: '',
-					addr: ''
-				}
-
-			}
-		},
-		props:{
-			params:String //父组件传过来的参数
-		},
-		methods: {
-			//性别显示转换
-			formatSex: function (row, column) {
-				return row.sex == 1 ? '男' : row.sex == 0 ? '女' : '未知';
-			},
-			handleCurrentChange(val) {
-				this.page = val;
-				this.getUsers();
-			},
-			//获取用户列表
-			getUsers() {
-				let para = {
-					page: this.page,
-					name: this.filters.name
-				};
-				this.listLoading = true;
-		
-				getUserListPage(para).then((res) => {
-					this.total = res.data.total;
-					this.users = res.data.users;
-					this.listLoading = false;
-				
-				});
-			},
-			//删除
-			handleDel: function (index, row) {
-				this.$confirm('确认删除该记录吗?', '提示', {
-					type: 'warning'
-				}).then(() => {
-					this.listLoading = true;
-			
-					let para = { id: row.id };
-					removeUser(para).then((res) => {
-						this.listLoading = false;
-					
-						this.$message({
-							message: '删除成功',
-							type: 'success'
-						});
-						this.getUsers();
-					});
-				}).catch(() => {
-
-				});
-			},
-			//显示编辑界面
-			handleEdit: function (index, row) {
- 
-				this.editFormVisible = true;
-				this.editForm = Object.assign({}, row);
-			},
-			//显示新增界面
-			handleAdd: function () {
-				this.addFormVisible = true;
-				this.addForm = {
-					name: '',
-					sex: -1,
-					age: 0,
-					birth: '',
-					addr: ''
-				};
-			},
-			//编辑
-			editSubmit: function () {
-				this.$refs.editForm.validate((valid) => {
-					if (valid) {
-						this.$confirm('确认提交吗？', '提示', {}).then(() => {
-							this.editLoading = true;
-						
-							let para = Object.assign({}, this.editForm);
-							para.birth ='';
-							editUser(para).then((res) => {
-								this.editLoading = false;
-								
-								this.$message({
-									message: '提交成功',
-									type: 'success'
-								});
-								this.$refs['editForm'].resetFields();
-								this.editFormVisible = false;
-								this.getUsers();
-							});
-						});
-					}
-				});
-			},
-			//新增
-			addSubmit: function () {
-				this.$refs.addForm.validate((valid) => {
-					if (valid) {
-						this.$confirm('确认提交吗？', '提示', {}).then(() => {
-							this.addLoading = true;
-						
-							let para = Object.assign({}, this.addForm);
-							para.birth ='';
-							addUser(para).then((res) => {
-								this.addLoading = false;
-								
-								this.$message({
-									message: '提交成功',
-									type: 'success'
-								});
-								this.$refs['addForm'].resetFields();
-								this.addFormVisible = false;
-								this.getUsers();
-							});
-						});
-					}
-				});
-			},
-			selsChange: function (sels) {
-				this.sels = sels;
-			}
-		},
-		mounted() {
-			this.getUsers();
-			console.log('刷新表格页面,参数',this.params)
-		}
-	}
-
-</script>
-
-<style lang="less">
-.aweb-table-toolbar{
-    padding: 12px;
-    text-align: left;
-}
-</style>
+<template><v2container :wid="`root`"><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0"><v2container id="`1559122431024`" :wid="`1559122431024`" :index="0" :pid="`root`"><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0"><v2container id="`1559122433755`" :wid="`1559122433755`" :index="0" :pid="`1559122431024`"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;width:100%;" key="0"><v2-form-checkbox class="V2Widget" id="`1559122436849`" :wid="`1559122436849`" :index="0" :pid="`1559122433755`"></v2-form-checkbox></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;width:100%;" key="1"><v2-form-datepicker class="V2Widget" id="`1559122438700`" :wid="`1559122438700`" :index="1" :pid="`1559122433755`"></v2-form-datepicker></el-row></v2container></el-row><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1"><v2empty class="V2Empty" id="`1559122431024-1`" :wid="`1559122431024-1`" :index="1" :pid="`1559122431024`"></v2empty></el-row></v2container></el-row><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1"><v2empty class="V2Empty" id="`root-1`" :wid="`root-1`" :index="1" :pid="`root`"></v2empty></el-row></v2container></template>
+<script>import {root} from '@/utils/v2-view';export default {
+    data() {
+        return {
+            CONTENT: {
+                structure: {
+                    id: "root",
+                    component: "v2Container",
+                    direction: "row",
+                    layout: [ 50, 50 ],
+                    style: {
+                        width: "100%",
+                        height: "100%"
+                    },
+                    data: {},
+                    children: [ {
+                        style: {
+                            divCtn: {
+                                position: "",
+                                top: "",
+                                right: "",
+                                bottom: "",
+                                left: "",
+                                overflow: "",
+                                margin: "",
+                                padding: "",
+                                height: "",
+                                width: "",
+                                "max-height": "",
+                                "max-width": "",
+                                "min-height": "",
+                                "min-width": ""
+                            }
+                        },
+                        direction: "row",
+                        layout: "[50,50]",
+                        def: {
+                            defheight: true,
+                            defborder: true,
+                            defbackgroundStyle: true,
+                            defpaddingStyle: true
+                        },
+                        defaultValue: {
+                            "background-color": "#fff",
+                            "background-image": "",
+                            "padding-top": 0,
+                            "padding-bottom": 0,
+                            "padding-left": 0,
+                            "padding-right": 0
+                        },
+                        customStyle: {},
+                        href: "v2-layout-colctn",
+                        component: "v2-layout-colctn",
+                        widget: {
+                            belongTo: "aui",
+                            icon: "iconfont icon-password",
+                            type: "layout",
+                            href: "v2-layout-colctn",
+                            author: "zhanghaixian@agree.com.cn",
+                            version: 51e4,
+                            accept: "",
+                            name: "横向布局",
+                            option: [ {
+                                name: "direction",
+                                desp: "排列方式",
+                                defaultValue: "row",
+                                type: "string_select",
+                                valueArray: [ "row", "col" ],
+                                despArray: [ "横排", "竖排" ]
+                            }, {
+                                name: "layout",
+                                desp: "栅格",
+                                hidden: false,
+                                defaultValue: [ 50, 50 ],
+                                type: "string_input"
+                            } ],
+                            css: {
+                                style: [ {
+                                    desp: "容器",
+                                    cssAttrs: "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                    name: "divCtn"
+                                } ]
+                            },
+                            editor: {
+                                name: "avLayoutEditor",
+                                model: {
+                                    def: {
+                                        defheight: true,
+                                        defborder: true,
+                                        defbackgroundStyle: true,
+                                        defpaddingStyle: true
+                                    },
+                                    defaultValue: {
+                                        "background-color": "#fff",
+                                        "background-image": "",
+                                        "padding-top": 0,
+                                        "padding-bottom": 0,
+                                        "padding-left": 0,
+                                        "padding-right": 0
+                                    },
+                                    customStyle: {}
+                                }
+                            },
+                            main: "index.vue"
+                        },
+                        children: [ {
+                            style: {
+                                divCtn: {
+                                    position: "",
+                                    top: "",
+                                    right: "",
+                                    bottom: "",
+                                    left: "",
+                                    overflow: "",
+                                    margin: "",
+                                    padding: "",
+                                    height: "",
+                                    width: "",
+                                    "max-height": "",
+                                    "max-width": "",
+                                    "min-height": "",
+                                    "min-width": ""
+                                }
+                            },
+                            direction: "row",
+                            layout: "[50,50]",
+                            def: {
+                                defheight: true,
+                                defborder: true,
+                                defbackgroundStyle: true,
+                                defpaddingStyle: true
+                            },
+                            defaultValue: {
+                                "background-color": "#fff",
+                                "background-image": "",
+                                "padding-top": 0,
+                                "padding-bottom": 0,
+                                "padding-left": 0,
+                                "padding-right": 0
+                            },
+                            customStyle: {},
+                            href: "v2-layout-colctn",
+                            component: "v2-layout-colctn",
+                            widget: {
+                                belongTo: "aui",
+                                icon: "iconfont icon-password",
+                                type: "layout",
+                                href: "v2-layout-colctn",
+                                author: "zhanghaixian@agree.com.cn",
+                                version: 51e4,
+                                accept: "",
+                                name: "横向布局",
+                                option: [ {
+                                    name: "direction",
+                                    desp: "排列方式",
+                                    defaultValue: "row",
+                                    type: "string_select",
+                                    valueArray: [ "row", "col" ],
+                                    despArray: [ "横排", "竖排" ]
+                                }, {
+                                    name: "layout",
+                                    desp: "栅格",
+                                    hidden: false,
+                                    defaultValue: [ 50, 50 ],
+                                    type: "string_input"
+                                } ],
+                                css: {
+                                    style: [ {
+                                        desp: "容器",
+                                        cssAttrs: "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                        name: "divCtn"
+                                    } ]
+                                },
+                                editor: {
+                                    name: "avLayoutEditor",
+                                    model: {
+                                        def: {
+                                            defheight: true,
+                                            defborder: true,
+                                            defbackgroundStyle: true,
+                                            defpaddingStyle: true
+                                        },
+                                        defaultValue: {
+                                            "background-color": "#fff",
+                                            "background-image": "",
+                                            "padding-top": 0,
+                                            "padding-bottom": 0,
+                                            "padding-left": 0,
+                                            "padding-right": 0
+                                        },
+                                        customStyle: {}
+                                    }
+                                },
+                                main: "index.vue"
+                            },
+                            children: [ {
+                                style: {
+                                    label: {
+                                        "font-size": "",
+                                        "font-weight": "",
+                                        color: ""
+                                    },
+                                    font: {
+                                        "padding-left": "",
+                                        "font-size": "",
+                                        color: ""
+                                    }
+                                },
+                                label: "标题",
+                                titleMode: "row",
+                                options: [ {
+                                    active: "true",
+                                    value: "备选项",
+                                    disabled: false
+                                }, {
+                                    active: true,
+                                    value: "备选项",
+                                    disabled: false
+                                } ],
+                                href: "v2-form-checkbox",
+                                component: "v2-form-checkbox",
+                                widget: {
+                                    belongTo: "aui",
+                                    icon: "iconfont icon-password",
+                                    type: "form",
+                                    href: "v2-form-checkbox",
+                                    author: "fengjiarong@agree.com.cn",
+                                    version: 51e4,
+                                    accept: "foundationRowCtn divCtn",
+                                    name: "多选框",
+                                    option: [ {
+                                        name: "label",
+                                        desp: "标题",
+                                        defaultValue: "标题",
+                                        type: "string_input"
+                                    }, {
+                                        name: "titleMode",
+                                        desp: "标题排列方式",
+                                        defaultValue: "row",
+                                        type: "string_select",
+                                        valueArray: [ "row", "col" ],
+                                        despArray: [ "横排", "竖排" ]
+                                    }, {
+                                        name: "options",
+                                        desp: "配置项",
+                                        defaultValue: "",
+                                        type: "array",
+                                        appendNumber: 1,
+                                        attrInEachElement: [ {
+                                            name: "value",
+                                            desp: "文本",
+                                            defaultValue: "备选项",
+                                            type: "string_input"
+                                        }, {
+                                            name: "disabled",
+                                            desp: "是否禁用",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                        } ],
+                                        append: [ {} ]
+                                    } ],
+                                    css: {
+                                        style: [ {
+                                            desp: "标题",
+                                            cssAttrs: "font-size color font-weight",
+                                            name: "label"
+                                        }, {
+                                            desp: "选项文字",
+                                            cssAttrs: "font-size  color padding-left",
+                                            name: "font"
+                                        } ]
+                                    },
+                                    main: "index.vue"
+                                },
+                                children: [],
+                                events: [],
+                                id: 1559122436849,
+                                pid: 1559122433755
+                            }, {
+                                style: {
+                                    label: {
+                                        "font-size": "",
+                                        "font-weight": "",
+                                        color: ""
+                                    },
+                                    borderStyle: {
+                                        "border-color": ""
+                                    },
+                                    fontStyle: {
+                                        color: ""
+                                    }
+                                },
+                                label: "标题",
+                                labelWitdh: "80px",
+                                titleMode: "row",
+                                value: "",
+                                placeholder: "请选择",
+                                type: "date",
+                                disabled: false,
+                                clearable: true,
+                                format: "yyyy 年 MM 月 dd 日",
+                                align: "left",
+                                href: "v2-form-datePicker",
+                                component: "v2-form-datePicker",
+                                widget: {
+                                    belongTo: "aui",
+                                    icon: "iconfont icon-password",
+                                    type: "form",
+                                    href: "v2-form-datePicker",
+                                    author: "fengjiarong@agree.com.cn",
+                                    version: 51e4,
+                                    accept: "foundationRowCtn divCtn",
+                                    name: "日期选择器",
+                                    option: [ {
+                                        name: "label",
+                                        desp: "标题",
+                                        defaultValue: "标题",
+                                        type: "string_input"
+                                    }, {
+                                        name: "labelWitdh",
+                                        desp: "标题宽度",
+                                        defaultValue: "80px",
+                                        type: "string_input"
+                                    }, {
+                                        name: "titleMode",
+                                        desp: "标题排列方式",
+                                        defaultValue: "row",
+                                        type: "string_select",
+                                        valueArray: [ "row", "col" ],
+                                        despArray: [ "横排", "竖排" ]
+                                    }, {
+                                        name: "value",
+                                        desp: "选择值",
+                                        defaultValue: "",
+                                        type: "string_input"
+                                    }, {
+                                        name: "placeholder",
+                                        desp: "placeholder",
+                                        defaultValue: "请选择",
+                                        type: "string_input"
+                                    }, {
+                                        name: "type",
+                                        desp: "日期单位",
+                                        defaultValue: "date",
+                                        type: "string_select",
+                                        valueArray: [ "date", "week", "month", "year", "dates", "daterange" ],
+                                        despArray: [ "日", "周", "月", "年", "多个日期", "日期范围" ]
+                                    }, {
+                                        name: "disabled",
+                                        desp: "是否禁用",
+                                        defaultValue: false,
+                                        type: "boolean"
+                                    }, {
+                                        name: "clearable",
+                                        desp: "是否显示清除按钮",
+                                        defaultValue: true,
+                                        type: "boolean"
+                                    }, {
+                                        name: "format",
+                                        desp: "显示格式",
+                                        defaultValue: "yyyy 年 MM 月 dd 日",
+                                        type: "string_input"
+                                    }, {
+                                        name: "align",
+                                        desp: "对齐方式",
+                                        defaultValue: "left",
+                                        type: "string_select",
+                                        valueArray: [ "left", "center", "right" ],
+                                        despArray: [ "左", "中", "右" ]
+                                    } ],
+                                    css: {
+                                        style: [ {
+                                            desp: "标题",
+                                            cssAttrs: "font-size font-weight color",
+                                            name: "label"
+                                        }, {
+                                            desp: "检验边框",
+                                            cssAttrs: "border-color",
+                                            name: "borderStyle"
+                                        }, {
+                                            desp: "检验文字",
+                                            cssAttrs: "color",
+                                            name: "fontStyle"
+                                        } ]
+                                    },
+                                    main: "index.vue"
+                                },
+                                children: [],
+                                events: [],
+                                id: 1559122438700,
+                                pid: 1559122433755
+                            } ],
+                            events: [],
+                            id: 1559122433755,
+                            pid: 1559122431024
+                        }, null ],
+                        events: [],
+                        id: 1559122431024,
+                        pid: "root"
+                    }, null ]
+                }
+            }
+        };
+    },
+    mixins: [ root ],
+    methods: {},
+    watch: {},
+    beforeCreate() {},
+    created() {},
+    beforeMount() {},
+    mounted() {},
+    beforeUpdate() {},
+    updated() {},
+    beforeDestroy() {
+        /**unBind**/ this.$store("unbind", this) /**unBind over**/;
+    },
+    destroyed() {}
+};</script>

@@ -20,7 +20,7 @@ import v2LayoutColctn  from './v2-layout-colctn';
 import v2LayoutEditor  from './v2-layout-colctn/editor.vue';
 import v2LayoutRowctn  from './v2-layout-rowctn'
 
-          import get  from '../../../pipe/src/main/webapp/plugins/app.get';
+ import get  from '../../../pipe/src/main/webapp/plugins/app.get';
 import getAfaData  from '../../../pipe/src/main/webapp/plugins/app.getAfaData';
 import getExcelData  from '../../../pipe/src/main/webapp/plugins/app.getExcelData';
 import gt  from '../../../pipe/src/main/webapp/plugins/app.gt';
