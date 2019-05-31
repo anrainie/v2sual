@@ -26,8 +26,8 @@ export const forceFocusRequiredRule = ({
             inputField,
             model,
             handle: () => {
-              if (!result.state$$result.inputField)
-                $(result.inputField).focus();
+              if (inputField)
+                $(inputField).focus();
             }
           })
           return;

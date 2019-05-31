@@ -1,7 +1,9 @@
-<template><v2container :wid="`root`"><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0"><v2container id="1559214383876" :wid="`1559214383876`" :index="0" :pid="`root`"><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0"><v2container id="1559270073346" :wid="`1559270073346`" :index="0" :pid="`1559214383876`"><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0"><v2container id="1559270075056" :wid="`1559270075056`" :index="0" :pid="`1559270073346`"><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0"><v2container id="1559270078656" :wid="`1559270078656`" :index="0" :pid="`1559270075056`"><el-col class="V2ContainerBlock borderBox dashBorder" :span="12" key="0" style="height:100%;"><v2-form-select class="V2Widget" id="1559271761550" :wid="`1559271761550`" :index="0" :pid="`1559270078656`"></v2-form-select></el-col><el-col class="V2ContainerBlock" :span="12" key="1" style="height:100%;"><v2empty class="V2Empty" id="1559270078656-1" :wid="`1559270078656-1`" :index="1" :pid="`1559270078656`"></v2empty></el-col></v2container></el-row><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1"><v2container id="1559270080534" :wid="`1559270080534`" :index="1" :pid="`1559270075056`"><el-col class="V2ContainerBlock borderBox dashBorder" :span="12" key="0" style="height:100%;"><v2-component-btn class="V2Widget" id="1559272065466" :wid="`1559272065466`" :index="0" :pid="`1559270080534`"></v2-component-btn></el-col><el-col class="V2ContainerBlock" :span="12" key="1" style="height:100%;"><v2empty class="V2Empty" id="1559270080534-1" :wid="`1559270080534-1`" :index="1" :pid="`1559270080534`"></v2empty></el-col></v2container></el-row></v2container></el-row><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1"><v2container id="1559270076912" :wid="`1559270076912`" :index="1" :pid="`1559270073346`"><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0"><v2container id="1559270082199" :wid="`1559270082199`" :index="0" :pid="`1559270076912`"><el-col class="V2ContainerBlock" :span="12" key="0" style="height:100%;"><v2empty class="V2Empty" id="1559270082199-0" :wid="`1559270082199-0`" :index="0" :pid="`1559270082199`"></v2empty></el-col><el-col class="V2ContainerBlock" :span="12" key="1" style="height:100%;"><v2empty class="V2Empty" id="1559270082199-1" :wid="`1559270082199-1`" :index="1" :pid="`1559270082199`"></v2empty></el-col></v2container></el-row><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1"><v2container id="1559270083943" :wid="`1559270083943`" :index="1" :pid="`1559270076912`"><el-col class="V2ContainerBlock" :span="12" key="0" style="height:100%;"><v2empty class="V2Empty" id="1559270083943-0" :wid="`1559270083943-0`" :index="0" :pid="`1559270083943`"></v2empty></el-col><el-col class="V2ContainerBlock" :span="12" key="1" style="height:100%;"><v2empty class="V2Empty" id="1559270083943-1" :wid="`1559270083943-1`" :index="1" :pid="`1559270083943`"></v2empty></el-col></v2container></el-row></v2container></el-row></v2container></el-row><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1"><v2empty class="V2Empty" id="1559214383876-1" :wid="`1559214383876-1`" :index="1" :pid="`1559214383876`"></v2empty></el-row></v2container></el-row><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1"><v2empty class="V2Empty" id="root-1" :wid="`root-1`" :index="1" :pid="`root`"></v2empty></el-row></v2container></template>
+<template><v2container :wid="`root`"><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0"><v2container id="1559214383876" :wid="`1559214383876`" :index="0" :pid="`root`"><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0"><v2container id="1559270073346" :wid="`1559270073346`" :index="0" :pid="`1559214383876`"><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0"><v2container id="1559270075056" :wid="`1559270075056`" :index="0" :pid="`1559270073346`"><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0"><v2container id="1559270078656" :wid="`1559270078656`" :index="0" :pid="`1559270075056`"><el-col class="V2ContainerBlock borderBox dashBorder" :span="12" key="0" style="height:100%;"><v2-form-select class="V2Widget" id="1559287884030" :wid="`1559287884030`" :index="0" :pid="`1559270078656`"></v2-form-select></el-col><el-col class="V2ContainerBlock borderBox dashBorder" :span="12" key="1" style="height:100%;"><v2-form-input class="V2Widget" id="1559287888024" :wid="`1559287888024`" :index="1" :pid="`1559270078656`"></v2-form-input></el-col></v2container></el-row><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1"><v2container id="1559270080534" :wid="`1559270080534`" :index="1" :pid="`1559270075056`"><el-col class="V2ContainerBlock" :span="12" key="0" style="height:100%;"><v2empty class="V2Empty" id="1559270080534-0" :wid="`1559270080534-0`" :index="0" :pid="`1559270080534`"></v2empty></el-col><el-col class="V2ContainerBlock" :span="12" key="1" style="height:100%;"><v2empty class="V2Empty" id="1559270080534-1" :wid="`1559270080534-1`" :index="1" :pid="`1559270080534`"></v2empty></el-col></v2container></el-row></v2container></el-row><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1"><v2container id="1559270076912" :wid="`1559270076912`" :index="1" :pid="`1559270073346`"><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0"><v2container id="1559270082199" :wid="`1559270082199`" :index="0" :pid="`1559270076912`"><el-col class="V2ContainerBlock" :span="12" key="0" style="height:100%;"><v2empty class="V2Empty" id="1559270082199-0" :wid="`1559270082199-0`" :index="0" :pid="`1559270082199`"></v2empty></el-col><el-col class="V2ContainerBlock" :span="12" key="1" style="height:100%;"><v2empty class="V2Empty" id="1559270082199-1" :wid="`1559270082199-1`" :index="1" :pid="`1559270082199`"></v2empty></el-col></v2container></el-row><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1"><v2container id="1559270083943" :wid="`1559270083943`" :index="1" :pid="`1559270076912`"><el-col class="V2ContainerBlock" :span="12" key="0" style="height:100%;"><v2empty class="V2Empty" id="1559270083943-0" :wid="`1559270083943-0`" :index="0" :pid="`1559270083943`"></v2empty></el-col><el-col class="V2ContainerBlock" :span="12" key="1" style="height:100%;"><v2empty class="V2Empty" id="1559270083943-1" :wid="`1559270083943-1`" :index="1" :pid="`1559270083943`"></v2empty></el-col></v2container></el-row></v2container></el-row></v2container></el-row><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1"><v2empty class="V2Empty" id="1559214383876-1" :wid="`1559214383876-1`" :index="1" :pid="`1559214383876`"></v2empty></el-row></v2container></el-row><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1"><v2empty class="V2Empty" id="root-1" :wid="`root-1`" :index="1" :pid="`root`"></v2empty></el-row></v2container></template>
 <script>import {root} from '@/utils/v2-view';export default {
     data() {
         return {
+            orgList: "",
+            orgId: "",
             CONTENT: {
                 structure: {
                     id: "root",
@@ -387,10 +389,10 @@
                                                 color: ""
                                             }
                                         },
-                                        value: "",
+                                        value: "orgId",
                                         labelWitdh: "80px",
                                         titleMode: "col",
-                                        label: "机构号",
+                                        label: "标题",
                                         placeholder: "请选择",
                                         dataType: "def",
                                         optionConfig: "orgList",
@@ -514,19 +516,121 @@
                                             main: "index.vue"
                                         },
                                         children: [],
-                                        events: [],
-                                        id: 1559271761550,
+                                        events: {},
+                                        id: 1559287884030,
                                         pid: 1559270078656,
                                         mapping: [ {
-                                            id: 1559271761550,
-                                            modelValue: "placeholder",
-                                            dataValue: "请选择"
-                                        }, {
-                                            id: 1559271761550,
+                                            id: 1559287884030,
                                             modelValue: "optionConfig",
                                             dataValue: "orgList"
+                                        }, {
+                                            id: 1559287884030,
+                                            modelValue: "value",
+                                            dataValue: "orgId"
                                         } ]
-                                    }, null ],
+                                    }, {
+                                        style: {
+                                            label: {
+                                                "font-size": "",
+                                                "font-weight": "",
+                                                color: ""
+                                            },
+                                            borderStyle: {
+                                                "border-color": ""
+                                            },
+                                            fontStyle: {
+                                                color: ""
+                                            }
+                                        },
+                                        label: "标题",
+                                        titleMode: "col",
+                                        labelWitdh: "80px",
+                                        placeholder: "请选择",
+                                        value: "orgId",
+                                        clearable: false,
+                                        disabled: false,
+                                        isRequired: false,
+                                        href: "v2-form-input",
+                                        component: "v2-form-input",
+                                        widget: {
+                                            belongTo: "aui",
+                                            icon: "iconshurukuang",
+                                            type: "form",
+                                            href: "v2-form-input",
+                                            author: "fengjiarong@agree.com.cn",
+                                            version: 51e4,
+                                            accept: "foundationRowCtn divCtn",
+                                            name: "输入框",
+                                            option: [ {
+                                                name: "label",
+                                                desp: "标题",
+                                                defaultValue: "标题",
+                                                type: "string_input"
+                                            }, {
+                                                name: "titleMode",
+                                                desp: "标题排列方式",
+                                                defaultValue: "col",
+                                                type: "string_select",
+                                                valueArray: [ "row", "col" ],
+                                                despArray: [ "同列排列", "同行排列" ]
+                                            }, {
+                                                name: "labelWitdh",
+                                                desp: "标题宽度",
+                                                defaultValue: "80px",
+                                                type: "string_input"
+                                            }, {
+                                                name: "placeholder",
+                                                desp: "placeholder",
+                                                defaultValue: "请选择",
+                                                type: "string_input"
+                                            }, {
+                                                name: "value",
+                                                desp: "值",
+                                                defaultValue: "",
+                                                type: "string_input"
+                                            }, {
+                                                name: "clearable",
+                                                desp: "是否可清空",
+                                                defaultValue: false,
+                                                type: "boolean"
+                                            }, {
+                                                name: "disabled",
+                                                desp: "是否禁填",
+                                                defaultValue: false,
+                                                type: "boolean"
+                                            }, {
+                                                name: "isRequired",
+                                                desp: "是否必填",
+                                                defaultValue: false,
+                                                type: "boolean"
+                                            } ],
+                                            css: {
+                                                style: [ {
+                                                    desp: "标题",
+                                                    cssAttrs: "font-size color font-weight",
+                                                    name: "label"
+                                                }, {
+                                                    desp: "检验边框",
+                                                    cssAttrs: "border-color",
+                                                    name: "borderStyle"
+                                                }, {
+                                                    desp: "检验文字",
+                                                    cssAttrs: "color",
+                                                    name: "fontStyle"
+                                                } ]
+                                            },
+                                            main: "index.vue"
+                                        },
+                                        children: [],
+                                        events: {},
+                                        id: 1559287888024,
+                                        pid: 1559270078656,
+                                        mapping: [ {
+                                            id: 1559287888024,
+                                            modelValue: "value",
+                                            dataValue: "orgId"
+                                        } ]
+                                    } ],
                                     events: [],
                                     id: 1559270078656,
                                     pid: 1559270075056
@@ -620,125 +724,7 @@
                                         },
                                         main: "index.vue"
                                     },
-                                    children: [ {
-                                        theme: {
-                                            function: ""
-                                        },
-                                        style: {
-                                            backgroundColor: {
-                                                "background-color": "",
-                                                height: "",
-                                                width: "",
-                                                color: ""
-                                            },
-                                            icon: {
-                                                "font-size": "",
-                                                "font-weight": "",
-                                                color: ""
-                                            },
-                                            hoverBtn: {
-                                                "background-color": "",
-                                                "border-width": "",
-                                                "border-color": "",
-                                                color: ""
-                                            },
-                                            activeBtn: {
-                                                "background-color": "",
-                                                "border-width": "",
-                                                "border-color": "",
-                                                color: ""
-                                            }
-                                        },
-                                        btnName: "按钮",
-                                        btnType: "primary",
-                                        shape: "plain",
-                                        loading: false,
-                                        disabled: false,
-                                        func: "btnClick",
-                                        href: "v2-component-btn",
-                                        component: "v2-component-btn",
-                                        widget: {
-                                            belongTo: "aui",
-                                            icon: "iconanniu",
-                                            type: "component",
-                                            href: "v2-component-btn",
-                                            author: "zhanghaixian@agree.com.cn",
-                                            version: 51e4,
-                                            accept: "divCtn",
-                                            name: "按钮",
-                                            option: [ {
-                                                type: "string_input",
-                                                name: "btnName",
-                                                defaultValue: "按钮",
-                                                disabled: true,
-                                                desp: "按钮"
-                                            }, {
-                                                defaultValue: "",
-                                                valueArray: [ "primary", "success", "info", "warning", "danger", "text" ],
-                                                type: "string_select",
-                                                desp: "类型",
-                                                despArray: [ "主要", "成功", "信息", "警告", "危险", "文字" ],
-                                                name: "btnType"
-                                            }, {
-                                                defaultValue: "",
-                                                valueArray: [ "plain", "round", "circle" ],
-                                                type: "string_select",
-                                                desp: "形状",
-                                                despArray: [ "朴素", "圆角", "圆形" ],
-                                                name: "shape"
-                                            }, {
-                                                defaultValue: false,
-                                                type: "boolean",
-                                                name: "loading",
-                                                desp: "是否加载状态"
-                                            }, {
-                                                defaultValue: false,
-                                                type: "boolean",
-                                                name: "disabled",
-                                                desp: "是否禁用状态"
-                                            }, {
-                                                name: "func",
-                                                desp: "关联方法",
-                                                defaultValue: "btnClick",
-                                                type: "string_input"
-                                            } ],
-                                            css: {
-                                                style: [ {
-                                                    desp: "按钮样式",
-                                                    cssAttrs: "background-color width height color",
-                                                    name: "backgroundColor"
-                                                }, {
-                                                    desp: "图标",
-                                                    cssAttrs: "font-weight font-size color",
-                                                    name: "icon"
-                                                }, {
-                                                    desp: "按钮hover",
-                                                    cssAttrs: "background-color border-width border-color color ",
-                                                    name: "hoverBtn"
-                                                }, {
-                                                    desp: "按钮激活",
-                                                    cssAttrs: "background-color border-width border-color color ",
-                                                    name: "activeBtn"
-                                                } ],
-                                                theme: [ {
-                                                    template: "<button class='btn'></button>",
-                                                    desp: "功能",
-                                                    cssAttrs: "",
-                                                    name: "function",
-                                                    zoom: .8,
-                                                    valueArray: [ "btn-focus", "btn-normal", "btn-textBtn", "btn-danger", "btn-custom" ],
-                                                    despArray: [ "焦点", "普通", "文字", "警告", "自定义" ],
-                                                    type: "themeClass",
-                                                    style: "height: auto"
-                                                } ]
-                                            },
-                                            main: "index.vue"
-                                        },
-                                        children: [],
-                                        events: [],
-                                        id: 1559272065466,
-                                        pid: 1559270080534
-                                    }, null ],
+                                    children: [ null, null ],
                                     events: [],
                                     id: 1559270080534,
                                     pid: 1559270075056
@@ -1042,14 +1028,24 @@
         };
     },
     mixins: [ root ],
-    methods: {},
+    methods: {
+        click_0_1559272065466() {
+            const ctx = this;
+            /**overView click_0_1559272065466**/
+            /**overView click_0_1559272065466**/            
+            /**overView click_0_1559272065466**/
+            /**overView click_0_1559272065466**/ (async () => {
+                const t1 = await pipe.getExcelData("用户表", "(e,index)=>{return index?e[1]:false;}");
+                const t2 = await alert(t1);
+            })();
+            /**overView over**/        }
+    },
     watch: {},
     beforeCreate() {
         const ctx = this;
         /**overView beforeCreate**/ (async () => {
-            const t1 = await pipe.getExcelData("机构表", (e, index) => {
-                e;
-            });
+            const t1 = await pipe.getExcelData("机构表", "(e,index)=>{return index?{ value:e[0],label:e[1] }:false}");
+            ctx.orgList = t1;
         })();
  /**overView over**/    },
     created() {},
@@ -1058,17 +1054,24 @@
         /**bind**/
         this.$store.commit("bind", {
             vueObj: this,
-            data: this.请选择,
-            dataStr: "请选择",
-            wid: 1559271761550,
-            modelKey: "placeholder"
+            data: this.orgId,
+            dataStr: "orgId",
+            wid: 1559287888024,
+            modelKey: "value"
         });
         this.$store.commit("bind", {
             vueObj: this,
             data: this.orgList,
             dataStr: "orgList",
-            wid: 1559271761550,
+            wid: 1559287884030,
             modelKey: "optionConfig"
+        });
+        this.$store.commit("bind", {
+            vueObj: this,
+            data: this.orgId,
+            dataStr: "orgId",
+            wid: 1559287884030,
+            modelKey: "value"
         });
         /**bind over**/    },
     beforeUpdate() {},

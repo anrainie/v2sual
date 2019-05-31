@@ -250,7 +250,7 @@ export default () => {
         state.UIData.editor && state.UIData.editor.save && state.UIData.editor.save(state.structure);
       },
       bind(state, { vueObj, data, dataStr, wid, modelKey }) {
-       
+       try{
         let model = this.getters.model(wid);
         let commentObj = this.getters.vueInstance(wid);
         //改变state.baskect自动改变model
@@ -269,6 +269,9 @@ export default () => {
         }else{
           vueObj.binder = [vueBind, commentBind]
         }
+      }catch(e){
+        console.error(e);
+      }
       },
       unbind(state, vueObj) {
         if(vueObj.binder){
