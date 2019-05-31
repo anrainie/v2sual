@@ -79,6 +79,16 @@ let changeDef = function (content, logicOptions) {
 
     ast = UglifyJS.parse(logic);
     astContent = ast.body[0].exported_value.properties;
+
+    // 添加绑定数据
+    beforeCreate = ast.body[0].exported_value.properties.map(item => {
+        if (item.key && item.key.name === "mounted") {
+            return bindData(item, content.structure);
+        } else {
+            return item;
+        }
+    });
+    ast.body[0].exported_value.properties = beforeCreate;
     if(logicOptions){
         name = logicOptions.name,
         code = logicOptions.code,
@@ -140,15 +150,7 @@ let changeDef = function (content, logicOptions) {
         return item
     });
     
-    // 添加绑定数据
-    beforeCreate = ast.body[0].exported_value.properties.map(item => {
-        if (item.key && item.key.name === "mounted") {
-            return bindData(item, content.structure);
-        } else {
-            return item;
-        }
-    });
-    ast.body[0].exported_value.properties = beforeCreate;
+    
     str = ast.print_to_string({ beautify: true, comments: true });
 
     content.logic.content = str;
