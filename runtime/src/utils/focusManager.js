@@ -1,44 +1,11 @@
+import {
+  forceFocusRequiredRule
+} from "./focusRules";
+
 /**
  * 管理focus/blur
  * 
  */
-/**
- * 必选非空规则，如果必选项没有完成，则焦点不能跳出
- * 
- */
-let requiredNotEmptyRule = ({
-  mgr,
-  widget
-}) => {
-  return new Promise((res, rej) => {
-    //如果当前组件为必填组件，则不跳转
-    if (widget && widget.model && widget.model.isRequired) {
-      res();
-      return;
-    }
-
-    //找到所有的输入域
-    let inputFields = $(':input', mgr.host.$el)
-    if (inputFields) {
-      for (let inputField of inputFields) {
-        let model = mgr.findWidgetModel(inputField);
-        if (model && model.isRequired && model.value == null || model.value == "") {
-          rej({
-            message: `必填项未填写`,
-            inputField,
-            model,
-            handle: () => {
-              if (!result.state$$result.inputField)
-                $(result.inputField).focus();
-            }
-          })
-          return;
-        }
-      }
-    }
-    res();
-  })
-}
 export default class FocusManager {
   constructor(host) {
     this.host = host;
@@ -96,7 +63,7 @@ export default class FocusManager {
     //   return parent.rules;
     // }
     //TODO 暂时只使用非空规则
-    return [requiredNotEmptyRule];
+    return [forceFocusRequiredRule];
   }
   blurRules(dom) {
     return [];
@@ -142,7 +109,10 @@ export default class FocusManager {
       callback instanceof Function && callback(values);
     }).catch(reason => {
       //出错时调用错误处理
-      reason && reason.handle && reason.handle(self);
+      if (reason && reason.handle)
+        reason.handle(self);
+      //强制焦点
+      target.focus();
     })
   }
 }

@@ -14,9 +14,25 @@ export default {
     editor.focusManager.unregist(this);
   },
   mounted() {
-    //遍历注册的组件
     try {
       let self = this;
+      /*
+       根据model的events配置来注册监听
+       该监听并不是js/jquery提供，而是vue提供的emit/on机制
+       优势在于：
+        1、可以适配各类vue UI库
+        2、可以自定义事件
+       缺点在于：
+        对于UI库没有暴露的监听，需要自己在组件内部实现
+
+        总的来说，较为灵活可控。
+        格式如下所示
+        events:{
+          [__op_组件内可监听内容ID]:{
+            [eventType]:[逻辑概览ID|简略代码]
+          }
+        }
+       */
       let events = this.model.events;
       let editor = self.$store.state.editor;
       //在焦点管理中注册当前组件，会为它绑定基本的监听
@@ -45,7 +61,7 @@ export default {
                 if (eventType == 'blur' || eventType == 'focus') {
                   editor.focusManager.valid(eventType, {
                     widget: self,
-                    target: dom,
+                    target: dom.$el||dom,
                     callback: apply,
                   });
                 } else {

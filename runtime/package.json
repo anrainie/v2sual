@@ -69,8 +69,4 @@
         "not ie <= 8"
     ],
     "buildfolder": "./src/views/example"
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> e774ae11d17e1b617b1475060dae592ba91b03e8
