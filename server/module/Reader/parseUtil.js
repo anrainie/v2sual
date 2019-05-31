@@ -115,7 +115,7 @@ let appendChildren = function(parentJson,element,isContainer){
                 let span = parseInt(layout instanceof Array ? Math.round(layout[i] * 24 / 100) : '2');
                 let eCol = document.createElement('el-col');
                 eCol.setAttribute('class','V2ContainerBlock'+blockClass(i,parentJson));
-                eCol.setAttribute('span',span);
+                eCol.setAttribute(':span',span);
                 eCol.setAttribute('key',i);
                 eCol.setAttribute('style','height:100%;');
                 appendComponent(parentJson,i,eCol);

@@ -281,6 +281,8 @@ router.get('/-/getMainList', function (ctx) {
 	ctx.body = mainList;
 })
 
+//若删掉代理，预览时候不能获取数据
+require('../server/module/dataSource')(app,require('../server/config/config.json').dataSource);
 
 //parser
 app.use(KoaBody());
@@ -303,4 +305,6 @@ app.use(require('koa-static')(__dirname + '/public'))
 // 	console.error(`服务器启动成功：7008`);
 // });
 
-server.listen(7008);
+server.listen(7008,()=>{
+	console.log('服务器启动成功：7008')
+});
