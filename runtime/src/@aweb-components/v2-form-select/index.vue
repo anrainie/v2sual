@@ -44,7 +44,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
 .form-label-col {
   float: left;
 }
@@ -61,4 +61,13 @@ export default {
   position: relative;
   font-size: 14px;
 }
+.form-select-ctn{
+
+  .el-select {
+      width: 100% !important;
+  }
+
+}
+
+
 </style>
