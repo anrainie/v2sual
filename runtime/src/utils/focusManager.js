@@ -1,6 +1,4 @@
-import {
-  forceFocusRequiredRule
-} from "./focusRules";
+import RuleRegistry from "./focusRules";
 
 /**
  * 管理focus/blur
@@ -18,8 +16,7 @@ export default class FocusManager {
     $('input', this.host.$el).not(":button").off('focus.focusManager');
   }
   unbind(widget, eventType) {
-    let inputFields = $(':input', widget.$el).not(":button")
-    ;
+    let inputFields = $(':input', widget.$el).not(":button");
     inputFields.off(`${eventType}.focusManager`)
   }
   unregist(widget) {
@@ -29,7 +26,7 @@ export default class FocusManager {
     inputFields.off('focus.focusManager')
   }
   regist(widget) {
-    let self=this;
+    let self = this;
     this.widgetRegistry[widget.wid] = widget;
     let inputFields = $(':input', widget.$el).not(":button");
     inputFields.on('blur.focusManager', event => {
@@ -52,11 +49,11 @@ export default class FocusManager {
    * @param {*} dom 
    */
   focusRules(dom) {
-    // dom = dom.$el || $(dom);
-    // //找到最接近的组件
-    // let wid = dom.closest('.v2widget')[0].id;
-    // let model = this.host.$store.getters.model(wid);
-    // //找到最接近的验证规则
+    dom = dom.$el || $(dom);
+    //找到最接近的组件
+    let wid = dom.closest('.V2Widget')[0].id;
+    let model = this.host.$store.getters.model(wid);
+    //找到最接近的验证规则
     // let parent = this.host.$store.getters.parent(wid);
     // while (!(parent && parent.rules)) {
     //   parent = this.host.$store.getters.parent(parent.id);
@@ -64,19 +61,37 @@ export default class FocusManager {
     // if (parent && parent.rules) {
     //   return parent.rules;
     // }
+    let form = this.findForm(model);
     //TODO 暂时只使用非空规则
-    return [forceFocusRequiredRule];
+    return form.rules;
+  }
+  findForm(model = {}) {
+    if (model.form)
+      return model.form
+    let parent = this.host.$store.getters.parent(model.id);
+    if (parent == null)
+      return this.host.model;
+    while (!(parent && parent.rules)) {
+      parent = this.host.$store.getters.parent(parent.id);
+    }
+    if (parent && parent.rules) {
+      return model.form = parent;
+    }
+    return model.form = this.host.model;
   }
   blurRules(dom) {
     return [];
   }
   findWidgetModel(dom) {
     dom = dom.$el || $(dom);
+    //建立缓存
+    if (dom.model)
+      return dom.model;
     //找到最接近的组件
     let wid = dom.closest('.V2Widget')[0].id;
     let model = this.host.$store.getters.model(wid);
     model || console.log('找不到组件', dom);
-    return model;
+    return dom = model;
   }
   valid(eventType, {
     widget,
@@ -86,7 +101,9 @@ export default class FocusManager {
   }) {
     let self = this;
 
+    //focusRules|blurRules
     let ruleKey = `${eventType}Rules`
+    if (!this[ruleKey]) return;
     //focus时，需要确定是否需要确定能否聚焦
     //然后执行callback
     let rules = this[ruleKey](target);
@@ -95,10 +112,19 @@ export default class FocusManager {
       rules = [...rules, ...widget.model[ruleKey]]
     }
     let rulePromise = [];
+
+    let formModel = self.findForm(widget.model);
+    let form = self.host.$store.getters.vueInstance(formModel.id);
+
     for (let rule of rules) {
-      if (rule && rule.constructor == Function) {
+      if (!rule) continue;
+      if (rule.constructor == String) {
+        rule = RuleRegistry[rule];
+      }
+      if (rule.constructor == Function) {
         let r = rule({
           mgr: self,
+          form,
           widget,
           target,
           event,
@@ -113,8 +139,6 @@ export default class FocusManager {
       //出错时调用错误处理
       if (reason && reason.handle)
         reason.handle(self);
-      //强制焦点
-      target.focus();
     })
   }
 }

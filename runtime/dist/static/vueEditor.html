@@ -239,7 +239,6 @@
 
       parent.$store.commit('loading', true)
       window.parent.IDE.socket.emitAndGetDeferred("getVueEditorStyles").done(e => {
-        debugger
         $('head', window.document).append(e.data);
         parent.$store.commit('loading', false)
       })
