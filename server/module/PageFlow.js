@@ -276,14 +276,67 @@ class Page {
         const content = await new Promise(resolve => fs.readFile(filepath, 'utf8', (error, response) => resolve(response)));
         const json = JSON.parse(content);
         if (!json.logic) json.logic = {
-          content: `export default{data(){return{batabasket:{user:{name:"",time:"",logs:[]}}};},mixins:[root],methods:{},watch:{},beforeCreate(){},created(){},beforeMount(){},mounted(){},beforeUpdate(){},updated(){},beforeDestroy(){ /**unBind**/this.$store("unbind",this)/**unBind over**/},destroyed(){}};`,
-          methods: [],
-          watch: []
-        }
+          methods:{},
+          watch:{},
+          beforeCreate:{
+            labelObj:{
+              view:[],
+              output:[]
+            },
+            code:""
+          },
+          created:{
+            labelObj:{
+              view:[],
+              output:[]
+            },
+            code:""
+          },
+          beforeMount:{
+            labelObj:{
+              view:[],
+              output:[]
+            },
+            code:""
+          },
+          mounted:{
+            labelObj:{
+              view:[],
+              output:[]
+            },
+            code:""
+          },
+          beforeUpdate:{
+            labelObj:{
+              view:[],
+              output:[]
+            },
+            code:""
+          },
+          updated:{
+            labelObj:{
+              view:[],
+              output:[]
+            },
+            code:""
+          },
+          beforeDestroy:{
+            labelObj:{
+              view:[],
+              output:[]
+            },
+            code:""
+          },
+          destroyed:{
+            labelObj:{
+              view:[],
+              output:[]
+            },
+            code:""
+          }
+      };
         platform.sendSuccessResult(req, {
-          methods: json.logic.methods || [],
-          watch: json.logic.watch || [],
-          scriptCode: json.logic.content
+          content: json.logic
         });
 
       } catch (e) {
