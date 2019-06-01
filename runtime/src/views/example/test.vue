@@ -378,7 +378,7 @@
                                     children: [ {
                                         style: {
                                             label: {
-                                                "font-size": "",
+                                                "font-size": "34px",
                                                 "font-weight": "",
                                                 color: ""
                                             },
@@ -631,7 +631,6 @@
                                             dataValue: "orgId"
                                         } ]
                                     } ],
-                                    events: [],
                                     id: 1559270078656,
                                     pid: 1559270075056
                                 }, {
@@ -725,11 +724,9 @@
                                         main: "index.vue"
                                     },
                                     children: [ null, null ],
-                                    events: [],
                                     id: 1559270080534,
                                     pid: 1559270075056
                                 } ],
-                                events: [],
                                 id: 1559270075056,
                                 pid: 1559270073346
                             }, {
@@ -913,7 +910,6 @@
                                         main: "index.vue"
                                     },
                                     children: [ null, null ],
-                                    events: [],
                                     id: 1559270082199,
                                     pid: 1559270076912
                                 }, {
@@ -1007,15 +1003,12 @@
                                         main: "index.vue"
                                     },
                                     children: [ null, null ],
-                                    events: [],
                                     id: 1559270083943,
                                     pid: 1559270076912
                                 } ],
-                                events: [],
                                 id: 1559270076912,
                                 pid: 1559270073346
                             } ],
-                            events: [],
                             id: 1559270073346,
                             pid: 1559214383876
                         }, null ],
@@ -1028,26 +1021,9 @@
         };
     },
     mixins: [ root ],
-    methods: {
-        click_0_1559272065466() {
-            const ctx = this;
-            /**overView click_0_1559272065466**/
-            /**overView click_0_1559272065466**/            
-            /**overView click_0_1559272065466**/
-            /**overView click_0_1559272065466**/ (async () => {
-                const t1 = await pipe.getExcelData("用户表", "(e,index)=>{return index?e[1]:false;}");
-                const t2 = await alert(t1);
-            })();
-            /**overView over**/        }
-    },
+    methods: {},
     watch: {},
-    beforeCreate() {
-        const ctx = this;
-        /**overView beforeCreate**/ (async () => {
-            const t1 = await pipe.getExcelData("机构表", "(e,index)=>{return index?{ value:e[0],label:e[1] }:false}");
-            ctx.orgList = t1;
-        })();
- /**overView over**/    },
+    beforeCreate() {},
     created() {},
     beforeMount() {},
     mounted() {
