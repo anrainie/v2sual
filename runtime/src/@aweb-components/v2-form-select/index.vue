@@ -11,7 +11,7 @@
       :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"
     >
       <el-select
-        ref="__op_formSelect_select"
+        ref="_op_formSelect_select"
         v-model="model.value"
         :clearable="model.clearable"
         :placeholder="model.placeholder"
@@ -61,13 +61,8 @@ export default {
   position: relative;
   font-size: 14px;
 }
-.form-select-ctn{
-
-  .el-select {
-      width: 100% !important;
-  }
-
+.el-select {
+    width: 100% !important;
 }
-
 
 </style>

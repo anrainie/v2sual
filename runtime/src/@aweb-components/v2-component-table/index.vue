@@ -40,23 +40,24 @@ export default {
   name:'v2-component-table',
   data(){
     return {
-      fakeData: [{
-          USR_CREATETIME: '2018-06-03',
-          USR_USERNAME: '王小虎',
-          USR_UPDATETIME: '2019-05-03'
-        },{
-          USR_CREATETIME: '2018-06-03',
-          USR_USERNAME: '王小名',
-          USR_UPDATETIME: '2019-05-03'
-        }, {
-          USR_CREATETIME: '2018-06-03',
-          USR_USERNAME: '王小红',
-          USR_UPDATETIME: '2019-05-03'
-        }, {
-          USR_CREATETIME: '2018-06-03',
-          USR_USERNAME: '王小花',
-          USR_UPDATETIME: '2019-05-03'
-        }]
+
+    }
+  },
+  computed:{
+    fakeData(){
+       let columns =[],fakeData=[];
+       if(this.model && this.model.columns){
+          columns = this.model.columns;
+          for(let i=0;i<10;i++){
+            let fakeRowData = {};
+            columns.forEach((element,idx) => {
+               fakeRowData[element.sTitle] = 'rol'+i+'col'+idx
+            });
+            fakeData.push(fakeRowData);
+          }
+          console.log(fakeData);
+       }
+       return fakeData;
     }
   },
   methods:{
@@ -68,6 +69,9 @@ export default {
 
           this.model.selectedRow = val;
       }
+  },
+  mounted(){
+
   }
 
 }

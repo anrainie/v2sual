@@ -1,27 +1,27 @@
 <template>
-  <div :style="flexStyle" class="v2-form-updload" :class="model.layoutClass">
-     <div v-if="model.titleMode==='row'">
-        <label class="v2-form-updload-label">
-           <span class="must-input" v-if="model.isRequired">*</span>
-          {{model.label}}</label>
+  <div class="v2-form-updload" :class="model.layoutClass">
+     <label
+      :class="model.titleMode ==='row'?'v2-form-label':'v2-form-label form-label-col'"
+      :style="labelStyle"
+    >
+    <span class="must-input" v-if="model.isRequired">*</span>
+    {{model.label}}</label>
+    <div :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
+          <el-upload
+            class="upload-demo"
+            :action="model.action"
+            :on-preview="handlePreview"
+            :on-remove="handleRemove"
+            :before-remove="beforeRemove"
+            :disabled="model.disabled"
+            multiple
+            :limit="parseInt(model.limit)"
+            :on-exceed="handleExceed"
+            :file-list="fileList">
+            <el-button size="small" type="primary">{{model.btnText}}</el-button>
+            <div slot="tip" class="el-upload__tip">{{model.prompt}}</div>
+          </el-upload>
     </div>
-        <label  v-if="model.titleMode==='col'" class="v2-form-updload-label">
-           <span class="must-input" v-if="model.isRequired">*</span>
-          {{model.label}}</label>
-    <el-upload
-      class="upload-demo"
-      :action="model.action"
-      :on-preview="handlePreview"
-      :on-remove="handleRemove"
-      :before-remove="beforeRemove"
-      :disabled="model.disabled"
-      multiple
-      :limit="parseInt(model.limit)"
-      :on-exceed="handleExceed"
-      :file-list="fileList">
-      <el-button size="small" type="primary">{{model.btnText}}</el-button>
-      <div slot="tip" class="el-upload__tip">{{model.prompt}}</div>
-    </el-upload>
   </div>
 </template>
 <script>
@@ -52,14 +52,6 @@
       }
     },
     computed:{
-      flexStyle(){
-        let self = this;
-        if(self.model.titleMode==='col'){
-          return $.extend({}, self.model.style, {display:"flex"})
-        }else if(self.model.titleMode==='row'){
-          return self.model.style;
-        }
-      },
     }
   }
 </script>

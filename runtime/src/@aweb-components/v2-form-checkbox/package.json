@@ -36,6 +36,18 @@
         ]
       },
       {
+        "name": "value",
+        "desp": "值",
+        "defaultValue": "",
+        "type": "string_input"
+      },
+      {
+        "name": "labelWitdh",
+        "desp": "标题宽度",
+        "defaultValue": "80px",
+        "type": "string_input"
+      },
+      {
         "name": "options",
         "desp": "配置项",
         "defaultValue": "",
