@@ -34,6 +34,19 @@
       "hidden": false,
       "defaultValue": [50, 50],
       "type": "string_input"
+    },{
+      "name": "rules",
+      "desp": "表单验证",
+      "defaultValue": "",
+      "type": "single_array",
+      "attrInEachElement": [
+        {
+          "name": "rules",
+          "desp": "规则",
+          "defaultValue": "",
+          "type": "string_input"
+        }
+      ]
     }],
     "css": {
       "style": [{
