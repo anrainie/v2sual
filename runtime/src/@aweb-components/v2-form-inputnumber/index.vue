@@ -59,7 +59,8 @@
   .el-input-number{
     width: 100%;
   }
-  .el-input-number__increase{
+  .el-input-number__increase,
+  .el-input-number__decrease{
     >i{
           line-height: 38px;
     }
