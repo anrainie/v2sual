@@ -10,12 +10,12 @@ export default {
   },
   beforeMount() {},
   beforeDestroy() {
-    let editor = self.$store.state.editor;
+    let editor = this.$store.state.editor;
     editor.focusManager.unregist(this);
   },
   mounted() {
+    let self = this;
     try {
-      let self = this;
       /*
        根据model的events配置来注册监听
        该监听并不是js/jquery提供，而是vue提供的emit/on机制
@@ -33,10 +33,10 @@ export default {
           }
         }
        */
-      let events = this.model.events;
-      let editor = self.$store.state.editor;
+      let events = self.model.events;
+      let editor = self.$store.state.root;
       //在焦点管理中注册当前组件，会为它绑定基本的监听
-      editor.focusManager.regist(this);
+      editor.focusManager.regist(self);
       for (let ref in events) {
         //找到对应的vue对象或者el
         let dom = self.$refs[ref];

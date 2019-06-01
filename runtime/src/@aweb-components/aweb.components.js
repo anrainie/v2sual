@@ -18,15 +18,14 @@ import v2FormTransfer  from './v2-form-transfer';
 import v2FormUpload  from './v2-form-upload';
 import v2LayoutColctn  from './v2-layout-colctn';
 import v2LayoutEditor  from './v2-layout-colctn/editor.vue';
-import v2LayoutRowctn  from './v2-layout-rowctn'
+import v2LayoutRowctn  from './v2-layout-rowctn';
 
- import get  from '../../../pipe/src/main/webapp/plugins/app.get';
+          import get  from '../../../pipe/src/main/webapp/plugins/app.get';
 import getAfaData  from '../../../pipe/src/main/webapp/plugins/app.getAfaData';
 import getExcelData  from '../../../pipe/src/main/webapp/plugins/app.getExcelData';
 import gt  from '../../../pipe/src/main/webapp/plugins/app.gt';
 import map  from '../../../pipe/src/main/webapp/plugins/app.map';
 import open  from '../../../pipe/src/main/webapp/plugins/app.open'
-
 
           let app = {
             get,

@@ -335,5 +335,8 @@ export default {
   line-height: 40px;
   position: relative;
   font-size: 14px;
+  .el-cascader{
+    width: 100% !important;
+  }
 }
 </style>

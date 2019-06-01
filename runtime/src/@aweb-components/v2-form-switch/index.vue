@@ -1,19 +1,21 @@
 <template>
-  <div :style="model.style" class="v2-form-switch" :class="model.layoutClass">
-     <div v-if="model.titleMode==='row'">
-        <label class="v2-form-switch-label">
-          <span class="must-input" v-if="model.isRequired">*</span>
-          {{model.label}}</label>
-    </div>
-        <label  v-if="model.titleMode==='col'" class="v2-form-switch-label">
-          <span class="must-input" v-if="model.isRequired">*</span>
-          {{model.label}}</label>
+  <div class="v2-form-switch" :class="model.layoutClass">
+    <label
+      :class="model.titleMode ==='row'?'v2-form-label':'v2-form-label form-label-col'"
+      :style="labelStyle"
+    >
+    <span class="must-input" v-if="model.isRequired">*</span>
+    {{model.label}}</label>
+    <div
+      :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"
+    >
     <el-switch ref="switch"
                v-model="model.value"
                :active-text="model.activeText"
                :inactive-text="model.inactiveText"
                :disabled ="model.disabled"
     ></el-switch>
+    </div>
   </div>
 </template>
 <script>

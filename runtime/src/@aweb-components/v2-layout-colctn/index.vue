@@ -10,9 +10,9 @@
         v-if="!model.direction || model.direction=='row'"
         :class="blockClass(index,model)"
       >
-        <el-form>
+   
           <component :is="component(index)" :wid="wigetId(index)" :index="index" :pid="wid"></component>
-        </el-form>
+     
       </el-row>
       <el-col
         class="V2ContainerBlock"
@@ -22,9 +22,9 @@
         v-else
         style="height:100%;"
       >
-        <el-form-item>
+       
           <component :is="component(index)" :wid="wigetId(index)" :index="index" :pid="wid"></component>
-        </el-form-item>
+       
       </el-col>
     </template>
   </div>

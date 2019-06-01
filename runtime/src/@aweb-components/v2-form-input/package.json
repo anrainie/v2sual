@@ -70,6 +70,19 @@
         "desp": "是否必填",
         "defaultValue": false,
         "type": "boolean"
+      },{
+        "name": "rules",
+        "desp": "验证规则",
+        "defaultValue": "",
+        "type": "single_array",
+        "attrInEachElement": [
+          {
+            "name": "rules",
+            "desp": "规则",
+            "defaultValue": "",
+            "type": "string_input"
+          }
+        ]
       }
     ],
     "css": {

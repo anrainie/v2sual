@@ -4,8 +4,9 @@
  * 如果Form中必选项没有完成，则form中其他组件获取焦点时，会强制聚焦该必选项
  * 
  */
-export const forceFocusRequiredRule = ({
+const forceFocusRequiredRule = ({
   mgr,
+  form,
   widget
 }) => {
   return new Promise((res, rej) => {
@@ -16,18 +17,18 @@ export const forceFocusRequiredRule = ({
     }
 
     //找到所有的输入域
-    let inputFields = $(':input', mgr.host.$el)
+    let inputFields = $(':input', form.$el)
     if (inputFields) {
       for (let inputField of inputFields) {
         let model = mgr.findWidgetModel(inputField);
-        if (model && model.isRequired && model.value == null || model.value == "") {
+        if (model && model.isRequired && (model.value == null || model.value == "")) {
           rej({
             message: `必填项未填写`,
             inputField,
             model,
             handle: () => {
-              if (!result.state$$result.inputField)
-                $(result.inputField).focus();
+              if (inputField)
+                $(inputField).focus();
             }
           })
           return;
@@ -36,4 +37,8 @@ export const forceFocusRequiredRule = ({
     }
     res();
   })
+}
+
+export default {
+  forceFocusRequiredRule,
 }

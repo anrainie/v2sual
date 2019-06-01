@@ -9,9 +9,7 @@
        <div class="form-inputNumber-ctn" :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
     <el-input-number
       v-model="model.value"
-      ref="__op_el-input-number_1"
-      events="change,click"
-      @change="handleChange"
+      ref="_op_formInputNumber_input"
       :min="parseFloat(model.min)"
       :max="parseFloat(model.max)"
       :step="parseFloat(model.step)"
@@ -41,7 +39,8 @@
 
   }
 </script>
-<style>
+<style lang="less">
+
 .form-label-col {
   float: left;
 }
@@ -57,6 +56,15 @@
   line-height: 40px;
   position: relative;
   font-size: 14px;
+  .el-input-number{
+    width: 100%;
+  }
+  .el-input-number__increase,
+  .el-input-number__decrease{
+    >i{
+          line-height: 38px;
+    }
+  }
 }
 </style>
 

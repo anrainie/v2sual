@@ -9,15 +9,19 @@ export const root = {
   },
   beforeCreate() {
     this.$store = new store();
+    this.focusManager = new FocusManager(this);
+  },
+  beforeDestroy(){
+    this.focusManager&&this.focusManager.dispose();
   },
   beforeMount() {
     console.log(1..toString().repeat(100));
     this.$store.commit('init', this.CONTENT)
+    this.$store.state.root=this;
   },
   mounted() {
     //找到所有的作用域
     // $(':input',this.$el)
-    this.focusMananger = new FocusManager(this);
   }
 }
 

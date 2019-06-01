@@ -16,20 +16,20 @@ const fs = require('fs');
 // const Server = require('socket.io');
 // const io = new Server();
 
-const server = require('http').createServer(app.callback());
+// const server = require('http').createServer(app.callback());
 
-const io = require('socket.io')(server);
+// const io = require('socket.io')(server);
 
 
-io.on('connection', (socket) => {
+// io.on('connection', (socket) => {
 
   
-	socket.emit('preview', {
+// 	socket.emit('preview', {
 		
-		message: 'sdsdddds'
-	  });
+// 		message: 'sdsdddds'
+// 	  });
 	  
-});
+// });
 
 // var http = require('http');
 // var https = require('https');
@@ -210,7 +210,7 @@ const routerList = [
 			}, {
 				"path": "test",
 				"name": "test",
-				"component": "example/upload",
+				"component": "example/appmanagement",
 				"meta": {
 					"title": "测试",
 					"icon": "el-icon-setting"
@@ -230,7 +230,7 @@ router.get('/-/router/get', function (ctx) {
 router.post('/login', function (ctx) {
 	ctx.body = {		
 		name: 'admin',
-		avatar: 'https://vue.awebide.com/img/user.png'
+		avatar: 'http://localhost:7007/img/user.png'
 	}
 })
 
@@ -301,10 +301,10 @@ app.use(require('koa-static')(__dirname + '/public'))
 // http.createServer(app.callback()).listen(80);
 // https.createServer(options, app.callback()).listen(443);
 
-// app.listen(7008, () => {
-// 	console.error(`服务器启动成功：7008`);
-// });
-
-server.listen(7008,()=>{
-	console.log('服务器启动成功：7008')
+app.listen(7008, () => {
+	console.error(`服务器启动成功：7008`);
 });
+
+// server.listen(7008,()=>{
+// 	console.log('服务器启动成功：7008')
+// });

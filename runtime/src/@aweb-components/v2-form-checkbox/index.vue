@@ -1,5 +1,5 @@
 <template>
-  <div :style="flexStyle" class="v2-form-checkbox" :class="model.layoutClass" >
+  <div class="v2-form-checkbox" :class="model.layoutClass" >
     <label
       :class="model.titleMode ==='row'?'v2-form-label':'v2-form-label form-label-col'"
       :style="labelStyle"
@@ -10,7 +10,7 @@
       class="form-checkbox-ctn"
       :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"
     >
-      <el-checkbox-group v-model="checkList">
+      <el-checkbox-group v-model="model.value">
         <el-checkbox  
         v-for="(item,index) in model.options" 
         :label="item.value" 
@@ -39,17 +39,6 @@ export default {
     },
   },
   computed: {
-    flexStyle() {
-      let self = this;
-      if (self.model.titleMode === "col") {
-        return $.extend({}, self.model.style.position, { display: "flex" });
-      } else if (self.model.titleMode === "row") {
-        return self.model.style;
-      }
-    },
-    checkboxStyle(){
-
-    },
   },
   mounted() {
     console.log('mo',this.model)
