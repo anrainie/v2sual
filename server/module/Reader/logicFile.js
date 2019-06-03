@@ -204,7 +204,7 @@ let toCode = function (logic) {
                 });
                 outRes = obj.labelObj.output.map(item => {
                     if (item.key !== "" && item.value !== "")
-                        return `this.${item.value} = ${item.key}`;
+                        return `${item.value} = ${item.key}`;
                 });}
                 if (arr.length) {
                     outCode = `
