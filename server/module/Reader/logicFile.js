@@ -30,6 +30,8 @@ let json2script = function (json) {
 
     transfer = this.bindData(logic, content.dataBasket.mapping);
 
+    //TODO transfer数据没有初始化
+    
 
     if (transfer) {
         finalStr = `<script>
@@ -45,29 +47,29 @@ let json2script = function (json) {
                 methods:{${self.methodsToCode(transfer.methods)}},
                 watch:{${self.methodsToCode(transfer.watch)}},
                 beforeCreate(){
-                    ${transfer.beforeCreate.code}
+                    ${transfer.beforeCreate?transfer.beforeCreate.code:''}
                 },
                 created(){
-                    ${transfer.created.code}
+                    ${transfer.created?transfer.created.code:''}
                 },
                 beforeMount(){
-                    ${transfer.beforeMount.code}
+                    ${transfer.beforeMount?transfer.beforeMount.code:''}
                 },
                 mounted(){
-                    ${transfer.mounted.code}
+                    ${transfer.mounted?transfer.mounted.code:''}
                 },
                 beforeUpdate(){
-                    ${transfer.beforeUpdate.code}
+                    ${transfer.beforeUpdate?transfer.beforeUpdate.code:''}
                 },
                 updated(){
-                    ${transfer.beforeUpdate.code}
+                    ${transfer.beforeUpdate?transfer.beforeUpdate.code:''}
                 },
                 beforeDestroy(){ 
                     /**unBind**/this.$store("unbind",this)/**unBind over**/
-                        ${transfer.beforeDestroy.code}
+                        ${transfer.beforeDestroy?transfer.beforeDestroy.code:''}
                 },
                 destroyed(){
-                        ${transfer.destroyed.code}
+                        ${transfer.destroyed?transfer.destroyed.code:''}
                 }
             };
         </script>`
@@ -98,8 +100,8 @@ let bindData = function (logic, mapping) {
             arr.push(`this.$store.commit("bind",{ vueObj:this, data:this.${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
         });
     };
-
-    logic.mounted.code = logic.mounted.code.replace("/**data**/",`/**bind**/${arr.join("\n")}/**bind over**/`);
+    if(logic.mounted)
+        logic.mounted.code = logic.mounted.code.replace("/**data**/",`/**bind**/${arr.join("\n")}/**bind over**/`);
     return logic;
 };
 
@@ -169,14 +171,17 @@ let toCode = function (logic) {
             // data周期
             case "mounted":
                 obj = logic[i]
-                arr = obj.labelObj.view.map(item => {
-                    res = item.name;
-                    return `const ${res} = await ${self.transViewCode(item.value[0])}`;
-                });
-                outRes = obj.labelObj.output.map(item => {
-                    if (item.key !== "" && item.value !== "")
-                        return `this.${item.value} = ${item.key}`;
-                });
+                if(object.labelObj){
+                    arr = obj.labelObj.view.map(item => {
+                        res = item.name;
+                        return `const ${res} = await ${self.transViewCode(item.value[0])}`;
+                    });
+                    outRes = obj.labelObj.output.map(item => {
+                        if (item.key !== "" && item.value !== "")
+                            return `this.${item.value} = ${item.key}`;
+                    });
+                 }else
+                    arr=[];
                 if (arr.length) {
                     outCode = `
                     /**data**/
@@ -192,6 +197,7 @@ let toCode = function (logic) {
             // 周期函数
             default:
                 obj = logic[i]
+                if(obj.labelObj){
                 arr = obj.labelObj.view.map(item => {
                     res = item.name;
                     return `const ${res} = await ${self.transViewCode(item.value[0])}`;
@@ -199,7 +205,7 @@ let toCode = function (logic) {
                 outRes = obj.labelObj.output.map(item => {
                     if (item.key !== "" && item.value !== "")
                         return `this.${item.value} = ${item.key}`;
-                });
+                });}
                 if (arr.length) {
                     outCode = `
                     /**overview ${i}**/
