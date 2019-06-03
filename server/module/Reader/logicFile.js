@@ -37,7 +37,7 @@ let json2script = function (json) {
             export default{
                 data(){
                     return{
-                        "CONTENT":{structure:${JSON.stringify(structure)}}
+                        "CONTENT":{structure:${JSON.stringify(structure)}},
                         ${dataStr.join(",")}
                     }
                 },
@@ -108,7 +108,7 @@ let createData = function (data) {
     console.log(data)
     let i, arr = [];
     for (i in data) {
-        arr.push(`${i}:${data[i]}`);
+        arr.push(`${i}:${data[i]===""?'""':data[i]}`);
     }
     return arr;
 }
