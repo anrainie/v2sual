@@ -77,5 +77,8 @@ export default {
   line-height: 40px;
   position: relative;
   font-size: 14px;
+    .el-radio__label{
+          line-height: 40px;
+    }
 }
 </style>

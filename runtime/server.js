@@ -207,14 +207,6 @@ const routerList = [
 					"title": "afa直连",
 					"icon": "el-icon-setting"
 				}
-			}, {
-				"path": "test",
-				"name": "test",
-				"component": "example/appmanagement",
-				"meta": {
-					"title": "测试",
-					"icon": "el-icon-setting"
-				}
 			}
 			
 		]
