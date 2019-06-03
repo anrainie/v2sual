@@ -342,7 +342,7 @@ class Page {
         });
 
       } catch (e) {
-        platform.sendErrorResult(req, e);
+        platform.sendSuccessResult(req,"err" );
       }
     }
   }
