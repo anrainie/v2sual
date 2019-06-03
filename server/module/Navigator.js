@@ -50,56 +50,75 @@ const listFile = (pagePath) => {
 }
 
 const Navigator = {
+  getRootItems(platform, dirPath, req) {
+    try {
+      const viewPath = listDir(dirPath);
+      let flowPath = [];
+
+      for (let i = 0; i < viewPath.length; i++) {
+        if ("_entry" == viewPath[i].name) {
+          flowPath = viewPath[i].children;
+          break;
+        }
+      }
+
+      //rename flow
+      let copy = [].concat(flowPath);
+      let item;
+
+      while (item = copy.pop()) {
+        if (item.resId === 'vue') {
+          item.resId = 'flow';
+          item.path = item.path.replace(/\.vue$/, '.flow');
+        }
+
+        if (item.children && item.children.length) {
+          copy = copy.concat(item.children);
+        }
+      }
+
+      let ret = [{
+        name: 'views',
+        label: '页面',
+        path: dirPath,
+        resId: 'virtualPath',
+        type: 'folder',
+        children: viewPath
+      }, {
+        name: 'flows',
+        label: '页面流',
+        path: `${dirPath}\\_entry`,
+        resId: 'pathFlow',
+        type: 'folder',
+        children: flowPath
+      }];
+
+      platform.sendSuccessResult(req, ret);
+    } catch (e) {
+      platform.sendErrorResult(req, e)
+    }
+  },
   getNaviItems(platform) {
     return async (req) => {
       try {
-        const dirPath = listPath;
-        const viewPath = listDir(dirPath);
-        let flowPath = [];
-
-        for (let i = 0; i < viewPath.length; i++) {
-          if ("_entry" == viewPath[i].name) {
-            flowPath = viewPath[i].children;
+        let dirPath = req.data.path || req.data.end;
+        switch (req.data.path) {
+          case "\\":
+          case null:
+          case "/":
+            //如果是根目录，则返回整理过的文件夹
+            dirPath = listPath;
+            this.getRootItems(platform, dirPath, req);
             break;
-          }
+          default:
+            //如果不是，则返回原始的
+            const viewPath = listDir(dirPath);
+            platform.sendSuccessResult(req, viewPath);
         }
 
-        //rename flow
-        let copy = [].concat(flowPath);
-        let item;
-
-        while (item = copy.pop()) {
-          if (item.resId === 'vue') {
-            item.resId = 'flow';
-            item.path = item.path.replace(/\.vue$/, '.flow');
-          }
-
-          if (item.children && item.children.length) {
-            copy = copy.concat(item.children);
-          }
-        }
-
-        let ret = [{
-          name: 'views',
-          label: '页面',
-          path: dirPath,
-          resId: 'virtualPath',
-          type: 'folder',
-          children: viewPath
-        }, {
-          name: 'flows',
-          label: '页面流',
-          path:  `${dirPath}\\_entry`,
-          resId: 'pathFlow',
-          type: 'folder',
-          children: flowPath
-        }];
-
-        platform.sendSuccessResult(req, ret);
       } catch (e) {
-        platform.sendErrorResult(req,e)
+        platform.sendErrorResult(req, e)
       }
-
     }
   }
 }
