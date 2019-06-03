@@ -119,6 +119,7 @@ let createData = function (data) {
 let toCode = function (logic) {
     let self = this,
         i, k, obj, res, arr = [], outRes, outCode;
+        
     for (i in logic) {
         switch (i) {
             case "methods":
@@ -171,7 +172,7 @@ let toCode = function (logic) {
             // data周期
             case "mounted":
                 obj = logic[i]
-                if(object.labelObj){
+                if(obj.labelObj){
                     arr = obj.labelObj.view.map(item => {
                         res = item.name;
                         return `const ${res} = await ${self.transViewCode(item.value[0])}`;
@@ -180,8 +181,7 @@ let toCode = function (logic) {
                         if (item.key !== "" && item.value !== "")
                             return `this.${item.value} = ${item.key}`;
                     });
-                 }else
-                    arr=[];
+                 };
                 if (arr.length) {
                     outCode = `
                     /**data**/
