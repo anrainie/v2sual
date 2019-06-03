@@ -14,7 +14,7 @@
                 beforeCreate(){
                     
                     /**overview beforeCreate**/
-                        (async()=>{const t1 = await pipe.getExcelData("机构表","(e,index)=>{return index?{label:e[1],value:e[0]}:false}");this.orgList = t1})();
+                        (async()=>{const t1 = await pipe.getExcelData("机构表","(e,index)=>return index?{label:e[1],value:e[0]}:false");this.orgList = t1})();
                     /**overview over**/
                     
                 },
