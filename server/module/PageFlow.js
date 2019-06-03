@@ -263,9 +263,9 @@ class Page {
     }
   }
   /**
-  * @public
-  * @desp 获取逻辑列表
-  */
+   * @public
+   * @desp 获取逻辑列表
+   */
   logicList(platform) {
     const context = this;
 
@@ -274,67 +274,69 @@ class Page {
         const query = req.data;
         const filepath = query.path + ".def";
         const content = await new Promise(resolve => fs.readFile(filepath, 'utf8', (error, response) => resolve(response)));
-        const json = JSON.parse(content);
+        let json = {};
+        if (content)
+          json = JSON.parse(content);
         if (!json.logic) json.logic = {
-          methods:{},
-          watch:{},
-          beforeCreate:{
-            labelObj:{
-              view:[],
-              output:[]
+          methods: {},
+          watch: {},
+          beforeCreate: {
+            labelObj: {
+              view: [],
+              output: []
             },
-            code:""
+            code: ""
           },
-          created:{
-            labelObj:{
-              view:[],
-              output:[]
+          created: {
+            labelObj: {
+              view: [],
+              output: []
             },
-            code:""
+            code: ""
           },
-          beforeMount:{
-            labelObj:{
-              view:[],
-              output:[]
+          beforeMount: {
+            labelObj: {
+              view: [],
+              output: []
             },
-            code:""
+            code: ""
           },
-          mounted:{
-            labelObj:{
-              view:[],
-              output:[]
+          mounted: {
+            labelObj: {
+              view: [],
+              output: []
             },
-            code:""
+            code: ""
           },
-          beforeUpdate:{
-            labelObj:{
-              view:[],
-              output:[]
+          beforeUpdate: {
+            labelObj: {
+              view: [],
+              output: []
             },
-            code:""
+            code: ""
           },
-          updated:{
-            labelObj:{
-              view:[],
-              output:[]
+          updated: {
+            labelObj: {
+              view: [],
+              output: []
             },
-            code:""
+            code: ""
           },
-          beforeDestroy:{
-            labelObj:{
-              view:[],
-              output:[]
+          beforeDestroy: {
+            labelObj: {
+              view: [],
+              output: []
             },
-            code:""
+            code: ""
           },
-          destroyed:{
-            labelObj:{
-              view:[],
-              output:[]
+          destroyed: {
+            labelObj: {
+              view: [],
+              output: []
             },
-            code:""
+            code: ""
           }
-      };
+        };
         platform.sendSuccessResult(req, {
           content: json.logic
         });

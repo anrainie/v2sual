@@ -8,6 +8,7 @@
 const fs = require('fs')
 const parseUtil = require('./parseUtil');
 const logicFile = require('./logicFile');
+const TEMPLATE = require('./vue.temp.json');
 
 module.exports = {
   read: (path) => new Promise((res, rej) => {
@@ -41,19 +42,3 @@ module.exports = {
   })
 };
 
-
-const TEMPLATE =`{
-  "structure":{
-      "id":"root","component":"v2Container",
-      "direction":"row",
-      "layout":[50,50],
-      "style":{"width":"100%","height":"100%"},"data":{},
-      "children":[]
-      
-  },
-  "logic":{},
-  "dataBaskect":{
-    "data": {CONTENT:{"structure":{}}},
-    "list": []
-}
-}`

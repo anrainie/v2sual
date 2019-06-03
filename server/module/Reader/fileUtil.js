@@ -223,5 +223,6 @@ const reader = {
 module.exports = {
   consume(platform, consumption) {
     Object.keys(consumption).map(c => platform.socket.on(c, reader[consumption[c]](platform)));
-  }
+  },
+  fileUtil,
 };
