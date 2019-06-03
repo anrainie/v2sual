@@ -29,7 +29,7 @@ const listDir = (dirPath = listPath) => {
             name: nodeInfo,
             label: nodeInfo,
             resId: 'vue',
-            icon: "navi/file_ccf.gif",
+            icon: "ideicon iconyemian",
             type: 'file',
             path: filePath
           });
