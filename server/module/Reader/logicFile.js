@@ -107,7 +107,6 @@ let bindData = function (logic, mapping) {
 
 // 生成data
 let createData = function (data) {
-    console.log(data)
     let i, arr = [];
     for (i in data) {
         arr.push(`${i}:${data[i]===""?'""':data[i]}`);
@@ -132,7 +131,7 @@ let toCode = function (logic) {
                     });
                     outRes = obj.labelObj.output.map(item => {
                         if (item.key !== "" && item.value !== "")
-                            return `this.${item.value} = ${item.key}`;
+                            return `${item.value} = ${item.key}`;
                     });
                     if (arr.length) {
                         outCode = `
@@ -156,7 +155,7 @@ let toCode = function (logic) {
                     });
                     outRes = obj.labelObj.output.map(item => {
                         if (item.key !== "" && item.value !== "")
-                            return `this.${item.value} = ${item.key}`;
+                            return `${item.value} = ${item.key}`;
                     });
                     if (arr.length) {
                         outCode = `
@@ -180,7 +179,7 @@ let toCode = function (logic) {
                     });
                     outRes = obj.labelObj.output.map(item => {
                         if (item.key !== "" && item.value !== "")
-                            return `this.${item.value} = ${item.key}`;
+                            return `${item.value} = ${item.key}`;
                     });
                  };
                 if (arr.length) {
@@ -242,9 +241,9 @@ let transViewCode = function (api) {
         return mapTempalte;
         //特例--excel
     } else if (name === "pipe.getExcelData") {
-        let mapTempalte = `${name}(${children[0].option.value},"(e,index)=>{${
+        let mapTempalte = `${name}(${children[0].option.value},"(e,index)=>${
             children[1].option.value
-            }}");`;
+            }");`;
         return mapTempalte;
     }
 
