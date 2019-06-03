@@ -80,10 +80,23 @@ const fileUtil = {
         default:
       }
       return new Promise((res, rej) => {
-        fs.writeFileSync(path + '\\' + name, template || '', {
+        // fs.writeFileSync(path + '\\' + name, template || '', {
+        //   flag: 'wx+'
+        // });
+        // res();
+
+        fs.writeFile(path + '\\' + name, template || '', {
           flag: 'wx+'
+        }, (err) => {
+          if (err) {
+            // if (err.startsWith("Error: EEXIST")) {
+            //   rej('已存在同名文件' + name);
+            //   return;
+            // }
+            rej(err);
+          }
+          res();
         });
-        res();
       });
     }
   },

@@ -15,20 +15,30 @@ const forceFocusRequiredRule = ({
       res();
       return;
     }
+    if (!form && form$el) return;
 
     //找到所有的输入域
     let inputFields = $(':input', form.$el)
     if (inputFields) {
       for (let inputField of inputFields) {
         let model = mgr.findWidgetModel(inputField);
+        if (model == widget.model) {
+          //不验证当前节点之后的必填项
+          break;
+        }
         if (model && model.isRequired && (model.value == null || model.value == "")) {
+          let message = `必填项未填写`;
           rej({
-            message: `必填项未填写`,
+            message,
             inputField,
             model,
             handle: () => {
               if (inputField)
                 $(inputField).focus();
+              widget.$notify({
+                title: '提示',
+                message,
+              });
             }
           })
           return;

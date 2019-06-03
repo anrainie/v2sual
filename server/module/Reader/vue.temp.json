@@ -4,8 +4,7 @@
         "component": "v2Container",
         "direction": "row",
         "layout": [
-            50,
-            50
+            100
         ],
         "style": {
             "width": "100%",
@@ -81,7 +80,6 @@
     },
     "dataBasket": {
         "data": {
-            "CONTENT": {}
         },
         "list": [],
         "mapping": {}

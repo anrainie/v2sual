@@ -73,6 +73,7 @@ export default class FocusManager {
       return this.host.model;
     while (!(parent && parent.rules)) {
       parent = this.host.$store.getters.parent(parent.id);
+      if (parent == null) break;
     }
     if (parent && parent.rules) {
       return model.form = parent;
@@ -118,10 +119,13 @@ export default class FocusManager {
 
     for (let rule of rules) {
       if (!rule) continue;
+      if (rule.active == false) continue;
+      //兼容不同版本的格式
+      rule = rule.rules || rule.rule || rule;
       if (rule.constructor == String) {
         rule = RuleRegistry[rule];
       }
-      if (rule.constructor == Function) {
+      if (rule && rule.constructor == Function) {
         let r = rule({
           mgr: self,
           form,
