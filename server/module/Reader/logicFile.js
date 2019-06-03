@@ -121,6 +121,7 @@ let toCode = function (logic) {
         i, k, obj, res, arr = [], outRes, outCode;
         
     for (i in logic) {
+        arr = [];
         switch (i) {
             case "methods":
                 for (k in logic.methods) {
