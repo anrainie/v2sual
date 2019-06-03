@@ -36,3 +36,9 @@
     }
   }
 </script>
+<style lang="less" scoped>
+.el-switch{
+      line-height: 40px;
+      height: 40px;
+}
+</style>

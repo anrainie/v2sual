@@ -1,40 +1,619 @@
-<template><v2container :wid="`root`"><el-row class="V2ContainerBlock" style="height:null%;width:100%;" key="0"><v2container id="1559027011054" :wid="`1559027011054`" :index="0" :pid="`root`"><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0"><v2container id="1559031696015" :wid="`1559031696015`" :index="0" :pid="`1559027011054`"><el-row class="V2ContainerBlock" style="height:22%;width:100%;" key="0"><v2container id="1559031719789" :wid="`1559031719789`" :index="0" :pid="`1559031696015`"><el-col class="V2ContainerBlock borderBox dashBorder" :span="12" key="0" style="height:100%;"><v2-form-select class="V2Widget" id="1559031739669" :wid="`1559031739669`" :index="0" :pid="`1559031719789`"></v2-form-select></el-col><el-col class="V2ContainerBlock borderBox dashBorder" :span="12" key="1" style="height:100%;"><v2-form-select class="V2Widget" id="1559031743448" :wid="`1559031743448`" :index="1" :pid="`1559031719789`"></v2-form-select></el-col></v2container></el-row><el-row class="V2ContainerBlock" style="height:21%;width:100%;" key="1"><v2container id="1559095568719" :wid="`1559095568719`" :index="1" :pid="`1559031696015`"><el-col class="V2ContainerBlock borderBox dashBorder" :span="12" key="0" style="height:100%;"><v2-form-input class="V2Widget" id="1559180277257" :wid="`1559180277257`" :index="0" :pid="`1559095568719`"></v2-form-input></el-col><el-col class="V2ContainerBlock borderBox dashBorder" :span="12" key="1" style="height:100%;"><v2-form-input class="V2Widget" id="1559183383298" :wid="`1559183383298`" :index="1" :pid="`1559095568719`"></v2-form-input></el-col></v2container></el-row><el-row class="V2ContainerBlock" style="height:23%;width:100%;" key="2"><v2container id="1559031722233" :wid="`1559031722233`" :index="2" :pid="`1559031696015`"><el-col class="V2ContainerBlock" :span="12" key="0" style="height:100%;"><v2empty class="V2Empty" id="1559031722233-0" :wid="`1559031722233-0`" :index="0" :pid="`1559031722233`"></v2empty></el-col><el-col class="V2ContainerBlock" :span="12" key="1" style="height:100%;"><v2empty class="V2Empty" id="1559031722233-1" :wid="`1559031722233-1`" :index="1" :pid="`1559031722233`"></v2empty></el-col></v2container></el-row><el-row class="V2ContainerBlock" style="height:17%;width:100%;" key="3"><v2container id="1559031723690" :wid="`1559031723690`" :index="3" :pid="`1559031696015`"><el-col class="V2ContainerBlock" :span="12" key="0" style="height:100%;"><v2empty class="V2Empty" id="1559031723690-0" :wid="`1559031723690-0`" :index="0" :pid="`1559031723690`"></v2empty></el-col><el-col class="V2ContainerBlock" :span="12" key="1" style="height:100%;"><v2empty class="V2Empty" id="1559031723690-1" :wid="`1559031723690-1`" :index="1" :pid="`1559031723690`"></v2empty></el-col></v2container></el-row><el-row class="V2ContainerBlock" style="height:17%;width:100%;" key="4"><v2container id="1559031725910" :wid="`1559031725910`" :index="4" :pid="`1559031696015`"><el-col class="V2ContainerBlock" :span="12" key="0" style="height:100%;"><v2empty class="V2Empty" id="1559031725910-0" :wid="`1559031725910-0`" :index="0" :pid="`1559031725910`"></v2empty></el-col><el-col class="V2ContainerBlock" :span="12" key="1" style="height:100%;"><v2empty class="V2Empty" id="1559031725910-1" :wid="`1559031725910-1`" :index="1" :pid="`1559031725910`"></v2empty></el-col></v2container></el-row></v2container></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;width:100%;" key="1"><v2-component-table class="V2Widget" id="1559184218258" :wid="`1559184218258`" :index="1" :pid="`1559027011054`"></v2-component-table></el-row></v2container></el-row><el-row class="V2ContainerBlock" style="height:null%;width:100%;" key="1"><v2empty class="V2Empty" id="root-1" :wid="`root-1`" :index="1" :pid="`root`"></v2empty></el-row></v2container></template>
+	<template>
+  <el-row class="aweb-container">
+    <el-col :span="24" class="aweb-header">
+      <el-col
+        :span="10"
+        class="aweb-logo"
+        :class="collapsed?'logo-collapse-width':'logo-width'"
+      >{{collapsed?'':sysName}}</el-col>
+      <el-col :span="10">
+        <div class="aweb-tools" @click.prevent="collapse">
+          <i class="el-icon-menu"></i>
+        </div>
+      
+      </el-col>
+
+      <el-col :span="4" class="aweb-userinfo">
+
+        <el-tooltip  effect="dark" content="下载案例" placement="left">
+            <el-button icon="el-icon-sold-out" circle class="aweb-download-btn" @click="openMarket"></el-button>
+        </el-tooltip>
+
+        <el-dropdown trigger="hover">
+          <span class="el-dropdown-link aweb-userinfo-inner">
+            <img :src="sysUserAvatar">
+            {{sysUserName}}
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>我的消息</el-dropdown-item>
+            <el-dropdown-item>设置</el-dropdown-item>
+            <el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </el-col>
+    </el-col>
+
+    <el-col :span="24" class="aweb-body">
+ <!-- 侧边导航 -->
+      <aside :class="collapsed?'menu-collapsed':'menu-expanded'">
+
+        <el-menu        
+          default-active="2"
+          class="el-menu-vertical-demo"
+          background-color="#152028"
+          text-color="#fff"
+          active-text-color="#04bebd"
+          hoverbgColor ="#04bebd"
+          :collapse="collapsed"
+          @select="handleSelectMenu"
+        >
+
+          <template v-for="item in routerData" v-if="!item.hidden">
+            
+              <el-submenu  v-if="item.children && item.children.length && !item.isLeaf || (item.isLeaf && item.isRedirect)" :index="item.path+'#'+item.componentUrl+'#'+(item.meta && item.meta.title && item.meta.title)" :key="item.path">
+                <template slot="title">
+                  <i v-if="item.meta && item.meta.icon" :class="item.meta.icon"></i>
+                  <span v-if="item.meta && item.meta.title">{{item.meta.title}}</span>
+                </template>
+
+                <template v-for="child in item.children" v-if="!child.hidden">
+
+                      <el-submenu  v-if="child.children" :index="item.path+'/'+child.path+'#'+child.componentUrl+'#'+(child.meta && child.meta.title && child.meta.title)" :key="item.path+'/'+child.path">
+                              
+                                    <template slot="title">
+                                      <i v-if="child.meta && child.meta.icon" :class="child.meta.icon"></i>
+                                      <span v-if="child.meta && child.meta.title">{{child.meta.title}}</span>
+                                    </template>
+
+                                    <template v-for="child3 in child.children" v-if="!child3.hidden">
+
+                                            <el-submenu  v-if="child3.children" :index="item.path+'/'+child.path+'/'+child3.path+'#'+child3.componentUrl+'#'+(child3.meta && child3.meta.title && child3.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path">                              
+                                                    <template slot="title">
+                                                      <i v-if="child3.meta && child3.meta.icon" :class="child3.meta.icon"></i>
+                                                      <span v-if="child3.meta && child3.meta.title">{{child3.meta.title}}</span>
+                                                    </template>
+
+                                                    <template v-for="child4 in child3.children" v-if="!child4.hidden">                                         
+                                                          <el-menu-item :index="item.path+'/'+child.path+'/'+child3.path+'/'+child4.path+'#'+child4.componentUrl+'#'+(child4.meta && child4.meta.title && child4.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path+'/'+child4.path">
+                                                            <i v-if="child4.meta && child4.meta.icon" :class="child4.meta.icon"></i>
+                                                            <span v-if="child4.meta&&child4.meta.title">{{child4.meta.title}}</span>
+                                                          </el-menu-item>
+                                                    </template>                             
+                                              </el-submenu>
+
+
+                                          <el-menu-item v-else :index="item.path+'/'+child.path+'/'+child3.path+'#'+child3.componentUrl+'#'+(child3.meta && child3.meta.title && child3.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path">
+                                            <i v-if="child3.meta && child3.meta.icon" :class="child3.meta.icon"></i>
+                                            <span v-if="child3.meta&&child3.meta.title">{{child3.meta.title}}</span>
+                                          </el-menu-item>
+
+
+                                    </template>
+                              
+                      </el-submenu>
+
+
+                    <el-menu-item v-else  :index="item.path+'/'+child.path+'#'+child.componentUrl+'#'+(child.meta && child.meta.title && child.meta.title)" :key="item.path+'/'+child.path">
+                      <i v-if="child.meta && child.meta.icon" :class="child.meta.icon"></i>
+                      <span v-if="child.meta && child.meta.title" :data-role="item.path+'/'+child.path">{{child.meta.title}}</span>
+                    </el-menu-item>
+            
+                </template>
+              </el-submenu>
+
+             
+                <el-menu-item  v-else-if="item.isLeaf && !item.children[0].children"  :index="item.children[0].path+'#'+item.children[0].componentUrl+'#'+(item.children[0].meta && item.children[0].meta.title && item.children[0].meta.title)" :key="item.path+'/'+item.children[0].path" >  
+                  <i v-if="item.children[0].meta && item.children[0].meta.icon" :class="item.children[0].meta.icon"></i>          
+                    <span v-if="item.children[0].meta && item.children[0].meta.title">{{item.children[0].meta.title}}</span>
+                  </el-menu-item>
+
+                 <el-menu-item  v-else  :index="item.path+'#'+item.componentUrl+'#'+(item.meta && item.meta.title && item.meta.title)" :key="item.path" >  
+                  <i v-if="item.meta && item.meta.icon" :class="item.meta.icon"></i>          
+                    <span v-if="item.meta && item.meta.title">{{item.meta.title}}</span>
+                  </el-menu-item>
+
+
+            </template>        
+        </el-menu>
+      </aside>
+ <!-- 侧边导航-->
+      <section class="aweb-ctt">
+        <div class="grid-content bg-purple-light">
+          <div>
+  
+            <el-tabs
+              v-model="activeIndex"
+              type="border-card"
+              closable
+              v-if="openedTabs.length"
+              @tab-click="tabClick"
+              @tab-remove="tabRemove"
+              @contextmenu.native.stop.prevent="tabRightClick"
+            >
+   
+              <el-tab-pane
+                :key="item.name"
+                v-for="item in openedTabs"
+                :label="item.name"
+                :name="item.route"
+              >
+              <el-col :span="24" class="aweb-ctt-wrap" >
+        
+                <transition name="fade" mode="out-in"> 
+                 
+                      <!-- <router-view  ></router-view> -->
+                    
+          
+                     <keep-alive v-if="isRouterAlive">                           
+                          <router-view  v-if="(activeIndex===item.route)"></router-view>
+                      </keep-alive>
+                                            
+                      <router-view  v-else-if="activeIndex===item.route"></router-view>
+                      
+                 
+                </transition>
+              </el-col>
+          
+			        </el-tab-pane>
+            </el-tabs>
+
+          </div>
+              <!-- 子页面容器 -->
+              <el-dialog   :title="subPageTitle" :visible.sync='dialogVisible' @close="closeDialog">
+                <transition name="fade" mode="out-in" v-if="dialogVisible">
+                  <!-- <router-view></router-view> -->
+                  <async-component :page="subPageHref" :params="subPageParams"></async-component>
+                </transition>           
+                <div slot='footer' class='dialog-footer'>
+                <el-button @click="cancel">取消</el-button>
+                <el-button type='primary' @click="confirm">确定</el-button >
+                </div> 
+            </el-dialog>
+             <!-- 子页面容器 -->
+        </div>
+      </section>
+    </el-col>
+      <right-menu :menuData="rightMenuData"  :eventHandler=rightClickHandler  v-on:handleSelect= "handleRightSelect"></right-menu> 
+  </el-row>
+</template>
 <script>
-            import {root} from '@/utils/v2-view';
-            export default{
-                data(){
-                    return{
-                        "CONTENT":{structure:{"id":"root","component":"v2Container","direction":"row","layout":[null,null],"style":{"width":"100%","height":"100%"},"data":{},"children":[{"style":{"divCtn":{"position":"","top":"","right":"","bottom":"","left":"","overflow":"","margin":"","padding":"","height":"","width":"","max-height":"","max-width":"","min-height":"","min-width":""}},"direction":"row","layout":"[50,50]","def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{"opacity":1,"border-radius":"0px"},"href":"v2-layout-colctn","component":"v2-layout-colctn","widget":{"belongTo":"aui","icon":"iconfont icon-password","type":"layout","href":"v2-layout-colctn","author":"zhanghaixian@agree.com.cn","version":510000,"accept":"","name":"横向布局","option":[{"name":"direction","desp":"排列方式","defaultValue":"row","type":"string_select","valueArray":["row","col"],"despArray":["横排","竖排"]},{"name":"layout","desp":"栅格","hidden":false,"defaultValue":[50,50],"type":"string_input"}],"css":{"style":[{"desp":"容器","cssAttrs":"top right bottom left width height min-width max-width min-height max-height position overflow margin padding","name":"divCtn"}]},"editor":{"name":"avLayoutEditor","model":{"def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{}}},"main":"index.vue"},"children":[{"style":{"divCtn":{"position":"","top":"","right":"","bottom":"","left":"","overflow":"","margin":"","padding":"","height":"","width":"","max-height":"","max-width":"","min-height":"","min-width":""}},"direction":"row","layout":[22,21,23,17,17],"def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{"opacity":1,"border-radius":"0px"},"href":"v2-layout-colctn","component":"v2-layout-colctn","widget":{"belongTo":"aui","icon":"iconfont icon-password","type":"layout","href":"v2-layout-colctn","author":"zhanghaixian@agree.com.cn","version":510000,"accept":"","name":"横向布局","option":[{"name":"direction","desp":"排列方式","defaultValue":"row","type":"string_select","valueArray":["row","col"],"despArray":["横排","竖排"]},{"name":"layout","desp":"栅格","hidden":false,"defaultValue":[50,50],"type":"string_input"}],"css":{"style":[{"desp":"容器","cssAttrs":"top right bottom left width height min-width max-width min-height max-height position overflow margin padding","name":"divCtn"}]},"editor":{"name":"avLayoutEditor","model":{"def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{}}},"main":"index.vue"},"children":[{"style":{"divCtn":{"position":"","top":"","right":"","bottom":"","left":"","overflow":"","margin":"","padding":"","height":"","width":"","max-height":"","max-width":"","min-height":"","min-width":""}},"direction":"col","layout":"[50,50]","def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{"opacity":1,"border-radius":"0px"},"href":"v2-layout-rowctn","component":"v2-layout-rowctn","widget":{"belongTo":"aui","icon":"iconfont icon-password","type":"layout","href":"v2-layout-rowctn","author":"zhanghaixian@agree.com.cn","version":510000,"accept":"","name":"竖向布局","option":[{"name":"direction","desp":"排列方式","defaultValue":"col","type":"string_select","valueArray":["row","col"],"despArray":["横排","竖排"]},{"name":"layout","desp":"栅格","hidden":false,"defaultValue":[50,50],"type":"string_input"}],"css":{"style":[{"desp":"子容器","cssAttrs":"top right bottom left width height min-width max-width min-height max-height position overflow margin padding","name":"divCtn"}]},"editor":{"name":"avLayoutEditor","model":{"def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{}}},"main":"index.vue"},"children":[{"style":{"label":{"font-size":"","font-weight":"","color":""},"borderStyle":{"border-color":""},"fontStyle":{"color":""}},"value":"tradeId","labelWitdh":"80px","titleMode":"col","label":"标题","placeholder":"请选择","options":[{"active":"true","value":"1","label":"选项1"},{"active":true,"value":"1","label":"选项1"}],"clearable":false,"filterable":false,"href":"v2-form-select","component":"v2-form-select","widget":{"belongTo":"aui","icon":"iconfont icon-password","type":"form","href":"v2-form-select","author":"fengjiarong@agree.com.cn","version":510000,"accept":"foundationRowCtn divCtn","name":"选择器","option":[{"name":"value","desp":"选择值","defaultValue":"","type":"string_input"},{"name":"labelWitdh","desp":"标题宽度","defaultValue":"80px","type":"string_input"},{"name":"titleMode","desp":"标题排列方式","defaultValue":"row","type":"string_select","valueArray":["row","col"],"despArray":["横排","竖排"]},{"name":"label","desp":"标题","defaultValue":"标题","type":"string_input"},{"name":"placeholder","desp":"placeholder","defaultValue":"请选择","type":"string_input"},{"name":"options","desp":"配置项","defaultValue":"","type":"array","appendNumber":1,"attrInEachElement":[{"name":"value","desp":"值","defaultValue":"1","type":"string_input"},{"name":"label","desp":"文本","defaultValue":"选项1","type":"string_input"}],"append":[{}]},{"name":"clearable","desp":"是否可清空","defaultValue":false,"type":"boolean"},{"name":"filterable","desp":"是否可搜索","defaultValue":false,"type":"boolean"}],"css":{"style":[{"desp":"标题","cssAttrs":"font-size color font-weight","name":"label"},{"desp":"检验边框","cssAttrs":"border-color","name":"borderStyle"},{"desp":"检验文字","cssAttrs":"color","name":"fontStyle"}]},"main":"index.vue"},"children":[],"id":1559031739669,"pid":1559031719789},{"style":{"label":{"font-size":"","font-weight":"","color":""},"borderStyle":{"border-color":""},"fontStyle":{"color":""}},"value":"employeeId","labelWitdh":"80px","titleMode":"col","label":"标题","placeholder":"overview_1559031743448_placeholder","options":[{"active":"true","value":"1","label":"选项1"},{"active":true,"value":"1","label":"选项1"}],"clearable":false,"filterable":false,"href":"v2-form-select","component":"v2-form-select","widget":{"belongTo":"aui","icon":"iconfont icon-password","type":"form","href":"v2-form-select","author":"fengjiarong@agree.com.cn","version":510000,"accept":"foundationRowCtn divCtn","name":"选择器","option":[{"name":"value","desp":"选择值","defaultValue":"","type":"string_input"},{"name":"labelWitdh","desp":"标题宽度","defaultValue":"80px","type":"string_input"},{"name":"titleMode","desp":"标题排列方式","defaultValue":"row","type":"string_select","valueArray":["row","col"],"despArray":["横排","竖排"]},{"name":"label","desp":"标题","defaultValue":"标题","type":"string_input"},{"name":"placeholder","desp":"placeholder","defaultValue":"请选择","type":"string_input"},{"name":"options","desp":"配置项","defaultValue":"","type":"array","appendNumber":1,"attrInEachElement":[{"name":"value","desp":"值","defaultValue":"1","type":"string_input"},{"name":"label","desp":"文本","defaultValue":"选项1","type":"string_input"}],"append":[{}]},{"name":"clearable","desp":"是否可清空","defaultValue":false,"type":"boolean"},{"name":"filterable","desp":"是否可搜索","defaultValue":false,"type":"boolean"}],"css":{"style":[{"desp":"标题","cssAttrs":"font-size color font-weight","name":"label"},{"desp":"检验边框","cssAttrs":"border-color","name":"borderStyle"},{"desp":"检验文字","cssAttrs":"color","name":"fontStyle"}]},"main":"index.vue"},"children":[],"id":1559031743448,"pid":1559031719789}],"id":1559031719789,"pid":1559031696015},{"style":{"divCtn":{"position":"","top":"","right":"","bottom":"","left":"","overflow":"","margin":"","padding":"","height":"","width":"","max-height":"","max-width":"","min-height":"","min-width":""}},"direction":"col","layout":[50,50],"def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{},"href":"v2-layout-rowctn","component":"v2-layout-rowctn","widget":{"belongTo":"aui","icon":"iconfont icon-password","type":"layout","href":"v2-layout-rowctn","author":"zhanghaixian@agree.com.cn","version":510000,"accept":"","name":"竖向布局","option":[{"name":"direction","desp":"排列方式","defaultValue":"col","type":"string_select","valueArray":["row","col"],"despArray":["横排","竖排"]},{"name":"layout","desp":"栅格","hidden":false,"defaultValue":[50,50],"type":"string_input"}],"css":{"style":[{"desp":"子容器","cssAttrs":"top right bottom left width height min-width max-width min-height max-height position overflow margin padding","name":"divCtn"}]},"editor":{"name":"avLayoutEditor","model":{"def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{}}},"main":"index.vue"},"children":[{"style":{"label":{"font-size":"","font-weight":"","color":""},"borderStyle":{"border-color":""},"fontStyle":{"color":""}},"label":"交易号","titleMode":"col","labelWitdh":"80px","placeholder":"请选择","value":"tradeId","clearable":false,"href":"v2-form-input","component":"v2-form-input","widget":{"belongTo":"aui","icon":"iconfont icon-password","type":"form","href":"v2-form-input","author":"fengjiarong@agree.com.cn","version":510000,"accept":"foundationRowCtn divCtn","name":"输入框","option":[{"name":"label","desp":"标题","defaultValue":"标题","type":"string_input"},{"name":"titleMode","desp":"标题排列方式","defaultValue":"row","type":"string_select","valueArray":["row","col"],"despArray":["横排","竖排"]},{"name":"labelWitdh","desp":"标题宽度","defaultValue":"80px","type":"string_input"},{"name":"placeholder","desp":"placeholder","defaultValue":"请选择","type":"string_input"},{"name":"value","desp":"值","defaultValue":"","type":"string_input"},{"name":"clearable","desp":"是否可清空","defaultValue":false,"type":"boolean"}],"css":{"style":[{"desp":"标题","cssAttrs":"font-size color font-weight","name":"label"},{"desp":"检验边框","cssAttrs":"border-color","name":"borderStyle"},{"desp":"检验文字","cssAttrs":"color","name":"fontStyle"}]},"main":"index.vue"},"children":[],"events":[],"id":1559180277257,"pid":1559095568719},{"style":{"label":{"font-size":"","font-weight":"","color":""},"borderStyle":{"border-color":""},"fontStyle":{"color":""}},"label":"交易名","titleMode":"col","labelWitdh":"80px","placeholder":"请选择","value":"trade.name","clearable":false,"href":"v2-form-input","component":"v2-form-input","widget":{"belongTo":"aui","icon":"iconfont icon-password","type":"form","href":"v2-form-input","author":"fengjiarong@agree.com.cn","version":510000,"accept":"foundationRowCtn divCtn","name":"输入框","option":[{"name":"label","desp":"标题","defaultValue":"标题","type":"string_input"},{"name":"titleMode","desp":"标题排列方式","defaultValue":"row","type":"string_select","valueArray":["row","col"],"despArray":["横排","竖排"]},{"name":"labelWitdh","desp":"标题宽度","defaultValue":"80px","type":"string_input"},{"name":"placeholder","desp":"placeholder","defaultValue":"请选择","type":"string_input"},{"name":"value","desp":"值","defaultValue":"","type":"string_input"},{"name":"clearable","desp":"是否可清空","defaultValue":false,"type":"boolean"}],"css":{"style":[{"desp":"标题","cssAttrs":"font-size color font-weight","name":"label"},{"desp":"检验边框","cssAttrs":"border-color","name":"borderStyle"},{"desp":"检验文字","cssAttrs":"color","name":"fontStyle"}]},"main":"index.vue"},"children":[],"events":[],"id":1559183383298,"pid":1559095568719}],"id":1559095568719,"pid":1559031696015},{"style":{"divCtn":{"position":"","top":"","right":"","bottom":"","left":"","overflow":"","margin":"","padding":"","height":"","width":"","max-height":"","max-width":"","min-height":"","min-width":""}},"direction":"col","layout":"[50,50]","def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{"opacity":1,"border-radius":"0px"},"href":"v2-layout-rowctn","component":"v2-layout-rowctn","widget":{"belongTo":"aui","icon":"iconfont icon-password","type":"layout","href":"v2-layout-rowctn","author":"zhanghaixian@agree.com.cn","version":510000,"accept":"","name":"竖向布局","option":[{"name":"direction","desp":"排列方式","defaultValue":"col","type":"string_select","valueArray":["row","col"],"despArray":["横排","竖排"]},{"name":"layout","desp":"栅格","hidden":false,"defaultValue":[50,50],"type":"string_input"}],"css":{"style":[{"desp":"子容器","cssAttrs":"top right bottom left width height min-width max-width min-height max-height position overflow margin padding","name":"divCtn"}]},"editor":{"name":"avLayoutEditor","model":{"def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{}}},"main":"index.vue"},"children":[null,null],"id":1559031722233,"pid":1559031696015},{"style":{"divCtn":{"position":"","top":"","right":"","bottom":"","left":"","overflow":"","margin":"","padding":"","height":"","width":"","max-height":"","max-width":"","min-height":"","min-width":""}},"direction":"col","layout":"[50,50]","def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{},"href":"v2-layout-rowctn","component":"v2-layout-rowctn","widget":{"belongTo":"aui","icon":"iconfont icon-password","type":"layout","href":"v2-layout-rowctn","author":"zhanghaixian@agree.com.cn","version":510000,"accept":"","name":"竖向布局","option":[{"name":"direction","desp":"排列方式","defaultValue":"col","type":"string_select","valueArray":["row","col"],"despArray":["横排","竖排"]},{"name":"layout","desp":"栅格","hidden":false,"defaultValue":[50,50],"type":"string_input"}],"css":{"style":[{"desp":"子容器","cssAttrs":"top right bottom left width height min-width max-width min-height max-height position overflow margin padding","name":"divCtn"}]},"editor":{"name":"avLayoutEditor","model":{"def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{}}},"main":"index.vue"},"children":[null,null],"id":1559031723690,"pid":1559031696015},{"style":{"divCtn":{"position":"","top":"","right":"","bottom":"","left":"","overflow":"","margin":"","padding":"","height":"","width":"","max-height":"","max-width":"","min-height":"","min-width":""}},"direction":"col","layout":"[50,50]","def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{"opacity":1,"border-radius":"0px"},"href":"v2-layout-rowctn","component":"v2-layout-rowctn","widget":{"belongTo":"aui","icon":"iconfont icon-password","type":"layout","href":"v2-layout-rowctn","author":"zhanghaixian@agree.com.cn","version":510000,"accept":"","name":"竖向布局","option":[{"name":"direction","desp":"排列方式","defaultValue":"col","type":"string_select","valueArray":["row","col"],"despArray":["横排","竖排"]},{"name":"layout","desp":"栅格","hidden":false,"defaultValue":[50,50],"type":"string_input"}],"css":{"style":[{"desp":"子容器","cssAttrs":"top right bottom left width height min-width max-width min-height max-height position overflow margin padding","name":"divCtn"}]},"editor":{"name":"avLayoutEditor","model":{"def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{}}},"main":"index.vue"},"children":[null,null],"id":1559031725910,"pid":1559031696015}],"id":1559031696015,"pid":1559027011054},{"columns":[{"active":true,"sTitle":"columns0"},{"sTitle":"AMV_CAPTCHA","active":true,"__edm_collection":{"CODINGRULE":"UTF-8","DICTTYPE":"2","PUBCODECNAME":"验证码","COLSCALE":"0","name":"AMV_CAPTCHA","description":"验证码","Parameter":{"pname":"字段长度","pvalue":"10"},"type":"String","UUID":"7807C7A02D0040B0AD067A361E788AE7","EDITION":"v0.0.1","APPLYAREA":"casdf.cadf","fieldLength":"10","desp":"验证码"}},{"active":true,"sTitle":"AMV_ID","__edm_collection":{"CODINGRULE":"UTF-8","DICTTYPE":"2","PUBCODECNAME":"验证ID","COLSCALE":"0","name":"AMV_ID","description":"验证ID","Parameter":{"pname":"字段长度","pvalue":"50"},"type":"String","UUID":"E06D2A5CE52842FD84A5BCF7EA9C0EA3","EDITION":"v0.0.1","APPLYAREA":"casdf.cadf","fieldLength":"50","desp":"验证ID"}},{"active":true,"sTitle":"APP_DATE","__edm_collection":{"CODINGRULE":"UTF-8","DICTTYPE":"2","PUBCODECNAME":"上传日期","COLSCALE":"0","name":"APP_DATE","description":"上传日期","Parameter":{"pname":"字段长度","pvalue":"50"},"type":"String","UUID":"78AE8078C02C4B4A813BCEDF7121537E","EDITION":"v0.0.1","APPLYAREA":"casdf.cadf","fieldLength":"50","desp":"上传日期"}},{"active":true,"sTitle":"APP_DEV","__edm_collection":{"CODINGRULE":"UTF-8","DICTTYPE":"2","PUBCODECNAME":"应用设备","COLSCALE":"0","name":"APP_DEV","description":"应用设备","Parameter":{"pname":"字段长度","pvalue":"50"},"type":"String","UUID":"9A12A394ED8544B7A1ED48FA8711EA93","EDITION":"v0.0.1","APPLYAREA":"casdf.cadf","fieldLength":"50","desp":"应用设备"}},{"active":true,"sTitle":"APP_ID","__edm_collection":{"CODINGRULE":"UTF-8","DICTTYPE":"2","PUBCODECNAME":"应用ID","COLSCALE":"0","name":"APP_ID","description":"应用ID","Parameter":{"pname":"字段长度","pvalue":"100"},"type":"String","UUID":"74A836590DDC46798580E71EF7F0CE67","EDITION":"v0.0.1","APPLYAREA":"casdf.cadf","fieldLength":"100","desp":"应用ID"}},{"active":true,"sTitle":"APP_NICKNAME","__edm_collection":{"CODINGRULE":"UTF-8","DICTTYPE":"2","PUBCODECNAME":"应用别名","COLSCALE":"0","name":"APP_NICKNAME","description":"应用别名","Parameter":{"pname":"字段长度","pvalue":"50"},"type":"String","UUID":"0E5C63F9A44A4369B60D63491D45D00A","EDITION":"v0.0.1","APPLYAREA":"casdf.cadf","fieldLength":"50","desp":"应用别名"}},{"active":true,"sTitle":"Alter_priv","__edm_collection":{"CODINGRULE":"UTF-8","DICTTYPE":"2","default":"N","COLSCALE":"0","name":"Alter_priv","Parameter":{"pname":"字段长度","pvalue":"1"},"type":"String","UUID":"0DF12CC25D9F4EFFAFA4ACC9DA2A9257","EDITION":"v0.0.1","APPLYAREA":"casdf.cadf","fieldLength":"1","desp":"Alter_priv"}},{"active":true,"sTitle":"APP_ZIP","__edm_collection":{"CODINGRULE":"UTF-8","DICTTYPE":"2","PUBCODECNAME":"二进制包文件表","COLSCALE":"0","name":"APP_ZIP","description":"二进制包文件表","Parameter":{"pname":"字段长度","pvalue":"2147483647"},"type":"Object","UUID":"7D2FB3CE73494D0EB4EDFE8239901D22","EDITION":"v0.0.1","APPLYAREA":"casdf.cadf","fieldLength":"2147483647","desp":"二进制包文件表"}}],"selection":"","toolBar":false,"toolTitle":"操作列","toolLocation":"right","toolWidth":"100","toolBtns":[{"active":"true","btnName":"详情","func":"btnClick"},{"active":true,"btnName":"详情","func":"btnClick"}],"tableData":"[]","selectedRow":"[]","href":"v2-component-table","component":"v2-component-table","widget":{"belongTo":"aui","icon":"iconfont icon-password","type":"component","href":"v2-component-table","author":"zhanghaixian@agree.com.cn","version":610000,"accept":"divCtn","name":"表格","option":[{"type":"edmCollection","desp":"列定义","name":"columns","edmKey":"sTitle","appendNumber":1,"hidden":false,"defaultValue":"","valueArray":"","replaceTemp":true,"attrInEachElement":[{"type":"string_input","desp":"列名","name":"sTitle"}],"append":[{"active":true}]},{"defaultValue":"","valueArray":["","single","multi"],"type":"string_select","desp":"选择器","despArray":["无","单选","多选"],"name":"selection"},{"defaultValue":false,"type":"boolean","name":"toolBar","desp":"是否打开固定列"},{"defaultValue":"操作列","type":"string_input","name":"toolTitle","desp":"固定列名"},{"defaultValue":"right","valueArray":["right","left"],"type":"string_select","desp":"固定位置","despArray":["左边","右边"],"name":"toolLocation"},{"type":"string_input","name":"toolWidth","defaultValue":100,"desp":"固定列宽度"},{"type":"array","name":"toolBtns","desp":"固定列按钮","appendNumber":0,"attrInEachElement":[{"name":"btnName","desp":"按钮名","defaultValue":"详情","type":"string_input"},{"name":"func","desp":"关联方法","defaultValue":"btnClick","type":"string_input"}]},{"type":"string_input","name":"tableData","defaultValue":[],"disabled":true,"desp":"表格数据"},{"type":"string_input","name":"selectedRow","defaultValue":[],"desp":"选中行"}],"main":"index.vue"},"children":[],"events":[],"id":1559184218258,"pid":1559027011054}],"id":1559027011054,"pid":"root"},null]}}
-                        
-                    }
-                },
-                mixins:[root],
-                methods:{},
-                watch:{},
-                beforeCreate(){
-                    
-                },
-                created(){
-                    
-                },
-                beforeMount(){
-                    
-                },
-                mounted(){
-                    /**bind**//**bind over**/
-                },
-                beforeUpdate(){
-                    
-                },
-                updated(){
-                    
-                },
-                beforeDestroy(){ 
-                    /**unBind**/this.$store("unbind",this)/**unBind over**/
-                        
-                },
-                destroyed(){
-                        
+
+import {getObjArr, getRouter,saveRouter} from '../promission.js'
+
+import rightMenu from '@/components/rightMenu'
+import asyncComponent from '@/components/asyncComponent'
+
+export default {
+  name:'layout',
+  data() {
+    return {
+      routerData:global.menu?global.menu:getRouter('menu'),
+      sysLogo:"img/logo.png",
+      sysName: "AWEB_ADMIN",
+      collapsed: false,
+      sysUserName: "admin",
+      sysUserAvatar: "http://localhost:7007/img/user.png",  
+      rightClickHandler:null,
+      isRouterAlive: true
+
+    };
+  },
+  methods: {
+    handleSelectMenu:function(key, keyPath){
+       console.log('key',key);
+
+      let keys = key.split('#'),
+          path = keys[0],
+          page = keys[1],
+          title= keys[2];
+
+
+       this.open({
+         path:'/'+path,
+         page:page,
+         status:true,
+         type:'BLANK',
+         title:title||'标题',
+         keepAlive:true
+       })
+
+
+    },
+    tabRightClick:function(e){
+       if(e.target.classList[0] ==='el-tabs__item'){
+
+            this.rightClickHandler = e;  
+       }
+    },
+     reload() {
+   
+          this.isRouterAlive = false;
+         
+          this.$nextTick(function () {
+              this.isRouterAlive = true
+          })
+        },
+    handleRightSelect:function(key){
+
+       switch(key){
+         case'refresh':
+      
+         this.reload();
+            
+          break;
+         case'close':
+
+            this.$store.commit("delete_tabs", this.activeIndex);
+            if (this.openedTabs && this.openedTabs.length >= 1) {
+
+              this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
+
+              this.$router.push({ path: this.activeIndex,query:this.URLQueryMap[this.activeIndex] ||{}});
+
+            }
+           break;
+
+         case'closeAll':
+           this.$store.commit("delete_allTabs");
+           break;
+
+       }
+
+    },
+    logout: function() {
+      var _this = this;
+      this.$confirm("确认退出吗?", "提示", {
+        //type: 'warning'
+      })
+        .then(() => {
+          sessionStorage.removeItem("user");
+          _this.$router.push("/login");
+           saveRouter('router','');
+           saveRouter('menu','');
+           global.antRouter = '';
+          global.pageMap = {};
+          global.hasLogin = false;
+        })
+        .catch(() => {});
+    },
+    collapse: function() {
+      this.collapsed = !this.collapsed;
+    },
+    tabClick(tab) {
+
+      this.$router.push({ path: this.activeIndex,query:this.URLQueryMap[this.activeIndex] ||{}});
+
+    },
+    tabRemove(targetName) {
+      this.$store.commit("delete_tabs", targetName);
+      if (this.activeIndex === targetName) {
+        if (this.openedTabs && this.openedTabs.length >= 1) {
+
+          this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
+
+          this.$router.push({ path: this.activeIndex ,query:this.URLQueryMap[this.activeIndex] ||{}});
+
+        }
+      }
+    },
+    cancel(){
+           this.$store.commit("set_D_visible",false);
+           this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
+           this.$router.push({ path: this.activeIndex,query:this.URLQueryMap[this.activeIndex] ||{} });
+           this.$store.commit("do_cancel");
+         
+    },
+    confirm(){
+         this.$store.commit("set_D_visible",false);
+          this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
+          this.$router.push({ path: this.activeIndex,query:this.URLQueryMap[this.activeIndex] ||{} });
+          this.$store.commit("do_confirm");
+      
+    },
+    closeDialog(){
+
+       this.$store.commit("set_D_visible",false);    
+       this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
+       this.$router.push({ path: this.activeIndex ,query:this.URLQueryMap[this.activeIndex] ||{}});
+    
+  
+    },
+    openMarket(){
+      window.open('https://www.awebide.com:7002/package/@aweb-template/vue-spa');
+    }
+  },
+  mounted() {
+    console.log('routerData',this.routerData)
+    let user = sessionStorage.getItem("user");
+    if (user) {
+      user = JSON.parse(user);
+      this.sysUserName = user.name || "admin";
+      this.sysUserAvatar = user.avatar || "http://localhost:7007/img/user.png";
+    }
+     this.$store.commit("add_tabs", {
+        route: this.$route.path,
+        name: this.$route.meta.title,
+        keepAlive:this.$route.meta.keepAlive       
+      });
+    
+  this.$store.commit("set_active_index", this.$route.path);
+
+  },
+  computed: {
+    openedTabs() {
+
+      return this.$store.state.openedTabs;
+    },
+    activeIndex: {
+      get() {
+        return this.$store.state.activeIndex;
+      },
+      set(val) {
+        this.$store.commit("set_active_index", val);
+      }
+    },
+     dialogVisible: {
+        get() {
+          return this.$store.state.dialogVisible;
+        },
+        set(val) {
+          this.$store.commit("set_D_visible", val);
+        }
+     },
+     subPageHref: {
+        get() {
+          return this.$store.state.subPageHref;
+        },
+        set(val) {
+          this.$store.commit("set_subPageHref", val);
+        }
+     },
+    subPageParams: {
+        get() {
+          return this.$store.state.subPageParams;
+        },
+        set(val) {
+          this.$store.commit("set_subPageParams", val);
+        }
+     },
+     subPageTitle:{
+       get() {
+          return this.$store.state.subPageTitle;
+        },
+        set(val) {
+          this.$store.commit("set_subPageTitle", val);
+        }
+     },
+    rightMenuData() {
+       return this.$store.state.rightMenuData;
+    },
+    URLQueryMap:{
+      get() {
+        return this.$store.state.URLQueryMap;
+      },
+      set(val) {
+        this.$store.commit("set_url_map", val);
+      }
+    }
+  },
+  watch: {
+    $route(to, from) {
+      let flag = false;
+      
+      if(to.meta.type ==='BLANK'){
+        if(Object.keys(to.query).length){
+            this.$store.commit("set_url_map",({path:to.path,query:to.query}))
+          }
+      }
+   
+      if(to.meta.type==='BLANK' || !to.meta.type){
+        for (let item of this.openedTabs) {
+                if (item.route === to.path) {
+                  this.$store.commit("set_active_index", to.path);
+                  flag = true;
+                  break;
                 }
-            };
-        </script>
+              }
+      
+          if (!flag) {
+            this.$store.commit("add_tabs", { 
+              route: to.path, 
+              name: to.meta.title,
+              keepAlive:to.meta.keepAlive
+
+            });
+            this.$store.commit("set_active_index", to.path);
+          }
+      }else if(to.meta.type==='SELF'){
+    
+          this.$store.commit("add_tabs", {
+             route: to.path,
+             name: to.meta.title,
+             keepAlive:to.meta.keepAlive
+           });
+          this.$store.commit("set_active_index",to.path);
+          this.$store.commit("delete_tabs", from.path);
+       
+      }
+     
+    }
+  },
+  components:{
+    rightMenu,
+    asyncComponent
+  }
+};
+</script>
+
+<style  lang="less">
+.aweb-container {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  width: 100%;
+  background-color: #f0f2f5;
+  .aweb-header {
+    line-height: 64px;
+    background: #fff;
+    height: 64px;
+    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+    border-right: none;
+    border-bottom: 1px solid #e6e6e6;
+    list-style: none;
+    position: relative;
+    margin: 0;
+    padding-left: 0;
+    .aweb-userinfo {
+      text-align: right;
+      padding-right: 35px;
+      float: right;
+      .aweb-userinfo-inner {
+        cursor: pointer;
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 20px;
+          margin: 10px 0px 10px 10px;
+          float: right;
+        }
+      }
+      .aweb-download-btn{
+        margin-right: 1em;
+      }
+    }
+    .aweb-logo {
+      height: 64px;
+      font-size: 22px;
+      padding-left: 20px;
+      padding-right: 20px;
+      img {
+        width: 40px;
+        float: left;
+        margin: 10px 10px 10px 18px;
+      }
+      .txt {
+        color: rgb(14, 9, 9);
+      }
+    }
+    .logo-width,
+    .logo-collapse-width {
+      background-color: #152028;
+      color: #fff;
+      box-shadow: 2px 0 6px rgba(0,21,41,.35);  
+      transition: width .28s;
+      }
+      .logo-collapse-width {
+        width: 64px;
+      }
+      .logo-width {
+      width: 230px;
+      }
+    .aweb-tools {
+      padding: 0px 23px;
+      width: 14px;
+      height: 64px;
+      line-height: 64px;
+      cursor: pointer;
+    }
+  }
+  .aweb-body {
+    display: flex;
+    position: absolute;
+    top: 64px;
+    bottom: 0px;
+    overflow: hidden;
+    aside {
+    flex: 0 0 230px;
+	  width: 230px;
+		box-shadow: 2px 0 6px rgba(0,21,41,.35);
+		transition: width .28s;
+      .el-menu {
+      height: 100%;
+      border-right: 0;
+      }
+      a.router-link-exact-active.router-link-active{
+        text-decoration: none;
+      }
+      .el-menu-item{
+         &:hover{
+            i{
+                color: #fff;
+            }
+         }
+         &.is-active:hover{
+             color: #fff !important;
+         }
+      }
+      .el-submenu{
+          &:hover{
+            .el-submenu__title i{
+               color: #fff;
+            } 
+          }
+      }
+    }
+    .menu-collapsed {
+      flex: 0 0 64px;
+      width: 64px;
+    }
+    .menu-expanded {
+      flex: 0 0 230px;
+      width: 230px;
+    }
+
+  }
+   .aweb-ctt {
+      flex: 1;
+      overflow: auto;
+      padding: 10px;
+      .breadcrumb-container {
+        .title {
+          width: 200px;
+          float: left;
+          color: #475669;
+        }
+        .breadcrumb-inner {
+          float: right;
+        }
+      }
+      .aweb-ctt-wrap {
+        background-color: #fff;
+        box-sizing: border-box;
+      }
+      .grid-content{
+           >div>div.el-tabs>.el-tabs__content{
+              height: calc(100vh - 125px);
+              overflow: auto;
+              padding: 0;
+           }
+           .el-tabs__item:focus, 
+           .el-tabs__item:focus:active,
+           .el-tabs__item:active:focus{
+                 outline: none;
+                outline-color: transparent;
+           }
+      }
+     
+    }
+    .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 230px;
+    min-height: 400px;
+  }
+  // .aweb-right-menu{
+  //   position: absolute;
+  //   top: 28px;
+
+  //    .el-menu-vertical{
+  //        border:1px solid transparent;
+  //       border-radius: 4px;
+  //       z-index: 100;
+  //   }
+  
+  //   .menuItem{
+  //     height: 32px;
+  //     line-height: 32px;
+  //     font-size: 14px;
+  //   }
+  // }
+}
+</style>
