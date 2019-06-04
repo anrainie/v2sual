@@ -241,9 +241,9 @@ let transViewCode = function (api) {
         return mapTempalte;
         //特例--excel
     } else if (name === "pipe.getExcelData") {
-        let mapTempalte = `${name}(${children[0].option.value},"(e,index)=>${
+        let mapTempalte = `${name}(${children[0].option.value},\`(e,index)=>${
             children[1].option.value
-            }");`;
+            }\`);`;
         return mapTempalte;
     }
 
