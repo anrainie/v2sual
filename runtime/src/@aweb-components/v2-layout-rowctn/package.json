@@ -42,7 +42,7 @@
         "type": "single_array",
         "attrInEachElement": [
           {
-            "name": "rules",
+            "name": "rule",
             "desp": "规则",
             "defaultValue": "",
             "type": "string_input"

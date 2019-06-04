@@ -20,6 +20,7 @@
         "desp": "标题",
         "defaultValue": "标题",
         "type": "string_input"
+      
       },
       {
         "name": "titleMode",
@@ -40,12 +41,14 @@
         "desp": "标题宽度",
         "defaultValue": "80px",
         "type": "string_input"
+      
       },
       {
         "name": "placeholder",
         "desp": "placeholder",
         "defaultValue": "请选择",
         "type": "string_input"
+       
       },
       {
         "name": "value",
@@ -71,13 +74,26 @@
         "defaultValue": false,
         "type": "boolean"
       },{
+        "name": "autoComplete",
+        "desp": "开启输入建议",
+        "defaultValue": false,
+        "type": "boolean"
+      },{
+        "require":{
+           "autoComplete":true
+        },
+        "name": "suggestion",
+        "desp": "输入建议列表",
+        "defaultValue": "",
+        "type": "string_input"
+      },{
         "name": "rules",
         "desp": "验证规则",
         "defaultValue": "",
         "type": "single_array",
         "attrInEachElement": [
           {
-            "name": "rules",
+            "name": "rule",
             "desp": "规则",
             "defaultValue": "",
             "type": "string_input"

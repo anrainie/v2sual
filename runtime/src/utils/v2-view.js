@@ -75,6 +75,7 @@ export const widget = {
       return this.pid || (this.pid = this.$store.getters.parentId(this.wid));
     },
     labelStyle() {
+    
       this.model.style = this.model.style || {};
       return {
         width: this.model.labelWitdh,

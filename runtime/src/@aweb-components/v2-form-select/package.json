@@ -4,7 +4,7 @@
   },
   "bundleDependencies": false,
   "deprecated": false,
-  "description": "选择器",
+  "description": "下拉框",
   "docs": {
     "belongTo": "aui",
     "icon": "iconxuanzeqi",
@@ -13,7 +13,7 @@
     "author": "fengjiarong@agree.com.cn",
     "version": 510000,
     "accept": "foundationRowCtn divCtn",
-    "name": "选择器",
+    "name": "下拉框",
     "option": [
       {
         "name": "value",
@@ -24,7 +24,7 @@
       {
         "name": "labelWitdh",
         "desp": "标题宽度",
-        "defaultValue":"80px",
+        "defaultValue":"`80px`",
         "type": "string_input"
       },
       {
@@ -44,13 +44,13 @@
       {
         "name": "label",
         "desp": "标题",
-        "defaultValue":"标题",
+        "defaultValue":"`标题`",
         "type": "string_input"
       },
       {
         "name": "placeholder",
         "desp": "placeholder",
-        "defaultValue":"请选择",
+        "defaultValue":"`请选择`",
         "type": "string_input"
       },
       {
@@ -128,7 +128,7 @@
         "type": "single_array",
         "attrInEachElement": [
           {
-            "name": "rules",
+            "name": "rule",
             "desp": "规则",
             "defaultValue": "",
             "type": "string_input"
