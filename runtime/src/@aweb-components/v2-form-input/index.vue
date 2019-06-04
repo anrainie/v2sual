@@ -1,5 +1,5 @@
 <template>
-  <div :style="flexStyle" class="v2-form-input" :class="model.layoutClass"> 
+  <div  class="v2-form-input" :class="model.layoutClass"> 
      <label
         :class="model.titleMode ==='row'?'v2-form-label':'v2-form-label form-label-col'"
         :style="labelStyle"
@@ -7,13 +7,24 @@
       <span class="must-input" v-if="model.isRequired">*</span>
       {{model.label}}</label>
      <div class="form-input-ctn" :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
-    <el-input
-      ref="__op_formInput_input"
-      v-model="model.value"
+      <el-input
+      v-if="!model.autoComplete"
+      ref="_op_formInput_input"
       :placeholder="model.placeholder"
       :clearable="model.clearable"
-       :disabled="model.disabled"
+      :disabled="model.disabled"
     ></el-input>
+
+      <el-autocomplete
+      v-if="model.autoComplete"
+      ref="_op_formInput_input"
+      :placeholder="model.placeholder"
+      :clearable="model.clearable"
+      :disabled="model.disabled"
+      :fetch-suggestions="querySearch"
+    ></el-autocomplete>
+
+
      </div>
   </div>
 </template>
@@ -23,19 +34,18 @@
 export default {
   name: "v2-form-input",
 
+
   mounted() {
-    console.log('input',this.model)
+    // console.log('inputRef',this.$refs._op_formInput_input.$refs.input)
+
   },
   methods: {
-    flexStyle() {
-      // let self = this;
-      // if (self.model.data.titleMode === "col") {
-      //   return $.extend({}, self.model.data.style, { display: "flex" });
-      // } else if (self.model.data.titleMode === "row") {
-      //   return self.model.data.style;
-      // }
-    },
-
+     querySearch(queryString, cb) {
+        let suggestion = (this.model && this.model.suggestion)||[];
+        let results = queryString ? suggestion.filter(item => item.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0) : suggestion;
+        // 调用 callback 返回建议列表的数据
+        cb(results);
+      },
     $ArrowRight() {
       return true;
     },
@@ -43,19 +53,30 @@ export default {
       return true;
     }
   },
-  watch:{
-    model:{
-      handler(newVal){
-         
-        //  this.$refs.aInput.getElementsByTagName('input').style=
+    watch:{
+      "model.style.borderStyle":{
+        immediate:true,
+        handler:function(val){    
+    
+        // this.$refs && this.$refs._op_formInput_input && (this.$refs._op_formInput_input.$refs.input.style={...this.model.style.borderStyle,...this.model.style.fontStyle});
+        //   //  val && val['border-color'] && this.$refs._op_formInput_input.$el.style.setProperty('bor',val['border-color'])
+        }
       },
-      deep:true
-    }
+      "model.style.fontStyle":{
+        immediate:true,       
+        handler:function(val){
+        
+        //   this.$refs && this.$refs._op_formInput_input && (this.$refs._op_formInput_input.$refs.input.style={...this.model.style.borderStyle,...this.model.style.fontStyle});
+
+        }
+      }  
+
   }
 };
 </script>
 
-<style>
+<style lang="less">
+
 .form-label-col {
   float: left;
 }
@@ -68,8 +89,15 @@ export default {
   box-sizing: border-box;
 }
 .form-input-ctn {
+  
+
   line-height: 40px;
   position: relative;
   font-size: 14px;
+
+  .el-autocomplete{
+    width: 100%;
+  }
+
 }
 </style>
