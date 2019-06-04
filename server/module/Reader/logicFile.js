@@ -92,7 +92,7 @@ let methodsToCode = function (obj) {
     let arr = [], i;
     for (i in obj) {
         arr.push(
-            `${obj[i].name}(item,event){
+            `${obj[i].name}(widget,item){
                 let ctx = this;
                 ${obj[i].code}
             }, `
