@@ -24,7 +24,7 @@ module.exports = {
       });
     } else {
       //不存在则读取template
-      res(TEMPLATE);
+      res(JSON.stringify(TEMPLATE));
     }
   }),
   write: (path, content) => new Promise((res, rej) => {
