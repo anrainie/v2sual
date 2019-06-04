@@ -62,6 +62,8 @@ export default class FocusManager {
     //   return parent.rules;
     // }
     let form = this.findForm(model);
+    if (!form)
+      return [];
     //TODO 暂时只使用非空规则
     return form.rules;
   }
@@ -70,7 +72,7 @@ export default class FocusManager {
       return model.form
     let parent = this.host.$store.getters.parent(model.id);
     if (parent == null)
-      return this.host.model;
+      return this.host.$store.getters.model('root');
     while (!(parent && parent.rules)) {
       parent = this.host.$store.getters.parent(parent.id);
       if (parent == null) break;
@@ -78,7 +80,7 @@ export default class FocusManager {
     if (parent && parent.rules) {
       return model.form = parent;
     }
-    return model.form = this.host.model;
+    return model.form = this.host.$store.getters.model('root');
   }
   blurRules(dom) {
     return [];
@@ -116,26 +118,26 @@ export default class FocusManager {
 
     let formModel = self.findForm(widget.model);
     let form = self.host.$store.getters.vueInstance(formModel.id);
-
-    for (let rule of rules) {
-      if (!rule) continue;
-      if (rule.active == false) continue;
-      //兼容不同版本的格式
-      rule = rule.rules || rule.rule || rule;
-      if (rule.constructor == String) {
-        rule = RuleRegistry[rule];
+    if (rules)
+      for (let rule of rules) {
+        if (!rule) continue;
+        if (rule.active == false) continue;
+        //兼容不同版本的格式
+        rule = rule.rules || rule.rule || rule;
+        if (rule.constructor == String) {
+          rule = RuleRegistry[rule];
+        }
+        if (rule && rule.constructor == Function) {
+          let r = rule({
+            mgr: self,
+            form,
+            widget,
+            target,
+            event,
+          });
+          r && r.constructor == Promise && rulePromise.push(r);
+        }
       }
-      if (rule && rule.constructor == Function) {
-        let r = rule({
-          mgr: self,
-          form,
-          widget,
-          target,
-          event,
-        });
-        r && r.constructor == Promise && rulePromise.push(r);
-      }
-    }
     Promise.all(rulePromise).then(values => {
       //成功后调用成功处理
       callback instanceof Function && callback(values);
