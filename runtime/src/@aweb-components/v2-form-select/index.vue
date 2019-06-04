@@ -12,6 +12,7 @@
     >
       <el-select
         ref="_op_formSelect_select"
+        v-model="model.value"
         :clearable="model.clearable"
         :placeholder="model.placeholder"
         :filterable="model.filterable"
