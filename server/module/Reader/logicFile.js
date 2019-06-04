@@ -47,28 +47,36 @@ let json2script = function (json) {
                 methods:{${self.methodsToCode(transfer.methods)}},
                 watch:{${self.methodsToCode(transfer.watch)}},
                 beforeCreate(){
+                    let ctx = this;
                     ${transfer.beforeCreate?transfer.beforeCreate.code:''}
                 },
                 created(){
+                    let ctx = this;
                     ${transfer.created?transfer.created.code:''}
                 },
                 beforeMount(){
+                    let ctx = this;
                     ${transfer.beforeMount?transfer.beforeMount.code:''}
                 },
                 mounted(){
+                    let ctx = this;
                     ${transfer.mounted?transfer.mounted.code:''}
                 },
                 beforeUpdate(){
+                    let ctx = this;
                     ${transfer.beforeUpdate?transfer.beforeUpdate.code:''}
                 },
                 updated(){
+                    let ctx = this;
                     ${transfer.beforeUpdate?transfer.beforeUpdate.code:''}
                 },
                 beforeDestroy(){ 
+                    let ctx = this;
                     /**unBind**/this.$store("unbind",this)/**unBind over**/
                         ${transfer.beforeDestroy?transfer.beforeDestroy.code:''}
                 },
                 destroyed(){
+                    let ctx = this;
                         ${transfer.destroyed?transfer.destroyed.code:''}
                 }
             };
@@ -85,6 +93,7 @@ let methodsToCode = function (obj) {
     for (i in obj) {
         arr.push(
             `${obj[i].name}(){
+                let ctx = this;
                 ${obj[i].code}
             }, `
         )
@@ -204,7 +213,7 @@ let toCode = function (logic) {
                 });
                 outRes = obj.labelObj.output.map(item => {
                     if (item.key !== "" && item.value !== "")
-                        return `this.${item.value} = ${item.key}`;
+                        return `${item.value} = ${item.key}`;
                 });}
                 if (arr.length) {
                     outCode = `
