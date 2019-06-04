@@ -52,7 +52,6 @@
         "desp": "配置项",
         "defaultValue": "",
         "type": "array",
-        "appendNumber": 1,
         "attrInEachElement": [
           {
             "name": "value",

@@ -19,17 +19,11 @@
       "desp": "列定义",
       "name": "columns",
       "edmKey": "sTitle",
-      "appendNumber": 1,
       "hidden": false,
       "defaultValue": "",
       "valueArray": "",
       "replaceTemp": true,
-      "attrInEachElement": [{
-          "type": "string_input",
-          "desp": "列名",
-          "name": "sTitle"
-        }
-      ]
+      "attrInEachElement": []
     },
     {
           "defaultValue": "",
@@ -84,7 +78,6 @@
       "type": "array",
       "name": "toolBtns",
       "desp": "固定列按钮",
-       "appendNumber": 0,
       "attrInEachElement":[{            
           "name": "btnName",
           "desp": "按钮名",

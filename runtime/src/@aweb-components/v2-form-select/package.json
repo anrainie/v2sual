@@ -21,7 +21,6 @@
         "defaultValue":"标题",
         "type": "string_input"
       },
-     
       {
         "name": "labelWitdh",
         "desp": "标题宽度",

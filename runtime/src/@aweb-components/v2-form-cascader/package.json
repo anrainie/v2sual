@@ -83,7 +83,7 @@
         "name": "options",
         "desp": "配置项",
         "type": "array",
-        "appendNumber": 1,
+     
         "attrInEachElement": [
           {
             "name": "value",
@@ -102,7 +102,7 @@
             "desp": "子选项",
             "defaultValue": "",
             "type": "array",
-            "appendNumber": 1,
+         
             "attrInEachElement": [
               {
                 "name": "value",
@@ -121,7 +121,7 @@
                 "desp": "子选项",
                 "defaultValue": "",
                 "type": "array",
-                "appendNumber": 1,
+         
                 "attrInEachElement": [
                   {
                     "name": "value",
