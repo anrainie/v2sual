@@ -246,7 +246,7 @@ let transViewCode = function (api) {
         return mapTempalte;
         //特例--diy
     } else if (name === "diy") {
-        let mapTempalte = `${children[0].option.value}`;
+        let mapTempalte = `(${children[0].option.value})()`;
         return mapTempalte;
         //特例--excel
     } else if (name === "pipe.getExcelData") {
