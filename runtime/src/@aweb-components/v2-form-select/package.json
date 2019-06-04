@@ -16,11 +16,12 @@
     "name": "下拉框",
     "option": [
       {
-        "name": "value",
-        "desp": "选择值",
-        "defaultValue":"",
+        "name": "label",
+        "desp": "标题",
+        "defaultValue":"标题",
         "type": "string_input"
       },
+     
       {
         "name": "labelWitdh",
         "desp": "标题宽度",
@@ -42,15 +43,15 @@
         ]
       },
       {
-        "name": "label",
-        "desp": "标题",
-        "defaultValue":"标题",
-        "type": "string_input"
-      },
-      {
         "name": "placeholder",
         "desp": "placeholder",
         "defaultValue":"请选择",
+        "type": "string_input"
+      },
+      {
+        "name": "value",
+        "desp": "选择值",
+        "defaultValue":"",
         "type": "string_input"
       },
       {

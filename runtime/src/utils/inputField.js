@@ -14,6 +14,9 @@ const preview = {
     $ArrowDown(e) {
       return this.$focusNext(e);
     },
+    $Enter(e) {
+      return this.$focusNext(e);
+    },
     $ArrowLeft(e) {
       return this.$focusPrev(e);
     },
