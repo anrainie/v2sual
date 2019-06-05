@@ -18,7 +18,6 @@
       "type": "array",
       "desp": "列定义",
       "name": "col",
-      "appendNumber": 1,
       "hidden": false,
       "defaultValue": "",
       "valueArray": "",

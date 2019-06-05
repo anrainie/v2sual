@@ -1,4 +1,184 @@
 {
+    "serialId": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "业务流水号",
+        "description": "业务流水号",
+        "COLSCALE": "0",
+        "name": "serialId",
+        "Parameter": {
+          "pname": "serialId",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77",
+        "like":true
+      },
+      "organId": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "机构ID",
+        "description": "机构ID",
+        "COLSCALE": "0",
+        "name": "organId",
+        "Parameter": {
+          "pname": "字段长度",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77",
+        "like":true
+      },
+      "employeeId2": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "复核柜员号",
+        "description": "复核柜员号",
+        "COLSCALE": "0",
+        "name": "employeeId2",
+        "Parameter": {
+          "pname": "字段长度",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77",
+        "like":true
+      },
+      "tradeId": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "交易号",
+        "description": "交易号",
+        "COLSCALE": "0",
+        "name": "tradeId",
+        "Parameter": {
+          "pname": "字段长度",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77",
+        "like":true
+      },
+      "tradeName": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "交易名",
+        "description": "交易名",
+        "COLSCALE": "0",
+        "name": "tradeName",
+        "Parameter": {
+          "pname": "字段长度",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77",
+        "like":true
+      },
+      "employeeId": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "柜员号",
+        "description": "柜员号",
+        "COLSCALE": "0",
+        "name": "employeeId",
+        "Parameter": {
+          "pname": "字段长度",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77",
+        "like":true
+      },
+      "state": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "交易状态",
+        "description": "交易状态",
+        "COLSCALE": "0",
+        "name": "state",
+        "Parameter": {
+          "pname": "字段长度",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77",
+        "like":true
+      },
+      "type": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "交易类型",
+        "description": "交易类型",
+        "COLSCALE": "0",
+        "name": "type",
+        "Parameter": {
+          "pname": "字段长度",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77",
+        "like":true
+      },
+      "start": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "交易起始时间",
+        "description": "交易起始时间",
+        "COLSCALE": "0",
+        "name": "start",
+        "Parameter": {
+          "pname": "字段长度",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77",
+        "like":true
+      },
+      "end": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "交易结束时间",
+        "description": "交易结束时间",
+        "COLSCALE": "0",
+        "name": "end",
+        "Parameter": {
+          "pname": "字段长度",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77",
+        "like":true
+      },
       "startAndEndTime": {
         "CODINGRULE": "UTF-8",
         "DICTTYPE": "2",

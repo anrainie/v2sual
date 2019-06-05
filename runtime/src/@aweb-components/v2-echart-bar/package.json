@@ -20,7 +20,7 @@
         "valueArray": "",
         "type": "object",
         "titleKey": "",
-        "appendNumber": "",
+        
         "desp": "标题",
         "formatter": "",
         "isAdvanced": false,
@@ -36,7 +36,7 @@
             "valueArray": "",
             "type": "string_input",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "主标题",
             "formatter": "",
             "isAdvanced": false,
@@ -60,7 +60,7 @@
             "valueArray": "",
             "type": "string_input",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "子标题",
             "formatter": "",
             "isAdvanced": false,
@@ -84,7 +84,7 @@
             "valueArray": "",
             "type": "string_input",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "水平安放位置",
             "formatter": "",
             "isAdvanced": false,
@@ -108,7 +108,7 @@
             "valueArray": "",
             "type": "string_input",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "垂直安放位置",
             "formatter": "",
             "isAdvanced": false,
@@ -141,7 +141,7 @@
         "valueArray": "",
         "type": "object",
         "titleKey": "",
-        "appendNumber": "",
+        
         "desp": "图例",
         "formatter": "",
         "isAdvanced": false,
@@ -160,7 +160,7 @@
             ],
             "type": "string_select",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "布局",
             "formatter": "",
             "isAdvanced": false,
@@ -191,7 +191,7 @@
             ],
             "type": "string_select",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "对齐",
             "formatter": "",
             "isAdvanced": false,
@@ -219,7 +219,7 @@
             "valueArray": "",
             "type": "string_input",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "水平安放位置",
             "formatter": "",
             "isAdvanced": false,
@@ -243,7 +243,7 @@
             "valueArray": "",
             "type": "string_input",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "垂直安放位置",
             "formatter": "",
             "isAdvanced": false,
@@ -284,7 +284,6 @@
         ],
         "valueArray": "",
         "type": "array",
-        "appendNumber": 1,
         "titleKey": "",
         "desp": "X坐标",
         "formatter": "",
@@ -299,7 +298,7 @@
             "valueArray": "",
             "type": "string_input",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "name",
             "formatter": "",
             "isAdvanced": false,
@@ -329,7 +328,7 @@
             ],
             "type": "string_select",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "坐标轴类型",
             "formatter": "",
             "isAdvanced": false,
@@ -368,7 +367,7 @@
             "valueArray": "",
             "type": "tags_input",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "轴数据",
             "formatter": "",
             "isAdvanced": false,
@@ -396,7 +395,7 @@
             ],
             "type": "string_select",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "坐标轴名称位置",
             "formatter": "",
             "isAdvanced": false,
@@ -427,7 +426,7 @@
             "valueArray": "",
             "type": "boolean",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "是否参与点击事件",
             "formatter": "",
             "idUniqueSpace": "",
@@ -470,7 +469,7 @@
         ],
         "valueArray": "",
         "type": "array",
-        "appendNumber": 1,
+   
         "titleKey": "",
         "desp": "Y坐标",
         "formatter": "",
@@ -485,7 +484,7 @@
             "valueArray": "",
             "type": "string_input",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "name",
             "formatter": "",
             "isAdvanced": false,
@@ -514,7 +513,7 @@
             ],
             "type": "string_select",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "坐标轴类型",
             "formatter": "",
             "isAdvanced": false,
@@ -552,7 +551,7 @@
             "valueArray": "",
             "type": "tags_input",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "轴数据",
             "formatter": "",
             "isAdvanced": false,
@@ -580,7 +579,7 @@
             ],
             "type": "string_select",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "坐标轴名称位置",
             "formatter": "",
             "isAdvanced": false,
@@ -611,7 +610,7 @@
             "valueArray": "",
             "type": "boolean",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "是否参与点击事件",
             "formatter": "",
             "idUniqueSpace": "",
@@ -646,7 +645,7 @@
         "valueArray": "",
         "type": "edmCollection",
         "titleKey": "",
-        "appendNumber": "",
+        
         "desp": "数据源",
         "formatter": "",
         "isAdvanced": false,
@@ -660,7 +659,7 @@
             "valueArray": "",
             "type": "edm",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "参数名",
             "formatter": "",
             "isAdvanced": false,
@@ -687,7 +686,7 @@
             ],
             "type": "string_select",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "类型",
             "formatter": "",
             "isAdvanced": false,
@@ -714,7 +713,7 @@
             "valueArray": "",
             "type": "string_input",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "颜色",
             "formatter": "",
             "isAdvanced": false,
@@ -739,7 +738,7 @@
             "valueArray": "",
             "type": "number",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "透明度",
             "formatter": "",
             "isAdvanced": false,
@@ -775,7 +774,7 @@
         "valueArray": "",
         "type": "object",
         "titleKey": "",
-        "appendNumber": "",
+        
         "desp": "提示框",
         "formatter": "",
         "isAdvanced": false,
@@ -792,7 +791,7 @@
             "valueArray": "",
             "type": "boolean",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "是否显示",
             "formatter": "",
             "isAdvanced": false,
@@ -816,7 +815,7 @@
             "valueArray": "",
             "type": "string_input",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "内容格式",
             "formatter": "",
             "isAdvanced": false,
@@ -844,7 +843,7 @@
             ],
             "type": "string_select",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "触发类型",
             "formatter": "",
             "isAdvanced": false,
@@ -881,7 +880,7 @@
         "valueArray": "",
         "type": "object",
         "titleKey": "",
-        "appendNumber": "",
+        
         "desp": "长|高",
         "formatter": "",
         "isAdvanced": false,
@@ -898,7 +897,7 @@
             "valueArray": "",
             "type": "string_input",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "宽度",
             "formatter": "",
             "isAdvanced": false,
@@ -922,7 +921,7 @@
             "valueArray": "",
             "type": "string_input",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "高度",
             "formatter": "",
             "isAdvanced": false,
@@ -955,7 +954,7 @@
         "valueArray": "",
         "type": "object",
         "titleKey": "",
-        "appendNumber": "",
+        
         "desp": "工具栏",
         "formatter": "",
         "isAdvanced": false,
@@ -972,7 +971,7 @@
             "valueArray": "",
             "type": "boolean",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "显示",
             "formatter": "",
             "isAdvanced": false,
@@ -999,7 +998,7 @@
             ],
             "type": "string_select",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "布局朝向",
             "formatter": "",
             "isAdvanced": false,
@@ -1026,7 +1025,7 @@
             "valueArray": "",
             "type": "number",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "图标大小",
             "formatter": "",
             "isAdvanced": false,
@@ -1050,7 +1049,7 @@
             "valueArray": "",
             "type": "number",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "图标间隔",
             "formatter": "",
             "isAdvanced": false,
@@ -1074,7 +1073,7 @@
             "valueArray": "",
             "type": "boolean",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "显示图标标题",
             "formatter": "",
             "isAdvanced": false,
@@ -1098,7 +1097,7 @@
             "valueArray": "",
             "type": "string_input",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "左侧距离",
             "formatter": "",
             "isAdvanced": false,
@@ -1122,7 +1121,7 @@
             "valueArray": "",
             "type": "string_input",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "上侧距离",
             "formatter": "",
             "isAdvanced": false,
@@ -1170,7 +1169,7 @@
         ],
         "type": "string_select",
         "titleKey": "",
-        "appendNumber": "",
+        
         "desp": "主题",
         "formatter": "",
         "isAdvanced": false,
@@ -1209,7 +1208,6 @@
         "defaultValue": "",
         "valueArray": "",
         "type": "array",
-        "appendNumber": 1,
         "titleKey": "",
         "desp": "区域缩放",
         "formatter": "",
@@ -1228,7 +1226,7 @@
             ],
             "type": "string_select",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "类型",
             "formatter": "",
             "isAdvanced": false,
@@ -1256,7 +1254,7 @@
             "valueArray": "",
             "type": "number",
             "titleKey": "",
-            "appendNumber": "",
+            
             "desp": "起始百分比",
             "formatter": "",
             "isAdvanced": false,
@@ -1280,7 +1278,7 @@
             "valueArray": "",
             "type": "number",
             "titleKey": "",
-            "appendNumber": "",
+       
             "desp": "结束百分比",
             "formatter": "",
             "isAdvanced": false,
