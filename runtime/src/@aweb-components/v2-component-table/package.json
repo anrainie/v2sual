@@ -83,25 +83,19 @@
           "desp": "按钮名",
           "defaultValue": "详情",
           "type": "string_input"
-       },
-      {
-        "name": "func",
-        "desp": "关联方法",
-        "defaultValue": "btnClick",
-        "type": "string_input"
-      }]
+       }]
     },
     {
       "type": "string_input",
       "name": "tableData",
-      "defaultValue": [],
+      "defaultValue": "",
       "disabled": true,
       "desp": "表格数据"
     },
     {
       "type": "string_input",
       "name": "selectedRow",
-      "defaultValue": [],
+      "defaultValue": "",
       "desp": "选中行"
     }
   ]

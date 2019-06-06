@@ -2,14 +2,13 @@
 
     <el-table
     :class="model.layoutClass"
-    ref="awebTable"
-    :data="model.tableData || fakeData"
+    :data="(typeof model.tableData !=='string' && model.tableData ) || fakeData"
+    ref="_op_table_table"
     tooltip-effect="dark"
     style="width: 100%"
     border
-    highlight-current-row
-    @current-change="handleCurrentChange" 
-    @selection-change="handleSelectionChange">
+    highlight-current-row  
+  >
     <el-table-column
       v-if="model.selection==='multi'"
       type="selection"
@@ -30,7 +29,7 @@
       :label="model.toolTitle"
       :width="model.toolWidth">
       <template slot-scope="scope">
-        <el-button  v-for="(item,idx) in model.toolBtns" @click="`${item.func}(scope.row)`" :key="idx" type="text" size="small">{{item.btnName}}</el-button>
+        <el-button  v-for="(item,idx) in model.toolBtns" :ref="`_op_table_btn_${idx}`"  :key="idx" type="text" size="small">{{item.btnName}}</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -61,14 +60,7 @@ export default {
     }
   },
   methods:{
-       handleSelectionChange(val) {
-    
-        this.model.selectedRow = val;
-      },
-      handleCurrentChange(val){
 
-          this.model.selectedRow = val;
-      }
   },
   mounted(){
 

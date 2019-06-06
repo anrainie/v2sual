@@ -330,13 +330,14 @@ export default {
       this.sysUserName = user.name || "admin";
       this.sysUserAvatar = user.avatar || "http://localhost:7007/img/user.png";
     }
+    debugger;
      this.$store.commit("add_tabs", {
         route: this.$route.path,
         name: this.$route.meta.title,
         keepAlive:this.$route.meta.keepAlive       
       });
     
-  this.$store.commit("set_active_index", this.$route.path);
+    this.$store.commit("set_active_index", this.$route.path);
 
   },
   computed: {
