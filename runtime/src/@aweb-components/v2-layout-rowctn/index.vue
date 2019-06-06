@@ -1,6 +1,6 @@
 <template>
   <!-- 布局容器 -->
-  <div class="V2Container" ref="wrap" :style="wrapStyle">
+  <div class="V2Container" ref="wrap">
     <!-- model来自widget -->
     <template v-for="(lyt,index) of layout_c">
       <el-col
@@ -8,7 +8,7 @@
         :span="parseInt(layout(index))"
         :class="blockClass(index,model)"
         :key="index"
-        style="height:100%;"
+         style="height:100%;"
         v-if="!model.direction || model.direction=='col'"
       >
      
@@ -17,9 +17,10 @@
       </el-col>
       <el-row
         class="V2ContainerBlock"
-        :style="{'height':parseInt(layout(index)),width:'100%',}"
+        :style="{'height':parseInt(layout(index)),width:'100%'}"
         :class="blockClass(index,model)"
         :key="index"
+
         v-else
       >
       
@@ -88,9 +89,6 @@ export default {
         }
         return this.wid + "-" + index;
       };
-    },
-    wrapStyle() {
-      return { /*...this.model.style.divCtn, ...this.model.customStyle*/ };
     }
   }
 };

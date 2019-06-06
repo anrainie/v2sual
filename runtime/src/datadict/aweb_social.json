@@ -20,8 +20,8 @@
       "organId": {
         "CODINGRULE": "UTF-8",
         "DICTTYPE": "2",
-        "PUBCODECNAME": "机构ID",
-        "description": "机构ID",
+        "PUBCODECNAME": "机构号",
+        "description": "机构号",
         "COLSCALE": "0",
         "name": "organId",
         "Parameter": {

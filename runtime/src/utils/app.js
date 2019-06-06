@@ -23,11 +23,13 @@ export default {
     },
     methods: {
         open(option){
+
                  let { status,page,path,title, type,params,confirmCallback,cancelCallback,other } = option;
                  let routerTemp = global.antRouter;
                  let globalPageMap = global.pageMap;
                  let  routerUrl;
                  let openedTabs;
+                 let self = this.$store.state.openedTabs ? this:this.$store.state.root.$parent;
                  if (!status) return;
             
             let haseAdded = !routerTemp.filter(item => item.children && item.children.length && item.children[0].path === path.replace('/', '')).length;
@@ -35,15 +37,15 @@ export default {
                  switch (type) {
                      case 'SUB':
                       
-                         this.$store.commit("set_D_visible", true);
-                         this.$store.commit("setModalCallback", {
+                         self.$store.commit("set_D_visible", true);
+                         self.$store.commit("setModalCallback", {
                              cancel: cancelCallback,
                              confirm: confirmCallback
                          })
 
-                         this.$store.commit("set_subPageHref", page);
-                         this.$store.commit("set_subPageParams", params);
-                         this.$store.commit("set_subPageTitle", title);
+                         self.$store.commit("set_subPageHref", page);
+                         self.$store.commit("set_subPageParams", params);
+                         self.$store.commit("set_subPageTitle", title);
                  
                         
                          break;
@@ -102,14 +104,14 @@ export default {
                          break;
                      default:
                
-                         openedTabs = this.$store.state.openedTabs;
+                         openedTabs = self.$store.state.openedTabs;
 
                          if (openedTabs.filter(item => item.route === path).length) {
                              router.push({
                                  path: path,
                                  query: params
                              });
-                             this.$store.commit("set_active_index", path);
+                             self.$store.commit("set_active_index", path);
                          } else {
                            
                              if (!page && path!=='') {
@@ -173,26 +175,26 @@ export default {
             openedTabs;
 
 
-            if (this.$store.state.dialogVisible) {
+            if (self.$store.state.dialogVisible) {
 
-                this.$store.commit("set_D_visible", false);
+                self.$store.commit("set_D_visible", false);
                 
             } else {
-                    !path ? (path = this.$router.currentRoute.path) : (path = path);
+                    !path ? (path = self.$router.currentRoute.path) : (path = path);
 
 
                     global.antRouter = global.antRouter.filter(item => (item.children && item.children.length && (item.children[0].path) !== path) || (item.children && !item.children.length) || (!item.children));
 
 
-                    this.$store.commit("delete_tabs", path);
-                    openedTabs = this.$store.state.openedTabs;             
+                    self.$store.commit("delete_tabs", path);
+                    openedTabs = self.$store.state.openedTabs;             
 
                     if (openedTabs && openedTabs.length >= 1) {
 
-                        this.$store.commit("set_active_index", openedTabs[openedTabs.length - 1].route);
+                        self.$store.commit("set_active_index", openedTabs[openedTabs.length - 1].route);
 
                         router.push({
-                            path: this.$store.state.activeIndex
+                            path: self.$store.state.activeIndex
                         });
 
                     }
