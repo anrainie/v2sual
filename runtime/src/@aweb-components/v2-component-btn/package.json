@@ -66,17 +66,12 @@
       "type": "boolean",
       "name": "disabled",
       "desp": "是否禁用状态"
-    },{
-      "name": "func",
-      "desp": "关联方法",
-      "defaultValue": "btnClick",
-      "type": "string_input"
     }],
     "css":{
       	"style": [{
       	    "desp": "按钮样式",
       	    "cssAttrs": "background-color width height color",
-      	    "name": "backgroundColor"
+      	    "name": "btnStyle"
       	  },
       	  {
       	    "desp": "图标",

@@ -8,7 +8,7 @@ export const root = {
     },
   },
   beforeCreate() {
-    this.$store = new store();
+     this.$store = new store();
     this.focusManager = new FocusManager(this);
   },
   beforeDestroy(){
@@ -22,6 +22,7 @@ export const root = {
   mounted() {
     //找到所有的作用域
     // $(':input',this.$el)
+    window.A = this;
   }
 }
 
