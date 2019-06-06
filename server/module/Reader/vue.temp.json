@@ -74,7 +74,8 @@
             "output": []
             },
           "code": ""
-        }
+        },
+        "pollList": []
     },
     "dataBasket": {
         "data": {},
