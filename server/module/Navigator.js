@@ -20,6 +20,7 @@ const listDir = (dirPath = listPath) => {
           path: filePath,
           resId: 'category',
           type: 'folder',
+          category: 50,
           children: DirInfo
         });
       } else {
@@ -31,16 +32,29 @@ const listDir = (dirPath = listPath) => {
             resId: 'vue',
             icon: "ideicon iconyemian",
             type: 'file',
+            category: 100,
             path: filePath
           });
         }
       }
     }
+    treeNode.sort(sorter);
   } catch (e) {
     console.error(e);
   }
 
   return treeNode;
+}
+
+const sorter = (a, b) => {
+  if (a.resId == b.resId) {
+    if (a.name == null)
+      return -1;
+    if (b.name == null)
+      return 1;
+    return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
+  }
+  return a.category > b.category ? 1 : -1;
 }
 
 const listFile = (pagePath) => {
