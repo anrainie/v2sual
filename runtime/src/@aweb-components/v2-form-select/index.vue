@@ -38,7 +38,9 @@ export default {
   data() {
     return {};
   },
-  mounted() {},
+  mounted() {
+    window.SELECCT=this;
+  },
   computed:{
   }
 };

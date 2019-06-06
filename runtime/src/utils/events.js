@@ -49,19 +49,19 @@ export default {
               editor.focusManager.unbind(self, eventType);
               logics == logics.constructor == String ? [logics] : logics;
               //TODO dom可能是vue对象，也可能是一个dom元素，这里暂时只考虑vue对象
-              dom.$on(eventType, event => {
-                let args = arguments || [];
+              dom.$on(eventType, function(){
+                let myargs = [...arguments];
                 let apply = () => {
                   for (let logic of logics) {
                     let method = editor[logic];
-                    method && method(self, ...args);
+                    method && method(self, ...myargs);
                   }
                 }
                 //交由focusManager进行先验
                 if (eventType == 'blur' || eventType == 'focus') {
                   editor.focusManager.valid(eventType, {
                     widget: self,
-                    target: dom.$el||dom,
+                    target: dom.$el || dom,
                     callback: apply,
                   });
                 } else {

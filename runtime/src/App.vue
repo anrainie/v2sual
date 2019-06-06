@@ -13,13 +13,14 @@ import Vue from "vue";
 import components from "@/@aweb-components/aweb.components.js";
 import { widget } from "@/utils/v2-view";
 import events from "@/utils/events";
+import inputField from "@/utils/inputField";
 import container from "@/components/container.vue";
 import empty from "@/components/empty.vue";
 
 console.log(components);
 //注册组件
 Object.keys(components).map(c => {
-  Vue.component(c, { mixins: [widget,events], ...components[c] });
+  Vue.component(c, { mixins: [widget, events, inputField], ...components[c] });
 });
 
 Vue.component("v2container", container);
@@ -31,9 +32,7 @@ export default {
 </script>
 
 <style lang="less">
-
 @import "./less/aweb.less";
-
 
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;

@@ -274,7 +274,7 @@ class Page {
         const query = req.data;
         const filepath = query.path + ".def";
         const content = await new Promise(resolve => fs.readFile(filepath, 'utf8', (error, response) => resolve(response)));
-        let json = {};
+        let json = {}; 
         if (content)
           json = JSON.parse(content);
         if (!json.logic) json.logic = {
