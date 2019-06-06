@@ -26,12 +26,13 @@ let json2script = function (json) {
         template, finalStr,
         self = this,
         transfer = this.toCode(logic),
+
         dataStr = this.createData(data);
 
     transfer = this.bindData(logic, content.dataBasket.mapping);
 
     //TODO transfer数据没有初始化
-    
+
 
     if (transfer) {
         finalStr = `<script>
@@ -48,36 +49,42 @@ let json2script = function (json) {
                 watch:{${self.methodsToCode(transfer.watch)}},
                 beforeCreate(){
                     let ctx = this;
-                    ${transfer.beforeCreate?transfer.beforeCreate.code:''}
+                    ctx.runnablelist.push(${transfer.pollList.map(item=>{
+                        return `{
+                            run:${item.code},
+                            freq:${item.freq}
+                        }`
+                    })})
+                    ${transfer.beforeCreate ? transfer.beforeCreate.code : ''}
                 },
                 created(){
                     let ctx = this;
-                    ${transfer.created?transfer.created.code:''}
+                    ${transfer.created ? transfer.created.code : ''}
                 },
                 beforeMount(){
                     let ctx = this;
-                    ${transfer.beforeMount?transfer.beforeMount.code:''}
+                    ${transfer.beforeMount ? transfer.beforeMount.code : ''}
                 },
                 mounted(){
                     let ctx = this;
-                    ${transfer.mounted?transfer.mounted.code:''}
+                    ${transfer.mounted ? transfer.mounted.code : ''}
                 },
                 beforeUpdate(){
                     let ctx = this;
-                    ${transfer.beforeUpdate?transfer.beforeUpdate.code:''}
+                    ${transfer.beforeUpdate ? transfer.beforeUpdate.code : ''}
                 },
                 updated(){
                     let ctx = this;
-                    ${transfer.beforeUpdate?transfer.beforeUpdate.code:''}
+                    ${transfer.beforeUpdate ? transfer.beforeUpdate.code : ''}
                 },
                 beforeDestroy(){ 
                     let ctx = this;
                     /**unBind**/this.$store("unbind",this)/**unBind over**/
-                        ${transfer.beforeDestroy?transfer.beforeDestroy.code:''}
+                        ${transfer.beforeDestroy ? transfer.beforeDestroy.code : ''}
                 },
                 destroyed(){
                     let ctx = this;
-                        ${transfer.destroyed?transfer.destroyed.code:''}
+                        ${transfer.destroyed ? transfer.destroyed.code : ''}
                 }
             };
         </script>`
@@ -103,14 +110,14 @@ let methodsToCode = function (obj) {
 
 // 绑定datas
 let bindData = function (logic, mapping) {
-    let arr = [],i;
-    for(i in mapping){
-        mapping[i].map(item=>{
+    let arr = [], i;
+    for (i in mapping) {
+        mapping[i].map(item => {
             arr.push(`this.$store.commit("bind",{ vueObj:this, data:this.${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
         });
     };
-    if(logic.mounted)
-        logic.mounted.code = logic.mounted.code.replace("/**data**/",`/**bind**/${arr.join("\n")}/**bind over**/`);
+    if (logic.mounted)
+        logic.mounted.code = logic.mounted.code.replace("/**data**/", `/**bind**/${arr.join("\n")}/**bind over**/`);
     return logic;
 };
 
@@ -118,16 +125,15 @@ let bindData = function (logic, mapping) {
 let createData = function (data) {
     let i, arr = [];
     for (i in data) {
-        arr.push(`${i}:${data[i]===""?'""':data[i]}`);
+        arr.push(`${i}:${data[i] === "" ? '""' : data[i]}`);
     }
     return arr;
 }
-
 // 转换代码
 let toCode = function (logic) {
     let self = this,
         i, k, obj, res, arr = [], outRes, outCode;
-        
+
     for (i in logic) {
         arr = [];
         switch (i) {
@@ -178,10 +184,9 @@ let toCode = function (logic) {
                     obj.code = outCode;
                 }
                 break;
-            // data周期
             case "mounted":
                 obj = logic[i]
-                if(obj.labelObj){
+                if (obj.labelObj) {
                     arr = obj.labelObj.view.map(item => {
                         res = item.name;
                         return `const ${res} = await ${self.transViewCode(item.value[0])}`;
@@ -190,7 +195,7 @@ let toCode = function (logic) {
                         if (item.key !== "" && item.value !== "")
                             return `${item.value} = ${item.key}`;
                     });
-                 };
+                };
                 if (arr.length) {
                     outCode = `
                     /**data**/
@@ -203,18 +208,23 @@ let toCode = function (logic) {
                 }
                 obj.code = outCode;
                 break;
+            case "pollList":
+                obj = logic[i];
+                obj = self.transToPoll(obj);
+                break;
             // 周期函数
             default:
                 obj = logic[i]
-                if(obj.labelObj){
-                arr = obj.labelObj.view.map(item => {
-                    res = item.name;
-                    return `const ${res} = await ${self.transViewCode(item.value[0])}`;
-                });
-                outRes = obj.labelObj.output.map(item => {
-                    if (item.key !== "" && item.value !== "")
-                        return `${item.value} = ${item.key}`;
-                });}
+                if (obj.labelObj) {
+                    arr = obj.labelObj.view.map(item => {
+                        res = item.name;
+                        return `const ${res} = await ${self.transViewCode(item.value[0])}`;
+                    });
+                    outRes = obj.labelObj.output.map(item => {
+                        if (item.key !== "" && item.value !== "")
+                            return `${item.value} = ${item.key}`;
+                    });
+                }
                 if (arr.length) {
                     outCode = `
                     /**overview ${i}**/
@@ -230,7 +240,28 @@ let toCode = function (logic) {
     }
     return logic;
 }
+// 转换轮询
+let transToPoll = function (pollList) {
+    let self = this,arr, outRes;
 
+    return pollList.map(pollItem => {
+        arr = pollItem.labelObj.view.map(item => {
+            res = item.name;
+            return `const ${res} = await ${self.transViewCode(item.value[0])}`;
+        });
+        outRes = pollItem.labelObj.output.map(item => {
+            if (item.key !== "" && item.value !== "")
+                return `${item.value} = ${item.key}`;
+        });
+        if (arr.length) {
+            outCode = `async()=>{${arr.join("\n")}${outRes.join("\n")}}`;
+        } else {
+            outCode = "";
+        }
+        pollItem.code = outCode;
+        return pollItem;
+    })
+}
 // 转换预览代码-1
 let transViewCode = function (api) {
     let self = this;
@@ -439,3 +470,4 @@ exports.transItem = transItem;
 exports.methodsToCode = methodsToCode;
 exports.createData = createData;
 exports.bindData = bindData;
+exports.transToPoll = transToPoll;
