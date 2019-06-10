@@ -85,5 +85,17 @@
     }
 </script>
 ```
+
+
+## 组件自动自定义编辑器
+需要在组件对应的`package.json`中加入`editor`属性（与 `main` 属性同级 ）：
+```
+"editor":{
+    "name":"编辑器名称",//与组件name一直，
+    "path":"editor.vue",//此处填相对位置或文件名
+}
+```
+
+
 log:
 4月30号，修改element-ui 的lib/util/popper.js 和vue-popper.js ,在editor.vue 文件添加window.editRoot 定义

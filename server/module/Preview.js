@@ -64,24 +64,35 @@ class Preview {
 
           //组件列表
           let vueMap = {};
-          const vueFiles = files
+          files
+            //读取每一个package.json
             .filter(f => f.lastIndexOf('package.json') !== -1)
-            .map(f => f.replace(path.sep + 'package.json', '').replace(componentPath, '.'))
-            .sort()
-            .map(f => {
-              return {
-                name: camelcase(f.split(path.sep)[1]),
-                path: f
-              }
-            }).filter(f => {
-              if (vueMap[f.name]) {
-                return false;
-              } else {
-                vueMap[f.name] = true;
+            //读取组件和编辑器
+            .forEach(f => {
+              try {
+                const contentStr = fs.readFileSync(f).toString();
+                const content = JSON.parse(contentStr);
 
-                return true;
+                const paths = f.split(path.sep);
+                const name = camelcase(paths[paths.length - 2]);
+                const filepath = path.relative(path.dirname(config.runtime.componentFile), path.dirname(f));
+
+
+                vueMap[name] = path.join(filepath, content.main);
+
+
+                if (content.editor) {
+                  vueMap[content.editor.name] = path.join(filepath, content.editor.path);
+                }
+              } catch (e) {
               }
-            })
+            });
+            const vueFiles = Object.keys(vueMap).map(n=>{
+              return {
+                name:n,
+                path:vueMap[n]
+              }
+            });
 
           //pipe
           const pipes = await readDir(config.runtime.pipe);
@@ -108,7 +119,7 @@ class Preview {
           let app = {
             ${pipeList.map(f => f.name).join(',\n\t')}
           };
-          
+
           window.pipe = app;
 
           export default {
@@ -120,7 +131,12 @@ class Preview {
           const absProjectPath = path.resolve(projectPath);
 
           //删除package-lock.josn
-          fs.unlinkSync(path.resolve(absProjectPath,'package-lock.json'));
+          try{
+            fs.unlinkSync(path.resolve(absProjectPath,'package-lock.json'));
+          }catch(e){
+            console.log(e.message);
+          }
+          
 
           //重新安装一次依赖
           const initDev = await execCmd(config.module.preview.script.init, absProjectPath);
@@ -140,7 +156,7 @@ class Preview {
 
         Result.success(ctx, {
           content: {
-            result: true
+            result: true,
           }
         });
       } catch (e) {
