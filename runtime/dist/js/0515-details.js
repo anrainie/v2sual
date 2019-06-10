@@ -1,1 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["0515-details"],{"1dd9":function(e,n,t){"use strict";t.r(n);var l=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div")},i=[],s={},u=s,a=t("2877"),o=Object(a["a"])(u,l,i,!1,null,null,null);o.options.__file="details.vue";n["default"]=o.exports}}]);

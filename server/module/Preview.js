@@ -14,9 +14,31 @@ const Router = require('koa-router');
 
 const config = require('../config/config.base');
 
+
+const execCmd = function (cmd, cwd) {
+  return new Promise((res, rej) => {
+    const process = exec(cmd, {
+      encoding: "utf8",
+      cwd
+    }, async (error, stdout, stderr) => {
+      error ? rej(error) : res({
+        error,
+        stdout,
+        stderr
+      })
+    });
+    process.stderr.on('data', data => console.log(data));
+    process.stdout.on('data', data => console.log(data));
+    process.stdout.on('close', data => {
+      console.log(data);
+      res(data);
+    });
+  });
+};
+
 class Preview {
 
-  constructor(projectPath=config.runtime.base) {
+  constructor(projectPath = config.runtime.base) {
     this.projectPath = projectPath;
   }
   /**
@@ -72,7 +94,7 @@ class Preview {
               const name = (paths[paths.length - 1]).split('.');
               return {
                 name: name[name.length - 1],
-                path: path.relative(path.dirname(config.runtime.componentFile),f)
+                path: path.relative(path.dirname(config.runtime.componentFile), f)
               }
             })
 
@@ -95,54 +117,19 @@ class Preview {
 
           const list = await new Promise((res, rej) => fs.writeFile(config.runtime.componentFile, content, err => err ? rej(err) : res('success')));
 
-          // //npm run build  生成样式
-          const build = await new Promise((res, rej) => {
-            const process = exec(config.module.preview.script.style, {
-              encoding: "utf8",
-              cwd: path.resolve(projectPath)
-            }, (error, stdout, stderr) => {
-              error ? rej(error) : res({
-                error,
-                stdout,
-                stderr
-              })
-            });
-            process.stderr.on('data', data => {
-              console.log(data);
-            });
-            process.stdout.on('data', data => {
-              console.log(data);
-            });
-            process.stdout.on('close', data => {
-              console.log(data);
-              res({
-                data
-              });
-            });
-          });
+          const absProjectPath = path.resolve(projectPath);
 
-          const jsdev = await new Promise((res, rej) => {
-            const process = exec(config.module.preview.script.script, {
-              encoding: "utf8",
-              cwd: path.resolve(projectPath)
-            }, async (error, stdout, stderr) => {
-              error ? rej(error) : res({
-                error,
-                stdout,
-                stderr
-              })
-            });
-            process.stderr.on('data', data => {
-              console.log(data);
-            });
-            process.stdout.on('data', data => {
-              console.log(data);
-            });
-            process.stdout.on('close', data => {
-              console.log(data);
-              res(data);
-            });
-          });
+          //删除package-lock.josn
+          fs.unlinkSync(path.resolve(absProjectPath,'package-lock.json'));
+
+          //重新安装一次依赖
+          const initDev = await execCmd(config.module.preview.script.init, absProjectPath);
+
+          //npm run style  生成样式
+          const styleDev = await execCmd(config.module.preview.script.style, absProjectPath);
+
+          // npm run script 生成脚本
+          const jsdev = await execCmd(config.module.preview.script.script, absProjectPath);
         } catch (e) {
           Result.error(ctx, e);
         } finally {
@@ -190,13 +177,13 @@ class Preview {
     const projectPath = this.projectPath;
     return function (req) {
       try {
-        let _path=path.resolve(path.join(projectPath, config.module.preview.result));
+        let _path = path.resolve(path.join(projectPath, config.module.preview.result));
         const js = Buffer.from(fs.readFileSync(_path)).toString();
 
         platform.sendSuccessResult(req, js);
       } catch (e) {
         console.error(e)
-        platform.sendErrorResult(req, e.message||e);
+        platform.sendErrorResult(req, e.message || e);
       }
     }
   }
