@@ -38,7 +38,7 @@ export const root = {
       },100)
     },
     __resume(){
-
+      clearInterval(this.__timer);
     }
   },
   beforeCreate() {
