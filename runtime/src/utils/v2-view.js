@@ -7,6 +7,40 @@ export const root = {
       return this.$store.state.structure ? this.$store.state.structure.id : null;
     },
   },
+  data(){
+    return {
+      __runnableList:[],
+      __timer:-1,
+      __count:1,
+    }
+  },
+  methods:{
+    __check(runnable){
+      let freq = runnable.freq;
+      if(this.__count % freq===0){
+        return  true;
+      }else{
+        return false;
+      }
+
+    },
+    __pause(){
+      let self= this;
+
+      if(self.__runnableList&&self.__runnableList.length)
+      self.__timer = setInterval(()=>{
+        for(let runnable of self.__runnableList){
+            if(self.__check(runnable)){
+              runnable.run();
+            }
+            self.__count++;
+        }
+      },100)
+    },
+    __resume(){
+
+    }
+  },
   beforeCreate() {
      this.$store = new store();
     this.focusManager = new FocusManager(this);
