@@ -90,7 +90,7 @@ class Preview {
             const vueFiles = Object.keys(vueMap).map(n=>{
               return {
                 name:n,
-                path:vueMap[n]
+                path:`./${vueMap[n]}`
               }
             });
 
