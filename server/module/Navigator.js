@@ -125,7 +125,7 @@ const Navigator = {
       }, {
         name: 'flows',
         label: '页面流',
-        path: `${dirPath}\\_entry`,
+        path: path.join(dirPath,_entry),
         resId: 'pathFlow',
         type: 'folder',
         children: flowPath
@@ -144,7 +144,7 @@ const Navigator = {
           case "\\":
           case null:
           case "/":
-          //case listPath:
+            //case listPath:
             //如果是根目录，则返回整理过的文件夹
             dirPath = listPath;
             this.getRootItems(platform, dirPath, req);

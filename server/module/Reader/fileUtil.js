@@ -28,7 +28,7 @@ const fileUtil = {
     return null;
   },
   getFileExtension(path) {
-    return path.substring(path.lastIndexOf('.'));
+    return nodejsPath.parse(path).ext;
   },
   getFileContent(path) {
     let reader = this.getFileReader(path);
