@@ -266,7 +266,7 @@ export default {
       })
         .then(() => {
           sessionStorage.removeItem("user");
-          _this.$router.push("/login");
+          _this.$router.push("/ ");
            saveRouter('router','');
            saveRouter('menu','');
            global.antRouter = '';
@@ -398,7 +398,8 @@ export default {
   watch: {
     $route(to, from) {
       let flag = false;
-      
+
+
       if(to.meta.type ==='BLANK'){
         if(Object.keys(to.query).length){
             this.$store.commit("set_url_map",({path:to.path,query:to.query}))
@@ -434,7 +435,8 @@ export default {
           this.$store.commit("delete_tabs", from.path);
        
       }
-     
+
+
     }
   },
   components:{

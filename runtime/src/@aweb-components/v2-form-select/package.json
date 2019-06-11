@@ -88,13 +88,13 @@
           {
             "name": "value",
             "desp": "值",
-            "defaultValue": "1",
+            "defaultValue": "",
             "type": "string_input"
           },
           {
             "name": "label",
             "desp": "文本",
-            "defaultValue": "选项1",
+            "defaultValue": "",
             "type": "string_input"
           }
         ]
