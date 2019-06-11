@@ -1,6 +1,6 @@
 <template>
   <!-- 布局容器 -->
-  <div class="V2Container" ref="wrap" >
+  <div class="V2Container" ref="wrap">
     <!-- model来自widget -->
     <template v-for="(lyt,index) of layout_c">
       <el-row
@@ -10,9 +10,7 @@
         v-if="!model.direction || model.direction=='row'"
         :class="blockClass(index,model)"
       >
-   
-          <component :is="component(index)" :wid="wigetId(index)" :index="index" :pid="wid"></component>
-     
+        <component :is="component(index)" :wid="wigetId(index)" :index="index" :pid="wid"></component>
       </el-row>
       <el-col
         class="V2ContainerBlock"
@@ -22,9 +20,7 @@
         v-else
         style="height:100%;"
       >
-       
-          <component :is="component(index)" :wid="wigetId(index)" :index="index" :pid="wid"></component>
-       
+        <component :is="component(index)" :wid="wigetId(index)" :index="index" :pid="wid"></component>
       </el-col>
     </template>
   </div>

@@ -1,56 +1,618 @@
-<template><v2container :wid="`root`"><el-row class="V2ContainerBlock" style="height:100%;width:100%;" key="0"><v2container id="1559214383876" :wid="`1559214383876`" :index="0" :pid="`root`"><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0"><v2container id="1559792742688" :wid="`1559792742688`" :index="0" :pid="`1559214383876`"><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0"><v2container id="1559792745397" :wid="`1559792745397`" :index="0" :pid="`1559792742688`"><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0"><v2container id="1559792750177" :wid="`1559792750177`" :index="0" :pid="`1559792745397`"><el-col class="V2ContainerBlock borderBox dashBorder" :span="12" key="0" style="height:100%;"><v2-form-select class="V2Widget" id="1559792753523" :wid="`1559792753523`" :index="0" :pid="`1559792750177`"></v2-form-select></el-col><el-col class="V2ContainerBlock borderBox dashBorder" :span="12" key="1" style="height:100%;"><v2-form-select class="V2Widget" id="1559793025317" :wid="`1559793025317`" :index="1" :pid="`1559792750177`"></v2-form-select></el-col></v2container></el-row><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1"><v2empty class="V2Empty" id="1559792745397-1" :wid="`1559792745397-1`" :index="1" :pid="`1559792745397`"></v2empty></el-row></v2container></el-row><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1"><v2container id="1559792746495" :wid="`1559792746495`" :index="1" :pid="`1559792742688`"><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0"><v2empty class="V2Empty" id="1559792746495-0" :wid="`1559792746495-0`" :index="0" :pid="`1559792746495`"></v2empty></el-row><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1"><v2empty class="V2Empty" id="1559792746495-1" :wid="`1559792746495-1`" :index="1" :pid="`1559792746495`"></v2empty></el-row></v2container></el-row></v2container></el-row><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1"><v2empty class="V2Empty" id="1559214383876-1" :wid="`1559214383876-1`" :index="1" :pid="`1559214383876`"></v2empty></el-row></v2container></el-row></v2container></template>
+	<template>
+  <el-row class="aweb-container">
+    <el-col :span="24" class="aweb-header">
+      <el-col
+        :span="10"
+        class="aweb-logo"
+        :class="collapsed?'logo-collapse-width':'logo-width'"
+      >{{collapsed?'':sysName}}</el-col>
+      <el-col :span="10">
+        <div class="aweb-tools" @click.prevent="collapse">
+          <i class="el-icon-menu"></i>
+        </div>
+      
+      </el-col>
+      <el-col :span="4" class="aweb-userinfo">
+
+        <el-tooltip  effect="dark" content="下载案例" placement="left">
+            <el-button icon="el-icon-sold-out" circle class="aweb-download-btn" @click="openMarket"></el-button>
+        </el-tooltip>
+
+        <el-dropdown trigger="hover">
+          <span class="el-dropdown-link aweb-userinfo-inner">
+            <img :src="sysUserAvatar">
+            {{sysUserName}}
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>我的消息</el-dropdown-item>
+            <el-dropdown-item>设置</el-dropdown-item>
+            <el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </el-col>
+    </el-col>
+
+    <el-col :span="24" class="aweb-body">
+ <!-- 侧边导航 -->
+      <aside :class="collapsed?'menu-collapsed':'menu-expanded'">
+
+        <el-menu        
+          default-active="2"
+          class="el-menu-vertical-demo"
+          background-color="#152028"
+          text-color="#fff"
+          active-text-color="#04bebd"
+          hoverbgColor ="#04bebd"
+          :collapse="collapsed"
+          @select="handleSelectMenu"
+        >
+
+          <template v-for="item in routerData" v-if="!item.hidden">
+            
+              <el-submenu  v-if="item.children && item.children.length && !item.isLeaf || (item.isLeaf && item.isRedirect)" :index="item.path+'#'+item.componentUrl+'#'+(item.meta && item.meta.title && item.meta.title)" :key="item.path">
+                <template slot="title">
+                  <i v-if="item.meta && item.meta.icon" :class="item.meta.icon"></i>
+                  <span v-if="item.meta && item.meta.title">{{item.meta.title}}</span>
+                </template>
+
+                <template v-for="child in item.children" v-if="!child.hidden">
+
+                      <el-submenu  v-if="child.children" :index="item.path+'/'+child.path+'#'+child.componentUrl+'#'+(child.meta && child.meta.title && child.meta.title)" :key="item.path+'/'+child.path">
+                              
+                                    <template slot="title">
+                                      <i v-if="child.meta && child.meta.icon" :class="child.meta.icon"></i>
+                                      <span v-if="child.meta && child.meta.title">{{child.meta.title}}</span>
+                                    </template>
+
+                                    <template v-for="child3 in child.children" v-if="!child3.hidden">
+
+                                            <el-submenu  v-if="child3.children" :index="item.path+'/'+child.path+'/'+child3.path+'#'+child3.componentUrl+'#'+(child3.meta && child3.meta.title && child3.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path">                              
+                                                    <template slot="title">
+                                                      <i v-if="child3.meta && child3.meta.icon" :class="child3.meta.icon"></i>
+                                                      <span v-if="child3.meta && child3.meta.title">{{child3.meta.title}}</span>
+                                                    </template>
+
+                                                    <template v-for="child4 in child3.children" v-if="!child4.hidden">                                         
+                                                          <el-menu-item :index="item.path+'/'+child.path+'/'+child3.path+'/'+child4.path+'#'+child4.componentUrl+'#'+(child4.meta && child4.meta.title && child4.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path+'/'+child4.path">
+                                                            <i v-if="child4.meta && child4.meta.icon" :class="child4.meta.icon"></i>
+                                                            <span v-if="child4.meta&&child4.meta.title">{{child4.meta.title}}</span>
+                                                          </el-menu-item>
+                                                    </template>                             
+                                              </el-submenu>
+
+
+                                          <el-menu-item v-else :index="item.path+'/'+child.path+'/'+child3.path+'#'+child3.componentUrl+'#'+(child3.meta && child3.meta.title && child3.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path">
+                                            <i v-if="child3.meta && child3.meta.icon" :class="child3.meta.icon"></i>
+                                            <span v-if="child3.meta&&child3.meta.title">{{child3.meta.title}}</span>
+                                          </el-menu-item>
+
+
+                                    </template>
+                              
+                      </el-submenu>
+
+
+                    <el-menu-item v-else  :index="item.path+'/'+child.path+'#'+child.componentUrl+'#'+(child.meta && child.meta.title && child.meta.title)" :key="item.path+'/'+child.path">
+                      <i v-if="child.meta && child.meta.icon" :class="child.meta.icon"></i>
+                      <span v-if="child.meta && child.meta.title" :data-role="item.path+'/'+child.path">{{child.meta.title}}</span>
+                    </el-menu-item>
+            
+                </template>
+              </el-submenu>
+
+             
+                <el-menu-item  v-else-if="item.isLeaf && !item.children[0].children"  :index="item.children[0].path+'#'+item.children[0].componentUrl+'#'+(item.children[0].meta && item.children[0].meta.title && item.children[0].meta.title)" :key="item.path+'/'+item.children[0].path" >  
+                  <i v-if="item.children[0].meta && item.children[0].meta.icon" :class="item.children[0].meta.icon"></i>          
+                    <span v-if="item.children[0].meta && item.children[0].meta.title">{{item.children[0].meta.title}}</span>
+                  </el-menu-item>
+
+                 <el-menu-item  v-else  :index="item.path+'#'+item.componentUrl+'#'+(item.meta && item.meta.title && item.meta.title)" :key="item.path" >  
+                  <i v-if="item.meta && item.meta.icon" :class="item.meta.icon"></i>          
+                    <span v-if="item.meta && item.meta.title">{{item.meta.title}}</span>
+                  </el-menu-item>
+
+
+            </template>        
+        </el-menu>
+      </aside>
+ <!-- 侧边导航-->
+      <section class="aweb-ctt">
+        <div class="grid-content bg-purple-light">
+          <div>
+  
+            <el-tabs
+              v-model="activeIndex"
+              type="border-card"
+              closable
+              v-if="openedTabs.length"
+              @tab-click="tabClick"
+              @tab-remove="tabRemove"
+              @contextmenu.native.stop.prevent="tabRightClick"
+            >
+   
+              <el-tab-pane
+                :key="item.name"
+                v-for="item in openedTabs"
+                :label="item.name"
+                :name="item.route"
+              >
+              <el-col :span="24" class="aweb-ctt-wrap" >
+        
+                <transition name="fade" mode="out-in"> 
+                 
+                      <!-- <router-view  ></router-view> -->
+                    
+          
+                     <keep-alive v-if="isRouterAlive">                           
+                          <router-view  v-if="(activeIndex===item.route)"></router-view>
+                      </keep-alive>
+                                            
+                      <router-view  v-else-if="activeIndex===item.route"></router-view>
+                      
+                 
+                </transition>
+              </el-col>
+          
+			        </el-tab-pane>
+            </el-tabs>
+
+          </div>
+              <!-- 子页面容器 -->
+              <el-dialog   :title="subPageTitle" :visible.sync='dialogVisible' @close="closeDialog">
+                <transition name="fade" mode="out-in" v-if="dialogVisible">
+                  <!-- <router-view></router-view> -->
+                  <async-component :page="subPageHref" :params="subPageParams"></async-component>
+                </transition>           
+                <div slot='footer' class='dialog-footer'>
+                <el-button @click="cancel">取消</el-button>
+                <el-button type='primary' @click="confirm">确定</el-button >
+                </div> 
+            </el-dialog>
+             <!-- 子页面容器 -->
+        </div>
+      </section>
+    </el-col>
+      <right-menu :menuData="rightMenuData"  :eventHandler=rightClickHandler  v-on:handleSelect= "handleRightSelect"></right-menu> 
+  </el-row>
+</template>
 <script>
-            import {root} from '@/utils/v2-view';
-            export default{
-                data(){
-                    return{
-                        "CONTENT":{structure:{"id":"root","component":"v2Container","direction":"row","layout":[100],"style":{"width":"100%","height":"100%"},"data":{},"children":[{"style":{"divCtn":{"position":"","top":"","right":"","bottom":"","left":"","overflow":"","margin":"","padding":"","height":"","width":"","max-height":"","max-width":"","min-height":"","min-width":""}},"direction":"row","layout":"[50,50]","def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{},"href":"v2-layout-colctn","component":"v2-layout-colctn","children":[{"style":{"divCtn":{"position":"","top":"","right":"","bottom":"","left":"","overflow":"","margin":"","padding":"","height":"","width":"","max-height":"","max-width":"","min-height":"","min-width":""}},"direction":"row","layout":"[50,50]","rules":"","def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{},"href":"v2-layout-colctn","component":"v2-layout-colctn","widget":{"belongTo":"aui","icon":"iconhengxiangbuju","type":"layout","href":"v2-layout-colctn","author":"zhanghaixian@agree.com.cn","version":510000,"accept":"","name":"横向布局","option":[{"name":"direction","desp":"排列方式","defaultValue":"row","type":"string_select","valueArray":["row","col"],"despArray":["横排","竖排"]},{"name":"layout","desp":"栅格","hidden":false,"defaultValue":[50,50],"type":"string_input"},{"name":"rules","desp":"表单验证","defaultValue":"","type":"single_array","attrInEachElement":[{"name":"rule","desp":"规则","defaultValue":"","type":"string_input"}]}],"css":{"style":[{"desp":"容器","cssAttrs":"top right bottom left width height min-width max-width min-height max-height position overflow margin padding","name":"divCtn"}]},"editor":{"name":"v2LayoutEditor","model":{"def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{}}},"main":"index.vue"},"children":[{"style":{"divCtn":{"position":"","top":"","right":"","bottom":"","left":"","overflow":"","margin":"","padding":"","height":"","width":"","max-height":"","max-width":"","min-height":"","min-width":""}},"direction":"row","layout":"[50,50]","rules":"","def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{},"href":"v2-layout-colctn","component":"v2-layout-colctn","widget":{"belongTo":"aui","icon":"iconhengxiangbuju","type":"layout","href":"v2-layout-colctn","author":"zhanghaixian@agree.com.cn","version":510000,"accept":"","name":"横向布局","option":[{"name":"direction","desp":"排列方式","defaultValue":"row","type":"string_select","valueArray":["row","col"],"despArray":["横排","竖排"]},{"name":"layout","desp":"栅格","hidden":false,"defaultValue":[50,50],"type":"string_input"},{"name":"rules","desp":"表单验证","defaultValue":"","type":"single_array","attrInEachElement":[{"name":"rule","desp":"规则","defaultValue":"","type":"string_input"}]}],"css":{"style":[{"desp":"容器","cssAttrs":"top right bottom left width height min-width max-width min-height max-height position overflow margin padding","name":"divCtn"}]},"editor":{"name":"v2LayoutEditor","model":{"def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{}}},"main":"index.vue"},"children":[{"style":{"divCtn":{"position":"","top":"","right":"","bottom":"","left":"","overflow":"","margin":"","padding":"","height":"","width":"","max-height":"","max-width":"","min-height":"","min-width":""}},"direction":"col","layout":"[50,50]","rules":"","def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{},"href":"v2-layout-rowctn","component":"v2-layout-rowctn","widget":{"belongTo":"aui","icon":"iconshuxiangbuju","type":"layout","href":"v2-layout-rowctn","author":"zhanghaixian@agree.com.cn","version":510000,"accept":"","name":"竖向布局","option":[{"name":"direction","desp":"排列方式","defaultValue":"col","type":"string_select","valueArray":["row","col"],"despArray":["横排","竖排"]},{"name":"layout","desp":"栅格","hidden":false,"defaultValue":[50,50],"type":"string_input"},{"name":"rules","desp":"表单验证","defaultValue":"","type":"single_array","attrInEachElement":[{"name":"rule","desp":"规则","defaultValue":"","type":"string_input"}]}],"css":{"style":[{"desp":"子容器","cssAttrs":"top right bottom left width height min-width max-width min-height max-height position overflow margin padding","name":"divCtn"}]},"editor":{"name":"v2LayoutEditor","model":{"def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{}}},"main":"index.vue"},"children":[{"style":{"label":{"font-size":"","font-weight":"","color":"","background-color":"#4175AB"},"borderStyle":{"border-color":""},"fontStyle":{"color":""}},"label":"机构号","labelWitdh":"80px","titleMode":"col","placeholder":"请选择","value":"orgId","dataType":"def","optionConfig":"orgList","options":[{"active":"true","value":"1","label":"选项1"}],"clearable":false,"filterable":true,"disabled":false,"isRequired":false,"rules":[{"active":true},{"active":true,"rule":""},{"active":true,"rule":""}],"href":"v2-form-select","component":"v2-form-select","widget":{"belongTo":"aui","icon":"iconxuanzeqi","type":"form","href":"v2-form-select","author":"fengjiarong@agree.com.cn","version":510000,"accept":"foundationRowCtn divCtn","name":"下拉框","option":[{"name":"label","desp":"标题","defaultValue":"标题","type":"string_input"},{"name":"labelWitdh","desp":"标题宽度","defaultValue":"80px","type":"string_input"},{"name":"titleMode","desp":"标题排列方式","defaultValue":"col","type":"string_select","valueArray":["row","col"],"despArray":["同列排列","同行排列"]},{"name":"placeholder","desp":"placeholder","defaultValue":"请选择","type":"string_input"},{"name":"value","desp":"选择值","defaultValue":"","type":"string_input"},{"name":"dataType","desp":"初始数据定义","defaultValue":"def","type":"string_select","valueArray":["def","cus"],"despArray":["默认","字段映射"]},{"require":{"dataType":"def"},"name":"optionConfig","desp":"下拉项","defaultValue":"","type":"string_input"},{"require":{"dataType":"cus"},"name":"options","desp":"配置项","defaultValue":"","type":"array","attrInEachElement":[{"name":"value","desp":"值","defaultValue":"1","type":"string_input"},{"name":"label","desp":"文本","defaultValue":"选项1","type":"string_input"}]},{"name":"clearable","desp":"是否可清空","defaultValue":false,"type":"boolean"},{"name":"filterable","desp":"是否可搜索","defaultValue":true,"type":"boolean"},{"name":"disabled","desp":"是否禁填","defaultValue":false,"type":"boolean"},{"name":"isRequired","desp":"是否必填","defaultValue":false,"type":"boolean"},{"name":"rules","desp":"验证规则","defaultValue":"","type":"single_array","attrInEachElement":[{"name":"rule","desp":"规则","defaultValue":"","type":"string_input"}]}],"css":{"style":[{"desp":"标题","cssAttrs":"font-size color font-weight","name":"label"},{"desp":"检验边框","cssAttrs":"border-color","name":"borderStyle"},{"desp":"检验文字","cssAttrs":"color","name":"fontStyle"}]},"main":"index.vue"},"children":[],"events":{"_op_formSelect_select":{"change":["event0_1559792753523"]}},"id":1559792753523,"pid":1559792750177},{"style":{"label":{"font-size":"","font-weight":"","color":""},"borderStyle":{"border-color":""},"fontStyle":{"color":""}},"label":"标题","labelWitdh":"80px","titleMode":"col","placeholder":"请选择","value":"userId","dataType":"def","optionConfig":"userList","options":[{"active":"true","value":"1","label":"选项1"}],"clearable":false,"filterable":true,"disabled":false,"isRequired":false,"rules":"","href":"v2-form-select","component":"v2-form-select","widget":{"belongTo":"aui","icon":"iconxuanzeqi","type":"form","href":"v2-form-select","author":"fengjiarong@agree.com.cn","version":510000,"accept":"foundationRowCtn divCtn","name":"下拉框","option":[{"name":"label","desp":"标题","defaultValue":"标题","type":"string_input"},{"name":"labelWitdh","desp":"标题宽度","defaultValue":"80px","type":"string_input"},{"name":"titleMode","desp":"标题排列方式","defaultValue":"col","type":"string_select","valueArray":["row","col"],"despArray":["同列排列","同行排列"]},{"name":"placeholder","desp":"placeholder","defaultValue":"请选择","type":"string_input"},{"name":"value","desp":"选择值","defaultValue":"","type":"string_input"},{"name":"dataType","desp":"初始数据定义","defaultValue":"def","type":"string_select","valueArray":["def","cus"],"despArray":["默认","字段映射"]},{"require":{"dataType":"def"},"name":"optionConfig","desp":"下拉项","defaultValue":"","type":"string_input"},{"require":{"dataType":"cus"},"name":"options","desp":"配置项","defaultValue":"","type":"array","attrInEachElement":[{"name":"value","desp":"值","defaultValue":"1","type":"string_input"},{"name":"label","desp":"文本","defaultValue":"选项1","type":"string_input"}]},{"name":"clearable","desp":"是否可清空","defaultValue":false,"type":"boolean"},{"name":"filterable","desp":"是否可搜索","defaultValue":true,"type":"boolean"},{"name":"disabled","desp":"是否禁填","defaultValue":false,"type":"boolean"},{"name":"isRequired","desp":"是否必填","defaultValue":false,"type":"boolean"},{"name":"rules","desp":"验证规则","defaultValue":"","type":"single_array","attrInEachElement":[{"name":"rule","desp":"规则","defaultValue":"","type":"string_input"}]}],"css":{"style":[{"desp":"标题","cssAttrs":"font-size color font-weight","name":"label"},{"desp":"检验边框","cssAttrs":"border-color","name":"borderStyle"},{"desp":"检验文字","cssAttrs":"color","name":"fontStyle"}]},"main":"index.vue"},"children":[],"events":{},"id":1559793025317,"pid":1559792750177}],"events":{},"id":1559792750177,"pid":1559792745397},null],"events":{},"id":1559792745397,"pid":1559792742688},{"style":{"divCtn":{"position":"","top":"","right":"","bottom":"","left":"","overflow":"","margin":"","padding":"","height":"","width":"","max-height":"","max-width":"","min-height":"","min-width":""}},"direction":"row","layout":"[50,50]","rules":"","def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{},"href":"v2-layout-colctn","component":"v2-layout-colctn","widget":{"belongTo":"aui","icon":"iconhengxiangbuju","type":"layout","href":"v2-layout-colctn","author":"zhanghaixian@agree.com.cn","version":510000,"accept":"","name":"横向布局","option":[{"name":"direction","desp":"排列方式","defaultValue":"row","type":"string_select","valueArray":["row","col"],"despArray":["横排","竖排"]},{"name":"layout","desp":"栅格","hidden":false,"defaultValue":[50,50],"type":"string_input"},{"name":"rules","desp":"表单验证","defaultValue":"","type":"single_array","attrInEachElement":[{"name":"rule","desp":"规则","defaultValue":"","type":"string_input"}]}],"css":{"style":[{"desp":"容器","cssAttrs":"top right bottom left width height min-width max-width min-height max-height position overflow margin padding","name":"divCtn"}]},"editor":{"name":"v2LayoutEditor","model":{"def":{"defheight":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{}}},"main":"index.vue"},"children":[null,null],"events":{},"id":1559792746495,"pid":1559792742688}],"events":{},"id":1559792742688,"pid":1559214383876},null],"id":1559214383876,"pid":"root"},null],"events":{}}},
-                        组织列表:[{
-    value:'1'
-},{
-    value:'2'
-}]
-                    }
-                },
-                mixins:[root],
-                methods:{},
-                watch:{},
-                beforeCreate(){
-                    let ctx = this;
-                    
-                    /**overview beforeCreate**/
-                        (async()=>{const t1 = await pipe.getExcelData('机构表',`(e,index)=>index?{ label:e[1],value:e[0]}:false`);this.orgList = t1})();
-                    /**overview over**/
-                    
-                },
-                created(){
-                    let ctx = this;
-                    
-                },
-                beforeMount(){
-                    let ctx = this;
-                    
-                },
-                mounted(){
-                    let ctx = this;
-                    
-                },
-                beforeUpdate(){
-                    let ctx = this;
-                    
-                },
-                updated(){
-                    let ctx = this;
-                    
-                },
-                beforeDestroy(){ 
-                    let ctx = this;
-                    /**unBind**/this.$store("unbind",this)/**unBind over**/
-                        
-                },
-                destroyed(){
-                    let ctx = this;
-                        
+
+import {getObjArr, getRouter,saveRouter} from '../promission.js'
+
+import rightMenu from '@/components/rightMenu'
+import asyncComponent from '@/components/asyncComponent'
+
+export default {
+  name:'layout',
+  data() {
+    return {
+      routerData:global.menu?global.menu:getRouter('menu'),
+      sysLogo:"img/logo.png",
+      sysName: "AWEB_ADMIN",
+      collapsed: false,
+      sysUserName: "admin",
+      sysUserAvatar: "http://localhost:7007/img/user.png",  
+      rightClickHandler:null,
+      isRouterAlive: true
+
+    };
+  },
+  methods: {
+    handleSelectMenu:function(key, keyPath){
+       console.log('key',key);
+
+      let keys = key.split('#'),
+          path = keys[0],
+          page = keys[1],
+          title= keys[2];
+
+
+       this.open({
+         path:'/'+path,
+         page:page,
+         status:true,
+         type:'BLANK',
+         title:title||'标题',
+         keepAlive:true
+       })
+
+
+    },
+    tabRightClick:function(e){
+       if(e.target.classList[0] ==='el-tabs__item'){
+
+            this.rightClickHandler = e;  
+       }
+    },
+     reload() {
+   
+          this.isRouterAlive = false;
+         
+          this.$nextTick(function () {
+              this.isRouterAlive = true
+          })
+        },
+    handleRightSelect:function(key){
+
+       switch(key){
+         case'refresh':
+      
+         this.reload();
+            
+          break;
+         case'close':
+
+            this.$store.commit("delete_tabs", this.activeIndex);
+            if (this.openedTabs && this.openedTabs.length >= 1) {
+
+              this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
+
+              this.$router.push({ path: this.activeIndex,query:this.URLQueryMap[this.activeIndex] ||{}});
+
+            }
+           break;
+
+         case'closeAll':
+           this.$store.commit("delete_allTabs");
+           break;
+
+       }
+
+    },
+    logout: function() {
+      var _this = this;
+      this.$confirm("确认退出吗?", "提示", {
+        //type: 'warning'
+      })
+        .then(() => {
+          sessionStorage.removeItem("user");
+          _this.$router.push("/login");
+           saveRouter('router','');
+           saveRouter('menu','');
+           global.antRouter = '';
+          global.pageMap = {};
+          global.hasLogin = false;
+        })
+        .catch(() => {});
+    },
+    collapse: function() {
+      this.collapsed = !this.collapsed;
+    },
+    tabClick(tab) {
+
+      this.$router.push({ path: this.activeIndex,query:this.URLQueryMap[this.activeIndex] ||{}});
+
+    },
+    tabRemove(targetName) {
+      this.$store.commit("delete_tabs", targetName);
+      if (this.activeIndex === targetName) {
+        if (this.openedTabs && this.openedTabs.length >= 1) {
+
+          this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
+
+          this.$router.push({ path: this.activeIndex ,query:this.URLQueryMap[this.activeIndex] ||{}});
+
+        }
+      }
+    },
+    cancel(){
+           this.$store.commit("set_D_visible",false);
+           this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
+           this.$router.push({ path: this.activeIndex,query:this.URLQueryMap[this.activeIndex] ||{} });
+           this.$store.commit("do_cancel");
+         
+    },
+    confirm(){
+         this.$store.commit("set_D_visible",false);
+          this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
+          this.$router.push({ path: this.activeIndex,query:this.URLQueryMap[this.activeIndex] ||{} });
+          this.$store.commit("do_confirm");
+      
+    },
+    closeDialog(){
+
+       this.$store.commit("set_D_visible",false);    
+       this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
+       this.$router.push({ path: this.activeIndex ,query:this.URLQueryMap[this.activeIndex] ||{}});
+    
+  
+    },
+    openMarket(){
+      window.open('https://www.awebide.com:7002/package/@aweb-template/vue-spa');
+    }
+  },
+  mounted() {
+    console.log('routerData',this.routerData)
+    let user = sessionStorage.getItem("user");
+    if (user) {
+      user = JSON.parse(user);
+      this.sysUserName = user.name || "admin";
+      this.sysUserAvatar = user.avatar || "http://localhost:7007/img/user.png";
+    }
+     this.$store.commit("add_tabs", {
+        route: this.$route.path,
+        name: this.$route.meta.title,
+        keepAlive:this.$route.meta.keepAlive       
+      });
+    
+  this.$store.commit("set_active_index", this.$route.path);
+
+  },
+  computed: {
+    openedTabs() {
+
+      return this.$store.state.openedTabs;
+    },
+    activeIndex: {
+      get() {
+        return this.$store.state.activeIndex;
+      },
+      set(val) {
+        this.$store.commit("set_active_index", val);
+      }
+    },
+     dialogVisible: {
+        get() {
+          return this.$store.state.dialogVisible;
+        },
+        set(val) {
+          this.$store.commit("set_D_visible", val);
+        }
+     },
+     subPageHref: {
+        get() {
+          return this.$store.state.subPageHref;
+        },
+        set(val) {
+          this.$store.commit("set_subPageHref", val);
+        }
+     },
+    subPageParams: {
+        get() {
+          return this.$store.state.subPageParams;
+        },
+        set(val) {
+          this.$store.commit("set_subPageParams", val);
+        }
+     },
+     subPageTitle:{
+       get() {
+          return this.$store.state.subPageTitle;
+        },
+        set(val) {
+          this.$store.commit("set_subPageTitle", val);
+        }
+     },
+    rightMenuData() {
+       return this.$store.state.rightMenuData;
+    },
+    URLQueryMap:{
+      get() {
+        return this.$store.state.URLQueryMap;
+      },
+      set(val) {
+        this.$store.commit("set_url_map", val);
+      }
+    }
+  },
+  watch: {
+    $route(to, from) {
+      let flag = false;
+      
+      if(to.meta.type ==='BLANK'){
+        if(Object.keys(to.query).length){
+            this.$store.commit("set_url_map",({path:to.path,query:to.query}))
+          }
+      }
+   
+      if(to.meta.type==='BLANK' || !to.meta.type){
+        for (let item of this.openedTabs) {
+                if (item.route === to.path) {
+                  this.$store.commit("set_active_index", to.path);
+                  flag = true;
+                  break;
                 }
-            };
-        </script>
+              }
+      
+          if (!flag) {
+            this.$store.commit("add_tabs", { 
+              route: to.path, 
+              name: to.meta.title,
+              keepAlive:to.meta.keepAlive
+
+            });
+            this.$store.commit("set_active_index", to.path);
+          }
+      }else if(to.meta.type==='SELF'){
+    
+          this.$store.commit("add_tabs", {
+             route: to.path,
+             name: to.meta.title,
+             keepAlive:to.meta.keepAlive
+           });
+          this.$store.commit("set_active_index",to.path);
+          this.$store.commit("delete_tabs", from.path);
+       
+      }
+     
+    }
+  },
+  components:{
+    rightMenu,
+    asyncComponent
+  }
+};
+</script>
+
+<style  lang="less">
+.aweb-container {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  width: 100%;
+  background-color: #f0f2f5;
+  .aweb-header {
+    line-height: 64px;
+    background: #fff;
+    height: 64px;
+    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+    border-right: none;
+    border-bottom: 1px solid #e6e6e6;
+    list-style: none;
+    position: relative;
+    margin: 0;
+    padding-left: 0;
+    .aweb-userinfo {
+      text-align: right;
+      padding-right: 35px;
+      float: right;
+      .aweb-userinfo-inner {
+        cursor: pointer;
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 20px;
+          margin: 10px 0px 10px 10px;
+          float: right;
+        }
+      }
+      .aweb-download-btn{
+        margin-right: 1em;
+      }
+    }
+    .aweb-logo {
+      height: 64px;
+      font-size: 22px;
+      padding-left: 20px;
+      padding-right: 20px;
+      img {
+        width: 40px;
+        float: left;
+        margin: 10px 10px 10px 18px;
+      }
+      .txt {
+        color: rgb(14, 9, 9);
+      }
+    }
+    .logo-width,
+    .logo-collapse-width {
+      background-color: #152028;
+      color: #fff;
+      box-shadow: 2px 0 6px rgba(0,21,41,.35);  
+      transition: width .28s;
+      }
+      .logo-collapse-width {
+        width: 64px;
+      }
+      .logo-width {
+      width: 230px;
+      }
+    .aweb-tools {
+      padding: 0px 23px;
+      width: 14px;
+      height: 64px;
+      line-height: 64px;
+      cursor: pointer;
+    }
+  }
+  .aweb-body {
+    display: flex;
+    position: absolute;
+    top: 64px;
+    bottom: 0px;
+    overflow: hidden;
+    aside {
+    flex: 0 0 230px;
+	  width: 230px;
+		box-shadow: 2px 0 6px rgba(0,21,41,.35);
+		transition: width .28s;
+      .el-menu {
+      height: 100%;
+      border-right: 0;
+      }
+      a.router-link-exact-active.router-link-active{
+        text-decoration: none;
+      }
+      .el-menu-item{
+         &:hover{
+            i{
+                color: #fff;
+            }
+         }
+         &.is-active:hover{
+             color: #fff !important;
+         }
+      }
+      .el-submenu{
+          &:hover{
+            .el-submenu__title i{
+               color: #fff;
+            } 
+          }
+      }
+    }
+    .menu-collapsed {
+      flex: 0 0 64px;
+      width: 64px;
+    }
+    .menu-expanded {
+      flex: 0 0 230px;
+      width: 230px;
+    }
+
+  }
+   .aweb-ctt {
+      flex: 1;
+      overflow: auto;
+      padding: 10px;
+      .breadcrumb-container {
+        .title {
+          width: 200px;
+          float: left;
+          color: #475669;
+        }
+        .breadcrumb-inner {
+          float: right;
+        }
+      }
+      .aweb-ctt-wrap {
+        background-color: #fff;
+        box-sizing: border-box;
+      }
+      .grid-content{
+           >div>div.el-tabs>.el-tabs__content{
+              height: calc(100vh - 125px);
+              overflow: auto;
+              padding: 0;
+           }
+           .el-tabs__item:focus, 
+           .el-tabs__item:focus:active,
+           .el-tabs__item:active:focus{
+                 outline: none;
+                outline-color: transparent;
+           }
+      }
+     
+    }
+    .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 230px;
+    min-height: 400px;
+  }
+  // .aweb-right-menu{
+  //   position: absolute;
+  //   top: 28px;
+
+  //    .el-menu-vertical{
+  //        border:1px solid transparent;
+  //       border-radius: 4px;
+  //       z-index: 100;
+  //   }
+  
+  //   .menuItem{
+  //     height: 32px;
+  //     line-height: 32px;
+  //     font-size: 14px;
+  //   }
+  // }
+}
+</style>

@@ -2,6 +2,7 @@ const config = require('../../config/config.base');
 const fs = require('fs')
 //解决fs不支持递归删除问题
 const rmdir = require('rimraf');
+const nodejsPath = require('path');
 
 
 const PageFlow = require('../PageFlow').PageFlow;
@@ -67,7 +68,8 @@ const fileUtil = {
   createFile({
     path,
     name,
-    template
+    template,
+    props,
   }) {
     if (path && name) {
       let ext = this.getFileExtension(name)
@@ -80,19 +82,10 @@ const fileUtil = {
         default:
       }
       return new Promise((res, rej) => {
-        // fs.writeFileSync(path + '\\' + name, template || '', {
-        //   flag: 'wx+'
-        // });
-        // res();
-
-        fs.writeFile(path + '\\' + name, template || '', {
+        fs.writeFile(nodejsPath.join(path, name), template || '', {
           flag: 'wx+'
         }, (err) => {
           if (err) {
-            // if (err.startsWith("Error: EEXIST")) {
-            //   rej('已存在同名文件' + name);
-            //   return;
-            // }
             rej(err);
           }
           res();
@@ -107,7 +100,7 @@ const fileUtil = {
     return new Promise((res, rej) => {
       try {
         if (path && name)
-          fs.mkdirSync(path + '\\' + name, {
+          fs.mkdirSync(nodejsPath.join(path, name), {
             recursive: true
           });
         res();
@@ -180,14 +173,18 @@ const reader = {
     return async req => {
       let path = req.data.path;
       let name = req.data.name;
+      let props = req.data.props;
       let template = req.data.template;
       try {
         fileUtil.createFile({
           path,
           name,
           template,
+          props,
         }).then(() => {
-          platform.sendSuccessResult(req, {});
+          platform.sendSuccessResult(req, {
+            path: nodejsPath.join(path,name)
+          });
         }).catch(e => {
           platform.sendErrorResult(req, e)
         })

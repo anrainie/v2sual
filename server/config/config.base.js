@@ -8,6 +8,7 @@ const componentFile = path.resolve(base, config.runtime.componentFile);
 const pipe = path.resolve(base, config.runtime.pipe);
 const datadict = path.resolve(base, config.runtime.datadict);
 const page = path.resolve(base, config.runtime.page);
+const customWidget = path.resolve(base, config.runtime.customWidget);
 const dist = path.resolve(base, config.runtime.dist);
 const homepage = path.resolve(dist, config.runtime.homepage);
 
@@ -17,12 +18,16 @@ module.exports = {
     ...config,
 
     runtime: {
+
+        ...config.runtime,
+
         base,
         component,
         componentFile,
         pipe,
         datadict,
         page,
+        customWidget,
         dist,
         homepage
     },
