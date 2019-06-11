@@ -50,16 +50,17 @@ let json2script = function (json) {
                 watch:{${self.methodsToCode(transfer.watch)}},
                 beforeCreate(){
                     let ctx = this;
-                    ctx.__runnableList.push(${transfer.pollList.map(item=>{
+                    
+                    ${transfer.beforeCreate ? transfer.beforeCreate.code : ''}
+                },
+                created(){
+                    let ctx = this;
+                    ctx.poll_runnableList.push(${transfer.pollList.map(item=>{
                         return `{
                             run:${item.code},
                             freq:${item.freq}
                         }`
                     })})
-                    ${transfer.beforeCreate ? transfer.beforeCreate.code : ''}
-                },
-                created(){
-                    let ctx = this;
                     ${transfer.created ? transfer.created.code : ''}
                 },
                 beforeMount(){
@@ -69,6 +70,7 @@ let json2script = function (json) {
                 mounted(){
                     let ctx = this;
                     ${transfer.mounted ? transfer.mounted.code : ''}
+                    ${transfer.pollList.length===0?'':'ctx.__resume();'}
                 },
                 beforeUpdate(){
                     let ctx = this;
@@ -80,7 +82,7 @@ let json2script = function (json) {
                 },
                 beforeDestroy(){ 
                     let ctx = this;
-                    /**unBind**/this.$store.commit("unbind",this)/**unBind over**/
+                    /**unBind**/ctx.$store.commit("unbind",this)/**unBind over**/
                         ${transfer.beforeDestroy ? transfer.beforeDestroy.code : ''}
                 },
                 destroyed(){
@@ -278,7 +280,7 @@ let transViewCode = function (api) {
         return mapTempalte;
         //特例--diy
     } else if (name === "diy") {
-        let mapTempalte = `(${children[0].option.value})()`;
+        let mapTempalte = `${children[0].option.value}`;
         return mapTempalte;
         //特例--excel
     } else if (name === "pipe.getExcelData") {
