@@ -14,9 +14,31 @@ const Router = require('koa-router');
 
 const config = require('../config/config.base');
 
+
+const execCmd = function (cmd, cwd) {
+  return new Promise((res, rej) => {
+    const process = exec(cmd, {
+      encoding: "utf8",
+      cwd
+    }, async (error, stdout, stderr) => {
+      error ? rej(error) : res({
+        error,
+        stdout,
+        stderr
+      })
+    });
+    process.stderr.on('data', data => console.log(data));
+    process.stdout.on('data', data => console.log(data));
+    process.stdout.on('close', data => {
+      console.log(data);
+      res(data);
+    });
+  });
+};
+
 class Preview {
 
-  constructor(projectPath=config.runtime.base) {
+  constructor(projectPath = config.runtime.base) {
     this.projectPath = projectPath;
   }
   /**
@@ -42,24 +64,35 @@ class Preview {
 
           //组件列表
           let vueMap = {};
-          const vueFiles = files
+          files
+            //读取每一个package.json
             .filter(f => f.lastIndexOf('package.json') !== -1)
-            .map(f => f.replace(path.sep + 'package.json', '').replace(componentPath, '.'))
-            .sort()
-            .map(f => {
-              return {
-                name: camelcase(f.split(path.sep)[1]),
-                path: f
-              }
-            }).filter(f => {
-              if (vueMap[f.name]) {
-                return false;
-              } else {
-                vueMap[f.name] = true;
+            //读取组件和编辑器
+            .forEach(f => {
+              try {
+                const contentStr = fs.readFileSync(f).toString();
+                const content = JSON.parse(contentStr);
 
-                return true;
+                const paths = f.split(path.sep);
+                const name = camelcase(paths[paths.length - 2]);
+                const filepath = path.relative(path.dirname(config.runtime.componentFile), path.dirname(f));
+
+
+                vueMap[name] = path.join(filepath, content.main);
+
+
+                if (content.editor) {
+                  vueMap[content.editor.name] = path.join(filepath, content.editor.path);
+                }
+              } catch (e) {
               }
-            })
+            });
+            const vueFiles = Object.keys(vueMap).map(n=>{
+              return {
+                name:n,
+                path:`./${vueMap[n]}`
+              }
+            });
 
           //pipe
           const pipes = await readDir(config.runtime.pipe);
@@ -72,7 +105,7 @@ class Preview {
               const name = (paths[paths.length - 1]).split('.');
               return {
                 name: name[name.length - 1],
-                path: path.relative(path.dirname(config.runtime.componentFile),f)
+                path: path.relative(path.dirname(config.runtime.componentFile), f)
               }
             })
 
@@ -86,7 +119,7 @@ class Preview {
           let app = {
             ${pipeList.map(f => f.name).join(',\n\t')}
           };
-          
+
           window.pipe = app;
 
           export default {
@@ -95,54 +128,24 @@ class Preview {
 
           const list = await new Promise((res, rej) => fs.writeFile(config.runtime.componentFile, content, err => err ? rej(err) : res('success')));
 
-          // //npm run build  生成样式
-          const build = await new Promise((res, rej) => {
-            const process = exec(config.module.preview.script.style, {
-              encoding: "utf8",
-              cwd: path.resolve(projectPath)
-            }, (error, stdout, stderr) => {
-              error ? rej(error) : res({
-                error,
-                stdout,
-                stderr
-              })
-            });
-            process.stderr.on('data', data => {
-              console.log(data);
-            });
-            process.stdout.on('data', data => {
-              console.log(data);
-            });
-            process.stdout.on('close', data => {
-              console.log(data);
-              res({
-                data
-              });
-            });
-          });
+          const absProjectPath = path.resolve(projectPath);
 
-          const jsdev = await new Promise((res, rej) => {
-            const process = exec(config.module.preview.script.script, {
-              encoding: "utf8",
-              cwd: path.resolve(projectPath)
-            }, async (error, stdout, stderr) => {
-              error ? rej(error) : res({
-                error,
-                stdout,
-                stderr
-              })
-            });
-            process.stderr.on('data', data => {
-              console.log(data);
-            });
-            process.stdout.on('data', data => {
-              console.log(data);
-            });
-            process.stdout.on('close', data => {
-              console.log(data);
-              res(data);
-            });
-          });
+          //删除package-lock.josn
+          try{
+            fs.unlinkSync(path.resolve(absProjectPath,'package-lock.json'));
+          }catch(e){
+            console.log(e.message);
+          }
+          
+
+          //重新安装一次依赖
+          const initDev = await execCmd(config.module.preview.script.init, absProjectPath);
+
+          //npm run style  生成样式
+          const styleDev = await execCmd(config.module.preview.script.style, absProjectPath);
+
+          // npm run script 生成脚本
+          const jsdev = await execCmd(config.module.preview.script.script, absProjectPath);
         } catch (e) {
           Result.error(ctx, e);
         } finally {
@@ -153,7 +156,7 @@ class Preview {
 
         Result.success(ctx, {
           content: {
-            result: true
+            result: true,
           }
         });
       } catch (e) {
@@ -190,13 +193,13 @@ class Preview {
     const projectPath = this.projectPath;
     return function (req) {
       try {
-        let _path=path.resolve(path.join(projectPath, config.module.preview.result));
+        let _path = path.resolve(path.join(projectPath, config.module.preview.result));
         const js = Buffer.from(fs.readFileSync(_path)).toString();
 
         platform.sendSuccessResult(req, js);
       } catch (e) {
         console.error(e)
-        platform.sendErrorResult(req, e.message||e);
+        platform.sendErrorResult(req, e.message || e);
       }
     }
   }

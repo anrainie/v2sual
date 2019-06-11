@@ -79,6 +79,10 @@
   "keywords": [],
   "license": "ISC",
   "main": "index.vue",
+  "editor":{
+    "path":"editor.vue",
+    "name":"v2LayoutEditor"
+  },
   "name": "@aweb-components/v2-layout-colctn",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

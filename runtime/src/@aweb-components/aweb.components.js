@@ -1,24 +1,25 @@
         
-          import v2ComponentBtn  from './v2-component-btn';
-import v2ComponentEtable  from './v2-component-etable';
-import v2ComponentTable  from './v2-component-table';
-import v2EchartBar  from './v2-echart-bar';
-import v2EchartLine  from './v2-echart-line';
-import v2FormCascader  from './v2-form-cascader';
-import v2FormCheckbox  from './v2-form-checkbox';
-import v2FormDatepicker  from './v2-form-datepicker';
-import v2FormInput  from './v2-form-input';
-import v2FormInputnumber  from './v2-form-inputnumber';
-import v2FormRadio  from './v2-form-radio';
-import v2FormSelect  from './v2-form-select';
-import v2FormSlider  from './v2-form-slider';
-import v2FormSwitch  from './v2-form-switch';
-import v2FormTimepicker  from './v2-form-timepicker';
-import v2FormTransfer  from './v2-form-transfer';
-import v2FormUpload  from './v2-form-upload';
-import v2LayoutColctn  from './v2-layout-colctn';
+          import v2ComponentEtable  from './v2-component-etable/index.vue';
+import v2ComponentTable  from './v2-component-table/index.vue';
+import v2ComponentCard  from './v2-component-card/index.vue';
+import v2ComponentBtn  from './v2-component-btn/index.vue';
+import v2FormCascader  from './v2-form-cascader/index.vue';
+import v2EchartLine  from './v2-echart-line/index.vue';
+import v2EchartBar  from './v2-echart-bar/index.vue';
+import v2FormCheckbox  from './v2-form-checkbox/index.vue';
+import v2FormDatepicker  from './v2-form-datepicker/index.vue';
+import v2FormInput  from './v2-form-input/index.vue';
+import v2FormRadio  from './v2-form-radio/index.vue';
+import v2FormSlider  from './v2-form-slider/index.vue';
+import v2FormSelect  from './v2-form-select/index.vue';
+import v2FormInputnumber  from './v2-form-inputnumber/index.vue';
+import v2FormSwitch  from './v2-form-switch/index.vue';
+import v2FormUpload  from './v2-form-upload/index.vue';
+import v2LayoutColctn  from './v2-layout-colctn/index.vue';
 import v2LayoutEditor  from './v2-layout-colctn/editor.vue';
-import v2LayoutRowctn  from './v2-layout-rowctn';
+import v2FormTimepicker  from './v2-form-timepicker/index.vue';
+import v2LayoutRowctn  from './v2-layout-rowctn/index.vue';
+import v2FormTransfer  from './v2-form-transfer/index.vue'
 
           import get  from '../../../pipe/src/main/webapp/plugins/app.get';
 import getAfaData  from '../../../pipe/src/main/webapp/plugins/app.getAfaData';
@@ -35,28 +36,29 @@ import open  from '../../../pipe/src/main/webapp/plugins/app.open'
 	map,
 	open
           };
-          
+
           window.pipe = app;
 
           export default {
-            v2ComponentBtn,
-	v2ComponentEtable,
+            v2ComponentEtable,
 	v2ComponentTable,
-	v2EchartBar,
-	v2EchartLine,
+	v2ComponentCard,
+	v2ComponentBtn,
 	v2FormCascader,
+	v2EchartLine,
+	v2EchartBar,
 	v2FormCheckbox,
 	v2FormDatepicker,
 	v2FormInput,
-	v2FormInputnumber,
 	v2FormRadio,
-	v2FormSelect,
 	v2FormSlider,
+	v2FormSelect,
+	v2FormInputnumber,
 	v2FormSwitch,
-	v2FormTimepicker,
-	v2FormTransfer,
 	v2FormUpload,
 	v2LayoutColctn,
+	v2LayoutEditor,
+	v2FormTimepicker,
 	v2LayoutRowctn,
-	v2LayoutEditor
+	v2FormTransfer
           }

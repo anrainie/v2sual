@@ -122,10 +122,7 @@
             <el-col :span="12">
               <div class="custom-border-display">
                 <p>可见/隐藏</p>
-                <div
-                  class="custom-border-display-box"
-                  :class="[`${VborderList.join(' ')}  ${HborderList.join(' ')}`]"
-                >
+                <div class="custom-border-display-box">
                   <div
                     class="border-left"
                     @click="borderClick('left')"
@@ -657,19 +654,8 @@ export default {
           background-color: #f2f2f2;
           margin: 16px auto 0;
           position: relative;
-          border: 2px solid #ccc;
-          &.left {
-            border-left-color: #666666;
-          }
-          &.right {
-            border-right-color: #666666;
-          }
-          &.top {
-            border-top-color: #666666;
-          }
-          &.bottom {
-            border-bottom-color: #666666;
-          }
+          border: 2px solid transparent;
+    
 
           > div {
             position: absolute;
@@ -678,25 +664,64 @@ export default {
             background-color: #ffffff;
             border: solid 1px #dddddd;
             cursor: pointer;
+
+            &::after {
+              position: absolute;
+              content: "";
+              background-color: #666;
+            }
+
             &.border-left {
               top: 10px;
               left: -8px;
+              &.active {
+                &::after {
+                  top: -13px;
+                  left: 5px;
+                  width: 2px;
+                  height: 66px;
+                }
+              }
             }
             &.border-right {
               top: 10px;
               right: -8px;
+              &.active {
+                &::after {
+                  top: -13px;
+                  right: 5px;
+                  width: 2px;
+                  height: 66px;
+                }
+              }
             }
             &.border-top {
               width: 43px;
               height: 14px;
               top: -8px;
               left: 12px;
+                 &.active {
+                &::after {
+                  top: 5px;
+                  right:-10px;
+                  width: 66px;
+                  height: 2px;
+                }
+              }
             }
             &.border-bottom {
               width: 43px;
               height: 14px;
               bottom: -8px;
               left: 12px;
+                   &.active {
+                &::after {
+                  bottom: 5px;
+                  right:-10px;
+                  width: 66px;
+                  height: 2px;
+                }
+            }
             }
             &.active {
               background-color: #c6eceb;
@@ -784,7 +809,7 @@ export default {
   }
 
   .custom-def-bg {
-    padding-left:70px;
+    padding-left: 70px;
     margin: 10px 0;
     .custom-bg-colorpicker-ctn {
       display: inline-block;
@@ -794,12 +819,10 @@ export default {
       overflow: hidden;
       position: relative;
       box-sizing: border-box;
-        >i{
-        
-          position: absolute;
-          right: 2px;
-          top: 4px;
-        
+      > i {
+        position: absolute;
+        right: 2px;
+        top: 4px;
       }
     }
     > input {
@@ -815,443 +838,5 @@ export default {
       vertical-align: middle;
     }
   }
-  // .com-set-item {
-  //   padding-bottom: 40px;
-  // }
-  /* 容器 */
-  // .com-set-container {
-  //   height: 690px;
-  //   overflow: auto;
-  //   padding: 30px;
-  //   padding-bottom: 61px;
-  // }
-
-  /* 样式颜色 */
-  // .style-choose {
-  //   padding-left: 30px;
-  //   .color {
-  //     .lis {
-  //       width: 28px;
-  //       height: 28px;
-  //       float: left;
-  //       margin-right: 10px;
-  //       border-radius: 50%;
-  //       background-color: #ffffff;
-  //       cursor: pointer;
-  //       position: relative;
-  //       margin-top: 5px;
-  //       margin-bottom: 5px;
-  //       &.red:hover {
-  //         background-color: #ff9500;
-  //       }
-  //       /* 选中状态 */
-  //       &.active.red {
-  //         background-color: #ff9500;
-  //       }
-  //       &.orange:hover {
-  //         background-color: #ff9500;
-  //       }
-  //       &.active.orange {
-  //         background-color: #ff9500;
-  //       }
-  //       &.yellow:hover {
-  //         background-color: #ffcc00;
-  //       }
-  //       &.active.yellow {
-  //         background-color: #ffcc00;
-  //       }
-  //       &.green:hover {
-  //         background-color: #4cd964;
-  //       }
-  //       &.active.green {
-  //         background-color: #4cd964;
-  //       }
-  //       &.blue:hover {
-  //         background-color: #007aff;
-  //       }
-  //       &.active.blue {
-  //         background-color: #007aff;
-  //       }
-  //       &:hover {
-  //         .liInner {
-  //           border: 2px solid #ffffff;
-  //         }
-  //       }
-  //       &.active {
-  //         .liInner {
-  //           border: 2px solid #ffffff;
-  //         }
-  //       }
-  //     }
-  //     .liInner {
-  //       width: 26px;
-  //       height: 26px;
-  //       border-radius: 50%;
-  //       position: absolute;
-  //       top: 50%;
-  //       left: 50%;
-  //       margin-left: -13px;
-  //       margin-top: -13px;
-  //       &.red {
-  //         background-color: #ff3b30;
-  //       }
-  //       &.orange {
-  //         background-color: #ff9500;
-  //       }
-  //       &.yellow {
-  //         background-color: #ffcc00;
-  //       }
-  //       &.green {
-  //         background-color: #4cd964;
-  //       }
-  //       &.blue {
-  //         background-color: #007aff;
-  //       }
-  //     }
-  //   }
-  //   .style-item {
-  //     height: 130px;
-  //     line-height: 130px;
-  //     width: 260px;
-  //     text-align: center;
-  //     font-size: 14px;
-  //   }
-  //   .last {
-  //     line-height: 1;
-  //   }
-  //   .bar-box {
-  //     margin: 44px 0 0 94px;
-  //     border-left: 4px solid #5ca6e2;
-  //   }
-  //   .titleBar-text {
-  //     color: #5ca6e2;
-  //     height: 20px;
-  //   }
-  //   .second-titleBar-text {
-  //     color: #b8bfcc;
-  //     height: 12px;
-  //   }
-  //   .p-ele {
-  //     text-align: left;
-  //     padding-left: 10px;
-  //   }
-  //   .titleBar-text {
-  //     margin-bottom: 10px;
-  //   }
-  //   .bottom-text {
-  //     width: 100%;
-  //     height: 30px;
-  //     line-height: 30px;
-  //     margin: 10px 0 4px 0;
-  //     &:hover {
-  //       background-color: #bec0c1;
-  //     }
-  //   }
-  // }
-
-  /* 行内快对齐中间 */
-  // .vertical-middle {
-  //   vertical-align: middle;
-  // }
-  // .vertical-b {
-  //   vertical-align: bottom;
-  // }
-  // .vertical-t {
-  //   vertical-align: top;
-  // }
-  // /* 右间距 */
-  // .mar-r {
-  //   margin-right: 10px;
-  // }
-  // /* 上间距 */
-  // .mar-t {
-  //   margin-top: 10px;
-  // }
-  // .positionR {
-  //   position: relative;
-  // }
-  /* 自定义标题 */
-  // .self-subtitle {
-  //   display: inline-block;
-  //   margin-right: 15px;
-  // }
-  //单选框包含文字
-  // .lable-notLast {
-  //   margin-right: 18px;
-  // }
-  // /* 不透明度和圆角样式 */
-  // .item-box {
-  //   border-bottom: 1px solid #eeeeee;
-  //   padding: 4px 0;
-
-  //   .ui-widget.ui-widget-content {
-  //     border: none;
-  //   }
-  //   .effect-time-text {
-  //     color: #4d4d4d;
-  //     margin-right: 15px;
-  //   }
-  //   .time-slide {
-  //     display: inline-block;
-  //     vertical-align: middle;
-  //     width: 100px;
-  //     height: 3px;
-  //     background-color: #ebeff5;
-  //     margin-right: 20px;
-  //     .ui-slider-handle {
-  //       width: 13px;
-  //       height: 13px;
-  //       border-radius: 50%;
-  //       background-color: #5ca6e2;
-  //       border: none;
-  //     }
-  //   }
-  //   .slider-text-item {
-  //     height: 38px;
-  //     line-height: 38px;
-  //   }
-  // }
-  // .mar-right {
-  //   margin-right: 13px;
-  // }
-  // /* 背景 */
-  // .pic-text {
-  //   vertical-align: top;
-  //   line-height: 70px;
-  // }
-  // .pic-add-box {
-  //   display: inline-block;
-  //   width: 140px;
-  //   height: 70px;
-  //   border: 1px solid #cccccc;
-  //   color: #5ca6e2;
-  // }
-  // .add-symbol {
-  //   height: 46px;
-  // }
-  // /* 取色盒子 */
-  // .colpick-box {
-  //   display: inline-block;
-  //   vertical-align: middle;
-  //   width: 26px;
-  //   height: 26px;
-  //   background-color: #e6ecf3;
-  //   margin-right: 14px;
-  //   border-radius: 50%;
-  // }
-  // /* #号 */
-  // .well-number {
-  //   margin-right: 14px;
-  // }
-  // /* 边框 */
-  // .border-self-item {
-  //   .border-style {
-  //     width: 40px;
-  //     height: 30px;
-  //     padding: 13px 0 0 6px;
-  //     border: 1px solid #e6e6e6;
-  //   }
-  //   /* 可选择显示上下左右边框 */
-  //   .show-outer {
-  //     width: 140px;
-  //     height: 110px;
-  //     border: 1px solid #e6e6e6;
-  //     padding: 13px 0 0 29px;
-  //     .border-box {
-  //       width: 80px;
-  //       height: 80px;
-  //       border: 2px solid #7db8e8;
-  //       .border-same {
-  //         border: 1px solid #5ca6e2;
-  //       }
-  //       .level {
-  //         width: 14px;
-  //         height: 40px;
-  //         top: 50%;
-  //         transform: translateY(-50%);
-  //       }
-  //       .l-square {
-  //         left: -8px;
-  //       }
-  //       .r-square {
-  //         right: -8px;
-  //       }
-  //       .vertical {
-  //         width: 40px;
-  //         height: 14px;
-  //         left: 50%;
-  //         transform: translateX(-50%);
-  //       }
-  //       .t-square {
-  //         top: -8px;
-  //       }
-  //       .b-square {
-  //         bottom: -8px;
-  //       }
-  //       .bgc {
-  //         background-color: #ccebf8;
-  //       }
-  //     }
-  //   }
-  // }
-  // /* 标题面板 */
-  // .gray-border {
-  //   border: 1px solid #cccccc;
-  // }
-  // .padL10 {
-  //   padding-left: 10px;
-  // }
-  // /* 30px的高度 */
-  // .h30p {
-  //   height: 30px;
-  //   line-height: 30px;
-  // }
-
-  // .titleBar {
-  //   width: 100%;
-  //   /* 标题输入框 */
-  //   .title-input {
-  //     width: 140px;
-  //   }
-  // }
-  // // 小三角标记
-  // .bg-triangle {
-  //   position: absolute;
-  //   right: 0;
-  //   bottom: 0;
-  //   width: 30px;
-  //   height: 100%;
-  //   /* background: url('./img/icon_down_arrow.png') no-repeat center center; */
-  //   transition: all 0.3s ease-in-out;
-  //   &.trigger {
-  //     -webkit-transform: rotate(180deg);
-  //     -moz-transform: rotate(180deg);
-  //     -o-transform: rotate(180deg);
-  //     -ms-transform: rotate(180deg);
-  //     transform: ratate(180deg);
-  //   }
-  // }
-  // /* 文字自定义 */
-  // .size-select {
-  //   color: #666666;
-  //   position: relative;
-  //   display: inline-block;
-  //   outline: 0;
-  //   -webkit-user-select: none;
-  //   -moz-user-select: none;
-  //   -ms-user-select: none;
-  //   user-select: none;
-  //   cursor: pointer;
-  //   border-radius: 2px;
-  //   border: 1px solid #e3e2e8;
-  //   transition: all 0.2s ease-in-out;
-  //   width: 100px;
-  // }
-  // .select-input {
-  //   width: 70px;
-  //   height: 100%;
-  //   vertical-align: super;
-  // }
-  // /* 文字样式 */
-  // .style-label {
-  //   display: inline-block;
-  //   vertical-align: middle;
-  //   width: 30px;
-  //   text-align: center;
-  //   border-radius: 4px;
-  //   font-size: 20px;
-  //   font-family: blod;
-  //   &.active {
-  //     border-color: #69bbff;
-  //   }
-  //   .hidden-radio {
-  //     display: none;
-  //   }
-  // }
-  // .blod-label {
-  //   font-style: normal;
-  //   // background: url('./img/B.png') no-repeat center center;
-  // }
-  // .italic-label {
-  //   font-style: italic;
-  //   // background: url('./img/I.png') no-repeat center center;
-  // }
-  // .oblique-label {
-  //   font-style: oblique;
-  //   // background: url('./img/U.png') no-repeat center center;
-  // }
-  // /* 样式面板 */
-  // /* 字体下拉框 */
-  // .select-dropdown {
-  //   position: absolute;
-  //   z-index: 2;
-  //   top: 28px;
-  //   left: 0;
-  //   width: 100%;
-  //   background-color: #ffffff;
-  //   .fonts-list {
-  //     width: 100%;
-  //     height: 108px;
-  //     overflow-x: hidden;
-  //     overflow-y: auto;
-  //     padding-top: 10px;
-  //   }
-  //   .dropdown-item {
-  //     height: 28px;
-  //     line-height: 28px;
-  //     margin: 10px;
-  //     margin-top: 0;
-  //     margin-bottom: 5px;
-  //     padding-left: 10px;
-  //     &.active {
-  //       background-color: #69bbff;
-  //       color: #666666;
-  //     }
-  //     &:hover {
-  //       background-color: #69bbff;
-  //       color: #ffffff;
-  //     }
-  //   }
-  // }
-  // input[type="text"].time-number {
-  //   display: inline-block;
-  //   vertical-align: middle;
-  //   width: 66px;
-  //   height: 30px;
-  //   color: #4d4d4d;
-  //   border: 1px solid #cccccc;
-  //   &:focus {
-  //     border-color: #5ca6e2;
-  //   }
-  // }
-  // input[type="radio"] {
-  //   vertical-align: middle;
-  //   cursor: pointer;
-  //   margin-right: 8px;
-  // }
-  // .square-btn-box {
-  //   width: 100%;
-  //   bottom: 0;
-  //   left: 0;
-  //   border-top: 1px solid #e6e6e6;
-  //   padding: 15px 0 15px 0;
-  //   background-color: #ffffff;
-  //   .succee-btn {
-  //     cursor: pointer;
-  //     width: 80px;
-  //     height: 30px;
-  //     line-height: 30px;
-  //     text-align: center;
-  //     border: 1px solid #e6e6e6;
-  //     border-radius: 10px;
-  //     background-color: #ffffff;
-  //     color: #5ca6e2;
-  //   }
-  // }
-
-  // .height-input-outer .el-input-group {
-  //   width: 120px;
-  //   margin-left: 80px;
-  // }
 }
 </style>

@@ -1,5 +1,6 @@
 import Vue from 'vue'
-import _import from '@/router/_import_production.js'
+// import _import from '@/router/_import_production.js'
+import _import from '@/router/_import_development.js';
 import _require from '@/router/_require_pro.js'
 import router from '../router'
 import Layout from '@/views/Layout'
