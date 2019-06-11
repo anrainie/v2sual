@@ -38,10 +38,13 @@ const listDir = (dirPath = listPath) => {
             folder.entry = true;
             folder.label = CATEGORY.ENTRY.LABEL;
             folder.index = -2;
+            folder.icon= "ideicon iconrukouwenjianjia";
             break;
           case CATEGORY.CUSTOM_WIDGET.NAME:
             folder.label = CATEGORY.CUSTOM_WIDGET.LABEL;
             folder.index = -1;
+            folder.icon= "ideicon iconzidingyizujianwenjianjia";
+
             break;
           default:
             folder.index = 0;
@@ -139,12 +142,11 @@ const Navigator = {
   getNaviItems(platform) {
     return async (req) => {
       try {
-        let dirPath = path.normalize(req.data.path || req.data.end || path.sep);
-        switch (dirPath) {
+        let dirPath = req.data.path || req.data.end;
+        switch (req.data.path) {
           case "\\":
           case null:
           case "/":
-          //case listPath:
             //如果是根目录，则返回整理过的文件夹
             dirPath = listPath;
             this.getRootItems(platform, dirPath, req);
