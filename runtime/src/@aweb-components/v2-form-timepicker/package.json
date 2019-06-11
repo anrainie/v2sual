@@ -4,7 +4,7 @@
   },
   "bundleDependencies": false,
   "deprecated": false,
-  "description": "时间选择器",
+  "description": "时间选择",
   "docs": {
     "belongTo": "aui",
     "icon": "iconshijianxuanze",
@@ -13,7 +13,7 @@
     "author": "fengjiarong@agree.com.cn",
     "version": 510000,
     "accept": "foundationRowCtn divCtn",
-    "name": "时间选择器",
+    "name": "时间选择",
     "option": [
       {
         "name": "label",

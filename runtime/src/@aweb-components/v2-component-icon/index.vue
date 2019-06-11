@@ -1,6 +1,9 @@
 <template>
-  <div  :class="model.layoutClass" :style="{'width':'40px','height':'40px',...model.style.iWarpStyle}"><i :class="model.icon?model.icon:'fa fa-user-o'" :style="model.style.iStyle"></i></div>
+  <div :class="model.layoutClass" :style="iWarpStyle">
+    <i :class="model.icon?model.icon:'fa fa-user-o'" :style="model.style.iStyle"></i>
+  </div>
 </template>
+
 <script>
 
   export default {
@@ -12,6 +15,18 @@
       }
     },
     computed:{
+      iWarpStyle(){
+        if(this.model.style && this.model.style.iWarpStyle){
+          
+          !this.model.style.iWarpStyle.width && (this.model.style.iWarpStyle.width = "40px");
+          !this.model.style.iWarpStyle.height && (this.model.style.iWarpStyle.height = "40px");
+          return this.model.style.iWarpStyle;
+
+        }else{
+          return {'width':'40px','height':'40px'}
+        }
+        
+      }
     },
     mounted() {
      

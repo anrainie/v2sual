@@ -4,7 +4,7 @@
   },
   "bundleDependencies": false,
   "deprecated": false,
-  "description": "文本框",
+  "description": "文本",
   "docs": {
     "belongTo": "aui",
     "icon": "iconzhuzhuangtu",
@@ -13,15 +13,30 @@
     "author": "zhanghaixian@agree.com.cn",
     "version": 510000,
     "accept": "divCtn",
-    "name": "文本框",
+    "name": "文本",
     "option": [
       {
         "type": "string_input",
-        "name": "configs",
-        "defaultValue": "",
-        "desp": "配置单"
+        "name": "text",
+        "defaultValue": "文本内容",
+        "desp": "文本"
+      },
+      {
+        "name": "editable",
+        "desp": "是否可编辑",
+        "defaultValue": false,
+        "type": "boolean"
       }
-    ]
+    ],
+    "css":{
+      "style":[
+        {
+          "desp": "文本",
+          "cssAttrs": "font-family font-size color font-weight font-style text-decoration line-height text-align width height padding margin",
+          "name": "textStyle"
+        }
+      ]
+    }
   },
   "keywords": [],
   "license": "ISC",
