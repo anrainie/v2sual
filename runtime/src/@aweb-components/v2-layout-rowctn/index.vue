@@ -77,6 +77,9 @@ export default {
         if (item === undefined) {
           this.model.children[index] = null;
         }
+        
+        if(item.__type==="loop") return "v2loop";
+
         if (item) return item.component;
         return "v2Empty";
       };
