@@ -30,15 +30,47 @@ module.exports = {
   write: (path, content) => new Promise((res, rej) => {
     //针对vue文件，读取同名.def文件
     let defPath = path + '.def'
-    fs.writeFile(defPath, JSON.stringify(content), function (err) {
+    let text = JSON.stringify(content);
+    fs.writeFile(defPath, text, function (err) {
       if (err) rej(err);
       else res();
     });
     //将template写入vue文件中
-    fs.writeFile(path, parseUtil.json2html(JSON.stringify(content)) +"\n"+ logicFile.json2script(JSON.stringify(content)), function (err) {
+    fs.writeFile(path, parseUtil.json2html(text) + "\n" + logicFile.json2script(text), function (err) {
       if (err) rej(err);
       else res();
     });
-  })
+  }),
+  createFile: ({
+    path,
+    name,
+    props,
+  }) => {
+    let template = TEMPLATE;
+    if (props) {
+      template = {
+        ...TEMPLATE,
+        ...props,
+      }
+    }
+    return new Promise((res, rej) => {
+      let realPath = path + '\\' + name;
+      let defPath = realPath + '.def'
+      fs.writeFile(defPath, JSON.stringify(template), function (err) {
+        if (err) rej(err);
+      });
+      fs.writeFile(realPath, `<tempalte></tempalte>
+      <script></script>
+      <style></style>`, {
+        flag: 'wx+'
+      }, (err) => {
+        if (err) {
+          rej(err);
+        }
+        res({
+          path: realPath
+        });
+      });
+    });
+  },
 };
-

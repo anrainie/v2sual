@@ -77,7 +77,7 @@ const fileUtil = {
           template = template || `<tempalte></tempalte>
 <script></script>
 <style></style>`;
-          break;
+          return vueFileUtil.createFile(arguments[0]);
         default:
       }
       return new Promise((res, rej) => {
@@ -180,8 +180,8 @@ const reader = {
           name,
           template,
           props,
-        }).then(() => {
-          platform.sendSuccessResult(req, {});
+        }).then(r => {
+          platform.sendSuccessResult(req, r);
         }).catch(e => {
           platform.sendErrorResult(req, e)
         })
