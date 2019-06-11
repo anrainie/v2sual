@@ -139,11 +139,12 @@ const Navigator = {
   getNaviItems(platform) {
     return async (req) => {
       try {
-        let dirPath = req.data.path || req.data.end;
-        switch (req.data.path) {
+        let dirPath = path.normalize(req.data.path || req.data.end || path.sep);
+        switch (dirPath) {
           case "\\":
           case null:
           case "/":
+          //case listPath:
             //如果是根目录，则返回整理过的文件夹
             dirPath = listPath;
             this.getRootItems(platform, dirPath, req);
