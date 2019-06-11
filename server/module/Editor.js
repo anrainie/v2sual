@@ -39,6 +39,7 @@ let editor = {
               menu.push({
                 name: info.name,
                 type: 'customWidget',
+                href: info.name,
                 option: [],
                 css: {},
                 icon: 'iconyemian',
