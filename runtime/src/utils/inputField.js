@@ -23,10 +23,14 @@ const preview = {
     $ArrowUp(e) {
       return this.$focusPrev(e);
     },
+    $Tab(e) {
+      return this.$focusNext(e);
+    },
     $focusNext(e) {
       let inputFields = this.__getInputFields();
       let index = $.inArray(e.target, inputFields);
-      $(inputFields[index + 1]).focus();
+      let target = inputFields[index + 1] ? $(inputFields[index + 1]) : $(inputFields[0])
+      target.focus();
       return false;
     },
     $focusPrev(e) {

@@ -67,7 +67,8 @@ const fileUtil = {
   createFile({
     path,
     name,
-    template
+    template,
+    props,
   }) {
     if (path && name) {
       let ext = this.getFileExtension(name)
@@ -80,19 +81,10 @@ const fileUtil = {
         default:
       }
       return new Promise((res, rej) => {
-        // fs.writeFileSync(path + '\\' + name, template || '', {
-        //   flag: 'wx+'
-        // });
-        // res();
-
         fs.writeFile(path + '\\' + name, template || '', {
           flag: 'wx+'
         }, (err) => {
           if (err) {
-            // if (err.startsWith("Error: EEXIST")) {
-            //   rej('已存在同名文件' + name);
-            //   return;
-            // }
             rej(err);
           }
           res();
@@ -180,12 +172,14 @@ const reader = {
     return async req => {
       let path = req.data.path;
       let name = req.data.name;
+      let props = req.data.props;
       let template = req.data.template;
       try {
         fileUtil.createFile({
           path,
           name,
           template,
+          props,
         }).then(() => {
           platform.sendSuccessResult(req, {});
         }).catch(e => {
