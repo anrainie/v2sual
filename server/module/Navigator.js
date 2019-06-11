@@ -6,6 +6,9 @@ const listPath = config.runtime.page;
 
 const NAVIGATOR = config.module.navigator;
 const CATEGORY = NAVIGATOR.category;
+let EXCLUDE_MAP = {};
+
+NAVIGATOR.exclude.forEach(e => EXCLUDE_MAP[path.resolve(listPath, e)] = {});
 
 
 const listDir = (dirPath = listPath) => {
@@ -13,7 +16,7 @@ const listDir = (dirPath = listPath) => {
   try {
     let files = fs.readdirSync(dirPath);
     for (let i = 0; i < files.length; i++) {
-      let filePath = dirPath + path.sep + files[i];
+      let filePath = path.join(dirPath, files[i]);
       let stat = fs.lstatSync(dirPath + path.sep + files[i]);
       if (stat.isDirectory()) {
         let DirInfo = listDir(filePath);
@@ -29,6 +32,7 @@ const listDir = (dirPath = listPath) => {
           children: DirInfo
         };
 
+        //特殊处理某些文件夹
         switch (name) {
           case CATEGORY.ENTRY.NAME:
             folder.entry = true;
@@ -44,11 +48,11 @@ const listDir = (dirPath = listPath) => {
         }
         treeNode.push(folder);
       } else {
-        let nodeInfo = listFile(filePath);
-        if (nodeInfo) {
+        if (path.extname(filePath) === '.vue' && !EXCLUDE_MAP[filePath]) {
+          const nodeInfo = path.parse(filePath);
           treeNode.push({
-            name: nodeInfo,
-            label: nodeInfo,
+            name: nodeInfo.name,
+            label: nodeInfo.name,
             resId: 'vue',
             icon: "ideicon iconyemian",
             type: 'file',
@@ -89,11 +93,6 @@ const sorter = (a, b) => {
   return a.category > b.category ? 1 : -1;
 }
 
-const listFile = (pagePath) => {
-  if (pagePath.endsWith('.vue')) {
-    return path.basename(pagePath);
-  }
-}
 
 const Navigator = {
   getRootItems(platform, dirPath, req) {
