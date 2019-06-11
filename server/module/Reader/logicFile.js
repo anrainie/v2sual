@@ -31,7 +31,8 @@ let json2script = function (json) {
 
     transfer = this.bindData(logic, content.dataBasket.mapping);
 
-    //TODO transfer数据没有初始化
+    // transfer数据初始化
+    if(!transfer.pollList)transfer.pollList=[];
 
 
     if (transfer) {
