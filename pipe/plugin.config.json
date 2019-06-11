@@ -1,0 +1,488 @@
+[
+    {
+        "name": "desp",
+        "type": "string_input",
+        "desp": "中文名"
+    },
+    {
+        "name": "name",
+        "type": "string_input",
+        "desp": "接口名"
+    },
+    {
+        "name": "category",
+        "type": "string_select",
+        "desp": "类别",
+        "valueArray": [
+            "dataSource",
+            "comparison",
+            "number",
+            "logic",
+            "string",
+            "api"
+        ],
+        "despArray": [
+            "数据源",
+            "比较运算",
+            "数字运算",
+            "逻辑运算",
+            "字符串",
+            "接口"
+        ]
+    },
+    {
+        "name": "label",
+        "type": "string_input",
+        "desp": "label文本"
+    },
+    {
+        "name": "labelType",
+        "type": "string_select",
+        "desp": "图表类型",
+        "valueArray": [
+            "front",
+            "normal",
+            "function"
+        ],
+        "despArray": [
+            "文本在前",
+            "文本在中间",
+            "函数式"
+        ]
+    },
+    {
+        "name": "belongTo",
+        "type": "string_select",
+        "desp": "类型",
+        "valueArray": [
+            "function",
+            "class",
+            "closure"
+        ],
+        "despArray": [
+            "方法",
+            "类",
+            "闭包"
+        ]
+    },
+    {
+        "name": "params",
+        "desp": "入参",
+        "type": "array",
+        "attrInEachElement": [
+            {
+                "name": "name",
+                "desp": "英文名",
+                "type": "string_input"
+            },
+            {
+                "name": "desp",
+                "desp": "描述",
+                "type": "string_input"
+            },
+            {
+                "name": "type",
+                "desp": "类型",
+                "type": "string_select",
+                "group": [
+                    {
+                        "label": "原子类型",
+                        "valueArray": [
+                            "string",
+                            "number",
+                            "boolean",
+                            "string_select",
+                            "url",
+                            "option"
+                        ],
+                        "despArray": [
+                            "字符串",
+                            "数字",
+                            "布尔值",
+                            "枚举值",
+                            "后台服务地址",
+                            "组件实例配置"
+                        ]
+                    },
+                    {
+                        "label": "复合类型",
+                        "valueArray": [
+                            "object",
+                            "array",
+                            "jQuery",
+                            "function",
+                            "handler",
+                            "event"
+                        ],
+                        "despArray": [
+                            "对象",
+                            "数组",
+                            "jQuery对象",
+                            "函数",
+                            "入参函数",
+                            "事件句柄"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "necessary",
+                "desp": "是否必填",
+                "type": "boolean",
+                "defaultValue": true
+            },
+            {
+                "name": "defaultValue",
+                "type": "string_simpleHtml",
+                "desp": "默认值"
+            },
+            {
+                "name": "children",
+                "desp": "子参数",
+                "type": "array",
+                "attrInEachElement": "self",
+                "require": {
+                    "type": [
+                        "object",
+                        "array"
+                    ]
+                }
+            }
+        ],
+        "require": {
+            "belongTo": [
+                "function",
+                "closure"
+            ]
+        }
+    },
+    {
+        "name": "hasReturn",
+        "desp": "是否有出参",
+        "type": "boolean",
+        "defaultValue": false,
+        "require": {
+            "belongTo": [
+                "function",
+                "closure"
+            ]
+        }
+    },
+    {
+        "name": "returnValue",
+        "desp": "出参",
+        "type": "object",
+        "attr": [
+            {
+                "name": "name",
+                "desp": "英文名",
+                "type": "string_input"
+            },
+            {
+                "name": "desp",
+                "desp": "描述",
+                "type": "string_input"
+            },
+            {
+                "name": "details",
+                "desp": "详情",
+                "type": "string_input"
+            },
+            {
+                "name": "type",
+                "desp": "类型",
+                "type": "string_select",
+                "group": [
+                    {
+                        "label": "原子类型",
+                        "valueArray": [
+                            "string",
+                            "number",
+                            "boolean",
+                            "string_select",
+                            "url",
+                            "option"
+                        ],
+                        "despArray": [
+                            "字符串",
+                            "数字",
+                            "布尔值",
+                            "枚举值",
+                            "后台服务地址",
+                            "组件实例配置"
+                        ]
+                    },
+                    {
+                        "label": "复合类型",
+                        "valueArray": [
+                            "object",
+                            "array",
+                            "jQuery",
+                            "function",
+                            "handler",
+                            "event"
+                        ],
+                        "despArray": [
+                            "对象",
+                            "数组",
+                            "jQuery对象",
+                            "函数",
+                            "入参函数",
+                            "事件句柄"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "children",
+                "desp": "子元素",
+                "type": "array",
+                "attrInEachElement": "self",
+                "require": {
+                    "type": [
+                        "object",
+                        "array"
+                    ]
+                }
+            },
+            {
+                "name": "defaultValue",
+                "type": "string_simpleHtml",
+                "desp": "默认值"
+            }
+        ],
+        "require": {
+            "hasReturn": [
+                true
+            ]
+        }
+    },
+    {
+        "name": "cInterfaces",
+        "type": "array",
+        "desp": "子方法",
+        "attrInEachElement": [
+            {
+                "name": "desp",
+                "type": "string_input",
+                "desp": "中文名"
+            },
+            {
+                "name": "name",
+                "type": "string_input",
+                "desp": "接口名"
+            },
+            {
+                "name": "details",
+                "type": "string_input",
+                "desp": "详情"
+            },
+            {
+                "name": "params",
+                "desp": "入参",
+                "type": "array",
+                "attrInEachElement": [
+                    {
+                        "name": "name",
+                        "desp": "名称",
+                        "type": "string_input"
+                    },
+                    {
+                        "name": "desp",
+                        "desp": "描述",
+                        "type": "string_input"
+                    },
+                    {
+                        "desp": "在逻辑概览中的默认配置类型",
+                        "name": "overviewType",
+                        "type": "string_select",
+                        "valueArray": [
+                            "default",
+                            "interface",
+                            "request",
+                            "response"
+                        ],
+                        "despArray": [
+                            "默认",
+                            "接口",
+                            "传输数据",
+                            "返回数据"
+                        ]
+                    },
+                    {
+                        "name": "type",
+                        "desp": "类型",
+                        "type": "string_select",
+                        "group": [
+                            {
+                                "label": "原子类型",
+                                "valueArray": [
+                                    "string",
+                                    "number",
+                                    "boolean",
+                                    "string_select",
+                                    "url",
+                                    "option"
+                                ],
+                                "despArray": [
+                                    "字符串",
+                                    "数字",
+                                    "布尔值",
+                                    "枚举值",
+                                    "后台服务地址",
+                                    "组件实例配置"
+                                ]
+                            },
+                            {
+                                "label": "复合类型",
+                                "valueArray": [
+                                    "object",
+                                    "array",
+                                    "jQuery",
+                                    "function",
+                                    "handler",
+                                    "event"
+                                ],
+                                "despArray": [
+                                    "对象",
+                                    "数组",
+                                    "jQuery对象",
+                                    "函数",
+                                    "入参函数",
+                                    "事件句柄"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "defaultValue",
+                        "desp": "默认值",
+                        "type": "string_input",
+                        "require": {
+                            "type": [
+                                "string",
+                                "number",
+                                "boolean"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "children",
+                        "desp": "子参数",
+                        "type": "array",
+                        "attrInEachElement": "self",
+                        "require": {
+                            "type": [
+                                "object",
+                                "array",
+                                "handler"
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "hasReturn",
+                "desp": "是否有出参",
+                "type": "boolean",
+                "defaultValue": true
+            },
+            {
+                "name": "returnValue",
+                "desp": "出参",
+                "type": "object",
+                "attr": [
+                    {
+                        "name": "name",
+                        "desp": "名称",
+                        "type": "string_input"
+                    },
+                    {
+                        "name": "desp",
+                        "desp": "描述",
+                        "type": "string_input"
+                    },
+                    {
+                        "name": "type",
+                        "desp": "类型",
+                        "type": "string_select",
+                        "group": [
+                            {
+                                "label": "原子类型",
+                                "valueArray": [
+                                    "string",
+                                    "number",
+                                    "boolean",
+                                    "string_select",
+                                    "url",
+                                    "option"
+                                ],
+                                "despArray": [
+                                    "字符串",
+                                    "数字",
+                                    "布尔值",
+                                    "枚举值",
+                                    "后台服务地址",
+                                    "组件实例配置"
+                                ]
+                            },
+                            {
+                                "label": "复合类型",
+                                "valueArray": [
+                                    "object",
+                                    "array",
+                                    "jQuery",
+                                    "function",
+                                    "handler",
+                                    "event"
+                                ],
+                                "despArray": [
+                                    "对象",
+                                    "数组",
+                                    "jQuery对象",
+                                    "函数",
+                                    "入参函数",
+                                    "事件句柄"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "name": "defaultValue",
+                        "desp": "默认值",
+                        "type": "string_input",
+                        "require": {
+                            "type": [
+                                "string",
+                                "number",
+                                "boolean"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "children",
+                        "desp": "子元素",
+                        "type": "array",
+                        "attrInEachElement": "self",
+                        "require": {
+                            "type": [
+                                "object",
+                                "array"
+                            ]
+                        }
+                    }
+                ],
+                "require": {
+                    "hasReturn": [
+                        true
+                    ]
+                }
+            }
+        ],
+        "require": {
+            "belongTo": [
+                "class"
+            ]
+        }
+    }
+]

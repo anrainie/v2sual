@@ -9,6 +9,7 @@
      <div class="form-input-ctn" :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
       <el-input
       v-if="!model.autoComplete"
+      v-model="model.value"
       ref="_op_formInput_input"
       :placeholder="model.placeholder"
       :clearable="model.clearable"
@@ -17,6 +18,7 @@
 
       <el-autocomplete
       v-if="model.autoComplete"
+       v-model="model.value"
       ref="_op_formInput_input"
       :placeholder="model.placeholder"
       :clearable="model.clearable"

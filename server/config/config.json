@@ -15,6 +15,7 @@
         "componentFile": "./src/@aweb-components/aweb.components.js",
         "pipe": "../pipe/src/main/webapp/plugins",
         "page": "./src/views",
+        "customWidget": "./src/views/_customWidget",
         "datadict": "./src/datadict",
         "dist": "./dist",
         "homepage": "index.html"
@@ -23,7 +24,20 @@
         "navigator": {
             "consumption": {
                 "getNaviItems": "getNaviItems"
-            }
+            },
+            "category": {
+                "ENTRY": {
+                    "NAME": "_entry",
+                    "LABEL": "入口页面"
+                },
+                "CUSTOM_WIDGET": {
+                    "NAME": "_customWidget",
+                    "LABEL": "自定义组件"
+                }
+            },
+            "exclude": [
+                "Layout.vue"
+            ]
         },
         "pageFlow": {
             "consumption": {
@@ -48,7 +62,7 @@
                 "/v1/preview/init": "init"
             },
             "script": {
-                "init":"npm i",
+                "init": "npm i",
                 "style": "npm run style",
                 "script": "npm run component"
             },
