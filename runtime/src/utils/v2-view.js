@@ -2,56 +2,57 @@ import store from './store.js'
 import FocusManager from './focusManager'
 
 export const root = {
+  data() {
+    return {
+      poll_runnableList: [],
+      poll_timer: -1,
+      poll_count: 1,
+    }
+  },
   computed: {
     rootId() {
       return this.$store.state.structure ? this.$store.state.structure.id : null;
     },
   },
-  data(){
-    return {
-      __runnableList:[],
-      __timer:-1,
-      __count:1,
-    }
-  },
-  methods:{
-    __check(runnable){
+  methods: {
+    __check(runnable) {
       let freq = runnable.freq;
-      if(this.__count % freq===0){
-        return  true;
-      }else{
+      if (this.poll_count % freq === 0) {
+        return true;
+      } else {
         return false;
       }
 
     },
-    __pause(){
-      let self= this;
-
-      if(self.__runnableList&&self.__runnableList.length)
-      self.__timer = setInterval(()=>{
-        for(let runnable of self.__runnableList){
-            if(self.__check(runnable)){
+    __pause() {
+      clearInterval(this.poll_timer);
+     
+    },
+    __resume() {
+      let self = this;
+      debugger
+      if (self. poll_runnableList && self. poll_runnableList.length)
+        self.poll_timer = setInterval(() => {
+          for (let runnable of self.poll_runnableList) {
+            if (self.__check(runnable)) {
               runnable.run();
             }
-            self.__count++;
-        }
-      },100)
-    },
-    __resume(){
-      clearInterval(this.__timer);
+            self.poll_count++;
+          }
+        }, 100)
     }
   },
   beforeCreate() {
-     this.$store = new store();
+    this.$store = new store();
     this.focusManager = new FocusManager(this);
   },
-  beforeDestroy(){
-    this.focusManager&&this.focusManager.dispose();
+  beforeDestroy() {
+    this.focusManager && this.focusManager.dispose();
   },
   beforeMount() {
     console.log(1..toString().repeat(100));
     this.$store.commit('init', this.CONTENT)
-    this.$store.state.root=this;
+    this.$store.state.root = this;
   },
   mounted() {
     //找到所有的作用域
@@ -104,13 +105,13 @@ export const widget = {
         if (m)
           return m;
         throw `找不到model${this.name}:${this.wid}`
-      } catch (e) {}
+      } catch (e) { }
     },
     parentId() {
       return this.pid || (this.pid = this.$store.getters.parentId(this.wid));
     },
     labelStyle() {
-    
+
       this.model.style = this.model.style || {};
       return {
         width: this.model.labelWitdh,
