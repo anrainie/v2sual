@@ -31,7 +31,8 @@
         },
         "category": "dataSource",
         "label": "excel",
-        "labelType": "excel"
+        "labelType": "excel",
+        "icon": "icondanfangfa"
     },
     "category": "DataSource",
     "description": "",

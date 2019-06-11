@@ -10,6 +10,11 @@
         "desp": "接口名"
     },
     {
+        "name": "icon",
+        "type": "string_input",
+        "desp": "图标"
+    },
+    {
         "name": "category",
         "type": "string_select",
         "desp": "类别",

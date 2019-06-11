@@ -31,7 +31,7 @@ sessionStorage.setItem('user', JSON.stringify({'user':'test'}));
 
 router.beforeEach((to, from, next) => {
 
-  
+
   // if (to.path == '/main') {
   //   sessionStorage.removeItem('user');
   // }

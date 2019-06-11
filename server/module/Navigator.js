@@ -14,11 +14,11 @@ NAVIGATOR.exclude.forEach(e => EXCLUDE_MAP[path.resolve(listPath, e)] = {});
 const listDir = (dirPath = listPath) => {
   let treeNode = [];
   try {
+
     const stats = fs.lstatSync(dirPath);
 
     if (stats.isDirectory()) {
       let files = fs.readdirSync(dirPath);
-
       for (let i = 0; i < files.length; i++) {
         let filePath = path.join(dirPath, files[i]);
         let stat = fs.lstatSync(dirPath + path.sep + files[i]);
@@ -42,10 +42,13 @@ const listDir = (dirPath = listPath) => {
               folder.entry = true;
               folder.label = CATEGORY.ENTRY.LABEL;
               folder.index = -2;
+              folder.icon = "ideicon iconrukouwenjianjia";
               break;
             case CATEGORY.CUSTOM_WIDGET.NAME:
               folder.label = CATEGORY.CUSTOM_WIDGET.LABEL;
               folder.index = -1;
+              folder.icon = "ideicon iconzidingyizujianwenjianjia";
+
               break;
             default:
               folder.index = 0;
@@ -65,10 +68,9 @@ const listDir = (dirPath = listPath) => {
             });
           }
         }
+        treeNode.sort(sorter);
       }
-      treeNode.sort(sorter);
     }
-
   } catch (e) {
     console.error(e);
   }
@@ -145,8 +147,8 @@ const Navigator = {
   getNaviItems(platform) {
     return async (req) => {
       try {
-        let dirPath = path.normalize(req.data.path || req.data.end || path.sep);
-        switch (dirPath) {
+        let dirPath = req.data.path || req.data.end;
+        switch (req.data.path) {
           case "\\":
           case null:
           case "/":

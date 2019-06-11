@@ -4,7 +4,7 @@
   },
   "bundleDependencies": false,
   "deprecated": false,
-  "description": "数值输入框",
+  "description": "数值输入",
   "docs": {
     "belongTo": "aui",
     "icon": "iconshuzhishuru",
@@ -13,7 +13,7 @@
     "author": "fengjiarong@agree.com.cn",
     "version": 510000,
     "accept": "foundationRowCtn divCtn",
-    "name": "数值输入框",
+    "name": "数值输入",
     "option": [
       {
         "name": "label",

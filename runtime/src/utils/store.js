@@ -269,7 +269,7 @@ export default () => {
         }else{
           vueObj.binder = [vueBind, commentBind]
         }
-    
+        model[modelKey]=data;
         //如果是表单类的组件的value值，清空绑定的变量
          if(modelKey==='value'){
            commentObj.model[modelKey]="";
