@@ -243,19 +243,19 @@ let toCode = function (logic) {
 }
 // 转换轮询
 let transToPoll = function (pollList) {
-    let self = this,arr, outRes;
+    let self = this,arr, outRe,res;
 
     return pollList.map(pollItem => {
         arr = pollItem.labelObj.view.map(item => {
             res = item.name;
-            return `const ${res} = await ${self.transViewCode(item.value[0])}`;
+            return `\f \f \f const ${res} = await ${self.transViewCode(item.value[0])}`;
         });
         outRes = pollItem.labelObj.output.map(item => {
             if (item.key !== "" && item.value !== "")
-                return `${item.value} = ${item.key}`;
+                return `\f \f \f ${item.value} = ${item.key};`;
         });
         if (arr.length) {
-            outCode = `async()=>{${arr.join("\n")}${outRes.join("\n")}}`;
+            outCode = `async()=>{\n${arr.join("\n")}\n${outRes.join("\n")}\n}`;
         } else {
             outCode = "";
         }
