@@ -31,7 +31,8 @@
             "defaultValue": ""
         },
         "label": "AFA",
-        "labelType": "front"
+        "labelType": "front",
+        "icon": "icondanfangfa"
     },
     "category": "DataSource",
     "description": "",
