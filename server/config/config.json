@@ -15,6 +15,7 @@
         "componentFile": "./src/@aweb-components/aweb.components.js",
         "pipe": "../pipe/src/main/webapp/plugins",
         "page": "./src/views",
+        "customWidget":"./src/views/_customWidget",
         "datadict": "./src/datadict",
         "dist": "./dist",
         "homepage": "index.html"

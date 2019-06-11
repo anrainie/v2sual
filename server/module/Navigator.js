@@ -68,7 +68,7 @@ const listDir = (dirPath = listPath) => {
 
 const sorter = (a, b) => {
   if (a.resId == b.resId) {
-    if(a.index!==b.index){
+    if (a.index !== b.index) {
       if (!Number.isNaN(a.index) && !Number.isNaN(b.index)) {
         return a.index - b.index;
       } else if (!Number.isNaN(a.index)) {
@@ -76,7 +76,7 @@ const sorter = (a, b) => {
       } else if (!Number.isNaN(b.index)) {
         return 1;
       }
-    }else{
+    } else {
       if (a.name == null) {
         return -1;
       } else if (b.name == null) {
@@ -99,10 +99,10 @@ const Navigator = {
   getRootItems(platform, dirPath, req) {
     try {
       const viewPath = listDir(dirPath);
-      let flowPath = viewPath.filter(v => v.entry).map(e => e.children)[0];
+      let flowPath = JSON.parse(JSON.stringify(viewPath.filter(v => v.entry).map(e => e.children)[0] || []));
 
       //rename flow
-      let copy = JSON.parse(JSON.stringify(flowPath));
+      let copy = [].concat(flowPath);
       let item;
 
       while (item = copy.pop()) {
