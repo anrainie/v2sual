@@ -12,7 +12,6 @@
         </div>
       
       </el-col>
-{{activeIndex+ '||'+ $route.path+ '||'+isRouterAlive}}
       <el-col :span="4" class="aweb-userinfo">
 
         <el-tooltip  effect="dark" content="下载案例" placement="left">

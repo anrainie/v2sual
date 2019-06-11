@@ -12,11 +12,11 @@
                 methods:{},
                 watch:{},
                 beforeCreate(){
-                    let ctx = this;
-                    ctx.runnablelist.push({
-                            run:,
-                            freq:1
-                        })
+                    // let ctx = this;
+                    // ctx.runnablelist.push({
+                    //         run:,
+                    //         freq:1
+                    //     })
                     
                 },
                 created(){
