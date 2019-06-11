@@ -50,7 +50,7 @@ let json2script = function (json) {
                 watch:{${self.methodsToCode(transfer.watch)}},
                 beforeCreate(){
                     let ctx = this;
-                    ctx.runnablelist.push(${transfer.pollList.map(item=>{
+                    ctx.__runnableList.push(${transfer.pollList.map(item=>{
                         return `{
                             run:${item.code},
                             freq:${item.freq}
@@ -80,7 +80,7 @@ let json2script = function (json) {
                 },
                 beforeDestroy(){ 
                     let ctx = this;
-                    /**unBind**/this.$store("unbind",this)/**unBind over**/
+                    /**unBind**/this.$store.commit("unbind",this)/**unBind over**/
                         ${transfer.beforeDestroy ? transfer.beforeDestroy.code : ''}
                 },
                 destroyed(){
