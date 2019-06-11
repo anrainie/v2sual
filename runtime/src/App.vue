@@ -16,8 +16,8 @@ import events from "@/utils/events";
 import inputField from "@/utils/inputField";
 import container from "@/components/container.vue";
 import empty from "@/components/empty.vue";
+import loop from '@/components/Loop.vue';
 
-console.log(components);
 //注册组件
 Object.keys(components).map(c => {
   Vue.component(c, { mixins: [widget, events, inputField], ...components[c] });
@@ -25,6 +25,7 @@ Object.keys(components).map(c => {
 
 Vue.component("v2container", container);
 Vue.component("v2empty", empty);
+Vue.component("v2loop", loop);
 
 export default {
   name: "app"
