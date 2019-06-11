@@ -23,6 +23,16 @@
         "navigator": {
             "consumption": {
                 "getNaviItems": "getNaviItems"
+            },
+            "category":{
+                "ENTRY":{
+                    "NAME":"_entry",
+                    "LABEL":"入口页面"
+                },
+                "CUSTOM_WIDGET":{
+                    "NAME":"_customWidget",
+                    "LABEL":"自定义组件"
+                }
             }
         },
         "pageFlow": {
