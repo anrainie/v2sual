@@ -5,6 +5,26 @@ const path = require('path');
 
 const config = require('../config/config.base');
 
+const sorter = (a, b) => {
+  if (a.index !== b.index) {
+    if (!Number.isNaN(a.index) && !Number.isNaN(b.index)) {
+      return a.index - b.index;
+    } else if (!Number.isNaN(a.index)) {
+      return 1;
+    } else if (!Number.isNaN(b.index)) {
+      return 1;
+    }
+  } else {
+    if (a.name == null) {
+      return -1;
+    } else if (b.name == null) {
+      return 1;
+    }
+  }
+
+  return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
+}
+
 let editor = {
   'widget'(platform) {
     return async (req) => {
@@ -22,7 +42,8 @@ let editor = {
             if (content.docs) {
               menu.push({
                 ...content.docs,
-                main: content.main
+                main: content.main,
+                index:content.index
               })
             }
           });
@@ -47,7 +68,7 @@ let editor = {
               })
             }
           });
-        platform.sendSuccessResult(req, menu);
+        platform.sendSuccessResult(req, menu.sort(sorter));
       } catch (e) {
         platform.sendErrorResult(req, e);
       }
