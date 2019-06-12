@@ -11,7 +11,8 @@ export default {
   beforeMount() {},
   beforeDestroy() {
     let editor = this.$store.state.editor;
-    editor.focusManager.unregist(this);
+    if (editor)
+      editor.focusManager.unregist(this);
   },
   mounted() {
     let self = this;
@@ -49,7 +50,7 @@ export default {
               editor.focusManager.unbind(self, eventType);
               logics == logics.constructor == String ? [logics] : logics;
               //TODO dom可能是vue对象，也可能是一个dom元素，这里暂时只考虑vue对象
-              dom.$on(eventType, function(){
+              dom.$on(eventType, function () {
                 let myargs = [...arguments];
                 let apply = () => {
                   for (let logic of logics) {
