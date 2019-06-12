@@ -22,13 +22,14 @@ let json2script = function (json) {
   let content = JSON.parse(json),
     data = content.dataBasket.data,
     structure = content.structure,
-    logic = content.logic,porpStr,
+    logic = content.logic,
+    porpStr,
     template, finalStr,
     self = this,
     transfer = self.toCode(logic),
 
     dataStr = self.createData(data);
-    porpStr = self.createProp(data);
+  porpStr = self.createProp(data);
   transfer = self.bindData(logic, content.dataBasket.mapping);
 
   // transfer数据初始化
@@ -141,16 +142,16 @@ let createData = function (data) {
 
 // 生成index
 let __buildIndex = (v, pool) => {
-    if (v) {
-      pool[v.id] = v;
-      if (v.children) {
-        for (let i of v.children)
-         this. __buildIndex(i, pool);
-      }
+  if (v) {
+    pool[v.id] = v;
+    if (v.children) {
+      for (let i of v.children)
+        this.__buildIndex(i, pool);
     }
   }
+}
 // 生成props
-let createProp=(data)=>{
+let createProp = (data) => {
   let i, arr = [];
   for (i in data) {
     arr.push(`${i}:{default:()=>{return ${data[i] === "" ? '""' : data[i]}}}`);
@@ -178,7 +179,7 @@ let toCode = function (logic) {
             if (item.key !== "" && item.value !== "")
               return `${item.value} = ${item.key};`;
           });
-          if (arr.length||outRes.length) {
+          if (arr.length || outRes.length) {
             outCode = `
                     /**overview ${k}**/
                         (async()=>{${arr.join("\n")}\n${outRes.join("\n")}})();
@@ -202,7 +203,7 @@ let toCode = function (logic) {
             if (item.key !== "" && item.value !== "")
               return `${item.value} = ${item.key};`;
           });
-          if (arr.length||outRes.length) {
+          if (arr.length || outRes.length) {
             outCode = `
                 /**overview ${k}**/
                     (async()=>{${arr.join("\n")}\n${outRes.join("\n")}})();
@@ -226,7 +227,7 @@ let toCode = function (logic) {
               return `${item.value} = ${item.key};`;
           });
         };
-        if (arr.length||outRes.length) {
+        if (arr.length || outRes.length) {
           outCode = `
                     /**data**/
                 /**overview ${i}**/
@@ -255,7 +256,7 @@ let toCode = function (logic) {
               return `${item.value} = ${item.key};`;
           });
         }
-        if (arr.length||outRes.length) {
+        if (arr.length || outRes.length) {
           outCode = `
                     /**overview ${i}**/
                         (async()=>{${arr.join("\n")}\n${outRes.join("\n")}})();
@@ -273,7 +274,7 @@ let toCode = function (logic) {
 // 转换轮询
 let transToPoll = function (pollList) {
   let self = this,
-    arr, outRes, outCode,res;
+    arr, outRes, outCode, res;
 
   return pollList.map(pollItem => {
     arr = pollItem.labelObj.view.map(item => {
@@ -283,7 +284,7 @@ let transToPoll = function (pollList) {
     outRes = pollItem.labelObj.output.map(item => {
       if (item.key !== "" && item.value !== "") return `\f \f \f ${item.value} = ${item.key};`;
     });
-    if (arr.length||outRes.length) {
+    if (arr.length || outRes.length) {
       outCode = `async()=>{\n${arr.join("\n")}\n${outRes.join("\n")}\n}`;
     } else {
       outCode = "";
@@ -374,13 +375,8 @@ let childrenSpli = function (item) {
 // 转换预览代码-4 处理参数
 let transItem = function (item) {
   let temp,
-    arr,
-    tempv2,
-    value,
-    option = item.option,
-    self = this;
+    option = item.option;
 
-  value = option.value;
   switch (option.type) {
     case "Value":
       temp = JSON.parse(JSON.stringify(Identifier));
@@ -394,104 +390,10 @@ let transItem = function (item) {
       return temp;
       break;
   }
-}
+};
 
-// 修改def json内容
-let changeDef = function (content, logicOptions) {
-  let logic = content.logic.content,
-    structure = content.structure,
-    name,
-    code,
-    type,
-    data = content.dataBasket.data,
-    ast, astContent, methods,
-    watch, str, tempAst, hook,
-    dataAst, dataAstContent, dataTar,
-    beforeCreate, defini;
-
-  // ast = UglifyJS.parse(logic);
-  // astContent = ast.body[0].exported_value.properties;
-
-  // // 添加绑定数据
-  // beforeCreate = ast.body[0].exported_value.properties.map(item => {
-  //     if (item.key && item.key.name === "mounted") {
-  //         return bindData(item, content.structure);
-  //     } else {
-  //         return item;
-  //     }
-  // });
-  // ast.body[0].exported_value.properties = beforeCreate;
-  // if (logicOptions) {
-  //     name = logicOptions.name,
-  //         code = logicOptions.code,
-  //         type = logicOptions.type,
-  //         tempAst = UglifyJS.parse(`data={${code}}`);
-  //     defini = tempAst.body[0].body.right.properties[0].value.body[0];
-  //     if (defini && defini.definitions && defini.definitions[0].name.name === "ctx") tempAst.body[0].body.right.properties[0].value.body[0].end.comments_after = [];
-  //     switch (type) {
-  //         case "hook":
-  //             hook = astContent.map(item => {
-  //                 if (item.key && item.key.name === name) {
-  //                     return tempAst.body[0].body.right.properties[0];
-  //                 } else {
-  //                     return item;
-  //                 }
-  //             });
-  //             ast.body[0].exported_value.properties = hook;
-  //             break;
-  //         case "watch":
-  //             watch = astContent.filter(item => item.key && item.key === "watch")[0];
-  //             watch.value.properties = watch.value.properties.map(item => {
-  //                 if (item.key.name === name) {
-  //                     return tempAst.body[0].body.right.properties[0];
-  //                 } else {
-  //                     return item;
-  //                 }
-  //             });
-  //             break;
-  //         default:
-  //             methods = astContent.filter(item => item.key && item.key === "methods")[0];
-  //             methods.value.properties = methods.value.properties.map((item, index) => {
-  //                 if (item.key.name === name) {
-  //                     return tempAst.body[0].body.right.properties[0];
-  //                 } else {
-  //                     return item;
-  //                 }
-  //             });
-  //             break;
-  //     };
-  // } else {
-
-  // }
-  // // 处理data
-  // data.CONTENT = {};
-  // dataAst = UglifyJS.parse("data=" + JSON.stringify(data));
-  // dataTar = ast.body[0].exported_value.properties.filter(item => item.key && item.key.name === "data")[0];
-  // dataAstContent = dataAst.body[0].body.right.properties;
-  // dataTar.value.body[0].value.properties = dataAstContent.map(item => {
-  //     let ast;
-  //     if (item.key === "CONTENT") {
-  //         ast = UglifyJS.parse("data=" + JSON.stringify({ "structure": structure }));
-  //     } else if (data[item.key] === '') {
-  //         ast = UglifyJS.parse("data=''");
-  //     } else {
-  //         ast = UglifyJS.parse("data=" + data[item.key]);
-  //     }
-  //     ast = ast.body[0].body.right;
-  //     item.value = ast
-  //     return item
-  // });
-
-
-  // str = ast.print_to_string({ beautify: true, comments: true });
-
-  // content.logic.content = str;
-  return content;
-}
-
-//======================================================================================================================
+// ======================================================================================================================
 exports.json2script = json2script;
-exports.changeDef = changeDef;
 exports.toCode = toCode;
 exports.transViewCode = transViewCode;
 exports.transToFun = transToFun;
