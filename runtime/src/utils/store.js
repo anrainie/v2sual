@@ -253,6 +253,7 @@ export default () => {
        try{
         let model = this.getters.model(wid);
         let commentObj = this.getters.vueInstance(wid);
+        if(!commentObj)debugger;
         //改变state.baskect自动改变model
         let vueBind = vueObj.$watch(dataStr, v => {
         
