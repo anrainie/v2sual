@@ -26,12 +26,12 @@ export const root = {
     },
     __pause() {
       clearInterval(this.poll_timer);
-     
+
     },
     __resume() {
       let self = this;
 
-      if (self. poll_runnableList && self. poll_runnableList.length)
+      if (self.poll_runnableList && self.poll_runnableList.length)
         self.poll_timer = setInterval(() => {
           for (let runnable of self.poll_runnableList) {
             if (self.__check(runnable)) {
@@ -43,17 +43,21 @@ export const root = {
     }
   },
   beforeCreate() {
-    console.log('editor init')
     this.$store = new store();
     this.focusManager = new FocusManager(this);
+
   },
   beforeDestroy() {
     this.focusManager && this.focusManager.dispose();
   },
   beforeMount() {
-    console.log(1..toString().repeat(100));
     this.$store.commit('init', this.CONTENT)
     this.$store.state.root = this;
+    if (this.$route && this.$route.query) {
+      for (let key in this.$route.query) {
+        this[key] = this.$route.query[key];
+      }
+    }
   },
   mounted() {
     //找到所有的作用域
@@ -106,7 +110,7 @@ export const widget = {
         if (m)
           return m;
         throw `找不到model${this.name}:${this.wid}`
-      } catch (e) { }
+      } catch (e) {}
     },
     parentId() {
       return this.pid || (this.pid = this.$store.getters.parentId(this.wid));
