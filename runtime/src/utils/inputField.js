@@ -27,6 +27,7 @@ const preview = {
       return this.$focusNext(e);
     },
     $focusNext(e) {
+      this.blur&&this.blur();
       let inputFields = this.__getInputFields();
       let index = $.inArray(e.target, inputFields);
       let target = inputFields[index + 1] ? $(inputFields[index + 1]) : $(inputFields[0])

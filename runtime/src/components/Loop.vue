@@ -3,9 +3,9 @@
     <component
       v-for="($item,$key) in model.__loopTarget"
       :key="$key"
-      :id="wigetId($item,$key)"
+      :id="widgetId($item,$key)"
       :is="model.component"
-      :wid="wigetId($item,$key)"
+      :wid="widgetId($item,$key)"
       :index="index"
       :pid="wid"
       :defaultModel="model"
