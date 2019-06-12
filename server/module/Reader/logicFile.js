@@ -167,7 +167,7 @@ let toCode = function (logic) {
             if (item.key !== "" && item.value !== "")
               return `${item.value} = ${item.key}`;
           });
-          if (arr.length) {
+          if (arr.length||outRes.length) {
             outCode = `
                     /**overview ${k}**/
                         (async()=>{${arr.join("\n")}${outRes.join("\n")}})();
@@ -191,7 +191,7 @@ let toCode = function (logic) {
             if (item.key !== "" && item.value !== "")
               return `${item.value} = ${item.key}`;
           });
-          if (arr.length) {
+          if (arr.length||outRes.length) {
             outCode = `
                 /**overview ${k}**/
                     (async()=>{${arr.join("\n")}${outRes.join("\n")}})();
@@ -215,7 +215,7 @@ let toCode = function (logic) {
               return `${item.value} = ${item.key}`;
           });
         };
-        if (arr.length) {
+        if (arr.length||outRes.length) {
           outCode = `
                     /**data**/
                 /**overview ${i}**/
@@ -244,7 +244,7 @@ let toCode = function (logic) {
               return `${item.value} = ${item.key}`;
           });
         }
-        if (arr.length) {
+        if (arr.length||outRes.length) {
           outCode = `
                     /**overview ${i}**/
                         (async()=>{${arr.join("\n")}${outRes.join("\n")}})();
@@ -272,7 +272,7 @@ let transToPoll = function (pollList) {
     outRes = pollItem.labelObj.output.map(item => {
       if (item.key !== "" && item.value !== "") return `\f \f \f ${item.value} = ${item.key};`;
     });
-    if (arr.length) {
+    if (arr.length||outRes.length) {
       outCode = `async()=>{\n${arr.join("\n")}\n${outRes.join("\n")}\n}`;
     } else {
       outCode = "";
