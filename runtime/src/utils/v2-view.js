@@ -30,7 +30,7 @@ export const root = {
     },
     __resume() {
       let self = this;
-      debugger
+
       if (self. poll_runnableList && self. poll_runnableList.length)
         self.poll_timer = setInterval(() => {
           for (let runnable of self.poll_runnableList) {
