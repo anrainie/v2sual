@@ -161,7 +161,7 @@ let createProp = (data) => {
 let toCode = function (logic) {
   let self = this,
     i, k, obj, res, arr = [],
-    outRes, outCode;
+    outRes=[], outCode;
 
   for (i in logic) {
     arr = [];
