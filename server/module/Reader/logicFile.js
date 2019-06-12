@@ -22,14 +22,14 @@ let json2script = function (json) {
   let content = JSON.parse(json),
     data = content.dataBasket.data,
     structure = content.structure,
-    logic = content.logic,
+    logic = content.logic,porpStr,
     template, finalStr,
     self = this,
-    transfer = this.toCode(logic),
+    transfer = self.toCode(logic),
 
-    dataStr = this.createData(data);
-
-  transfer = this.bindData(logic, content.dataBasket.mapping);
+    dataStr = self.createData(data);
+    porpStr = self.createProp(data);
+  transfer = self.bindData(logic, content.dataBasket.mapping);
 
   // transfer数据初始化
   if (!transfer.pollList) transfer.pollList = [];
@@ -41,8 +41,11 @@ let json2script = function (json) {
                 data(){
                     return{
                         "CONTENT":{structure:${JSON.stringify(structure)}},
-                        ${dataStr.join(",")}
+                        ${dataStr.join(",\n")}
                     }
+                },
+                props:{
+                  ${porpStr.join(",\n")}
                 },
                 mixins:[root],
                 methods:{${self.methodsToCode(transfer.methods)}},
@@ -147,6 +150,15 @@ let __buildIndex = (v, pool) => {
       }
     }
   }
+// 生成props
+let createProp=(data)=>{
+  let i, arr = [];
+  for (i in data) {
+    arr.push(`${i}:{default:()=>{return ${data[i] === "" ? '""' : data[i]}}}`);
+  }
+  return arr;
+};
+
 // 转换代码
 let toCode = function (logic) {
   let self = this,
@@ -165,12 +177,12 @@ let toCode = function (logic) {
           });
           outRes = obj.labelObj.output.map(item => {
             if (item.key !== "" && item.value !== "")
-              return `${item.value} = ${item.key}`;
+              return `${item.value} = ${item.key};`;
           });
           if (arr.length||outRes.length) {
             outCode = `
                     /**overview ${k}**/
-                        (async()=>{${arr.join("\n")}${outRes.join("\n")}})();
+                        (async()=>{${arr.join("\n")}\n${outRes.join("\n")}})();
                     /**overview over**/
                     `;
           } else {
@@ -189,12 +201,12 @@ let toCode = function (logic) {
           });
           outRes = obj.labelObj.output.map(item => {
             if (item.key !== "" && item.value !== "")
-              return `${item.value} = ${item.key}`;
+              return `${item.value} = ${item.key};`;
           });
           if (arr.length||outRes.length) {
             outCode = `
                 /**overview ${k}**/
-                    (async()=>{${arr.join("\n")}${outRes.join("\n")}})();
+                    (async()=>{${arr.join("\n")}\n${outRes.join("\n")}})();
                 /**overview over**/
                 `;
           } else {
@@ -212,14 +224,14 @@ let toCode = function (logic) {
           });
           outRes = obj.labelObj.output.map(item => {
             if (item.key !== "" && item.value !== "")
-              return `${item.value} = ${item.key}`;
+              return `${item.value} = ${item.key};`;
           });
         };
         if (arr.length||outRes.length) {
           outCode = `
                     /**data**/
                 /**overview ${i}**/
-                    (async()=>{${arr.join("\n")}${outRes.join("\n")}})();
+                    (async()=>{${arr.join("\n")}\n${outRes.join("\n")}})();
                 /**overview over**/
                 `;
         } else {
@@ -241,13 +253,13 @@ let toCode = function (logic) {
           });
           outRes = obj.labelObj.output.map(item => {
             if (item.key !== "" && item.value !== "")
-              return `${item.value} = ${item.key}`;
+              return `${item.value} = ${item.key};`;
           });
         }
         if (arr.length||outRes.length) {
           outCode = `
                     /**overview ${i}**/
-                        (async()=>{${arr.join("\n")}${outRes.join("\n")}})();
+                        (async()=>{${arr.join("\n")}\n${outRes.join("\n")}})();
                     /**overview over**/
                     `;
         } else {
@@ -491,3 +503,4 @@ exports.createData = createData;
 exports.bindData = bindData;
 exports.transToPoll = transToPoll;
 exports.__buildIndex = __buildIndex;
+exports.createProp = createProp;
