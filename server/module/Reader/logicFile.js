@@ -42,10 +42,8 @@ let json2script = function (json) {
                 data(){
                     return{
                         "CONTENT":{structure:${JSON.stringify(structure)}},
+                        ${dataStr.join(",\n")}
                     }
-                },
-                props:{
-                  ${porpStr.join(",\n")}
                 },
                 mixins:[root],
                 methods:{${self.methodsToCode(transfer.methods)}},
