@@ -32,7 +32,7 @@ let json2script = function (json) {
     transfer = this.bindData(logic, content.dataBasket.mapping);
 
     // transfer数据初始化
-    if(!transfer.pollList)transfer.pollList=[];
+    if (!transfer.pollList) transfer.pollList = [];
 
 
     if (transfer) {
@@ -55,12 +55,15 @@ let json2script = function (json) {
                 },
                 created(){
                     let ctx = this;
-                    ctx.poll_runnableList.push(${transfer.pollList.map(item=>{
-                        return `{
+                    ${transfer.pollList.length !== 0 ? `
+                    ctx.poll_runnableList.push(${transfer.pollList.map(item => {
+                    return `{
                             run:${item.code},
                             freq:${item.freq}
                         }`
                     })})
+                    `: ``}
+                    
                     ${transfer.created ? transfer.created.code : ''}
                 },
                 beforeMount(){
@@ -70,7 +73,7 @@ let json2script = function (json) {
                 mounted(){
                     let ctx = this;
                     ${transfer.mounted ? transfer.mounted.code : ''}
-                    ${transfer.pollList.length===0?'':'ctx.__resume();'}
+                    ${transfer.pollList.length === 0 ? '' : 'ctx.__resume();'}
                 },
                 beforeUpdate(){
                     let ctx = this;
@@ -245,7 +248,7 @@ let toCode = function (logic) {
 }
 // 转换轮询
 let transToPoll = function (pollList) {
-    let self = this,arr, outRe,res;
+    let self = this, arr, outRe, res;
 
     return pollList.map(pollItem => {
         arr = pollItem.labelObj.view.map(item => {
