@@ -35,6 +35,7 @@ const preview = {
       return false;
     },
     $focusPrev(e) {
+      this.blur&&this.blur();
       let inputFields = this.__getInputFields();
       let index = $.inArray(e.target, inputFields);
       $(inputFields[index - 1]).focus();
