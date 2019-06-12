@@ -9,6 +9,7 @@ const fs = require('fs')
 const parseUtil = require('./parseUtil');
 const logicFile = require('./logicFile');
 const TEMPLATE = require('./vue.temp.json');
+const nodejsPath=require('path');
 
 module.exports = {
   read: (path) => new Promise((res, rej) => {
@@ -54,7 +55,7 @@ module.exports = {
       }
     }
     return new Promise((res, rej) => {
-      let realPath = path + '\\' + name;
+      let realPath = nodejsPath.join(path , name);
       let defPath = realPath + '.def'
       fs.writeFile(defPath, JSON.stringify(template), function (err) {
         if (err) rej(err);

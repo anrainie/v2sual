@@ -14,55 +14,63 @@ NAVIGATOR.exclude.forEach(e => EXCLUDE_MAP[path.resolve(listPath, e)] = {});
 const listDir = (dirPath = listPath) => {
   let treeNode = [];
   try {
-    let files = fs.readdirSync(dirPath);
-    for (let i = 0; i < files.length; i++) {
-      let filePath = path.join(dirPath, files[i]);
-      let stat = fs.lstatSync(dirPath + path.sep + files[i]);
-      if (stat.isDirectory()) {
-        let DirInfo = listDir(filePath);
-        let name = path.basename(filePath);
 
-        let folder = {
-          name,
-          label: name,
-          path: filePath,
-          resId: 'category',
-          type: 'folder',
-          category: 50,
-          children: DirInfo
-        };
+    const stats = fs.lstatSync(dirPath);
 
-        //特殊处理某些文件夹
-        switch (name) {
-          case CATEGORY.ENTRY.NAME:
-            folder.entry = true;
-            folder.label = CATEGORY.ENTRY.LABEL;
-            folder.index = -2;
-            break;
-          case CATEGORY.CUSTOM_WIDGET.NAME:
-            folder.label = CATEGORY.CUSTOM_WIDGET.LABEL;
-            folder.index = -1;
-            break;
-          default:
-            folder.index = 0;
+    if (stats.isDirectory()) {
+      let files = fs.readdirSync(dirPath);
+      for (let i = 0; i < files.length; i++) {
+        let filePath = path.join(dirPath, files[i]);
+        let stat = fs.lstatSync(dirPath + path.sep + files[i]);
+        if (stat.isDirectory()) {
+          let DirInfo = listDir(filePath);
+          let name = path.basename(filePath);
+
+          let folder = {
+            name,
+            label: name,
+            path: filePath,
+            resId: 'category',
+            type: 'folder',
+            category: 50,
+            children: DirInfo
+          };
+
+          //特殊处理某些文件夹
+          switch (name) {
+            case CATEGORY.ENTRY.NAME:
+              folder.entry = true;
+              folder.label = CATEGORY.ENTRY.LABEL;
+              folder.index = -2;
+              folder.icon = "ideicon iconrukouwenjianjia";
+              break;
+            case CATEGORY.CUSTOM_WIDGET.NAME:
+              folder.label = CATEGORY.CUSTOM_WIDGET.LABEL;
+              folder.index = -1;
+              folder.icon = "ideicon iconzidingyizujianwenjianjia";
+
+              break;
+            default:
+              folder.index = 0;
+          }
+          treeNode.push(folder);
+        } else {
+          if (path.extname(filePath) === '.vue' && !EXCLUDE_MAP[filePath]) {
+            const nodeInfo = path.parse(filePath);
+            treeNode.push({
+              name: nodeInfo.name,
+              label: nodeInfo.name,
+              resId: 'vue',
+              icon: "ideicon iconyemian",
+              type: 'file',
+              category: 100,
+              path: filePath
+            });
+          }
         }
-        treeNode.push(folder);
-      } else {
-        if (path.extname(filePath) === '.vue' && !EXCLUDE_MAP[filePath]) {
-          const nodeInfo = path.parse(filePath);
-          treeNode.push({
-            name: nodeInfo.name,
-            label: nodeInfo.name,
-            resId: 'vue',
-            icon: "ideicon iconyemian",
-            type: 'file',
-            category: 100,
-            path: filePath
-          });
-        }
+        treeNode.sort(sorter);
       }
     }
-    treeNode.sort(sorter);
   } catch (e) {
     console.error(e);
   }
@@ -125,7 +133,7 @@ const Navigator = {
       }, {
         name: 'flows',
         label: '页面流',
-        path: `${dirPath}\\_entry`,
+        path: path.join(dirPath, CATEGORY.ENTRY.NAME),
         resId: 'pathFlow',
         type: 'folder',
         children: flowPath
@@ -139,12 +147,12 @@ const Navigator = {
   getNaviItems(platform) {
     return async (req) => {
       try {
-        let dirPath = path.normalize(req.data.path || req.data.end || path.sep);
-        switch (dirPath) {
+        let dirPath = req.data.path || req.data.end;
+        switch (req.data.path) {
           case "\\":
           case null:
           case "/":
-          //case listPath:
+            //case listPath:
             //如果是根目录，则返回整理过的文件夹
             dirPath = listPath;
             this.getRootItems(platform, dirPath, req);
