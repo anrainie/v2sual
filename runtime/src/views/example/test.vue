@@ -68,7 +68,7 @@ ctx.tableData = t1;})();
                     
             }, event0_1559723090517(widget,item){
                 let ctx = this;
-                
+               
                     /**overview event0_1559723090517**/
                         (async()=>{const t1 = await this.open({status:true,path:'/table/detail',page:'example/TradeFlowTable',title:'交易子流水',type:'BLANK',params:item});
 })();
@@ -76,7 +76,7 @@ ctx.tableData = t1;})();
                     
             }, event0_1559722996456(widget,item){
                 let ctx = this;
-                
+            
                     /**overview event0_1559722996456**/
                         (async()=>{const t1 = await this.open({status:true,path:'/table/detail',page:'example/TradeFlowTable',title:'交易子流水',type:'BLANK',params:item});
 ctx.currentRow = item;})();
