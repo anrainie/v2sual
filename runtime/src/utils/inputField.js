@@ -1,10 +1,10 @@
 const preview = {
   methods: {
     __getInputFields() {
-      return Array.prototype.map.call($(':input'), function (elem) {
+      return Array.prototype.map.call($(':input'), function (elem,index) {
         return {
           elem,
-          index: $(elem).attr('tabindex') || Infinity
+          index: $(elem).attr('tabindex') || index|| Infinity
         };
       }).sort((a, b) => a.index - b.index).map(e => e.elem);
     },
@@ -69,8 +69,10 @@ const preview = {
               }
             }
           });
+          if(e.key == 'Tab') return false;
           return true;
         }
+        return true;
       }
     }
   },

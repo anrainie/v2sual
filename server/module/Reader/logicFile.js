@@ -42,10 +42,8 @@ let json2script = function (json) {
                 data(){
                     return{
                         "CONTENT":{structure:${JSON.stringify(structure)}},
+                        ${dataStr.join(",\n")}
                     }
-                },
-                props:{
-                  ${porpStr.join(",\n")}
                 },
                 mixins:[root],
                 methods:{${self.methodsToCode(transfer.methods)}},
@@ -163,7 +161,7 @@ let createProp = (data) => {
 let toCode = function (logic) {
   let self = this,
     i, k, obj, res, arr = [],
-    outRes, outCode;
+    outRes=[], outCode;
 
   for (i in logic) {
     arr = [];
