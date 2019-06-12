@@ -2,22 +2,22 @@
           import v2ComponentBtn  from './v2-component-btn/index.vue';
 import v2ComponentEchart  from './v2-component-echart/index.vue';
 import v2ComponentEtable  from './v2-component-etable/index.vue';
-import v2ComponentText  from './v2-component-text/index.vue';
-import v2ComponentIcon  from './v2-component-icon/index.vue';
 import v2ComponentCard  from './v2-component-card/index.vue';
+import v2ComponentIcon  from './v2-component-icon/index.vue';
 import v2ComponentTable  from './v2-component-table/index.vue';
 import v2EchartBar  from './v2-echart-bar/index.vue';
-import v2FormCascader  from './v2-form-cascader/index.vue';
-import v2FormCheckbox  from './v2-form-checkbox/index.vue';
-import v2FormDatepicker  from './v2-form-datepicker/index.vue';
+import v2ComponentText  from './v2-component-text/index.vue';
 import v2EchartLine  from './v2-echart-line/index.vue';
+import v2FormCascader  from './v2-form-cascader/index.vue';
+import v2FormDatepicker  from './v2-form-datepicker/index.vue';
 import v2FormInput  from './v2-form-input/index.vue';
+import v2FormCheckbox  from './v2-form-checkbox/index.vue';
 import v2FormInputnumber  from './v2-form-inputnumber/index.vue';
 import v2FormRadio  from './v2-form-radio/index.vue';
 import v2FormSelect  from './v2-form-select/index.vue';
-import v2FormTimepicker  from './v2-form-timepicker/index.vue';
-import v2FormSwitch  from './v2-form-switch/index.vue';
 import v2FormSlider  from './v2-form-slider/index.vue';
+import v2FormSwitch  from './v2-form-switch/index.vue';
+import v2FormTimepicker  from './v2-form-timepicker/index.vue';
 import v2FormTransfer  from './v2-form-transfer/index.vue';
 import v2FormUpload  from './v2-form-upload/index.vue';
 import v2LayoutColctn  from './v2-layout-colctn/index.vue';
@@ -46,22 +46,22 @@ import open  from '../../../pipe/src/main/webapp/plugins/app.open'
             v2ComponentBtn,
 	v2ComponentEchart,
 	v2ComponentEtable,
-	v2ComponentText,
-	v2ComponentIcon,
 	v2ComponentCard,
+	v2ComponentIcon,
 	v2ComponentTable,
 	v2EchartBar,
-	v2FormCascader,
-	v2FormCheckbox,
-	v2FormDatepicker,
+	v2ComponentText,
 	v2EchartLine,
+	v2FormCascader,
+	v2FormDatepicker,
 	v2FormInput,
+	v2FormCheckbox,
 	v2FormInputnumber,
 	v2FormRadio,
 	v2FormSelect,
-	v2FormTimepicker,
-	v2FormSwitch,
 	v2FormSlider,
+	v2FormSwitch,
+	v2FormTimepicker,
 	v2FormTransfer,
 	v2FormUpload,
 	v2LayoutColctn,

@@ -43,6 +43,7 @@ export const root = {
     }
   },
   beforeCreate() {
+    console.log('editor init')
     this.$store = new store();
     this.focusManager = new FocusManager(this);
   },
