@@ -130,7 +130,7 @@
             {
                 "name": "预览",
                 "source": "/preview",
-                "target": "https://localhost:7007/",
+                "target": "http://localhost:7007/",
                 "changeOrigin": true,
                 "pathRewrite": {
                     "v1/ds/preview": ""
