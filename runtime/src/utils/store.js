@@ -337,7 +337,8 @@ export default () => {
         content
       }) {
         UIData.structureIndex = UIData.structureIndex || {};
-        Vue.set(UIData.structureIndex, id, content);
+        // Vue.set(UIData.structureIndex, id, content);
+        UIData.structureIndex[id]=content;
       },
       /**
        * 设置当前激活的工具
