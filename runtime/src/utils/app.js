@@ -1,4 +1,4 @@
-import Vue from 'vue'
+
 // import _import from '@/router/_import_production.js'
 import _import from '@/router/_import_development.js';
 import _require from '@/router/_require_pro.js'
@@ -30,7 +30,9 @@ export default {
                  let globalPageMap = global.pageMap;
                  let  routerUrl;
                  let openedTabs;
-                 let self = this.$store.state.openedTabs ? this:this.$store.state.root.$parent;
+            
+                 let self = this.$store.state.openedTabs? this:this.$store.state.root.$parent;
+
                  if (!status) return;
             
             let haseAdded = !routerTemp.filter(item => item.children && item.children.length && item.children[0].path === path.replace('/', '')).length;
@@ -47,7 +49,7 @@ export default {
                          self.$store.commit("set_subPageHref", page);
                          self.$store.commit("set_subPageParams", params);
                          self.$store.commit("set_subPageTitle", title);
-                 
+                        
                         
                          break;
                      case 'WINDOW':
@@ -174,7 +176,7 @@ export default {
                 path: ''
             },
             openedTabs;
-
+            let self = this.$store.state.openedTabs? this:this.$store.state.root.$parent;
 
             if (self.$store.state.dialogVisible) {
 
