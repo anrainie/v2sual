@@ -12,6 +12,7 @@
       :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"
     >
       <el-cascader
+        ref="_op_formCascader_cascader"
         :expand-trigger="model.trigger"
         :options="model.options"
         v-model="selectVal"

@@ -10,7 +10,7 @@
       class="form-radio-ctn"
       :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"
     >
-      <el-radio-group v-model="model.value">
+      <el-radio-group v-model="model.value" ref="_op_formRadio_group">
         <el-radio
           v-for="(item,index) in model.options"
           :key="'radio-'+index"

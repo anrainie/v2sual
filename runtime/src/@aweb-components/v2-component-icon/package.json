@@ -7,7 +7,7 @@
   "description": "图标",
   "docs": {
     "belongTo": "aui",
-    "icon": "iconzhuzhuangtu",
+    "icon": "icontubiao",
     "type": "component",
     "href": "v2-component-icon",
     "author": "zhanghaixian@agree.com.cn",
