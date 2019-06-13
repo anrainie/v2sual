@@ -28,14 +28,10 @@
     data () {
       return {}
     },
-    mounted () {
-    },
     methods: {
-      handleChange () {
-      }
-    },
-    computed:{
+     
     }
+
 
   }
 </script>

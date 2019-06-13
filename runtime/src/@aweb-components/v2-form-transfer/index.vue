@@ -11,6 +11,7 @@
       :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"
     >
       <el-transfer
+        ref="_op_formTransfer_transfer"
         v-model="model.value"
         :filterable="Boolean(model.filterable)"
         :titles="[model.titleLeft, model.titleRight]"

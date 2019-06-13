@@ -1,5 +1,5 @@
 <template>
-  <div :style="model.style" ref="wrap" class="v2-form-datePicker" :class="model.layoutClass">
+  <div :style="model.style" class="v2-form-datePicker" :class="model.layoutClass">
     <label
       :class="model.titleMode ==='row'?'v2-form-label':'v2-form-label form-label-col'"
       :style="labelStyle"
@@ -11,16 +11,17 @@
       :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"
     >
 
-            <!-- :placeholder="model.placeholder"
+
+      <el-date-picker
+        ref="_op_formDatePicker_picker"
+        v-model="model.value"
+        :type="model.type"
+        :placeholder="model.placeholder"
         :align="model.align"
         :picker-options="pickerOptions"
         :disabled="model.disabled"
         :clearable="model.clearable"
-        :format="model.format" -->
-      <el-date-picker
-        v-model="model.value"
-        :type="model.type"
-
+        :format="model.format" 
         range-separator="至"
         start-placeholder="开始日期"
         end-placeholder="结束日期"

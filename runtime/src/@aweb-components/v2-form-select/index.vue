@@ -39,7 +39,7 @@ export default {
     return {};
   },
   mounted() {
-    window.SELECCT=this;
+    
   },
   computed:{
   }

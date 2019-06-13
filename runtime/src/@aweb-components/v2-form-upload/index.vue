@@ -8,6 +8,7 @@
     {{model.label}}</label>
     <div :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
           <el-upload
+            ref="_op_formUpload_upload"
             class="upload-demo"
             :action="model.action"
             :on-preview="handlePreview"
