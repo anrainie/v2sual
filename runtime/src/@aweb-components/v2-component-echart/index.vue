@@ -1,5 +1,5 @@
 <template>
-  <div :class="model.layoutClass" :style="warpStyle"></div>
+  <div :class="model.layoutClass" ref="_op_componentEchart_chart" :style="warpStyle"></div>
 </template>
 <script>
 

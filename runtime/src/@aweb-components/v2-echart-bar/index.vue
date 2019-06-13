@@ -1,5 +1,5 @@
 <template>
-  <div class="echartCpt" :style="model.style" :class="model.layoutClass"></div>
+  <div class="echartCpt" :style="model.style"  :class="model.layoutClass"></div>
 </template>
 <script>
 
@@ -52,7 +52,7 @@ import echarts from "echarts";
               ]
         };
       this.chart.setOption(fakeData);
-      console.log('cpt mounted',this.chart)
+  
     }
   }
 </script>

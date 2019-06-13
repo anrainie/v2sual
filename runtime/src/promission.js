@@ -37,27 +37,33 @@ var mainRouter = [{
   redirect: '/404',
   component: noFound,
   hidden: true
+},
+{
+  path: '/404',
+  name: '404',
+  component: noFound,
+  hidden: true
 }
 ];
 if (getRouter('router') && global.hasLogin) {
-  saveRouter('router', '')
+   saveRouter('router', '')
 }
 
 var dynRouter; //用来获取后台拿到的路由
 
 router.beforeEach((to, from, next) => {
 
-  if (to.path === from.path) {
-    if (to.meta && to.meta.type === 'preview') {
-      next({
-        ...to,
-        replace: true,
-        fullPath: to.fullPath + '?source=IDE'
-      })
-    } else {
-      next();
-    }
-  } else {
+
+
+    // if (to.meta && to.meta.type === 'preview') {
+
+    //   next({
+    //     ...to,
+    //     replace: true,
+    //     fullPath:(to.fullPath.indexOf('IDE')!==-1) ? to.fullPath:to.fullPath + '?source=IDE'
+    //   })
+    // } 
+
     let wpath = window.location.hash.split('?')[0].replace('#/', '');
 
     if (localStorage.getItem('openWindow') && localStorage.getItem('openWindow') === wpath) {
@@ -68,24 +74,22 @@ router.beforeEach((to, from, next) => {
         hidden: true
       });
       router.addRoutes(router.options.routes);
-
     }
     let urlParam = window.location.hash.split('?')[1];
     let routes = router.options.routes;
 
     if (wpath && urlParam && urlParam.indexOf('IDE') !== -1) {
-      if (!routes.filter(r => r.type === 'preview').length) {
+       if (!routes.filter(r => r.type === 'preview').length) {
         console.log('预览页面路径', wpath);
 
         routes.push({
-          path: '/',
-          query: {
-            source: 'IDE'
-          },
+          path:'/',
           type: 'preview',
           component: Layout,
+          replace: true,
           children: [{
             path: '/' + wpath,
+            replace: true,
             component: _import(wpath),
             meta: {
               title: '预览',
@@ -96,16 +100,18 @@ router.beforeEach((to, from, next) => {
         console.log(router.options.routes);
 
         router.addRoutes(routes);
+    
       }
     }
 
     if (!dynRouter) {
+      
+    
       router.options.routes.push(...mainRouter);
       router.addRoutes(router.options.routes);
-
       global.antRouter = router.options.routes;
-
       saveRouter('router', global.antRouter);
+    
       if (sessionStorage.getItem('user')) {
         getRoutersList().then(res => {
 
@@ -120,21 +126,22 @@ router.beforeEach((to, from, next) => {
 
 
               router.addRoutes(router.options.routes);
-              //  router.replace({
-              //    path: '/' + wpath
-              //  });
+ 
+            }else{
+              next('/404')
             }
           }
 
 
           next({
-            ...to,
+             ...to,
             replace: true
           })
-          //next();
+       
 
         })
       } else {
+   
         dynRouter = global.antRouter;
 
         next({
@@ -147,7 +154,7 @@ router.beforeEach((to, from, next) => {
 
       next()
     }
-  }
+  
 })
 
 export function addDynRoute(data) {
@@ -246,12 +253,13 @@ function searchCurrentRouter(path) {
   let paths = path.split('/'),
     cRoute, cRouteCopy;
   let result = "";
+  let gRouter = getRouter('router');
   if (paths.length > 1) {
     paths.forEach((ePath, idx) => {
 
       if (!idx) {
         cRoute = global.menu.filter((item) => (item.path === ePath));
-
+       
         cRouteCopy = [...cRoute];
 
       } else if (cRoute[0] && cRoute[0].children && cRoute[0].children.length) {
@@ -265,6 +273,7 @@ function searchCurrentRouter(path) {
   } else {
     cRoute = true;
     cRouteCopy = global.menu.filter((item) => (item.children && item.children.length === 1 && item.children[0].path === path));
+   
   }
   if (cRoute && cRouteCopy && cRouteCopy.length) {
     result = getAsyncRouter(cRouteCopy)[0];

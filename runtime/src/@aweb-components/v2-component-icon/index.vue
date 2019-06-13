@@ -1,6 +1,6 @@
 <template>
   <div :class="model.layoutClass" :style="iWarpStyle">
-    <i :class="model.icon?model.icon:'fa fa-user-o'" :style="model.style.iStyle"></i>
+    <i ref="_op_componentIcon_icon" :class="model.icon?model.icon:'fa fa-user-o'" :style="model.style.iStyle"></i>
   </div>
 </template>
 

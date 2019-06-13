@@ -7,7 +7,7 @@
   "description": "卡片",
   "docs": {
     "belongTo": "aui",
-    "icon": "iconanniu",
+    "icon": "iconkapian",
     "type": "component",
     "href": "v2-component-card",
     "author": "zhanghaixian@agree.com.cn",

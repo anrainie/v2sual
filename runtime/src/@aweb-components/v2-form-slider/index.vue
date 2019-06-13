@@ -8,6 +8,7 @@
       {{model.label}}</label>
       <div class="form-slider-ctn" :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
     <el-slider
+      ref="_op_formSlider_slider"
       v-model="model.value"
       :show-tooltip="model.tooltip"
       :disabled="model.disabled"

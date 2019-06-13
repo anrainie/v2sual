@@ -9,7 +9,7 @@
     <div
       :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"
     >
-    <el-switch ref="switch"
+    <el-switch ref="_op_formSwitch_switch"
                v-model="model.value"
                :active-text="model.activeText"
                :inactive-text="model.inactiveText"
@@ -30,7 +30,7 @@
       }
     },
     mounted () {
-      $('.el-switch__core', this.$refs.switch.$el).attr('contenteditable', true)
+      $('.el-switch__core', this.$refs._op_formSwitch_switch.$el).attr('contenteditable', true)
     },
     computed:{
     }

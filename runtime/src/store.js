@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     openedTabs: [], //所有打开的路由
     activeIndex: '', //激活状态
+    activeTab:{},
     dialogVisible: false,
     subPageHref:'',
     subPageParams: '',
@@ -49,6 +50,7 @@ export default new Vuex.Store({
     set_active_index(state, index) {
    
       this.state.activeIndex = index;
+      this.state.activeTab = this.state.openedTabs.filter(item=>item.route===index)[0];
     },
     set_url_map(state, tab) {
       this.state.URLQueryMap[tab.path] = tab.query
