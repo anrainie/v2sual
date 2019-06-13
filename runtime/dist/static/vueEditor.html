@@ -1,6 +1,9 @@
 <html>
 
 <head>
+  <!-- <link rel="stylesheet" href="../ide_icon/iconfont.css"> -->
+  <link rel="stylesheet" href="../ide_icon/iconfont.css">
+  <!-- <script src=""></script> -->
   <!--css-->
   <style>
     .must-input {
@@ -45,6 +48,12 @@
       cursor: pointer;
     }
 
+    .V2ToolbarItem>i{
+   
+    margin-right: 4px;
+    display: inline-block;
+    }
+  
     .V2ToolbarMenuItem {
       user-select: none;
       padding: 0 5px;
@@ -53,28 +62,130 @@
       font-size: 12px;
       font-weight: 400;
       display: inline-block;
+      vertical-align: middle;
       position: relative;
       line-height: 32px;
       margin: 0;
       text-decoration: none;
       cursor: pointer;
+     
+    }
+    .V2ToolbarMenu .V2ToolbarMenuItem{
+      width: 35px;
+      height: 25px;
+    }
+     .icon-svg{
+      display: block;
+      width: 20px;
+      height: 20px;
     }
 
-    .V2ToolbarMenuItem:hover {
+    /* .V2ToolbarMenuItem:hover {
       box-shadow: 0 0 1px 1px #00000021;
+    } */
+    .V2ToolbarMenu  [class*=" el-icon-"], .V2ToolbarMenu  [class^=el-icon-]{
+      line-height: 30px;
     }
-
 
     .V2ToolbarMenu {
       position: absolute;
       text-decoration: none;
       padding: 5px;
-      background: white;
-      box-shadow: 0 0 1px 1px #00000021;
+      box-sizing: border-box;
+      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
+      border: solid 1px #e5e5e5;
       z-index: 10023;
+      background: #fff;
     }
 
 
+ 
+    .V2ToolbarMenu::before{
+      content: "";
+    position: absolute;
+    top: -12px;
+    left: 6px;
+    width: 0;
+    height: 0;
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+    z-index: 8;
+    }
+    .V2ToolbarMenu::after{
+      content: "";
+    position: absolute;
+    top: -16px;
+    left: 4px;
+    width: 0;
+    height: 0;
+    border-width: 8px;
+    border-style: solid;
+    z-index: 7;
+    border-color: transparent transparent #e5e5e5 transparent;
+    }
+    .V2ToolbarMenu.v2-layout-option{
+      width: 88px;
+    height: 80px;
+    padding: 6px 10px 0 10px;
+
+
+    
+    }
+    .V2ToolbarMenu.v2-layout-option .V2ToolbarMenuItem{
+     
+      width: 22px;
+    height: 22px;
+    /* height: auto; */
+    overflow: hidden;
+    float: left;
+    /* text-align: center; */
+    padding: 0;
+    box-sizing: border-box;
+    /* padding-left: 5px; */
+    /* margin: 4px 0; */
+    /* margin-bottom: 5px; */
+    /* line-height: 22px; */
+    padding-top: 4px;
+    }
+    .v2-layout-option .V2ToolbarMenuItem:hover{
+      background-color: #c6eceb;
+    }
+    .v2-layout-option .V2ToolbarMenuItem i{
+      display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-size: 100% 100%;
+    margin: 0 auto;
+    }
+    .v2-layout-option:nth-of-type(1) i{
+      background-image: url("../img/icon1.png");
+    }
+    .v2-layout-option:nth-of-type(2) i{
+      background-image: url("../img/icon2.png");
+    }
+    .v2-layout-option:nth-of-type(3) i{
+      background-image: url("../img/icon3.png");
+    }
+    .v2-layout-option:nth-of-type(4) i{
+      background-image: url("../img/icon4.png");
+    }
+    .v2-layout-option:nth-of-type(5) i{
+      background-image: url("../img/icon5.png");
+    }
+    .v2-layout-option:nth-of-type(6) i{
+      background-image: url("../img/icon6.png");
+    }
+    .v2-layout-option:nth-of-type(7) i{
+      background-image: url("../img/icon7.png") ;
+    }
+    .v2-layout-option:nth-of-type(8) i{
+      background-image: url("../img/icon8.png") ;
+    }
+
+    .v2-layout-option:nth-of-type(9) i{
+      background-image: url("../img/icon9.png");
+    }
     .V2ResizeMask {
       pointer-events: none;
       left: 0;
@@ -116,8 +227,9 @@
 
     .V2ToolbarSp {
       display: inline-block;
+      vertical-align: middle;
       position: relative;
-      top: 6px;
+     
       width: 1px;
       height: 22px;
       background-color: #eee;
@@ -219,7 +331,10 @@
       background: rgb(218, 245, 245);
     }
 
+   
   </style>
+    <script src="../ide_icon/iconfont.js"></script>
+
   <script>
     function getUrlParam(name) {
       var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
