@@ -383,6 +383,8 @@ class Page {
                       key.push(item);
                     }
                   });
+                  if(!json.logic.methods)json.logic.methods={};
+                  if(!json.logic.methods[i.key.name])json.logic.methods[i.key.name]={}
                   json.logic.methods[i.key.name].upCode = upCode.map(item => {
                     item = context.clearAnnotation(item);
                     return item.print_to_string({ beautify: true, comments: true })
@@ -399,6 +401,7 @@ class Page {
                 let contentList = item.value.body;
                 let upCode = [], downCode = [], key = upCode;
                 contentList = contentList.filter(item => {
+
                   if (item.definitions) {
                     if (item.definitions[0].start.value !== "ctx" && item.definitions[0].value.name !== "this") return item;
                   } else {
@@ -412,6 +415,7 @@ class Page {
                     key.push(item);
                   }
                 });
+                if(!json.logic[i.key.name])json.logic[i.key.name]={}
                 json.logic[item.key.name].upCode = upCode.map(item => {
                   item = context.clearAnnotation(item);
                   return item.print_to_string({ beautify: true, comments: true })
