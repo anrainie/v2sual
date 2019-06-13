@@ -1,4 +1,5 @@
 import Vuex from 'vuex'
+import { ElSelect } from 'element-ui/types/select';
 
 /**
  * 扁平化结构树，构建索引
@@ -53,7 +54,9 @@ export default () => {
       structure: {
 
       },
-      binder: [],
+      binder: {},
+      binderTable: {},
+
       // //组件
       // components: {
 
@@ -249,43 +252,53 @@ export default () => {
       save(state) {
         state.UIData.editor && state.UIData.editor.save && state.UIData.editor.save(state.structure);
       },
-      bind(state, { vueObj, data, dataStr, wid, modelKey }) {
-       try{
+      registerBind(state, option) {
+        let self= this;
+        try {
+          let commentObj = this.getters.vueInstance(wid);
+          if (!commentObj) {
+            if (state.binderTable[wid]) {
+              state.binderTable[wid].push(()=>{self.commit("bind",option)});
+            }else{
+              state.binderTable[wid]=[()=>{self.commit("bind",option)}];
+            }
+          }else{
+            self.commit("bind",option)
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      },
+      bind(state, {vueObj,data,dataStr,wid,modelKey }) {
         let model = this.getters.model(wid);
         let commentObj = this.getters.vueInstance(wid);
-        if(!commentObj)debugger;
+        let self = this;
         //改变state.baskect自动改变model
-        let vueBind = vueObj.$watch(dataStr, v => {
-        
-          commentObj.$set(model, modelKey, v);
+        let vueBind = self.$watch(dataStr, v => {
+          Vue.set(model, modelKey, v);
         });
         let last = dataStr.split(".").pop();
         //改变model自动改变state.baskect
-        let commentBind = commentObj.$watch(`model.${modelKey}`, v => {
-        
-          vueObj.$set(vueObj, last, v)
+        let commentBind = self.$watch(`model.${modelKey}`, v => {
+          Vue.set(vueObj, last, v)
         })
-        if(vueObj.binder){
-          vueObj.binder.push(vueBind, commentBind);
-        }else{
-          vueObj.binder = [vueBind, commentBind]
+
+
+        if (state.binder[wid]) {
+          vueObj.binder[wid].push(vueBind, commentBind);
+        } else {
+          vueObj.binder[wid] = [vueBind, commentBind]
         }
-        model[modelKey]=data;
+
+        model[modelKey] = data;
         //如果是表单类的组件的value值，清空绑定的变量
-         if(modelKey==='value'){
-           commentObj.model[modelKey]="";
-         }
-      
-    
-
-      }catch(e){
-        console.error(e);
-      }
-
+        if (modelKey === 'value') {
+          commentObj.model[modelKey] = "";
+        }
       },
-      unbind(state, vueObj) {
-        if(vueObj.binder){
-          vueObj.binder.map(item => { item() });
+      unbind(state, wid) {
+        if (state.binder[wid]) {
+          state.binder[wid].map(item => { item() });
         }
       },
       /**

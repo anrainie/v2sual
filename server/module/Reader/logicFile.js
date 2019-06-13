@@ -83,7 +83,6 @@ let json2script = function (json) {
                 },
                 beforeDestroy(){ 
                     let ctx = this;
-                    /**unBind**/ctx.$store.commit("unbind",this)/**unBind over**/
                         ${transfer.beforeDestroy ? transfer.beforeDestroy.code : ''}
                 },
                 destroyed(){
@@ -119,7 +118,7 @@ let bindData = function (logic, mapping) {
     i;
   for (i in mapping) {
     mapping[i].map(item => {
-      arr.push(`ctx.$store.commit("bind",{ vueObj:this, data:this.${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
+      arr.push(`ctx.$store.commit("registerBind",{ vueObj:this, data:this.${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
     });
   };
   if (logic.mounted)
