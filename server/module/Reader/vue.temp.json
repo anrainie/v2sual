@@ -24,56 +24,72 @@
             "view": [],
             "output": []
             },
-          "code": ""
+          "code": "",
+          "upCode":[],
+          "downCode":[]
         },
         "created": {
           "labelObj": {
             "view": [],
             "output": []
             },
-          "code": ""
+          "code": "",
+          "upCode":[],
+          "downCode":[]
         },
         "beforeMount": {
           "labelObj": {
             "view": [],
             "output": []
             },
-          "code": ""
+          "code": "",
+          "upCode":[],
+          "downCode":[]
         },
         "mounted": {
           "labelObj": {
             "view": [],
             "output": []
             },
-          "code": ""
+          "code": "",
+          "upCode":[],
+          "downCode":[]
         },
         "beforeUpdate": {
           "labelObj": {
             "view": [],
             "output": []
             },
-          "code": ""
+          "code": "",
+          "upCode":[],
+          "downCode":[]
         },
         "updated": {
           "labelObj": {
             "view": [],
             "output": []
             },
-          "code": ""
+          "code": "",
+          "upCode":[],
+          "downCode":[]
         },
         "beforeDestroy": {
           "labelObj": {
             "view": [],
             "output": []
             },
-          "code": ""
+          "code": "",
+          "upCode":[],
+          "downCode":[]
         },
         "destroyed": {
           "labelObj": {
             "view": [],
             "output": []
             },
-          "code": ""
+          "code": "",
+          "upCode":[],
+          "downCode":[]
         },
         "pollList": []
     },
