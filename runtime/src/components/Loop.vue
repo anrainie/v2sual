@@ -1,7 +1,9 @@
 <template>
   <div>
+    <template v-for="($item,$key) in model.__loopTarget">
+      <slot :key="$key"></slot>
+    </template>
     <component
-      v-for="($item,$key) in model.__loopTarget"
       :key="$key"
       :id="widgetId($item,$key)"
       :is="model.component"

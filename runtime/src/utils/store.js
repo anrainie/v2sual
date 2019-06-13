@@ -437,60 +437,8 @@ export default () => {
           } else
             state.UIData.selectTarget = [target];
         }
-      },
-
-      //项目原本写在vuex的方法
-
-       // 添加tabs
-    add_tabs(state, data) {
-      global.pageMap[data.route] = true;
-      this.state.openedTabs.push(data);
-    },
-    // 删除tabs
-    delete_tabs (state, route) {
-      let index = 0;
-      for (let option of state.openedTabs) {
-        if (option.route === route) {
-          break;
-        }
-        index++;
       }
-      this.state.openedTabs.splice(index, 1);
-    },
-    delete_allTabs() {
-      this.state.openedTabs = [];
-    },
-    // 设置当前激活的tab
-    set_active_index(state, index) {
-   
-      this.state.activeIndex = index;
-    },
-    set_url_map(state, tab) {
-      this.state.URLQueryMap[tab.path] = tab.query
-    },
-    set_D_visible(state, val) {
-      this.state.dialogVisible = val;
-    },
-    setModalCallback(state, callback) {
-      this.state.cancelCallback = callback.cancel;
-      this.state.confirmCallback = callback.confirm;
-    },
-    do_cancel() {
-      this.state.cancelCallback();
-    },
-    do_confirm() {
-      this.state.confirmCallback();
-    },
-    set_subPageHref(state, herf) {
-      this.state.subPageHref = herf;
-    },
-    set_subPageParams(state, params) {
-      this.state.subPageParams = params;
-    },
-    set_subPageTitle(state, title) {
-       this.state.subPageTitle = title;
-    }
-    
+
     }
   })
 }

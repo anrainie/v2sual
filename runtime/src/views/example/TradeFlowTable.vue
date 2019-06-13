@@ -1,4 +1,6 @@
-<template><v2container :wid="`root`"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:100%;width:100%;" key="0"><v2-component-table class="V2Widget" id="1560317827220" :wid="`1560317827220`" :index="0" :pid="`root`"></v2-component-table></el-row></v2container></template>
+<template>
+<v2container :wid="`root`"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:100%;width:100%;" key="0">
+    <v2-component-table class="V2Widget" id="1560317827220" :wid="`1560317827220`" :index="0" :pid="`root`"></v2-component-table></el-row></v2container></template>
 <script>
             import {root} from '@/utils/v2-view';
             export default{
@@ -24,12 +26,7 @@ subTradeList:{default:()=>{return ""}}
                 watch:{},
                 beforeCreate(){
                     let ctx = this;
-                    debugger
                     
-                    /**overview beforeCreate**/
-                        (async()=>{const t1 = await pipe.getExcelData('交易流水表',`(e,index)=>index? ((e[13]==${ctx.tradeId} )?{serialId:e[0],organId:e[1],employeeId2:e[2],tradeId:e[3],tradeName:e[4],employeeId:e[5],state:e[6],type:e[7],start:e[8],end:e[9]}:false):false`);
-ctx.subTradeList = t1;})();
-                    /**overview over**/
                     
                 },
                 created(){
@@ -40,6 +37,11 @@ ctx.subTradeList = t1;})();
                 },
                 beforeMount(){
                     let ctx = this;
+                    
+                    /**overview beforeMount**/
+                        (async()=>{const t1 = await pipe.getExcelData('交易流水表',`(e,index)=>index? ((e[13]==${ctx.serialId} )?{serialId:e[0],organId:e[1],employeeId2:e[2],tradeId:e[3],tradeName:e[4],employeeId:e[5],state:e[6],type:e[7],start:e[8],end:e[9]}:false):false`);
+ctx.subTradeList = t1;})();
+                    /**overview over**/
                     
                 },
                 mounted(){
