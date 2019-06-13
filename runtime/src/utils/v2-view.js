@@ -93,10 +93,18 @@ export const widget = {
     ERR: console.error,
   },
   mounted() {
+    let wid = this.wid,i,
+    binderTable =this.$store.state.binderTable[wid];
+    if(binderTable){
+      for(i of binderTable){
+        i();
+      }
+    };
     this.$store.commit('regist.vue', {
       wid: this.wid,
       vue: this
     });
+    
   },
   computed: {
     // model() {
@@ -129,6 +137,9 @@ export const widget = {
     wrapClass() {
       return {}
     },
+  },
+  beforeDestroy(){
+    this.$store.commit("unbind",this.wid);
   }
 }
 /**

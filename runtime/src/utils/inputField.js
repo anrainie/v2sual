@@ -1,5 +1,12 @@
 const preview = {
   methods: {
+    __widgetBlur(){
+      for(let item in this.$refs){
+        if(item.startsWith("_op_")){
+          this.$refs[item].blur && this.$refs[item].blur();
+        }
+      }
+    },
     __getInputFields() {
       return Array.prototype.map.call($(':input'), function (elem,index) {
         return {
@@ -27,18 +34,27 @@ const preview = {
       return this.$focusNext(e);
     },
     $focusNext(e) {
-      this.blur&&this.blur();
+      this.__widgetBlur();
       let inputFields = this.__getInputFields();
       let index = $.inArray(e.target, inputFields);
-      let target = inputFields[index + 1] ? $(inputFields[index + 1]) : $(inputFields[0])
+      let nextIndex = index === inputFields.length-1? 0 : index+1;
+      let target = $(inputFields[nextIndex]);
+      if(target[0].disabled){
+        target = $(inputFields[nextIndex + 1])
+      }
       target.focus();
       return false;
     },
     $focusPrev(e) {
-      this.blur&&this.blur();
+      this.__widgetBlur();
       let inputFields = this.__getInputFields();
       let index = $.inArray(e.target, inputFields);
-      $(inputFields[index - 1]).focus();
+      let lastIndex = index === 0? inputFields.length-1 : index-1;
+      let target =  $(inputFields[lastIndex]);
+      if(target[0].disabled){
+        target = $(inputFields[lastIndex - 1])
+      }
+      target.focus();
       return false;
     },
     handleKeyDown(e) {

@@ -6,6 +6,7 @@
     ><span class="must-input" v-if="model.isRequired">*</span>{{model.label}}</label>
     <div class="form-timePicker-ctn" :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
       <el-time-select
+       ref="_op_formTimePicker_picker"
         v-if="model.type==='select'"
         v-model="model.value"
         :picker-options="model.options"
@@ -15,6 +16,7 @@
       ></el-time-select>
 
       <el-time-picker
+        ref="_op_formTimePicker_picker"
         v-if="model.type==='picker'"
         v-model="model.value"
         :picker-options="model.options"

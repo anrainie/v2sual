@@ -10,8 +10,9 @@
       class="form-checkbox-ctn"
       :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"
     >
-      <el-checkbox-group v-model="model.value">
+      <el-checkbox-group v-model="model.value" ref="_op_formCheckbox_group">
         <el-checkbox  
+         ref="_op_formCheckbox_checkbox"
         v-for="(item,index) in model.options" 
         :label="item.value" 
         :key="index" 

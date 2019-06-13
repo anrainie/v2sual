@@ -31,7 +31,6 @@ let json2script = function (json) {
     dataStr = self.createData(data);
   porpStr = self.createProp(data);
   transfer = self.bindData(logic, content.dataBasket.mapping);
-
   // transfer数据初始化
   if (!transfer.pollList) transfer.pollList = [];
 
@@ -50,18 +49,17 @@ let json2script = function (json) {
                 watch:{${self.methodsToCode(transfer.watch)}},
                 beforeCreate(){
                     let ctx = this;
-                    
                     ${transfer.beforeCreate ? transfer.beforeCreate.code : ''}
                 },
                 created(){
                     let ctx = this;
                     ${transfer.pollList.length !== 0 ? `
                     ctx.poll_runnableList.push(${transfer.pollList.map(item => {
-                    return `{
+          return `{
                             run:${item.code},
                             freq:${item.freq}
                         }`
-                    })})
+        })})
                     `: ``}
                     
                     ${transfer.created ? transfer.created.code : ''}
@@ -85,7 +83,6 @@ let json2script = function (json) {
                 },
                 beforeDestroy(){ 
                     let ctx = this;
-                    /**unBind**/ctx.$store.commit("unbind",this)/**unBind over**/
                         ${transfer.beforeDestroy ? transfer.beforeDestroy.code : ''}
                 },
                 destroyed(){
@@ -121,7 +118,7 @@ let bindData = function (logic, mapping) {
     i;
   for (i in mapping) {
     mapping[i].map(item => {
-      arr.push(`this.$store.commit("bind",{ vueObj:this, data:this.${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
+      arr.push(`ctx.$store.commit("registerBind",{ vueObj:this, data:this.${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
     });
   };
   if (logic.mounted)
@@ -161,7 +158,7 @@ let createProp = (data) => {
 let toCode = function (logic) {
   let self = this,
     i, k, obj, res, arr = [],
-    outRes=[], outCode;
+    outRes = [], outCode;
 
   for (i in logic) {
     arr = [];
@@ -179,9 +176,11 @@ let toCode = function (logic) {
           });
           if (arr.length || outRes.length) {
             outCode = `
+            ${(obj.upCode&&obj.upCode.length!==0)?obj.upCode.join("\n"):''}
                     /**overview ${k}**/
                         (async()=>{${arr.join("\n")}\n${outRes.join("\n")}})();
                     /**overview over**/
+                    ${(obj.downCode&&obj.downCode.length!==0)?obj.downCode.join("\n"):''}
                     `;
           } else {
             outCode = "";
@@ -241,7 +240,7 @@ let toCode = function (logic) {
         obj = logic[i];
         obj = self.transToPoll(obj);
         break;
-        // 周期函数
+      // 周期函数
       default:
         obj = logic[i]
         if (obj.labelObj) {
@@ -301,8 +300,8 @@ let transViewCode = function (api) {
   // 特例--map
   if (name === "map") {
     let mapTempalte = `${children[0].option.value}.map((e,index)=>${
-            children[1].option.value
-            });`;
+      children[1].option.value
+      });`;
     return mapTempalte;
     // 特例--diy
   } else if (name === "diy") {
@@ -311,8 +310,8 @@ let transViewCode = function (api) {
     // 特例--excel
   } else if (name === "pipe.getExcelData") {
     let mapTempalte = `${name}(${children[0].option.value},\`(e,index)=>${
-            children[1].option.value
-            }\`);`;
+      children[1].option.value
+      }\`);`;
     return mapTempalte;
   }
 
