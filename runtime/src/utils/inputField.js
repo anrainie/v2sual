@@ -4,6 +4,7 @@ const preview = {
       for(let item in this.$refs){
         if(item.startsWith("_op_")){
           this.$refs[item].blur && this.$refs[item].blur();
+          this.model.autoComplete && this.$refs[item].close();//输入框el-autocomplete失焦
         }
       }
     },

@@ -121,8 +121,8 @@ let bindData = function (logic, mapping) {
       arr.push(`ctx.$store.commit("registerBind",{ vueObj:this, data:this.${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
     });
   };
-  if (logic.mounted)
-    logic.mounted.code = logic.mounted.code.replace("/**data**/", `/**bind**/${arr.join("\n")}/**bind over**/`);
+  if (logic.create)
+    logic.create.code = logic.create.code.replace("/**data**/", `/**bind**/${arr.join("\n")}/**bind over**/`);
   return logic;
 };
 
@@ -212,7 +212,7 @@ let toCode = function (logic) {
           obj.code = outCode;
         }
         break;
-      case "mounted":
+      case "create":
         obj = logic[i]
         if (obj.labelObj) {
           arr = obj.labelObj.view.map(item => {

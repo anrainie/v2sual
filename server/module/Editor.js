@@ -54,18 +54,27 @@ let editor = {
 
         customWidgets
           .forEach(f => {
-            const info = path.parse(f);
 
-            if (info.ext === '.vue' && fs.existsSync(f)) {
-              menu.push({
-                name: info.name,
-                type: 'customWidget',
-                href: info.name,
-                option: [],
-                css: {},
-                icon: 'iconyemian',
-                main: ''
-              })
+            try{
+              const info = path.parse(f);
+
+              if (info.ext === '.def' && fs.existsSync(f)) {
+  
+                const str=fs.readFileSync(f).toString();
+                const content=JSON.parse(str);
+  
+                menu.push({
+                  name: info.name,
+                  type: 'customWidget',
+                  href: `customWidget-${info.name}`,
+                  option: [],
+                  css: {},
+                  icon: content.icon||'icontongyong',
+                  main: ''
+                })
+              }
+            }catch(e){
+              console.log(e);
             }
           });
         platform.sendSuccessResult(req, menu.sort(sorter));

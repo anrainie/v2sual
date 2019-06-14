@@ -1,5 +1,5 @@
 import Vuex from 'vuex'
-import { ElSelect } from 'element-ui/types/select';
+// import { ElSelect } from 'element-ui/types/select';
 
 /**
  * 扁平化结构树，构建索引
@@ -253,7 +253,8 @@ export default () => {
         state.UIData.editor && state.UIData.editor.save && state.UIData.editor.save(state.structure);
       },
       registerBind(state, option) {
-        let self= this;
+        let self= this,
+        wid =option.wid;
         try {
           let commentObj = this.getters.vueInstance(wid);
           if (!commentObj) {
@@ -270,24 +271,25 @@ export default () => {
         }
       },
       bind(state, {vueObj,data,dataStr,wid,modelKey }) {
-        let model = this.getters.model(wid);
-        let commentObj = this.getters.vueInstance(wid);
         let self = this;
+        let model = self.getters.model(wid);
+        let commentObj = self.getters.vueInstance(wid);
+        let rootVue = self.state.UIData.vueIndex.root;
         //改变state.baskect自动改变model
-        let vueBind = self.$watch(dataStr, v => {
-          Vue.set(model, modelKey, v);
+        let vueBind = rootVue.$watch(dataStr, v => {
+          A.$set(model, modelKey, v);
         });
         let last = dataStr.split(".").pop();
         //改变model自动改变state.baskect
-        let commentBind = self.$watch(`model.${modelKey}`, v => {
-          Vue.set(vueObj, last, v)
+        let commentBind = commentObj.$watch(`model.${modelKey}`, v => {
+          A.$set(vueObj, last, v)
         })
 
 
         if (state.binder[wid]) {
-          vueObj.binder[wid].push(vueBind, commentBind);
+          state.binder[wid].push(vueBind, commentBind);
         } else {
-          vueObj.binder[wid] = [vueBind, commentBind]
+          state.binder[wid] = [vueBind, commentBind]
         }
 
         model[modelKey] = data;
