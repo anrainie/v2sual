@@ -113,7 +113,7 @@ export const widget = {
     "index": {},
     "pid": {},
     "readonly": {},
-    "cptType": {},
+    "cpttype": {},
     $item: {},
     $key: {},
   },
@@ -135,7 +135,7 @@ export const widget = {
       options = this.$store.state.binderTable[wid];
 
     //特殊处理循环组件
-    if (this.cptType == 'loopItem') {
+    if (this.cpttype == 'loopItem') {
       options = this.$store.state.binderTable[this.pid];
       let content;
       let parentModel = this.$store.getters.model(this.pid);
@@ -158,7 +158,7 @@ export const widget = {
       //特殊处理，强制触发computed
       this._computedWatchers['model'].dirty=true;
       this.$forceUpdate();
-      
+
       //处理循环数据绑定
       if (options) {
         for (option of options) {

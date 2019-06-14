@@ -21,7 +21,7 @@
                 :wid="`1560334017733-${scope._key}`"
                 :index="scope._key"
                 :pid="`1560334017733`"
-                :cptType="`loopItem`"
+                :cpttype="`loopItem`"
                 :$item="scope._item"
                 :$key="scope._key"
               ></v2-form-input>
