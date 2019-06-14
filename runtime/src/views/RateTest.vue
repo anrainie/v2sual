@@ -7,30 +7,26 @@
           style="height:50%;width:100%;"
           key="0"
         >
-          <v2loop
+          <v2-form-input
             class="V2Widget"
             id="1560334017733"
             :wid="`1560334017733`"
             :index="0"
             :pid="`1560247080748`"
-          >
-            <v2-form-input
-              class="V2Widget"
-              id="1560334017733"
-              :wid="`1560334017733`"
-              :index="0"
-              :pid="`1560247080748`"
-            ></v2-form-input>
-          </v2loop>
+          ></v2-form-input>
         </el-row>
-        <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1">
-          <v2empty
-            class="V2Empty"
-            id="1560247080748-1"
-            :wid="`1560247080748-1`"
+        <el-row
+          class="V2ContainerBlock borderBox dashBorder"
+          style="height:50%;width:100%;"
+          key="1"
+        >
+          <v2-form-input
+            class="V2Widget"
+            id="1560502574246"
+            :wid="`1560502574246`"
             :index="1"
             :pid="`1560247080748`"
-          ></v2empty>
+          ></v2-form-input>
         </el-row>
       </v2container>
     </el-row>
@@ -218,7 +214,34 @@ export default {
                   id: 1560334017733,
                   pid: 1560247080748
                 },
-                null
+                {
+                  style: {
+                    label: { "font-size": "", "font-weight": "", color: "" },
+                    borderStyle: { "border-color": "" },
+                    fontStyle: { color: "" }
+                  },
+                  label: "标题",
+                  titleMode: "col",
+                  labelWitdh: "80px",
+                  placeholder: "请选择",
+                  value: "userList",
+                  clearable: false,
+                  disabled: false,
+                  isRequired: false,
+                  autoComplete: false,
+                  suggestion: "",
+                  rules: "",
+                  __type: "",
+                  __loopTarget: "",
+                  __loopKey: "",
+                  __capacity: "1",
+                  href: "v2-form-input",
+                  component: "v2-form-input",
+                  children: [],
+                  events: {},
+                  id: 1560502574246,
+                  pid: 1560247080748
+                }
               ],
               events: {},
               id: 1560247080748,
@@ -251,61 +274,40 @@ export default {
   },
   mounted() {
     let ctx = this;
-    /**bind**/ this.$store.commit("bind", {
+    /**bind**/ ctx.$store.commit("registerBind", {
       vueObj: this,
       data: this.userList,
       dataStr: "userList",
       wid: 1560334017733,
       modelKey: "__loopTarget"
     });
-    if (this.userList) {
-      if (this.userList.constructor == Array) {
-        for (let $key = 0; $key < this.userList.length; $key++) {
-          let $item = this.userList[$key];
-          this.$store.commit("bind", {
-            vueObj: this,
-            data: $item.id,
-            dataStr: "$item.id",
-            wid: "1560334017733" + $key,
-            modelKey: "__loopKey"
-          });
-          this.$store.commit("bind", {
-            vueObj: this,
-            data: $item.name,
-            dataStr: "$item.name",
-            wid: "1560334017733" + $key,
-            modelKey: "value"
-          });
-          this.$store.commit("bind", {
-            vueObj: this,
-            data: $item.title,
-            dataStr: "$item.title",
-            wid: "1560334017733" + $key,
-            modelKey: "label"
-          }); /**bind over**/
-        }
-      }
-    }
-    this.$store.commit("bind", {
+    ctx.$store.commit("registerBind", {
       vueObj: this,
       data: this.$item.id,
       dataStr: "$item.id",
       wid: 1560334017733,
       modelKey: "__loopKey"
     });
-    this.$store.commit("bind", {
+    ctx.$store.commit("registerBind", {
       vueObj: this,
       data: this.$item.name,
       dataStr: "$item.name",
       wid: 1560334017733,
       modelKey: "value"
     });
-    this.$store.commit("bind", {
+    ctx.$store.commit("registerBind", {
       vueObj: this,
       data: this.$item.title,
       dataStr: "$item.title",
       wid: 1560334017733,
       modelKey: "label"
+    });
+    ctx.$store.commit("registerBind", {
+      vueObj: this,
+      data: this.userList,
+      dataStr: "userList",
+      wid: 1560502574246,
+      modelKey: "value"
     }); /**bind over**/
   },
   beforeUpdate() {
@@ -316,7 +318,6 @@ export default {
   },
   beforeDestroy() {
     let ctx = this;
-    /**unBind**/ ctx.$store.commit("unbind", this); /**unBind over**/
   },
   destroyed() {
     let ctx = this;

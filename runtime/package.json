@@ -16,12 +16,12 @@
     "dependencies": {
         "axios": "^0.18.0",
         "cache-loader": "^2.0.1",
-        "element-ui": "^2.8.2",
+        "element-ui": "^2.9.1",
         "koa-static": "^5.0.0",
         "node-requirejs": "^0.1.1",
         "shelljs": "^0.8.3",
         "systemjs": "^3.1.1",
-        "vue": "^2.5.17",
+        "vue": "^2.6.10",
         "vue-router": "^3.0.2",
         "vuex": "^3.0.1"
     },
@@ -41,7 +41,7 @@
         "mockjs": "^1.0.1-beta3",
         "node-sass": "^4.11.0",
         "sass-loader": "^7.1.0",
-        "vue-template-compiler": "^2.5.17",
+        "vue-template-compiler": "^2.6.10",
         "webpack": "^4.28.2"
     },
     "eslintConfig": {

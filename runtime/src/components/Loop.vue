@@ -1,21 +1,13 @@
 <template>
-  <div>
-    <template v-for="($item,$key) in model.__loopTarget">
-      <slot :key="$key"></slot>
-    </template>
-    <component
-      :key="$key"
-      :id="widgetId($item,$key)"
-      :is="model.component"
-      :wid="widgetId($item,$key)"
-      :index="index"
-      :pid="wid"
-      :defaultModel="model"
-    ></component>
+  <div style="display:flex; flex-wrap:wrap;">
+    <div v-for="(item,key) in model.__loopTarget" :style="loopStyle" :key="key">
+      <slot :_item="item" :_key="key"></slot>
+    </div>
   </div>
 </template>
 <script>
 import { widget } from "@/utils/v2-view";
+import { debug } from "util";
 /**
  * model模版:
  * {
@@ -27,22 +19,15 @@ import { widget } from "@/utils/v2-view";
  */
 export default {
   name: "v2Loop",
-  mixins: widget,
+  mixins: [widget],
   data() {
     return {};
   },
   computed: {
-    widgetId($item, $key) {
-      return () => {
-        if (this.model.loopKey) {
-          return eval(this.model.loopKey);
-        }
-        if ($item) {
-          if ($item.id != null) return $item.id;
-          if ($item.ID != null) return $item.ID;
-          if ($item.ename != null) return $item.ename;
-          if ($item.name != null) return $item.name;
-        }
+    loopStyle() {
+      let capa = this.model.__capacity || 1;
+      return {
+        width: 100 / capa + "%"
       };
     }
   },

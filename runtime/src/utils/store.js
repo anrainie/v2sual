@@ -1,4 +1,5 @@
 import Vuex from 'vuex'
+// import { ElSelect } from 'element-ui/types/select';
 
 /**
  * 扁平化结构树，构建索引
@@ -14,7 +15,6 @@ const __buildIndex = (v, pool) => {
     }
   }
 }
-
 const __findParent = (targetId, parent) => {
   if (targetId == parent.Id) return -1;
   if (parent.children)
@@ -53,7 +53,9 @@ export default () => {
       structure: {
 
       },
-      binder: [],
+      binder: {},
+      binderTable: {},
+
       // //组件
       // components: {
 
@@ -249,44 +251,70 @@ export default () => {
       save(state) {
         state.UIData.editor && state.UIData.editor.save && state.UIData.editor.save(state.structure);
       },
-      bind(state, { vueObj, data, dataStr, wid, modelKey }) {
-       try{
-        let model = this.getters.model(wid);
-        let commentObj = this.getters.vueInstance(wid);
-        if(!commentObj)debugger;
-        //改变state.baskect自动改变model
-        let vueBind = vueObj.$watch(dataStr, v => {
-        
-          commentObj.$set(model, modelKey, v);
-        });
-        let last = dataStr.split(".").pop();
-        //改变model自动改变state.baskect
-        let commentBind = commentObj.$watch(`model.${modelKey}`, v => {
-        
-          vueObj.$set(vueObj, last, v)
-        })
-        if(vueObj.binder){
-          vueObj.binder.push(vueBind, commentBind);
-        }else{
-          vueObj.binder = [vueBind, commentBind]
+      /**
+       * 必须在挂载之前调用
+       */
+      registerBind(state, option) {
+        let self = this,
+          wid = option.wid;
+        try {
+          //注册需要绑定的数据，这些数据将会在v2-view.js中的widget
+          if (state.binderTable[wid]) {
+            state.binderTable[wid].push(option);
+          } else {
+            state.binderTable[wid] = [option];
+          }
+        } catch (e) {
+          console.error(e);
         }
-    
-        model[modelKey]=data;
-        //如果是表单类的组件的value值，清空绑定的变量
-         if(modelKey==='value'){
-           commentObj.model[modelKey]="";
-         }
-      
-    
-
-      }catch(e){
-        console.error(e);
-      }
-
       },
-      unbind(state, vueObj) {
-        if(vueObj.binder){
-          vueObj.binder.map(item => { item() });
+      bind(state, {
+        vueObj,
+        data,
+        dataStr,
+        wid,
+        modelKey,
+        rootVue,
+      }) {
+        if (!rootVue)
+          rootVue = state.root;
+        let self = this;
+        let model = self.getters.model(wid);
+
+        //改变state.baskect自动改变model
+        // console.log(rootVue.wid,'watch:',dataStr,'change',modelKey);
+        let vueBind = rootVue.$watch(dataStr, v => {
+          Vue.set(model, modelKey, v);
+          vueObj.$forceUpdate();
+        });
+
+        let keys = dataStr.split(".");
+        let last = keys.pop();
+
+        //改变model自动改变state.baskect
+        let commentBind = vueObj.$watch(`model.${modelKey}`, v => {
+          Vue.set(keys.length ? vueObj : eval(`vueObj.${keys.join('.')}`), last, v)
+          rootVue.$forceUpdate();
+        })
+
+
+        if (state.binder[wid]) {
+          state.binder[wid].push(vueBind, commentBind);
+        } else {
+          state.binder[wid] = [vueBind, commentBind]
+        }
+
+        model[modelKey] = data;
+        //如果是表单类的组件的value值，清空绑定的变量
+        if (vueObj != rootVue && modelKey === 'value') {
+          vueObj.model[modelKey] = "";
+        }
+      },
+      unbind(state, wid) {
+        if (state.binder[wid]) {
+          state.binder[wid].map(item => {
+            item()
+          });
         }
       },
       /**
@@ -338,7 +366,8 @@ export default () => {
         content
       }) {
         UIData.structureIndex = UIData.structureIndex || {};
-        Vue.set(UIData.structureIndex, id, content);
+        // Vue.set(UIData.structureIndex, id, content);
+        UIData.structureIndex[id] = content;
       },
       /**
        * 设置当前激活的工具

@@ -83,7 +83,6 @@ let json2script = function (json) {
                 },
                 beforeDestroy(){ 
                     let ctx = this;
-                    /**unBind**/ctx.$store.commit("unbind",this)/**unBind over**/
                         ${transfer.beforeDestroy ? transfer.beforeDestroy.code : ''}
                 },
                 destroyed(){
@@ -117,13 +116,18 @@ let methodsToCode = function (obj) {
 let bindData = function (logic, mapping) {
   let arr = [],
     i;
+  
   for (i in mapping) {
     mapping[i].map(item => {
-      arr.push(`ctx.$store.commit("bind",{ vueObj:this, data:this.${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
+      if(item.type === 'loop' && item.modelValue !== "__loopTarget"){
+        arr.push(`ctx.$store.commit("registerBind",{ dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
+      }else{
+        arr.push(`ctx.$store.commit("registerBind",{ vueObj:this, data:this.${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
+      }
     });
   };
-  if (logic.mounted)
-    logic.mounted.code = logic.mounted.code.replace("/**data**/", `/**bind**/${arr.join("\n")}/**bind over**/`);
+  if (logic.created)
+    logic.created.code = logic.created.code.replace("/**data**/", `/**bind**/${arr.join("\n")}/**bind over**/`);
   return logic;
 };
 
@@ -213,7 +217,7 @@ let toCode = function (logic) {
           obj.code = outCode;
         }
         break;
-      case "mounted":
+      case "created":
         obj = logic[i]
         if (obj.labelObj) {
           arr = obj.labelObj.view.map(item => {
