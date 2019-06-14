@@ -4,15 +4,14 @@
 		<h3>子弹窗页面传参</h3>
 	     <pre>
 
-       props:{
-          params:Object    // 获取参数在props里面拿params
-      }
+			let pageParams = this.pageParams  //从pageParams中获取传递的参数
+
 
 		</pre>
 		</el-row>
 
     <el-row class="aweb-app-btn-ctn" >
-     	<el-button type="success" @click="closeCurrentPage">关闭当前页</el-button>    <span>参数结果:{{params}}</span>
+     	<el-button type="success" @click="closeCurrentPage">关闭当前页</el-button>    <span>参数结果:{{pageParams}}</span>
     </el-row>
   </div>
 </template>
@@ -25,9 +24,6 @@ export default {
     return {
     }
   },
-  props:{
-    params:Object
-  },
   created() {
   },
   methods: {
@@ -37,7 +33,7 @@ export default {
   },
   mounted(){
 
-   console.log('当前弹窗页面参数',this.params);
+   console.log('当前弹窗页面参数',this.pageParams);
 
   }
 }

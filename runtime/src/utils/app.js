@@ -9,18 +9,16 @@ import Layout from '@/views/Layout'
 export default {
     data() {
         return {
+        
+   
         }
     },
     created() {
-        // console.log('mixin...', this.name);
+      
     },
     mounted() {
-        // console.log('mixin');
-
-        // new Vue({
-        //     router,
-        //     render: h => h(this)
-        // }).$mount(this.$el)
+        
+     
     },
     methods: {
         open(option){
@@ -49,7 +47,7 @@ export default {
                          self.$store.commit("set_subPageHref", page);
                          self.$store.commit("set_subPageParams", params);
                          self.$store.commit("set_subPageTitle", title);
-                        
+                        debugger;
                         
                          break;
                      case 'WINDOW':

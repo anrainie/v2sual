@@ -16,8 +16,8 @@
   <el-container style="height:600px;overflow: hidden;">
     <el-header style="text-align: right; font-size: 12px">
        <el-tabs v-model="activeName" @tab-click="handleClick">
-        <el-tab-pane label="服务" name="first"> <async-component page="example/table" :keepAlive="false" ref="tablepage" :params="subPageParams"></async-component> </el-tab-pane>
-        <el-tab-pane label="持续集成配置" name="second"> <async-component page="spa/newPage"></async-component></el-tab-pane>
+        <el-tab-pane label="服务" name="first"> <async-component page="example/table" :keepAlive="false" ref="tablepage" ></async-component> </el-tab-pane>
+        <el-tab-pane label="持续集成配置" name="second"> <async-component page="spa/newPage" :params="subPageParams"></async-component></el-tab-pane>
       </el-tabs>
     </el-header>
   </el-container>
@@ -32,7 +32,7 @@ import asyncComponent from '@/components/asyncComponent'
   export default {
     data() {
       return {
-        subPageParams:'老参数',
+        subPageParams:{title:'老参数'},//传递的页面参数必须封装为对象或数组，不能为字符串
         page: {
             pageSize: 10, //每页条数,  默认10条
             totalRecords: 0, //总条数
@@ -183,8 +183,8 @@ import asyncComponent from '@/components/asyncComponent'
     methods: {
     
       handleClick(tab, event) {
-        this.$message.info(tab+event);
-        this.subPageParams ="新参数啦"
+        // this.$message.info(tab+event);
+        //手动调用子页面的reload重载方法
         this.$refs.tablepage.reload();
       },
       handleEdit(index, row) {

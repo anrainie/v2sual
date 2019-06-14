@@ -7,6 +7,9 @@ export const root = {
       poll_runnableList: [],
       poll_timer: -1,
       poll_count: 1,
+          //页面参数
+      pageParams: (this.$parent  && this.$parent.params)||(this.$route && Object.keys(this.$route.query).length && this.$route.query) || null,
+     
     }
   },
   computed: {
@@ -63,6 +66,7 @@ export const root = {
     //找到所有的作用域
     // $(':input',this.$el)
     window.A = this;
+ 
   }
 }
 

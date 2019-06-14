@@ -48,9 +48,10 @@ export default new Vuex.Store({
     },
     // 设置当前激活的tab
     set_active_index(state, index) {
-   
+       
       this.state.activeIndex = index;
       this.state.activeTab = this.state.openedTabs.filter(item=>item.route===index)[0];
+      
     },
     set_url_map(state, tab) {
       this.state.URLQueryMap[tab.path] = tab.query

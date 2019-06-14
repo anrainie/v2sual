@@ -20,7 +20,6 @@ import factory from './factory.js';
  */
 export default {
   inheritAttrs: false,
-
   props: {
     // 文件的路径
     page: {
@@ -42,7 +41,13 @@ export default {
     timeout: {
       type: Number,
       default: 2000
+    },
+    params:{
+      type:[Object,Array],
+      default:()=>{}
     }
+     
+    
     
   },
   data () {
@@ -53,6 +58,7 @@ export default {
   watch: {
     page () {
       this.AsyncComponent = factory(this.page, this.delay, this.timeout);
+   console.log('hah',this.AsyncComponent);
     }
   },
   methods: {

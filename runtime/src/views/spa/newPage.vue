@@ -5,14 +5,14 @@
 		<h3>跨Tab页面传参</h3>
 	     <pre>
 
-     let params = this.$route.query; //从路由中获取传递的参数
+    	let pageParams = this.pageParams  //从pageParams中获取传递的参数
 
 		</pre>
 		</el-row>
  
     <el-row class="aweb-app-btn-ctn" >
          
-     	<el-button type="success" @click="closeCurrentPage">关闭当前页</el-button> <span>参数结果:{{JSON.stringify(this.$route.query)}}</span>
+     	<el-button type="success" @click="closeCurrentPage">关闭当前页</el-button> <span>参数结果:{{JSON.stringify(pageParams)}}</span>
     </el-row>
   </div>
 
@@ -34,7 +34,8 @@ export default {
    }
   },
   mounted(){
-  console.log('当前页面参数',this.$route.query);
+debugger;
+  console.log('当前页面参数',this.pageParams);
 
   }
 }

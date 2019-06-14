@@ -8,7 +8,6 @@ import noFound from "@/views/404"
 import Main from "@/views/main/main"
 
 import { getRoutersList } from '@/api/api.js'
-import { TabPane } from 'element-ui';
 
 var mainRouter = [{
   path: "/",
@@ -24,6 +23,15 @@ var mainRouter = [{
         title: "首页",
         icon: "el-icon-goods"
       }
+    },
+    {
+      path: '/404',
+      name: '404',
+      component: noFound,
+      hidden: true,
+      meta: {
+        title: "404"
+      }
     }
   ]
 
@@ -35,12 +43,6 @@ var mainRouter = [{
 {
   path: '*',
   redirect: '/404',
-  component: noFound,
-  hidden: true
-},
-{
-  path: '/404',
-  name: '404',
   component: noFound,
   hidden: true
 }
@@ -275,10 +277,51 @@ function searchCurrentRouter(path) {
     cRouteCopy = global.menu.filter((item) => (item.children && item.children.length === 1 && item.children[0].path === path));
    
   }
+  // if (cRoute && cRouteCopy && cRouteCopy.length) {
+  //   result = getAsyncRouter(cRouteCopy)[0];
+  //   result.path = '/' + result.path;
+  // }
+
   if (cRoute && cRouteCopy && cRouteCopy.length) {
-    result = getAsyncRouter(cRouteCopy)[0];
-    result.path = '/' + result.path;
+    if(cRoute.length ===1){
+      cRoute = cRoute[0];
+      result = {
+        path: '',
+        component: Layout,
+        hidden: true,
+        meta: {
+            title: cRoute.meta && cRoute.meta.title
+        },
+        children: [{
+            path: path,
+            component:_import(cRoute.componentUrl),
+            meta: {
+                title: cRoute.meta && cRoute.meta.title,
+                type: 'BLANK'
+            }
+        }]
+    }
+  }else if(cRoute === true){
+    let childRoute = cRouteCopy[0].children[0];
+    result = {
+      path: '',
+      component: Layout,
+      hidden: true,
+      meta: {
+          title: childRoute.meta && childRoute.meta.title
+      },
+      children: [{
+          path: '/'+childRoute.path,
+          component:_import(childRoute.componentUrl),
+          meta: {
+              title: childRoute.meta && childRoute.meta.title,
+              type: 'BLANK'
+          }
+      }]
   }
+  }
+}
+
 
   return result;
 
