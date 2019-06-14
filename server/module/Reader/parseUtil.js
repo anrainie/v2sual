@@ -79,6 +79,24 @@ let appendComponent = function(parent,index,element){
         eCom =  document.createElement('v2container');
         isContainer = true;
         child.wid = wid;
+    }else if(child.__type === 'loop'){
+        eCom = document.createElement('v2loop');
+        child.wid = wid;
+        eCom.setAttribute('class','V2Widget');
+        let template = document.createElement('template');
+        template.setAttribute('v-slot','scope');
+        let component = document.createElement(child.component);
+        component.setAttribute('class','V2Widget');
+        component.setAttribute(':id','`'+wid+'-${scope._key}`');
+        component.setAttribute(':wid','`'+wid+'-${scope._key}`');
+        component.setAttribute(':index','scope._key');
+        component.setAttribute(':pid','`'+parent.wid+'`');
+        component.setAttribute(':cpttype','`loopItem`');
+        component.setAttribute(':item','scope._item');
+        component.setAttribute(':key','scope._key');
+        let outerHtml = component.outerHTML.replace(':item',':$item').replace(':key',':$key');
+        template.innerHTML = outerHtml;
+        eCom.appendChild(template);
     }else{
         eCom =  document.createElement(child.component);
         child.wid = wid;
