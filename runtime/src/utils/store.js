@@ -15,7 +15,6 @@ const __buildIndex = (v, pool) => {
     }
   }
 }
-
 const __findParent = (targetId, parent) => {
   if (targetId == parent.Id) return -1;
   if (parent.children)
@@ -252,37 +251,50 @@ export default () => {
       save(state) {
         state.UIData.editor && state.UIData.editor.save && state.UIData.editor.save(state.structure);
       },
+      /**
+       * 必须在挂载之前调用
+       */
       registerBind(state, option) {
-        let self= this,
-        wid =option.wid;
+        let self = this,
+          wid = option.wid;
         try {
-          let commentObj = this.getters.vueInstance(wid);
-          if (!commentObj) {
-            if (state.binderTable[wid]) {
-              state.binderTable[wid].push(()=>{self.commit("bind",option)});
-            }else{
-              state.binderTable[wid]=[()=>{self.commit("bind",option)}];
-            }
-          }else{
-            self.commit("bind",option)
+          //注册需要绑定的数据，这些数据将会在v2-view.js中的widget
+          if (state.binderTable[wid]) {
+            state.binderTable[wid].push(option);
+          } else {
+            state.binderTable[wid] = [option];
           }
         } catch (e) {
           console.error(e);
         }
       },
-      bind(state, {vueObj,data,dataStr,wid,modelKey }) {
+      bind(state, {
+        vueObj,
+        data,
+        dataStr,
+        wid,
+        modelKey,
+        rootVue,
+      }) {
+        if (!rootVue)
+          rootVue = state.root;
         let self = this;
         let model = self.getters.model(wid);
-        let commentObj = self.getters.vueInstance(wid);
-        let rootVue = self.state.UIData.vueIndex.root;
+
         //改变state.baskect自动改变model
+        // console.log(rootVue.wid,'watch:',dataStr,'change',modelKey);
         let vueBind = rootVue.$watch(dataStr, v => {
-          A.$set(model, modelKey, v);
+          Vue.set(model, modelKey, v);
+          vueObj.$forceUpdate();
         });
-        let last = dataStr.split(".").pop();
+
+        let keys = dataStr.split(".");
+        let last = keys.pop();
+
         //改变model自动改变state.baskect
-        let commentBind = commentObj.$watch(`model.${modelKey}`, v => {
-          A.$set(vueObj, last, v)
+        let commentBind = vueObj.$watch(`model.${modelKey}`, v => {
+          Vue.set(keys.length ? vueObj : eval(`vueObj.${keys.join('.')}`), last, v)
+          rootVue.$forceUpdate();
         })
 
 
@@ -294,13 +306,15 @@ export default () => {
 
         model[modelKey] = data;
         //如果是表单类的组件的value值，清空绑定的变量
-        if (modelKey === 'value') {
-          commentObj.model[modelKey] = "";
+        if (vueObj != rootVue && modelKey === 'value') {
+          vueObj.model[modelKey] = "";
         }
       },
       unbind(state, wid) {
         if (state.binder[wid]) {
-          state.binder[wid].map(item => { item() });
+          state.binder[wid].map(item => {
+            item()
+          });
         }
       },
       /**
@@ -352,7 +366,8 @@ export default () => {
         content
       }) {
         UIData.structureIndex = UIData.structureIndex || {};
-        Vue.set(UIData.structureIndex, id, content);
+        // Vue.set(UIData.structureIndex, id, content);
+        UIData.structureIndex[id] = content;
       },
       /**
        * 设置当前激活的工具

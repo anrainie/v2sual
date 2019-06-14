@@ -53,6 +53,8 @@ import open  from '../../../pipe/src/main/webapp/plugins/app.open'
 	v2ComponentTextValue,
 	v2EchartBar,
 	v2EchartLine,
+	v2FormCheckbox,
+	v2FormInput,
 	v2FormCascader,
 	v2FormCheckbox,
 	v2FormDatepicker,

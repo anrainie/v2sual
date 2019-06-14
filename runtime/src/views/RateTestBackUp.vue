@@ -7,19 +7,28 @@
           style="height:50%;width:100%;"
           key="0"
         >
-          <v2-form-input
+          <v2loop
             class="V2Widget"
             id="1560334017733"
             :wid="`1560334017733`"
             :index="0"
             :pid="`1560247080748`"
-          ></v2-form-input>
+          >
+            <template v-slot="scope">
+              <v2-form-input
+                class="V2Widget"
+                :id="`1560334017733-${scope._key}`"
+                :wid="`1560334017733-${scope._key}`"
+                :index="scope._key"
+                :pid="`1560334017733`"
+                :cpttype="`loopItem`"
+                :$item="scope._item"
+                :$key="scope._key"
+              ></v2-form-input>
+            </template>
+          </v2loop>
         </el-row>
-        <el-row
-          class="V2ContainerBlock borderBox dashBorder"
-          style="height:50%;width:100%;"
-          key="1"
-        >
+        <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1">
           <v2-form-input
             class="V2Widget"
             id="1560502574246"
@@ -36,6 +45,13 @@
 import { root } from "@/utils/v2-view";
 export default {
   data() {
+    let userList = [
+      { id: 1, name: 4, title: "123" },
+      { id: 2, name: 5, title: "123" },
+      { id: 3, name: 64, title: "123" },
+      { id: 4, name: 123, title: "123" },
+      { id: 5, name: 134, title: "1223" }
+    ];
     return {
       CONTENT: {
         structure: {
@@ -251,13 +267,7 @@ export default {
           events: {}
         }
       },
-      userList: [
-        { id: 1, name: 4 },
-        { id: 2, name: 4 },
-        { id: 3, name: 4 },
-        { id: 4, name: 4 },
-        { id: 5, name: 4 }
-      ]
+      userList
     };
   },
   mixins: [root],
@@ -268,12 +278,7 @@ export default {
   },
   created() {
     let ctx = this;
-  },
-  beforeMount() {
-    let ctx = this;
-  },
-  mounted() {
-    let ctx = this;
+
     /**bind**/ ctx.$store.commit("registerBind", {
       vueObj: this,
       data: this.userList,
@@ -282,22 +287,16 @@ export default {
       modelKey: "__loopTarget"
     });
     ctx.$store.commit("registerBind", {
-      vueObj: this,
-      data: this.$item.id,
       dataStr: "$item.id",
       wid: 1560334017733,
       modelKey: "__loopKey"
     });
     ctx.$store.commit("registerBind", {
-      vueObj: this,
-      data: this.$item.name,
       dataStr: "$item.name",
       wid: 1560334017733,
       modelKey: "value"
     });
     ctx.$store.commit("registerBind", {
-      vueObj: this,
-      data: this.$item.title,
       dataStr: "$item.title",
       wid: 1560334017733,
       modelKey: "label"
@@ -309,7 +308,12 @@ export default {
       wid: 1560502574246,
       modelKey: "value"
     }); /**bind over**/
+    /**bind over**/
   },
+  beforeMount() {
+    let ctx = this;
+  },
+  mounted() {},
   beforeUpdate() {
     let ctx = this;
   },
@@ -318,6 +322,7 @@ export default {
   },
   beforeDestroy() {
     let ctx = this;
+    /**unBind**/ ctx.$store.commit("unbind", this); /**unBind over**/
   },
   destroyed() {
     let ctx = this;
