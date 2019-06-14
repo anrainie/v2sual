@@ -1,6 +1,24 @@
 import store from './store.js'
 import FocusManager from './focusManager'
 
+function deepGet(model, keys) {
+  if (keys == null || model == null)
+    return null;
+  let c;
+  if ((c = keys.indexOf('.')) != -1) {
+    let k = keys.substr(0, c);
+    if (model[k] != null) {
+      return deepGet(model[k], keys.substr(c + 1));
+    }
+    return null;
+  } else {
+    return model[keys];
+  }
+}
+const RESERVED_WORDS = {
+  '$item': {},
+  '$key': {},
+};
 export const root = {
   data() {
     return {
@@ -47,7 +65,7 @@ export const root = {
     this.focusManager = new FocusManager(this);
 
   },
-  created(){
+  created() {
     this.$store.commit('init', this.CONTENT)
     this.$store.state.root = this;
   },
@@ -64,9 +82,11 @@ export const root = {
   mounted() {
     //找到所有的作用域
     // $(':input',this.$el)
-    window.A = this;
-
-    this.$store.state.binder[this.wid]();
+    // let option = this.$store.state.binder[this.wid];
+    // if (option && option.data && option.vueObj) {
+    //   this.$store.commit('bind', option);
+    // }
+    window.ROOT = this;
   }
 }
 
@@ -93,11 +113,9 @@ export const widget = {
     "index": {},
     "pid": {},
     "readonly": {},
-    "defaultModel": {
-      default: () => {
-        return {}
-      }
-    }
+    "cptType": {},
+    $item: {},
+    $key: {},
   },
   /**
    * 注入store
@@ -106,32 +124,94 @@ export const widget = {
     LOG: console.log,
     ERR: console.error,
   },
-  beforeMount() {
-    /**
-     * 应对特殊需求
-     * Loop组件、动态组件等等需要业务数据来确定结构
-     * 而$store.structure初始化时，尚未获取业务数据，structureIndex会缺少记录
-     * 所以，在组件加载时，冗余注册一次
-     *  
-     */
-    this.$store.commit('regist.index', {
-      id: this.wid,
-      content: this.model,
-    });
+  created() {
+
   },
+  updated() {},
   mounted() {
-    let wid = this.wid,i,
-    binderTable =this.$store.state.binderTable[wid];
-    if(binderTable){
-      for(i of binderTable){
-        i();
+
+    let wid = this.wid,
+      option,
+      options = this.$store.state.binderTable[wid];
+
+    //特殊处理循环组件
+    if (this.cptType == 'loopItem') {
+      options = this.$store.state.binderTable[this.pid];
+      let content;
+      let parentModel = this.$store.getters.model(this.pid);
+      content = JSON.parse(JSON.stringify(parentModel));
+      content.id = this.wid;
+      content.pid = this.pid;
+      content.__type = 'loopItem';
+      /**
+       * 应对特殊需求
+       * Loop组件、动态组件等等需要业务数据来确定结构
+       * 而$store.structure初始化时，尚未获取业务数据，structureIndex会缺少记录
+       * 所以，在组件加载时，冗余注册一次
+       *  
+       */
+      this.$store.commit('regist.index', {
+        id: this.wid,
+        content,
+      });
+
+      //特殊处理，强制触发computed
+      this._computedWatchers['model'].dirty=true;
+      this.$forceUpdate();
+      
+      //处理循环数据绑定
+      if (options) {
+        for (option of options) {
+          if (!option.data && !option.vueObj) {
+            if (option.dataStr) {
+              let data, rootVue;
+              if (RESERVED_WORDS[option.dataStr.split('.')[0]]) {
+                data = deepGet(this, option.dataStr);
+                rootVue = this;
+              } else {
+                data = deepGet(rootVue, option.dataStr);
+              }
+              // content[option.modelKey] = data;
+              Vue.set(content, option.modelKey, data)
+              this.$store.commit('bind', {
+                ...option,
+                wid:this.wid,
+                data,
+                vueObj:this,
+                rootVue,
+              });
+            }
+          }
+        }
+      };
+
+    }
+    //处理普通数据绑定
+    else if (options) {
+      for (option of options) {
+        if (option.data && option.vueObj)
+          this.$store.commit('bind', option);
       }
-    };
+    }
+
+    // else {
+    //   //如果找不到数据绑定，查找父节点的数据绑定
+    //   //如果父级数据绑定没有明确的data和vueObj，将会遗传到当前节点
+    //   option = this.$store.state.binder[this.pid];
+    //   if (option && !option.data && !option.vueObj) {
+    //     let itemOption = {
+    //       ...option,
+    //       vueObject: this,
+    //     }
+    //     this.$store.commit('bind', itemOption);
+    //   }
+    // }
+
     this.$store.commit('regist.vue', {
       wid: this.wid,
       vue: this
     });
-    
+
   },
   computed: {
     // model() {
@@ -146,8 +226,7 @@ export const widget = {
       //     return m;
       //   throw `找不到model${this.name}:${this.wid}`
       // } catch (e) {}
-
-      return this.$store.getters.model(this.wid) || this.defaultModel;
+      return this.$store.getters.model(this.wid) || {};
     },
     parentId() {
       return this.pid || (this.pid = this.$store.getters.parentId(this.wid));
@@ -167,8 +246,8 @@ export const widget = {
       return {}
     },
   },
-  beforeDestroy(){
-    this.$store.commit("unbind",this.wid);
+  beforeDestroy() {
+    this.$store.commit("unbind", this.wid);
   }
 }
 /**

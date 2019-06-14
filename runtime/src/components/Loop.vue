@@ -1,13 +1,13 @@
 <template>
   <div style="display:flex; flex-wrap:wrap;">
     <div v-for="(item,key) in model.__loopTarget" :style="loopStyle" :key="key">
-      <slot :_item="item" :_key="key" :_parentModel="model" :test="test"></slot>
+      <slot :_item="item" :_key="key"></slot>
     </div>
   </div>
 </template>
 <script>
 import { widget } from "@/utils/v2-view";
-import { debug } from 'util';
+import { debug } from "util";
 /**
  * model模版:
  * {
@@ -21,9 +21,7 @@ export default {
   name: "v2Loop",
   mixins: [widget],
   data() {
-    return {
-      test: "A"
-    };
+    return {};
   },
   computed: {
     loopStyle() {
@@ -33,23 +31,7 @@ export default {
       };
     }
   },
-  mounted() {
-    let loopTarget = this.model.__loopTarget;
-    debugger;
-    if (loopTarget) {
-      for (let i = 0; i < loopTarget.length; i++) {
-        let $item = loopTarget[i];
-        let id = this.wid + "-" + i;
-        this.$store.commit("bind0", {
-          vueObj: $item,
-          data: $item.title,
-          dataStr: "title",
-          wid: id,
-          modelKey: "label"
-        });
-      }
-    }
-  }
+  mounted() {}
 };
 </script>
 <style></style>
