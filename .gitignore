@@ -19,3 +19,9 @@ package-lock.json
 runtime/v2sual/@aweb-template/vue-spa.common.js
 runtime/v2sual/@aweb-template/vue-spa.umd.js
 runtime/v2sual/@aweb-template/vue-spa.umd.min.js
+runtime/src/views/RateTest2.vue.def
+runtime/src/views/RateTest.vue
+runtime/src/views/RateTest.vue.def
+runtime/src/views/RateTest1.vue
+runtime/src/views/RateTest1.vue.def
+runtime/src/views/RateTest2.vue

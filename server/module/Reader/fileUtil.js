@@ -137,11 +137,24 @@ const fileUtil = {
   }
 };
 
-
+const trans2absolute = p => {
+  try {
+    return nodejsPath.join(config.runtime.base, p);
+  } catch (e) {
+    p;
+    return '';
+  }
+};
 const reader = {
   getFile(platform) {
     return async req => {
-      let path = req.data.path;
+      if (!req.data.path) {
+        platform.sendErrorResult(req, 'path can\'t be null');
+        console.trace();
+        debugger;
+        return;
+      }
+      let path = trans2absolute(req.data.path);
 
       fileUtil.getFileContent(path).then(content => {
         platform.sendSuccessResult(req, content);
@@ -152,7 +165,7 @@ const reader = {
   },
   deleteFile(platform) {
     return async req => {
-      let path = req.data.path;
+      let path = trans2absolute(req.data.path);
       try {
         fileUtil.deleteFile({
           path,
@@ -170,7 +183,7 @@ const reader = {
   },
   createFile(platform) {
     return async req => {
-      let path = req.data.path;
+      let path = trans2absolute(req.data.path);
       let name = req.data.name;
       let props = req.data.props;
       let template = req.data.template;
@@ -182,7 +195,7 @@ const reader = {
           props,
         }).then(() => {
           platform.sendSuccessResult(req, {
-            path: nodejsPath.join(path,name)
+            path: nodejsPath.join(path, name)
           });
         }).catch(e => {
           platform.sendErrorResult(req, e)
@@ -195,7 +208,7 @@ const reader = {
   },
   createFolder(platform) {
     return async req => {
-      let path = req.data.path;
+      let path = trans2absolute(req.data.path);
       let name = req.data.name;
       try {
         fileUtil.createFolder({
@@ -213,7 +226,7 @@ const reader = {
   },
   saveFile(platform) {
     return async req => {
-      let path = req.data.path;
+      let path = trans2absolute(req.data.path);
       let content = req.data.content;
       let logicOptions = req.data.logicOptions;
       try {

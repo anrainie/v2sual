@@ -43,7 +43,7 @@ let editor = {
               menu.push({
                 ...content.docs,
                 main: content.main,
-                index:content.index
+                index: content.index
               })
             }
           });
@@ -55,25 +55,33 @@ let editor = {
         customWidgets
           .forEach(f => {
 
-            try{
+            try {
               const info = path.parse(f);
 
-              if (info.ext === '.def' && fs.existsSync(f)) {
-  
-                const str=fs.readFileSync(f).toString();
-                const content=JSON.parse(str);
-  
-                menu.push({
-                  name: info.name,
+              if (info.ext === '.def' && fs.existsSync(f) && fs.existsSync(f.replace(/\.def$/,''))) {
+
+                const str = fs.readFileSync(f).toString();
+                const content = JSON.parse(str);
+
+                const name = info.name.toLocaleLowerCase().replace(/\.vue$/, '');
+
+                const item = {
+                  name: name,
                   type: 'customWidget',
-                  href: `customWidget-${info.name}`,
+                  href: `v2-component-${name}`,
+                  component: `v2-component-${name}`,
+                  cptpath: f.replace(config.runtime.base,'').replace(/\.def$/, ''),
                   option: [],
                   css: {},
-                  icon: content.icon||'icontongyong',
+                  icon: content.icon || 'icontongyong',
+                  desp: content.desp || '',
                   main: ''
-                })
+                };
+               // console.log(item);
+                menu.push(item);
+                
               }
-            }catch(e){
+            } catch (e) {
               console.log(e);
             }
           });
