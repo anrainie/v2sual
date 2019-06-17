@@ -57,7 +57,7 @@ const listDir = (dirPath = listPath) => {
         } else {
           if (path.extname(filePath) === '.vue' && !EXCLUDE_MAP[filePath]) {
             const nodeInfo = path.parse(filePath);
-            treeNode.push({
+            let item = {
               name: nodeInfo.name,
               label: nodeInfo.name,
               resId: 'vue',
@@ -65,7 +65,23 @@ const listDir = (dirPath = listPath) => {
               type: 'file',
               category: 100,
               path: filePath
-            });
+            };
+
+            try {
+              const defStr = fs.readFileSync(`${filePath}.def`, { encoding: 'utf8' }).toString();
+              const def = JSON.parse(defStr);
+
+              if (def.desp) {
+                item.desp =  def.desp ;
+                console.log(def.desp);
+              }
+
+            } catch (e) {
+
+            }
+
+
+            treeNode.push(item);
           }
         }
         treeNode.sort(sorter);
