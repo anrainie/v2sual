@@ -52,6 +52,9 @@ module.exports = {
       template = {
         ...TEMPLATE,
         ...props,
+
+        //修改时间的时间戳
+        timestamp:new Date().getTime()
       }
     }
     return new Promise((res, rej) => {

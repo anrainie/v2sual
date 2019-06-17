@@ -10,8 +10,8 @@ let EXCLUDE_MAP = {};
 
 NAVIGATOR.exclude.forEach(e => EXCLUDE_MAP[path.resolve(listPath, e)] = {});
 
-const trans2RelativePath=p=>p.replace(config.runtime.base,'');
-const trans2AbsolutePath=p=>path.join(config.runtime.base,p);
+const trans2RelativePath = p => p.replace(config.runtime.base, '');
+const trans2AbsolutePath = p => path.join(config.runtime.base, p);
 
 
 const listDir = (dirPath = listPath) => {
@@ -24,7 +24,7 @@ const listDir = (dirPath = listPath) => {
       let files = fs.readdirSync(dirPath);
       for (let i = 0; i < files.length; i++) {
         let filePath = path.join(dirPath, files[i]);
-        let relativePath=trans2RelativePath(filePath);
+        let relativePath = trans2RelativePath(filePath);
         let stat = fs.lstatSync(dirPath + path.sep + files[i]);
         if (stat.isDirectory()) {
           let DirInfo = listDir(filePath);
@@ -76,7 +76,7 @@ const listDir = (dirPath = listPath) => {
               const def = JSON.parse(defStr);
 
               if (def.desp) {
-                item.desp =  def.desp ;
+                item.desp = def.desp;
                 console.log(def.desp);
               }
 
