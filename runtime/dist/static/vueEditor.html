@@ -2,7 +2,7 @@
 
 <head>
   <!-- <link rel="stylesheet" href="../ide_icon/iconfont.css"> -->
-  <link rel="stylesheet" href="../ide_icon/iconfont.css">
+  <!-- <link rel="stylesheet" href="../ide_icon/iconfont.css"> -->
   <!-- <script src=""></script> -->
   <!--css-->
   <style>
@@ -48,12 +48,12 @@
       cursor: pointer;
     }
 
-    .V2ToolbarItem>i{
-   
-    margin-right: 4px;
-    display: inline-block;
+    .V2ToolbarItem>i {
+
+      margin-right: 4px;
+      display: inline-block;
     }
-  
+
     .V2ToolbarMenuItem {
       user-select: none;
       padding: 0 5px;
@@ -68,13 +68,15 @@
       margin: 0;
       text-decoration: none;
       cursor: pointer;
-     
+
     }
-    .V2ToolbarMenu .V2ToolbarMenuItem{
+
+    .V2ToolbarMenu .V2ToolbarMenuItem {
       width: 35px;
       height: 25px;
     }
-     .icon-svg{
+
+    .icon-svg {
       display: block;
       width: 20px;
       height: 20px;
@@ -83,7 +85,8 @@
     /* .V2ToolbarMenuItem:hover {
       box-shadow: 0 0 1px 1px #00000021;
     } */
-    .V2ToolbarMenu  [class*=" el-icon-"], .V2ToolbarMenu  [class^=el-icon-]{
+    .V2ToolbarMenu [class*=" el-icon-"],
+    .V2ToolbarMenu [class^=el-icon-] {
       line-height: 30px;
     }
 
@@ -99,93 +102,107 @@
     }
 
 
- 
-    .V2ToolbarMenu::before{
+
+    .V2ToolbarMenu::before {
       content: "";
-    position: absolute;
-    top: -12px;
-    left: 6px;
-    width: 0;
-    height: 0;
-    border-width: 6px;
-    border-style: solid;
-    border-color: transparent transparent #fff transparent;
-    z-index: 8;
+      position: absolute;
+      top: -12px;
+      left: 6px;
+      width: 0;
+      height: 0;
+      border-width: 6px;
+      border-style: solid;
+      border-color: transparent transparent #fff transparent;
+      z-index: 8;
     }
-    .V2ToolbarMenu::after{
+
+    .V2ToolbarMenu::after {
       content: "";
-    position: absolute;
-    top: -16px;
-    left: 4px;
-    width: 0;
-    height: 0;
-    border-width: 8px;
-    border-style: solid;
-    z-index: 7;
-    border-color: transparent transparent #e5e5e5 transparent;
+      position: absolute;
+      top: -16px;
+      left: 4px;
+      width: 0;
+      height: 0;
+      border-width: 8px;
+      border-style: solid;
+      z-index: 7;
+      border-color: transparent transparent #e5e5e5 transparent;
     }
-    .V2ToolbarMenu.v2-layout-option{
+
+    .V2ToolbarMenu.v2-layout-option {
       width: 88px;
-    height: 80px;
-    padding: 6px 10px 0 10px;
+      height: 80px;
+      padding: 6px 10px 0 10px;
 
 
-    
+
     }
-    .V2ToolbarMenu.v2-layout-option .V2ToolbarMenuItem{
-     
+
+    .V2ToolbarMenu.v2-layout-option .V2ToolbarMenuItem {
+
       width: 22px;
-    height: 22px;
-    /* height: auto; */
-    overflow: hidden;
-    float: left;
-    /* text-align: center; */
-    padding: 0;
-    box-sizing: border-box;
-    /* padding-left: 5px; */
-    /* margin: 4px 0; */
-    /* margin-bottom: 5px; */
-    /* line-height: 22px; */
-    padding-top: 4px;
+      height: 22px;
+      /* height: auto; */
+      overflow: hidden;
+      float: left;
+      /* text-align: center; */
+      padding: 0;
+      box-sizing: border-box;
+      /* padding-left: 5px; */
+      /* margin: 4px 0; */
+      /* margin-bottom: 5px; */
+      /* line-height: 22px; */
+      padding-top: 4px;
     }
-    .v2-layout-option .V2ToolbarMenuItem:hover{
+
+    .v2-layout-option .V2ToolbarMenuItem:hover {
       background-color: #c6eceb;
     }
-    .v2-layout-option .V2ToolbarMenuItem i{
+
+    .v2-layout-option .V2ToolbarMenuItem i {
       display: inline-block;
-    width: 14px;
-    height: 14px;
-    background-size: 100% 100%;
-    margin: 0 auto;
-    }
-    .v2-layout-option .V2ToolbarMenuItem:nth-of-type(1) i{
-      background-image: url("../img/icon1.png");
-    }
-    .v2-layout-option .V2ToolbarMenuItem:nth-of-type(2) i{
-      background-image: url("../img/icon2.png");
-    }
-    .v2-layout-option .V2ToolbarMenuItem:nth-of-type(3) i{
-      background-image: url("../img/icon3.png");
-    }
-    .v2-layout-option .V2ToolbarMenuItem:nth-of-type(4) i{
-      background-image: url("../img/icon4.png");
-    }
-    .v2-layout-option .V2ToolbarMenuItem:nth-of-type(5) i{
-      background-image: url("../img/icon5.png");
-    }
-    .v2-layout-option .V2ToolbarMenuItem:nth-of-type(6) i{
-      background-image: url("../img/icon6.png");
-    }
-    .v2-layout-option .V2ToolbarMenuItem:nth-of-type(7) i{
-      background-image: url("../img/icon7.png") ;
-    }
-    .v2-layout-option .V2ToolbarMenuItem:nth-of-type(8) i{
-      background-image: url("../img/icon8.png") ;
+      width: 14px;
+      height: 14px;
+      background-size: 100% 100%;
+      margin: 0 auto;
     }
 
-    .v2-layout-option .V2ToolbarMenuItem:nth-of-type(9) i{
+    .v2-layout-option .V2ToolbarMenuItem:nth-of-type(1) i {
+      background-image: url("../img/icon1.png");
+    }
+
+    .v2-layout-option .V2ToolbarMenuItem:nth-of-type(2) i {
+      background-image: url("../img/icon2.png");
+    }
+
+    .v2-layout-option .V2ToolbarMenuItem:nth-of-type(3) i {
+      background-image: url("../img/icon3.png");
+    }
+
+    .v2-layout-option .V2ToolbarMenuItem:nth-of-type(4) i {
+      background-image: url("../img/icon4.png");
+    }
+
+    .v2-layout-option .V2ToolbarMenuItem:nth-of-type(5) i {
+      background-image: url("../img/icon5.png");
+    }
+
+    .v2-layout-option .V2ToolbarMenuItem:nth-of-type(6) i {
+      background-image: url("../img/icon6.png");
+    }
+
+    .v2-layout-option .V2ToolbarMenuItem:nth-of-type(7) i {
+      background-image: url("../img/icon7.png");
+    }
+
+    .v2-layout-option .V2ToolbarMenuItem:nth-of-type(8) i {
+      background-image: url("../img/icon8.png");
+    }
+
+    .v2-layout-option .V2ToolbarMenuItem:nth-of-type(9) i {
       background-image: url("../img/icon9.png");
     }
+
     .V2ResizeMask {
       pointer-events: none;
       left: 0;
@@ -229,7 +246,7 @@
       display: inline-block;
       vertical-align: middle;
       position: relative;
-     
+
       width: 1px;
       height: 22px;
       background-color: #eee;
@@ -330,10 +347,8 @@
       position: absolute;
       background: rgb(218, 245, 245);
     }
-
-   
   </style>
-    <script src="../ide_icon/iconfont.js"></script>
+  <!-- <script src="../ide_icon/iconfont.js"></script> -->
 
   <script>
     function getUrlParam(name) {
@@ -355,12 +370,6 @@
       console.log('iframe onload', id);
       var parent = window.parent.__dataPool[id];
 
-      parent.$store.commit('loading', true)
-      window.parent.IDE.socket.emitAndGetDeferred("getVueEditorStyles").done(e => {
-        $('head', window.document).append(e.data);
-        parent.$store.commit('loading', false)
-      })
-
 
       window.vueRoot = new Vue({
         store: parent.$store,
@@ -371,9 +380,32 @@
             <v2Container v-else="!$store.state.loading" v-model="rootId"></v2Container>
           </transition>
           `,
+        data() {
+          return {
+            styleUpdated: false
+          }
+        },
+        watch: {
+          style(curval, oldval) {
+            this.loadedStyle();
+            //console.log(`最新值${curval}--旧值${oldval}`);
+          }
+        },
+        computed: {      //同步了store中state内的orderid值
+          style() {
+            return this.$store.state.runtime.style;
+          }
+        },
         mounted() {
           //TODO 以下内容是为了支撑iframe的键盘鼠标事件，考虑移动到一个特定js文件
           //绑定键盘
+          if (!this.style) {
+            this.loadStyle();
+          } else {
+            this.loadedStyle();
+          }
+
+
           $(window)
             .off(".keymap")
             .on("keydown.keymap", e => {
@@ -381,7 +413,22 @@
                 this.activeTool.dispatchKeyEvent(this, e) :
                 true;
             });
+        },
+        methods: {
+          loadStyle() {
+            parent.$store.commit('loading', true)
+          },
+          loadedStyle() {
+            if (!this.styleUpdated) {
+              this.styleUpdated = true;
 
+
+              $('head', window.document).append(this.style);
+
+              parent.$store.commit('loading', false);
+            }
+
+          }
         }
       });
       vueRoot.$mount(document.body.children[0]);
@@ -410,7 +457,6 @@
     ::-webkit-scrollbar-thumb:hover {
       background-color: rgba(41, 58, 86, 0.2);
     }
-
   </style>
 </body>
 
