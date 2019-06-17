@@ -67,7 +67,7 @@ let editor = {
 
                 const item = {
                   name: name,
-                  type: 'custom-widget',
+                  type: 'customWidget',
                   href: `v2-component-${name}`,
                   cptpath: f.replace(config.runtime.page,'').replace(/\.def$/, ''),
                   option: [],
@@ -76,7 +76,7 @@ let editor = {
                   desp: content.desp || '',
                   main: ''
                 };
-                console.log(item);
+               // console.log(item);
                 menu.push(item);
                 
               }
