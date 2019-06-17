@@ -14,7 +14,6 @@ serialId:this.pageParams && this.pageParams.serialId
                 methods:{event0_1560317827220(widget,item){
                 let ctx = this;
                 
-            debugger;
                     /**overview event0_1560317827220**/
                         (async()=>{const t2 = await ctx.open({status:true,path:'/table/detail',page:'example/A1',title:'交易子gg流水',type:'SUB',params:item});
 })();
@@ -33,9 +32,8 @@ serialId:this.pageParams && this.pageParams.serialId
                     
                     
                 },
-                resume(eg){
+                resume(){
                     console.log('流水表页面resume',this)
-                     console.log('流水表页面render',eg)
                 //    this.__resume();
                 },
                  pause(){

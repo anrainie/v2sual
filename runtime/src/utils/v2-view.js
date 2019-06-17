@@ -26,7 +26,7 @@ export const root = {
       poll_timer: -1,
       poll_count: 1,
           //页面参数
-      pageParams: (this.$parent  && this.$parent.params)||(this.$route && Object.keys(this.$route.query).length && this.$route.query) || null,
+      ...(this.$parent  && this.$parent.params)||(this.$route && Object.keys(this.$route.query).length && this.$route.query) || {},
      
     }
   },
@@ -63,6 +63,19 @@ export const root = {
         }, 100)
     }
   },
+  beforeRouteEnter(to, from, next){       
+    next((vm)=>{
+      vm.$router.getMatchedComponents(to)[1].resume.call(vm);
+    
+      vm.__resume();
+    
+    })
+  },
+  beforeRouteLeave (to, from, next) {
+    this.$router.getMatchedComponents(from)[1].pause.call(this);
+    this.__pause();
+    next();
+  },
   beforeCreate() {
     this.$store = new store();
     this.focusManager = new FocusManager(this);
@@ -71,6 +84,7 @@ export const root = {
   created() {
     this.$store.commit('init', this.CONTENT)
     this.$store.state.root = this;
+   
   },
   beforeDestroy() {
     this.focusManager && this.focusManager.dispose();
@@ -89,6 +103,13 @@ export const root = {
     // if (option && option.data && option.vueObj) {
     //   this.$store.commit('bind', option);
     // }
+   //重新赋值页面参数
+   let pageParams = (this.$parent  && this.$parent.params)||(this.$route && Object.keys(this.$route.query).length && this.$route.query||{});
+   if(Object.keys(pageParams).length){
+     for(let item in pageParams){
+       this[item] =pageParams[item];
+     }
+   }
     window.ROOT = this;
   }
 }
