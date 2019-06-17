@@ -43,7 +43,7 @@ let editor = {
               menu.push({
                 ...content.docs,
                 main: content.main,
-                index:content.index
+                index: content.index
               })
             }
           });
@@ -55,25 +55,27 @@ let editor = {
         customWidgets
           .forEach(f => {
 
-            try{
+            try {
               const info = path.parse(f);
 
               if (info.ext === '.def' && fs.existsSync(f)) {
-  
-                const str=fs.readFileSync(f).toString();
-                const content=JSON.parse(str);
-  
+
+                const str = fs.readFileSync(f).toString();
+                const content = JSON.parse(str);
+
                 menu.push({
                   name: info.name,
                   type: 'customWidget',
                   href: `customWidget-${info.name}`,
                   option: [],
                   css: {},
-                  icon: content.icon||'icontongyong',
+                  icon: content.icon || 'icontongyong',
+                  desp: content.desp || '',
                   main: ''
-                })
+                });
+                //console.log(content.desc);
               }
-            }catch(e){
+            } catch (e) {
               console.log(e);
             }
           });
