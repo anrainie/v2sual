@@ -58,7 +58,7 @@ let editor = {
             try {
               const info = path.parse(f);
 
-              if (info.ext === '.def' && fs.existsSync(f)) {
+              if (info.ext === '.def' && fs.existsSync(f) && fs.existsSync(f.replace(/\.def$/,''))) {
 
                 const str = fs.readFileSync(f).toString();
                 const content = JSON.parse(str);
