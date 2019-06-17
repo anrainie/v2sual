@@ -90,7 +90,7 @@ let appendComponent = function(parent,index,element){
         component.setAttribute(':id','`'+wid+'-${scope._key}`');
         component.setAttribute(':wid','`'+wid+'-${scope._key}`');
         component.setAttribute(':index','scope._key');
-        component.setAttribute(':pid','`'+parent.wid+'`');
+        component.setAttribute(':pid','`'+wid+'`');
         component.setAttribute(':cpttype','`loopItem`');
         component.setAttribute(':item','scope._item');
         component.setAttribute(':key','scope._key');
