@@ -1,9 +1,12 @@
 <template>
-  <div class="v2-form-timePicker" :class="model.layoutClass">
+  <div class="v2-form-ctt v2-form-timePicker" :class="model.layoutClass">
     <label
       :class="model.titleMode ==='row'?'v2-form-label':'v2-form-label form-label-col'"
       :style="labelStyle"
-    ><span class="must-input" v-if="model.isRequired">*</span>{{model.label}}</label>
+    >
+    <span class="must-input" v-if="model.isRequired">*</span>
+    {{model.label}}</label>
+
     <div class="form-timePicker-ctn" :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
       <el-time-select
        ref="_op_formTimePicker_picker"

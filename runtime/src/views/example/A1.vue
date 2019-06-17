@@ -55,6 +55,9 @@ ctx.$store.commit("bind",{ vueObj:this, data:this.tradeName, dataStr:"tradeName"
                 destroyed(){
                     let ctx = this;
                         
-                }
+                },
+                pause(){/**页面切出**/},
+                resume(){/**页面切入**/},
+
             };
         </script>

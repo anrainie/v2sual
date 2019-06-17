@@ -65,14 +65,13 @@ export const root = {
   },
   beforeRouteEnter(to, from, next){       
     next((vm)=>{
-      vm.$router.getMatchedComponents(to)[1].resume.call(vm);
-    
+      vm.$router.getMatchedComponents(to)[1].resume && vm.$router.getMatchedComponents(to)[1].resume.call(vm);
       vm.__resume();
     
     })
   },
-  beforeRouteLeave (to, from, next) {
-    this.$router.getMatchedComponents(from)[1].pause.call(this);
+  beforeRouteLeave (to, from, next) { 
+    this.$router.getMatchedComponents(from)[1].pause && this.$router.getMatchedComponents(from)[1].pause.call(this);
     this.__pause();
     next();
   },

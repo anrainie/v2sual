@@ -1,5 +1,5 @@
 <template>
-  <div :style="flexStyle"  class="v2-form-slider" :class="model.layoutClass">
+  <div  class="v2-form-ctt v2-form-slider" :class="model.layoutClass">
      <label
         :class="model.titleMode ==='row'?'v2-form-label':'v2-form-label form-label-col'"
         :style="labelStyle"
@@ -34,17 +34,7 @@
       }
     },
     methods: {
-      flexStyle(){
-        let self = this;
-        if(self.model.titleMode==='col'){
-          return $.extend({}, self.model.style, {display:"flex"})
-        }else if(self.model.titleMode==='row'){
-          return self.model.style;
-        }
-      },
-      change(){
 
-      }
     },
     computed:{
     }

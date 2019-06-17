@@ -20,30 +20,10 @@
       "defaultValue": "按钮",
       "disabled": true,
       "desp": "按钮"
-    }, {
-      "defaultValue": "",
+    },{
+      "defaultValue": "def",
       "valueArray": [
-        "primary",
-        "success",
-        "info",
-        "warning",
-        "danger",
-        "text"
-      ],
-      "type": "string_select",
-      "desp": "类型",
-      "despArray": [
-        "主要",
-        "成功",
-        "信息",
-        "警告",
-        "危险",
-        "文字"
-      ],
-      "name": "btnType"
-    }, {
-      "defaultValue": "",
-      "valueArray": [
+        "def",
         "plain",
         "round",
         "circle"
@@ -51,6 +31,7 @@
       "type": "string_select",
       "desp": "形状",
       "despArray": [
+        "默认",
         "朴素",
         "圆角",
         "圆形"
@@ -69,45 +50,45 @@
     }],
     "css":{
       	"style": [{
-      	    "desp": "按钮样式",
+      	    "desp": "按钮",
       	    "cssAttrs": "background-color width height color",
       	    "name": "btnStyle"
       	  },
       	  {
-      	    "desp": "图标",
-      	    "cssAttrs": "font-weight font-size color",
-      	    "name": "icon"
-      	  },
-      	  {
-      	    "desp": "按钮hover",
-      	    "cssAttrs": "background-color border-width border-color color ",
-      	    "name": "hoverBtn"
-      	  },
-      	  {
-      	    "desp": "按钮激活",
-      	    "cssAttrs": "background-color border-width border-color color ",
-      	    "name": "activeBtn"
+      	    "desp": "按钮容器",
+      	    "cssAttrs": "margin margin-top margin-right margin-bottom margin-left padding padding-top padding-right padding-bottom padding-left",
+      	    "name": "btnWrapStyle"
       	  }
       	],
       	"theme": [{
-      	  "template": "<button class='btn'></button>",
-      	  "desp": "功能",
-      	  "cssAttrs": "",
-      	  "name": "function",
-      	  "zoom": 0.8,
+      	  "desp": "类型选择",
+          "name": "btnType",
       	  "valueArray": [
-      	    "btn-focus",
-      	    "btn-normal",
-      	    "btn-textBtn",
-      	    "btn-danger",
-      	    "btn-custom"
+            "primary&shape=def",
+            "normal&shape=plain",
+            "danger&shape=def",
+            "text&shape=def"
       	  ],
       	  "despArray": [
-      	    "焦点",
-      	    "普通",
-      	    "文字",
-      	    "警告",
-      	    "自定义"
+            "焦点",
+            "普通",
+            "警告",
+            "文字"
+      	  ]
+      	},{
+      	  "desp": "尺寸选择",
+      	  "name": "size",
+      	  "valueArray": [
+            "",
+      	    "medium",
+            "small",
+            "mini"
+      	  ],
+      	  "despArray": [
+            "较大",
+            "中等",
+            "小型",
+            "超小"
       	  ]
       	}]
     }

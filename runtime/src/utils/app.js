@@ -37,7 +37,7 @@ export default {
             
                  switch (type) {
                      case 'SUB':
-                      
+                   
                          self.$store.commit("set_D_visible", true);
                          self.$store.commit("setModalCallback", {
                              cancel: cancelCallback,
@@ -47,7 +47,7 @@ export default {
                          self.$store.commit("set_subPageHref", page);
                          self.$store.commit("set_subPageParams", params);
                          self.$store.commit("set_subPageTitle", title);
-                        debugger;
+                
                         
                          break;
                      case 'WINDOW':

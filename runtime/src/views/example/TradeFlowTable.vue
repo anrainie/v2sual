@@ -14,8 +14,9 @@ serialId:this.pageParams && this.pageParams.serialId
                 methods:{event0_1560317827220(widget,item){
                 let ctx = this;
                 
+            
                     /**overview event0_1560317827220**/
-                        (async()=>{const t2 = await ctx.open({status:true,path:'/table/detail',page:'example/A1',title:'交易子gg流水',type:'SUB',params:item});
+                        (async()=>{const t2 = await this.open({status:true,path:'/table/detail',page:'example/A1',title:'交易子流水',type:'SUB',params:item,confirmCallback:()=>{ console.log('确定')},cancelCallback:()=>{console.log('取消')}});
 })();
                     /**overview over**/
                     
@@ -28,17 +29,9 @@ serialId:this.pageParams && this.pageParams.serialId
                 },
                 created(){
                     let ctx = this;
-                    ctx.poll_runnableList.push({freq:1,run:()=>{console.log(2)}})
                     
                     
-                },
-                resume(){
-                    console.log('流水表页面resume',this)
-                //    this.__resume();
-                },
-                 pause(){
-                    console.log('流水表页面pause',this)
-                    //  this.__pause();
+                    /**bind**/ctx.$store.commit("bind",{ vueObj:this, data:this.subTradeList, dataStr:"subTradeList", wid:1560317827220, modelKey:"tableData" });/**bind over**/
                 },
                 beforeMount(){
                     let ctx = this;
@@ -52,12 +45,11 @@ ctx.subTradeList = t1;})();
                 mounted(){
                     let ctx = this;
                     
-                    /**bind**/ctx.$store.commit("bind",{ vueObj:this, data:this.subTradeList, dataStr:"subTradeList", wid:1560317827220, modelKey:"tableData" });/**bind over**/
-                /**overview mounted**/
-                    (async()=>{
+                    /**overview mounted**/
+                        (async()=>{
 })();
-                /**overview over**/
-                
+                    /**overview over**/
+                    
                     
                 },
                 beforeUpdate(){
@@ -70,12 +62,14 @@ ctx.subTradeList = t1;})();
                 },
                 beforeDestroy(){ 
                     let ctx = this;
-                    /**unBind**/ctx.$store.commit("unbind",this)/**unBind over**/
                         
                 },
                 destroyed(){
                     let ctx = this;
                         
-                }
+                },
+                pause(){/**页面切出**/},
+                resume(){/**页面切入**/},
+
             };
         </script>

@@ -46,9 +46,10 @@ export default {
       type:[Object,Array],
       default:()=>{}
     }
-     
     
-    
+  },
+  beforeCreate(){
+     console.log('加载子页面')
   },
   data () {
     return {
@@ -65,6 +66,9 @@ export default {
     reload (page = this.page) {
       this.AsyncComponent = factory(page, this.delay, this.timeout);
     }
+  },
+  destroyed(){
+    console.log('销毁子页面')
   }
 }
 </script>

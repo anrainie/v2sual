@@ -1,7 +1,7 @@
 <template>
- <el-row :class="model.layoutClass">
+ <el-row :class="model.layoutClass" :style="model.style && model.style.btnWrapStyle">
  
-  <el-button ref="_op_componentBtn_btn" :style="model.style && model.style.btnStyle" :type="model.btnType" :plain="shapMap['plain']" :circle="shapMap['circle']" :round="shapMap['round']" :loading="model.loading" :disabled="model.disabled" >{{model.btnName}}</el-button>
+  <el-button ref="_op_componentBtn_btn" :style="model.style && model.style.btnStyle" :type="model.theme && model.theme.btnType" :plain="shapMap['plain']" :circle="shapMap['circle']" :round="shapMap['round']" :loading="model.loading" :disabled="model.disabled" :size="model.theme && model.theme.size">{{model.btnName}}</el-button>
   
 </el-row>
 </template>
@@ -29,7 +29,7 @@
              circle:false,
              round:false
              };
-             newshape[val] =true; 
+            val!=="def" && (newshape[val] =true)
             this.shapMap =newshape;
          }
        }  
