@@ -63,17 +63,22 @@ let editor = {
                 const str = fs.readFileSync(f).toString();
                 const content = JSON.parse(str);
 
-                menu.push({
-                  name: info.name,
-                  type: 'customWidget',
-                  href: `customWidget-${info.name}`,
+                const name = info.name.toLocaleLowerCase().replace(/\.vue$/, '');
+
+                const item = {
+                  name: name,
+                  type: 'custom-widget',
+                  href: `v2-component-${name}`,
+                  cptpath: f.replace(config.runtime.page,'').replace(/\.def$/, ''),
                   option: [],
                   css: {},
                   icon: content.icon || 'icontongyong',
                   desp: content.desp || '',
                   main: ''
-                });
-                //console.log(content.desc);
+                };
+                console.log(item);
+                menu.push(item);
+                
               }
             } catch (e) {
               console.log(e);
