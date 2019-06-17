@@ -10,6 +10,9 @@ let EXCLUDE_MAP = {};
 
 NAVIGATOR.exclude.forEach(e => EXCLUDE_MAP[path.resolve(listPath, e)] = {});
 
+const trans2RelativePath=p=>p.replace(config.runtime.base,'');
+const trans2AbsolutePath=p=>path.join(config.runtime.base,p);
+
 
 const listDir = (dirPath = listPath) => {
   let treeNode = [];
@@ -21,6 +24,7 @@ const listDir = (dirPath = listPath) => {
       let files = fs.readdirSync(dirPath);
       for (let i = 0; i < files.length; i++) {
         let filePath = path.join(dirPath, files[i]);
+        let relativePath=trans2RelativePath(filePath);
         let stat = fs.lstatSync(dirPath + path.sep + files[i]);
         if (stat.isDirectory()) {
           let DirInfo = listDir(filePath);
@@ -29,7 +33,7 @@ const listDir = (dirPath = listPath) => {
           let folder = {
             name,
             label: name,
-            path: filePath,
+            path: relativePath,
             resId: 'category',
             type: 'folder',
             category: 50,
@@ -64,7 +68,7 @@ const listDir = (dirPath = listPath) => {
               icon: "ideicon iconyemian",
               type: 'file',
               category: 100,
-              path: filePath
+              path: relativePath
             };
 
             try {
@@ -142,14 +146,14 @@ const Navigator = {
       let ret = [{
         name: 'views',
         label: '页面',
-        path: dirPath,
+        path: trans2RelativePath(dirPath),
         resId: 'virtualPath',
         type: 'folder',
         children: viewPath
       }, {
         name: 'flows',
         label: '页面流',
-        path: path.join(dirPath, CATEGORY.ENTRY.NAME),
+        path: trans2RelativePath(path.join(dirPath, CATEGORY.ENTRY.NAME)),
         resId: 'pathFlow',
         type: 'folder',
         children: flowPath
@@ -175,7 +179,7 @@ const Navigator = {
             break;
           default:
             //如果不是，则返回原始的
-            const viewPath = listDir(dirPath);
+            const viewPath = listDir(trans2AbsolutePath(dirPath));
             platform.sendSuccessResult(req, viewPath);
         }
 

@@ -1,1 +1,117 @@
-{"structure":{"id":"root","component":"v2Container","direction":"row","layout":[100],"style":{"width":"100%","height":"100%"},"data":{},"children":[null],"events":{}},"logic":{"methods":{},"watch":{},"beforeCreate":{"labelObj":{"view":[],"output":[]},"code":"","upCode":[],"downCode":[]},"created":{"labelObj":{"view":[],"output":[]},"code":"","upCode":[],"downCode":[]},"beforeMount":{"labelObj":{"view":[],"output":[]},"code":"","upCode":[],"downCode":[]},"mounted":{"labelObj":{"view":[],"output":[]},"code":"","upCode":[],"downCode":[]},"beforeUpdate":{"labelObj":{"view":[],"output":[]},"code":"","upCode":[],"downCode":[]},"updated":{"labelObj":{"view":[],"output":[]},"code":"","upCode":[],"downCode":[]},"beforeDestroy":{"labelObj":{"view":[],"output":[]},"code":"","upCode":[],"downCode":[]},"destroyed":{"labelObj":{"view":[],"output":[]},"code":"","upCode":[],"downCode":[]},"pollList":[]},"dataBasket":{"data":{},"list":[],"mapping":{}},"events":{},"icon":"icontongyong","display":{"width":"100%","height":"100%"}}
+{
+    "structure": {
+        "id": "root",
+        "component": "v2Container",
+        "direction": "row",
+        "layout": [
+            100
+        ],
+        "style": {
+            "width": "100%",
+            "height": "100%"
+        },
+        "data": {},
+        "children": [
+            {
+                "__type": "",
+                "__loopTarget": "",
+                "__loopKey": "",
+                "__capacity": "1",
+                "href": "v2-component-test1",
+                "component": "v2-component-test1",
+                "children": [],
+                "events": {},
+                "id": 1560760032472,
+                "pid": "root"
+            }
+        ],
+        "events": {}
+    },
+    "logic": {
+        "methods": {},
+        "watch": {},
+        "beforeCreate": {
+            "labelObj": {
+                "view": [],
+                "output": []
+            },
+            "code": "",
+            "upCode": [],
+            "downCode": []
+        },
+        "created": {
+            "labelObj": {
+                "view": [],
+                "output": []
+            },
+            "code": "",
+            "upCode": [],
+            "downCode": []
+        },
+        "beforeMount": {
+            "labelObj": {
+                "view": [],
+                "output": []
+            },
+            "code": "",
+            "upCode": [],
+            "downCode": []
+        },
+        "mounted": {
+            "labelObj": {
+                "view": [],
+                "output": []
+            },
+            "code": "",
+            "upCode": [],
+            "downCode": []
+        },
+        "beforeUpdate": {
+            "labelObj": {
+                "view": [],
+                "output": []
+            },
+            "code": "",
+            "upCode": [],
+            "downCode": []
+        },
+        "updated": {
+            "labelObj": {
+                "view": [],
+                "output": []
+            },
+            "code": "",
+            "upCode": [],
+            "downCode": []
+        },
+        "beforeDestroy": {
+            "labelObj": {
+                "view": [],
+                "output": []
+            },
+            "code": "",
+            "upCode": [],
+            "downCode": []
+        },
+        "destroyed": {
+            "labelObj": {
+                "view": [],
+                "output": []
+            },
+            "code": "",
+            "upCode": [],
+            "downCode": []
+        },
+        "pollList": []
+    },
+    "dataBasket": {
+        "data": {},
+        "list": [],
+        "mapping": {}
+    },
+    "events": {},
+    "display": {
+        "width": "100%",
+        "height": "100%"
+    }
+}
