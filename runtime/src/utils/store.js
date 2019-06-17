@@ -264,6 +264,7 @@ export default () => {
           } else {
             state.binderTable[wid] = [option];
           }
+          
         } catch (e) {
           console.error(e);
         }
