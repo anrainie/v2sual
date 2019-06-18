@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 
-export default (url, data) => {
+export default (url, params) => {
     return axios({
         url,
-        data,
+        params,
         method: 'GET'
     });
 }
