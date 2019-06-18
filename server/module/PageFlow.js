@@ -425,7 +425,7 @@ class Page {
                     key.push(item);
                   }
                 });
-                if(!json.logic[i.key.name])json.logic[i.key.name]={}
+                if(!json.logic[item.key.name])json.logic[item.key.name]={}
                 json.logic[item.key.name].upCode = upCode.map(item => {
                   item = context.clearAnnotation(item);
                   return item.print_to_string({ beautify: true, comments: true })
