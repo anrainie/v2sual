@@ -25,9 +25,9 @@ export const root = {
       poll_runnableList: [],
       poll_timer: -1,
       poll_count: 1,
-          //页面参数
-      ...(this.$parent  && this.$parent.params)||(this.$route && Object.keys(this.$route.query).length && this.$route.query) || {},
-     
+      //页面参数
+      ...(this.$parent && this.$parent.params) || (this.$route && Object.keys(this.$route.query).length && this.$route.query) || {},
+
     }
   },
   computed: {
@@ -63,14 +63,14 @@ export const root = {
         }, 100)
     }
   },
-  beforeRouteEnter(to, from, next){       
-    next((vm)=>{
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
       vm.$router.getMatchedComponents(to)[1].resume && vm.$router.getMatchedComponents(to)[1].resume.call(vm);
       vm.__resume();
-    
+
     })
   },
-  beforeRouteLeave (to, from, next) { 
+  beforeRouteLeave(to, from, next) {
     this.$router.getMatchedComponents(from)[1].pause && this.$router.getMatchedComponents(from)[1].pause.call(this);
     this.__pause();
     next();
@@ -83,7 +83,7 @@ export const root = {
   created() {
     this.$store.commit('init', this.CONTENT)
     this.$store.state.root = this;
-   
+
   },
   beforeDestroy() {
     this.focusManager && this.focusManager.dispose();
@@ -102,13 +102,13 @@ export const root = {
     // if (option && option.data && option.vueObj) {
     //   this.$store.commit('bind', option);
     // }
-   //重新赋值页面参数
-   let pageParams = (this.$parent  && this.$parent.params)||(this.$route && Object.keys(this.$route.query).length && this.$route.query||{});
-   if(Object.keys(pageParams).length){
-     for(let item in pageParams){
-       this[item] =pageParams[item];
-     }
-   }
+    //重新赋值页面参数
+    let pageParams = (this.$parent && this.$parent.params) || (this.$route && Object.keys(this.$route.query).length && this.$route.query || {});
+    if (Object.keys(pageParams).length) {
+      for (let item in pageParams) {
+        this[item] = pageParams[item];
+      }
+    }
     window.ROOT = this;
   }
 }
@@ -179,13 +179,13 @@ export const widget = {
       });
 
       //特殊处理，强制触发computed
-      this._computedWatchers['model'].dirty=true;
+      this._computedWatchers['model'].dirty = true;
       this.$forceUpdate();
 
       //处理循环数据绑定
       if (options) {
         for (option of options) {
-          if (!option.data && !option.vueObj) {
+          if (option.data == null && !option.vueObj) {
             if (option.dataStr) {
               let data, rootVue;
               if (RESERVED_WORDS[option.dataStr.split('.')[0]]) {
@@ -198,9 +198,9 @@ export const widget = {
               Vue.set(content, option.modelKey, data)
               this.$store.commit('bind', {
                 ...option,
-                wid:this.wid,
+                wid: this.wid,
                 data,
-                vueObj:this,
+                vueObj: this,
                 rootVue,
               });
             }
@@ -212,7 +212,7 @@ export const widget = {
     //处理普通数据绑定
     else if (options) {
       for (option of options) {
-        if (option.data && option.vueObj)
+        if (option.data != null && option.vueObj)
           this.$store.commit('bind', option);
       }
     }

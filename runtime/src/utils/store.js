@@ -281,6 +281,10 @@ export default () => {
           rootVue = state.root;
         let self = this;
         let model = self.getters.model(wid);
+        if(!model){
+          console.error(`can not found model ${wid}`)
+          return;
+        }
 
         //改变state.baskect自动改变model
         // console.log(rootVue.wid,'watch:',dataStr,'change',modelKey);
