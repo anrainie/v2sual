@@ -5,7 +5,7 @@ const path = require('path');
 
 module.exports = (app, configs) => {
   configs.proxy.map(config => {
-    console.log(configs.base+config.source);
+    //console.log(configs.base+config.source);
     app.use(convert(proxy(configs.base+config.source, config)))
   });
 };

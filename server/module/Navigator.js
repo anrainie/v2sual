@@ -77,7 +77,6 @@ const listDir = (dirPath = listPath) => {
 
               if (def.desp) {
                 item.desp = def.desp;
-                console.log(def.desp);
               }
 
             } catch (e) {

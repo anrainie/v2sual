@@ -174,8 +174,6 @@ class Preview {
   style(platform) {
     const projectPath = this.projectPath;
     return function (req) {
-
-      console.log('获取项目样式');
       try {
         const html = Buffer.from(fs.readFileSync(config.runtime.homepage)).toString();
 
