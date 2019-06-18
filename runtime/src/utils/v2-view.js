@@ -153,6 +153,11 @@ export const widget = {
   updated() {},
   mounted() {
 
+    this.$store.commit('regist.vue', {
+      wid: this.wid,
+      vue: this
+    });
+
     let wid = this.wid,
       option,
       options = this.$store.state.binderTable[wid];
@@ -187,12 +192,13 @@ export const widget = {
         for (option of options) {
           if (option.data == null && !option.vueObj) {
             if (option.dataStr) {
-              let data, rootVue;
+              let data, vueObj;
               if (RESERVED_WORDS[option.dataStr.split('.')[0]]) {
                 data = deepGet(this, option.dataStr);
-                rootVue = this;
+                vueObj = this;
               } else {
-                data = deepGet(rootVue, option.dataStr);
+                vueObj = this.$store.state.root;
+                data = deepGet(vueObj, option.dataStr);
               }
               // content[option.modelKey] = data;
               Vue.set(content, option.modelKey, data)
@@ -200,8 +206,7 @@ export const widget = {
                 ...option,
                 wid: this.wid,
                 data,
-                vueObj: this,
-                rootVue,
+                vueObj,
               });
             }
           }
@@ -216,24 +221,6 @@ export const widget = {
           this.$store.commit('bind', option);
       }
     }
-
-    // else {
-    //   //如果找不到数据绑定，查找父节点的数据绑定
-    //   //如果父级数据绑定没有明确的data和vueObj，将会遗传到当前节点
-    //   option = this.$store.state.binder[this.pid];
-    //   if (option && !option.data && !option.vueObj) {
-    //     let itemOption = {
-    //       ...option,
-    //       vueObject: this,
-    //     }
-    //     this.$store.commit('bind', itemOption);
-    //   }
-    // }
-
-    this.$store.commit('regist.vue', {
-      wid: this.wid,
-      vue: this
-    });
 
   },
   computed: {
