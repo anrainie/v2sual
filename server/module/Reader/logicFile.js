@@ -50,7 +50,7 @@ let json2script = function (json) {
   if (transfer) {
     finalStr = `<script>
             import {root} from '@/utils/v2-view';
-            ${importList.length&&importList.map(item=>`import ${item.desp} from '${item.path}';`)}
+            ${importList.length?importList.map(item=>`import ${item.desp} from '${item.path}'`).join(";"):''}
             export default{
                 data(){
                     return{
@@ -59,7 +59,7 @@ let json2script = function (json) {
                     }
                 },
                 mixins:[root],
-                ${importList.length&& `components:{${importList.map(item=>`${item.desp},`)}},`}
+                ${importList.length?`components:{${importList.map(item=>`${item.desp}`)}},`:''}
                 methods:{${self.methodsToCode(transfer.methods)}},
                 watch:{${self.methodsToCode(transfer.watch)}},
 
