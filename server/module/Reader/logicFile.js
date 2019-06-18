@@ -159,9 +159,9 @@ let bindData = function (logic, mapping) {
   for (i in mapping) {
     mapping[i].map(item => {
       if(item.type === 'loop' && item.modelValue !== "__loopTarget"){
-        arr.push(`ctx.$store.commit("bind",{ dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
+        arr.push(`ctx.$store.commit("registerBind",{ dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
       }else{
-        arr.push(`ctx.$store.commit("bind",{ vueObj:this, data:this.${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
+        arr.push(`ctx.$store.commit("registerBind",{ vueObj:this, data:this.${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
       }
     });
   };
