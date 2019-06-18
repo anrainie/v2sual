@@ -23,20 +23,34 @@ let json2script = function (json) {
     data = content.dataBasket.data,
     structure = content.structure,
     logic = content.logic,
-    porpStr,
+    porpStr,structureIndex=[],i,importList,
     template, finalStr,
     self = this,
     transfer = self.toCode(logic),
-
     dataStr = self.createData(data);
+
+  let tempArr = [structure];
+
+  while(i = tempArr.pop()){
+    structureIndex.push(i);
+    if(i.children){
+      for(let k in i.children){
+        if(i.children[k])tempArr.push(i.children[k]);
+      }
+    }
+  }
+  importList = createImport(structureIndex);
   porpStr = self.createProp(data);
   transfer = self.bindData(logic, content.dataBasket.mapping);
+
+
   // transfer数据初始化
   if (!transfer.pollList) transfer.pollList = [];
 
   if (transfer) {
     finalStr = `<script>
             import {root} from '@/utils/v2-view';
+            ${importList.length&&importList.map(item=>`import ${item.desp} from '${item.path}';`)}
             export default{
                 data(){
                     return{
@@ -45,8 +59,10 @@ let json2script = function (json) {
                     }
                 },
                 mixins:[root],
+                ${importList.length&& `components:{${importList.map(item=>`${item.desp},`)}},`}
                 methods:{${self.methodsToCode(transfer.methods)}},
                 watch:{${self.methodsToCode(transfer.watch)}},
+
                 beforeCreate(){
                     let ctx = this;
                     ${transfer.beforeCreate ? transfer.beforeCreate.code : ''}
@@ -114,7 +130,27 @@ let methodsToCode = function (obj) {
   }
   return arr.join("");
 }
-
+// 生成import
+let createImport = function(structureIndex){
+  let item;
+  let list=[];
+  for(item of structureIndex){
+    if(item.cptpath){
+      list.push({
+        name: item.component,
+        path: item.cptpath.replace(/\\/g,"/").replace("/src","@"),
+        desp: toCamel(item.component)
+      })
+    }
+  }
+  return list;
+}
+// 转驼峰
+let toCamel = function (str) {
+  return str.replace(/([^-])(?:-+([^-]))/g, function ($0, $1, $2) {
+    return $1 + $2.toUpperCase();
+  });
+}
 // 绑定datas
 let bindData = function (logic, mapping) {
   let arr = [],
@@ -185,9 +221,9 @@ let toCode = function (logic) {
           if (arr.length || outRes.length) {
             outCode = `
             ${(obj.upCode&&obj.upCode.length!==0)?obj.upCode.join("\n"):''}
-                    /**overview ${k}**/
+                    /*overview*/
                         (async()=>{${arr.join("\n")}\n${outRes.join("\n")}})();
-                    /**overview over**/
+                    /*overview over*/
                     ${(obj.downCode&&obj.downCode.length!==0)?obj.downCode.join("\n"):''}
                     `;
           } else {
@@ -210,9 +246,9 @@ let toCode = function (logic) {
           });
           if (arr.length || outRes.length) {
             outCode = `
-                /**overview ${k}**/
+                /*overview*/
                     (async()=>{${arr.join("\n")}\n${outRes.join("\n")}})();
-                /**overview over**/
+                /*overview over*/
                 `;
           } else {
             outCode = "";
@@ -235,9 +271,9 @@ let toCode = function (logic) {
         if (arr.length || outRes.length) {
           outCode = `
                     /**data**/
-                /**overview ${i}**/
+                /*overview*/
                     (async()=>{${arr.join("\n")}\n${outRes.join("\n")}})();
-                /**overview over**/
+                /*overview over*/
                 `;
         } else {
           outCode = "/**data**/";
@@ -263,9 +299,9 @@ let toCode = function (logic) {
         }
         if (arr.length || outRes.length) {
           outCode = `
-                    /**overview ${i}**/
+                    /*overview*/
                         (async()=>{${arr.join("\n")}\n${outRes.join("\n")}})();
-                    /**overview over**/
+                    /*overview over*/
                     `;
         } else {
           outCode = "";
@@ -410,3 +446,4 @@ exports.bindData = bindData;
 exports.transToPoll = transToPoll;
 exports.__buildIndex = __buildIndex;
 exports.createProp = createProp;
+exports.toCamel = toCamel;
