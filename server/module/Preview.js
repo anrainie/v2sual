@@ -87,12 +87,12 @@ class Preview {
               } catch (e) {
               }
             });
-            const vueFiles = Object.keys(vueMap).map(n=>{
-              return {
-                name:n,
-                path:`./${vueMap[n]}`
-              }
-            });
+          const vueFiles = Object.keys(vueMap).map(n => {
+            return {
+              name: n,
+              path: `./${vueMap[n]}`
+            }
+          });
 
           //pipe
           const pipes = await readDir(config.runtime.pipe);
@@ -131,21 +131,51 @@ class Preview {
           const absProjectPath = path.resolve(projectPath);
 
           //删除package-lock.josn
-          try{
-            fs.unlinkSync(path.resolve(absProjectPath,'package-lock.json'));
-          }catch(e){
+          try {
+            fs.unlinkSync(path.resolve(absProjectPath, 'package-lock.json'));
+          } catch (e) {
             console.log(e.message);
           }
-          
+
+          //先备份一次vue.config.js
+          const vueConfigPath=path.join(config.runtime.base, 'vue.config.js');
+          const vueConfigBackup = fs.readFileSync(vueConfigPath, { encoding: 'utf8' });
+
 
           //重新安装一次依赖
           const initDev = await execCmd(config.module.preview.script.init, absProjectPath);
 
           //npm run style  生成样式
-          const styleDev = await execCmd(config.module.preview.script.style, absProjectPath);
+          //覆盖一下，生成独立css的，方便所见即所得
+          fs.writeFileSync(vueConfigPath,`
+            module.exports = {
+                baseUrl: './',
+                devServer: {},
+                productionSourceMap: false,
+                filenameHashing: false,
+                css: {}
+            }
+          `)
+           await execCmd(config.module.preview.script.style, absProjectPath);
 
           // npm run script 生成脚本
-          const jsdev = await execCmd(config.module.preview.script.script, absProjectPath);
+          //再覆盖一下，生成组件内css的，方便样式配置可以
+          fs.writeFileSync(vueConfigPath,`
+            module.exports = {
+                baseUrl: './',
+                devServer: {},
+                productionSourceMap: false,
+                filenameHashing: false,
+                css: {
+                    modules: false,
+                    extract: false,
+                    sourceMap: false
+                }
+            }
+          `)
+          await execCmd(config.module.preview.script.script, absProjectPath);
+
+          fs.writeFileSync(vueConfigPath,vueConfigBackup);
         } catch (e) {
           Result.error(ctx, e);
         } finally {
