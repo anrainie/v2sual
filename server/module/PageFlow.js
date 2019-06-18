@@ -8,6 +8,16 @@ const fs = require('fs');
 const config = require('../config/config.base');
 const Result = require('../util/Result');
 
+
+const trans2absolute = p => {
+  try {
+    return path.join(config.runtime.base, p);
+  } catch (e) {
+    p;
+    return '';
+  }
+};
+
 class Page {
 
   constructor(path) {
@@ -350,8 +360,8 @@ class Page {
             downCode: []
           }
         };
-        const vueContent = await new Promise(resolve => fs.readFile(vuepath, 'utf8', (error, response) => resolve(response)));
-        const content = await new Promise(resolve => fs.readFile(filepath, 'utf8', (error, response) => resolve(response)));
+        const vueContent = await new Promise(resolve => fs.readFile(trans2absolute(vuepath), 'utf8', (error, response) => resolve(response)));
+        const content = await new Promise(resolve => fs.readFile(trans2absolute(filepath), 'utf8', (error, response) => resolve(response)));
         let json = {};
         if (content) json = JSON.parse(content);
         if (!json.logic) json.logic = template;
@@ -377,7 +387,7 @@ class Page {
                     }
                   });
                   contentList.map(item => {
-                    if (item.end.comments_after.length && item.end.comments_after[0].value === "*overview over*") {
+                    if (item.end.comments_after.length && item.end.comments_after[0].value === "overview over") {
                       key = downCode;
                     } else {
                       key.push(item);
@@ -409,7 +419,7 @@ class Page {
                   }
                 });
                 contentList.map(item => {
-                  if (item.end.comments_after.length && item.end.comments_after[0].value === "*overview over*") {
+                  if (item.end.comments_after.length && item.end.comments_after[0].value === "overview over") {
                     key = downCode;
                   } else {
                     key.push(item);
