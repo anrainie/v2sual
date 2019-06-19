@@ -434,6 +434,7 @@ export default {
 <style lang="less">
 /* 公共样式弹框的css */
 @color: #04bebd;
+
 .commonSet-content {
   font-size: 12px;
   color: #4d4d4d;

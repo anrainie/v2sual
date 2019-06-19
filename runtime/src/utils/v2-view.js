@@ -65,13 +65,17 @@ export const root = {
   },
   beforeRouteEnter(to, from, next){       
     next((vm)=>{
-      vm.$router.getMatchedComponents(to)[1].resume && vm.$router.getMatchedComponents(to)[1].resume.call(vm);
+      let toComp = vm.$router.getMatchedComponents(to)[1]?vm.$router.getMatchedComponents(to)[1]:vm.$router.getMatchedComponents(to)[0];
+    
+      toComp.resume && toComp.resume.call(vm);
       vm.__resume();
     
     })
   },
   beforeRouteLeave (to, from, next) { 
-    this.$router.getMatchedComponents(from)[1].pause && this.$router.getMatchedComponents(from)[1].pause.call(this);
+    let fromCom = this.$router.getMatchedComponents(from)[1]?this.$router.getMatchedComponents(from)[1]:this.$router.getMatchedComponents(from)[0];
+    
+    fromCom.pause && fromCom.pause.call(this);
     this.__pause();
     next();
   },
