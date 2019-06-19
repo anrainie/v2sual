@@ -14,7 +14,7 @@ const homepage = path.resolve(dist, config.runtime.homepage);
 
 const webide={
     ...config.webide,
-    host:process.cwd().indexOf('home/v2sual')?'aui.awebide.com':'localhost'
+    host:process.cwd().indexOf('home/v2sual')?'http://aui.awebide.com':'http://localhost'
 }
 
 
