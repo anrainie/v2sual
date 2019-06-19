@@ -1,6 +1,52 @@
 import Vuex from 'vuex'
 // import { ElSelect } from 'element-ui/types/select';
 
+
+/**
+ * watch有exp|Fn两种模式
+ * exp仅支持 a.b.c这种形式
+ * FN用于支持其他模式,比如a[b].c
+ */
+const generateWatch = (key,host) => {
+  //single path
+  if (key.indexOf('.') == -1) {
+    if (key.indexOf('-') == -1) {
+      return key;
+    }
+    return () => {
+      return host[key];
+    }
+  }
+  // simple dot path
+  if (key.indexOf('-') == -1) {
+    return key;
+  }
+
+  // complex path
+  let keys = key.split('.');
+  let rk = []
+  for (let i = 0; i < keys.length; i++) {
+    let k = keys[i];
+    rk.push((k.indexOf('-') == -1) ? `.${k}` : `['${k}']`);
+  }
+  let newKey = rk.join('');
+  return eval(`() => {
+            try {
+              console.log('watch',host)
+              return host${newKey};
+            } catch (e) {
+              console.error(e)
+              console.error(\`${host.wid}:${newKey}属性不存在，不能绑定数据\`)
+            }
+          }`);
+}
+const MAPPING = arr => {
+  if (arr instanceof Array)
+    return arr.map(e => {
+      return (e.indexOf('-') == -1) ? `.${e}` : `['${e}']`;
+    }).join('');
+  return (arr.indexOf('-') == -1) ? `.${arr}` : `['${arr}']`;
+}
 /**
  * 扁平化结构树，构建索引
  * @param {*} v 
@@ -301,36 +347,31 @@ export default () => {
           widgetVue.$forceUpdate();
         });
          */
-        let keys = modelKey.split(".");
-        let last = keys.pop();
 
-        const MAPPING = arr => {
-          return arr.map(e => {
-            return (e.indexOf('-') == -1) ? `.${e}` : `['${e}']`;
-          });
-        }
 
-        /**处理类似于 model.style.background-color这类的格式 */
-        let validKeys = MAPPING(keys);
-        let validWatches = MAPPING(dataStr);
+        let dataWatch = generateWatch(dataStr,vueObj);
+        let modelWatch = generateWatch('model.' + modelKey,widgetVue);
 
-        let vueBind = vueObj.$watch(validWatches, v => {
-          Vue.set(keys.length ? eval(`model${validKeys}`) : model, last, v);
+        let modelKeys = modelKey.split(".");
+        let modelLast = modelKeys.pop();
+        let modelPre = MAPPING(modelKeys);
+
+        let vueBind = vueObj.$watch(dataWatch, v => {
+          Vue.set(modelKeys.length ? eval(`model${modelPre}`) : model, modelLast, v);
           widgetVue.$forceUpdate();
         });
 
-        keys = dataStr.split(".");
-        last = keys.pop();
-
-        validKeys = MAPPING(keys);
-        validWatches = MAPPING(modelKey);
-
-        // console.log('bind',`model.${modelKey}`,dataStr,widgetVue)
-        //改变model自动改变state.baskect
-        let commentBind = widgetVue.$watch(`model${validWatches}`, v => {
-          Vue.set(keys.length ? eval(`vueObj${validKeys}`) : vueObj, last, v)
+        let dataKeys = dataStr.split('.');
+        let dataLast = dataKeys.pop();
+        let dataPre = MAPPING(dataKeys);
+        let commentBind = widgetVue.$watch(modelWatch, v => {
+          Vue.set(dataKeys.length ? eval(`vueObj${dataPre}`) : vueObj, dataLast, v)
           vueObj.$forceUpdate();
         })
+
+        console.log('vueObj bind', dataStr, dataWatch, `model${modelPre}`, modelLast)
+        console.log('widgetVue bind', modelKey, modelWatch, `vueObj${dataPre}`, dataLast)
+
 
 
         if (state.binder[wid]) {
@@ -339,7 +380,8 @@ export default () => {
           state.binder[wid] = [vueBind, commentBind]
         }
 
-        model[modelKey] = data;
+        
+        Vue.set(modelKeys.length ? eval(`model${modelPre}`) : model, modelLast, data);
         //如果是表单类的组件的value值，清空绑定的变量
         // if (vueObj != rootVue && modelKey === 'value') {
         //   vueObj.model[modelKey] = "";
