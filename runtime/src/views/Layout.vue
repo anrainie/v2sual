@@ -158,11 +158,12 @@
 
           </div>
               <!-- 子页面容器 -->
-              <el-dialog   :title="subPageTitle" :visible.sync='dialogVisible' @close="closeDialog">
-                <transition name="fade" mode="out-in" v-if="dialogVisible">
+              <el-dialog   :title="subPageTitle" :visible.sync='subDialogVisible' @close="closeDialog">
+                <transition name="fade" mode="out-in" v-if="subDialogVisible">
                   <!-- <router-view></router-view> -->
-                  <async-component :page="subPageHref" :params="subPageParams"></async-component>
-                </transition>           
+                 
+                  <sub-page-ctn :page="subPageHref" :params="subPageParams" v-if="subDialogVisible"></sub-page-ctn> 
+               </transition>           
                 <div slot='footer' class='dialog-footer'>
                 <el-button @click="cancel">取消</el-button>
                 <el-button type='primary' @click="confirm">确定</el-button >
@@ -181,6 +182,7 @@ import {getObjArr, getRouter,saveRouter} from '../promission.js'
 
 import rightMenu from '@/components/rightMenu'
 import asyncComponent from '@/components/asyncComponent'
+import subPageCtn from '@/components/subPageCtn'
 
 export default {
   name:'layout',
@@ -351,9 +353,9 @@ export default {
         this.$store.commit("set_active_index", val);
       }
     },
-     dialogVisible: {
+     subDialogVisible: {
         get() {
-          return this.$store.state.dialogVisible;
+          return this.$store.state.subDialogVisible;
         },
         set(val) {
           this.$store.commit("set_D_visible", val);
@@ -435,11 +437,21 @@ export default {
       }
 
 
+    },
+    subDialogVisible:{
+       immediate:true,
+       handler(newVal, oldVal){
+           if(!newVal && oldVal){
+              let currentPageConfig =  this.$router.currentRoute.matched[1].components.default;
+              let currentPageIns = this.$router.currentRoute.matched[1].instances.default;
+               currentPageConfig.resume && currentPageConfig.resume.call(currentPageIns);                
+           }
+       }
     }
   },
   components:{
     rightMenu,
-    asyncComponent
+    subPageCtn
   }
 };
 </script>

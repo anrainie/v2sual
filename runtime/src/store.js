@@ -8,7 +8,7 @@ export default new Vuex.Store({
     openedTabs: [], //所有打开的路由
     activeIndex: '', //激活状态
     activeTab:{},
-    dialogVisible: false,
+    subDialogVisible: false,
     subPageHref:'',
     subPageParams: '',
     subPageTitle:'',

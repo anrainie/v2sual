@@ -66,7 +66,6 @@ export const root = {
   beforeRouteEnter(to, from, next){       
     next((vm)=>{
       let toComp = vm.$router.getMatchedComponents(to)[1]?vm.$router.getMatchedComponents(to)[1]:vm.$router.getMatchedComponents(to)[0];
-    
       toComp.resume && toComp.resume.call(vm);
       vm.__resume();
 
