@@ -292,20 +292,43 @@ export default () => {
           return;
         }
 
-        //改变state.baskect自动改变model
-        // console.log(rootVue.wid,'watch:',dataStr,'change',modelKey);
-        let vueBind = vueObj.$watch(dataStr, v => {
-          Vue.set(model, modelKey, v);
+        /**
+         * modelKey可能是这种格式 a.b-1.c-1
+         * dataStr也可能是这种格式A.B-1.C-1
+         * 对应的代码应当是 
+         * vueObj.$watch('a['B-1']['C-1']', v => {
+          Vue.set(model.a['b-1'],'c-d',v)
+          widgetVue.$forceUpdate();
+        });
+         */
+        let keys = modelKey.split(".");
+        let last = keys.pop();
+
+        const MAPPING = arr => {
+          return arr.map(e => {
+            return (e.indexOf('-') == -1) ? `.${e}` : `['${e}']`;
+          });
+        }
+
+        /**处理类似于 model.style.background-color这类的格式 */
+        let validKeys = MAPPING(keys);
+        let validWatches = MAPPING(dataStr);
+
+        let vueBind = vueObj.$watch(validWatches, v => {
+          Vue.set(keys.length ? eval(`model${validKeys}`) : model, last, v);
           widgetVue.$forceUpdate();
         });
 
-        let keys = dataStr.split(".");
-        let last = keys.pop();
+        keys = dataStr.split(".");
+        last = keys.pop();
+
+        validKeys = MAPPING(keys);
+        validWatches = MAPPING(modelKey);
 
         // console.log('bind',`model.${modelKey}`,dataStr,widgetVue)
         //改变model自动改变state.baskect
-        let commentBind = widgetVue.$watch(`model.${modelKey}`, v => {
-          Vue.set(keys.length ? eval(`vueObj.${keys.join('.')}`) : vueObj, last, v)
+        let commentBind = widgetVue.$watch(`model${validWatches}`, v => {
+          Vue.set(keys.length ? eval(`vueObj${validKeys}`) : vueObj, last, v)
           vueObj.$forceUpdate();
         })
 
