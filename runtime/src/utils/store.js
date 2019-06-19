@@ -32,7 +32,6 @@ const generateWatch = (key,host) => {
   let newKey = rk.join('');
   return eval(`() => {
             try {
-              console.log('watch',host)
               return host${newKey};
             } catch (e) {
               console.error(e)
