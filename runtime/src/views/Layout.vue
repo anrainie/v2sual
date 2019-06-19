@@ -6,17 +6,23 @@
         class="aweb-logo"
         :class="collapsed?'logo-collapse-width':'logo-width'"
       >{{collapsed?'':sysName}}</el-col>
-      <el-col :span="10">
+      <el-col :span="9">
         <div class="aweb-tools" @click.prevent="collapse">
           <i class="el-icon-menu"></i>
         </div>
       
       </el-col>
+
       <el-col :span="4" class="aweb-userinfo">
 
-        <el-tooltip  effect="dark" content="下载案例" placement="left">
+
+        
+    
+         <theme-picker class="aweb-theme-picker-ctn"></theme-picker> 
+
+        <!-- <el-tooltip  effect="dark" content="下载案例" placement="left"> -->
             <el-button icon="el-icon-sold-out" circle class="aweb-download-btn" @click="openMarket"></el-button>
-        </el-tooltip>
+        <!-- </el-tooltip> -->
 
         <el-dropdown trigger="hover">
           <span class="el-dropdown-link aweb-userinfo-inner">
@@ -41,8 +47,6 @@
           class="el-menu-vertical-demo"
           background-color="#152028"
           text-color="#fff"
-          active-text-color="#04bebd"
-          hoverbgColor ="#04bebd"
           :collapse="collapsed"
           @select="handleSelectMenu"
         >
@@ -183,6 +187,7 @@ import {getObjArr, getRouter,saveRouter} from '../promission.js'
 import rightMenu from '@/components/rightMenu'
 import asyncComponent from '@/components/asyncComponent'
 import subPageCtn from '@/components/subPageCtn'
+import themePicker from '@/components/themePicker'
 
 export default {
   name:'layout',
@@ -195,7 +200,8 @@ export default {
       sysUserName: "admin",
       sysUserAvatar: "http://localhost:7007/img/user.png",  
       rightClickHandler:null,
-      isRouterAlive: true
+      isRouterAlive: true,
+      themeColor:global.themeColor
 
     };
   },
@@ -451,7 +457,8 @@ export default {
   },
   components:{
     rightMenu,
-    subPageCtn
+    subPageCtn,
+    themePicker
   }
 };
 </script>
@@ -533,6 +540,7 @@ export default {
     top: 64px;
     bottom: 0px;
     overflow: hidden;
+    height: calc(100vh - 64px);
     aside {
     flex: 0 0 230px;
 	  width: 230px;
@@ -609,6 +617,11 @@ export default {
     .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 230px;
     min-height: 400px;
+  }
+  .aweb-theme-picker-ctn{
+        vertical-align: middle;
+    padding-right: 12px;
+    line-height: 53px;
   }
   // .aweb-right-menu{
   //   position: absolute;

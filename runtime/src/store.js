@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import variables from '../element-variables.scss'
 
 Vue.use(Vuex)
 
@@ -7,6 +8,7 @@ export default new Vuex.Store({
   state: {
     openedTabs: [], //所有打开的路由
     activeIndex: '', //激活状态
+    theme:variables.theme,
     activeTab:{},
     subDialogVisible: false,
     subPageHref:'',
