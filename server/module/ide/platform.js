@@ -21,7 +21,7 @@ class Platform {
     let selfIP = config.server.host;
     let id = config.server.id;
 
-    let url = `http://${ip}:${port}?server=true&id=${id}&type=${ideType}&httpPort=${selfPort}&ip=${selfIP}`;
+    let url = `${ip}:${port}?server=true&id=${id}&type=${ideType}&httpPort=${selfPort}&ip=${selfIP}`;
     console.log(`尝试连接${url}`);
     try {
       this.socket = io(url);

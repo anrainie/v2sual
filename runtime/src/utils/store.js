@@ -1,6 +1,52 @@
 import Vuex from 'vuex'
 // import { ElSelect } from 'element-ui/types/select';
 
+
+/**
+ * watch有exp|Fn两种模式
+ * exp仅支持 a.b.c这种形式
+ * FN用于支持其他模式,比如a[b].c
+ */
+const generateWatch = (key,host) => {
+  //single path
+  if (key.indexOf('.') == -1) {
+    if (key.indexOf('-') == -1) {
+      return key;
+    }
+    return () => {
+      return host[key];
+    }
+  }
+  // simple dot path
+  if (key.indexOf('-') == -1) {
+    return key;
+  }
+
+  // complex path
+  let keys = key.split('.');
+  let rk = []
+  for (let i = 0; i < keys.length; i++) {
+    let k = keys[i];
+    rk.push((k.indexOf('-') == -1) ? `.${k}` : `['${k}']`);
+  }
+  let newKey = rk.join('');
+  return eval(`() => {
+            try {
+              console.log('watch',host)
+              return host${newKey};
+            } catch (e) {
+              console.error(e)
+              console.error(\`${host.wid}:${newKey}属性不存在，不能绑定数据\`)
+            }
+          }`);
+}
+const MAPPING = arr => {
+  if (arr instanceof Array)
+    return arr.map(e => {
+      return (e.indexOf('-') == -1) ? `.${e}` : `['${e}']`;
+    }).join('');
+  return (arr.indexOf('-') == -1) ? `.${arr}` : `['${arr}']`;
+}
 /**
  * 扁平化结构树，构建索引
  * @param {*} v 
@@ -292,22 +338,40 @@ export default () => {
           return;
         }
 
-        //改变state.baskect自动改变model
-        // console.log(rootVue.wid,'watch:',dataStr,'change',modelKey);
-        let vueBind = vueObj.$watch(dataStr, v => {
-          Vue.set(model, modelKey, v);
+        /**
+         * modelKey可能是这种格式 a.b-1.c-1
+         * dataStr也可能是这种格式A.B-1.C-1
+         * 对应的代码应当是 
+         * vueObj.$watch('a['B-1']['C-1']', v => {
+          Vue.set(model.a['b-1'],'c-d',v)
+          widgetVue.$forceUpdate();
+        });
+         */
+
+
+        let dataWatch = generateWatch(dataStr,vueObj);
+        let modelWatch = generateWatch('model.' + modelKey,widgetVue);
+
+        let modelKeys = modelKey.split(".");
+        let modelLast = modelKeys.pop();
+        let modelPre = MAPPING(modelKeys);
+
+        let vueBind = vueObj.$watch(dataWatch, v => {
+          Vue.set(modelKeys.length ? eval(`model${modelPre}`) : model, modelLast, v);
           widgetVue.$forceUpdate();
         });
 
-        let keys = dataStr.split(".");
-        let last = keys.pop();
-
-        // console.log('bind',`model.${modelKey}`,dataStr,widgetVue)
-        //改变model自动改变state.baskect
-        let commentBind = widgetVue.$watch(`model.${modelKey}`, v => {
-          Vue.set(keys.length ? eval(`vueObj.${keys.join('.')}`) : vueObj, last, v)
+        let dataKeys = dataStr.split('.');
+        let dataLast = dataKeys.pop();
+        let dataPre = MAPPING(dataKeys);
+        let commentBind = widgetVue.$watch(modelWatch, v => {
+          Vue.set(dataKeys.length ? eval(`vueObj${dataPre}`) : vueObj, dataLast, v)
           vueObj.$forceUpdate();
         })
+
+        console.log('vueObj bind', dataStr, dataWatch, `model${modelPre}`, modelLast)
+        console.log('widgetVue bind', modelKey, modelWatch, `vueObj${dataPre}`, dataLast)
+
 
 
         if (state.binder[wid]) {
@@ -316,7 +380,8 @@ export default () => {
           state.binder[wid] = [vueBind, commentBind]
         }
 
-        model[modelKey] = data;
+        
+        Vue.set(modelKeys.length ? eval(`model${modelPre}`) : model, modelLast, data);
         //如果是表单类的组件的value值，清空绑定的变量
         // if (vueObj != rootVue && modelKey === 'value') {
         //   vueObj.model[modelKey] = "";

@@ -12,10 +12,16 @@ const customWidget = path.resolve(base, config.runtime.customWidget);
 const dist = path.resolve(base, config.runtime.dist);
 const homepage = path.resolve(dist, config.runtime.homepage);
 
+const webide={
+    ...config.webide,
+    host:process.cwd().indexOf('home/v2sual')?'http://aui.awebide.com':'http://localhost'
+}
+
 
 
 module.exports = {
     ...config,
+    webide,
 
     runtime: {
 

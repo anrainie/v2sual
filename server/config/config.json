@@ -6,7 +6,7 @@
         "host": "localhost"
     },
     "webide": {
-        "port": 3005,
+        "port": 7003,
         "host": "localhost"
     },
     "runtime": {
