@@ -1,4 +1,4 @@
-<template><v2container :wid="`root`"><el-row class="V2ContainerBlock" style="height:100%;width:100%;" key="0"><v2container id="1560247080748" :wid="`1560247080748`" :index="0" :pid="`root`"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;width:100%;" key="0"><v2-form-input class="V2Widget" id="1560334017733" :wid="`1560334017733`" :index="0" :pid="`1560247080748`"></v2-form-input></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;width:100%;" key="1"><v2-form-input class="V2Widget" id="1560502574246" :wid="`1560502574246`" :index="1" :pid="`1560247080748`"></v2-form-input></el-row></v2container></el-row></v2container></template>
+<template><v2container :wid="`root`"><el-row class="V2ContainerBlock" style="height:100%;width:100%;" key="0"><v2container id="1560247080748" :wid="`1560247080748`" :index="0" :pid="`root`"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;width:100%;" key="0"><v2loop class="V2Widget" id="1560334017733" :wid="`1560334017733`" :index="0" :pid="`1560247080748`"><template v-slot="scope"><v2-form-input class="V2Widget" :id="`1560334017733-${scope._key}`" :wid="`1560334017733-${scope._key}`" :index="scope._key" :pid="`1560334017733`" :cpttype="`loopItem`" :$item="scope._item" :$key="scope._key"></v2-form-input></template></v2loop></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;width:100%;" key="1"><v2-form-input class="V2Widget" id="1560502574246" :wid="`1560502574246`" :index="1" :pid="`1560247080748`"></v2-form-input></el-row></v2container></el-row></v2container></template>
 <script>
             import {root} from '@/utils/v2-view';
             export default{
@@ -18,16 +18,21 @@
                 beforeCreate(){
                     let ctx = this;
                     
+                    /**overview beforeCreate**/
+                        (async()=>{const t4 = await pipe.getExcelData([表名],`(e,index)=>funcName`);
+})();
+                    /**overview over**/
+                    
                 },
                 created(){
                     let ctx = this;
                     
                     
-                    /**bind**/ctx.$store.commit("registerBind",{ vueObj:this, data:this.userList, dataStr:"userList", wid:1560334017733, modelKey:"__loopTarget" });
-ctx.$store.commit("registerBind",{ vueObj:this, data:this.$item.id, dataStr:"$item.id", wid:1560334017733, modelKey:"__loopKey" });
-ctx.$store.commit("registerBind",{ vueObj:this, data:this.$item.name, dataStr:"$item.name", wid:1560334017733, modelKey:"value" });
-ctx.$store.commit("registerBind",{ vueObj:this, data:this.$item.title, dataStr:"$item.title", wid:1560334017733, modelKey:"label" });
-ctx.$store.commit("registerBind",{ vueObj:this, data:this.userList, dataStr:"userList", wid:1560502574246, modelKey:"value" });/**bind over**/
+                    /**bind**/ctx.$store.commit("bind",{ vueObj:this, data:this.userList, dataStr:"userList", wid:1560334017733, modelKey:"__loopTarget" });
+ctx.$store.commit("bind",{ vueObj:this, data:this.$item.id, dataStr:"$item.id", wid:1560334017733, modelKey:"__loopKey" });
+ctx.$store.commit("bind",{ vueObj:this, data:this.$item.name, dataStr:"$item.name", wid:1560334017733, modelKey:"value" });
+ctx.$store.commit("bind",{ vueObj:this, data:this.$item.title, dataStr:"$item.title", wid:1560334017733, modelKey:"label" });
+ctx.$store.commit("bind",{ vueObj:this, data:this.userList, dataStr:"userList", wid:1560502574246, modelKey:"value" });/**bind over**/
                 },
                 beforeMount(){
                     let ctx = this;
@@ -53,6 +58,9 @@ ctx.$store.commit("registerBind",{ vueObj:this, data:this.userList, dataStr:"use
                 destroyed(){
                     let ctx = this;
                         
-                }
+                },
+                pause(){/**页面切出**/},
+                resume(){/**页面切入**/},
+
             };
         </script>

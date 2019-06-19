@@ -264,7 +264,7 @@ export default () => {
           } else {
             state.binderTable[wid] = [option];
           }
-          
+
         } catch (e) {
           console.error(e);
         }
@@ -275,27 +275,38 @@ export default () => {
         dataStr,
         wid,
         modelKey,
-        rootVue,
+        // rootVue,
       }) {
-        if (!rootVue)
-          rootVue = state.root;
+        // if (!rootVue)
+        //   rootVue = state.root;
         let self = this;
         let model = self.getters.model(wid);
+        if (!model) {
+          console.error(`can not found model ${wid}`)
+          return;
+        }
+
+        let widgetVue = self.getters.vueInstance(wid);
+        if (!widgetVue) {
+          console.error(`can not found widget ${wid}`)
+          return;
+        }
 
         //改变state.baskect自动改变model
         // console.log(rootVue.wid,'watch:',dataStr,'change',modelKey);
-        let vueBind = rootVue.$watch(dataStr, v => {
+        let vueBind = vueObj.$watch(dataStr, v => {
           Vue.set(model, modelKey, v);
-          vueObj.$forceUpdate();
+          widgetVue.$forceUpdate();
         });
 
         let keys = dataStr.split(".");
         let last = keys.pop();
 
+        // console.log('bind',`model.${modelKey}`,dataStr,widgetVue)
         //改变model自动改变state.baskect
-        let commentBind = vueObj.$watch(`model.${modelKey}`, v => {
-          Vue.set(keys.length ? vueObj : eval(`vueObj.${keys.join('.')}`), last, v)
-          rootVue.$forceUpdate();
+        let commentBind = widgetVue.$watch(`model.${modelKey}`, v => {
+          Vue.set(keys.length ? eval(`vueObj.${keys.join('.')}`) : vueObj, last, v)
+          vueObj.$forceUpdate();
         })
 
 
@@ -307,9 +318,9 @@ export default () => {
 
         model[modelKey] = data;
         //如果是表单类的组件的value值，清空绑定的变量
-        if (vueObj != rootVue && modelKey === 'value') {
-          vueObj.model[modelKey] = "";
-        }
+        // if (vueObj != rootVue && modelKey === 'value') {
+        //   vueObj.model[modelKey] = "";
+        // }
       },
       unbind(state, wid) {
         if (state.binder[wid]) {

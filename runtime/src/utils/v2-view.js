@@ -25,9 +25,9 @@ export const root = {
       poll_runnableList: [],
       poll_timer: -1,
       poll_count: 1,
-          //页面参数
-      ...(this.$parent  && this.$parent.params)||(this.$route && Object.keys(this.$route.query).length && this.$route.query) || {},
-     
+      //页面参数
+      ...(this.$parent && this.$parent.params) || (this.$route && Object.keys(this.$route.query).length && this.$route.query) || {},
+
     }
   },
   computed: {
@@ -69,7 +69,7 @@ export const root = {
     
       toComp.resume && toComp.resume.call(vm);
       vm.__resume();
-    
+
     })
   },
   beforeRouteLeave (to, from, next) { 
@@ -87,7 +87,7 @@ export const root = {
   created() {
     this.$store.commit('init', this.CONTENT)
     this.$store.state.root = this;
-   
+
   },
   beforeDestroy() {
     this.focusManager && this.focusManager.dispose();
@@ -106,13 +106,13 @@ export const root = {
     // if (option && option.data && option.vueObj) {
     //   this.$store.commit('bind', option);
     // }
-   //重新赋值页面参数
-   let pageParams = (this.$parent  && this.$parent.params)||(this.$route && Object.keys(this.$route.query).length && this.$route.query||{});
-   if(Object.keys(pageParams).length){
-     for(let item in pageParams){
-       this[item] =pageParams[item];
-     }
-   }
+    //重新赋值页面参数
+    let pageParams = (this.$parent && this.$parent.params) || (this.$route && Object.keys(this.$route.query).length && this.$route.query || {});
+    if (Object.keys(pageParams).length) {
+      for (let item in pageParams) {
+        this[item] = pageParams[item];
+      }
+    }
     window.ROOT = this;
   }
 }
@@ -157,6 +157,11 @@ export const widget = {
   updated() {},
   mounted() {
 
+    this.$store.commit('regist.vue', {
+      wid: this.wid,
+      vue: this
+    });
+
     let wid = this.wid,
       option,
       options = this.$store.state.binderTable[wid];
@@ -183,29 +188,29 @@ export const widget = {
       });
 
       //特殊处理，强制触发computed
-      this._computedWatchers['model'].dirty=true;
+      this._computedWatchers['model'].dirty = true;
       this.$forceUpdate();
 
       //处理循环数据绑定
       if (options) {
         for (option of options) {
-          if (!option.data && !option.vueObj) {
+          if (option.data == null && !option.vueObj) {
             if (option.dataStr) {
-              let data, rootVue;
+              let data, vueObj;
               if (RESERVED_WORDS[option.dataStr.split('.')[0]]) {
                 data = deepGet(this, option.dataStr);
-                rootVue = this;
+                vueObj = this;
               } else {
-                data = deepGet(rootVue, option.dataStr);
+                vueObj = this.$store.state.root;
+                data = deepGet(vueObj, option.dataStr);
               }
               // content[option.modelKey] = data;
               Vue.set(content, option.modelKey, data)
               this.$store.commit('bind', {
                 ...option,
-                wid:this.wid,
+                wid: this.wid,
                 data,
-                vueObj:this,
-                rootVue,
+                vueObj,
               });
             }
           }
@@ -216,28 +221,10 @@ export const widget = {
     //处理普通数据绑定
     else if (options) {
       for (option of options) {
-        if (option.data && option.vueObj)
+        if (option.data != null && option.vueObj)
           this.$store.commit('bind', option);
       }
     }
-
-    // else {
-    //   //如果找不到数据绑定，查找父节点的数据绑定
-    //   //如果父级数据绑定没有明确的data和vueObj，将会遗传到当前节点
-    //   option = this.$store.state.binder[this.pid];
-    //   if (option && !option.data && !option.vueObj) {
-    //     let itemOption = {
-    //       ...option,
-    //       vueObject: this,
-    //     }
-    //     this.$store.commit('bind', itemOption);
-    //   }
-    // }
-
-    this.$store.commit('regist.vue', {
-      wid: this.wid,
-      vue: this
-    });
 
   },
   computed: {

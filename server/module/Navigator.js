@@ -75,9 +75,8 @@ const listDir = (dirPath = listPath) => {
               const defStr = fs.readFileSync(`${filePath}.def`, { encoding: 'utf8' }).toString();
               const def = JSON.parse(defStr);
 
-              if (def.desp) {
-                item.desp = def.desp;
-                console.log(def.desp);
+              if (def.display && def.display.desp) {
+                item.desp = def.display.desp;
               }
 
             } catch (e) {

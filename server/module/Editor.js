@@ -58,28 +58,44 @@ let editor = {
             try {
               const info = path.parse(f);
 
-              if (info.ext === '.def' && fs.existsSync(f) && fs.existsSync(f.replace(/\.def$/,''))) {
+              if (info.ext === '.def' && fs.existsSync(f) && fs.existsSync(f.replace(/\.def$/, ''))) {
 
                 const str = fs.readFileSync(f).toString();
                 const content = JSON.parse(str);
 
                 const name = info.name.toLocaleLowerCase().replace(/\.vue$/, '');
 
+                const dataBasket = content.dataBasket && content.dataBasket.list && content.dataBasket.list;
+                const dataBasketAttr = dataBasket.length ? dataBasket.map(e => {
+                  return e.name?{
+                    type: 'string_input',
+                    name: e.name,
+                    desp: `${e.desp} `,
+                    defaultValue: `${e.value}`
+                  }:null
+                }).filter(e=>!!e) : []
+
                 const item = {
                   name: name,
                   type: 'customWidget',
                   href: `v2-component-${name}`,
                   component: `v2-component-${name}`,
-                  cptpath: f.replace(config.runtime.base,'').replace(/\.def$/, ''),
-                  option: [],
+                  cptpath: f.replace(config.runtime.base, '').replace(/\.def$/, ''),
+                  option: dataBasketAttr.length?[{
+                    type: 'object',
+                    name: 'dataBasket',
+                    desp: '数据篮子',
+                    attr: dataBasketAttr,
+                    expand:true
+                  }]:[],
                   css: {},
-                  icon: content.icon || 'icontongyong',
-                  desp: content.desp || '',
+                  icon: content.display && content.display.icon || 'icontongyong',
+                  desp: content.display && content.display.desp || '',
                   main: ''
                 };
-               // console.log(item);
+                // console.log(item);
                 menu.push(item);
-                
+
               }
             } catch (e) {
               console.log(e);
