@@ -346,8 +346,6 @@ export default () => {
           widgetVue.$forceUpdate();
         });
          */
-
-
         let dataWatch = generateWatch(dataStr,vueObj);
         let modelWatch = generateWatch('model.' + modelKey,widgetVue);
 
