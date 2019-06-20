@@ -43,6 +43,17 @@ npm run mock
         │      aweb-variables.less
         │      aweb.less      
         ├─router            路由
+		|-theme				主题
+		|	|-fonts
+		|	|-img
+		|	|-style.css
+		|	|-custom.css
+		|	|-themeA
+		|	|	|-style.css
+		|	|	|-config.json
+		|	|-themeB
+		|	|	|-style.css
+		|	|	|-config.json
         │      index.js
         │      _import_development.js    开发阶段
         │      _import_production.js     生产环境
