@@ -2,9 +2,9 @@
 import Vue from 'vue'
 import App from './App'
 import ElementUI from 'element-ui'
-import '../element-variables.scss'
-// import '@/theme/index.css'
-
+// import '../element-variables.scss'
+ import '../theme/index.css'
+ 
 window.Vue=Vue;
 
 import $ from "jquery"

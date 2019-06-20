@@ -1,24 +1,40 @@
 	<template>
-  <el-row class="aweb-container">
+  <el-row class="aweb-container" >
     <el-col :span="24" class="aweb-header">
       <el-col
         :span="10"
         class="aweb-logo"
         :class="collapsed?'logo-collapse-width':'logo-width'"
       >{{collapsed?'':sysName}}</el-col>
-      <el-col :span="9">
+      <el-col :span="7">
         <div class="aweb-tools" @click.prevent="collapse">
           <i class="el-icon-menu"></i>
         </div>
       
       </el-col>
 
-      <el-col :span="4" class="aweb-userinfo">
+      <el-col :span="6" class="aweb-userinfo">
 
 
         
     
-         <theme-picker class="aweb-theme-picker-ctn"></theme-picker> 
+         <!-- <theme-picker class="aweb-theme-picker-ctn"></theme-picker>  -->
+
+         <el-dropdown trigger="hover" @command="handleThemeSelect">
+           <span>
+            <el-button circle class="el-dropdown-link aweb-theme-btn">
+              <img :src="themeSelect" >
+            </el-button>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item command="agree"><span class="tbg agree"></span>赞同湖绿</el-dropdown-item>
+              <el-dropdown-item command="flame"><span class="tbg flame"></span>赤焰赭红</el-dropdown-item>
+              <el-dropdown-item command="azure"><span class="tbg azure"></span>涧石天蓝</el-dropdown-item>
+              <el-dropdown-item command="viridity"><span class="tbg viridity"></span>青葱翠绿</el-dropdown-item>
+                   <el-dropdown-item command="indigo"><span class="tbg indigo"></span>青花靛蓝</el-dropdown-item>
+                   <el-dropdown-item command="custom"><span class="tbg custom"></span>自定义</el-dropdown-item>
+            </el-dropdown-menu>
+        </el-dropdown>
 
         <!-- <el-tooltip  effect="dark" content="下载案例" placement="left"> -->
             <el-button icon="el-icon-sold-out" circle class="aweb-download-btn" @click="openMarket"></el-button>
@@ -178,21 +194,37 @@
       </section>
     </el-col>
       <right-menu :menuData="rightMenuData"  :eventHandler=rightClickHandler  v-on:handleSelect= "handleRightSelect"></right-menu> 
+      <el-dialog
+  title="提示"
+  :visible.sync="themeDialog"
+  width="30%"
+   >
+  <span class="theme-tip-ctn">
+    <span >1.自定义主题可以通过使用<el-link type="primary" href="https://element.eleme.cn/#/zh-CN/theme" target="_blank">element-ui在线主题编辑器</el-link>，修改定制 Element 所有全局和组件的 Design Tokens。</span>
+    <span>2.直接下载基于新的定制样式生成完整的样式文件包，将文件夹中的style.css重命名为index.css</span>
+    <span>3.将index.css拷贝到项目根目录下的theme文件夹替换即可</span>
+  </span>
+  <span slot="footer" class="dialog-footer">
+    <!-- <el-button @click="themeDialog = false">取 消</el-button> -->
+    <el-button type="primary" @click="themeDialog = false">确 定</el-button>
+  </span>
+</el-dialog>
   </el-row>
 </template>
 <script>
 
+import { changeTheme } from '@/api/api'
 import {getObjArr, getRouter,saveRouter} from '../promission.js'
-
 import rightMenu from '@/components/rightMenu'
 import asyncComponent from '@/components/asyncComponent'
 import subPageCtn from '@/components/subPageCtn'
-import themePicker from '@/components/themePicker'
 
+import themePic from '@/img/theme.png'
 export default {
   name:'layout',
   data() {
     return {
+      themeDialog:false,
       routerData:global.menu?global.menu:getRouter('menu'),
       sysLogo:"img/logo.png",
       sysName: "AWEB_ADMIN",
@@ -201,8 +233,8 @@ export default {
       sysUserAvatar: "http://localhost:7007/img/user.png",  
       rightClickHandler:null,
       isRouterAlive: true,
-      themeColor:global.themeColor
-
+      themeColor:global.themeColor,
+      themeSelect:themePic
     };
   },
   methods: {
@@ -327,6 +359,19 @@ export default {
     },
     openMarket(){
       window.open('https://www.awebide.com:7002/package/@aweb-template/vue-spa');
+    },
+    handleThemeSelect(command){
+      if(command !=='custom'){
+        const loading = this.$loading({
+          lock: true,
+          text: '更换主题中...'
+        });
+        changeTheme({theme:command}).then((res)=>{
+          res.msg && console.log(res.msg)
+        })
+      }else{
+          this.themeDialog = true;
+      }     
     }
   },
   mounted() {
@@ -348,7 +393,7 @@ export default {
   },
   computed: {
     openedTabs() {
-
+   
       return this.$store.state.openedTabs;
     },
     activeIndex: {
@@ -457,8 +502,7 @@ export default {
   },
   components:{
     rightMenu,
-    subPageCtn,
-    themePicker
+    subPageCtn
   }
 };
 </script>
@@ -497,6 +541,14 @@ export default {
       }
       .aweb-download-btn{
         margin-right: 1em;
+      }
+      .aweb-theme-btn{
+            margin-right: 12px;
+        img{
+          width:14px;
+          height:12px;
+        }
+
       }
     }
     .aweb-logo {
@@ -623,21 +675,34 @@ export default {
     padding-right: 12px;
     line-height: 53px;
   }
-  // .aweb-right-menu{
-  //   position: absolute;
-  //   top: 28px;
-
-  //    .el-menu-vertical{
-  //        border:1px solid transparent;
-  //       border-radius: 4px;
-  //       z-index: 100;
-  //   }
-  
-  //   .menuItem{
-  //     height: 32px;
-  //     line-height: 32px;
-  //     font-size: 14px;
-  //   }
-  // }
+  .theme-tip-ctn{
+    >span{
+       display: inline-block;
+    }
+  }
+}
+.el-dropdown-menu__item{
+  .tbg{
+  width: 12px;
+    height: 12px;
+    background: #dddddd;
+    display: inline-block;
+    margin-right: 6px;
+    &.agree{
+      background:#04bebd
+    }
+    &.flame{
+      background:#C0000E
+    }
+    &.azure{
+      background:#409EFF
+    }
+    &.viridity{
+      background:#08B55C
+    }
+    &.indigo{
+       background:#005BAA
+    }
+  }
 }
 </style>

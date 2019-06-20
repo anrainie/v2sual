@@ -12,7 +12,7 @@ const shell = require('shelljs')
 const app = new Koa();
 
 const fs = require('fs');
-
+const path = require('path');
 // const Server = require('socket.io');
 // const io = new Server();
 
@@ -262,6 +262,23 @@ router.get('/-/getMainList', function (ctx) {
 	};
 	ctx.body = mainList;
 })
+
+router.get('/-/theme/change', (ctx) => {
+	let { theme } =ctx.request.query;
+	let themeLib = path.resolve(__dirname, './src/themes');
+	let projectThemeLib = path.resolve(__dirname, './theme');
+	let sthemePath = `${themeLib}\\${theme}\\style.css`;
+	let sthemeTarget =projectThemeLib+'\\index.css';
+	
+	if (fs.existsSync(sthemePath)) {
+		fs.writeFileSync(sthemeTarget, fs.readFileSync(sthemePath));
+    }
+
+	ctx.body = {
+		status: true,
+		msg: '更换主题成功'
+	};
+});
 
 //若删掉代理，预览时候不能获取数据
 require('../server/module/dataSource')(app,require('../server/config/config.json').dataSource);

@@ -21,3 +21,5 @@ export const addUser = params => { return axios.get(`${base}/-/user/add`, { para
 export const getUserListPage = params => { return axios.get(`${base}/-/user/listpage`, { params: params }); };
 
 export const getMainList = params => { return axios.get(`${base}/-/getMainList`, { params: params }); };
+
+export const changeTheme = params => { return axios.get(`${base}/-/theme/change`, { params: params }); };
