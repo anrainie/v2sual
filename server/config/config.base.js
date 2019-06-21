@@ -17,8 +17,7 @@ const path=process.cwd();
 
 //根据部署环境，指定连接主机
 const hosts=config.webide.condition
-        .map(c=>path.indexOf(c.pathInclude)!==-1?c:null)
-        .filter(c=>!!c);
+        .filter(c=>path.indexOf(c.pathInclude)!==-1);
 const webide=(hosts && hosts.length ? hosts[0] :null)||{
     host:config.webide.host,                    //WebIDE 对外主机
     port:config.webide.port,                    //WebIDE 对外端口
