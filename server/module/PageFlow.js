@@ -366,78 +366,78 @@ class Page {
         if (content) json = JSON.parse(content);
         if (!json.logic) json.logic = template;
         // vue部分
-        if (vueContent) {
-          const script = context.getMatchPart(vueContent, '<script>', '</script>');
-          const ast = UglifyJS.parse(script);
-          const exportAst = ast.body.filter(item => { if (item.exported_value) return item })[0];
-          if (exportAst) {
-            const astContent = exportAst.exported_value.properties;
-            astContent.map(item => {
-              // 处理methods,watch
-              if ((item.key && item.key === "methods") || (item.key && item.key === "watch")) {
-                let methodList = item.value.properties;
-                for (let i of methodList) {
-                  let contentList = i.value.body;
-                  let upCode = [], downCode = [], key = upCode;
-                  contentList = contentList.filter(item => {
-                    if (item.definitions) {
-                      if (item.definitions[0].start.value !== "ctx" && item.definitions[0].value.name !== "this") return item;
-                    } else {
-                      return item;
-                    }
-                  });
-                  contentList.map(item => {
-                    if (item.end.comments_after.length && item.end.comments_after[0].value === "overview over") {
-                      key = downCode;
-                    } else {
-                      key.push(item);
-                    }
-                  });
-                  if(!json.logic.methods)json.logic.methods={};
-                  if(!json.logic.methods[i.key.name])json.logic.methods[i.key.name]={}
-                  json.logic.methods[i.key.name].upCode = upCode.map(item => {
-                    item = context.clearAnnotation(item);
-                    return item.print_to_string({ beautify: true, comments: true })
-                  });
-                  json.logic.methods[i.key.name].downCode = downCode.map(item => {
-                    item = context.clearAnnotation(item);
-                    return item.print_to_string({ beautify: true, comments: true })
-                  });
-                }
-              }
+        // if (vueContent) {
+        //   const script = context.getMatchPart(vueContent, '<script>', '</script>');
+        //   const ast = UglifyJS.parse(script);
+        //   const exportAst = ast.body.filter(item => { if (item.exported_value) return item })[0];
+        //   if (exportAst) {
+        //     const astContent = exportAst.exported_value.properties;
+        //     astContent.map(item => {
+        //       // 处理methods,watch
+        //       if ((item.key && item.key === "methods") || (item.key && item.key === "watch")) {
+        //         let methodList = item.value.properties;
+        //         for (let i of methodList) {
+        //           let contentList = i.value.body;
+        //           let upCode = [], downCode = [], key = upCode;
+        //           contentList = contentList.filter(item => {
+        //             if (item.definitions) {
+        //               if (item.definitions[0].start.value !== "ctx" && item.definitions[0].value.name !== "this") return item;
+        //             } else {
+        //               return item;
+        //             }
+        //           });
+        //           contentList.map(item => {
+        //             if (item.end.comments_after.length && item.end.comments_after[0].value === "overview over") {
+        //               key = downCode;
+        //             } else {
+        //               key.push(item);
+        //             }
+        //           });
+        //           if(!json.logic.methods)json.logic.methods={};
+        //           if(!json.logic.methods[i.key.name])json.logic.methods[i.key.name]={}
+        //           json.logic.methods[i.key.name].upCode = upCode.map(item => {
+        //             item = context.clearAnnotation(item);
+        //             return item.print_to_string({ beautify: true, comments: true })
+        //           });
+        //           json.logic.methods[i.key.name].downCode = downCode.map(item => {
+        //             item = context.clearAnnotation(item);
+        //             return item.print_to_string({ beautify: true, comments: true })
+        //           });
+        //         }
+        //       }
 
-              // 处理生命周期
-              if (item.key && item.key.name && json.logic[item.key.name]) {
-                let contentList = item.value.body;
-                let upCode = [], downCode = [], key = upCode;
-                contentList = contentList.filter(item => {
+        //       // 处理生命周期
+        //       if (item.key && item.key.name && json.logic[item.key.name]) {
+        //         let contentList = item.value.body;
+        //         let upCode = [], downCode = [], key = upCode;
+        //         contentList = contentList.filter(item => {
 
-                  if (item.definitions) {
-                    if (item.definitions[0].start.value !== "ctx" && item.definitions[0].value.name !== "this") return item;
-                  } else {
-                    return item;
-                  }
-                });
-                contentList.map(item => {
-                  if (item.end.comments_after.length && item.end.comments_after[0].value === "overview over") {
-                    key = downCode;
-                  } else {
-                    key.push(item);
-                  }
-                });
-                if(!json.logic[item.key.name])json.logic[item.key.name]={}
-                json.logic[item.key.name].upCode = upCode.map(item => {
-                  item = context.clearAnnotation(item);
-                  return item.print_to_string({ beautify: true, comments: true })
-                });
-                json.logic[item.key.name].downCode = downCode.map(item => {
-                  item = context.clearAnnotation(item);
-                  return item.print_to_string({ beautify: true, comments: true })
-                });
-              }
-            })
-          }
-        }
+        //           if (item.definitions) {
+        //             if (item.definitions[0].start.value !== "ctx" && item.definitions[0].value.name !== "this") return item;
+        //           } else {
+        //             return item;
+        //           }
+        //         });
+        //         contentList.map(item => {
+        //           if (item.end.comments_after.length && item.end.comments_after[0].value === "overview over") {
+        //             key = downCode;
+        //           } else {
+        //             key.push(item);
+        //           }
+        //         });
+        //         if(!json.logic[item.key.name])json.logic[item.key.name]={}
+        //         json.logic[item.key.name].upCode = upCode.map(item => {
+        //           item = context.clearAnnotation(item);
+        //           return item.print_to_string({ beautify: true, comments: true })
+        //         });
+        //         json.logic[item.key.name].downCode = downCode.map(item => {
+        //           item = context.clearAnnotation(item);
+        //           return item.print_to_string({ beautify: true, comments: true })
+        //         });
+        //       }
+        //     })
+        //   }
+        // }
 
         platform.sendSuccessResult(req, {
           content: json.logic
