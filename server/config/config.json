@@ -7,7 +7,20 @@
     },
     "webide": {
         "port": 7003,
-        "host": "localhost"
+        "host": "http://localhost",
+        "clientPort": "",
+        "clientHost": "",
+        "path":"/socket.io",
+        "condition": [
+            {
+                "pathInclude": "home/v2sual",
+                "host": "https://aui.awebide.com",
+                "port": 7003,
+                "clientPort": "443",
+                "clientHost": "v2sual.awebide.com",
+                "path":"/v2sual-socket/socket.io"
+            }
+        ]
     },
     "runtime": {
         "base": "./runtime",

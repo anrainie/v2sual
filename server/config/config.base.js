@@ -12,13 +12,20 @@ const customWidget = path.resolve(base, config.runtime.customWidget);
 const dist = path.resolve(base, config.runtime.dist);
 const homepage = path.resolve(dist, config.runtime.homepage);
 
-const webide={
-    ...config.webide,
-    host:process.cwd().indexOf('home/v2sual')!==-1?'http://192.168.0.38':'http://localhost'
-}
 
+const path=process.cwd();
 
-console.log(webide);
+//根据部署环境，指定连接主机
+const hosts=config.webide.condition
+        .map(c=>path.indexOf(c.pathInclude)!==-1?c:null)
+        .filter(c=>!!c);
+const webide=(hosts && hosts.length ? hosts[0] :null)||{
+    host:config.webide.host,                    //WebIDE 对外主机
+    port:config.webide.port,                    //WebIDE 对外端口
+    clientHost:config.webide.clientHost,        //V2sual 对外主机
+    clientPort:config.webide.clientPort,        //V2sual 对外端口
+    path:config.webide.clientHost,              //Socket.io 在 Ngnix 映射
+};
 
 
 module.exports = {
