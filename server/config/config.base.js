@@ -24,6 +24,7 @@ const webide=(hosts && hosts.length ? hosts[0] :null)||{
     clientHost:config.webide.clientHost,        //V2sual 对外主机
     clientPort:config.webide.clientPort,        //V2sual 对外端口
     path:config.webide.path,              //Socket.io 在 Ngnix 映射
+    publicPort:config.webide.publicPort    //公网的socket 的 port
 };
 
 
