@@ -155,6 +155,7 @@
                 v-for="item in openedTabs"
                 :label="item.name"
                 :name="item.route"
+                :style="`height:100%`"
               >
               <el-col :span="24" class="aweb-ctt-wrap" >
         
@@ -650,6 +651,7 @@ export default {
       .aweb-ctt-wrap {
         background-color: #fff;
         box-sizing: border-box;
+        height:100%;
       }
       .grid-content{
            >div>div.el-tabs>.el-tabs__content{

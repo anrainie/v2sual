@@ -35,5 +35,6 @@ export default {
 .V2Container,
 .V2ContainerBlock {
   min-height: 30px;
+  height: 100%;
 }
 </style>
