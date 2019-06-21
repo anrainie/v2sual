@@ -1,8 +1,8 @@
 <template>
-
+  <div>
     <el-table
     :class="model.layoutClass"
-    :data="(typeof model.tableData !=='string' && model.tableData ) || fakeData"
+    :data="tableData"
     ref="_op_table_table"
     tooltip-effect="dark"
     style="width: 100%"
@@ -33,16 +33,50 @@
       </template>
     </el-table-column>
   </el-table>
+  <el-pagination
+    :style="`text-align:right`"
+    @size-change="handleSizeChange"
+    @current-change="handleCurrentChange"
+    :current-page="currentPage"
+    :page-sizes="[10, 20, 50, 100]"
+    :page-size="pageSize"
+    :pager-count="5"
+    layout="total, sizes, prev, pager, next, jumper"
+    :total="totalCount"
+    background>
+  </el-pagination>
+  </div>
 </template>
 <script>
 export default {
   name:'v2-component-table',
   data(){
     return {
-
+      pageSize:10,
+      currentPage:1
     }
   },
   computed:{
+    tableData(){
+      if(typeof this.model.tableData !=='string' && this.model.tableData){
+        let size = this.model.tableData.length-this.currentPage*this.pageSize;
+        size = size > 0? this.pageSize : size+this.pageSize;
+        let result = new Array(size);
+        for(let i=0 ; i<size ; i++){
+          result[i] = this.model.tableData[(this.currentPage-1)*this.pageSize+i];
+        }
+        return result;
+      }else{
+        let size = this.fakeData.length-this.currentPage*this.pageSize;
+        size = size > 0? this.pageSize : size+this.pageSize;
+        let result = new Array(size);
+        for(let i=0 ; i<size ; i++){
+          result[i] = this.fakeData[(this.currentPage-1)*this.pageSize+i];
+        }
+        return result;
+      }
+      // return (typeof this.model.tableData !=='string' && this.model.tableData ) || this.fakeData;
+    },
     fakeData(){
        let columns =[],fakeData=[];
        if(this.model && this.model.columns){
@@ -57,14 +91,35 @@ export default {
           console.log(fakeData);
        }
        return fakeData;
+    },
+    totalCount(){
+      if(typeof this.model.tableData !=='string' && this.model.tableData){
+        return this.model.tableData.length;
+      }else{
+        return this.fakeData.length;
+      }
     }
   },
   methods:{
-
+    handleCurrentChange(value){
+      this.currentPage = value;
+    },
+    handleSizeChange(value){
+      this.pageSize = value;
+      this.currentPage = 1;
+    }
   },
   mounted(){
 
-  }
+  },
+  watch:{
+    'model.tableData':{
+      handler(val){    
+        this.pageSize = 10;
+        this.currentPage = 1;
+      }
+    }
+  },
 
 }
 </script>
