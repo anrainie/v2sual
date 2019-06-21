@@ -13,19 +13,21 @@ const dist = path.resolve(base, config.runtime.dist);
 const homepage = path.resolve(dist, config.runtime.homepage);
 
 
-const path=process.cwd();
+const processDir=process.cwd();
 
 //根据部署环境，指定连接主机
 const hosts=config.webide.condition
-        .filter(c=>path.indexOf(c.pathInclude)!==-1);
+        .filter(c=>processDir.indexOf(c.pathInclude)!==-1);
 const webide=(hosts && hosts.length ? hosts[0] :null)||{
     host:config.webide.host,                    //WebIDE 对外主机
     port:config.webide.port,                    //WebIDE 对外端口
     clientHost:config.webide.clientHost,        //V2sual 对外主机
     clientPort:config.webide.clientPort,        //V2sual 对外端口
-    path:config.webide.clientHost,              //Socket.io 在 Ngnix 映射
+    path:config.webide.path,              //Socket.io 在 Ngnix 映射
 };
 
+
+console.log(webide);
 
 module.exports = {
     ...config,
