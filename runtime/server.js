@@ -268,7 +268,9 @@ router.get('/-/theme/change', (ctx) => {
 	let themeLib = path.resolve(__dirname, './src/themes');
 	let projectThemeLib = path.resolve(__dirname, './theme');
 	let sthemePath = path.join(themeLib,theme,'style.css');
-	let sthemeTarget =path.join(projectThemeLib,index.css);
+	let sthemeTarget =path.join(projectThemeLib,'index.css');
+
+	console.log(sthemePath);
 	
 	if (fs.existsSync(sthemePath)) {
 		fs.writeFileSync(sthemeTarget, fs.readFileSync(sthemePath));
