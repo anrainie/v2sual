@@ -18,7 +18,7 @@ let str = `R._fun_(1,str,{"a":"b"},[1,2],R.add(1,R.add(2,2)))`,
  * 将json转换成script
  * @param {String} htmlStr 
  */
-let json2script = function (json) {
+let json2script = function (json,path) {
   let content = JSON.parse(json),
     data = content.dataBasket.data,
     structure = content.structure,
@@ -30,6 +30,7 @@ let json2script = function (json) {
     dataStr = self.createData(data);
 
   let tempArr = [structure];
+  let isCustom = path.indexOf(`\\_customWidget\\`)!== -1;
 
   while(i = tempArr.pop()){
     structureIndex.push(i);
@@ -49,7 +50,7 @@ let json2script = function (json) {
 
   if (transfer) {
     finalStr = `<script>
-            import {root} from '@/utils/v2-view';
+            ${isCustom?`import {root,cpt,widget} from '@/utils/v2-view';`:`import {root} from '@/utils/v2-view';`}
             ${importList.length?importList.map(item=>`import ${item.desp} from '${item.path}'`).join(";"):''}
             export default{
                 data(){
@@ -58,11 +59,13 @@ let json2script = function (json) {
                         ${dataStr.join(",\n")}
                     }
                 },
-                mixins:[root],
+                props:{
+                  ${porpStr.join(",\n")}
+                },
+                ${isCustom?`mixins:[root,cpt,widget],`:`mixins:[root],`}
                 ${importList.length?`components:{${importList.map(item=>`${item.desp}`)}},`:''}
                 methods:{${self.methodsToCode(transfer.methods)}},
                 watch:{${self.methodsToCode(transfer.watch)}},
-
                 beforeCreate(){
                     let ctx = this;
                     ${transfer.beforeCreate ? transfer.beforeCreate.code : ''}
