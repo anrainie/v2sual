@@ -123,7 +123,8 @@ const fileUtil = {
               rej(error)
           });
         } else if (stat.isFile()) {
-          fs.unlinkSync(path)
+          fs.unlinkSync(path);
+          fs.unlinkSync(path+'.def');
         } else {
           rej('非法的文件类型' + path);
           return;
