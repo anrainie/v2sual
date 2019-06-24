@@ -19,6 +19,17 @@ const RESERVED_WORDS = {
   '$item': {},
   '$key': {},
 };
+
+export const cpt = {
+  props: ['parentStore'],
+  mounted() {
+    this.$parent.$store.commit('regist.vue', {
+      wid: this.wid,
+      vue: this
+    });
+  }
+}
+
 export const root = {
   data() {
     return {
@@ -63,17 +74,17 @@ export const root = {
         }, 100)
     }
   },
-  beforeRouteEnter(to, from, next){       
-    next((vm)=>{
-      let toComp = vm.$router.getMatchedComponents(to)[1]?vm.$router.getMatchedComponents(to)[1]:vm.$router.getMatchedComponents(to)[0];
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
+      let toComp = vm.$router.getMatchedComponents(to)[1] ? vm.$router.getMatchedComponents(to)[1] : vm.$router.getMatchedComponents(to)[0];
       toComp.resume && toComp.resume.call(vm);
       vm.__resume();
 
     })
   },
-  beforeRouteLeave (to, from, next) { 
-    let fromCom = this.$router.getMatchedComponents(from)[1]?this.$router.getMatchedComponents(from)[1]:this.$router.getMatchedComponents(from)[0];
-    
+  beforeRouteLeave(to, from, next) {
+    let fromCom = this.$router.getMatchedComponents(from)[1] ? this.$router.getMatchedComponents(from)[1] : this.$router.getMatchedComponents(from)[0];
+
     fromCom.pause && fromCom.pause.call(this);
     this.__pause();
     next();
@@ -155,7 +166,6 @@ export const widget = {
   },
   updated() {},
   mounted() {
-
     this.$store.commit('regist.vue', {
       wid: this.wid,
       vue: this
