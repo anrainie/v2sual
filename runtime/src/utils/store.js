@@ -7,7 +7,7 @@ import Vuex from 'vuex'
  * exp仅支持 a.b.c这种形式
  * FN用于支持其他模式,比如a[b].c
  */
-const generateWatch = (key,host) => {
+const generateWatch = (key, host) => {
   //single path
   if (key.indexOf('.') == -1) {
     if (key.indexOf('-') == -1) {
@@ -346,8 +346,8 @@ export default () => {
           widgetVue.$forceUpdate();
         });
          */
-        let dataWatch = generateWatch(dataStr,vueObj);
-        let modelWatch = generateWatch('model.' + modelKey,widgetVue);
+        let dataWatch = generateWatch(dataStr, vueObj);
+        let modelWatch = generateWatch('model.' + modelKey, widgetVue);
 
         let modelKeys = modelKey.split(".");
         let modelLast = modelKeys.pop();
@@ -377,8 +377,12 @@ export default () => {
           state.binder[wid] = [vueBind, commentBind]
         }
 
-        
-        Vue.set(modelKeys.length ? eval(`model${modelPre}`) : model, modelLast, data);
+        try {
+          Vue.set(modelKeys.length ? eval(`model${modelPre}`) : model, modelLast, data);
+        } catch (e) {
+          console.error(e);
+          console.error('invalid model', `model${modelPre}`, model);
+        }
         //如果是表单类的组件的value值，清空绑定的变量
         // if (vueObj != rootVue && modelKey === 'value') {
         //   vueObj.model[modelKey] = "";
