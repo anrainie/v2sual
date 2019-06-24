@@ -33,13 +33,27 @@
           style="height:50%;width:100%;"
           key="1"
         >
-          <v2-component-test1
+          <v2loop
             class="V2Widget"
             id="1561361787909"
             :wid="`1561361787909`"
             :index="1"
             :pid="`1561105983574`"
-          ></v2-component-test1>
+          >
+            <template v-slot="scope">
+              <v2-component-test1
+                class="V2Widget"
+                :id="`1561361787909-${scope._key}`"
+                :wid="`1561361787909-${scope._key}`"
+                :index="scope._key"
+                :pid="`1561361787909`"
+                :cpttype="`loopItem`"
+                :$item="scope._item"
+                :$key="scope._key"
+                :name="scope._item.name"
+              ></v2-component-test1>
+            </template>
+          </v2loop>
         </el-row>
       </v2container>
     </el-row>
@@ -116,8 +130,12 @@ export default {
                   pid: 1561105983574
                 },
                 {
-                  __type: "",
-                  __loopTarget: "",
+                  __type: "loop",
+                  __loopTarget: [
+                    { name: 1, color: "red" },
+                    { name: 2, color: "blue" },
+                    { name: 3, color: "yellow" }
+                  ],
                   __loopKey: "",
                   __capacity: "1",
                   component: "v2-component-test1",
@@ -141,7 +159,8 @@ export default {
         { name: 1, color: "red" },
         { name: 2, color: "blue" },
         { name: 3, color: "yellow" }
-      ]
+      ],
+      name: ""
     };
   },
   mixins: [root],
@@ -160,6 +179,13 @@ export default {
       data: this.itemList,
       dataStr: "itemList",
       wid: 1561111620055,
+      modelKey: "__loopTarget"
+    });
+    ctx.$store.commit("registerBind", {
+      vueObj: this,
+      data: this.itemList,
+      dataStr: "itemList",
+      wid: 1561361787909,
       modelKey: "__loopTarget"
     }); /**bind over**/
   },
