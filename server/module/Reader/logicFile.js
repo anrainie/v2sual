@@ -18,25 +18,26 @@ let str = `R._fun_(1,str,{"a":"b"},[1,2],R.add(1,R.add(2,2)))`,
  * 将json转换成script
  * @param {String} htmlStr 
  */
-let json2script = function (json,path) {
+let json2script = function (json, path) {
   let content = JSON.parse(json),
     data = content.dataBasket.data,
     structure = content.structure,
     logic = content.logic,
-    porpStr,structureIndex=[],i,importList,
+    porpStr, structureIndex = [],
+    i, importList,
     template, finalStr,
     self = this,
     transfer = self.toCode(logic),
     dataStr = self.createData(data);
 
   let tempArr = [structure];
-  let isCustom = path.indexOf(`\\_customWidget\\`)!== -1;
+  let isCustom = path.indexOf(`\\_customWidget\\`) !== -1;
 
-  while(i = tempArr.pop()){
+  while (i = tempArr.pop()) {
     structureIndex.push(i);
-    if(i.children){
-      for(let k in i.children){
-        if(i.children[k])tempArr.push(i.children[k]);
+    if (i.children) {
+      for (let k in i.children) {
+        if (i.children[k]) tempArr.push(i.children[k]);
       }
     }
   }
@@ -134,16 +135,21 @@ let methodsToCode = function (obj) {
   return arr.join("");
 }
 // 生成import
-let createImport = function(structureIndex){
+let createImport = function (structureIndex) {
   let item;
-  let list=[];
-  for(item of structureIndex){
-    if(item.cptpath){
-      list.push({
-        name: item.component,
-        path: item.cptpath.replace(/\\/g,"/").replace("/src","@"),
-        desp: toCamel(item.component)
-      })
+  let list = [];
+  let obj = {};
+
+  for (item of structureIndex) {
+    if (item.cptpath) {
+      if (!obj[item.component]) {
+        obj[item.component] = item.component;
+        list.push({
+          name: item.component,
+          path: item.cptpath.replace(/\\/g, "/").replace("/src", "@"),
+          desp: toCamel(item.component)
+        })
+      }
     }
   }
   return list;
@@ -158,12 +164,12 @@ let toCamel = function (str) {
 let bindData = function (logic, mapping) {
   let arr = [],
     i;
-  
+
   for (i in mapping) {
     mapping[i].map(item => {
-      if(item.type === 'loop' && item.modelValue !== "__loopTarget"){
+      if (item.type === 'loop' && item.modelValue !== "__loopTarget") {
         arr.push(`ctx.$store.commit("registerBind",{ dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
-      }else{
+      } else {
         arr.push(`ctx.$store.commit("registerBind",{ vueObj:this, data:this.${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
       }
     });
@@ -205,7 +211,8 @@ let createProp = (data) => {
 let toCode = function (logic) {
   let self = this,
     i, k, obj, res, arr = [],
-    outRes = [], outCode;
+    outRes = [],
+    outCode;
 
   for (i in logic) {
     arr = [];
@@ -287,7 +294,7 @@ let toCode = function (logic) {
         obj = logic[i];
         obj = self.transToPoll(obj);
         break;
-      // 周期函数
+        // 周期函数
       default:
         obj = logic[i]
         if (obj.labelObj) {
