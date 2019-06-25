@@ -67,6 +67,7 @@ let appendAttribute = function(json,element){
 let appendComponent = function(parent,index,element){
     let child = parent.children[index];
     if(child === undefined){
+        child = null;
         parent.children[index] = null;
     }
     let wid = child ? child.id : parent.wid + '-' + index;
