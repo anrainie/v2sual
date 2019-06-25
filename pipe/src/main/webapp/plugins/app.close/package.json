@@ -1,12 +1,12 @@
 {
-    "name": "@aweb-plugins/app.open",
+    "name": "@aweb-plugins/app.close",
     "main": "index.js",
     "docs": {
-        "desp": "打开页面",
-        "name": "this.open",
+        "desp": "关闭页面",
         "icon": "",
+        "name": "this.close",
         "category": "api",
-        "label": "open",
+        "label": "close",
         "labelType": "front",
         "belongTo": "function",
         "hasReturn": false,
@@ -26,7 +26,6 @@
                 "defaultValue": ""
             }
         ]
-        
         
     },
     "category": "自定义",

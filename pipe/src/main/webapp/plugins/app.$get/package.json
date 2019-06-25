@@ -1,12 +1,12 @@
 {
-    "name": "@aweb-plugins/app.open",
+    "name": "@aweb-plugins/app.$get",
     "main": "index.js",
     "docs": {
-        "desp": "打开页面",
-        "name": "this.open",
+        "desp": "get请求",
+        "name": "this.$get",
         "icon": "",
         "category": "api",
-        "label": "open",
+        "label": "$get",
         "labelType": "front",
         "belongTo": "function",
         "hasReturn": false,
@@ -19,15 +19,20 @@
         },
         "params": [
             {
-                "name": "option",
-                "desp": "option",
+                "name": "url",
+                "desp": "url",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": ""
+            },
+            {
+                "name": "data",
+                "desp": "data",
                 "type": "string",
                 "necessary": true,
                 "defaultValue": ""
             }
         ]
-        
-        
     },
     "category": "自定义",
     "description": "",
