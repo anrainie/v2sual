@@ -4,5 +4,5 @@ import axios from 'axios';
 // global.$axios = axios;
 
 export default function(params){ 
-    return axios.post(params.url?`${params.url}/${params.t}/${params.m}`:`/afa/${params.t}/${params.m}`,params.data); 
+    return axios[params.type||'post'](params.url?`${params.url}/${params.t}/${params.m}`:`/v1/ds/afa/DatasourceAdapter/${params.t}/${params.m}`,params.data); 
 };

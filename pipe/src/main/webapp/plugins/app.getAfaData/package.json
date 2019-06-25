@@ -3,7 +3,7 @@
     "main": "index.js",
     "docs": {
         "desp": "从 AFA 获取数据",
-        "name": "app.getAfaData",
+        "name": "pipe.getAfaData",
         "belongTo": "function",
         "category": "dataSource",
         "params": [
@@ -12,14 +12,7 @@
                 "desp": "参数",
                 "type": "string",
                 "necessary": true,
-                "defaultValue": "{\n    t:'tc',\n    m:'mc',\n    url:'url',\n    data:{}\n}"
-            },
-            {
-                "name": "params2",
-                "desp": "参数2",
-                "type": "string",
-                "necessary": true,
-                "defaultValue": ""
+                "defaultValue": "{\n type:'get',   t:'log\/afa\/list\/',\n    m:'logId',\n    url:'',\n    data:{}\n}"
             }
         ],
         "hasReturn": true,
