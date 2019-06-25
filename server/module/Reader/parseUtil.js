@@ -94,6 +94,14 @@ let appendComponent = function(parent,index,element){
         component.setAttribute(':cpttype','`loopItem`');
         component.setAttribute(':item','scope._item');
         component.setAttribute(':key','scope._key');
+        //dataBasket不为空=>自定义组件
+        if(child && child.dataBasket){
+            for(let item in child.dataBasket){
+                if(child.dataBasket[item].startsWith('$item')){
+                    component.setAttribute(':'+item,'scope._item.'+item);
+                }
+            }
+        }
         let outerHtml = component.outerHTML.replace(':item',':$item').replace(':key',':$key');
         template.innerHTML = outerHtml;
         eCom.appendChild(template);
@@ -106,6 +114,12 @@ let appendComponent = function(parent,index,element){
     eCom.setAttribute(':wid','`'+wid+'`');
     eCom.setAttribute(':index',index);
     eCom.setAttribute(':pid','`'+parent.wid+'`');
+    //dataBasket不为空=>自定义组件
+    if(child && child.dataBasket && child.__type !== 'loop'){
+        for(let item in child.dataBasket){
+            eCom.setAttribute(':'+item,child.dataBasket[item]);
+        }
+    }
     // appendAttribute(child,eCom);
     appendChildren(child,eCom,isContainer);
     element.appendChild(eCom);
