@@ -2,7 +2,7 @@
 
 <head>
   <!--css-->
-  <link rel="stylesheet" type="text/css" href="./common.css"/>
+  <link rel="stylesheet" type="text/css" href="./common.css" />
 
   <script>
     function getUrlParam(name) {
@@ -21,7 +21,6 @@
       window.Vuex = window.parent.Vuex;
 
       var id = getUrlParam("id");
-      console.log('iframe onload', id);
       var parent = window.parent.__dataPool[id];
 
 
@@ -31,7 +30,7 @@
         template: `
           <transition name="el-fade-in-linear">
             <div class="loadingPanel" v-if="$store.state.loading">加载中...</div>
-            <v2Container v-else="!$store.state.loading" v-model="rootId"></v2Container>
+            <v2Container v-else="!$store.state.loading" v-model="rootId" :style="$store.getters.editorStyle"></v2Container>
           </transition>
           `,
         data() {
@@ -43,11 +42,19 @@
           style(curval, oldval) {
             this.loadedStyle();
             //console.log(`最新值${curval}--旧值${oldval}`);
+          },
+          display() {
+            $(document.body)
+              .scrollTop(0)
+              .scrollLeft(0);
           }
         },
         computed: {      //同步了store中state内的orderid值
           style() {
             return this.$store.state.runtime.style;
+          },
+          display() {
+            return this.$store.getters.editorStyle;
           }
         },
         mounted() {
