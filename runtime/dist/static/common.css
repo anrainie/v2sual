@@ -1,3 +1,9 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   padding: 1rem;
   user-select: none;
@@ -53,7 +59,7 @@ body {
 
 .V2ToolbarMenuItem {
   user-select: none;
-  padding: 0 5px;
+  padding: 0 12px;
   text-align: center;
   color: #222;
   font-size: 12px;
@@ -65,7 +71,6 @@ body {
   margin: 0;
   text-decoration: none;
   cursor: pointer;
-
 }
 
 .V2ToolbarMenu .V2ToolbarMenuItem {
@@ -248,15 +253,21 @@ body {
 
 .V2Toolbar {
   position: absolute;
-  height: 32px;
   z-index: 9031;
-  margin: 0;
-  padding: 0 8px 0 0;
+  /* margin: 0; */
+  /* padding: 0 8px 0 0; */
   background: white;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, .2);
   border-radius: 2px;
   transition: opacity .5s linear;
   z-index: 10023;
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 600px) {
+  .V2Toolbar {}
 }
 
 
