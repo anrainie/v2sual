@@ -57,7 +57,7 @@ let json2script = function (json, path) {
                 data(){
                     return{
                         "CONTENT":{structure:${JSON.stringify(structure)}},
-                        ${dataStr.join(",\n")}
+                        ${isCustom?'':dataStr.join(",\n")}
                     }
                 },
                 props:{
