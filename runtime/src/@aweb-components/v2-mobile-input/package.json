@@ -51,7 +51,66 @@
         "desp": "是否只读",
         "defaultValue": false,
         "type": "boolean"
+      },
+      {
+        "name": "button",
+        "desp": "是否显示按钮",
+        "defaultValue": false,
+        "type": "boolean"
+      },
+      {
+        "name": "buttonText",
+        "desp": "按钮文本",
+        "defaultValue": "确定",
+        "type": "string_input",
+        "required": {
+          "button": true
+        }
+      },
+      {
+        "name": "buttonSize",
+        "desp": "按钮尺寸",
+        "defaultValue": "normal",
+        "type": "string_select","required": {
+          "button": true
+        },
+        "valueArray": [
+          "normal",
+          "large",
+          "small",
+          "mini"
+        ],
+        "despArray": [
+          "普通",
+          "大号",
+          "小型",
+          "迷你"
+        ]
+      },
+      {
+        "name": "buttonType",
+        "desp": "按钮类型",
+        "defaultValue": "default",
+        "type": "string_select",
+        "required": {
+          "button": true
+        },
+        "valueArray": [
+          "default",
+          "primary",
+          "info",
+          "warning",
+          "danger"
+        ],
+        "despArray": [
+          "默认按钮",
+          "主要按钮",
+          "信息按钮",
+          "警告按钮",
+          "危险按钮"
+        ]
       }
+
     ],
      "css": {
        "style": [

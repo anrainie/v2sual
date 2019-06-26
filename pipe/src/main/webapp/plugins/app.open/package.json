@@ -4,6 +4,7 @@
     "docs": {
         "desp": "打开页面",
         "name": "this.open",
+        "icon": "",
         "category": "api",
         "label": "open",
         "labelType": "front",
@@ -18,13 +19,15 @@
         },
         "params": [
             {
-                "name": "",
-                "desp": "",
+                "name": "option",
+                "desp": "option",
                 "type": "string",
                 "necessary": true,
                 "defaultValue": ""
             }
         ]
+        
+        
     },
     "category": "自定义",
     "description": "",

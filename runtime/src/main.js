@@ -2,6 +2,8 @@
 import Vue from 'vue'
 import App from './App'
 import ElementUI from 'element-ui'
+import Vant from 'vant';
+import 'vant/lib/index.css';
 // import '../element-variables.scss'
  import '../theme/index.css'
  
@@ -26,15 +28,13 @@ import mixin from '@/utils/app.js'
 window.$ = $;
 
 Vue.mixin(mixin);
-
+Vue.use(Vant);
 
 Vue.use(ElementUI)
 
 sessionStorage.setItem('user', JSON.stringify({'user':'test'}));
 
 router.beforeEach((to, from, next) => {
-
-
 
   // if (to.path == '/main') {
   //   sessionStorage.removeItem('user');

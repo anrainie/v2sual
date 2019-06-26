@@ -1,0 +1,40 @@
+{
+    "name": "@aweb-plugins/app.$get",
+    "main": "index.js",
+    "docs": {
+        "desp": "get请求",
+        "name": "this.$get",
+        "icon": "",
+        "category": "api",
+        "label": "$get",
+        "labelType": "front",
+        "belongTo": "function",
+        "hasReturn": false,
+        "returnValue": {
+            "name": "",
+            "desp": "",
+            "details": "",
+            "type": "string",
+            "defaultValue": ""
+        },
+        "params": [
+            {
+                "name": "url",
+                "desp": "url",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": ""
+            },
+            {
+                "name": "data",
+                "desp": "data",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": ""
+            }
+        ]
+    },
+    "category": "自定义",
+    "description": "",
+    "version": "6.0.0"
+}
