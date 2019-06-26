@@ -26,8 +26,31 @@ tradeCodeList:[
 
 ],
 tradeName:"",
-btnBg:''
+btnBg:'red'
                     }
+                },
+                props:{
+                  orgList:{default:()=>{return ""}},
+orgId:{default:()=>{return ""}},
+employeeList:{default:()=>{return ""}},
+employeeId:{default:()=>{return ""}},
+tableData:{default:()=>{return ""}},
+currentRow:{default:()=>{return ""}},
+tradeType:{default:()=>{return ""}},
+tradeStatus:{default:()=>{return ""}},
+tradeCodeList:{default:()=>{return [
+    {
+        label:123,
+        value:4134,
+    },
+    {
+        label:1241,
+        value:1234,
+    }
+
+]}},
+tradeName:{default:()=>{return ""}},
+btnBg:{default:()=>{return 'red'}}
                 },
                 mixins:[root],
                 
@@ -162,7 +185,6 @@ ctx.tableData = t1;})();
                     
             }, },
                 watch:{},
-
                 beforeCreate(){
                     let ctx = this;
                     
@@ -185,9 +207,7 @@ ctx.$store.commit("registerBind",{ vueObj:this, data:this.tableData, dataStr:"ta
 ctx.$store.commit("registerBind",{ vueObj:this, data:this.tradeType, dataStr:"tradeType", wid:1559701946510, modelKey:"value" });
 ctx.$store.commit("registerBind",{ vueObj:this, data:this.tradeStatus, dataStr:"tradeStatus", wid:1559701951021, modelKey:"value" });
 ctx.$store.commit("registerBind",{ vueObj:this, data:this.tradeCodeList, dataStr:"tradeCodeList", wid:1559701980923, modelKey:"suggestion" });
-ctx.$store.commit("registerBind",{ vueObj:this, data:this.tradeName, dataStr:"tradeName", wid:1559701984096, modelKey:"value" });
-ctx.$store.commit("registerBind",{ vueObj:this, data:this.btnBg, dataStr:"btnBg", wid:1560765565313, modelKey:"style.btnStyle.color" });
-ctx.$store.commit("registerBind",{ vueObj:this, data:this.btnBg, dataStr:"btnBg", wid:1560765565313, modelKey:"style.btnStyle.background-color" });/**bind over**/
+ctx.$store.commit("registerBind",{ vueObj:this, data:this.tradeName, dataStr:"tradeName", wid:1559701984096, modelKey:"value" });/**bind over**/
                 },
                 beforeMount(){
                     let ctx = this;
