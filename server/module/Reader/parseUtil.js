@@ -109,13 +109,21 @@ let appendComponent = function(parent,index,element){
     }else{
         eCom =  document.createElement(child.component);
         child.wid = wid;
-        eCom.setAttribute('class','V2Widget');
+        eCom.setAttribute('class','V2Widget')
+        //组件.布局
+        if(child && child.layoutClass && child.layoutClass !== ''){
+            let layoutClass = '';
+            child.layoutClass.map((item)=>{
+               layoutClass = layoutClass + item + ' ';
+            })
+            eCom.setAttribute(':class',"'"+layoutClass+"'");
+        }
     }
     eCom.setAttribute('id',wid);
     eCom.setAttribute(':wid','`'+wid+'`');
     eCom.setAttribute(':index',index);
     eCom.setAttribute(':pid','`'+parent.wid+'`');
-    //dataBasket不为空=>自定义组件
+    //dataBasket不为空=>自定义组件:添加数据篮子
     if(child && child.dataBasket && child.__type !== 'loop'){
         for(let item in child.dataBasket){
             eCom.setAttribute(':'+item,child.dataBasket[item]);
@@ -181,11 +189,6 @@ let json2html = function (jsonStr) {
     let eV2C = document.createElement('v2container');
     jsonV2C.wid = jsonV2C.id;
     eV2C.setAttribute(':wid', '`'+jsonV2C.wid+'`');
-    // eV2C.setAttribute('class', 'V2Container');
-    // eV2C.setAttribute('ref', 'wrap');
-    // eV2C.setAttribute('style', parseAttrJson(jsonV2C.style));
-    //设置属性
-    // appendAttribute(jsonV2C,eV2C);
     //添加子节点
     appendChildren(jsonV2C,eV2C,true);
     temp.content.appendChild(eV2C);
