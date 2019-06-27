@@ -214,7 +214,155 @@
                                                 "component": "v2-layout-colctn",
                                                 "href": "v2-layout-colctn",
                                                 "children": [
-                                                    null
+                                                    {
+                                                        "style": {
+                                                            "divCtn": {
+                                                                "position": "",
+                                                                "top": "",
+                                                                "right": "",
+                                                                "bottom": "",
+                                                                "left": "",
+                                                                "overflow": "",
+                                                                "margin": "",
+                                                                "padding": "",
+                                                                "height": "",
+                                                                "width": "",
+                                                                "max-height": "",
+                                                                "max-width": "",
+                                                                "min-height": "",
+                                                                "min-width": ""
+                                                            }
+                                                        },
+                                                        "direction": "row",
+                                                        "layout": [
+                                                            50,
+                                                            50
+                                                        ],
+                                                        "rules": "",
+                                                        "__type": "",
+                                                        "__loopTarget": "",
+                                                        "__capacity": "1",
+                                                        "def": {
+                                                            "defheight": true,
+                                                            "defwidth": true,
+                                                            "defborder": true,
+                                                            "defbackgroundStyle": true,
+                                                            "defpaddingStyle": true
+                                                        },
+                                                        "defaultValue": {
+                                                            "background-color": "#fff",
+                                                            "background-image": "",
+                                                            "padding-top": 0,
+                                                            "padding-bottom": 0,
+                                                            "padding-left": 0,
+                                                            "padding-right": 0
+                                                        },
+                                                        "customStyle": {},
+                                                        "component": "v2-layout",
+                                                        "href": "v2-layout",
+                                                        "children": [
+                                                            {
+                                                                "style": {
+                                                                    "divCtn": {
+                                                                        "position": "",
+                                                                        "top": "",
+                                                                        "right": "",
+                                                                        "bottom": "",
+                                                                        "left": "",
+                                                                        "overflow": "",
+                                                                        "margin": "",
+                                                                        "padding": "",
+                                                                        "height": "",
+                                                                        "width": "",
+                                                                        "max-height": "",
+                                                                        "max-width": "",
+                                                                        "min-height": "",
+                                                                        "min-width": ""
+                                                                    }
+                                                                },
+                                                                "direction": "row",
+                                                                "layout": [
+                                                                    50,
+                                                                    50
+                                                                ],
+                                                                "rules": "",
+                                                                "__type": "",
+                                                                "__loopTarget": "",
+                                                                "__capacity": "1",
+                                                                "def": {
+                                                                    "defheight": true,
+                                                                    "defwidth": true,
+                                                                    "defborder": true,
+                                                                    "defbackgroundStyle": true,
+                                                                    "defpaddingStyle": true
+                                                                },
+                                                                "defaultValue": {
+                                                                    "background-color": "#fff",
+                                                                    "background-image": "",
+                                                                    "padding-top": 0,
+                                                                    "padding-bottom": 0,
+                                                                    "padding-left": 0,
+                                                                    "padding-right": 0
+                                                                },
+                                                                "customStyle": {},
+                                                                "component": "v2-layout",
+                                                                "href": "v2-layout",
+                                                                "children": [
+                                                                    null,
+                                                                    {
+                                                                        "theme": {
+                                                                            "btnType": "",
+                                                                            "size": ""
+                                                                        },
+                                                                        "style": {
+                                                                            "btnStyle": {
+                                                                                "background-color": "",
+                                                                                "height": "",
+                                                                                "width": "",
+                                                                                "color": ""
+                                                                            },
+                                                                            "btnWrapStyle": {
+                                                                                "margin": "",
+                                                                                "margin-top": "",
+                                                                                "margin-right": "",
+                                                                                "margin-bottom": "",
+                                                                                "margin-left": "",
+                                                                                "padding": "",
+                                                                                "padding-top": "",
+                                                                                "padding-right": "",
+                                                                                "padding-bottom": "",
+                                                                                "padding-left": ""
+                                                                            }
+                                                                        },
+                                                                        "btnName": "按钮",
+                                                                        "shape": "def",
+                                                                        "loading": false,
+                                                                        "disabled": false,
+                                                                        "__type": "",
+                                                                        "__loopTarget": "",
+                                                                        "__capacity": "1",
+                                                                        "component": "v2-component-btn",
+                                                                        "href": "v2-component-btn",
+                                                                        "children": [],
+                                                                        "events": {},
+                                                                        "id": 1561615404714,
+                                                                        "pid": 1561615377816,
+                                                                        "layoutClass": [
+                                                                            "v2mid",
+                                                                            "v2bottom"
+                                                                        ]
+                                                                    }
+                                                                ],
+                                                                "events": {},
+                                                                "id": 1561615377816,
+                                                                "pid": 1561615376174
+                                                            },
+                                                            null
+                                                        ],
+                                                        "events": {},
+                                                        "id": 1561615376174,
+                                                        "pid": 1561106699504
+                                                    }
                                                 ],
                                                 "events": {},
                                                 "id": 1561106699504,
