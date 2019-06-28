@@ -38,6 +38,17 @@ export default {
         selectedContainer: true
       };
     },
+    blockClass() {
+      return (index, parent) => {
+        let c = {};
+        //令Empty以外的元素具备border，需要注意borderbox的影响
+        if (parent && parent.children[index] && !parent.children[index].layout) {
+          c.borderBox = true;
+          c.dashBorder = true;
+        }
+        return c
+      }
+    },
     layout(index) {
       !this.model.direction && (this.model.direction = "row");
       if (this.model.direction == "col") {
@@ -101,8 +112,5 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.V2Container,
-.V2ContainerBlock {
-  min-height: 30px;
-}
+
 </style>

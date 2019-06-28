@@ -20,6 +20,17 @@ export default {
       return {
         selectedContainer: true
       };
+    },
+    blockClass() {
+      return (index, parent) => {
+        let c = {};
+        //令Empty以外的元素具备border，需要注意borderbox的影响
+        if (parent && parent.children[index] && !parent.children[index].layout) {
+          c.borderBox = true;
+          c.dashBorder = true;
+        }
+        return c
+      }
     }
   },
   computed: {
@@ -56,11 +67,11 @@ export default {
   }
 };
 </script>
-<style lang="less" scoped>
+<style lang="less">
 .V2Container,
 .V2ContainerBlock{
   min-height: 30px;
-
+  height: 100%;
 }
 .aui-empty-ctn{
  &::before{

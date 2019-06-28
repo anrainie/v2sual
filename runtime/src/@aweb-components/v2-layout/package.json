@@ -26,7 +26,8 @@
       "default":{
         "layout":[50, 50],
         "direction":"col"
-      }
+      },
+      "icon": "iconshuxiangbuju"
     }],
     "name": "布局",
     "option": [{
