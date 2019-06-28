@@ -2,6 +2,8 @@ import Vuex from 'vuex'
 // import { ElSelect } from 'element-ui/types/select';
 
 
+
+
 /**
  * watch有exp|Fn两种模式
  * exp仅支持 a.b.c这种形式
@@ -11,7 +13,14 @@ const generateWatch = (key, host) => {
   //single path
   if (key.indexOf('.') == -1) {
     if (key.indexOf('-') == -1) {
-      return key;
+      return key.indexOf('[') == -1 ? key : eval(`()=>{
+        try {
+          return host.${key}
+        } catch (e) {
+          console.error(e)
+          console.error(\`${key}属性不存在，不能绑定数据\`,host)
+        }
+      }`);
     }
     return () => {
       return host[key];
@@ -19,7 +28,14 @@ const generateWatch = (key, host) => {
   }
   // simple dot path
   if (key.indexOf('-') == -1) {
-    return key;
+    return key.indexOf('[') == -1 ? key : eval(`()=>{
+      try {
+        return host.${key}
+      } catch (e) {
+        console.error(e)
+        console.error(\`${key}属性不存在，不能绑定数据:\`,host)
+      }
+    }`);
   }
 
   // complex path
@@ -316,7 +332,7 @@ export default () => {
       },
       bind(state, {
         vueObj,
-        data,
+        data, //用于初始化
         dataStr,
         wid,
         modelKey,
@@ -346,7 +362,33 @@ export default () => {
           widgetVue.$forceUpdate();
         });
          */
-        let dataWatch = generateWatch(dataStr, vueObj);
+
+
+        let dataWatch, dataLast, dataPre, dataKeys;
+        if (model.__type == 'loopItem' && dataStr.startsWith('$item')) {
+          //处理循环类型
+          let loopKey = model.__loopKey;
+          let index = widgetVue.index;
+          dataKeys = dataStr.substr(5);
+
+          dataWatch = generateWatch(`${loopKey}[${index}]${dataKeys}`, vueObj);
+
+          dataKeys = dataKeys.substr(1).split('.');
+          dataLast = dataKeys.pop();
+          dataPre = `.${loopKey}`;
+          if (dataLast.length > 0) {
+            dataPre += `[${index}]`;
+          } else {
+            dataLast = index;
+          }
+          // vueObj${dataPre}[${index}],dataKeys
+        } else {
+          //普通类型
+          dataKeys = dataStr.split('.');
+          dataWatch = generateWatch(dataStr, vueObj);
+          dataLast = dataKeys.pop();
+          dataPre = MAPPING(dataKeys);
+        }
         let modelWatch = generateWatch('model.' + modelKey, widgetVue);
 
         let modelKeys = modelKey.split(".");
@@ -356,18 +398,20 @@ export default () => {
         let vueBind = vueObj.$watch(dataWatch, v => {
           Vue.set(modelKeys.length ? eval(`model${modelPre}`) : model, modelLast, v);
           widgetVue.$forceUpdate();
+          // console.log(dataStr, 'changed', model);
         });
 
-        let dataKeys = dataStr.split('.');
-        let dataLast = dataKeys.pop();
-        let dataPre = MAPPING(dataKeys);
         let commentBind = widgetVue.$watch(modelWatch, v => {
-          Vue.set(dataKeys.length ? eval(`vueObj${dataPre}`) : vueObj, dataLast, v)
+          if (model.__type == 'loopItem' && dataStr.startsWith('$item')) {
+            Vue.set(eval(`vueObj${dataPre}`), dataLast, v)
+          } else
+            Vue.set(dataKeys.length ? eval(`vueObj${dataPre}`) : vueObj, dataLast, v)
           vueObj.$forceUpdate();
+          console.log(modelKey, 'changed');
         })
 
-        console.log('vueObj bind', dataStr, dataWatch, `model${modelPre}`, modelLast)
-        console.log('widgetVue bind', modelKey, modelWatch, `vueObj${dataPre}`, dataLast)
+        // console.log('widget', widgetVue)
+        console.log('widgetVue bind:', widgetVue, modelWatch,`vueObj${dataPre}`,dataLast)
 
 
 

@@ -1,6 +1,6 @@
 <template>
   <div style="display:flex; flex-wrap:wrap;">
-    <div v-for="(item,key) in model.__loopTarget" :style="loopStyle" :key="key">
+    <div v-for="(item,key) in loopTarget" :style="loopStyle" :key="key">
       <slot :_item="item" :_key="key"></slot>
     </div>
   </div>
@@ -23,7 +23,16 @@ export default {
   data() {
     return {};
   },
+  created() {
+    this.model.__loopKey = this.model.__loopTarget;
+  },
   computed: {
+    loopTarget() {
+      return this.model.__loopTarget &&
+        this.model.__loopTarget.constructor == Array
+        ? this.model.__loopTarget
+        : [];
+    },
     loopStyle() {
       let capa = this.model.__capacity || 1;
       return {

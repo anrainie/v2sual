@@ -99,7 +99,7 @@ const preview = {
     let x = [];
     el.off(".keymap")
       .on("keydown.keymap", (e) => {
-        console.log(e.key, e.keyCode)
+        // console.log(e.key, e.keyCode)
         return this.handleKeyDown(e);
 
       });

@@ -162,22 +162,11 @@ export const widget = {
     ERR: console.error,
   },
   created() {
-
-  },
-  updated() {},
-  mounted() {
     this.$store.commit('regist.vue', {
       wid: this.wid,
       vue: this
     });
-
-    let wid = this.wid,
-      option,
-      options = this.$store.state.binderTable[wid];
-
-    //特殊处理循环组件
     if (this.cpttype == 'loopItem') {
-      options = this.$store.state.binderTable[this.pid];
       let content;
       let parentModel = this.$store.getters.model(this.pid);
       content = JSON.parse(JSON.stringify(parentModel));
@@ -198,23 +187,35 @@ export const widget = {
 
       //特殊处理，强制触发computed
       this._computedWatchers['model'].dirty = true;
-      this.$forceUpdate();
+    }
+  },
+  beforeMount() {
+    console.log('before Mount',this.wid,this.model.value);
+  },
+  updated() {},
+  mounted() {
+    // console.log('model',this.model,this.$store.getters.model(this.wid),this.$store.state.UIData.structureIndex[this.wid])
+    let wid = this.wid,
+      option,
+      options = this.$store.state.binderTable[wid];
+
+    //特殊处理循环组件
+    if (this.cpttype == 'loopItem') {
+      options = this.$store.state.binderTable[this.pid];
 
       //处理循环数据绑定
       if (options) {
         for (option of options) {
           if (option.data == null && !option.vueObj) {
             if (option.dataStr) {
-              let data, vueObj;
+              let data, vueObj = this.$store.state.root;
               if (RESERVED_WORDS[option.dataStr.split('.')[0]]) {
                 data = deepGet(this, option.dataStr);
-                vueObj = this;
               } else {
-                vueObj = this.$store.state.root;
                 data = deepGet(vueObj, option.dataStr);
               }
               // content[option.modelKey] = data;
-              Vue.set(content, option.modelKey, data)
+              // Vue.set(content, option.modelKey, data)
               this.$store.commit('bind', {
                 ...option,
                 wid: this.wid,
@@ -225,6 +226,8 @@ export const widget = {
           }
         }
       };
+      this.$forceUpdate();
+      console.log('Mount',this.wid,this.model.value);
 
     }
     //处理普通数据绑定
@@ -256,10 +259,10 @@ export const widget = {
     },
     labelStyle() {
 
-      this.model.style = this.model.style || {};
+      // this.model.style = this.model.style || {};
       return {
         width: this.model.labelWitdh,
-        ...this.model.style.label
+        ...(this.model.style ? this.model.style.label : {})
       };
     },
     parent() {
