@@ -411,7 +411,7 @@ export default () => {
         })
 
         // console.log('widget', widgetVue)
-        console.log('widgetVue bind:', widgetVue, modelWatch,`vueObj${dataPre}`,dataLast)
+        console.log('widgetVue bind:', widgetVue, modelWatch, `vueObj${dataPre}`, dataLast)
 
 
 
@@ -463,7 +463,9 @@ export default () => {
       }) {
         if (structure) {
           //清空原始索引
-          UIData.structureIndex = {};
+          for (let key in UIData.structureIndex) {
+            delete UIData.structureIndex[key]
+          }
           __buildIndex(structure, UIData.structureIndex);
         }
       },
@@ -487,9 +489,10 @@ export default () => {
         id,
         content
       }) {
-        UIData.structureIndex = UIData.structureIndex || {};
+        // UIData.structureIndex = UIData.structureIndex || {};
         // Vue.set(UIData.structureIndex, id, content);
-        UIData.structureIndex[id] = content;
+        // UIData.structureIndex[id] = content;
+        Vue.set( UIData.structureIndex,id,content);
       },
       /**
        * 设置当前激活的工具
