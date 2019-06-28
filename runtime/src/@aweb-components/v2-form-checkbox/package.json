@@ -54,7 +54,7 @@
         "type": "array",
         "attrInEachElement": [
           {
-            "name": "value",
+            "name": "text",
             "desp": "文本",
             "defaultValue": "备选项",
             "type": "string_input"
@@ -70,6 +70,12 @@
             "desp": "是否必填",
             "defaultValue": false,
             "type": "boolean"
+          },
+          {
+            "name": "label",
+            "desp": "对应值",
+            "defaultValue": false,
+            "type": "string_input"
           }
         ]
       }

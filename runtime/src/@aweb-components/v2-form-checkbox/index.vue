@@ -10,14 +10,14 @@
       class="form-checkbox-ctn"
       :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"
     >
-      <el-checkbox-group v-model="model.value" ref="_op_formCheckbox_group">
+      <el-checkbox-group v-model="checkList" ref="_op_formCheckbox_group">
         <el-checkbox  
          ref="_op_formCheckbox_checkbox"
         v-for="(item,index) in model.options" 
-        :label="item.value" 
+        :label="item.label" 
         :key="index" 
         :disabled="item.disabled"
-        ></el-checkbox>
+        >{{item.text}}</el-checkbox>
       </el-checkbox-group>
     </div>
   </div>
@@ -38,6 +38,11 @@ export default {
       this.model.checked = !this.model.checked;
       return false;
     },
+  },
+  watch:{
+     checkList(val){
+       this.model.value = val;
+     }
   },
   computed: {
   },
