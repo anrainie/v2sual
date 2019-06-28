@@ -223,8 +223,8 @@ body {
   top: 0;
   left: 0;
   z-index: 7;
-  font-size:.5rem;
-  background:lightblue;
+  font-size: .5rem;
+  background: lightblue;
 }
 
 .V2ResizeMask {
@@ -325,13 +325,16 @@ body {
 }
 
 .v2mid {
-  margin-left: auto;
   margin-right: auto;
+  text-align: center;
+  left: 0;
+  right: 0;
+  /* width: 100%; */
 }
 
 .v2right {
-  /* margin-left: auto; */
   float: right;
+  right: 0;
 }
 
 .v2top {}
@@ -342,10 +345,8 @@ body {
 }
 
 .v2bottom {
-  top: 50%;
-  transform: translateY(-50%);
-  /* bottom: 0; */
-  /* position: absolute; */
+  position: absolute !important;
+  bottom: 0;
 }
 
 
