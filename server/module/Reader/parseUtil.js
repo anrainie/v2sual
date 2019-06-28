@@ -98,7 +98,9 @@ let appendComponent = function(parent,index,element){
         if(child && child.dataBasket){
             for(let item in child.dataBasket){
                 if(child.dataBasket[item].startsWith('$item')){
-                    component.setAttribute(':'+item,'scope._item.'+item);
+                    component.setAttribute(':'+item,'scope._item.'+child.dataBasket[item].replace('$item.',''));
+                }else{
+                    component.setAttribute(':'+item,child.dataBasket[item]);
                 }
             }
         }
