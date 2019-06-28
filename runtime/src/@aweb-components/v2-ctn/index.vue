@@ -28,7 +28,7 @@ export default {
          if (!this.model.children) {
           return "v2Empty";
         }
-     
+     debugger;
         let item = this.model.children && (this.model.children[0]||this.model.children[1]);
       
       
