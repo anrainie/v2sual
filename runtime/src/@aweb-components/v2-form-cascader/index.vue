@@ -129,7 +129,7 @@ export default {
                 },
                 {
                   value: "cascader",
-                  label: "Cascader 级联选择器"
+                  label: "Cascader 级联选择"
                 },
                 {
                   value: "switch",

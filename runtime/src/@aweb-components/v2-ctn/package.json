@@ -16,7 +16,7 @@
     "accept": "",
     "polymorphic":[
     {
-      "desp":"宽高固定容器",
+      "desp":"宽高固定",
       "default":{
         "defStyle":{
           "width":"100%",
@@ -25,7 +25,7 @@
       }
     },
     {
-      "desp":"悬浮定位容器",
+      "desp":"悬浮定位",
       "default":{
         "defStyle":{
           "position":"absolute",

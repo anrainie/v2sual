@@ -4,7 +4,7 @@
   },
   "bundleDependencies": false,
   "deprecated": false,
-  "description": "可编辑表格",
+  "description": "可编辑表",
   "docs": {
     "belongTo": "aui",
     "icon": "iconkebianjibiaoge",
@@ -13,7 +13,7 @@
     "author": "zhanghaixian@agree.com.cn",
     "version": 610000,
     "accept": "divCtn",
-    "name": "可编辑表格",
+    "name": "可编辑表",
     "option": [{
       "type": "array",
       "desp": "列定义",

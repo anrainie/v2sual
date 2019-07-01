@@ -4,7 +4,7 @@
   },
   "bundleDependencies": false,
   "deprecated": false,
-  "description": "日期选择器",
+  "description": "日期",
   "docs": {
     "belongTo": "aui",
     "icon": "iconriqixuanze",
@@ -13,7 +13,7 @@
     "author": "fengjiarong@agree.com.cn",
     "version": 510000,
     "accept": "foundationRowCtn divCtn",
-    "name": "日期选择器",
+    "name": "日期",
     "option": [
       {
         "name": "label",

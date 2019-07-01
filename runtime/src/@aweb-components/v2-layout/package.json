@@ -5,7 +5,6 @@
   "bundleDependencies": false,
   "deprecated": false,
   "description": "布局",
-
   "docs": {
     "belongTo": "aui",
     "icon": "iconhengxiangbuju",
@@ -14,67 +13,164 @@
     "author": "zhanghaixian@agree.com.cn",
     "version": 510000,
     "accept": "",
-    "polymorphic":[{
-      "desp":"横向布局",
-      "default":{
-        "layout":[50, 50],
-        "direction":"row"
-      }
-    },
-    {
-      "desp":"竖向布局",
-      "default":{
-        "layout":[50, 50],
-        "direction":"col"
+    "polymorphic": [
+      {
+        "desp": "横向布局",
+        "default": {
+          "layout": [
+            50,
+            50
+          ],
+          "direction": "row"
+        }
       },
-      "icon": "iconshuxiangbuju"
-    }],
+      {
+        "desp": "竖向布局",
+        "default": {
+          "layout": [
+            50,
+            50
+          ],
+          "direction": "col"
+        },
+        "icon": "iconshuxiangbuju"
+      },
+      {
+        "desp": "上下",
+        "default": {
+          "layout": [
+            50,
+            50
+          ],
+          "direction": "col"
+        },
+        "icon": "iconshangxia"
+      },
+
+      {
+        "desp": "上中下",
+        "default": {
+          "layout": [
+            50,
+            50
+          ],
+          "direction": "col"
+        },
+        "icon": "iconshangzhongxia"
+      },
+
+      {
+        "desp": "左右",
+        "default": {
+          "layout": [
+            50,
+            50
+          ],
+          "direction": "col"
+        },
+        "icon": "iconzuoyou"
+      },
+
+      {
+        "desp": "上左右",
+        "default": {
+          "layout": [
+            50,
+            50
+          ],
+          "direction": "col"
+        },
+        "icon": "iconshangzuoyou"
+      },
+      
+      {
+        "desp": "上左中下",
+        "default": {
+          "layout": [
+            50,
+            50
+          ],
+          "direction": "col"
+        },
+        "icon": "iconshangzuozhongxia"
+      },
+
+      {
+        "desp": "左上中",
+        "default": {
+          "layout": [
+            50,
+            50
+          ],
+          "direction": "col"
+        },
+        "icon": "iconzuoshangzhong"
+      },
+
+      {
+        "desp": "左上中",
+        "default": {
+          "layout": [
+            50,
+            50
+          ],
+          "direction": "col"
+        },
+        "icon": "iconzuozhongxia"
+      }
+    ],
     "name": "布局",
-    "option": [{
-      "name": "direction",
-      "desp": "排列方式",
-      "defaultValue": "",
-      "type": "string_select",
-      "valueArray": [
-        "row",
-        "col"
-      ],
-      "despArray": [
-        "横排",
-        "竖排"
-      ]
-    }, {
-      "name": "layout",
-      "desp": "栅格",
-      "hidden": false,
-      "type": "string_input"
-    },{
-      "name": "rules",
-      "desp": "表单验证",
-      "defaultValue": "",
-      "type": "single_array",
-      "attrInEachElement": [
+    "option": [
+      {
+        "name": "direction",
+        "desp": "排列方式",
+        "defaultValue": "",
+        "type": "string_select",
+        "valueArray": [
+          "row",
+          "col"
+        ],
+        "despArray": [
+          "横排",
+          "竖排"
+        ]
+      },
+      {
+        "name": "layout",
+        "desp": "栅格",
+        "hidden": false,
+        "type": "string_input"
+      },
+      {
+        "name": "rules",
+        "desp": "表单验证",
+        "defaultValue": "",
+        "type": "single_array",
+        "attrInEachElement": [
+          {
+            "name": "rule",
+            "desp": "规则",
+            "defaultValue": "",
+            "type": "string_input"
+          }
+        ]
+      }
+    ],
+    "css": {
+      "style": [
         {
-          "name": "rule",
-          "desp": "规则",
-          "defaultValue": "",
-          "type": "string_input"
+          "desp": "容器",
+          "cssAttrs": "position top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+          "name": "divCtn"
         }
       ]
-    }],
-    "css": {
-      "style": [{
-        "desp": "容器",
-        "cssAttrs": "position top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
-        "name": "divCtn"
-      }]
     },
     "editor": {
       "name": "v2LayoutEditor",
       "model": {
         "def": {
           "defheight": true,
-          "defwidth":true,
+          "defwidth": true,
           "defborder": true,
           "defbackgroundStyle": true,
           "defpaddingStyle": true
@@ -94,14 +190,14 @@
   "keywords": [],
   "license": "ISC",
   "main": "index.vue",
-  "editor":{
-    "path":"editor.vue",
-    "name":"v2LayoutEditor"
+  "editor": {
+    "path": "editor.vue",
+    "name": "v2LayoutEditor"
   },
   "name": "@aweb-components/v2-layout",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "version": "6.0.4",
-  "index":10000002
+  "index": 10000002
 }

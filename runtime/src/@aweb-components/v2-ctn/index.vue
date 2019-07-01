@@ -71,7 +71,7 @@ export default {
 .V2Container,
 .V2ContainerBlock{
   min-height: 30px;
-  height: 100%;
+  // height: 100%;
 }
 .aui-empty-ctn{
  &::before{
