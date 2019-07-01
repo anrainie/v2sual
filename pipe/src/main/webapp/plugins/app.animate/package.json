@@ -1,0 +1,65 @@
+{
+    "name": "@aweb-plugins/app.animate",
+    "main": "index.js",
+    "docs": {
+        "desp": "动画效果",
+        "name": "animate",
+        "belongTo": "function",
+        "category": "animate",
+        "params": [
+            {
+                "name": "element",
+                "desp": "元素",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": ""
+            },
+            {
+                "name": "animation",
+                "desp": "动画效果",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": ""
+            },
+            {
+                "name": "delay",
+                "desp": "延时",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": ""
+            },
+            {
+                "name": "speed",
+                "desp": "速度",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": ""
+            },
+            {
+                "name": "callback",
+                "desp": "回调函数",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": ""
+            },
+            {
+                "name": "loop",
+                "desp": "循环",
+                "type": "boolean",
+                "necessary": true,
+                "defaultValue": false
+            }
+        ],
+        "hasReturn": false,
+        "returnValue": {
+            "name": "",
+            "desp": "",
+            "details": "",
+            "type": "string",
+            "defaultValue": ""
+        }
+    },
+    "category": "自定义",
+    "description": "",
+    "version": "6.0.0"
+}
