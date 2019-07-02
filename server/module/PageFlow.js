@@ -527,27 +527,15 @@ class Page {
         // 检测路径
         await fs.exists(staticPath, (exists) => {
           if (!exists) {
-            isExists = false;
-          } else {
-            isExists = true;
+            fs.mkdirSync(staticPath);
           }
-        });
-        if(!isExists){
-          await fs.mkdir(staticPath,(e)=>{
-            if(e){
-              console.log("创建失败")
-            }else{
-              console.log("创建成功")
+          fs.writeFile(path, dataBuffer, function (err) {
+            if (err) {
+              platform.sendErrorResult(req, err);
+            } else {
+              platform.sendSuccessResult(req, { status: true,path:path });
             }
-          })
-        }
-
-        fs.writeFile(path, dataBuffer, function (err) {
-          if (err) {
-            platform.sendErrorResult(req, err);
-          } else {
-            platform.sendSuccessResult(req, { status: true,path:path });
-          }
+          });
         });
       } catch (e) {
         platform.sendErrorResult(req, e);
