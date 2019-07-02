@@ -36,18 +36,11 @@
                 "defaultValue": ""
             },
             {
-                "name": "callback",
-                "desp": "回调函数",
-                "type": "string",
-                "necessary": true,
-                "defaultValue": ""
-            },
-            {
                 "name": "loop",
                 "desp": "循环",
-                "type": "boolean",
+                "type": "number",
                 "necessary": true,
-                "defaultValue": false
+                "defaultValue": 1
             }
         ],
         "hasReturn": false,
