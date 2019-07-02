@@ -1,136 +1,58 @@
-<template>
-  <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-position="left" label-width="0px" class="demo-ruleForm cus-login-container">
-    <h3 class="cus-title">赞同管理系统</h3>
-    <el-form-item prop="account">
-      <el-input type="text" v-model="ruleForm2.account" auto-complete="off" placeholder="账号"></el-input>
-    </el-form-item>
-    <el-form-item prop="checkPass">
-      <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off" placeholder="密码"></el-input>
-    </el-form-item>
-        <el-form-item prop="identify">
-      <identifyInput v-model="ruleForm2.identifyCode"  placeholder="验证码"></identifyInput>
-    </el-form-item>
-
-    <el-form-item style="width:100%;">
-      <el-button type="primary" class="cus-submit-btn" @click.native.prevent="handleSubmit2" :loading="logining">登录</el-button>
-    </el-form-item>
-     <el-form-item style="width:100%;">
-     <el-checkbox v-model="checked" checked class="cus-remember" text-color="#771faa">记住密码</el-checkbox>
-     <el-button type="text" class="cus-forget-passWord">忘记密码</el-button>
-     </el-form-item>
-  </el-form>
-</template>
-
+<template><v2container :wid="`root`"><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0"><v2-layout-colctn class="V2Widget" id="1561947039739" :wid="`1561947039739`" :index="0" :pid="`root`"><v2-form-input class="V2Widget" id="1561946989700" :wid="`1561946989700`" :index="0" :pid="`1561947039739`"></v2-form-input><v2container id="1561947922097" :wid="`1561947922097`" :index="1" :pid="`1561947039739`"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;width:100%;" key="0"><v2-form-input class="V2Widget" id="1561948008863" :wid="`1561948008863`" :index="0" :pid="`1561947922097`"></v2-form-input></el-row><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1"><v2empty class="V2Empty" id="1561947922097-1" :wid="`1561947922097-1`" :index="1" :pid="`1561947922097`"></v2empty></el-row></v2container></v2-layout-colctn></el-row><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1"><v2empty class="V2Empty" id="root-1" :wid="`root-1`" :index="1" :pid="`root`"></v2empty></el-row></v2container></template>
 <script>
-  import { requestLogin ,getRoutersList} from '@/api/api'
-  import { saveRouter,getRouter,addDynRoute} from '@/promission.js'
+            import {root} from '@/utils/v2-view';
+            
+            export default{
+                data(){
+                    return{
+                        "CONTENT":{structure:{"id":"root","component":"v2Container","direction":"row","layout":[50,50],"style":{"width":"100%","height":"100%"},"data":{},"children":[{"component":"v2-layout-colctn","href":"v2-layout-colctn","layout":[50,50],"direction":"row","children":[{"style":{"label":{"font-size":"","font-weight":"","color":""},"borderStyle":{"border-color":""},"fontStyle":{"color":""}},"label":"标题","titleMode":"col","labelWitdh":"80px","placeholder":"请选择","value":"","clearable":false,"disabled":false,"isRequired":false,"autoComplete":false,"suggestion":"","rules":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-form-input","href":"v2-form-input","children":[],"events":{},"id":1561946989700,"pid":1561947039739},{"style":{"divCtn":{"position":"","top":"","right":"","bottom":"","left":"","overflow":"","margin":"","padding":"","height":"","width":"","max-height":"","max-width":"","min-height":"","min-width":""}},"direction":"row","layout":[50,50],"rules":"","__type":"","__loopTarget":"","__capacity":"1","def":{"defheight":true,"defwidth":true,"defborder":true,"defbackgroundStyle":true,"defpaddingStyle":true},"defaultValue":{"background-color":"#fff","background-image":"","padding-top":0,"padding-bottom":0,"padding-left":0,"padding-right":0},"customStyle":{"opacity":1,"border-radius":"0px"},"component":"v2-layout","href":"v2-layout","children":[{"style":{"label":{"font-size":"","font-weight":"","color":""},"borderStyle":{"border-color":""},"fontStyle":{"color":""}},"label":"标题","titleMode":"col","labelWitdh":"80px","placeholder":"请选择","value":"","clearable":false,"disabled":false,"isRequired":false,"autoComplete":false,"suggestion":"","rules":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-form-input","href":"v2-form-input","children":[],"events":{},"id":1561948008863,"pid":1561947922097},null],"events":{},"id":1561947922097,"pid":1561947039739}],"style":{},"pid":"root","id":1561947039739},null]}},
+                        
+                    }
+                },
+                props:{
+                  
+                },
+                mixins:[root],
+                
+                methods:{},
+                watch:{},
+                beforeCreate(){
+                    let ctx = this;
+                    
+                },
+                created(){
+                    let ctx = this;
+                    
+                    
+                    
+                },
+                beforeMount(){
+                    let ctx = this;
+                    
+                },
+                mounted(){
+                    let ctx = this;
+                    
+                    
+                },
+                beforeUpdate(){
+                    let ctx = this;
+                    
+                },
+                updated(){
+                    let ctx = this;
+                    
+                },
+                beforeDestroy(){ 
+                    let ctx = this;
+                        
+                },
+                destroyed(){
+                    let ctx = this;
+                        
+                },
+                pause(){/**页面切出**/},
+                resume(){/**页面切入**/},
 
-  import identifyInput from '../components/identifyInput.vue'
-
-  export default {
-    data() {
-      return {
-        logining: false,
-        user:{
-          name:'admin',
-          avatar:'https://s.gravatar.com/avatar/f30a9191dda93b5389965ed99f57f850?s=50&d=retro'
-         },
-        ruleForm2: {
-          account: 'admin',
-          checkPass: '123456',
-          identifyCode:''
-        },
-        rules2: {
-          account: [
-            { required: true, message: '请输入账号', trigger: 'blur' },
-            //{ validator: validaePass }
-          ],
-          checkPass: [
-            { required: true, message: '请输入密码', trigger: 'blur' },
-            //{ validator: validaePass2 }
-          ]
-        },
-        checked: true
-      };
-    },
-    methods: {
-      handleReset2() {
-        this.$refs.ruleForm2.resetFields();
-      },
-      handleSubmit2(ev) {
-        var _this = this;
-        this.$refs.ruleForm2.validate((valid) => {
-          if (valid) {
-  
-            this.logining = true;
-         
-            var loginParams = { username: this.ruleForm2.account, password: this.ruleForm2.checkPass };
-           
-              requestLogin(loginParams).then(((response)=>{
-        
-                  sessionStorage.setItem('user', JSON.stringify(response));
-                  global.hasLogin = true;
-               
-
-                     getRoutersList().then(res => {
-
-                        addDynRoute(res.data.router);
-
-                         _this.$router.push({ path: '/'});
-                       
-                    })
-
-              }))
-                    // sessionStorage.setItem('user', JSON.stringify(_this.user));
-                    // _this.$router.push({ path: '/'});
-
-         
-  
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
-      }
-    },
-    components:{
-      identifyInput
-    }
-  }
-
-</script>
-
- <style lang="less" >
-
-
-   .cus-submit-btn{
-    width:100%;
-   }
-  .cus-login-container {
-    /*box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);*/
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-clip: padding-box;
-    margin: 180px auto;
-    width: 350px;
-    padding: 35px 35px 15px 35px;
-    background: #fff;
-    border: 1px solid #eaeaea;
-    box-shadow: 0 0 25px #cac6c6;
-    .cus-title {
-      margin: 0px auto 40px auto;
-      text-align: center;
-      color: #505458;
-    }
-    .cus-remember {
-      float:left;
-
-    }
-    
-    .cus-forget-passWord {
-     float: right;
-
-    }
-  }
-</style>
+            };
+        </script>
