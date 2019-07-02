@@ -15,6 +15,7 @@ const generateWatch = (key, host) => {
     if (key.indexOf('-') == -1) {
       return key.indexOf('[') == -1 ? key : eval(`()=>{
         try {
+          console.log('watch func:',key);
           return host.${key}
         } catch (e) {
           console.error(e)

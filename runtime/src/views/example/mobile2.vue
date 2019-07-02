@@ -1,4 +1,4 @@
-<template><v2container :wid="`root`"><el-row class="V2ContainerBlock" style="height:100%;width:100%;" key="0"><v2container id="1561344914959" :wid="`1561344914959`" :index="0" :pid="`root`"><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0"><v2container id="1561344916766" :wid="`1561344916766`" :index="0" :pid="`1561344914959`"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;width:100%;" key="0"><v2-component-steps class="V2Widget" id="1561430906911" :wid="`1561430906911`" :index="0" :pid="`1561344916766`"></v2-component-steps></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:25%;width:100%;" key="1"><v2-mobile-input class="V2Widget" id="1561359322769" :wid="`1561359322769`" :index="1" :pid="`1561344916766`"></v2-mobile-input></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:25%;width:100%;" key="2"><v2-mobile-input class="V2Widget" id="1561359144185" :wid="`1561359144185`" :index="2" :pid="`1561344916766`"></v2-mobile-input></el-row></v2container></el-row><el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1"><v2container id="1561344918158" :wid="`1561344918158`" :index="1" :pid="`1561344914959`"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;width:100%;" key="0"><v2-mobile-input class="V2Widget" id="1561359325249" :wid="`1561359325249`" :index="0" :pid="`1561344918158`"></v2-mobile-input></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;width:100%;" key="1"><v2-mobile-button class="V2Widget" id="1561359332209" :wid="`1561359332209`" :index="1" :pid="`1561344918158`"></v2-mobile-button></el-row></v2container></el-row></v2container></el-row></v2container></template>
+<template><v2container :wid="`root`"><el-row class="V2ContainerBlock" style="height:100%;width:100%;" key="0"><v2-layout-colctn class="V2Widget" id="1561344914959" :wid="`1561344914959`" :index="0" :pid="`root`"><v2-layout-colctn class="V2Widget" id="1561344916766" :wid="`1561344916766`" :index="0" :pid="`1561344914959`"><v2-component-steps class="V2Widget" id="1561430906911" :wid="`1561430906911`" :index="0" :pid="`1561344916766`"></v2-component-steps><v2-mobile-input class="V2Widget" id="1561359322769" :wid="`1561359322769`" :index="1" :pid="`1561344916766`"></v2-mobile-input><v2-mobile-input class="V2Widget" id="1561359144185" :wid="`1561359144185`" :index="2" :pid="`1561344916766`"></v2-mobile-input></v2-layout-colctn><v2-layout-colctn class="V2Widget" id="1561344918158" :wid="`1561344918158`" :index="1" :pid="`1561344914959`"><v2-mobile-input class="V2Widget" id="1561359325249" :wid="`1561359325249`" :index="0" :pid="`1561344918158`"></v2-mobile-input><v2-mobile-button class="V2Widget" id="1561359332209" :wid="`1561359332209`" :index="1" :pid="`1561344918158`"></v2-mobile-button></v2-layout-colctn></v2-layout-colctn></el-row></v2container></template>
 <script>
             import {root} from '@/utils/v2-view';
             
@@ -28,6 +28,11 @@
                 watch:{},
                 beforeCreate(){
                     let ctx = this;
+                    
+                    /*overview*/
+                        (async()=>{const t1 = await this.value1;
+})();
+                    /*overview over*/
                     
                 },
                 created(){
