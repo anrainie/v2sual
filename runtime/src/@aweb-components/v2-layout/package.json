@@ -30,7 +30,7 @@
     {
       "desp":"左右布局",
       "default":{
-        "layout":[30, 70],
+        "layout":[20, 80],
         "direction":"col"
       },
       "icon": "iconzuoyou"
