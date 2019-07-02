@@ -4,7 +4,7 @@
   },
   "bundleDependencies": false,
   "deprecated": false,
-  "description": "级联选择器",
+  "description": "级联选择",
   "docs": {
     "belongTo": "aui",
     "icon": "iconjilianxuanze",
@@ -13,7 +13,7 @@
     "author": "fengjiarong@agree.com.cn",
     "version": 510000,
     "accept": "foundationRowCtn divCtn",
-    "name": "级联选择器",
+    "name": "级联选择",
     "option": [
       {
         "name": "label",

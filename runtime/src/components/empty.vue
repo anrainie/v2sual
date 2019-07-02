@@ -12,3 +12,8 @@ export default {
   computed: {}
 };
 </script>
+<style lang="less" scoped>
+.V2Empty{
+  height: 100%;
+}
+</style>

@@ -7,6 +7,8 @@ var document = new JSDOM('').window.document;
 
 //=================================================== json转html ===========================================================
 const ignoreKey = ['children','style','widget','data','css','option','options','def','defaultValue','customStyle','pid'];//先不作处理的属性
+const v2Layout = ['v2-layout-colctn','v2-layout-rowctn','v2-layout'];//转为v2container
+let dataBasket = [];//自定义组件的数据篮子
 
 let blockClass = function (index, parent) {
     if (parent && parent.children[index] && !parent.children[index].layout) {
@@ -75,7 +77,7 @@ let appendComponent = function(parent,index,element){
     if(child === null){
         eCom =  document.createElement('v2empty');
         eCom.setAttribute('class','V2Empty');
-    }else if('v2-layout'.includes(child.component)){
+    }else if(v2Layout.includes(child.component)){
         eCom =  document.createElement('v2container');
         isContainer = true;
         child.wid = wid;
@@ -87,6 +89,14 @@ let appendComponent = function(parent,index,element){
         template.setAttribute('v-slot','scope');
         let component = document.createElement(child.component);
         component.setAttribute('class','V2Widget');
+        //组件.布局
+        if(child && child.layoutClass && child.layoutClass !== ''){
+            let layoutClass = '';
+            child.layoutClass.map((item)=>{
+               layoutClass = layoutClass + item + ' ';
+            })
+            component.setAttribute(':class',"'"+layoutClass+"'");
+        }
         component.setAttribute(':id','`'+wid+'-${scope._key}`');
         component.setAttribute(':wid','`'+wid+'-${scope._key}`');
         component.setAttribute(':index','scope._key');
@@ -101,6 +111,11 @@ let appendComponent = function(parent,index,element){
                     component.setAttribute(':'+item,'scope._item.'+child.dataBasket[item].replace('$item.',''));
                 }else{
                     component.setAttribute(':'+item,child.dataBasket[item]);
+                }
+                if(item != item.toLocaleLowerCase()){
+                    let key = ':'+item.toLocaleLowerCase()+'="'+component.getAttribute(':'+item)+'"';
+                    let value = ':'+item+'="'+component.getAttribute(':'+item)+'"';
+                    dataBasket.push([key,value]);
                 }
             }
         }
@@ -128,6 +143,11 @@ let appendComponent = function(parent,index,element){
     if(child && child.dataBasket && child.__type !== 'loop'){
         for(let item in child.dataBasket){
             eCom.setAttribute(':'+item,child.dataBasket[item]);
+            if(item != item.toLocaleLowerCase()){
+                let key = ':'+item.toLocaleLowerCase()+'="'+eCom.getAttribute(':'+item)+'"';
+                let value = ':'+item+'="'+eCom.getAttribute(':'+item)+'"';
+                dataBasket.push([key,value]);
+            }
         }
     }
     // appendAttribute(child,eCom);
@@ -194,7 +214,12 @@ let json2html = function (jsonStr) {
     appendChildren(jsonV2C,eV2C,true);
     temp.content.appendChild(eV2C);
     root.appendChild(temp);
-    return root.innerHTML;
+    let html = root.innerHTML;
+    for(let i in dataBasket){
+        let arr = dataBasket[i];
+        html = html.replace(arr[0],arr[1]);
+    }
+    return html;
 }
 
 //====================================================== html转json ========================================================

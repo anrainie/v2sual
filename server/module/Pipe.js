@@ -18,46 +18,50 @@ class Pipe {
       try {
         const files = await readDir(path);
         let res = [{
-            desp: "数据源",
-            item: []
-          },
-          {
-            desp: "自定义",
-            item: [{
-              name: "diy",
-              desp: "自定义代码",
-              mode: "custom",
-              input: [{
-                  type: "Value",
-                  value: "this.value1"
-                },
-                {
-                  type: "Value",
-                  value: "this.value2"
-                }
-              ]
-            }]
-          },
-          {
-            desp: "比较运算",
-            item: []
-          },
-          {
-            desp: "数字运算",
-            item: []
-          },
-          {
-            desp: "逻辑运算",
-            item: []
-          },
-          {
-            desp: "字符串",
-            item: []
-          },
-          {
-            desp: "接口",
-            item: []
-          }
+          desp: "数据源",
+          item: []
+        },
+        {
+          desp: "自定义",
+          item: [{
+            name: "diy",
+            desp: "自定义代码",
+            mode: "custom",
+            input: [{
+              type: "Value",
+              value: "this.value1"
+            },
+            {
+              type: "Value",
+              value: "this.value2"
+            }
+            ]
+          }]
+        },
+        {
+          desp: "比较运算",
+          item: []
+        },
+        {
+          desp: "数字运算",
+          item: []
+        },
+        {
+          desp: "逻辑运算",
+          item: []
+        },
+        {
+          desp: '动画',
+          item: []
+        },
+        {
+          desp: "字符串",
+          item: []
+        },
+        {
+          desp: "接口",
+          item: []
+        }
 
         ]
         //文件列表
@@ -96,11 +100,14 @@ class Pipe {
             case "logic":
               res[4].item.push(obj);
               break;
+            case 'animate':
+              res[5].item.push(obj); 
+              break;
             case "string":
-              res[5].item.push(obj);
+              res[6].item.push(obj);
               break;
             case "api":
-              res[6].item.push(obj);
+              res[7].item.push(obj);
               break;
             default:
               break;

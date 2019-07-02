@@ -14,6 +14,7 @@
         "buildP": "node ./build-page.js"
     },
     "dependencies": {
+        "animate.css": "^3.7.2",
         "axios": "^0.18.0",
         "cache-loader": "^2.0.1",
         "element-ui": "^2.9.1",
