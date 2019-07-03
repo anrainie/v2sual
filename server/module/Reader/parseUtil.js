@@ -110,7 +110,7 @@ let appendComponent = function(parent,index,element){
                 if(child.dataBasket[item].startsWith('$item')){
                     component.setAttribute(':'+item,'scope._item.'+child.dataBasket[item].replace('$item.',''));
                 }else{
-                    component.setAttribute(':'+item,child.dataBasket[item]);
+                    component.setAttribute(':'+item,"'"+child.dataBasket[item]+"'");
                 }
                 if(item != item.toLocaleLowerCase()){
                     let key = ':'+item.toLocaleLowerCase()+'="'+component.getAttribute(':'+item)+'"';
@@ -142,7 +142,7 @@ let appendComponent = function(parent,index,element){
     //dataBasket不为空=>自定义组件:添加数据篮子
     if(child && child.dataBasket && child.__type !== 'loop'){
         for(let item in child.dataBasket){
-            eCom.setAttribute(':'+item,child.dataBasket[item]);
+            eCom.setAttribute(':'+item,"'"+child.dataBasket[item]+"'");
             if(item != item.toLocaleLowerCase()){
                 let key = ':'+item.toLocaleLowerCase()+'="'+eCom.getAttribute(':'+item)+'"';
                 let value = ':'+item+'="'+eCom.getAttribute(':'+item)+'"';

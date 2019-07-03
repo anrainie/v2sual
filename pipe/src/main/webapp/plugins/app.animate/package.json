@@ -6,57 +6,13 @@
         "name": "animate",
         "belongTo": "function",
         "category": "animate",
-        "params": [
-            {
-                "name": "element",
-                "desp": "元素",
-                "type": "string",
-                "necessary": true,
-                "defaultValue": ""
-            },
-            {
-                "name": "animation",
-                "desp": "动画效果",
-                "type": "string",
-                "necessary": true,
-                "defaultValue": ""
-            },
-            {
-                "name": "delay",
-                "desp": "延时",
-                "type": "string",
-                "necessary": true,
-                "defaultValue": ""
-            },
-            {
-                "name": "speed",
-                "desp": "速度",
-                "type": "string",
-                "necessary": true,
-                "defaultValue": ""
-            },
-            {
-                "name": "callback",
-                "desp": "回调函数",
-                "type": "string",
-                "necessary": true,
-                "defaultValue": ""
-            },
-            {
-                "name": "loop",
-                "desp": "循环",
-                "type": "boolean",
-                "necessary": true,
-                "defaultValue": false
-            }
-        ],
-        "hasReturn": false,
+        "hasReturn": true,
         "returnValue": {
-            "name": "",
-            "desp": "",
+            "name": "state",
+            "desp": "状态",
             "details": "",
             "type": "string",
-            "defaultValue": ""
+            "defaultValue": "animationend"
         }
     },
     "category": "自定义",

@@ -510,6 +510,38 @@ class Page {
       }
     }
   }
+
+  /**
+   *  @public
+   *  @desp 上传图片
+   */
+  picUpload(platform) {
+    const context = this;
+    return async function (req) {
+      try {
+        let base64Data = req.data.params.result.replace(/^data:image\/\w+;base64,/, "");
+        let dataBuffer = new Buffer(base64Data, 'base64');
+        let staticPath = trans2absolute(`/src/views/static`);
+        let path = trans2absolute(`/src/views/static/${req.data.params.name}`);
+        let isExists = false;
+        // 检测路径
+        await fs.exists(staticPath, (exists) => {
+          if (!exists) {
+            fs.mkdirSync(staticPath);
+          }
+          fs.writeFile(path, dataBuffer, function (err) {
+            if (err) {
+              platform.sendErrorResult(req, err);
+            } else {
+              platform.sendSuccessResult(req, { status: true,path:path });
+            }
+          });
+        });
+      } catch (e) {
+        platform.sendErrorResult(req, e);
+      }
+    }
+  }
 }
 
 module.exports = {

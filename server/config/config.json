@@ -59,7 +59,8 @@
                 "/v1/page/list": "list",
                 "/v1/page/content": "content",
                 "/v1/logic/list": "logicList",
-                "/v1/page/script": "script"
+                "/v1/page/script": "script",
+                "/v1/page/upload": "picUpload"
             }
         },
         "page": {

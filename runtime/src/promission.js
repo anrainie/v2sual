@@ -1,3 +1,7 @@
+//页面加载动画
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
 import router from './router'
 // import _import from '@/router/_import_production.js'
 import _import from '@/router/_import_development.js'
@@ -48,115 +52,111 @@ var mainRouter = [{
 }
 ];
 if (getRouter('router') && global.hasLogin) {
-   saveRouter('router', '')
+  saveRouter('router', '')
 }
 
 var dynRouter; //用来获取后台拿到的路由
 
 router.beforeEach((to, from, next) => {
+  NProgress.start();
 
+  let wpath = window.location.hash.split('?')[0].replace('#/', '');
 
+  if (localStorage.getItem('openWindow') && localStorage.getItem('openWindow') === wpath) {
 
-    // if (to.meta && to.meta.type === 'preview') {
+    router.options.routes.push({
+      path: '/' + wpath,
+      component: _import(wpath),
+      hidden: true
+    });
+    router.addRoutes(router.options.routes);
+  }
+  let urlParam = window.location.hash.split('?')[1];
+  let routes = router.options.routes;
 
-    //   next({
-    //     ...to,
-    //     replace: true,
-    //     fullPath:(to.fullPath.indexOf('IDE')!==-1) ? to.fullPath:to.fullPath + '?source=IDE'
-    //   })
-    // } 
+  if (wpath && urlParam && urlParam.indexOf('IDE') !== -1) {
+    if (!routes.filter(r => r.type === 'preview').length) {
+      console.log('预览页面路径', wpath);
 
-    let wpath = window.location.hash.split('?')[0].replace('#/', '');
-
-    if (localStorage.getItem('openWindow') && localStorage.getItem('openWindow') === wpath) {
-
-      router.options.routes.push({
-        path: '/' + wpath,
-        component: _import(wpath),
-        hidden: true
-      });
-      router.addRoutes(router.options.routes);
-    }
-    let urlParam = window.location.hash.split('?')[1];
-    let routes = router.options.routes;
-
-    if (wpath && urlParam && urlParam.indexOf('IDE') !== -1) {
-       if (!routes.filter(r => r.type === 'preview').length) {
-        console.log('预览页面路径', wpath);
-
-        routes.push({
-          path:'/',
-          type: 'preview',
-          component: Layout,
+      routes.push({
+        path: '/',
+        type: 'preview',
+        component: Layout,
+        replace: true,
+        children: [{
+          path: '/' + wpath,
           replace: true,
-          children: [{
-            path: '/' + wpath,
-            replace: true,
-            component: _import(wpath),
-            meta: {
-              title: '预览',
-              type: 'preview'
-            }
-          }]
-        });
-        console.log(router.options.routes);
-
-        router.addRoutes(routes);
-    
-      }
-    }
-
-    if (!dynRouter) {
-      
-    
-      router.options.routes.push(...mainRouter);
-      router.addRoutes(router.options.routes);
-      global.antRouter = router.options.routes;
-      saveRouter('router', global.antRouter);
-    
-      if (sessionStorage.getItem('user')) {
-        getRoutersList().then(res => {
-
-          addDynRoute(res.data.router, wpath); //后台拿到路由
-
-          if (wpath) {
-
-            let cRoute = searchCurrentRouter(wpath);
-
-            if (cRoute) {
-              router.options.routes.push(cRoute);
-
-
-              router.addRoutes(router.options.routes);
- 
-            }else{
-              next('/404')
-            }
+          component: _import(wpath),
+          meta: {
+            title: '预览',
+            type: 'preview'
           }
+        }]
+      });
+      console.log(router.options.routes);
+
+      router.addRoutes(routes);
+
+    }
+  }
+
+  if (!dynRouter) {
 
 
-          next({
-             ...to,
-            replace: true
-          })
-       
+    router.options.routes.push(...mainRouter);
+    router.addRoutes(router.options.routes);
+    global.antRouter = router.options.routes;
+    saveRouter('router', global.antRouter);
 
-        })
-      } else {
-   
-        dynRouter = global.antRouter;
+    if (sessionStorage.getItem('user')) {
+      getRoutersList().then(res => {
+
+        addDynRoute(res.data.router, wpath); //后台拿到路由
+
+        if (wpath) {
+
+          let cRoute = searchCurrentRouter(wpath);
+
+          if (cRoute) {
+            router.options.routes.push(cRoute);
+
+
+            router.addRoutes(router.options.routes);
+
+          } else {
+            next('/404')
+          }
+        }
+
 
         next({
           ...to,
           replace: true
         })
 
-      }
+
+      })
     } else {
 
-      next()
+      dynRouter = global.antRouter;
+
+      next({
+        ...to,
+        replace: true
+      })
+
     }
-  
+  } else {
+
+    next()
+  }
+
+})
+
+//当路由进入后：关闭进度条
+router.afterEach(() => {
+  // 在即将进入新的页面组件前，关闭掉进度条
+  NProgress.done()
 })
 
 export function addDynRoute(data) {
@@ -261,7 +261,7 @@ function searchCurrentRouter(path) {
 
       if (!idx) {
         cRoute = global.menu.filter((item) => (item.path === ePath));
-       
+
         cRouteCopy = [...cRoute];
 
       } else if (cRoute[0] && cRoute[0].children && cRoute[0].children.length) {
@@ -275,7 +275,7 @@ function searchCurrentRouter(path) {
   } else {
     cRoute = true;
     cRouteCopy = global.menu.filter((item) => (item.children && item.children.length === 1 && item.children[0].path === path));
-   
+
   }
   // if (cRoute && cRouteCopy && cRouteCopy.length) {
   //   result = getAsyncRouter(cRouteCopy)[0];
@@ -283,44 +283,44 @@ function searchCurrentRouter(path) {
   // }
 
   if (cRoute && cRouteCopy && cRouteCopy.length) {
-    if(cRoute.length ===1){
+    if (cRoute.length === 1) {
       cRoute = cRoute[0];
       result = {
         path: '',
         component: Layout,
         hidden: true,
         meta: {
-            title: cRoute.meta && cRoute.meta.title
+          title: cRoute.meta && cRoute.meta.title
         },
         children: [{
-            path: path,
-            component:_import(cRoute.componentUrl),
-            meta: {
-                title: cRoute.meta && cRoute.meta.title,
-                type: 'BLANK'
-            }
-        }]
-    }
-  }else if(cRoute === true){
-    let childRoute = cRouteCopy[0].children[0];
-    result = {
-      path: '',
-      component: Layout,
-      hidden: true,
-      meta: {
-          title: childRoute.meta && childRoute.meta.title
-      },
-      children: [{
-          path: '/'+childRoute.path,
-          component:_import(childRoute.componentUrl),
+          path: path,
+          component: _import(cRoute.componentUrl),
           meta: {
-              title: childRoute.meta && childRoute.meta.title,
-              type: 'BLANK'
+            title: cRoute.meta && cRoute.meta.title,
+            type: 'BLANK'
           }
-      }]
+        }]
+      }
+    } else if (cRoute === true) {
+      let childRoute = cRouteCopy[0].children[0];
+      result = {
+        path: '',
+        component: Layout,
+        hidden: true,
+        meta: {
+          title: childRoute.meta && childRoute.meta.title
+        },
+        children: [{
+          path: '/' + childRoute.path,
+          component: _import(childRoute.componentUrl),
+          meta: {
+            title: childRoute.meta && childRoute.meta.title,
+            type: 'BLANK'
+          }
+        }]
+      }
+    }
   }
-  }
-}
 
 
   return result;
