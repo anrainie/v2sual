@@ -85,7 +85,10 @@ class Pipe {
                 type: "Value",
                 value: item.defaultValue
               }
-            })||[]
+            })||[{
+              type:'Value',
+              value:''
+            }]
           };
           switch (docs.category) {
             case "dataSource":
