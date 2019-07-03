@@ -190,7 +190,7 @@ export const widget = {
     }
   },
   beforeMount() {
-    console.log('before Mount',this.wid,this.model.value);
+    // console.log('before Mount',this.wid,this.model.value);
   },
   updated() {},
   mounted() {
@@ -227,7 +227,7 @@ export const widget = {
         }
       };
       this.$forceUpdate();
-      console.log('Mount',this.wid,this.model.value);
+      // console.log('Mount',this.wid,this.model.value);
 
     }
     //处理普通数据绑定
