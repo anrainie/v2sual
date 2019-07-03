@@ -29,8 +29,9 @@ class Platform {
 
       this.socket.on('connect', r => console.log('连接成功', r));
       this.socket.on('disconnect', r => console.log('断连', r));
-      //this.socket.on('connect_error', r => console.log('连接失败', r));
+      this.socket.on('connect_error', r => console.log('连接失败', r));
       this.socket.on('data', r => console.log(r));
+      this.socket.on('error', r => console.log('连接失败', r));
       this.socket.on('previewPath', (res) => {
         console.log('previewRes', res)
       });
