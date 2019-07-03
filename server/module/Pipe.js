@@ -80,12 +80,12 @@ class Pipe {
             label: docs.label,
             frontName: "",
             mode: docs.labelType,
-            input: docs.params.map(item => {
+            input: docs.params && docs.params.map(item => {
               return {
                 type: "Value",
                 value: item.defaultValue
               }
-            })
+            })||[]
           };
           switch (docs.category) {
             case "dataSource":

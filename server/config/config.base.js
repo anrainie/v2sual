@@ -15,12 +15,12 @@ const homepage = path.resolve(dist, config.runtime.homepage);
 
 const processDir = process.cwd();
 
-let serverHost, serverPort, clientPort, clientId;
+let serverHost, serverPort, clientPort, clientId, clientHost;
 process.argv.forEach((p, index) => {
   let c;
-  if((c=p.indexOf('='))!=-1){
-    let cmd=p.substr(0,c);
-    let val=p.substr(c+1);
+  if ((c = p.indexOf('=')) != -1) {
+    let cmd = p.substr(0, c);
+    let val = p.substr(c + 1);
     switch (cmd) {
       case 'sh':
         serverHost = val;
@@ -34,6 +34,9 @@ process.argv.forEach((p, index) => {
       case "id":
         clientId = val;
         break;
+      case "ch":
+        clientHost = val;
+        break;
     }
     console.log(`${cmd}: ${val}`);
   }
@@ -45,7 +48,7 @@ const hosts = config.webide.condition
 const webide = (hosts && hosts.length ? hosts[0] : null) || {
   host: serverHost || config.webide.host, //WebIDE 对外主机 localhost
   port: serverPort || config.webide.port, //WebIDE 对外端口 
-  clientHost: config.webide.clientHost, //V2sual 对外主机
+  clientHost: clientHost || config.webide.clientHost, //V2sual 对外主机
   clientPort: clientPort || config.webide.clientPort, //V2sual 对外端口
   path: config.webide.path, //Socket.io 在 Ngnix 映射
   publicPort: config.webide.publicPort //公网的socket 的 port
@@ -54,7 +57,7 @@ const webide = (hosts && hosts.length ? hosts[0] : null) || {
 const server = {
   ...config.server,
   id: clientId || config.server.id,
-  port:clientPort||config.server.port
+  port: clientPort || config.server.port
 }
 
 // console.log(webide);

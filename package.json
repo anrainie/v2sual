@@ -30,7 +30,8 @@
         "widget": "gulp widget",
         "pageModule": "gulp pageModule",
         "nsl": "gulp pageModule",
-        "plugins": "gulp plugins"
+        "plugins": "gulp plugins",
+        "anra":"node server/server.js cp=3004 id=anra ch=10.8.3.143"
     },
     "dependencies": {
         "@handsontable/vue": "^3.1.0",
