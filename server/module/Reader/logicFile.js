@@ -61,7 +61,7 @@ let json2script = function (json, path) {
                     }
                 },
                 props:{
-                  ${porpStr.join(",\n")}
+                  ${isCustom?porpStr.join(",\n"):''}
                 },
                 ${isCustom?`mixins:[root,cpt,widget],`:`mixins:[root],`}
                 ${importList.length?`components:{${importList.map(item=>`${item.desp}`)}},`:''}
