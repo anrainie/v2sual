@@ -212,7 +212,7 @@ router.get('/-/router/get', function (ctx) {
 router.post('/login', function (ctx) {
 	ctx.body = {		
 		name: 'admin',
-		avatar: 'http://localhost:7007/img/user.png'
+		avatar: './img/user.png'
 	}
 })
 
