@@ -1,6 +1,9 @@
 const UglifyJS = require('uglify-es-web');
 const esprima = require("esprima");
 const escodegen = require("escodegen");
+
+
+
 let str = `R._fun_(1,str,{"a":"b"},[1,2],R.add(1,R.add(2,2)))`,
   // 函数ast
   res = esprima.parseScript(str),
@@ -12,7 +15,7 @@ let str = `R._fun_(1,str,{"a":"b"},[1,2],R.add(1,R.add(2,2)))`,
   ObjectExpression = funarg[2],
   ArrayExpression = funarg[3],
   CallExpression = funarg[4];
-
+let dataList='';
 
 /**
  * 将json转换成script
@@ -26,8 +29,10 @@ let json2script = function (json, path) {
     porpStr, structureIndex = [],
     i, importList,
     template, finalStr,
-    self = this,
-    transfer = self.toCode(logic),
+    self = this;
+
+    dataList=data;
+  let transfer = self.toCode(logic),
     dataStr = self.createData(data);
 
   let tempArr = [structure];
@@ -431,13 +436,22 @@ let transItem = function (item) {
   switch (option.type) {
     case "Value":
       temp = JSON.parse(JSON.stringify(Identifier));
-      temp.name = option.value;
+      if(dataList[option.value]){
+        temp.name =  `ctx.${option.value}`;
+      }else{
+        temp.name = option.value;
+      }
       return temp;
       break;
     default:
       temp = JSON.parse(JSON.stringify(Literal));
-      temp.raw = option.value;
-      temp.value = option.value;
+      if(dataList[option.value]){
+        temp.raw =`ctx.${option.value}`;
+        temp.value = `ctx.${option.value}`;
+      }else{
+        temp.raw = option.value;
+        temp.value = option.value;
+      }
       return temp;
       break;
   }
