@@ -521,8 +521,8 @@ class Page {
       try {
         let base64Data = req.data.params.result.replace(/^data:image\/\w+;base64,/, "");
         let dataBuffer = new Buffer(base64Data, 'base64');
-        let staticPath = trans2absolute(`/src/views/static`);
-        let path = trans2absolute(`/src/views/static/${req.data.params.name}`);
+        let staticPath = trans2absolute(`/public/img`);
+        let path = trans2absolute(`/public/img/${req.data.params.name}`);
         let isExists = false;
         // 检测路径
         await fs.exists(staticPath, (exists) => {
