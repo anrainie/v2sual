@@ -73,6 +73,11 @@ export default {
   min-height: 30px;
   // height: 100%;
 }
+
+.V2Widget{
+  height:100%;
+}
+
 .aui-empty-ctn{
  &::before{
    background: #f5d1a4;
