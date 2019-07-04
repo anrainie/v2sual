@@ -523,24 +523,37 @@ class Page {
         let dataBuffer = new Buffer(base64Data, 'base64');
         let staticPath = trans2absolute(`/public/img`);
         let path = trans2absolute(`/public/img/${req.data.params.name}`);
-        let isExists = false;
+        let distPath = trans2absolute(`/dist/img/${req.data.params.name}`);
         // 检测路径
-        await fs.exists(staticPath, (exists) => {
+         fs.exists(staticPath, async(exists) => {
           if (!exists) {
             fs.mkdirSync(staticPath);
           }
-          fs.writeFile(path, dataBuffer, function (err) {
-            if (err) {
-              platform.sendErrorResult(req, err);
-            } else {
-              platform.sendSuccessResult(req, { status: true,path:path });
-            }
-          });
+
+          let publishDown = await context.writeimg(path,dataBuffer);
+          let distDown = await context.writeimg(distPath,dataBuffer);
+          if(publishDown&&distDown){
+            platform.sendSuccessResult(req, { status: true,path:path });
+          }else{
+            platform.sendErrorResult(req, "保存失败");
+          }
         });
       } catch (e) {
         platform.sendErrorResult(req, e);
       }
     }
+  }
+  // writeimg
+  writeimg(path, data) {
+    return new Promise((resolve, reject) => {
+      fs.writeFile(path, data, function (err) {
+        if (err) {
+          reject(false);
+        } else {
+          resolve(true);
+        }
+      });
+    })
   }
 }
 
