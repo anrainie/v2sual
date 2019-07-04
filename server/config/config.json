@@ -18,7 +18,7 @@
                 "host": "https://aui.awebide.com",
                 "port": 7003,
                 "clientPort": 443,
-                "clientHost": "v2sual.awebide.com",
+                "clientHost": "https://v2sual.awebide.com",
                 "path":"/v2sual-socket/socket.io",
                 "publicPort":0
             }
