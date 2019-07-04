@@ -17,6 +17,7 @@
       "desp":"横向布局",
       "default":{
         "layout":[50, 50],
+        "realSize":[null,null],
         "direction":"row"
       }
     },
@@ -24,6 +25,7 @@
       "desp":"竖向布局",
       "default":{
         "layout":[50, 50],
+        "realSize":[null,null],
         "direction":"col"
       }
     },
@@ -31,6 +33,7 @@
       "desp":"左右布局",
       "default":{
         "layout":[20, 80],
+        "realSize":[null,null],
         "direction":"col"
       },
       "icon": "iconzuoyou"
@@ -38,6 +41,7 @@
       "desp":"上下布局",
       "default":{
         "layout":[20,80],
+        "realSize":[null,null],
         "direction":"row"
       },
       "icon": "iconshangxia"
@@ -45,6 +49,7 @@
       "desp":"上中下布局",
       "default":{
         "layout":[33.3,33.3,33.3],
+        "realSize":[null,null,null],
         "direction":"row"
       },
       "icon": "iconshangzhongxia"
@@ -53,6 +58,7 @@
       "default":{
         "layout":[80,20],
         "direction":"row",
+        "realSize":[null,null],
         "children":[
           {
             "layout":[30,70],
@@ -75,6 +81,7 @@
       "default":{
         "layout":[20,80],
         "direction":"row",
+        "realSize":[null,null],
         "children":[
           {
             "layout":[100],
@@ -96,12 +103,14 @@
       "default":{
         "layout":[20,80],
         "direction":"row",
+        "realSize":[null,null],
         "children":[
           {
               
             "layout":[100],
             "direction":"row",
             "component":"v2-layout",
+            "realSize":[null,null],
             "children":[null]
           },
           {
@@ -112,6 +121,7 @@
                 "layout":[100],
                 "direction":"row",
                 "component":"v2-layout",
+                "realSize":[null,null],
                 "children":[null]
               },{
                 "layout":[70,30],

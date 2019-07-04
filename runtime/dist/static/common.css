@@ -288,12 +288,16 @@ body {
 
 .V2ContainerBlock {
   position: relative;
+  transition: filter .2s linear, width .2s linear, height.2s linear,left .2s linear,top .2s linear;
 }
 
 /* 考虑用before/after */
 .v2selected {
-  box-shadow: 0px 0px 0px 1px darkcyan;
+  box-shadow: 0px 0px 1px 1px darkcyan;
+  box-sizing: border-box;
+  filter: invert(10%) blur(.5px);
 }
+
 
 .unselected {
   opacity: .5;
@@ -343,7 +347,7 @@ body {
   top: 50%;
   transform: translateY(-50%);
   /* display: block; */
-  position:relative;
+  position: relative;
 }
 
 .v2bottom {
