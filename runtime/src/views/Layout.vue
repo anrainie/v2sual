@@ -655,7 +655,7 @@ export default {
       }
       .grid-content{
            >div>div.el-tabs>.el-tabs__content{
-              height: calc(100vh - 155px);
+              height: calc(100vh - 160px);
               overflow: auto;
               padding: 1em;
            }
