@@ -1,5 +1,5 @@
 	<template>
-  <el-row class="aweb-container" >
+  <el-row class="aweb-container">
     <el-col :span="24" class="aweb-header">
       <el-col
         :span="10"
@@ -10,34 +10,41 @@
         <div class="aweb-tools" @click.prevent="collapse">
           <i class="el-icon-menu"></i>
         </div>
-      
       </el-col>
 
       <el-col :span="6" class="aweb-userinfo">
+        <!-- <theme-picker class="aweb-theme-picker-ctn"></theme-picker>  -->
 
-
-        
-    
-         <!-- <theme-picker class="aweb-theme-picker-ctn"></theme-picker>  -->
-
-         <el-dropdown trigger="hover" @command="handleThemeSelect">
-           <span>
+        <el-dropdown trigger="hover" @command="handleThemeSelect">
+          <span>
             <el-button circle class="el-dropdown-link aweb-theme-btn">
-              <img :src="themeSelect" >
+              <img :src="themeSelect">
             </el-button>
-            </span>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item command="agree"><span class="tbg agree"></span>赞同湖绿</el-dropdown-item>
-              <el-dropdown-item command="flame"><span class="tbg flame"></span>赤焰赭红</el-dropdown-item>
-              <el-dropdown-item command="azure"><span class="tbg azure"></span>涧石天蓝</el-dropdown-item>
-              <el-dropdown-item command="viridity"><span class="tbg viridity"></span>青葱翠绿</el-dropdown-item>
-                   <el-dropdown-item command="indigo"><span class="tbg indigo"></span>青花靛蓝</el-dropdown-item>
-                   <el-dropdown-item command="custom"><span class="tbg custom"></span>自定义</el-dropdown-item>
-            </el-dropdown-menu>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item command="agree">
+              <span class="tbg agree"></span>赞同湖绿
+            </el-dropdown-item>
+            <el-dropdown-item command="flame">
+              <span class="tbg flame"></span>赤焰赭红
+            </el-dropdown-item>
+            <el-dropdown-item command="azure">
+              <span class="tbg azure"></span>涧石天蓝
+            </el-dropdown-item>
+            <el-dropdown-item command="viridity">
+              <span class="tbg viridity"></span>青葱翠绿
+            </el-dropdown-item>
+            <el-dropdown-item command="indigo">
+              <span class="tbg indigo"></span>青花靛蓝
+            </el-dropdown-item>
+            <el-dropdown-item command="custom">
+              <span class="tbg custom"></span>自定义
+            </el-dropdown-item>
+          </el-dropdown-menu>
         </el-dropdown>
 
         <!-- <el-tooltip  effect="dark" content="下载案例" placement="left"> -->
-            <el-button icon="el-icon-sold-out" circle class="aweb-download-btn" @click="openMarket"></el-button>
+        <el-button icon="el-icon-sold-out" circle class="aweb-download-btn" @click="openMarket"></el-button>
         <!-- </el-tooltip> -->
 
         <el-dropdown trigger="hover">
@@ -55,10 +62,9 @@
     </el-col>
 
     <el-col :span="24" class="aweb-body">
- <!-- 侧边导航 -->
+      <!-- 侧边导航 -->
       <aside :class="collapsed?'menu-collapsed':'menu-expanded'">
-
-        <el-menu        
+        <el-menu
           default-active="2"
           class="el-menu-vertical-demo"
           background-color="#152028"
@@ -66,80 +72,104 @@
           :collapse="collapsed"
           @select="handleSelectMenu"
         >
-
           <template v-for="item in routerData" v-if="!item.hidden">
-            
-              <el-submenu  v-if="item.children && item.children.length && !item.isLeaf || (item.isLeaf && item.isRedirect)" :index="item.path+'#'+item.componentUrl+'#'+(item.meta && item.meta.title && item.meta.title)" :key="item.path">
-                <template slot="title">
-                  <i v-if="item.meta && item.meta.icon" :class="item.meta.icon"></i>
-                  <span v-if="item.meta && item.meta.title">{{item.meta.title}}</span>
-                </template>
+            <el-submenu
+              v-if="item.children && item.children.length && !item.isLeaf || (item.isLeaf && item.isRedirect)"
+              :index="item.path+'#'+item.componentUrl+'#'+(item.meta && item.meta.title && item.meta.title)"
+              :key="item.path"
+            >
+              <template slot="title">
+                <i v-if="item.meta && item.meta.icon" :class="item.meta.icon"></i>
+                <span v-if="item.meta && item.meta.title">{{item.meta.title}}</span>
+              </template>
 
-                <template v-for="child in item.children" v-if="!child.hidden">
+              <template v-for="child in item.children" v-if="!child.hidden">
+                <el-submenu
+                  v-if="child.children"
+                  :index="item.path+'/'+child.path+'#'+child.componentUrl+'#'+(child.meta && child.meta.title && child.meta.title)"
+                  :key="item.path+'/'+child.path"
+                >
+                  <template slot="title">
+                    <i v-if="child.meta && child.meta.icon" :class="child.meta.icon"></i>
+                    <span v-if="child.meta && child.meta.title">{{child.meta.title}}</span>
+                  </template>
 
-                      <el-submenu  v-if="child.children" :index="item.path+'/'+child.path+'#'+child.componentUrl+'#'+(child.meta && child.meta.title && child.meta.title)" :key="item.path+'/'+child.path">
-                              
-                                    <template slot="title">
-                                      <i v-if="child.meta && child.meta.icon" :class="child.meta.icon"></i>
-                                      <span v-if="child.meta && child.meta.title">{{child.meta.title}}</span>
-                                    </template>
+                  <template v-for="child3 in child.children" v-if="!child3.hidden">
+                    <el-submenu
+                      v-if="child3.children"
+                      :index="item.path+'/'+child.path+'/'+child3.path+'#'+child3.componentUrl+'#'+(child3.meta && child3.meta.title && child3.meta.title)"
+                      :key="item.path+'/'+child.path+'/'+child3.path"
+                    >
+                      <template slot="title">
+                        <i v-if="child3.meta && child3.meta.icon" :class="child3.meta.icon"></i>
+                        <span v-if="child3.meta && child3.meta.title">{{child3.meta.title}}</span>
+                      </template>
 
-                                    <template v-for="child3 in child.children" v-if="!child3.hidden">
+                      <template v-for="child4 in child3.children" v-if="!child4.hidden">
+                        <el-menu-item
+                          :index="item.path+'/'+child.path+'/'+child3.path+'/'+child4.path+'#'+child4.componentUrl+'#'+(child4.meta && child4.meta.title && child4.meta.title)"
+                          :key="item.path+'/'+child.path+'/'+child3.path+'/'+child4.path"
+                        >
+                          <i v-if="child4.meta && child4.meta.icon" :class="child4.meta.icon"></i>
+                          <span v-if="child4.meta&&child4.meta.title">{{child4.meta.title}}</span>
+                        </el-menu-item>
+                      </template>
+                    </el-submenu>
 
-                                            <el-submenu  v-if="child3.children" :index="item.path+'/'+child.path+'/'+child3.path+'#'+child3.componentUrl+'#'+(child3.meta && child3.meta.title && child3.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path">                              
-                                                    <template slot="title">
-                                                      <i v-if="child3.meta && child3.meta.icon" :class="child3.meta.icon"></i>
-                                                      <span v-if="child3.meta && child3.meta.title">{{child3.meta.title}}</span>
-                                                    </template>
-
-                                                    <template v-for="child4 in child3.children" v-if="!child4.hidden">                                         
-                                                          <el-menu-item :index="item.path+'/'+child.path+'/'+child3.path+'/'+child4.path+'#'+child4.componentUrl+'#'+(child4.meta && child4.meta.title && child4.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path+'/'+child4.path">
-                                                            <i v-if="child4.meta && child4.meta.icon" :class="child4.meta.icon"></i>
-                                                            <span v-if="child4.meta&&child4.meta.title">{{child4.meta.title}}</span>
-                                                          </el-menu-item>
-                                                    </template>                             
-                                              </el-submenu>
-
-
-                                          <el-menu-item v-else :index="item.path+'/'+child.path+'/'+child3.path+'#'+child3.componentUrl+'#'+(child3.meta && child3.meta.title && child3.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path">
-                                            <i v-if="child3.meta && child3.meta.icon" :class="child3.meta.icon"></i>
-                                            <span v-if="child3.meta&&child3.meta.title">{{child3.meta.title}}</span>
-                                          </el-menu-item>
-
-
-                                    </template>
-                              
-                      </el-submenu>
-
-
-                    <el-menu-item v-else  :index="item.path+'/'+child.path+'#'+child.componentUrl+'#'+(child.meta && child.meta.title && child.meta.title)" :key="item.path+'/'+child.path">
-                      <i v-if="child.meta && child.meta.icon" :class="child.meta.icon"></i>
-                      <span v-if="child.meta && child.meta.title" :data-role="item.path+'/'+child.path">{{child.meta.title}}</span>
+                    <el-menu-item
+                      v-else
+                      :index="item.path+'/'+child.path+'/'+child3.path+'#'+child3.componentUrl+'#'+(child3.meta && child3.meta.title && child3.meta.title)"
+                      :key="item.path+'/'+child.path+'/'+child3.path"
+                    >
+                      <i v-if="child3.meta && child3.meta.icon" :class="child3.meta.icon"></i>
+                      <span v-if="child3.meta&&child3.meta.title">{{child3.meta.title}}</span>
                     </el-menu-item>
-            
-                </template>
-              </el-submenu>
+                  </template>
+                </el-submenu>
 
-             
-                <el-menu-item  v-else-if="item.isLeaf && !item.children[0].children"  :index="item.children[0].path+'#'+item.children[0].componentUrl+'#'+(item.children[0].meta && item.children[0].meta.title && item.children[0].meta.title)" :key="item.path+'/'+item.children[0].path" >  
-                  <i v-if="item.children[0].meta && item.children[0].meta.icon" :class="item.children[0].meta.icon"></i>          
-                    <span v-if="item.children[0].meta && item.children[0].meta.title">{{item.children[0].meta.title}}</span>
-                  </el-menu-item>
+                <el-menu-item
+                  v-else
+                  :index="item.path+'/'+child.path+'#'+child.componentUrl+'#'+(child.meta && child.meta.title && child.meta.title)"
+                  :key="item.path+'/'+child.path"
+                >
+                  <i v-if="child.meta && child.meta.icon" :class="child.meta.icon"></i>
+                  <span
+                    v-if="child.meta && child.meta.title"
+                    :data-role="item.path+'/'+child.path"
+                  >{{child.meta.title}}</span>
+                </el-menu-item>
+              </template>
+            </el-submenu>
 
-                 <el-menu-item  v-else  :index="item.path+'#'+item.componentUrl+'#'+(item.meta && item.meta.title && item.meta.title)" :key="item.path" >  
-                  <i v-if="item.meta && item.meta.icon" :class="item.meta.icon"></i>          
-                    <span v-if="item.meta && item.meta.title">{{item.meta.title}}</span>
-                  </el-menu-item>
+            <el-menu-item
+              v-else-if="item.isLeaf && !item.children[0].children"
+              :index="item.children[0].path+'#'+item.children[0].componentUrl+'#'+(item.children[0].meta && item.children[0].meta.title && item.children[0].meta.title)"
+              :key="item.path+'/'+item.children[0].path"
+            >
+              <i
+                v-if="item.children[0].meta && item.children[0].meta.icon"
+                :class="item.children[0].meta.icon"
+              ></i>
+              <span
+                v-if="item.children[0].meta && item.children[0].meta.title"
+              >{{item.children[0].meta.title}}</span>
+            </el-menu-item>
 
-
-            </template>        
+            <el-menu-item
+              v-else
+              :index="item.path+'#'+item.componentUrl+'#'+(item.meta && item.meta.title && item.meta.title)"
+              :key="item.path"
+            >
+              <i v-if="item.meta && item.meta.icon" :class="item.meta.icon"></i>
+              <span v-if="item.meta && item.meta.title">{{item.meta.title}}</span>
+            </el-menu-item>
+          </template>
         </el-menu>
       </aside>
- <!-- 侧边导航-->
+      <!-- 侧边导航-->
       <section class="aweb-ctt">
         <div class="grid-content bg-purple-light">
           <div>
-  
             <el-tabs
               v-model="activeIndex"
               type="border-card"
@@ -147,9 +177,8 @@
               v-if="openedTabs.length"
               @tab-click="tabClick"
               @tab-remove="tabRemove"
-              @contextmenu.native.stop.prevent="tabRightClick"
+              @contextmenu.native="tabRightClick"
             >
-   
               <el-tab-pane
                 :key="item.name"
                 v-for="item in openedTabs"
@@ -157,148 +186,143 @@
                 :name="item.route"
                 :style="`height:100%`"
               >
-              <el-col :span="24" class="aweb-ctt-wrap" >
-        
-                <transition name="fade" mode="out-in"> 
-                 
-                      <!-- <router-view  ></router-view> -->
-                    
-          
-                     <keep-alive v-if="isRouterAlive">                           
-                          <router-view  v-if="(activeIndex===item.route)"></router-view>
-                      </keep-alive>
-                                            
-                      <router-view  v-else-if="activeIndex===item.route"></router-view>
-                      
-                 
-                </transition>
-              </el-col>
-          
-			        </el-tab-pane>
-            </el-tabs>
+                <el-col :span="24" class="aweb-ctt-wrap">
+                  <transition name="fade" mode="out-in">
+                    <!-- <router-view  ></router-view> -->
 
+                    <keep-alive v-if="isRouterAlive">
+                      <router-view v-if="(activeIndex===item.route)"></router-view>
+                    </keep-alive>
+
+                    <router-view v-else-if="activeIndex===item.route"></router-view>
+                  </transition>
+                </el-col>
+              </el-tab-pane>
+            </el-tabs>
           </div>
-              <!-- 子页面容器 -->
-              <el-dialog   :title="subPageTitle" :visible.sync='subDialogVisible' @close="closeDialog">
-                <transition name="fade" mode="out-in" v-if="subDialogVisible">
-                  <!-- <router-view></router-view> -->
-                 
-                  <sub-page-ctn :page="subPageHref" :params="subPageParams" v-if="subDialogVisible"></sub-page-ctn> 
-               </transition>           
-                <div slot='footer' class='dialog-footer'>
-                <el-button @click="cancel">取消</el-button>
-                <el-button type='primary' @click="confirm">确定</el-button >
-                </div> 
-            </el-dialog>
-             <!-- 子页面容器 -->
+          <!-- 子页面容器 -->
+          <el-dialog :title="subPageTitle" :visible.sync="subDialogVisible" @close="closeDialog">
+            <transition name="fade" mode="out-in" v-if="subDialogVisible">
+              <!-- <router-view></router-view> -->
+
+              <sub-page-ctn :page="subPageHref" :params="subPageParams" v-if="subDialogVisible"></sub-page-ctn>
+            </transition>
+            <div slot="footer" class="dialog-footer">
+              <el-button @click="cancel">取消</el-button>
+              <el-button type="primary" @click="confirm">确定</el-button>
+            </div>
+          </el-dialog>
+          <!-- 子页面容器 -->
         </div>
       </section>
     </el-col>
-      <right-menu :menuData="rightMenuData"  :eventHandler=rightClickHandler  v-on:handleSelect= "handleRightSelect"></right-menu> 
-      <el-dialog
-  title="提示"
-  :visible.sync="themeDialog"
-  width="30%"
-   >
-  <span class="theme-tip-ctn">
-    <span >1.自定义主题可以通过使用<el-link type="primary" href="https://element.eleme.cn/#/zh-CN/theme" target="_blank">element-ui在线主题编辑器</el-link>，修改定制 Element 所有全局和组件的 Design Tokens。</span>
-    <span>2.直接下载基于新的定制样式生成完整的样式文件包，将文件夹中的style.css重命名为index.css</span>
-    <span>3.将index.css拷贝到项目根目录下的theme文件夹替换即可</span>
-  </span>
-  <span slot="footer" class="dialog-footer">
-    <!-- <el-button @click="themeDialog = false">取 消</el-button> -->
-    <el-button type="primary" @click="themeDialog = false">确 定</el-button>
-  </span>
-</el-dialog>
+    <right-menu
+      :menuData="rightMenuData"
+      :eventHandler="rightClickHandler"
+      v-on:handleSelect="handleRightSelect"
+    ></right-menu>
+    <el-dialog title="提示" :visible.sync="themeDialog" width="30%">
+      <span class="theme-tip-ctn">
+        <span>
+          1.自定义主题可以通过使用
+          <el-link
+            type="primary"
+            href="https://element.eleme.cn/#/zh-CN/theme"
+            target="_blank"
+          >element-ui在线主题编辑器</el-link>，修改定制 Element 所有全局和组件的 Design Tokens。
+        </span>
+        <span>2.直接下载基于新的定制样式生成完整的样式文件包，将文件夹中的style.css重命名为index.css</span>
+        <span>3.将index.css拷贝到项目根目录下的theme文件夹替换即可</span>
+      </span>
+      <span slot="footer" class="dialog-footer">
+        <!-- <el-button @click="themeDialog = false">取 消</el-button> -->
+        <el-button type="primary" @click="themeDialog = false">确 定</el-button>
+      </span>
+    </el-dialog>
   </el-row>
 </template>
 <script>
+import { changeTheme } from "@/api/api";
+import { getObjArr, getRouter, saveRouter } from "../promission.js";
+import rightMenu from "@/components/rightMenu";
+import asyncComponent from "@/components/asyncComponent";
+import subPageCtn from "@/components/subPageCtn";
 
-import { changeTheme } from '@/api/api'
-import {getObjArr, getRouter,saveRouter} from '../promission.js'
-import rightMenu from '@/components/rightMenu'
-import asyncComponent from '@/components/asyncComponent'
-import subPageCtn from '@/components/subPageCtn'
-
-import themePic from '@/img/theme.png'
+import themePic from "@/img/theme.png";
 export default {
-  name:'layout',
+  name: "layout",
   data() {
     return {
-      themeDialog:false,
-      routerData:global.menu?global.menu:getRouter('menu'),
-      sysLogo:"img/logo.png",
+      themeDialog: false,
+      routerData: global.menu ? global.menu : getRouter("menu"),
+      sysLogo: "img/logo.png",
       sysName: "AWEB_ADMIN",
       collapsed: false,
       sysUserName: "admin",
-      sysUserAvatar: "http://localhost:7007/img/user.png",  
-      rightClickHandler:null,
+      sysUserAvatar: "http://localhost:7007/img/user.png",
+      rightClickHandler: null,
       isRouterAlive: true,
-      themeColor:global.themeColor,
-      themeSelect:themePic
+      themeColor: global.themeColor,
+      themeSelect: themePic
     };
   },
   methods: {
-    handleSelectMenu:function(key, keyPath){
-       console.log('key',key);
+    handleSelectMenu: function(key, keyPath) {
+      console.log("key", key);
 
-      let keys = key.split('#'),
-          path = keys[0],
-          page = keys[1],
-          title= keys[2];
+      let keys = key.split("#"),
+        path = keys[0],
+        page = keys[1],
+        title = keys[2];
 
-
-       this.open({
-         path:'/'+path,
-         page:page,
-         status:true,
-         type:'BLANK',
-         title:title||'标题',
-         keepAlive:true
-       })
-
-
+      this.open({
+        path: "/" + path,
+        page: page,
+        status: true,
+        type: "BLANK",
+        title: title || "标题",
+        keepAlive: true
+      });
     },
-    tabRightClick:function(e){
-       if(e.target.classList[0] ==='el-tabs__item'){
-
-            this.rightClickHandler = e;  
-       }
+    tabRightClick: function(e) {
+      if (e.target.classList[0] === "el-tabs__item") {
+        e.stopPropagation();
+        e.preventDefault();
+        this.rightClickHandler = e;
+      }
     },
-     reload() {
-   
-          this.isRouterAlive = false;
-         
-          this.$nextTick(function () {
-              this.isRouterAlive = true
-          })
-        },
-    handleRightSelect:function(key){
+    reload() {
+      this.isRouterAlive = false;
 
-       switch(key){
-         case'refresh':
-      
-         this.reload();
-            
+      this.$nextTick(function() {
+        this.isRouterAlive = true;
+      });
+    },
+    handleRightSelect: function(key) {
+      switch (key) {
+        case "refresh":
+          this.reload();
+
           break;
-         case'close':
+        case "close":
+          this.$store.commit("delete_tabs", this.activeIndex);
+          if (this.openedTabs && this.openedTabs.length >= 1) {
+            this.$store.commit(
+              "set_active_index",
+              this.openedTabs[this.openedTabs.length - 1].route
+            );
 
-            this.$store.commit("delete_tabs", this.activeIndex);
-            if (this.openedTabs && this.openedTabs.length >= 1) {
+            this.$router.push({
+              path: this.activeIndex,
+              query: this.URLQueryMap[this.activeIndex] || {}
+            });
+          }
+          break;
 
-              this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
-
-              this.$router.push({ path: this.activeIndex,query:this.URLQueryMap[this.activeIndex] ||{}});
-
-            }
-           break;
-
-         case'closeAll':
-           this.$store.commit("delete_allTabs");
-           break;
-
-       }
-
+        case "closeAll":
+          this.$store.commit("delete_allTabs");
+          break;
+      }
     },
     logout: function() {
       var _this = this;
@@ -308,9 +332,9 @@ export default {
         .then(() => {
           sessionStorage.removeItem("user");
           _this.$router.push("/ ");
-           saveRouter('router','');
-           saveRouter('menu','');
-           global.antRouter = '';
+          saveRouter("router", "");
+          saveRouter("menu", "");
+          global.antRouter = "";
           global.pageMap = {};
           global.hasLogin = false;
         })
@@ -320,81 +344,99 @@ export default {
       this.collapsed = !this.collapsed;
     },
     tabClick(tab) {
-
-      this.$router.push({ path: this.activeIndex,query:this.URLQueryMap[this.activeIndex] ||{}});
-
+      this.$router.push({
+        path: this.activeIndex,
+        query: this.URLQueryMap[this.activeIndex] || {}
+      });
     },
     tabRemove(targetName) {
       this.$store.commit("delete_tabs", targetName);
       if (this.activeIndex === targetName) {
         if (this.openedTabs && this.openedTabs.length >= 1) {
+          this.$store.commit(
+            "set_active_index",
+            this.openedTabs[this.openedTabs.length - 1].route
+          );
 
-          this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
-
-          this.$router.push({ path: this.activeIndex ,query:this.URLQueryMap[this.activeIndex] ||{}});
-
+          this.$router.push({
+            path: this.activeIndex,
+            query: this.URLQueryMap[this.activeIndex] || {}
+          });
         }
       }
     },
-    cancel(){
-           this.$store.commit("set_D_visible",false);
-           this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
-           this.$router.push({ path: this.activeIndex,query:this.URLQueryMap[this.activeIndex] ||{} });
-           this.$store.commit("do_cancel");
-         
+    cancel() {
+      this.$store.commit("set_D_visible", false);
+      this.$store.commit(
+        "set_active_index",
+        this.openedTabs[this.openedTabs.length - 1].route
+      );
+      this.$router.push({
+        path: this.activeIndex,
+        query: this.URLQueryMap[this.activeIndex] || {}
+      });
+      this.$store.commit("do_cancel");
     },
-    confirm(){
-         this.$store.commit("set_D_visible",false);
-          this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
-          this.$router.push({ path: this.activeIndex,query:this.URLQueryMap[this.activeIndex] ||{} });
-          this.$store.commit("do_confirm");
-      
+    confirm() {
+      this.$store.commit("set_D_visible", false);
+      this.$store.commit(
+        "set_active_index",
+        this.openedTabs[this.openedTabs.length - 1].route
+      );
+      this.$router.push({
+        path: this.activeIndex,
+        query: this.URLQueryMap[this.activeIndex] || {}
+      });
+      this.$store.commit("do_confirm");
     },
-    closeDialog(){
-
-       this.$store.commit("set_D_visible",false);    
-       this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
-       this.$router.push({ path: this.activeIndex ,query:this.URLQueryMap[this.activeIndex] ||{}});
-    
-  
+    closeDialog() {
+      this.$store.commit("set_D_visible", false);
+      this.$store.commit(
+        "set_active_index",
+        this.openedTabs[this.openedTabs.length - 1].route
+      );
+      this.$router.push({
+        path: this.activeIndex,
+        query: this.URLQueryMap[this.activeIndex] || {}
+      });
     },
-    openMarket(){
-      window.open('https://www.awebide.com:7002/package/@aweb-template/vue-spa');
+    openMarket() {
+      window.open(
+        "https://www.awebide.com:7002/package/@aweb-template/vue-spa"
+      );
     },
-    handleThemeSelect(command){
-      if(command !=='custom'){
+    handleThemeSelect(command) {
+      if (command !== "custom") {
         const loading = this.$loading({
           lock: true,
-          text: '更换主题中...'
+          text: "更换主题中..."
         });
-        changeTheme({theme:command}).then((res)=>{
-          res.msg && console.log(res.msg)
-        })
-      }else{
-          this.themeDialog = true;
-      }     
+        changeTheme({ theme: command }).then(res => {
+          res.msg && console.log(res.msg);
+        });
+      } else {
+        this.themeDialog = true;
+      }
     }
   },
   mounted() {
-    console.log('routerData',this.routerData)
+    console.log("routerData", this.routerData);
     let user = sessionStorage.getItem("user");
     if (user) {
       user = JSON.parse(user);
       this.sysUserName = user.name || "admin";
       this.sysUserAvatar = user.avatar || "http://localhost:7007/img/user.png";
     }
-     this.$store.commit("add_tabs", {
-        route: this.$route.path,
-        name: this.$route.meta.title,
-        keepAlive:this.$route.meta.keepAlive       
-      });
-    
-  this.$store.commit("set_active_index", this.$route.path);
+    this.$store.commit("add_tabs", {
+      route: this.$route.path,
+      name: this.$route.meta.title,
+      keepAlive: this.$route.meta.keepAlive
+    });
 
+    this.$store.commit("set_active_index", this.$route.path);
   },
   computed: {
     openedTabs() {
-   
       return this.$store.state.openedTabs;
     },
     activeIndex: {
@@ -405,42 +447,42 @@ export default {
         this.$store.commit("set_active_index", val);
       }
     },
-     subDialogVisible: {
-        get() {
-          return this.$store.state.subDialogVisible;
-        },
-        set(val) {
-          this.$store.commit("set_D_visible", val);
-        }
-     },
-     subPageHref: {
-        get() {
-          return this.$store.state.subPageHref;
-        },
-        set(val) {
-          this.$store.commit("set_subPageHref", val);
-        }
-     },
-    subPageParams: {
-        get() {
-          return this.$store.state.subPageParams;
-        },
-        set(val) {
-          this.$store.commit("set_subPageParams", val);
-        }
-     },
-     subPageTitle:{
-       get() {
-          return this.$store.state.subPageTitle;
-        },
-        set(val) {
-          this.$store.commit("set_subPageTitle", val);
-        }
-     },
-    rightMenuData() {
-       return this.$store.state.rightMenuData;
+    subDialogVisible: {
+      get() {
+        return this.$store.state.subDialogVisible;
+      },
+      set(val) {
+        this.$store.commit("set_D_visible", val);
+      }
     },
-    URLQueryMap:{
+    subPageHref: {
+      get() {
+        return this.$store.state.subPageHref;
+      },
+      set(val) {
+        this.$store.commit("set_subPageHref", val);
+      }
+    },
+    subPageParams: {
+      get() {
+        return this.$store.state.subPageParams;
+      },
+      set(val) {
+        this.$store.commit("set_subPageParams", val);
+      }
+    },
+    subPageTitle: {
+      get() {
+        return this.$store.state.subPageTitle;
+      },
+      set(val) {
+        this.$store.commit("set_subPageTitle", val);
+      }
+    },
+    rightMenuData() {
+      return this.$store.state.rightMenuData;
+    },
+    URLQueryMap: {
       get() {
         return this.$store.state.URLQueryMap;
       },
@@ -452,56 +494,54 @@ export default {
   watch: {
     $route(to, from) {
       let flag = false;
-      if(to.meta.type ==='BLANK'){
-        if(Object.keys(to.query).length){
-            this.$store.commit("set_url_map",({path:to.path,query:to.query}))
-          }
+      if (to.meta.type === "BLANK") {
+        if (Object.keys(to.query).length) {
+          this.$store.commit("set_url_map", { path: to.path, query: to.query });
+        }
       }
-   
-      if(to.meta.type==='BLANK' || !to.meta.type){
+
+      if (to.meta.type === "BLANK" || !to.meta.type) {
         for (let item of this.openedTabs) {
-                if (item.route === to.path) {
-                  this.$store.commit("set_active_index", to.path);
-                  flag = true;
-                  break;
-                }
-              }
-      
-          if (!flag) {
-            this.$store.commit("add_tabs", { 
-              route: to.path, 
-              name: to.meta.title,
-              keepAlive:to.meta.keepAlive
-
-            });
+          if (item.route === to.path) {
             this.$store.commit("set_active_index", to.path);
+            flag = true;
+            break;
           }
-      }else if(to.meta.type==='SELF'){
-    
+        }
+
+        if (!flag) {
           this.$store.commit("add_tabs", {
-             route: to.path,
-             name: to.meta.title,
-             keepAlive:to.meta.keepAlive
-           });
-          this.$store.commit("set_active_index",to.path);
-          this.$store.commit("delete_tabs", from.path);
-       
+            route: to.path,
+            name: to.meta.title,
+            keepAlive: to.meta.keepAlive
+          });
+          this.$store.commit("set_active_index", to.path);
+        }
+      } else if (to.meta.type === "SELF") {
+        this.$store.commit("add_tabs", {
+          route: to.path,
+          name: to.meta.title,
+          keepAlive: to.meta.keepAlive
+        });
+        this.$store.commit("set_active_index", to.path);
+        this.$store.commit("delete_tabs", from.path);
       }
-
-
     },
-    subDialogVisible:{
-       immediate:true,
-       handler(newVal, oldVal){
-           if(!newVal && oldVal){
-              let currentPageConfig =  this.$router.currentRoute.matched[1].components.default;
-              let currentPageIns = this.$router.currentRoute.matched[1].instances.default;
-               currentPageConfig.resume && currentPageConfig.resume.call(currentPageIns);                
-           }
-       }
+    subDialogVisible: {
+      immediate: true,
+      handler(newVal, oldVal) {
+        if (!newVal && oldVal) {
+          let currentPageConfig = this.$router.currentRoute.matched[1]
+            .components.default;
+          let currentPageIns = this.$router.currentRoute.matched[1].instances
+            .default;
+          currentPageConfig.resume &&
+            currentPageConfig.resume.call(currentPageIns);
+        }
+      }
     }
   },
-  components:{
+  components: {
     rightMenu,
     subPageCtn
   }
@@ -540,16 +580,15 @@ export default {
           float: right;
         }
       }
-      .aweb-download-btn{
+      .aweb-download-btn {
         margin-right: 1em;
       }
-      .aweb-theme-btn{
-            margin-right: 12px;
-        img{
-          width:14px;
-          height:12px;
+      .aweb-theme-btn {
+        margin-right: 12px;
+        img {
+          width: 14px;
+          height: 12px;
         }
-
       }
     }
     .aweb-logo {
@@ -570,15 +609,15 @@ export default {
     .logo-collapse-width {
       background-color: #152028;
       color: #fff;
-      box-shadow: 2px 0 6px rgba(0,21,41,.35);  
-      transition: width .28s;
-      }
-      .logo-collapse-width {
-        width: 64px;
-      }
-      .logo-width {
+      box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+      transition: width 0.28s;
+    }
+    .logo-collapse-width {
+      width: 64px;
+    }
+    .logo-width {
       width: 230px;
-      }
+    }
     .aweb-tools {
       padding: 0px 23px;
       width: 14px;
@@ -595,33 +634,33 @@ export default {
     overflow: hidden;
     height: calc(100vh - 64px);
     aside {
-    flex: 0 0 230px;
-	  width: 230px;
-		box-shadow: 2px 0 6px rgba(0,21,41,.35);
-		transition: width .28s;
+      flex: 0 0 230px;
+      width: 230px;
+      box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+      transition: width 0.28s;
       .el-menu {
-      height: 100%;
-      border-right: 0;
+        height: 100%;
+        border-right: 0;
       }
-      a.router-link-exact-active.router-link-active{
+      a.router-link-exact-active.router-link-active {
         text-decoration: none;
       }
-      .el-menu-item{
-         &:hover{
-            i{
-                color: #fff;
-            }
-         }
-         &.is-active:hover{
-             color: #fff !important;
-         }
-      }
-      .el-submenu{
-          &:hover{
-            .el-submenu__title i{
-               color: #fff;
-            } 
+      .el-menu-item {
+        &:hover {
+          i {
+            color: #fff;
           }
+        }
+        &.is-active:hover {
+          color: #fff !important;
+        }
+      }
+      .el-submenu {
+        &:hover {
+          .el-submenu__title i {
+            color: #fff;
+          }
+        }
       }
     }
     .menu-collapsed {
@@ -632,79 +671,77 @@ export default {
       flex: 0 0 230px;
       width: 230px;
     }
-
   }
-   .aweb-ctt {
-      flex: 1;
-      overflow: auto;
-      padding: 10px;
-      .breadcrumb-container {
-        .title {
-          width: 200px;
-          float: left;
-          color: #475669;
-        }
-        .breadcrumb-inner {
-          float: right;
-        }
+  .aweb-ctt {
+    flex: 1;
+    overflow: auto;
+    padding: 10px;
+    .breadcrumb-container {
+      .title {
+        width: 200px;
+        float: left;
+        color: #475669;
       }
-      .aweb-ctt-wrap {
-        background-color: #fff;
-        box-sizing: border-box;
-        height:100%;
+      .breadcrumb-inner {
+        float: right;
       }
-      .grid-content{
-           >div>div.el-tabs>.el-tabs__content{
-             height: calc(100vh - 160px);
-             overflow: auto;
-             margin: 0;
-             padding: 1em;
-           }
-           .el-tabs__item:focus, 
-           .el-tabs__item:focus:active,
-           .el-tabs__item:active:focus{
-                 outline: none;
-                outline-color: transparent;
-           }
-      }
-     
     }
-    .el-menu-vertical-demo:not(.el-menu--collapse) {
+    .aweb-ctt-wrap {
+      background-color: #fff;
+      box-sizing: border-box;
+      height: 100%;
+    }
+    .grid-content {
+      > div > div.el-tabs > .el-tabs__content {
+        height: calc(100vh - 160px);
+        overflow: auto;
+        margin: 0;
+        padding: 1em;
+      }
+      .el-tabs__item:focus,
+      .el-tabs__item:focus:active,
+      .el-tabs__item:active:focus {
+        outline: none;
+        outline-color: transparent;
+      }
+    }
+  }
+  .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 230px;
     min-height: 400px;
   }
-  .aweb-theme-picker-ctn{
-        vertical-align: middle;
+  .aweb-theme-picker-ctn {
+    vertical-align: middle;
     padding-right: 12px;
     line-height: 53px;
   }
-  .theme-tip-ctn{
-    >span{
-       display: inline-block;
+  .theme-tip-ctn {
+    > span {
+      display: inline-block;
     }
   }
 }
-.el-dropdown-menu__item{
-  .tbg{
-  width: 12px;
+.el-dropdown-menu__item {
+  .tbg {
+    width: 12px;
     height: 12px;
     background: #dddddd;
     display: inline-block;
     margin-right: 6px;
-    &.agree{
-      background:#04bebd
+    &.agree {
+      background: #04bebd;
     }
-    &.flame{
-      background:#C0000E
+    &.flame {
+      background: #c0000e;
     }
-    &.azure{
-      background:#409EFF
+    &.azure {
+      background: #409eff;
     }
-    &.viridity{
-      background:#08B55C
+    &.viridity {
+      background: #08b55c;
     }
-    &.indigo{
-       background:#005BAA
+    &.indigo {
+      background: #005baa;
     }
   }
 }
