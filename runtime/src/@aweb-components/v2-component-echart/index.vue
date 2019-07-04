@@ -29,9 +29,24 @@ import echarts from "echarts";
     watch:{
       'model.configs':{
         handler(val){    
-          this.chart = echarts.init(this.$el);
-          this.chart.setOption(val);
+          this.configChanged(val);
         }
+      }
+    },
+    methods:{
+      configChanged(val){
+        this.chart = echarts.init(this.$el);
+           try{
+              if(val&&val.constructor==String){
+                let __temp;
+                 this.chart.setOption(eval('__temp='+val));
+              }else{
+                this.chart.setOption(val);
+              }
+            }catch(e){
+              console.error('echart配置单格式错误',val);
+              console.error(e);
+            }
       }
     },
     mounted() {}
