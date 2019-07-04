@@ -27,9 +27,9 @@ class Platform {
         path: config.webide.path
       });
 
-      this.socket.on('connect', r => console.log('连接成功', r));
+      this.socket.on('connect', r => console.log('连接成功'));
       this.socket.on('disconnect', r => console.log('断连', r));
-      this.socket.on('connect_error', r => console.log('连接失败', r));
+      this.socket.on('connect_error', r => console.log('连接失败',r.message));
       this.socket.on('data', r => console.log(r));
       this.socket.on('error', r => console.log('连接错误', r));
       this.socket.on('previewPath', (res) => {
