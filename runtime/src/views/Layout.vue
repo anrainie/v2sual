@@ -655,9 +655,10 @@ export default {
       }
       .grid-content{
            >div>div.el-tabs>.el-tabs__content{
-              height: calc(100vh - 160px);
-              overflow: auto;
-              padding: 1em;
+             height: calc(100vh - 160px);
+             overflow: auto;
+             margin: 0;
+             padding: 1em;
            }
            .el-tabs__item:focus, 
            .el-tabs__item:focus:active,
