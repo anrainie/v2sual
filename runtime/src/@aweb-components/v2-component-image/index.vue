@@ -19,6 +19,8 @@ export default {
       let self = this;
       let src = self.$store.getters.model(self.id).src;
 
+
+      src = src.replace('"').replace("'");
       if (self.mode === "edit") {
         debugger
         return `v1/runtime/${src}`;
