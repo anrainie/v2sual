@@ -57,7 +57,6 @@ export default {
   },
   methods: {
     configChanged(val) {
-      debugger;
       this.chart = echarts.init(this.$refs._op_componentEchart_chart);
       try {
         if (val && val.constructor == String) {
