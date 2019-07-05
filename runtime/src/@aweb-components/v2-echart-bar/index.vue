@@ -12,7 +12,31 @@ import echarts from "echarts";
           chart:null,
       }
     },
-    mounted() {
+   watch: {
+    "model": {
+      deep:true,
+      handler(val) {
+      debugger;
+        this.configChanged(val);
+      }
+    }
+  },
+  methods:{
+    configChanged(val){
+     
+        console.log('chart',val);
+        let configs={
+           'title':val.title,
+           'legend':val.legend,
+           'xAxis': val.xAxis,
+           'yAxis':val.yAxis,
+           'series':val.series
+
+        }
+      this.chart.setOption(configs);
+    }
+  },
+  mounted() {
       this.chart = echarts.init(this.$el);
       // 使用刚指定的配置项和数据显示图表。
       let fakeData = {
@@ -51,7 +75,7 @@ import echarts from "echarts";
                 }
               ]
         };
-      this.chart.setOption(fakeData);
+     
   
     }
   }
