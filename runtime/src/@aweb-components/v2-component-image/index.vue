@@ -10,26 +10,31 @@ export default {
   name: "v2-component-image",
   data() {
     return {
-      mode: ""
+      mode: "",
+      id: 0
     };
   },
   computed: {
     outSrc() {
       let self = this;
+      let src = self.$store.getters.model(self.id).src;
 
       if (self.mode === "edit") {
         debugger
-        return `v1/runtime/${self.model.src}`;
+        return `v1/runtime/${src}`;
       } else if (self.mode === "runtime") {
         debugger
-        return `./${self.model.src}`;
+        return `./${src}`;
       }
     }
   },
   methods:{
     changeSrc(val){
-      this.model.src = val;
+      this.$store.getters.model(this.id).src = val;
     }
+  },
+  beforeMount(){
+    this.id = this.model.id;
   },
   mounted() {
     let self = this;
