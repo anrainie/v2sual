@@ -57,15 +57,16 @@ export default {
   },
   methods: {
     configChanged(val) {
-      debugger;
+     
       this.chart = echarts.init(this.$refs._op_componentEchart_chart);
       try {
         if (val && val.constructor == String) {
           let __temp;
           this.chart.setOption(eval("__temp=" + val));
         } else {
-          this.chart.setOption(val);
+          this.chart.setOption(val||{});
         }
+        this.chart.resize();
         this.error = false;
       } catch (e) {
         this.error = true;
