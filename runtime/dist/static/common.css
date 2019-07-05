@@ -206,9 +206,9 @@ body {
 }
 
 .V2CustomCptMask {
-  left: 0;
+  /* left: 0;
   top: 0;
-  position: absolute;
+  position: absolute; */
   width: 100%;
   min-height: 20px;
   z-index: 990;
@@ -301,6 +301,7 @@ body {
 
 .v2loopItem{
   position: relative;
+  float: left;
 }
 
 
