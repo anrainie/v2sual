@@ -200,7 +200,8 @@
         "name": "layout",
         "desp": "栅格",
         "hidden": false,
-        "type": "string_input"
+        "type": "string_input",
+        "isStringArray":true
       },
       {
         "name": "rules",
