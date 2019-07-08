@@ -10,6 +10,7 @@ import Layout from '@/views/Layout'
 import Login from "@/views/Login"
 import noFound from "@/views/404"
 import Main from "@/views/main/main"
+import test from "@/views/test/test"
 
 import { getRoutersList } from '@/api/api.js'
 
@@ -22,7 +23,7 @@ var mainRouter = [{
     {
       path: "/main",
       name: 'main',
-      component: Main,
+      component: test,
       meta: {
         title: "首页",
         icon: "el-icon-goods"
