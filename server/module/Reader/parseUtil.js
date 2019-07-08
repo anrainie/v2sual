@@ -107,6 +107,9 @@ let appendComponent = function(parent,index,element){
         //dataBasket不为空=>自定义组件
         if(child && child.dataBasket){
             for(let item in child.dataBasket){
+                if(!child.dataBasket[item]){
+                    continue;
+                }
                 if(child.dataBasket[item].startsWith('$item')){
                     component.setAttribute(':'+item,'scope._item.'+child.dataBasket[item].replace('$item.',''));
                 }else{
@@ -142,6 +145,9 @@ let appendComponent = function(parent,index,element){
     //dataBasket不为空=>自定义组件:添加数据篮子
     if(child && child.dataBasket && child.__type !== 'loop'){
         for(let item in child.dataBasket){
+            if(!child.dataBasket[item]){
+                continue;
+            }
             eCom.setAttribute(':'+item,child.dataBasket[item]);
             if(item != item.toLocaleLowerCase()){
                 let key = ':'+item.toLocaleLowerCase()+'="'+eCom.getAttribute(':'+item)+'"';
@@ -202,6 +208,7 @@ let appendChildren = function(parentJson,element,isContainer){
 let json2html = function (jsonStr) {
     let json = JSON.parse(jsonStr);
     let jsonV2C = json.structure;//json中的structure
+    let display = json.display;
     if (isEmptyJson(jsonV2C)) {
         return '';
     }
@@ -210,6 +217,7 @@ let json2html = function (jsonStr) {
     let eV2C = document.createElement('v2container');
     jsonV2C.wid = jsonV2C.id;
     eV2C.setAttribute(':wid', '`'+jsonV2C.wid+'`');
+    eV2C.setAttribute('style', 'width:'+display.width+';height:'+display.height);
     //添加子节点
     appendChildren(jsonV2C,eV2C,true);
     temp.content.appendChild(eV2C);
