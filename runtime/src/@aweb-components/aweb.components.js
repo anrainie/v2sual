@@ -2,36 +2,37 @@
           import v2ComponentBtn  from './v2-component-btn/index.vue';
 import v2ComponentEchart  from './v2-component-echart/index.vue';
 import v2ComponentCard  from './v2-component-card/index.vue';
-import v2ComponentImage  from './v2-component-image/index.vue';
+import v2ComponentCarousel  from './v2-component-carousel/index.vue';
 import v2ComponentEtable  from './v2-component-etable/index.vue';
-import v2ComponentSteps  from './v2-component-steps/index.vue';
 import v2ComponentIcon  from './v2-component-icon/index.vue';
-import v2ComponentText  from './v2-component-text/index.vue';
+import v2ComponentSteps  from './v2-component-steps/index.vue';
 import v2ComponentTable  from './v2-component-table/index.vue';
+import v2ComponentImage  from './v2-component-image/index.vue';
 import v2ComponentTextValue  from './v2-component-text-value/index.vue';
+import v2EchartBar  from './v2-echart-bar/index.vue';
+import v2ComponentText  from './v2-component-text/index.vue';
 import v2Ctn  from './v2-ctn/index.vue';
 import v2CtnEditor  from './v2-ctn/editor.vue';
-import v2EchartBar  from './v2-echart-bar/index.vue';
+import v2EchartLine  from './v2-echart-line/index.vue';
+import v2FormInput  from './v2-form-input/index.vue';
 import v2FormCheckbox  from './v2-form-checkbox/index.vue';
 import v2FormCascader  from './v2-form-cascader/index.vue';
-import v2EchartLine  from './v2-echart-line/index.vue';
+import v2FormInputnumber  from './v2-form-inputnumber/index.vue';
 import v2FormDatepicker  from './v2-form-datepicker/index.vue';
 import v2FormRadio  from './v2-form-radio/index.vue';
-import v2FormInputnumber  from './v2-form-inputnumber/index.vue';
 import v2FormSlider  from './v2-form-slider/index.vue';
 import v2FormSelect  from './v2-form-select/index.vue';
 import v2FormSwitch  from './v2-form-switch/index.vue';
-import v2FormInput  from './v2-form-input/index.vue';
-import v2FormTransfer  from './v2-form-transfer/index.vue';
+import v2FormTimepicker  from './v2-form-timepicker/index.vue';
 import v2Layout  from './v2-layout/index.vue';
 import v2LayoutEditor  from './v2-layout/editor.vue';
+import v2FormTransfer  from './v2-form-transfer/index.vue';
 import v2FormUpload  from './v2-form-upload/index.vue';
-import v2FormTimepicker  from './v2-form-timepicker/index.vue';
 import v2MobileButton  from './v2-mobile-button/index.vue';
-import v2MobileImage  from './v2-mobile-image/index.vue';
 import v2MobileInput  from './v2-mobile-input/index.vue';
-import v2MobileRadio  from './v2-mobile-radio/index.vue';
+import v2MobileImage  from './v2-mobile-image/index.vue';
 import v2MobileSteps  from './v2-mobile-steps/index.vue';
+import v2MobileRadio  from './v2-mobile-radio/index.vue';
 import v2MobileUploader  from './v2-mobile-uploader/index.vue'
 
           import $get  from '../../../pipe/src/main/webapp/plugins/app.$get';
@@ -66,35 +67,36 @@ import open  from '../../../pipe/src/main/webapp/plugins/app.open'
             v2ComponentBtn,
 	v2ComponentEchart,
 	v2ComponentCard,
-	v2ComponentImage,
+	v2ComponentCarousel,
 	v2ComponentEtable,
-	v2ComponentSteps,
 	v2ComponentIcon,
-	v2ComponentText,
+	v2ComponentSteps,
 	v2ComponentTable,
+	v2ComponentImage,
 	v2ComponentTextValue,
+	v2EchartBar,
+	v2ComponentText,
 	v2Ctn,
 	v2CtnEditor,
-	v2EchartBar,
+	v2EchartLine,
+	v2FormInput,
 	v2FormCheckbox,
 	v2FormCascader,
-	v2EchartLine,
+	v2FormInputnumber,
 	v2FormDatepicker,
 	v2FormRadio,
-	v2FormInputnumber,
 	v2FormSlider,
 	v2FormSelect,
 	v2FormSwitch,
-	v2FormInput,
-	v2FormTransfer,
+	v2FormTimepicker,
 	v2Layout,
 	v2LayoutEditor,
+	v2FormTransfer,
 	v2FormUpload,
-	v2FormTimepicker,
 	v2MobileButton,
-	v2MobileImage,
 	v2MobileInput,
-	v2MobileRadio,
+	v2MobileImage,
 	v2MobileSteps,
+	v2MobileRadio,
 	v2MobileUploader
           }
