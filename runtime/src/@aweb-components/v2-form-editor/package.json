@@ -4,7 +4,7 @@
   },
   "bundleDependencies": false,
   "deprecated": false,
-  "description": "富文本编辑器",
+  "description": "富文本",
   "docs": {
     "belongTo": "aui",
     "icon": "iconshurukuang",
@@ -13,7 +13,7 @@
     "author": "zhanghaixian@agree.com.cn",
     "version": 510000,
     "accept": "divCtn",
-    "name": "富文本编辑器",
+    "name": "富文本",
     "option": [
       {
         "name": "label",
