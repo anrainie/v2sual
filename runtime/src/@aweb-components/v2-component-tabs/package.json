@@ -25,7 +25,7 @@
         "type": "array",
         "name": "list",
         "defaultValue": "",
-        "desp": "轮播项",
+        "desp": "标签页",
         "attrInEachElement": [
           {
             "name": "label",
