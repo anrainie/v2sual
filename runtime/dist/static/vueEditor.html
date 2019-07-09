@@ -39,7 +39,7 @@
               </div>
               <div ref="customEditorArea" ></div>
             </div>
-          <div>
+          </div>
           `,
         data() {
           return {
@@ -115,8 +115,6 @@
           loadedStyle() {
             if (!this.styleUpdated) {
               this.styleUpdated = true;
-
-
               $('head', window.document).append(this.style);
 
               parent.$store.commit('loading', false);

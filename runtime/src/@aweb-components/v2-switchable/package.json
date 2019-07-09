@@ -15,7 +15,13 @@
     "accept": "divCtn",
     "name": "可切换容器",
     "customEditor": "v2EditorSwitch",
-    "option": [],
+    "option": [
+      {
+        "name": "activeIndex",
+        "desp": "当前页索引",
+        "type": "string_input"
+      }
+    ],
     "css": {
       "style": [
         {
