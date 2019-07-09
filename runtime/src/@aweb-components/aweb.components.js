@@ -22,21 +22,26 @@ import v2FormEditor  from './v2-form-editor/index.vue';
 import v2FormRadio  from './v2-form-radio/index.vue';
 import v2FormInput  from './v2-form-input/index.vue';
 import v2FormInputnumber  from './v2-form-inputnumber/index.vue';
-import v2FormTransfer  from './v2-form-transfer/index.vue';
-import v2FormSwitch  from './v2-form-switch/index.vue';
-import v2FormTimepicker  from './v2-form-timepicker/index.vue';
+import v2FormRadio  from './v2-form-radio/index.vue';
 import v2FormSlider  from './v2-form-slider/index.vue';
+import v2FormSelect  from './v2-form-select/index.vue';
+import v2FormTimepicker  from './v2-form-timepicker/index.vue';
+import v2FormSwitch  from './v2-form-switch/index.vue';
 import v2FormUpload  from './v2-form-upload/index.vue';
+import v2FormTransfer  from './v2-form-transfer/index.vue';
+import v2MobileButton  from './v2-mobile-button/index.vue';
+import v2Layout  from './v2-layout/index.vue';
+import v2LayoutEditor  from './v2-layout/editor.vue';
+import v2MobileInput  from './v2-mobile-input/index.vue';
 import v2MobileImage  from './v2-mobile-image/index.vue';
 import v2MobileRadio  from './v2-mobile-radio/index.vue';
 import v2MobileButton  from './v2-mobile-button/index.vue';
 import v2MobileInput  from './v2-mobile-input/index.vue';
 import v2FormSelect  from './v2-form-select/index.vue';
 import v2MobileSteps  from './v2-mobile-steps/index.vue';
-import v2MobileUploader  from './v2-mobile-uploader/index.vue';
-import v2Layout  from './v2-layout/index.vue';
-import v2LayoutEditor  from './v2-layout/editor.vue';
-import v2FormCascader  from './v2-form-cascader/index.vue'
+import v2Switchable  from './v2-switchable/index.vue';
+import v2EditorSwitch  from './v2-switchable/switchEditor.vue';
+import v2MobileUploader  from './v2-mobile-uploader/index.vue'
 
           import $get  from '../../../pipe/src/main/webapp/plugins/app.$get';
 import $post  from '../../../pipe/src/main/webapp/plugins/app.$post';
@@ -93,16 +98,17 @@ import open  from '../../../pipe/src/main/webapp/plugins/app.open'
 	v2FormTransfer,
 	v2FormSwitch,
 	v2FormTimepicker,
-	v2FormSlider,
-	v2FormUpload,
+	v2MobileButton,
+	v2Layout,
+	v2LayoutEditor,
+	v2MobileInput,
 	v2MobileImage,
 	v2MobileRadio,
 	v2MobileButton,
 	v2MobileInput,
 	v2FormSelect,
 	v2MobileSteps,
-	v2MobileUploader,
-	v2Layout,
-	v2LayoutEditor,
-	v2FormCascader
+	v2Switchable,
+	v2EditorSwitch,
+	v2MobileUploader
           }
