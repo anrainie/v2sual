@@ -116,6 +116,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -240,6 +243,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 .el-switch {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -266,7 +272,7 @@
     vertical-align: middle;
     color: #303133; }
     .el-switch__label.is-active {
-      color: #04BEBD; }
+      color: #04bebd; }
     .el-switch__label--left {
       margin-right: 10px; }
     .el-switch__label--right {
@@ -309,8 +315,8 @@
       height: 16px;
       background-color: #FFFFFF; }
   .el-switch.is-checked .el-switch__core {
-    border-color: #04BEBD;
-    background-color: #04BEBD; }
+    border-color: #04bebd;
+    background-color: #04bebd; }
     .el-switch.is-checked .el-switch__core::after {
       left: 100%;
       margin-left: -17px; }

@@ -67,7 +67,7 @@ export default {
   }
 };
 </script>
-<style lang="less">
+<style lang="scss">
 .V2Container,
 .V2ContainerBlock{
   min-height: 30px;

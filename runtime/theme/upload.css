@@ -117,6 +117,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -243,6 +246,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -367,6 +373,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 .el-progress {
   position: relative;
   line-height: 1; }
@@ -436,7 +445,7 @@
     left: 0;
     top: 0;
     height: 100%;
-    background-color: #04BEBD;
+    background-color: #04bebd;
     text-align: right;
     border-radius: 100px;
     line-height: 1;
@@ -583,6 +592,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 .el-upload {
   display: inline-block;
   text-align: center;
@@ -617,13 +629,13 @@
       font-size: 28px;
       color: #8c939d; }
     .el-upload--picture-card:hover {
-      border-color: #04BEBD;
-      color: #04BEBD; }
+      border-color: #04bebd;
+      color: #04bebd; }
   .el-upload:focus {
-    border-color: #04BEBD;
-    color: #04BEBD; }
+    border-color: #04bebd;
+    color: #04bebd; }
     .el-upload:focus .el-upload-dragger {
-      border-color: #04BEBD; }
+      border-color: #04bebd; }
 
 .el-upload-dragger {
   background-color: #fff;
@@ -653,13 +665,13 @@
     font-size: 14px;
     text-align: center; }
     .el-upload-dragger .el-upload__text em {
-      color: #04BEBD;
+      color: #04bebd;
       font-style: normal; }
   .el-upload-dragger:hover {
-    border-color: #04BEBD; }
+    border-color: #04bebd; }
   .el-upload-dragger.is-dragover {
     background-color: rgba(32, 159, 255, 0.06);
-    border: 2px dashed #04BEBD; }
+    border: 2px dashed #04bebd; }
 
 .el-upload-list {
   margin: 0;
@@ -710,7 +722,7 @@
       font-size: 12px;
       cursor: pointer;
       opacity: 1;
-      color: #04BEBD; }
+      color: #04bebd; }
     .el-upload-list__item:hover {
       background-color: #F5F7FA; }
       .el-upload-list__item:hover .el-icon-close {
@@ -720,7 +732,7 @@
     .el-upload-list__item.is-success .el-upload-list__item-status-label {
       display: block; }
     .el-upload-list__item.is-success .el-upload-list__item-name:hover, .el-upload-list__item.is-success .el-upload-list__item-name:focus {
-      color: #04BEBD;
+      color: #04bebd;
       cursor: pointer; }
     .el-upload-list__item.is-success:focus:not(:hover) {
       /* 键盘focus */ }
@@ -764,7 +776,7 @@
     color: #606266;
     display: none; }
     .el-upload-list__item-delete:hover {
-      color: #04BEBD; }
+      color: #04bebd; }
   .el-upload-list--picture-card {
     margin: 0;
     display: inline;

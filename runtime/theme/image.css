@@ -116,6 +116,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -240,6 +243,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 .el-image__inner, .el-image__placeholder, .el-image__error {
   width: 100%;
   height: 100%; }

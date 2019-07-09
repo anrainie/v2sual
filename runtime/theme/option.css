@@ -116,6 +116,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -240,6 +243,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 .el-select-dropdown__item {
   font-size: 14px;
   padding: 0 20px;
@@ -261,5 +267,5 @@
   .el-select-dropdown__item.hover, .el-select-dropdown__item:hover {
     background-color: #F5F7FA; }
   .el-select-dropdown__item.selected {
-    color: #04BEBD;
+    color: #04bebd;
     font-weight: bold; }

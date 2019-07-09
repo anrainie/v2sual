@@ -47,7 +47,9 @@
 </script>
 
 
-<style lang="scss">
+<style lang="scss" >
+
+@import "../../../element-variables";
 
 .form-label-col {
   float: left;
@@ -61,11 +63,16 @@
   box-sizing: border-box;
 }
 .form-editor-ctn {
-
   line-height: 40px;
   position: relative;
   font-size: 14px;
-
-
+  .w-e-toolbar .w-e-active i{
+       color:$--color-primary;
+  }
+  a {
+    text-decoration: underline;
+    color:$--color-primary;
+  }
 }
+
 </style>

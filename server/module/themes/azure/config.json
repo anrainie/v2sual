@@ -1,1 +1,11 @@
-{"global":{"$--color-primary":"#409EFF","$--color-info":"#409EFF","$--color-success":"#23AD44","$--color-danger":"#F05050","$--color-warning":"#FFBA00","$--color-text-primary":"#333333"},"local":{}}
+{
+    "global": {
+        "$--color-primary": "#409EFF",
+        "$--color-info": "#409EFF",
+        "$--color-success": "#23AD44",
+        "$--color-danger": "#F05050",
+        "$--color-warning": "#FFBA00",
+        "$--color-text-primary": "#333333"
+    },
+    "local": {}
+}

@@ -116,6 +116,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -240,6 +243,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Element Chalk Variables */
 /* Transition
 -------------------------- */
@@ -356,6 +362,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* BEM support Func
  -------------------------- */
 /* Element Chalk Variables */
@@ -474,6 +483,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -638,6 +650,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Element Chalk Variables */
 /* Transition
 -------------------------- */
@@ -754,6 +769,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* BEM support Func
  -------------------------- */
 /* Element Chalk Variables */
@@ -872,6 +890,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -909,7 +930,7 @@
   .el-button.is-round {
     padding: 12px 20px; }
   .el-button:hover, .el-button:focus {
-    color: #04BEBD;
+    color: #04bebd;
     border-color: #b4eceb;
     background-color: #e6f9f8; }
   .el-button:active {
@@ -922,8 +943,8 @@
     margin-left: 5px; }
   .el-button.is-plain:hover, .el-button.is-plain:focus {
     background: #FFFFFF;
-    border-color: #04BEBD;
-    color: #04BEBD; }
+    border-color: #04bebd;
+    color: #04bebd; }
   .el-button.is-plain:active {
     background: #FFFFFF;
     border-color: #04abaa;
@@ -965,8 +986,8 @@
     padding: 12px; }
   .el-button--primary {
     color: #FFFFFF;
-    background-color: #04BEBD;
-    border-color: #04BEBD; }
+    background-color: #04bebd;
+    border-color: #04bebd; }
     .el-button--primary:hover, .el-button--primary:focus {
       background: #36cbca;
       border-color: #36cbca;
@@ -985,12 +1006,12 @@
       background-color: #82dfde;
       border-color: #82dfde; }
     .el-button--primary.is-plain {
-      color: #04BEBD;
+      color: #04bebd;
       background: #e6f9f8;
       border-color: #9be5e5; }
       .el-button--primary.is-plain:hover, .el-button--primary.is-plain:focus {
-        background: #04BEBD;
-        border-color: #04BEBD;
+        background: #04bebd;
+        border-color: #04bebd;
         color: #FFFFFF; }
       .el-button--primary.is-plain:active {
         background: #04abaa;
@@ -1179,7 +1200,7 @@
       padding: 7px; }
   .el-button--text {
     border-color: transparent;
-    color: #04BEBD;
+    color: #04bebd;
     background: transparent;
     padding-left: 0;
     padding-right: 0; }
@@ -1391,6 +1412,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -1515,6 +1539,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 .el-textarea {
   position: relative;
   display: inline-block;
@@ -1547,7 +1574,7 @@
       border-color: #C0C4CC; }
     .el-textarea__inner:focus {
       outline: none;
-      border-color: #04BEBD; }
+      border-color: #04bebd; }
   .el-textarea .el-input__count {
     color: #909399;
     background: #FFFFFF;
@@ -1643,7 +1670,7 @@
       border-color: #C0C4CC; }
     .el-input__inner:focus {
       outline: none;
-      border-color: #04BEBD; }
+      border-color: #04bebd; }
   .el-input__suffix {
     position: absolute;
     height: 100%;
@@ -1682,7 +1709,7 @@
     pointer-events: none; }
   .el-input.is-active .el-input__inner {
     outline: none;
-    border-color: #04BEBD; }
+    border-color: #04bebd; }
   .el-input.is-disabled .el-input__inner {
     background-color: #F5F7FA;
     border-color: #E4E7ED;
@@ -1843,7 +1870,7 @@
     .el-message-box__headerbtn .el-message-box__close {
       color: #909399; }
     .el-message-box__headerbtn:focus .el-message-box__close, .el-message-box__headerbtn:hover .el-message-box__close {
-      color: #04BEBD; }
+      color: #04bebd; }
   .el-message-box__content {
     position: relative;
     padding: 10px 15px;

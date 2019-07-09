@@ -116,6 +116,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -240,6 +243,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 .el-calendar {
   background-color: #fff; }
   .el-calendar__header {
@@ -277,7 +283,7 @@
     .el-calendar-table td.is-selected {
       background-color: #F2F8FE; }
     .el-calendar-table td.is-today {
-      color: #04BEBD; }
+      color: #04bebd; }
   .el-calendar-table tr:first-child td {
     border-top: 1px solid #EBEEF5; }
   .el-calendar-table tr td:first-child {

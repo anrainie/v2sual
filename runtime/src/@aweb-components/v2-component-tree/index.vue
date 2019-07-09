@@ -35,31 +35,10 @@ export default {
 };
 </script>
 
-<style>
-.chart-content {
-  position: relative;
-}
-.chart-tips {
-  position: absolute;
-  padding: 10px;
-  top: 160px;
-  left: 20px;
-  border: 1px solid #ccc;
-  box-shadow: 1px 2px 6px #ccc;
-  border-radius: 4px;
-  background-color: #fff;
-  display: none;
-}
-.chart-content:hover{
-  color: blue;
-}
-.chart-content:hover +.chart-tips {
-  display: block !important;
-}
-.chart-tips:hover{
-  display: block !important;
-}
+<style lang="scss" scoped>
+
 </style>
+
 
 
 

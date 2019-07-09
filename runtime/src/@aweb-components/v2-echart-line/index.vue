@@ -37,7 +37,7 @@ import echarts from "echarts";
     }
   }
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .echartCpt{
   height: 400px;
 }

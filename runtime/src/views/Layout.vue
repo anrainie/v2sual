@@ -22,19 +22,19 @@
             </el-button>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="agree">
+            <el-dropdown-item command="#04bebd">
               <span class="tbg agree"></span>赞同湖绿
             </el-dropdown-item>
-            <el-dropdown-item command="flame">
+            <el-dropdown-item command="#c0000e">
               <span class="tbg flame"></span>赤焰赭红
             </el-dropdown-item>
-            <el-dropdown-item command="azure">
+            <el-dropdown-item command="#409eff">
               <span class="tbg azure"></span>涧石天蓝
             </el-dropdown-item>
-            <el-dropdown-item command="viridity">
+            <el-dropdown-item command="#08b55c">
               <span class="tbg viridity"></span>青葱翠绿
             </el-dropdown-item>
-            <el-dropdown-item command="indigo">
+            <el-dropdown-item command="#005baa">
               <span class="tbg indigo"></span>青花靛蓝
             </el-dropdown-item>
             <el-dropdown-item command="custom">
@@ -406,12 +406,15 @@ export default {
       );
     },
     handleThemeSelect(command) {
+       let oldTheme = this.$store.state.theme;
+       console.log('oldtheme',oldTheme);
       if (command !== "custom") {
         const loading = this.$loading({
           lock: true,
           text: "更换主题中..."
         });
-        changeTheme({ theme: command }).then(res => {
+
+        changeTheme({ theme: command ,oldTheme:oldTheme}).then(res => {
           res.msg && console.log(res.msg);
         });
       } else {
