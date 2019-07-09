@@ -265,7 +265,7 @@ router.get('/-/getMainList', function (ctx) {
 
 router.get('/-/theme/change', (ctx) => {
 	let { theme } =ctx.request.query;
-	let themeLib = path.resolve(__dirname, './src/themes');
+	let themeLib = path.resolve(__dirname, '../server/module/themes');
 	let projectThemeLib = path.resolve(__dirname, './theme');
 	let sthemePath = path.join(themeLib,theme,'style.css');
 	let sthemeTarget =path.join(projectThemeLib,'index.css');

@@ -4,6 +4,9 @@
 <script>
 
 import echarts from "echarts";
+// import registerTheme from "../../dependence/Echarts-3.0/js/themes.js"
+
+
   export default {
     name: 'v2-echart-bar',
 
@@ -16,7 +19,7 @@ import echarts from "echarts";
     "model": {
       deep:true,
       handler(val) {
-      debugger;
+
         this.configChanged(val);
       }
     }
@@ -25,19 +28,31 @@ import echarts from "echarts";
     configChanged(val){
      
         console.log('chart',val);
+         if(!this.chart){
+          this.chart = echarts.init(this.$el,this.model.chartTheme,{width:'auto'});
+          this.chart.showLoading();
+         }
+
         let configs={
            'title':val.title,
            'legend':val.legend,
            'xAxis': val.xAxis,
            'yAxis':val.yAxis,
-           'series':val.series
-
+           'series':val.series,
+           'tooltip':val.tooltip,
+           'toolbox':val.toolbox
         }
-      this.chart.setOption(configs);
+       this.chart.setOption(configs);
+       this.chart.resize();
+       this.chart.hideLoading();
     }
   },
   mounted() {
-      this.chart = echarts.init(this.$el);
+    
+    // registerTheme(echarts);
+
+    this.setChart();
+      // this.chart = echarts.init(this.$el,this.model.chartTheme,{width:'auto'});
       // 使用刚指定的配置项和数据显示图表。
       let fakeData = {
               tooltip: {},
