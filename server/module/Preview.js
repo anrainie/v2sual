@@ -80,12 +80,16 @@ class Preview {
 
                 vueMap[name] = path.join(filepath, content.main);
 
+                //参数编辑器
+                if (content.paramEditor) {
+                  vueMap[content.paramEditor.name] = path.join(filepath, content.paramEditor.path);
+                }
 
+                //自定义组件编辑器
                 if (content.editor) {
                   vueMap[content.editor.name] = path.join(filepath, content.editor.path);
                 }
-              } catch (e) {
-              }
+              } catch (e) {}
             });
           const vueFiles = Object.keys(vueMap).map(n => {
             return {
@@ -138,8 +142,10 @@ class Preview {
           }
 
           //先备份一次vue.config.js
-          const vueConfigPath=path.join(config.runtime.base, 'vue.config.js');
-          const vueConfigBackup = fs.readFileSync(vueConfigPath, { encoding: 'utf8' });
+          const vueConfigPath = path.join(config.runtime.base, 'vue.config.js');
+          const vueConfigBackup = fs.readFileSync(vueConfigPath, {
+            encoding: 'utf8'
+          });
 
 
           //重新安装一次依赖
@@ -147,7 +153,7 @@ class Preview {
 
           //npm run style  生成样式
           //覆盖一下，生成独立css的，方便所见即所得
-          fs.writeFileSync(vueConfigPath,`
+          fs.writeFileSync(vueConfigPath, `
             module.exports = {
                 baseUrl: './',
                 devServer: {},
@@ -156,11 +162,11 @@ class Preview {
                 css: {}
             }
           `)
-           await execCmd(config.module.preview.script.style, absProjectPath);
+          await execCmd(config.module.preview.script.style, absProjectPath);
 
           // npm run script 生成脚本
           //再覆盖一下，生成组件内css的，方便样式配置可以
-          fs.writeFileSync(vueConfigPath,`
+          fs.writeFileSync(vueConfigPath, `
             module.exports = {
                 baseUrl: './',
                 devServer: {},
@@ -175,7 +181,7 @@ class Preview {
           `)
           await execCmd(config.module.preview.script.script, absProjectPath);
 
-          fs.writeFileSync(vueConfigPath,vueConfigBackup);
+          fs.writeFileSync(vueConfigPath, vueConfigBackup);
         } catch (e) {
           Result.error(ctx, e);
         } finally {

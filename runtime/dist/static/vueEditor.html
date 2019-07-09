@@ -28,13 +28,22 @@
         store: parent.$store,
         mixins: [window.parent.mixins],
         template: `
-          <transition name="el-fade-in-linear">
-            <div class="loadingPanel" v-if="$store.state.loading">加载中...</div>
-            <v2Container v-else="!$store.state.loading" v-model="rootId" :style="$store.getters.editorStyle"></v2Container>
-          </transition>
+          <div>
+            <v2Container  v-model="rootId" :style="$store.getters.editorStyle"></v2Container>
+            <div
+            v-show="showCustomEditor"
+            style="position:fixed;background:white;width:100%;height:100%;left:0;top:0;z-index:1000;"
+            >
+              <div>
+                <el-button @click="closeCustomEditor">退出编辑</el-button>  
+              </div>
+              <div ref="customEditorArea" ></div>
+            </div>
+          <div>
           `,
         data() {
           return {
+            showCustomEditor: false,
             styleUpdated: false
           }
         },
@@ -49,7 +58,7 @@
               .scrollLeft(0);
           }
         },
-        computed: {      //同步了store中state内的orderid值
+        computed: { //同步了store中state内的orderid值
           style() {
             return this.$store.state.runtime.style;
           },
@@ -76,6 +85,30 @@
             });
         },
         methods: {
+          openCustomEditor(widget) {
+            let Comp = Vue.component(widget.model.customEditor);
+            let comp = new Comp();
+
+            let area = $(this.$refs.customEditorArea);
+            console.log(this.$refs.customEditorArea);
+
+            let content = $('<div></div>')
+            area.append(content);
+            comp.$store=widget.$store;
+            comp.wid=widget.wid;
+            comp.$mount(content[0]);
+            this.customEditor=comp;
+
+            this.showCustomEditor = true;
+          },
+          closeCustomEditor() {
+            if(this.customEditor)
+              this.customEditor.$destroy();
+            let area = $(this.$refs.customEditorArea);
+            area.empty();
+
+            this.showCustomEditor = false;
+          },
           loadStyle() {
             parent.$store.commit('loading', true)
           },
@@ -94,6 +127,7 @@
       });
       vueRoot.$mount(document.body.children[0]);
     }
+
   </script>
 </head>
 
