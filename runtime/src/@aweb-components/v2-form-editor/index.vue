@@ -16,6 +16,7 @@
 
 <script>
     import E from 'wangeditor'
+    import "wangeditor/release/wangEditor.min.css"
 
     export default {
       name: 'v2-form-editor',
@@ -41,6 +42,7 @@
           this.editorContent = html;
           this.model.value = html;
         }
+        this.wEditor.customConfig.zIndex = 1;
         this.wEditor.create();
       }
     }
