@@ -31,7 +31,7 @@ export default {
   }
 };
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .V2Container,
 .V2ContainerBlock {
   min-height: 30px;

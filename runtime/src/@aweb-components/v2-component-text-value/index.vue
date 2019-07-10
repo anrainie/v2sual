@@ -23,7 +23,7 @@ export default {
   }
 };
 </script>
-<style lang="less">
+<style lang="scss">
 .v2-text-value-item{
   text-align: center;
   background-color:#eee;

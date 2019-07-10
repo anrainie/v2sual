@@ -16,7 +16,7 @@
     "name": "文本",
     "option": [
       {
-        "type": "string_input",
+        "type": "editor_input",
         "name": "text",
         "defaultValue": "文本内容",
         "desp": "文本"

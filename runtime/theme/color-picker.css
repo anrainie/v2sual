@@ -116,6 +116,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -240,6 +243,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 .el-color-predefine {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -265,8 +271,8 @@
     .el-color-predefine__color-selector:nth-child(10n + 1) {
       margin-left: 0; }
     .el-color-predefine__color-selector.selected {
-      -webkit-box-shadow: 0 0 3px 2px #04BEBD;
-      box-shadow: 0 0 3px 2px #04BEBD; }
+      -webkit-box-shadow: 0 0 3px 2px #04bebd;
+      box-shadow: 0 0 3px 2px #04bebd; }
     .el-color-predefine__color-selector > div {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -415,16 +421,16 @@
       color: #cccccc;
       cursor: not-allowed; }
     .el-color-dropdown__btn:hover {
-      color: #04BEBD;
-      border-color: #04BEBD; }
+      color: #04bebd;
+      border-color: #04bebd; }
   .el-color-dropdown__link-btn {
     cursor: pointer;
-    color: #04BEBD;
+    color: #04bebd;
     text-decoration: none;
     padding: 15px;
     font-size: 12px; }
     .el-color-dropdown__link-btn:hover {
-      color: tint(#04BEBD, 20%); }
+      color: tint(#04bebd, 20%); }
 
 .el-color-picker {
   display: inline-block;

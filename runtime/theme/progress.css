@@ -116,6 +116,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -240,6 +243,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 .el-progress {
   position: relative;
   line-height: 1; }
@@ -309,7 +315,7 @@
     left: 0;
     top: 0;
     height: 100%;
-    background-color: #04BEBD;
+    background-color: #04bebd;
     text-align: right;
     border-radius: 100px;
     line-height: 1;

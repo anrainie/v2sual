@@ -116,6 +116,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -240,6 +243,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Element Chalk Variables */
 /* Transition
 -------------------------- */
@@ -356,6 +362,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 .fade-in-linear-enter-active,
 .fade-in-linear-leave-active {
   -webkit-transition: opacity 200ms linear;
@@ -509,7 +518,7 @@
       -webkit-transform: rotate(90deg);
       transform: rotate(90deg); }
   .el-collapse-item__header.focusing:focus:not(:hover) {
-    color: #04BEBD; }
+    color: #04bebd; }
   .el-collapse-item__header.is-active {
     border-bottom-color: transparent; }
 

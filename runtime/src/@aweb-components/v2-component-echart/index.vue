@@ -34,10 +34,10 @@ export default {
   computed: {
     warpStyle() {
       if (this.model.style && this.model.style.chartWarpStyle) {
-        !this.model.style.chartWarpStyle.width &&
-          (this.model.style.chartWarpStyle.width = "300px");
-        !this.model.style.chartWarpStyle.height &&
-          (this.model.style.chartWarpStyle.height = "300px");
+        // !this.model.style.chartWarpStyle.width &&
+        //   (this.model.style.chartWarpStyle.width = "300px");
+        // !this.model.style.chartWarpStyle.height &&
+        //   (this.model.style.chartWarpStyle.height = "300px");
 
         return this.model.style.chartWarpStyle;
       } else {
@@ -79,7 +79,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .chart-content {
   position: relative;
 }

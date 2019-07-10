@@ -441,7 +441,7 @@
         ],
         "type": "string_select",
         "desp": "主题",
-        "name": "theme",
+        "name": "chartTheme",
         "details": "主题，可选暗黑、荧光、浪漫、马卡龙、葡萄色、标准，默认为赞同色。",
         "placeholder": "",
         "despArray": [

@@ -32,9 +32,9 @@ export default {
 };
 </script>
 
-<style lang="less">
-@import "./less/aweb.less";
+<style lang="scss">
 
+@import "./scss/aweb.scss";
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

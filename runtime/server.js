@@ -7,7 +7,7 @@ const Mock = require('mockjs')
 const router = new Router()
 const shell = require('shelljs')
 
-
+const {  execFile } = require('child_process');
 
 const app = new Koa();
 
@@ -264,22 +264,44 @@ router.get('/-/getMainList', function (ctx) {
 })
 
 router.get('/-/theme/change', (ctx) => {
-	let { theme } =ctx.request.query;
-	let themeLib = path.resolve(__dirname, './src/themes');
+	let { theme ,oldTheme} =ctx.request.query;
+	let themeLib = path.resolve(__dirname, '../server/module/themes');
+	let themeScss = path.resolve(__dirname, './element-variables.scss');
 	let projectThemeLib = path.resolve(__dirname, './theme');
 	let sthemePath = path.join(themeLib,theme,'style.css');
 	let sthemeTarget =path.join(projectThemeLib,'index.css');
 
-	console.log(sthemePath);
-	
-	if (fs.existsSync(sthemePath)) {
-		fs.writeFileSync(sthemeTarget, fs.readFileSync(sthemePath));
-    }
 
-	ctx.body = {
-		status: true,
-		msg: '更换主题成功'
-	};
+	console.log('newTheme',theme);
+	console.log('oldTheme',oldTheme)
+	if (fs.existsSync(themeScss)) {
+		console.log(themeScss)
+		let varStr = fs.readFileSync(themeScss).toString();
+
+		varStr = varStr.replace(`$--color-primary: ${oldTheme} !default;`,`$--color-primary: ${theme} !default;`);
+    
+	  fs.writeFileSync(themeScss, varStr);
+
+	const child = execFile('npm run', ['theme'], {
+				shell: true,
+			cwd: __dirname
+	}, (error, stdout, stderr) => {
+				if (error) {
+						throw error;
+				}
+				console.log(stdout);
+				ctx.body = {
+					status: true,
+					msg: '更换主题成功'
+				};
+	
+		});
+
+
+
+ }
+
+
 });
 
 //若删掉代理，预览时候不能获取数据
