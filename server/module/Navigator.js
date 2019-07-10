@@ -124,16 +124,16 @@ const listDir = (dirPath = listPath) => {
   return treeNode;
 }
 const statisDir = () => {
-  const stylePath = path.join(config.runtime.base, 'src', 'less');
+  const stylePath = path.join(config.runtime.base, 'src', 'scss');
   const statisPath = path.join(config.runtime.base, 'public');
-  const lessPath = path.join('/src', 'less');
+  const scssPath = path.join('/src', 'scss');
   const publicPath = path.join('/public');
   let treeNode = [{
       name: 'style',
       label: '自定义样式',
-      path: lessPath,
+      path: scssPath,
       resId: 'category',
-      desp: lessPath,
+      desp: scssPath,
       type: 'folder',
       category: 50,
       children: []
@@ -158,7 +158,7 @@ const statisDir = () => {
         let filePath = path.join(stylePath, files[i]);
         let relativePath = trans2RelativePath(filePath);
         let stat = fs.lstatSync(stylePath + path.sep + files[i]);
-        if (path.extname(filePath) === '.less') {
+        if (path.extname(filePath) === '.scss') {
           let fileInfo = path.parse(filePath);
           let item = {
             name: fileInfo.base,
