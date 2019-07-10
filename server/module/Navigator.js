@@ -72,7 +72,9 @@ const listDir = (dirPath = listPath) => {
             };
 
             try {
-              const defStr = fs.readFileSync(`${filePath}.def`, { encoding: 'utf8' }).toString();
+              const defStr = fs.readFileSync(`${filePath}.def`, {
+                encoding: 'utf8'
+              }).toString();
               const def = JSON.parse(defStr);
 
               if (def.display && def.display.desp) {
@@ -97,7 +99,9 @@ const listDir = (dirPath = listPath) => {
               path: relativePath
             };
             try {
-              const defStr = fs.readFileSync(`${filePath}.def`, { encoding: 'utf8' }).toString();
+              const defStr = fs.readFileSync(`${filePath}.def`, {
+                encoding: 'utf8'
+              }).toString();
               const def = JSON.parse(defStr);
 
               if (def.display && def.display.desp) {
@@ -120,15 +124,16 @@ const listDir = (dirPath = listPath) => {
   return treeNode;
 }
 const statisDir = () => {
-  const stylePath = path.join(config.runtime.base, '\\src\\less');
-  const statisPath = path.join(config.runtime.base, '\\public');
-  let treeNode = [
-    {
+  const stylePath = path.join(config.runtime.base, 'src', 'less');
+  const statisPath = path.join(config.runtime.base, 'public');
+  const lessPath = path.join('/src', 'less');
+  const publicPath = path.join('/public');
+  let treeNode = [{
       name: 'style',
       label: '自定义样式',
-      path: '\\src\\less',
+      path: lessPath,
       resId: 'category',
-      desp: '\\src\\less',
+      desp: lessPath,
       type: 'folder',
       category: 50,
       children: []
@@ -136,8 +141,8 @@ const statisDir = () => {
     {
       name: 'publicResources',
       label: '公共资源',
-      path: '\\public',
-      desp: '\\public',
+      path: publicPath,
+      desp: publicPath,
       resId: 'category',
       type: 'folder',
       category: 50,
@@ -232,7 +237,9 @@ const scanDir = (dirPath) => {
             };
 
             try {
-              const defStr = fs.readFileSync(`${filePath}.def`, { encoding: 'utf8' }).toString();
+              const defStr = fs.readFileSync(`${filePath}.def`, {
+                encoding: 'utf8'
+              }).toString();
               const def = JSON.parse(defStr);
 
               if (def.display && def.display.desp) {
@@ -287,7 +294,7 @@ const Navigator = {
       const imgPath = path.join(config.runtime.base, '\\public\\img');
       // const imgList = listDir(imgPath);
       let flowPath = JSON.parse(JSON.stringify(viewPath.filter(v => v.entry).map(e => e.children)[0] || []));
-      let imgList  = statisDir();
+      let imgList = statisDir();
       //rename flow
       let copy = [].concat(flowPath);
       let item;
@@ -324,8 +331,7 @@ const Navigator = {
         resId: 'pathImg',
         type: 'folder',
         children: imgList
-      }
-      ];
+      }];
       platform.sendSuccessResult(req, ret);
     } catch (e) {
       platform.sendErrorResult(req, e)
