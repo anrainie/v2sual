@@ -8,8 +8,8 @@
       {{model.label}}</label>
      <div class="form-editor-ctn" :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
 
-        <div ref="wEditor" style="text-align:left"> <p>{{model.placeholder}}</p></div>
-      
+        <div ref="wEditor" style="text-align:left" :style="model.style && model.style.ctnStyle"> <p>{{model.placeholder}}</p></div>
+         
      </div>
   </div>
 </template>
@@ -51,8 +51,6 @@
 
 <style lang="scss" >
 
-@import "../../../element-variables";
-
 .form-label-col {
   float: left;
 }
@@ -68,6 +66,12 @@
   line-height: 40px;
   position: relative;
   font-size: 14px;
+  .w-e-toolbar{
+    flex-wrap: wrap;
+  }
+  .w-e-text-container{
+    height: auto !important;
+  }
   .w-e-toolbar .w-e-active i{
        color:$--color-primary;
   }
