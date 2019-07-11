@@ -87,6 +87,10 @@
           "desp": "标题",
           "cssAttrs": "font-size color font-weight",
           "name": "label"
+        },{
+          "desp": "编辑器",
+          "cssAttrs": "width height",
+          "name": "ctnStyle"
         }
       ]
     }

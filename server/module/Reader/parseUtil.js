@@ -156,9 +156,22 @@ let appendComponent = function(parent,index,element){
             }
         }
     }
-    // appendAttribute(child,eCom);
-    appendChildren(child,eCom,isContainer);
-    element.appendChild(eCom);
+    if(eCom.localName === 'v2-switchable'){
+        let template = document.createElement('template');
+        if(child.activeIndex) eCom.setAttribute('activeIndex',child.activeIndex);
+        eCom.appendChild(template);
+        appendChildren(child,template,isContainer);
+    }else{
+        appendChildren(child,eCom,isContainer);
+    }
+    if(element.localName === 'template'){
+        if(element.parentElement.localName === 'v2-switchable'){
+            eCom.setAttribute('v-if',element.parentElement.getAttribute('activeIndex')+'=='+index);
+        }
+        element.content.appendChild(eCom);
+    }else{
+        element.appendChild(eCom);
+    }
 }
 
 /**
