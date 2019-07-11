@@ -60,7 +60,8 @@
                 "/v1/page/content": "content",
                 "/v1/logic/list": "logicList",
                 "/v1/page/script": "script",
-                "/v1/page/upload": "picUpload"
+                "/v1/page/upload": "picUpload",
+                "/v1/page/rename": "rename"
             }
         },
         "page": {
