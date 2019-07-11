@@ -24,6 +24,7 @@ export default {
 };
 </script>
 <style lang="scss">
+
 .v2-text-value-item{
   text-align: center;
   background-color:#eee;
@@ -31,6 +32,8 @@ export default {
   display: inline-block;
   vertical-align: middle;
   }
+
 }
+
 
 </style>

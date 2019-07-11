@@ -25,12 +25,6 @@ module.exports = {
               data: `@import "./element-variables.scss";`
             }
           }
-    },
-    chainWebpack: config => {
-        config.plugin('html').tap(args => {
-            console.log(args)
-            // args.chunksSortMode = 'none';
-            return args;
-        });
     }
+  
 }

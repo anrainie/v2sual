@@ -302,15 +302,15 @@
             v-model="eModel.customStyle['background-color']"
             alpha
           ></color-picker>
-    <!-- <el-color-picker v-model="eModel.customStyle['background-color']"></el-color-picker>-->
-    <!-- <span class="well-number displayI">#</span> -->
-    <!-- <input
+    <el-color-picker v-model="eModel.customStyle['background-color']"></el-color-picker>
+    <span class="well-number displayI">#</span>
+     <input
             type="text"
             v-model="eModel.customStyle['background-color']"
             class="time-number input-set"
-    >-->
-    <!-- </div> -->
-    <!-- <div class="pic-item">
+    >
+   </div>
+   <div class="pic-item">
               <span class="subtitle displayI"></span>
               <span class="self-subtitle pic-text">图片&nbsp;:</span>
               <div @click="selectImage" class="pic-add-box pointer" :style="{'background-image':eModel.customStyle['background-image']}">
@@ -320,8 +320,8 @@
               <el-row v-if="eModel.customStyle['background-image']" style="height:40px;">
                   <el-button style="margin-top:5px;right:60px;position: absolute;" size="mini" type="danger" @click="clearImage">清空</el-button>
               </el-row>
-    </div>-->
-    <!-- </div>
+    </div>
+    </div>
     </div>-->
   </div>
 </template>
