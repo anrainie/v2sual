@@ -274,6 +274,9 @@ export const widget = {
   },
   beforeDestroy() {
     this.$store.commit("unbind", this.wid);
+    this.$store.commit("regist.vue",{
+      wid:this.wid
+    });
   }
 }
 /**

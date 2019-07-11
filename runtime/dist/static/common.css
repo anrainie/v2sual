@@ -224,7 +224,24 @@ body {
   left: 0;
   z-index: 7;
   font-size: .5rem;
+  padding:2px;
   background: lightblue;
+}
+
+.V2Switchable {
+  border: 4px solid lightgoldenrodyellow;
+  box-sizing: border-box;
+}
+
+.V2Switchable:after {
+  content: "[可切换面板]";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 7;
+  font-size: .5rem;
+  padding:2px;
+  background: lightgoldenrodyellow;
 }
 
 .V2ResizeMask {
