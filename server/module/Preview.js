@@ -156,10 +156,19 @@ class Preview {
           fs.writeFileSync(vueConfigPath, `
             module.exports = {
                 baseUrl: './',
-                devServer: {},
+                devServer: {
+                  port: 7007
+                },
                 productionSourceMap: false,
                 filenameHashing: false,
-                css: {}
+                css: {
+                  loaderOptions: {
+                    sass: {
+                      // 向全局sass样式传入共享的全局变量
+                      data: '@import "./element-variables.scss";'
+                    }
+                  }
+                }
             }
           `)
           await execCmd(config.module.preview.script.style, absProjectPath);
@@ -169,13 +178,21 @@ class Preview {
           fs.writeFileSync(vueConfigPath, `
             module.exports = {
                 baseUrl: './',
-                devServer: {},
+                devServer: {
+                  port: 7007
+                },
                 productionSourceMap: false,
                 filenameHashing: false,
                 css: {
                     modules: false,
                     extract: false,
-                    sourceMap: false
+                    sourceMap: false,
+                    loaderOptions: {
+                      sass: {
+                        // 向全局sass样式传入共享的全局变量
+                        data: '@import "./element-variables.scss";'
+                      }
+                    }
                 }
             }
           `)
