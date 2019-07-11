@@ -16,6 +16,7 @@ export default {
         return {}
     },
     mounted(){
+      console.log(`@/views/${this.model.page}`)
        console.log(this.model)
     },
     components:{
