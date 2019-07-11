@@ -205,7 +205,8 @@ body {
   background-image: url("../img/icon9.png");
 }
 
-.V2CustomCptMask {
+.V2CustomCptMask,
+.V2PageCptMask {
   /* left: 0;
   top: 0;
   position: absolute; */
@@ -219,6 +220,15 @@ body {
 
 .V2CustomCptMask:after {
   content: "[自定义组件]";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 7;
+  font-size: .5rem;
+  background: lightblue;
+}
+.V2PageCptMask:after{
+  content: "[页面组件]";
   position: absolute;
   top: 0;
   left: 0;
