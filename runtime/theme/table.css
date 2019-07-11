@@ -117,6 +117,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -241,6 +244,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* BEM support Func
  -------------------------- */
 /* Element Chalk Variables */
@@ -359,6 +365,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -483,6 +492,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 .el-checkbox {
   color: #606266;
   font-weight: 500;
@@ -505,7 +517,7 @@
     line-height: normal;
     height: 40px; }
     .el-checkbox.is-bordered.is-checked {
-      border-color: #04BEBD; }
+      border-color: #04bebd; }
     .el-checkbox.is-bordered.is-disabled {
       border-color: #EBEEF5;
       cursor: not-allowed; }
@@ -579,20 +591,20 @@
       color: #C0C4CC;
       cursor: not-allowed; }
     .el-checkbox__input.is-checked .el-checkbox__inner {
-      background-color: #04BEBD;
-      border-color: #04BEBD; }
+      background-color: #04bebd;
+      border-color: #04bebd; }
       .el-checkbox__input.is-checked .el-checkbox__inner::after {
         -webkit-transform: rotate(45deg) scaleY(1);
         transform: rotate(45deg) scaleY(1); }
     .el-checkbox__input.is-checked + .el-checkbox__label {
-      color: #04BEBD; }
+      color: #04bebd; }
     .el-checkbox__input.is-focus {
       /*focus时 视觉上区分*/ }
       .el-checkbox__input.is-focus .el-checkbox__inner {
-        border-color: #04BEBD; }
+        border-color: #04bebd; }
     .el-checkbox__input.is-indeterminate .el-checkbox__inner {
-      background-color: #04BEBD;
-      border-color: #04BEBD; }
+      background-color: #04bebd;
+      border-color: #04bebd; }
       .el-checkbox__input.is-indeterminate .el-checkbox__inner::before {
         content: '';
         position: absolute;
@@ -620,7 +632,7 @@
     -webkit-transition: border-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46), background-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46);
     transition: border-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46), background-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46); }
     .el-checkbox__inner:hover {
-      border-color: #04BEBD; }
+      border-color: #04bebd; }
     .el-checkbox__inner::after {
       -webkit-box-sizing: content-box;
       box-sizing: content-box;
@@ -689,7 +701,7 @@
     .el-checkbox-button__inner.is-round {
       padding: 12px 20px; }
     .el-checkbox-button__inner:hover {
-      color: #04BEBD; }
+      color: #04bebd; }
     .el-checkbox-button__inner [class*="el-icon-"] {
       line-height: 0.9; }
       .el-checkbox-button__inner [class*="el-icon-"] + span {
@@ -702,12 +714,12 @@
     z-index: -1; }
   .el-checkbox-button.is-checked .el-checkbox-button__inner {
     color: #FFFFFF;
-    background-color: #04BEBD;
-    border-color: #04BEBD;
+    background-color: #04bebd;
+    border-color: #04bebd;
     -webkit-box-shadow: -1px 0 0 0 #68d8d7;
     box-shadow: -1px 0 0 0 #68d8d7; }
   .el-checkbox-button.is-checked:first-child .el-checkbox-button__inner {
-    border-left-color: #04BEBD; }
+    border-left-color: #04bebd; }
   .el-checkbox-button.is-disabled .el-checkbox-button__inner {
     color: #C0C4CC;
     cursor: not-allowed;
@@ -724,7 +736,7 @@
     -webkit-box-shadow: none !important;
     box-shadow: none !important; }
   .el-checkbox-button.is-focus .el-checkbox-button__inner {
-    border-color: #04BEBD; }
+    border-color: #04bebd; }
   .el-checkbox-button:last-child .el-checkbox-button__inner {
     border-radius: 0 4px 4px 0; }
   .el-checkbox-button--medium .el-checkbox-button__inner {
@@ -867,6 +879,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -991,6 +1006,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 .el-tag {
   background-color: #e6f9f8;
   border-color: #cdf2f2;
@@ -1000,7 +1018,7 @@
   padding: 0 10px;
   line-height: 30px;
   font-size: 12px;
-  color: #04BEBD;
+  color: #04bebd;
   border-width: 1px;
   border-style: solid;
   border-radius: 4px;
@@ -1008,7 +1026,7 @@
   box-sizing: border-box;
   white-space: nowrap; }
   .el-tag.is-hit {
-    border-color: #04BEBD; }
+    border-color: #04bebd; }
   .el-tag .el-tag__close {
     color: #04bebd; }
     .el-tag .el-tag__close:hover {
@@ -1077,7 +1095,7 @@
     border-color: #04bebd;
     color: white; }
     .el-tag--dark.is-hit {
-      border-color: #04BEBD; }
+      border-color: #04bebd; }
     .el-tag--dark .el-tag__close {
       color: white; }
       .el-tag--dark .el-tag__close:hover {
@@ -1132,7 +1150,7 @@
     border-color: #9be5e5;
     color: #04bebd; }
     .el-tag--plain.is-hit {
-      border-color: #04BEBD; }
+      border-color: #04bebd; }
     .el-tag--plain .el-tag__close {
       color: #04bebd; }
       .el-tag--plain .el-tag__close:hover {
@@ -1322,6 +1340,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -1446,6 +1467,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 .el-tooltip:focus:not(.focusing), .el-tooltip:focus:hover {
   outline-width: 0; }
 
@@ -1655,6 +1679,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 .el-table {
   position: relative;
   overflow: hidden;
@@ -1797,7 +1824,7 @@
       -webkit-box-sizing: border-box;
       box-sizing: border-box; }
       .el-table th > .cell.highlight {
-        color: #04BEBD; }
+        color: #04bebd; }
     .el-table th.required > div::before {
       display: inline-block;
       content: "";
@@ -1971,9 +1998,9 @@
       border-top-color: #C0C4CC;
       bottom: 7px; }
   .el-table .ascending .sort-caret.ascending {
-    border-bottom-color: #04BEBD; }
+    border-bottom-color: #04bebd; }
   .el-table .descending .sort-caret.descending {
-    border-top-color: #04BEBD; }
+    border-top-color: #04bebd; }
   .el-table .hidden-columns {
     visibility: hidden;
     position: absolute;

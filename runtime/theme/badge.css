@@ -116,6 +116,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -240,6 +243,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 .el-badge {
   position: relative;
   vertical-align: middle;
@@ -271,7 +277,7 @@
       right: 0;
       border-radius: 50%; }
     .el-badge__content--primary {
-      background-color: #04BEBD; }
+      background-color: #04bebd; }
     .el-badge__content--success {
       background-color: #67C23A; }
     .el-badge__content--warning {

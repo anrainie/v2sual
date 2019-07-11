@@ -114,6 +114,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 @font-face {
   font-family: 'element-icons';
   src: url("fonts/element-icons.woff") format("woff"), url("fonts/element-icons.ttf") format("truetype");

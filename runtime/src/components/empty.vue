@@ -12,7 +12,7 @@ export default {
   computed: {}
 };
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .V2Empty{
   height: 100%;
 }

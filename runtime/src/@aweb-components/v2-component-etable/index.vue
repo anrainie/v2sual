@@ -437,7 +437,7 @@ export default {
  }
 
 </script>
-<style lang="less">
+<style lang="scss">
   .table-wrapper{
         width: 100%;
         height: 100%;

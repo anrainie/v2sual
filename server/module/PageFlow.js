@@ -522,19 +522,20 @@ class Page {
         let base64Data = req.data.params.result.replace(/^data:image\/\w+;base64,/, "");
         let dataBuffer = new Buffer(base64Data, 'base64');
         let staticPath = trans2absolute(`/public/img`);
-        let path = trans2absolute(`/public/img/${req.data.params.name}`);
+        let filePath = trans2absolute(`/public/img/${req.data.params.name}`);
         let distPath = trans2absolute(`/dist/img/${req.data.params.name}`);
+        let imgPath = path.join('/public', 'img')
         // 检测路径
-         fs.exists(staticPath, async(exists) => {
+        fs.exists(staticPath, async (exists) => {
           if (!exists) {
             fs.mkdirSync(staticPath);
           }
 
-          let publishDown = await context.writeimg(path,dataBuffer);
-          let distDown = await context.writeimg(distPath,dataBuffer);
-          if(publishDown&&distDown){
-            platform.sendSuccessResult(req, { status: true,path:path });
-          }else{
+          let publishDown = await context.writeimg(filePath, dataBuffer);
+          let distDown = await context.writeimg(distPath, dataBuffer);
+          if (publishDown && distDown) {
+            platform.sendSuccessResult(req, { status: true, path: imgPath });
+          } else {
             platform.sendErrorResult(req, "保存失败");
           }
         });
@@ -554,6 +555,31 @@ class Page {
         }
       });
     })
+  }
+
+  /**
+   *  @public
+   *  @desp 重命名
+   */
+  rename(platform) {
+    const context = this;
+    return async function (req) {
+      let data = req.data;
+      let name = data.name;
+      let resId = data.resId;
+      let resPath = path.dirname(data.path);
+      let absolutePath = trans2absolute(data.path);
+      let dirPath = path.dirname(absolutePath);
+      try {
+        if (resId === "vue") {
+          fs.renameSync(`${absolutePath}.def`, `${path.join(dirPath,name)}.def`);
+        }
+        fs.renameSync(absolutePath, path.join(dirPath, name));
+        platform.sendSuccessResult(req, {status:true,dirPath:resPath});
+      } catch (e) {
+        platform.sendErrorResult(req, e);
+      }
+    }
   }
 }
 

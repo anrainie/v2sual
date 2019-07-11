@@ -116,6 +116,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -240,13 +243,16 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 .el-backtop {
   position: fixed;
   background-color: #FFFFFF;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  color: #04BEBD;
+  color: #04bebd;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

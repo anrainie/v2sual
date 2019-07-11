@@ -68,7 +68,7 @@ let editor = {
                 const dataBasket = content.dataBasket && content.dataBasket.list && content.dataBasket.list;
                 const dataBasketAttr = dataBasket.length ? dataBasket.map(e => {
                   return e.name?{
-                    type: 'string_input',
+                    type: 'variable_input',
                     name: e.name,
                     desp: `${e.desp} `,
                     defaultValue: `${e.value}`

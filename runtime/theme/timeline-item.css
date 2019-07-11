@@ -116,6 +116,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -240,6 +243,9 @@
 --------------------------*/
 /* Break-point
 --------------------------*/
+:export {
+  theme: #04bebd; }
+
 .el-timeline-item {
   position: relative;
   padding-bottom: 20px; }
@@ -277,7 +283,7 @@
       width: 14px;
       height: 14px; }
     .el-timeline-item__node--primary {
-      background-color: #04BEBD; }
+      background-color: #04bebd; }
     .el-timeline-item__node--success {
       background-color: #67C23A; }
     .el-timeline-item__node--warning {
