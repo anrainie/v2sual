@@ -408,11 +408,11 @@ export default () => {
           } else
             Vue.set(dataKeys.length ? eval(`vueObj${dataPre}`) : vueObj, dataLast, v)
           vueObj.$forceUpdate();
-          console.log(modelKey, 'changed');
+          // console.log(modelKey, 'changed');
         })
 
         // console.log('widget', widgetVue)
-        console.log('widgetVue bind:', widgetVue, modelWatch, `vueObj${dataPre}`, dataLast)
+        // console.log('widgetVue bind:', widgetVue, modelWatch, `vueObj${dataPre}`, dataLast)
 
 
 
@@ -501,10 +501,10 @@ export default () => {
        * @param {*} tool 
        */
       setActiveTool(state, tool) {
-        console.log('setActiveTool', tool);
+        // console.log('setActiveTool', tool);
         if (state.activeTool != tool) {
           state.activeTool && state.activeTool.dispose && state.activeTool.dispose();
-          console.log('setActiveTool success');
+          // console.log('setActiveTool success');
           state.activeTool = tool;
         }
       },
