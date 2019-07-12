@@ -58,7 +58,12 @@ const fileUtil = {
   saveFile(path, content, logicOptions) {
     let writer = this.getFileWriter(path);
     return writer ? writer(path, content) : new Promise((res, rej) => {
-      fs.writeFileSync(path, content);
+      try{
+        fs.writeFileSync(path, content);
+        res()
+      }catch(e){
+        rej(e)
+      }
     });
   },
   /**
