@@ -1,0 +1,82 @@
+{
+    "name": "@aweb-template/vue-spa",
+    "version": "6.1.0",
+    "private": false,
+    "author": "zhanghaixian@agree.com.cn",
+    "description": "pc端Vue版SPA",
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint",
+        "mock": "node ./server.js",
+        "buildP": "node ./build-page.js",
+        "theme": "et"
+    },
+    "dependencies": {
+        "animate.css": "^3.7.2",
+        "axios": "^0.18.0",
+        "babel-polyfill": "^6.26.0",
+        "element-ui": "^2.4.11",
+        "marked": "^0.6.3",
+        "nprogress": "^0.2.0",
+        "vant": "^2.0.7",
+        "vue": "^2.5.17",
+        "vue-axios": "^2.1.4",
+        "vue-router": "^3.0.2",
+        "vue-scroll": "^2.1.12",
+        "vuex": "^3.0.1",
+        "wangeditor": "^3.1.1"
+    },
+    "devDependencies": {
+        "shelljs": "^0.8.3",
+        "node-requirejs": "^0.1.1",
+        "koa-static": "^5.0.0",
+        "@vue/cli-plugin-babel": "^3.2.0",
+        "@vue/cli-plugin-eslint": "^3.2.0",
+        "@vue/cli-service": "^3.2.0",
+        "axios-mock-adapter": "^1.15.0",
+        "babel-eslint": "^10.0.1",
+        "babel-loader": "^7.1.5",
+        "element-theme": "^2.0.1",
+        "element-theme-chalk": "^2.9.1",
+        "eslint": "^5.8.0",
+        "eslint-plugin-vue": "^5.0.0-0",
+        "koa": "^2.7.0",
+        "koa-body": "^4.1.0",
+        "koa-router": "^7.4.0",
+        "less": "^3.9.0",
+        "less-loader": "^4.1.0",
+        "mockjs": "^1.0.1-beta3",
+        "node-sass": "^4.11.0",
+        "sass-loader": "^7.1.0",
+        "vue-template-compiler": "^2.5.17",
+        "webpack": "^4.28.2"
+    },
+    "eslintConfig": {
+        "root": true,
+        "env": {
+            "node": true
+        },
+        "extends": [
+            "plugin:vue/essential",
+            "eslint:recommended"
+        ],
+        "rules": {},
+        "parserOptions": {
+            "parser": "babel-eslint"
+        }
+    },
+    "postcss": {
+        "plugins": {
+            "autoprefixer": {}
+        }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 8"
+    ],
+    "buildfolder": "./src/views/example",
+    "__projectType": "awebVue",
+    "__finished": true
+}

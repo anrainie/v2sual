@@ -1,0 +1,107 @@
+{
+  "author": {
+    "name": "fengjiarong@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "多选框",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconfuxuankuang",
+    "type": "form",
+    "href": "v2-form-checkbox",
+    "author": "fengjiarong@agree.com.cn",
+    "version": 510000,
+    "accept": "foundationRowCtn divCtn",
+    "name": "多选框",
+    "option": [
+      {
+        "name": "label",
+        "desp": "标题",
+        "defaultValue":"标题",
+        "type": "string_input"
+      },
+      {
+        "name": "titleMode",
+        "desp": "标题排列方式",
+        "defaultValue": "col",
+        "type": "string_select",
+        "valueArray": [
+          "row",
+          "col"
+        ],
+        "despArray": [
+          "同列排列",
+          "同行排列"
+        ]
+      },
+      {
+        "name": "value",
+        "desp": "值",
+        "defaultValue": "",
+        "type": "string_input"
+      },
+      {
+        "name": "labelWitdh",
+        "desp": "标题宽度",
+        "defaultValue": "80px",
+        "type": "string_input"
+      },
+      {
+        "name": "options",
+        "desp": "配置项",
+        "defaultValue": "",
+        "type": "array",
+        "attrInEachElement": [
+          {
+            "name": "text",
+            "desp": "文本",
+            "defaultValue": "备选项",
+            "type": "string_input"
+          },
+          {
+            "name": "disabled",
+            "desp": "是否禁用",
+            "defaultValue": false,
+            "type": "boolean"
+          },
+          {
+            "name": "isRequired",
+            "desp": "是否必填",
+            "defaultValue": false,
+            "type": "boolean"
+          },
+          {
+            "name": "label",
+            "desp": "对应值",
+            "defaultValue": false,
+            "type": "string_input"
+          }
+        ]
+      }
+    ],
+    "css": {
+      "style": [
+        {
+          "desp": "标题",
+          "cssAttrs": "font-size color font-weight",
+          "name": "label"
+        },
+        {
+          "desp": "选项文字",
+          "cssAttrs": "font-size  color padding-left",
+          "name": "font"
+        }
+      ]
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@aweb-components/v2-form-checkbox",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.4",
+  "index":20000005
+}

@@ -1,0 +1,107 @@
+{
+  "author": {
+    "name": "zhanghaixian@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "富文本",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconshurukuang",
+    "type": "form",
+    "href": "v2-form-editor",
+    "author": "zhanghaixian@agree.com.cn",
+    "version": 510000,
+    "accept": "divCtn",
+    "name": "富文本",
+    "option": [
+      {
+        "name": "label",
+        "desp": "标题",
+        "defaultValue": "标题",
+        "type": "string_input"
+      },
+      {
+        "name": "titleMode",
+        "desp": "标题排列方式",
+        "defaultValue": "col",
+        "type": "string_select",
+        "valueArray": [
+          "row",
+          "col"
+        ],
+        "despArray": [
+          "同列排列",
+          "同行排列"
+        ]
+      },
+      {
+        "name": "labelWitdh",
+        "desp": "标题宽度",
+        "defaultValue": "80px",
+        "type": "string_input"
+      
+      },
+      {
+        "name": "placeholder",
+        "desp": "placeholder",
+        "defaultValue": "请编辑",
+        "type": "string_input"
+       
+      },
+      {
+        "name": "value",
+        "desp": "值",
+        "defaultValue": "",
+        "type": "string_input"
+      },
+      {
+        "name": "disabled",
+        "desp": "是否禁填",
+        "defaultValue": false,
+        "type": "boolean"
+      },
+      {
+        "name": "isRequired",
+        "desp": "是否必填",
+        "defaultValue": false,
+        "type": "boolean"
+      },{
+        "name": "rules",
+        "desp": "验证规则",
+        "defaultValue": "",
+        "type": "single_array",
+        "attrInEachElement": [
+          {
+            "name": "rule",
+            "desp": "规则",
+            "defaultValue": "",
+            "type": "string_input"
+          }
+        ]
+      }
+    ],
+    "css": {
+      "style": [
+        {
+          "desp": "标题",
+          "cssAttrs": "font-size color font-weight",
+          "name": "label"
+        },{
+          "desp": "编辑器",
+          "cssAttrs": "width height",
+          "name": "ctnStyle"
+        }
+      ]
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@aweb-components/v2-form-editor",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.4",
+  "index":20000001
+}

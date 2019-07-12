@@ -1,4 +1,4 @@
-# WEB IDE - AWEB IDE
+# AWEB-Koa2 静态服务器
 
 ## 安装
 ```
@@ -37,18 +37,21 @@
 
 ## 目录结构
 ```
-|- server
+|- server v2sual 服务端
     |- config 配置
     |- util 工具类
     |- module 模块
     |- server.js 服务器入口
-|- runtime
-    |- src
-        |- @aweb-components 组件
-    |- v2sual  配置时，资源打包位置
-    |- dist
-        |- static 预览窗口位置，方便配置预览时与真实环境一致
-|- pipe 管道
+|- config 配置
+|- project 项目
+    |- runtime
+        |- src
+            |- @aweb-components 组件
+            |- v2sual  配置时，资源打包位置
+        |- dist
+            |- static 预览窗口位置，方便配置预览时与真实环境一致
+    |- pipe 管道
+    |- cms 管理端
 ```
 
 ## API 接口
@@ -85,17 +88,3 @@
     }
 </script>
 ```
-
-
-## 组件自动自定义编辑器
-需要在组件对应的`package.json`中加入`editor`属性（与 `main` 属性同级 ）：
-```
-"editor":{
-    "name":"编辑器名称",//与组件name一直，
-    "path":"editor.vue",//此处填相对位置或文件名
-}
-```
-
-
-log:
-4月30号，修改element-ui 的lib/util/popper.js 和vue-popper.js ,在editor.vue 文件添加window.editRoot 定义

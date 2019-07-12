@@ -1,0 +1,50 @@
+{
+  "author": {
+    "name": "zhanghaixian@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "文本",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconwenben",
+    "type": "component",
+    "href": "v2-component-text",
+    "author": "zhanghaixian@agree.com.cn",
+    "version": 510000,
+    "accept": "divCtn",
+    "name": "文本",
+    "option": [
+      {
+        "type": "string_input",
+        "name": "text",
+        "defaultValue": "文本内容",
+        "desp": "文本"
+      },
+      {
+        "name": "editable",
+        "desp": "是否可编辑",
+        "defaultValue": false,
+        "type": "boolean"
+      }
+    ],
+    "css":{
+      "style":[
+        {
+          "desp": "文本",
+          "cssAttrs": "font-family font-size color font-weight font-style text-decoration line-height text-align width height padding margin",
+          "name": "textStyle"
+        }
+      ]
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@aweb-components/v2-component-text",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.4",
+  "index":30000002
+}

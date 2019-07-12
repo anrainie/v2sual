@@ -1,0 +1,14 @@
+{
+    "serverHost":"https://aui.awebide.com",
+    "serverPort":"7003",
+    "projects":[{
+        "clientId":"netbank",
+        "clientName":"网银",
+        "clientHost":"https://v2sual.awebide.com",
+        "clientPort":"443",
+        "base":"./runtime",
+        "pipe":"../pipe/src/main/webapp/plugins",
+        "socketPath":"/v2sual-socket/socket.io",
+        "publicPort":"0"
+    }]
+}

@@ -14,13 +14,14 @@ class Platform {
     this.ip = ip;
     this.port = port;
 
-    let ideType = config.server.name;
+    let ideType = config.server.type;
     let selfPort = config.webide.clientPort;
     let selfIP = config.webide.clientHost;
     let publicPort = config.webide.publicPort || 0;
     let id = config.server.id;
+    let name = config.server.name || id;
 
-    let url = `${ip}${publicPort != 0 ? `:${publicPort}` : ''}?server=true&id=${id}&type=${ideType}&httpPort=${selfPort}&ip=${selfIP}`;
+    let url = `${ip}${publicPort != 0 ? `:${publicPort}` : ''}?server=true&id=${id}&type=${ideType}&httpPort=${selfPort}&ip=${selfIP}&name=${name}`;
     console.log(`尝试连接${url}`);
     try {
       this.socket = io(url, {
@@ -29,7 +30,7 @@ class Platform {
 
       this.socket.on('connect', r => console.log('连接成功'));
       this.socket.on('disconnect', r => console.log('断连', r));
-      this.socket.on('connect_error', r => console.log('连接失败',r.message));
+      this.socket.on('connect_error', r => console.log('连接失败', r.message));
       this.socket.on('data', r => console.log(r));
       this.socket.on('error', r => console.log('连接错误', r));
       this.socket.on('previewPath', (res) => {

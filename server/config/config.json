@@ -1,7 +1,7 @@
 {
     "server": {
         "id": 123123,
-        "name": "v2sual",
+        "type": "v2sual",
         "port": 3000,
         "host": "localhost"
     },
@@ -11,18 +11,7 @@
         "clientPort": 3000,
         "clientHost": "localhost",
         "path":"/socket.io",
-        "publicPort":7003,
-        "condition": [
-            {
-                "pathInclude": "home/v2sual",
-                "host": "https://aui.awebide.com",
-                "port": 7003,
-                "clientPort": 443,
-                "clientHost": "https://v2sual.awebide.com",
-                "path":"/v2sual-socket/socket.io",
-                "publicPort":0
-            }
-        ]
+        "publicPort":7003
     },
     "runtime": {
         "base": "./runtime",

@@ -1,0 +1,13 @@
+{
+    "serverHost":"http://localhost",
+    "serverPort":"7003",
+    "projects":[{
+        "clientHost":"http://10.8.3.143",
+        "clientPort":"3004",
+        "clientId":"anra",
+        "clientName":"网银",
+        "base":"./runtime",
+        "pipe":"../pipe/src/main/webapp/plugins"
+    }]
+    
+}

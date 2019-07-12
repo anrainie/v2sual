@@ -1,0 +1,131 @@
+{
+  "author": {
+    "name": "fengjiarong@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "输入框",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconshurukuang",
+    "type": "form",
+    "href": "v2-form-input",
+    "author": "fengjiarong@agree.com.cn",
+    "version": 510000,
+    "accept": "foundationRowCtn divCtn",
+    "name": "输入框",
+    "option": [
+      {
+        "name": "label",
+        "desp": "标题",
+        "defaultValue": "标题",
+        "type": "string_input"
+      
+      },
+      {
+        "name": "titleMode",
+        "desp": "标题排列方式",
+        "defaultValue": "col",
+        "type": "string_select",
+        "valueArray": [
+          "row",
+          "col"
+        ],
+        "despArray": [
+          "同列排列",
+          "同行排列"
+        ]
+      },
+      {
+        "name": "labelWitdh",
+        "desp": "标题宽度",
+        "defaultValue": "80px",
+        "type": "string_input"
+      
+      },
+      {
+        "name": "placeholder",
+        "desp": "placeholder",
+        "defaultValue": "请选择",
+        "type": "string_input"
+       
+      },
+      {
+        "name": "value",
+        "desp": "值",
+        "defaultValue": "",
+        "type": "string_input"
+      },
+      {
+        "name": "clearable",
+        "desp": "是否可清空",
+        "defaultValue": false,
+        "type": "boolean"
+      },
+      {
+        "name": "disabled",
+        "desp": "是否禁填",
+        "defaultValue": false,
+        "type": "boolean"
+      },
+      {
+        "name": "isRequired",
+        "desp": "是否必填",
+        "defaultValue": false,
+        "type": "boolean"
+      },{
+        "name": "autoComplete",
+        "desp": "开启输入建议",
+        "defaultValue": false,
+        "type": "boolean"
+      },{
+        "require":{
+           "autoComplete":true
+        },
+        "name": "suggestion",
+        "desp": "输入建议列表",
+        "defaultValue": "",
+        "type": "string_input"
+      },{
+        "name": "rules",
+        "desp": "验证规则",
+        "defaultValue": "",
+        "type": "single_array",
+        "attrInEachElement": [
+          {
+            "name": "rule",
+            "desp": "规则",
+            "defaultValue": "",
+            "type": "string_input"
+          }
+        ]
+      }
+    ],
+    "css": {
+      "style": [
+        {
+          "desp": "标题",
+          "cssAttrs": "font-size color font-weight",
+          "name": "label"
+        }, {
+          "desp": "检验边框",
+          "cssAttrs": "border-color",
+          "name": "borderStyle"
+        }, {
+          "desp": "检验文字",
+          "cssAttrs": "color",
+          "name": "fontStyle"
+        }
+      ]
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@aweb-components/v2-form-input",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.4",
+  "index":20000001
+}
