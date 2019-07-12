@@ -39,6 +39,13 @@
               </div>
               <div ref="customEditorArea" ></div>
             </div>
+            <contextmenu
+              ref="ide_contextMenu"
+              style="display: none;position: absolute;z-index:19999"
+              id="contextMenu"
+              :items="[]"
+              :config="{}">
+            </contextmenu>
           </div>
           `,
         data() {
