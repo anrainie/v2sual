@@ -271,7 +271,8 @@ export const widget = {
       };
     },
     widgetClass(){
-      return [...((this.model && this.model.layoutClass)||{}),...((this.model && this.model.customClass)||{})]
+     
+      return [...((this.model && this.model.layoutClass)||[]),...((this.model && this.model.customClass)||[])]
     },
     parent() {
       return this.$store.getters.model(this.parentId);
