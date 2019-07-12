@@ -570,9 +570,16 @@ class Page {
       let resPath = path.dirname(data.path);
       let absolutePath = trans2absolute(data.path);
       let dirPath = path.dirname(absolutePath);
+      let tempPath,oldName;
       try {
         if (resId === "vue") {
           fs.renameSync(`${absolutePath}.def`, `${path.join(dirPath,name)}.def`);
+        }
+        if(resId === "img"){
+          oldName = path.basename(absolutePath);
+          tempPath = path.join(trans2absolute("dist"),"img");
+          fs.renameSync(path.join(tempPath,oldName), path.join(tempPath,name));
+
         }
         fs.renameSync(absolutePath, path.join(dirPath, name));
         platform.sendSuccessResult(req, {status:true,dirPath:resPath});

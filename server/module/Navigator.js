@@ -252,17 +252,11 @@ const scanDir = (dirPath) => {
             };
 
             try {
-              const defStr = fs.readFileSync(`${filePath}.def`, {
-                encoding: 'utf8'
-              }).toString();
-              const def = JSON.parse(defStr);
-
-              if (def.display && def.display.desp) {
-                item.desp = def.display.desp;
+              if(item.extname===".png"||item.extname===".jpg"){
+                item.resId = "img";
               }
-
             } catch (e) {
-
+              console.log(e)
             }
 
 
