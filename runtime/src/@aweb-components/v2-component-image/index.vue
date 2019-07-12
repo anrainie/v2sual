@@ -22,7 +22,6 @@ export default {
 
       src = src.replace('"').replace("'");
       if (self.mode === "edit") {
-        debugger
         return `v1/runtime/${src}`;
       } else if (self.mode === "runtime") {
         debugger

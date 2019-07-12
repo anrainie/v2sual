@@ -18,8 +18,9 @@
     "option": [
       {
         "name": "activeIndex",
-        "desp": "当前页索引",
-        "type": "string_input"
+        "desp": "页码绑定",
+        "type": "variable_input",
+        "placeholder": "请填写一个整数或者整型变量"
       }
     ],
     "css": {
