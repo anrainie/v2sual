@@ -1,5 +1,5 @@
 <template>
-  <div data-widget-type="aweb4Calendar" class="aweb4-calendar" :class="model.layoutClass">
+  <div data-widget-type="aweb4Calendar" class="aweb4-calendar" :class="widgetClass" :style="model.commonStyle" >
     <el-tabs v-model="selectedMonth">
       <el-tab-pane
         v-for="month in range"

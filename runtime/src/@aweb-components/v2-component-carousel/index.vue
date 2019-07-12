@@ -1,6 +1,8 @@
 <template>
- <el-row :class="model.layoutClass">
+
   <el-carousel 
+    :class="widgetClass" 
+    :style="model.commonStyle"
     :trigger="model.trigger"
     :autoplay="model.autoplay"
     :indicator-position="model.indicator"
@@ -14,7 +16,7 @@
         <img :src="item.src" :alt="item.alt" :title="item.title" :height="item.height" :width="item.width">
       </el-carousel-item>
     </el-carousel>
-</el-row>
+
 </template>
 <script>
 

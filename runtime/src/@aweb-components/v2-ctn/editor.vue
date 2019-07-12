@@ -1,42 +1,7 @@
 <template>
   <div class="commonSet-content v2-custom-el">
 
-      <div class="item-box">
-      <el-row>
-        <el-col :span="6" class="slider-text-item">
-          <span>定位:</span>
-        </el-col>
-        <el-col :span="13">
-          <el-radio-group v-model="eModel.def.defPositionStyle" class="custom-el-radio-group">
-            <el-radio
-              :label="true"
-              @change="restore(['top','right','left','bottom'],true)"
-            >默认</el-radio>
-            <el-radio :label="false">自定义</el-radio>
-          </el-radio-group>
-        </el-col>
-      </el-row>
-
-      <div class="custom-def-padding" v-show="!eModel.def.defPositionStyle">
-        <div class="custom-def-padding-style"></div>
-        <div class="custom-def-padding-item padding-top">
-          <span>上</span>
-          <input type="text" v-model="eModel.customStyle['top']">
-        </div>
-        <div class="custom-def-padding-item padding-bottom">
-          <span>下</span>
-          <input type="text" v-model="eModel.customStyle['bottom']">
-        </div>
-        <div class="custom-def-padding-item padding-left">
-          <span>左</span>
-          <input type="text" v-model="eModel.customStyle['left']">
-        </div>
-        <div class="custom-def-padding-item padding-right">
-          <span>右</span>
-          <input type="text" v-model="eModel.customStyle['right']">
-        </div>
-      </div>
-    </div>
+    
 
     <div class="item-box">
       <el-row>

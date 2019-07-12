@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div :class="widgetClass" :style="model.commonStyle">
     <el-table
-    :class="model.layoutClass"
+    
     :data="tableData"
     ref="_op_table_table"
     tooltip-effect="dark"
