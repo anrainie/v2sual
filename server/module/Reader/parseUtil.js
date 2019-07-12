@@ -6,7 +6,7 @@ const JSDOM = jsdom.JSDOM;
 var document = new JSDOM('').window.document;
 
 //=================================================== json转html ===========================================================
-const ignoreKey = ['children','style','widget','data','css','option','options','def','defaultValue','customStyle','pid'];//先不作处理的属性
+const ignoreKey = ['children','style','widget','data','css','option','options','def','defaultValue','commonStyle','pid'];//先不作处理的属性
 const v2Layout = ['v2-layout-colctn','v2-layout-rowctn','v2-layout'];//转为v2container
 let dataBasket = [];//自定义组件的数据篮子
 

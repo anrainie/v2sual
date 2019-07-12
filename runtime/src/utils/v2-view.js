@@ -270,6 +270,9 @@ export const widget = {
         ...(this.model.style ? this.model.style.label : {})
       };
     },
+    widgetClass(){
+      return [...((this.model && this.model.layoutClass)||{}),...((this.model && this.model.customClass)||{})]
+    },
     parent() {
       return this.$store.getters.model(this.parentId);
     },

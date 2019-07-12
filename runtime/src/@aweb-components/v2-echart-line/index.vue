@@ -1,5 +1,5 @@
 <template>
-  <div class="echartCpt" :style="model.style" :class="model.layoutClass"></div>
+  <div class="echartCpt" :class="widgetClass" :style="model.commonStyle"></div>
 </template>
 <script>
 

@@ -4,7 +4,7 @@
   },
   "bundleDependencies": false,
   "deprecated": false,
-  "description": "加载页面",
+  "description": "页面容器",
   "docs": {
     "belongTo": "aui",
     "icon": "icontubiao",
@@ -13,7 +13,7 @@
     "author": "zhanghaixian@agree.com.cn",
     "version": 510000,
     "accept": "divCtn",
-    "name": "加载页面",
+    "name": "页面容器",
     "option": [
       {
         "type": "string_input",

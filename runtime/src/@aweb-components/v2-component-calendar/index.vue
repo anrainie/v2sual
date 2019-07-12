@@ -1,5 +1,5 @@
 <template>
-  <div class="v2-calendar" :class="model.layoutClass">
+  <div class="v2-calendar" :class="widgetClass" :style="model.commonStyle" >
     <el-tabs v-model="selectedMonth">
       <el-tab-pane
         v-for="month in range"

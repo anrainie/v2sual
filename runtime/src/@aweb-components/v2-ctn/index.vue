@@ -58,7 +58,7 @@ export default {
     },
    ctnStyle(){
   
-     return {...this.model.style.divCtn,...this.model.defStyle, ...this.model.customStyle}
+     return {...this.model.style.divCtn,...this.model.defStyle, ...this.model.commonStyle}
    }
   },
   mounted(){

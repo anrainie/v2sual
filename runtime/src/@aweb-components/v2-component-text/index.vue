@@ -1,5 +1,5 @@
 <template>
-  <div :class="model.layoutClass" ref="_op_componentText_text" :contenteditable="model.editable" :style="model.style && model.style.textStyle" v-html="model.text"></div>
+  <div :class="widgetClass"  ref="_op_componentText_text" :contenteditable="model.editable" :style="{...(model.style && model.style.textStyle),...model.commonStyle}" v-html="model.text"></div>
 </template>
 
 <script>
