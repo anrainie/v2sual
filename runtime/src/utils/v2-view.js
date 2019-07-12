@@ -169,6 +169,11 @@ export const widget = {
     if (this.cpttype == 'loopItem') {
       let content;
       let parentModel = this.$store.getters.model(this.pid);
+      if (parentModel == null) {
+        parentModel = this.$parent.$store.getters.model(this.pid);
+      }
+      if (parentModel == null)
+        throw '找不到循环体父组件：' + this.pid;
       content = JSON.parse(JSON.stringify(parentModel));
       content.id = this.wid;
       content.pid = this.pid;
@@ -277,6 +282,9 @@ export const widget = {
   },
   beforeDestroy() {
     this.$store.commit("unbind", this.wid);
+    this.$store.commit("regist.vue", {
+      wid: this.wid
+    });
   }
 }
 /**

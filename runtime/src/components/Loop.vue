@@ -1,5 +1,5 @@
 <template>
-  <div style="display:flex; flex-wrap:wrap;">
+  <div class="v2Loop" style="display:flex; flex-wrap:wrap;">
     <div v-for="(item,key) in loopTarget" :style="loopStyle" :key="key">
       <slot :_item="item" :_key="key"></slot>
     </div>

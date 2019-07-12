@@ -21,7 +21,6 @@ export default {
 
       src = src.replace('"').replace("'");
       if (self.mode === "edit") {
- 
         return `v1/runtime/${src}`;
       } else if (self.mode === "runtime") {
         
