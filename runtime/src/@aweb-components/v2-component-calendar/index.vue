@@ -1,5 +1,5 @@
 <template>
-  <div data-widget-type="aweb4Calendar" class="aweb4-calendar" :class="widgetClass" :style="model.commonStyle" >
+  <div class="v2-calendar" :class="widgetClass" :style="model.commonStyle" >
     <el-tabs v-model="selectedMonth">
       <el-tab-pane
         v-for="month in range"
@@ -28,23 +28,12 @@ const GRIDCOUNT = 42;
 
 export default {
   name: "v2-component-calendar",
-
-  props: {
-    range: {
-      type: [Array],
-      default: [-1, 0, 1]
-    },
-    currentDate: {
-      type: [Date, String],
-      default: new Date()
-    }
-  },
+  computed: {},
   data() {
     return {
-      model:{
-        layoutClass:''
-      },
-      selectedMonth: "",
+      range: [-1, 0, 1],
+      selectedMonth: "1月",
+      currentMonth: 1,
       language: "zh-CN",
       weeks: ["一", "二", "三", "四", "五", "六", "日"],
       months: [
@@ -63,10 +52,22 @@ export default {
       ]
     };
   },
-  created() {
-    this.currentMonth = new Date(this.currentDate).getMonth() + 1;
-    this.selectedMonth = this.genMonthLabel(0);
+  mounted() {
+    // console.log("calendar");
+    // this.currentMonth =
+    //   new Date(typeof this.model.currentDate).getMonth() + 1 || this.currentMonth;
+    // this.selectedMonth = this.genMonthLabel(0);
+    
+    // this.range = typeof this.model.range==='string' || this.range;
   },
+  // watch: {
+  //   model() {
+  //     debugger;
+  //     this.currentMonth = new Date(this.model.currentDate).getMonth() + 1;
+  //     this.selectedMonth = this.genMonthLabel(0);
+  //     this.range = this.model.range || this.range;
+  //   }
+  // },
   methods: {
     formatMonthLabel(month) {
       return this.language.indexOf("zh") !== -1
@@ -78,7 +79,7 @@ export default {
       return this.formatMonthLabel(this.getMonthNum(cursor));
     },
     genMonthDate(cursor) {
-      const date = new Date(this.currentDate);
+      const date = new Date(this.model.currentDate);
       date.setMonth(date.getMonth() + cursor);
       return date;
     },
@@ -160,7 +161,7 @@ export default {
 <style lang="scss">
 @import "../../../element-variables";
 
-.aweb4-calendar {
+.v2-calendar {
   overflow: hidden;
 
   .weekdays {
