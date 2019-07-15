@@ -2,8 +2,20 @@
             module.exports = {
                 baseUrl: './',
                 devServer: {
-                  port: 7007
+                  port: 7009,
+                  proxy: {
+                    //假数据
+                    '/mock':{
+                      target: 'http://localhost:7011',
+                      changeOrigin: true,     // target是域名的话，需要这个参数，
+                      secure: false,          // 设置支持https协议的代理
+                      pathRewrite: {
+                        '/mock': '/'
+                      }
+                    }
+                  },
                 },
+                
                 productionSourceMap: false,
                 filenameHashing: false,
                 css: {
