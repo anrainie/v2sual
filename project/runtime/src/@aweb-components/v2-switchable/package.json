@@ -13,7 +13,7 @@
     "author": "cai.yu@agree.com.cn",
     "version": 510000,
     "accept": "divCtn",
-    "name": "可切换容器",
+    "name": "切换容器",
     "customEditor": "v2EditorSwitch",
     "option": [
       {

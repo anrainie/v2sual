@@ -1,9 +1,8 @@
 <template>
-  <el-row :class="model.layoutClass">
-    <div class="picture">
+ 
+    <div class="picture"  :class="widgetClass" :style="model.commonStyle">
       <img ref="imgComponent" :src="outSrc" :width="model.width" :height="model.height">
     </div>
-  </el-row>
 </template>
 <script>
 export default {
@@ -22,10 +21,10 @@ export default {
 
       src = src.replace('"').replace("'");
       if (self.mode === "edit") {
-        debugger
+ 
         return `v1/runtime/${src}`;
       } else if (self.mode === "runtime") {
-        debugger
+        
         return `./${src}`;
       }
     }
