@@ -31,11 +31,11 @@
           <div>
             <v2Container  v-model="rootId" :style="$store.getters.editorStyle"></v2Container>
             <div
-            v-show="showCustomEditor"
+            v-show="showCustomEditor" class="V2CustomEditor"
             style="position:fixed;background:white;width:100%;height:100%;left:0;top:0;z-index:1000;"
             >
               <div>
-                <el-button @click="closeCustomEditor">退出编辑</el-button>  
+                <el-button size="mini" type="primary" @click="closeCustomEditor">退出编辑</el-button>  
               </div>
               <div ref="customEditorArea" ></div>
             </div>
