@@ -89,7 +89,7 @@ class Preview {
                 if (content.editor) {
                   vueMap[content.editor.name] = path.join(filepath, content.editor.path);
                 }
-              } catch (e) {}
+              } catch (e) { }
             });
           const vueFiles = Object.keys(vueMap).map(n => {
             return {
@@ -230,7 +230,7 @@ class Preview {
       try {
         const html = Buffer.from(fs.readFileSync(config.runtime.homepage)).toString();
 
-        const css = html.match(/<link[^>]+>/g).filter(l => l.indexOf('.css') !== -1).map(e => e.match(/href=([^\s]+)/)).filter(e => !!e).map(e => e[1]);
+        const css = html.match(/<link[^>]+>/g).filter(l => l.indexOf('.css') !== -1 && l.startsWith('//') === false).map(e => e.match(/href=([^\s]+)/)).filter(e => !!e).map(e => e[1]);
 
 
         const content = Array.from(new Set(css)).map(f => fs.readFileSync(path.resolve(path.join(config.runtime.dist, f)).toString()));
@@ -251,7 +251,7 @@ class Preview {
 
         platform.sendSuccessResult(req, js);
       } catch (e) {
-        console.error(e)
+       // console.error(e)
         platform.sendErrorResult(req, e.message || e);
       }
     }
