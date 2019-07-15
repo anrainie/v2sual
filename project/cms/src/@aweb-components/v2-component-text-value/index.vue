@@ -1,5 +1,5 @@
 <template>
-  <div :class="model.layoutClass">
+  <div :class="widgetClass" :style="model.commonStyle">
       <div :style="model.style.ctn" class="v2-text-value-item">
 
         <i :style="model.style.value" v-if="model.type==='icon'" :class="model.value"></i>

@@ -1,6 +1,6 @@
 <template>
-  <div class="v2-form-ctt v2-mobile-radio" :class="model.layoutClass">
-      <van-radio-group v-model="model.value">
+
+      <van-radio-group v-model="model.value" :class="widgetClass"  :style="model.commonStyle" >
       <van-radio 
       v-for="(item,index) in model.list" 
       :key="index" 
@@ -11,7 +11,7 @@
       :checked-color="item.checkedColor"
       >{{item.text}}</van-radio>
     </van-radio-group>
-  </div>
+ 
 </template>
 
 <script>

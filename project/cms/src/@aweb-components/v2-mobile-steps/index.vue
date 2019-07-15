@@ -1,6 +1,7 @@
 <template>
-  <div class="v2-form-ctt v2-mobile-steps" :class="model.layoutClass">
+
     <van-steps 
+    :class="widgetClass"  :style="model.commonStyle" 
     :active="parseInt(model.active)"
     :direction="model.direction"
     :activeColor="model.activeColor"
@@ -9,7 +10,7 @@
     >
       <van-step v-for="(item,index) in model.list" :key="index">{{item.value}}</van-step>
     </van-steps>
-  </div>
+
 </template>
 
 <script>

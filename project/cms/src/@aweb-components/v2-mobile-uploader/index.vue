@@ -1,10 +1,11 @@
 <template>
-  <div class="v2-form-ctt v2-mobile-uploader" :class="model.layoutClass">
+ 
     <van-uploader 
+     :class="widgetClass"  :style="model.commonStyle" 
      v-model="fileList" 
      :max-count="parseInt(model.maxCount)"
      multiple />
-  </div>
+ 
 </template>
 
 <script>
