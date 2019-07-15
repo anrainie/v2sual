@@ -11,7 +11,8 @@ let serverHost,
   _base,
   _pipe,
   socketPath,
-  publickPort;
+  publickPort,
+  preview;
 process.argv.forEach((p, index) => {
   let c;
   if ((c = p.indexOf('=')) != -1) {
@@ -47,6 +48,8 @@ process.argv.forEach((p, index) => {
         break;
       case 'pp':
         publickPort = val;
+      case 'preview':
+        preview = val;
     }
   }
 });
@@ -62,7 +65,7 @@ const customWidget = path.resolve(base, config.runtime.customWidget);
 const dist = path.resolve(base, config.runtime.dist);
 const homepage = path.resolve(dist, config.runtime.homepage);
 
-
+console.log('base', base);
 
 
 //根据部署环境，指定连接主机
@@ -73,13 +76,15 @@ const webide = {
   clientPort: clientPort || config.webide.clientPort, //V2sual 对外端口
   path: socketPath || config.webide.path, //Socket.io 在 Ngnix 映射
   publicPort: publickPort || config.webide.publicPort //公网的socket 的 port
+
 };
 
 const server = {
   ...config.server,
   id: clientId || config.server.id,
   name: clientName || clientId || config.server.id,
-  port: clientPort || config.server.port
+  port: clientPort || config.server.port,
+  preview: preview || config.webide.preview//预览地址
 }
 
 

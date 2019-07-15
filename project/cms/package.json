@@ -5,12 +5,14 @@
     "author": "zhanghaixian@agree.com.cn",
     "description": "pc端Vue版SPA",
     "scripts": {
+        "style": "vue-cli-service build --no-clean",
+        "component": "vue build -t lib -d v2sual ./src/@aweb-components/aweb.components.js",
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint",
+        "theme": "et",
         "mock": "node ./server.js",
-        "buildP": "node ./build-page.js",
-        "theme": "et"
+        "buildP": "node ./build-page.js"
     },
     "dependencies": {
         "animate.css": "^3.7.2",

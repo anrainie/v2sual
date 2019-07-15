@@ -70,7 +70,8 @@ if (config && config.projects && config.projects.length) {
             base: p.base,
             pipe: p.pipe,
             socket: p.socketPath,
-            pp: p.publicPort
+            pp: p.publicPort,
+            preview:p.preview
         };
         const cmd=`node ./server/server.js ` + Object.keys(params).filter(k => !!params[k]).map(key => `${key}=${params[key]}`).join(' ');
 

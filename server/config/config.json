@@ -3,15 +3,16 @@
         "id": 123123,
         "type": "v2sual",
         "port": 3000,
-        "host": "localhost"
+        "host": "localhost",
+        "preview": "http://localhost:7007"
     },
     "webide": {
         "port": 7003,
         "host": "http://localhost",
         "clientPort": 3000,
         "clientHost": "localhost",
-        "path":"/socket.io",
-        "publicPort":7003
+        "path": "/socket.io",
+        "publicPort": 7003
     },
     "runtime": {
         "base": "./runtime",

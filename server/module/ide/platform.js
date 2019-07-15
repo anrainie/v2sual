@@ -20,8 +20,9 @@ class Platform {
     let publicPort = config.webide.publicPort || 0;
     let id = config.server.id;
     let name = config.server.name || id;
+    let preview = config.server.preview;
 
-    let url = `${ip}${publicPort != 0 ? `:${publicPort}` : ''}?server=true&id=${id}&type=${ideType}&httpPort=${selfPort}&ip=${selfIP}&name=${name}`;
+    let url = `${ip}${publicPort != 0 ? `:${publicPort}` : ''}?server=true&id=${id}&type=${ideType}&httpPort=${selfPort}&ip=${selfIP}&name=${name}&preview=${preview}`;
     console.log(`尝试连接${url}`);
     try {
       this.socket = io(url, {

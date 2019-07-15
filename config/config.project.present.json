@@ -9,6 +9,7 @@
         "base":"./runtime",
         "pipe":"../pipe/src/main/webapp/plugins",
         "socketPath":"/v2sual-socket/socket.io",
-        "publicPort":"0"
+        "publicPort":"0",
+        "preview":"https://vue.awebide.com"
     }]
 }
