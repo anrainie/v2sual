@@ -712,9 +712,8 @@ export default {
     // }
 
     .aweb-ctt {
-      // width: $--main-width;
-      // margin: 0 auto;
-      // min-height: calc(100vh - 210px);
+       height: 100%;
+      width: 100%;
     }
   }
 
