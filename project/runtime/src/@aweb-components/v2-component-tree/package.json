@@ -19,7 +19,9 @@
         "type": "variable_input",
         "name": "configs",
         "defaultValue": "",
-        "desp": "节点数据"
+        "desp": "节点数据",
+        "placeholder":"填写一个数组",
+        "detail":"格式建议:[{label:'项目名',children:[...]},...]"
       },
       {
         "type":"object",
