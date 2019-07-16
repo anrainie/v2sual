@@ -131,6 +131,8 @@ body {
   border-color: transparent transparent #e5e5e5 transparent;
 }
 
+
+
 .V2ToolbarMenu.v2-layout-option {
   width: 88px;
   height: 80px;
@@ -234,6 +236,18 @@ body {
   left: 0;
   z-index: 7;
   font-size: .5rem;
+  background: lightblue;
+}
+.V2Switchable{
+  
+}
+.V2Switchable:after {
+  content: "[切换容器]";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 7;
+  font-size: 0.5rem;
   background: lightblue;
 }
 
