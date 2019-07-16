@@ -227,6 +227,11 @@ let toCode = function (logic) {
           obj = logic.methods[k];
           arr = obj.labelObj.view.map(item => {
             res = item.name;
+            if (item.value[0] && item.value[0].mode === "custom") {
+              return `\f \f \f  const ${res} = ${self.transViewCode(
+                item.value[0]
+              )}`;
+            }
             return `const ${res} = await ${self.transViewCode(item.value[0])}`;
           });
           outRes = obj.labelObj.output.map(item => {
@@ -253,6 +258,11 @@ let toCode = function (logic) {
           obj = logic.watch[k];
           arr = obj.labelObj.view.map(item => {
             res = item.name;
+            if (item.value[0] && item.value[0].mode === "custom") {
+              return `\f \f \f  const ${res} = ${self.transViewCode(
+                item.value[0]
+              )}`;
+            }
             return `const ${res} = await ${self.transViewCode(item.value[0])}`;
           });
           outRes = obj.labelObj.output.map(item => {
@@ -276,6 +286,11 @@ let toCode = function (logic) {
         if (obj.labelObj) {
           arr = obj.labelObj.view.map(item => {
             res = item.name;
+            if (item.value[0] && item.value[0].mode === "custom") {
+              return `\f \f \f  const ${res} = ${self.transViewCode(
+                item.value[0]
+              )}`;
+            }
             return `const ${res} = await ${self.transViewCode(item.value[0])}`;
           });
           outRes = obj.labelObj.output.map(item => {
@@ -305,6 +320,11 @@ let toCode = function (logic) {
         if (obj.labelObj) {
           arr = obj.labelObj.view.map(item => {
             res = item.name;
+            if (item.value[0] && item.value[0].mode === "custom") {
+              return `\f \f \f  const ${res} = ${self.transViewCode(
+                item.value[0]
+              )}`;
+            }
             return `const ${res} = await ${self.transViewCode(item.value[0])}`;
           });
           outRes = obj.labelObj.output.map(item => {
@@ -335,6 +355,11 @@ let transToPoll = function (pollList) {
   return pollList.map(pollItem => {
     arr = pollItem.labelObj.view.map(item => {
       res = item.name;
+      if (item.value[0] && item.value[0].mode === "custom") {
+        return `\f \f \f  const ${res} = ${self.transViewCode(
+          item.value[0]
+        )}`;
+      }
       return `\f \f \f const ${res} = await ${self.transViewCode(item.value[0])}`;
     });
     outRes = pollItem.labelObj.output.map(item => {
