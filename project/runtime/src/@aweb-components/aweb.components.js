@@ -81,8 +81,7 @@ import open  from '../../../pipe/src/main/webapp/plugins/app.open'
 	v2ComponentTable,
 	v2ComponentText,
 	v2ComponentTextValue,
-	v2Ctn,
-	v2CtnEditor,
+
 	v2EchartBar,
 	v2FormCheckbox,
 	v2ComponentTree,

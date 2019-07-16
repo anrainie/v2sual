@@ -83,8 +83,6 @@ export default {
 	v2ComponentText,
 	v2ComponentTabs,
 	v2ComponentTextValue,
-	v2Ctn,
-	v2CtnEditor,
 	v2ComponentTree,
 	v2EchartLine,
 	v2FormCascader,
