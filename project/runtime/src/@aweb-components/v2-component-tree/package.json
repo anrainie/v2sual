@@ -16,7 +16,7 @@
     "name": "树",
     "option": [
       {
-        "type": "string_input",
+        "type": "variable_input",
         "name": "configs",
         "defaultValue": "",
         "desp": "节点数据"
