@@ -91,12 +91,6 @@
       "defaultValue": "",
       "disabled": true,
       "desp": "表格数据"
-    },
-    {
-      "type": "string_input",
-      "name": "selectedRow",
-      "defaultValue": "",
-      "desp": "选中行"
     }
   ]
   },
