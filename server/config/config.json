@@ -133,16 +133,6 @@
                     "v1/ds/": ""
                 },
                 "logLevel": "debug"
-            },
-            {
-                "name": "预览",
-                "source": "/preview",
-                "target": "http://localhost:7007/",
-                "changeOrigin": true,
-                "pathRewrite": {
-                    "v1/ds/preview": ""
-                },
-                "logLevel": "debug"
             }
         ]
     }
