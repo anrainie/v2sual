@@ -11,7 +11,7 @@
     "type": "mobile",
     "href": "v2-mobile-input",
     "author": "fengjiarong@agree.com.cn",
-    "version": 510000,
+    "version": 610000,
     "accept": "foundationRowCtn divCtn",
     "name": "输入框",
     "option": [
@@ -125,6 +125,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.4",
+  "version": "6.0.0",
   "index":20000010
 }

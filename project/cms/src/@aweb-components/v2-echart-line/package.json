@@ -11,7 +11,7 @@
     "type": "echart",
     "href": "v2-echart-line",
     "author": "zhanghaixian@agree.com.cn",
-    "version": 510000,
+    "version": 610000,
     "accept": "divCtn",
     "name": "折线图",
     "option": [{
@@ -1318,6 +1318,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.4",
+  "version": "6.0.0",
   "index":31000003
 }

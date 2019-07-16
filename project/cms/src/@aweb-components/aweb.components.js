@@ -12,8 +12,7 @@ import v2ComponentTable from './v2-component-table/index.vue';
 import v2ComponentText from './v2-component-text/index.vue';
 import v2ComponentTabs from './v2-component-tabs/index.vue';
 import v2ComponentTextValue from './v2-component-text-value/index.vue';
-import v2Ctn from './v2-ctn/index.vue';
-import v2CtnEditor from './v2-ctn/editor.vue';
+
 import v2ComponentTree from './v2-component-tree/index.vue';
 import v2EchartLine from './v2-echart-line/index.vue';
 import v2FormCascader from './v2-form-cascader/index.vue';
