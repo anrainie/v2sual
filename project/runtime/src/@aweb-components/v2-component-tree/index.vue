@@ -1,7 +1,7 @@
 <template>
  
     <div :class="widgetClass" :style="{...(model.style && model.style.treeWarpStyle),...model.commonStyle}">
-      <el-tree :data="model.configs||[]" :props="model.defaultProps"  ref="_op_componentTree_tree"
+      <el-tree :data="configs" :props="model.defaultProps"  ref="_op_componentTree_tree"
       :show-checkbox="model.showCheckbox"
       :node-key="model.nodeKey||null"
       :default-expanded-keys="model.defExpanded||[]"
@@ -21,6 +21,11 @@ export default {
     };
   },
   computed: {
+    configs(){
+      if(this.model.configs&&this.model.configs.constructor==Array)
+        return this.model.configs;
+      return [];
+    },
     extraClass() {
       return this.error ? "echart-error" : "echart-normal";
     }
