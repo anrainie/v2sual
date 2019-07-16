@@ -1,37 +1,6 @@
 <template>
   <div class="commonSet-content v2-custom-el">
-    <div class="item-box">
-      <el-row>
-        <el-col :span="6" class="slider-text-item">
-          <span>不透明度&nbsp;:</span>
-        </el-col>
-
-        <el-col :span="13">
-          <el-slider v-model="opacity" :max="100" :min="5"></el-slider>
-        </el-col>
-
-        <el-col :span="4">
-          <el-input class="custom-el-input" v-model="opacity"></el-input>
-        </el-col>
-      </el-row>
-    </div>
-
-    <div class="item-box">
-      <el-row>
-        <el-col :span="6" class="slider-text-item">
-          <span class>圆角:</span>
-        </el-col>
-
-        <el-col :span="13">
-          <el-slider v-model="radius" :max="100" :min="0"></el-slider>
-        </el-col>
-
-        <el-col :span="4">
-          <el-input class="custom-el-input" v-model="radius"></el-input>
-        </el-col>
-      </el-row>
-    </div>
-          <!-- <div class="item-box">
+      <div class="item-box">
       <el-row>
         <el-col :span="6" class="slider-text-item">
           <span>定位:</span>
@@ -66,7 +35,39 @@
           <input type="text" v-model="eModel.customStyle['right']">
         </div>
       </div>
-    </div> -->
+    </div>
+
+    <div class="item-box">
+      <el-row>
+        <el-col :span="6" class="slider-text-item">
+          <span>不透明度&nbsp;:</span>
+        </el-col>
+
+        <el-col :span="13">
+          <el-slider v-model="opacity" :max="100" :min="5"></el-slider>
+        </el-col>
+
+        <el-col :span="4">
+          <el-input class="custom-el-input" v-model="opacity"></el-input>
+        </el-col>
+      </el-row>
+    </div>
+
+    <div class="item-box">
+      <el-row>
+        <el-col :span="6" class="slider-text-item">
+          <span class>圆角:</span>
+        </el-col>
+
+        <el-col :span="13">
+          <el-slider v-model="radius" :max="100" :min="0"></el-slider>
+        </el-col>
+
+        <el-col :span="4">
+          <el-input class="custom-el-input" v-model="radius"></el-input>
+        </el-col>
+      </el-row>
+    </div>
 
     <div class="item-box">
       <el-row>
@@ -274,7 +275,7 @@
       </div>
     </div>
 
-    <!-- <div class="background-item mar-bot">
+ <div class=" item-box background-item mar-bot">
       <span class="subtitle displayI">背景</span>
       <el-radio-group v-model="eModel.def.defbackgroundStyle">
         <el-radio :label="true" @change="restore(['background-color','background-image'])">默认</el-radio>
@@ -299,28 +300,19 @@
             v-model="eModel.customStyle['background-color']"
             alpha
           ></color-picker>
-    <!-- <el-color-picker v-model="eModel.customStyle['background-color']"></el-color-picker>-->
-    <!-- <span class="well-number displayI">#</span> -->
-    <!-- <input
-            type="text"
-            v-model="eModel.customStyle['background-color']"
-            class="time-number input-set"
-    >-->
-    <!-- </div> -->
-    <!-- <div class="pic-item">
-              <span class="subtitle displayI"></span>
-              <span class="self-subtitle pic-text">图片&nbsp;:</span>
-              <div @click="selectImage" class="pic-add-box pointer" :style="{'background-image':eModel.customStyle['background-image']}">
-                  <p class="add-symbol " style="font-size:40px;text-align:center;line-height:46px">+</p>
-                  <p class="add-text " style="font-size:14px;text-align:center;">添加图片</p>
-              </div>
-              <el-row v-if="eModel.customStyle['background-image']" style="height:40px;">
-                  <el-button style="margin-top:5px;right:60px;position: absolute;" size="mini" type="danger" @click="clearImage">清空</el-button>
-              </el-row>
-    </div>-->
-    <!-- </div>
-    </div>-->
+        <!-- <el-color-picker v-model="eModel.customStyle['background-color']"></el-color-picker> -->
+        <span class="well-number displayI">#</span> 
+          <input
+                  type="text"
+                  v-model="eModel.customStyle['background-color']"
+                  class="time-number input-set"
+          >
+  
+
+   </div>
+    </div>
   </div>
+   </div>
 </template>
 <script>
 export default {

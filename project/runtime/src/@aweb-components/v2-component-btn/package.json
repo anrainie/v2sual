@@ -11,7 +11,7 @@
     "type": "component",
     "href": "v2-component-btn",
     "author": "zhanghaixian@agree.com.cn",
-    "version": 510000,
+    "version": 610000,
     "accept": "divCtn",
     "name": "按钮",
     "option": [ {
@@ -53,11 +53,6 @@
       	    "desp": "按钮",
       	    "cssAttrs": "background-color width height color",
       	    "name": "btnStyle"
-      	  },
-      	  {
-      	    "desp": "按钮容器",
-      	    "cssAttrs": "margin margin-top margin-right margin-bottom margin-left padding padding-top padding-right padding-bottom padding-left",
-      	    "name": "btnWrapStyle"
       	  }
       	],
       	"theme": [{
@@ -100,6 +95,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.4",
+  "version": "6.0.0",
   "index":30000001
 }

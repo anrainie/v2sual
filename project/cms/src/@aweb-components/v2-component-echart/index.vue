@@ -1,10 +1,10 @@
 <template>
   <div>
     <div
-      :class="[model.layoutClass]"
+      :class="widgetClass" 
       class="chart-content"
       ref="_op_componentEchart_chart"
-      :style="warpStyle"
+       :style="{...this.model.style.chartWarpStyle,...(this.model.commonStyle||{})}"
     ></div>
     <div class="chart-tips" v-if="error">
       <p>本组件使用echart配置</p>
@@ -32,18 +32,6 @@ export default {
     };
   },
   computed: {
-    warpStyle() {
-      if (this.model.style && this.model.style.chartWarpStyle) {
-        // !this.model.style.chartWarpStyle.width &&
-        //   (this.model.style.chartWarpStyle.width = "300px");
-        // !this.model.style.chartWarpStyle.height &&
-        //   (this.model.style.chartWarpStyle.height = "300px");
-
-        return this.model.style.chartWarpStyle;
-      } else {
-        return { width: "300px", height: "300px" };
-      }
-    },
     extraClass() {
       return this.error ? "echart-error" : "echart-normal";
     }

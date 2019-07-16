@@ -4,16 +4,16 @@
   },
   "bundleDependencies": false,
   "deprecated": false,
-  "description": "加载页面",
+  "description": "页面容器",
   "docs": {
     "belongTo": "aui",
     "icon": "icontubiao",
     "type": "component",
     "href": "v2-page",
     "author": "zhanghaixian@agree.com.cn",
-    "version": 510000,
+    "version": 610000,
     "accept": "divCtn",
-    "name": "加载页面",
+    "name": "页面容器",
     "option": [
       {
         "type": "string_input",
@@ -45,6 +45,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.4",
+  "version": "6.0.0",
   "index":30000005
 }

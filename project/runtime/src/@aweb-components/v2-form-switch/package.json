@@ -11,7 +11,7 @@
     "type": "form",
     "href": "v2-form-switch",
     "author": "fengjiarong@agree.com.cn",
-    "version": 510000,
+    "version": 610000,
     "accept": "foundationRowCtn divCtn",
     "name": "开关",
     "option": [
@@ -93,6 +93,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.4",
+  "version": "6.0.0",
   "index":20000003
 }

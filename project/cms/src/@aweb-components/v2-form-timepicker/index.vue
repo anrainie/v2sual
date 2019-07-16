@@ -1,5 +1,5 @@
 <template>
-  <div class="v2-form-ctt v2-form-timePicker" :class="model.layoutClass">
+  <div class="v2-form-ctt v2-form-timePicker" :class="widgetClass" :style="model.commonStyle">
     <label
       :class="model.titleMode ==='row'?'v2-form-label':'v2-form-label form-label-col'"
       :style="labelStyle"

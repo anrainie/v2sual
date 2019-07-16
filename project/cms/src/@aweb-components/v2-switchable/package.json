@@ -11,9 +11,9 @@
     "type": "component",
     "href": "v2-switchable",
     "author": "cai.yu@agree.com.cn",
-    "version": 510000,
+    "version": 610000,
     "accept": "divCtn",
-    "name": "可切换容器",
+    "name": "切换容器",
     "customEditor": "v2EditorSwitch",
     "option": [
       {
@@ -43,6 +43,6 @@
     "path": "switchEditor.vue",
     "name": "v2EditorSwitch"
   },
-  "version": "6.0.4",
+  "version": "6.0.0",
   "index": 30000005
 }

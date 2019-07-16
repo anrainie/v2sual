@@ -1,6 +1,6 @@
 <template>
-  <div :style="model.style" ref="wrap" :class="model.layoutClass">
-   <div class="table-wrapper"  >
+  <div >
+   <div class="table-wrapper" :style="model.commonStyle"  :class="widgetClass" >
        <div class="table-tool-ctn">
            <el-form ref="form" label-width="100px">
 <el-row :gutter="20">

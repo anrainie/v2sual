@@ -1,6 +1,5 @@
 <template>
-  <div class="v2-form-ctt v2-mobile-input" :class="model.layoutClass">
-    <van-cell-group>
+    <van-cell-group  :class="widgetClass"  :style="model.commonStyle" >
       <van-field
         v-model="model.value"
         :placeholder="model.placeholder"
@@ -17,7 +16,7 @@
       >{{model.buttonText}}</van-button>
       </van-field>
       </van-cell-group>
-  </div>
+
 </template>
 
 <script>

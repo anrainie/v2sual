@@ -1,5 +1,5 @@
 <template>
-  <div :class="model.layoutClass" :style="iWarpStyle">
+  <div :style="iWarpStyle"  :class="widgetClass" >
     <i ref="_op_componentIcon_icon" :class="model.icon?model.icon:'fa fa-user-o'" :style="model.style.iStyle"></i>
   </div>
 </template>
@@ -16,15 +16,8 @@
     },
     computed:{
       iWarpStyle(){
-        if(this.model.style && this.model.style.iWarpStyle){
-          
-          !this.model.style.iWarpStyle.width && (this.model.style.iWarpStyle.width = "40px");
-          !this.model.style.iWarpStyle.height && (this.model.style.iWarpStyle.height = "40px");
-          return this.model.style.iWarpStyle;
-
-        }else{
-          return {'width':'40px','height':'40px'}
-        }
+    
+          return {...this.model.style.iWarpStyle,...(this.model.commonStyle||{})}
         
       }
     },

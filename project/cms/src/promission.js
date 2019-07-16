@@ -110,6 +110,33 @@ router.beforeEach((to, from, next) => {
     });
     router.addRoutes(router.options.routes);
   }
+  let urlParam = window.location.hash.split('?')[1];
+  let routes = router.options.routes;
+  
+  if (wpath && urlParam && urlParam.indexOf('IDE') !== -1) {
+    if (!routes.filter(r => r.type === 'preview').length) {
+      console.log('预览页面路径', wpath);
+
+      routes.push({
+        path: '/',
+        type: 'preview',
+        component: Layout,
+        replace: true,
+        children: [{
+          path: '/' + wpath,
+          replace: true,
+          component: _import(wpath),
+          meta: {
+            title: '预览',
+            type: 'preview'
+          }
+        }]
+      });
+
+      router.addRoutes(routes);
+
+    }
+  }
 
   if (!global.antRouter) {
     router.options.routes.push(...mainRouter);

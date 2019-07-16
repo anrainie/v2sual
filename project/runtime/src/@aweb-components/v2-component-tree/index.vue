@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div :class="[model.layoutClass]" :style="model.style && model.style.treeWarpStyle">
+ 
+    <div :class="widgetClass" :style="{...(model.style && model.style.treeWarpStyle),...model.commonStyle}">
       <el-tree :data="model.configs||[]" :props="model.defaultProps"  ref="_op_componentTree_tree"
       :show-checkbox="model.showCheckbox"
       :node-key="model.nodeKey||null"
@@ -8,7 +8,7 @@
       :default-checked-keys="model.defChecked||[]"
       ></el-tree>
     </div>
-  </div>
+
 </template>
 <script>
 

@@ -10,7 +10,7 @@
     "type": "component",
     "href": "v2-component-text-value",
     "author": "wubingyu@agree.com.cn",
-    "version": 510000,
+    "version": 610000,
     "accept": "divCtn",
     "name": "文本值",
     "option": [
@@ -70,6 +70,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.4",
+  "version": "6.0.0",
   "index":30000006
 }

@@ -225,7 +225,7 @@ export const widget = {
             }
           }
         }
-      };
+      }
       this.$forceUpdate();
       // console.log('Mount',this.wid,this.model.value);
 
@@ -264,6 +264,9 @@ export const widget = {
         width: this.model.labelWitdh,
         ...(this.model.style ? this.model.style.label : {})
       };
+    },
+    widgetClass(){
+      return [...((this.model && this.model.layoutClass)||[]),...((this.model && this.model.customClass)||[])]
     },
     parent() {
       return this.$store.getters.model(this.parentId);

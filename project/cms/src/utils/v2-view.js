@@ -225,7 +225,7 @@ export const widget = {
             }
           }
         }
-      };
+      }
       this.$forceUpdate();
       // console.log('Mount',this.wid,this.model.value);
 
@@ -270,7 +270,10 @@ export const widget = {
     },
     wrapClass() {
       return {}
-    },
+    }, 
+     widgetClass(){
+      return [...((this.model && this.model.layoutClass)||[]),...((this.model && this.model.customClass)||[])]
+    }
   },
   beforeDestroy() {
     this.$store.commit("unbind", this.wid);

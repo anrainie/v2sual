@@ -1,6 +1,6 @@
 <template>
-  <el-row :class="model.layoutClass">
-    <el-card>
+  <!-- <el-row > -->
+    <el-card :class="widgetClass"  :style="model.commonStyle">
       <div slot="header" class="clearfix" :style="model.style.cardHeader">
         <span>{{model.cardName}}</span>
         <el-button
@@ -13,17 +13,8 @@
       <!-- <div v-for="o in 4" :key="o" class="text item">{{'列表内容 ' + o }}</div> -->
     </el-card>
 
-    <!-- <el-button
-      ref="_op_componentBtn_btn"
-      :style="model.style && model.style.btnStyle"
-      :type="model.btnType"
-      :plain="shapMap['plain']"
-      :circle="shapMap['circle']"
-      :round="shapMap['round']"
-      :loading="model.loading"
-      :disabled="model.disabled"
-    >{{model.btnName}}</el-button> -->
-  </el-row>
+
+  <!-- </el-row> -->
 </template>
 <script>
 export default {
@@ -31,26 +22,11 @@ export default {
 
   data() {
     return {
-      // shapMap: {
-      //   plain: false,
-      //   circle: false,
-      //   round: false
-      // }
+
     };
   },
   watch: {
-    // "model.shape": {
-    //   immediate: true,
-    //   handler: function(val) {
-    //     let newshape = {
-    //       plain: false,
-    //       circle: false,
-    //       round: false
-    //     };
-    //     newshape[val] = true;
-    //     this.shapMap = newshape;
-    //   }
-    // }
+
   }
 };
 </script>
