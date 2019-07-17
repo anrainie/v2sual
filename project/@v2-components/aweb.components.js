@@ -41,17 +41,17 @@ import v2Page  from './v2-page/index.vue';
 import v2Switchable  from './v2-switchable/index.vue';
 import v2EditorSwitch  from './v2-switchable/switchEditor.vue'
 
-          import $get  from '../../../pipe/src/main/webapp/plugins/app.$get';
-import $post  from '../../../pipe/src/main/webapp/plugins/app.$post';
-import animate  from '../../../pipe/src/main/webapp/plugins/app.animate';
-import animateKill  from '../../../pipe/src/main/webapp/plugins/app.animateKill';
-import close  from '../../../pipe/src/main/webapp/plugins/app.close';
-import get  from '../../../pipe/src/main/webapp/plugins/app.get';
-import getAfaData  from '../../../pipe/src/main/webapp/plugins/app.getAfaData';
-import getExcelData  from '../../../pipe/src/main/webapp/plugins/app.getExcelData';
-import gt  from '../../../pipe/src/main/webapp/plugins/app.gt';
-import map  from '../../../pipe/src/main/webapp/plugins/app.map';
-import open  from '../../../pipe/src/main/webapp/plugins/app.open'
+          import $get  from '../pipe/src/main/webapp/plugins/app.$get';
+import $post  from '../pipe/src/main/webapp/plugins/app.$post';
+import animate  from '../pipe/src/main/webapp/plugins/app.animate';
+import animateKill  from '../pipe/src/main/webapp/plugins/app.animateKill';
+import close  from '../pipe/src/main/webapp/plugins/app.close';
+import get  from '../pipe/src/main/webapp/plugins/app.get';
+import getAfaData  from '../pipe/src/main/webapp/plugins/app.getAfaData';
+import getExcelData  from '../pipe/src/main/webapp/plugins/app.getExcelData';
+import gt  from '../pipe/src/main/webapp/plugins/app.gt';
+import map  from '../pipe/src/main/webapp/plugins/app.map';
+import open  from '../pipe/src/main/webapp/plugins/app.open';
 
           let app = {
             $get,

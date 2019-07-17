@@ -114,11 +114,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -241,11 +240,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-loading-parent--relative {
   position: relative !important; }
 
@@ -278,7 +276,7 @@
   text-align: center;
   position: absolute; }
   .el-loading-spinner .el-loading-text {
-    color: #08b55c;
+    color: #409EFF;
     margin: 3px 0;
     font-size: 14px; }
   .el-loading-spinner .circular {
@@ -292,10 +290,10 @@
     stroke-dasharray: 90, 150;
     stroke-dashoffset: 0;
     stroke-width: 2;
-    stroke: #08b55c;
+    stroke: #409EFF;
     stroke-linecap: round; }
   .el-loading-spinner i {
-    color: #08b55c; }
+    color: #409EFF; }
 
 .el-loading-fade-enter,
 .el-loading-fade-leave-active {

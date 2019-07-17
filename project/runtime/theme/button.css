@@ -112,11 +112,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Element Chalk Variables */
 /* Transition
 -------------------------- */
@@ -231,11 +230,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* BEM support Func
  -------------------------- */
 /* Element Chalk Variables */
@@ -352,11 +350,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -394,12 +391,12 @@
   .el-button.is-round {
     padding: 12px 20px; }
   .el-button:hover, .el-button:focus {
-    color: #08b55c;
-    border-color: #b5e9ce;
-    background-color: #e6f8ef; }
+    color: #409EFF;
+    border-color: #c6e2ff;
+    background-color: #ecf5ff; }
   .el-button:active {
-    color: #07a353;
-    border-color: #07a353;
+    color: #3a8ee6;
+    border-color: #3a8ee6;
     outline: none; }
   .el-button::-moz-focus-inner {
     border: 0; }
@@ -407,16 +404,16 @@
     margin-left: 5px; }
   .el-button.is-plain:hover, .el-button.is-plain:focus {
     background: #FFFFFF;
-    border-color: #08b55c;
-    color: #08b55c; }
+    border-color: #409EFF;
+    color: #409EFF; }
   .el-button.is-plain:active {
     background: #FFFFFF;
-    border-color: #07a353;
-    color: #07a353;
+    border-color: #3a8ee6;
+    color: #3a8ee6;
     outline: none; }
   .el-button.is-active {
-    color: #07a353;
-    border-color: #07a353; }
+    color: #3a8ee6;
+    border-color: #3a8ee6; }
   .el-button.is-disabled, .el-button.is-disabled:hover, .el-button.is-disabled:focus {
     color: #C0C4CC;
     cursor: not-allowed;
@@ -450,42 +447,42 @@
     padding: 12px; }
   .el-button--primary {
     color: #FFFFFF;
-    background-color: #08b55c;
-    border-color: #08b55c; }
+    background-color: #409EFF;
+    border-color: #409EFF; }
     .el-button--primary:hover, .el-button--primary:focus {
-      background: #39c47d;
-      border-color: #39c47d;
+      background: #66b1ff;
+      border-color: #66b1ff;
       color: #FFFFFF; }
     .el-button--primary:active {
-      background: #07a353;
-      border-color: #07a353;
+      background: #3a8ee6;
+      border-color: #3a8ee6;
       color: #FFFFFF;
       outline: none; }
     .el-button--primary.is-active {
-      background: #07a353;
-      border-color: #07a353;
+      background: #3a8ee6;
+      border-color: #3a8ee6;
       color: #FFFFFF; }
     .el-button--primary.is-disabled, .el-button--primary.is-disabled:hover, .el-button--primary.is-disabled:focus, .el-button--primary.is-disabled:active {
       color: #FFFFFF;
-      background-color: #84daae;
-      border-color: #84daae; }
+      background-color: #a0cfff;
+      border-color: #a0cfff; }
     .el-button--primary.is-plain {
-      color: #08b55c;
-      background: #e6f8ef;
-      border-color: #9ce1be; }
+      color: #409EFF;
+      background: #ecf5ff;
+      border-color: #b3d8ff; }
       .el-button--primary.is-plain:hover, .el-button--primary.is-plain:focus {
-        background: #08b55c;
-        border-color: #08b55c;
+        background: #409EFF;
+        border-color: #409EFF;
         color: #FFFFFF; }
       .el-button--primary.is-plain:active {
-        background: #07a353;
-        border-color: #07a353;
+        background: #3a8ee6;
+        border-color: #3a8ee6;
         color: #FFFFFF;
         outline: none; }
       .el-button--primary.is-plain.is-disabled, .el-button--primary.is-plain.is-disabled:hover, .el-button--primary.is-plain.is-disabled:focus, .el-button--primary.is-plain.is-disabled:active {
-        color: #6bd39d;
-        background-color: #e6f8ef;
-        border-color: #cef0de; }
+        color: #8cc5ff;
+        background-color: #ecf5ff;
+        border-color: #d9ecff; }
   .el-button--success {
     color: #FFFFFF;
     background-color: #67C23A;
@@ -664,16 +661,16 @@
       padding: 7px; }
   .el-button--text {
     border-color: transparent;
-    color: #08b55c;
+    color: #409EFF;
     background: transparent;
     padding-left: 0;
     padding-right: 0; }
     .el-button--text:hover, .el-button--text:focus {
-      color: #39c47d;
+      color: #66b1ff;
       border-color: transparent;
       background-color: transparent; }
     .el-button--text:active {
-      color: #07a353;
+      color: #3a8ee6;
       border-color: transparent;
       background-color: transparent; }
     .el-button--text.is-disabled, .el-button--text.is-disabled:hover, .el-button--text.is-disabled:focus {

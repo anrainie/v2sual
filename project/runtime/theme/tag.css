@@ -114,11 +114,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -241,21 +240,20 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-tag {
-  background-color: #e6f8ef;
-  border-color: #cef0de;
-  color: #08b55c;
+  background-color: #ecf5ff;
+  border-color: #d9ecff;
+  color: #409eff;
   display: inline-block;
   height: 32px;
   padding: 0 10px;
   line-height: 30px;
   font-size: 12px;
-  color: #08b55c;
+  color: #409EFF;
   border-width: 1px;
   border-style: solid;
   border-radius: 4px;
@@ -263,12 +261,12 @@
   box-sizing: border-box;
   white-space: nowrap; }
   .el-tag.is-hit {
-    border-color: #08b55c; }
+    border-color: #409EFF; }
   .el-tag .el-tag__close {
-    color: #08b55c; }
+    color: #409eff; }
     .el-tag .el-tag__close:hover {
       color: #FFFFFF;
-      background-color: #08b55c; }
+      background-color: #409eff; }
   .el-tag.el-tag--info {
     background-color: #f4f4f5;
     border-color: #e9e9eb;
@@ -328,16 +326,16 @@
     .el-tag .el-icon-close::before {
       display: block; }
   .el-tag--dark {
-    background-color: #08b55c;
-    border-color: #08b55c;
+    background-color: #409eff;
+    border-color: #409eff;
     color: white; }
     .el-tag--dark.is-hit {
-      border-color: #08b55c; }
+      border-color: #409EFF; }
     .el-tag--dark .el-tag__close {
       color: white; }
       .el-tag--dark .el-tag__close:hover {
         color: #FFFFFF;
-        background-color: #39c47d; }
+        background-color: #66b1ff; }
     .el-tag--dark.el-tag--info {
       background-color: #909399;
       border-color: #909399;
@@ -384,15 +382,15 @@
           background-color: #f78989; }
   .el-tag--plain {
     background-color: white;
-    border-color: #9ce1be;
-    color: #08b55c; }
+    border-color: #b3d8ff;
+    color: #409eff; }
     .el-tag--plain.is-hit {
-      border-color: #08b55c; }
+      border-color: #409EFF; }
     .el-tag--plain .el-tag__close {
-      color: #08b55c; }
+      color: #409eff; }
       .el-tag--plain .el-tag__close:hover {
         color: #FFFFFF;
-        background-color: #08b55c; }
+        background-color: #409eff; }
     .el-tag--plain.el-tag--info {
       background-color: white;
       border-color: #d3d4d6;

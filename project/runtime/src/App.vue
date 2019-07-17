@@ -10,7 +10,8 @@
 //加载store store:...   this.$store=...
 //初始化store created -> this.$store.commit('init',{})
 import Vue from "vue";
-import components from "@/utils/aweb.components.js";
+// import components from "@/utils/aweb.components.js";
+import components from "../../@v2-components/aweb.components.js";
 import { widget } from "@/utils/v2-view";
 import events from "@/utils/events";
 import inputField from "@/utils/inputField";

@@ -114,11 +114,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -241,11 +240,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-badge {
   position: relative;
   vertical-align: middle;
@@ -277,7 +275,7 @@
       right: 0;
       border-radius: 50%; }
     .el-badge__content--primary {
-      background-color: #08b55c; }
+      background-color: #409EFF; }
     .el-badge__content--success {
       background-color: #67C23A; }
     .el-badge__content--warning {

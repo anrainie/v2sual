@@ -158,7 +158,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../../element-variables";
+
 
 .aweb4-calendar {
   overflow: hidden;

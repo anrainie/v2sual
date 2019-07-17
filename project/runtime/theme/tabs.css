@@ -114,11 +114,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -241,11 +240,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-tabs__header {
   padding: 0;
   position: relative;
@@ -256,7 +254,7 @@
   bottom: 0;
   left: 0;
   height: 2px;
-  background-color: #08b55c;
+  background-color: #409EFF;
   z-index: 1;
   -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: -webkit-transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -282,7 +280,7 @@
     -webkit-transform: scale(0.8, 0.8);
     transform: scale(0.8, 0.8); }
   .el-tabs__new-tab:hover {
-    color: #08b55c; }
+    color: #409EFF; }
 
 .el-tabs__nav-wrap {
   overflow: hidden;
@@ -353,8 +351,8 @@
   .el-tabs__item:focus, .el-tabs__item:focus:active {
     outline: none; }
   .el-tabs__item:focus.is-active.is-focus:not(:active) {
-    -webkit-box-shadow: 0 0 2px 2px #08b55c inset;
-    box-shadow: 0 0 2px 2px #08b55c inset;
+    -webkit-box-shadow: 0 0 2px 2px #409EFF inset;
+    box-shadow: 0 0 2px 2px #409EFF inset;
     border-radius: 3px; }
   .el-tabs__item .el-icon-close {
     border-radius: 50%;
@@ -370,9 +368,9 @@
       background-color: #C0C4CC;
       color: #FFFFFF; }
   .el-tabs__item.is-active {
-    color: #08b55c; }
+    color: #409EFF; }
   .el-tabs__item:hover {
-    color: #08b55c;
+    color: #409EFF;
     cursor: pointer; }
   .el-tabs__item.is-disabled {
     color: #C0C4CC;
@@ -455,12 +453,12 @@
     .el-tabs--border-card > .el-tabs__header .el-tabs__item + .el-tabs__item {
       margin-left: -1px; }
     .el-tabs--border-card > .el-tabs__header .el-tabs__item.is-active {
-      color: #08b55c;
+      color: #409EFF;
       background-color: #FFFFFF;
       border-right-color: #DCDFE6;
       border-left-color: #DCDFE6; }
     .el-tabs--border-card > .el-tabs__header .el-tabs__item:not(.is-disabled):hover {
-      color: #08b55c; }
+      color: #409EFF; }
     .el-tabs--border-card > .el-tabs__header .el-tabs__item.is-disabled {
       color: #C0C4CC; }
   .el-tabs--border-card > .el-tabs__header .is-scrollable .el-tabs__item:first-child {

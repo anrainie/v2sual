@@ -114,11 +114,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -241,11 +240,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-progress {
   position: relative;
   line-height: 1; }
@@ -315,7 +313,7 @@
     left: 0;
     top: 0;
     height: 100%;
-    background-color: #08b55c;
+    background-color: #409EFF;
     text-align: right;
     border-radius: 100px;
     line-height: 1;

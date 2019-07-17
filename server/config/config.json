@@ -16,7 +16,7 @@
     },
     "runtime": {
         "base": "./runtime",
-        "component": "./node_modules/@v2-components",
+        "component": "../@v2-components",
         "componentFile": "./src/@aweb-components/aweb.components.js",
         "pipe": "../pipe/src/main/webapp/plugins",
         "page": "./src/views",

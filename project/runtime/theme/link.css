@@ -114,11 +114,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -241,11 +240,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-link {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -275,7 +273,7 @@
     right: 0;
     height: 0;
     bottom: 0;
-    border-bottom: 1px solid #08b55c; }
+    border-bottom: 1px solid #409EFF; }
   .el-link.is-disabled {
     cursor: not-allowed; }
   .el-link [class*="el-icon-"] + span {
@@ -283,21 +281,21 @@
   .el-link.el-link--default {
     color: #606266; }
     .el-link.el-link--default:hover {
-      color: #08b55c; }
+      color: #409EFF; }
     .el-link.el-link--default:after {
-      border-color: #08b55c; }
+      border-color: #409EFF; }
     .el-link.el-link--default.is-disabled {
       color: #C0C4CC; }
   .el-link.el-link--primary {
-    color: #08b55c; }
+    color: #409EFF; }
     .el-link.el-link--primary:hover {
-      color: #39c47d; }
+      color: #66b1ff; }
     .el-link.el-link--primary:after {
-      border-color: #08b55c; }
+      border-color: #409EFF; }
     .el-link.el-link--primary.is-disabled {
-      color: #84daae; }
+      color: #a0cfff; }
     .el-link.el-link--primary.is-underline:hover:after {
-      border-color: #08b55c; }
+      border-color: #409EFF; }
   .el-link.el-link--danger {
     color: #F56C6C; }
     .el-link.el-link--danger:hover {
