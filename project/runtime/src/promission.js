@@ -3,8 +3,8 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
 import router from './router'
-// import _import from '@/router/_import_production.js'
-import _import from '@/router/_import_development.js'
+import _import from '@/router/_import_production.js'
+// import _import from '@/router/_import_development.js'
 
 import Layout from '@/views/Layout'
 import Login from "@/views/Login"

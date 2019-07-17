@@ -197,13 +197,6 @@
         ]
       },
       {
-        "name": "layout",
-        "desp": "栅格",
-        "hidden": false,
-        "type": "string_input",
-        "isStringArray":true
-      },
-      {
         "name": "rules",
         "desp": "表单验证",
         "defaultValue": "",
