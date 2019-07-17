@@ -1,7 +1,7 @@
 {
     "apps": [
         {
-            "name": "runtime",
+            "name": "v2sual-runtime-server",
             "script": "./server/server.js",
             "args": [
                 "sh=https://aui.awebide.com",
@@ -9,16 +9,19 @@
                 "id=netbank",
                 "name=网银",
                 "ch=https://v2sual.awebide.com",
-                "cp=443",
+                "cp=3000",
+                "ocp=443",
                 "base=./project/runtime",
                 "pipe=../pipe/src/main/webapp/plugins",
                 "socket=/v2sual-socket/socket.io",
                 "pp=0",
                 "preview=https://vue.awebide.com/runtime"
-            ]
+            ],
+            "out_file": "/home/v2sual/log/runtime-server-app.log",
+		    "error_file": "/home/v2sual/log/runtime-server-err.log"
         },
         {
-            "name": "cms",
+            "name": "v2sual-cms-server",
             "script": "./server/server.js",
             "args": [
                 "sh=https://aui.awebide.com",
@@ -26,13 +29,48 @@
                 "id=cms",
                 "name=后台管理端",
                 "ch=https://v2sual.awebide.com",
-                "cp=443",
+                "cp=3001",
+                "ocp=443",
                 "base=./project/cms",
                 "pipe=../pipe/src/main/webapp/plugins",
                 "socket=/v2sual-socket/socket.io",
                 "pp=0",
                 "preview=https://vue.awebide.com/cms"
-            ]
+            ],
+            "out_file": "/home/v2sual/log/cms-server-app.log",
+		    "error_file": "/home/v2sual/log/cms-server-err.log"
+        },
+        {
+            "name": "v2sual-runtime-spa",
+            "script": "npm",
+            "cwd":"/home/v2sual/project/runtime",
+            "args": "run serve",
+            "out_file": "/home/v2sual/log/runtime-spa-app.log",
+		    "error_file": "/home/v2sual/log/runtime-spa-err.log"
+        },
+        {
+            "name": "v2sual-cms-spa",
+            "script": "npm",
+            "cwd":"/home/v2sual/project/cms",
+            "args": "run serve",
+            "out_file": "/home/v2sual/log/cms-spa-app.log",
+		    "error_file": "/home/v2sual/log/cms-spa-err.log"
+        },
+        {
+            "name": "v2sual-runtime-mock",
+            "script": "npm",
+            "cwd":"/home/v2sual/project/runtime",
+            "args": "run mock",
+            "out_file": "/home/v2sual/log/runtime-mock-app.log",
+		    "error_file": "/home/v2sual/log/runtime-mock-err.log"
+        },
+        {
+            "name": "v2sual-cms-mock",
+            "script": "npm",
+            "cwd":"/home/v2sual/project/cms",
+            "args": "run mock",
+            "out_file": "/home/v2sual/log/cms-mock-app.log",
+		    "error_file": "/home/v2sual/log/cms-mock-err.log"
         }
     ]
 }

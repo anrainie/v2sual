@@ -60,11 +60,12 @@ if (config && config.projects && config.projects.length) {
             name: p.clientName,
             ch: p.clientHost,
             cp: p.clientPort,
+            ocp:p.outerClientPort||p.clientPort,
             base: p.base,
             pipe: p.pipe,
             socket: p.socketPath,
             pp: p.publicPort,
-            preview:p.preview
+            preview:p.preview,
         };
         const cmd=`node ./server/server.js ` + Object.keys(params).filter(k => !!params[k]).map(key => `${key}=${params[key]}`).join(' ');
 
