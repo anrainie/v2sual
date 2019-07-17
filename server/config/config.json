@@ -57,14 +57,14 @@
         "page": {
             "consumption": {
                 "/v1/external/widget": "widget",
-                "/v1/external/dict": "dict",
-                "packageInit": "init"
+                "/v1/external/dict": "dict"
             }
         },
         "preview": {
             "consumption": {
                 "/v1/external/runtimeWidget": "runtimeWidget",
-                "getVueEditorStyles": "style"
+                "getVueEditorStyles": "style",
+                "packageInit": "init"
             },
             "http": {
                 "/v1/preview/init": "init"
