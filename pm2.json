@@ -1,0 +1,7 @@
+{
+    "apps" : [{
+      "name"        : "v2sual",
+      "script"      : "launch.js",
+      "args"        : ["--config=./config/config.project.present.json"]
+    }]
+  }

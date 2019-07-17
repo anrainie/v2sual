@@ -48,14 +48,7 @@ const getConfig = () => {
     return require(params.config);
 };
 
-
-
-
-
-
-
 //业务代码
-const cwd = path.resolve('./');
 const config = getConfig();
 
 if (config && config.projects && config.projects.length) {
@@ -75,11 +68,8 @@ if (config && config.projects && config.projects.length) {
         };
         const cmd=`node ./server/server.js ` + Object.keys(params).filter(k => !!params[k]).map(key => `${key}=${params[key]}`).join(' ');
 
-        // console.log(cmd);
+        console.log(cmd);
 
         execCmd(cmd);
     });
 }
-
-// execCmd('npm run anra', cwd);
-// execCmd('npm run toxhq', cwd);
