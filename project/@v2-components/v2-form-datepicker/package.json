@@ -1,0 +1,147 @@
+{
+  "author": {
+    "name": "fengjiarong@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "日期",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconriqixuanze",
+    "type": "form",
+    "href": "v2-form-datepicker",
+    "author": "fengjiarong@agree.com.cn",
+    "version": 610000,
+    "accept": "foundationRowCtn divCtn",
+    "name": "日期",
+    "option": [
+      {
+        "name": "label",
+        "desp": "标题",
+        "defaultValue":"标题",
+        "type": "string_input"
+      },
+      {
+        "name": "labelWitdh",
+        "desp": "标题宽度",
+        "defaultValue": "80px",
+        "type": "string_input"
+      },
+      {
+        "name": "titleMode",
+        "desp": "标题排列方式",
+
+        "defaultValue": "col",
+        "type": "string_select",
+        "valueArray": [
+          "row",
+          "col"
+        ],
+        "despArray": [
+          "同列排列",
+          "同行排列"
+        ]
+      },
+      {
+        "name": "value",
+        "desp": "选择值",
+        "defaultValue":"",
+        "type": "string_input"
+      },
+      {
+        "name": "placeholder",
+        "desp": "placeholder",
+        "defaultValue":"请选择",
+        "type": "string_input"
+      },
+      {
+        "name": "type",
+        "desp": "日期单位",
+        "defaultValue":"date",
+        "type": "string_select",
+        "valueArray": [
+          "date",
+          "week",
+          "month",
+          "year",
+          "dates",
+          "daterange"
+        ],
+        "despArray": [
+          "日",
+          "周",
+          "月",
+          "年",
+          "多个日期",
+          "日期范围"
+        ]
+      },
+      {
+        "name": "disabled",
+        "desp": "是否禁用",
+        "defaultValue":false,
+        "type": "boolean"
+      },
+      {
+        "name": "isRequired",
+        "desp": "是否必填",
+        "defaultValue": false,
+        "type": "boolean"
+      },
+      {
+        "name": "clearable",
+        "desp": "是否显示清除按钮",
+        "defaultValue":true,
+        "type": "boolean"
+      },
+      {
+        "name": "format",
+        "desp": "显示格式",
+        "defaultValue":"yyyy 年 MM 月 dd 日",
+        "type": "string_input"
+      },
+      {
+        "name": "align",
+        "desp": "对齐方式",
+        "defaultValue":"left",
+        "type": "string_select",
+        "valueArray": [
+          "left",
+          "center",
+          "right"
+        ],
+        "despArray": [
+          "左",
+          "中",
+          "右"
+        ]
+      }
+    ],
+     "css": {
+      "style": [
+        {
+          "desp": "标题",
+          "cssAttrs": "font-size font-weight color",
+          "name": "label"
+        }, {
+          "desp": "检验边框",
+          "cssAttrs": "border-color",
+          "name": "borderStyle"
+        }, {
+          "desp": "检验文字",
+          "cssAttrs": "color",
+          "name": "fontStyle"
+        }
+      ]
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@v2-components/v2-form-datepicker",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.0",
+  "index":20000007
+}

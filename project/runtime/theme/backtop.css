@@ -114,11 +114,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -241,18 +240,17 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-backtop {
   position: fixed;
   background-color: #FFFFFF;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  color: #08b55c;
+  color: #409EFF;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

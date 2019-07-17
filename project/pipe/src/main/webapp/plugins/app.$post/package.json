@@ -1,5 +1,5 @@
 {
-    "name": "@aweb-plugins/app.$get",
+    "name": "@aweb-pipe/app.$get",
     "main": "index.js",
     "docs": {
         "desp": "post请求",

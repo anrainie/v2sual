@@ -112,11 +112,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .fade-in-linear-enter-active,
 .fade-in-linear-leave-active {
   -webkit-transition: opacity 200ms linear;
@@ -347,11 +346,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 @font-face {
   font-family: 'element-icons';
   src: url("fonts/element-icons.woff") format("woff"), url("fonts/element-icons.ttf") format("truetype");

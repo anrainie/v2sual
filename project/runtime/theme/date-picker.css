@@ -112,11 +112,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* BEM support Func
  -------------------------- */
 /* Element Chalk Variables */
@@ -233,11 +232,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -296,26 +294,26 @@
     .el-date-table td.today {
       position: relative; }
       .el-date-table td.today span {
-        color: #08b55c;
+        color: #409EFF;
         font-weight: bold; }
       .el-date-table td.today.start-date span,
       .el-date-table td.today.end-date span {
         color: #FFFFFF; }
     .el-date-table td.available:hover {
-      color: #08b55c; }
+      color: #409EFF; }
     .el-date-table td.in-range div {
       background-color: #F2F6FC; }
       .el-date-table td.in-range div:hover {
         background-color: #F2F6FC; }
     .el-date-table td.current:not(.disabled) span {
       color: #FFFFFF;
-      background-color: #08b55c; }
+      background-color: #409EFF; }
     .el-date-table td.start-date div,
     .el-date-table td.end-date div {
       color: #FFFFFF; }
     .el-date-table td.start-date span,
     .el-date-table td.end-date span {
-      background-color: #08b55c; }
+      background-color: #409EFF; }
     .el-date-table td.start-date div {
       margin-left: 5px;
       border-top-left-radius: 15px;
@@ -337,7 +335,7 @@
       .el-date-table td.selected div:hover {
         background-color: #F2F6FC; }
     .el-date-table td.selected span {
-      background-color: #08b55c;
+      background-color: #409EFF;
       color: #FFFFFF;
       border-radius: 15px; }
     .el-date-table td.week {
@@ -463,11 +461,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-month-table {
   font-size: 12px;
   margin: -1px;
@@ -482,7 +479,7 @@
       -webkit-box-sizing: border-box;
       box-sizing: border-box; }
     .el-month-table td.today .cell {
-      color: #08b55c;
+      color: #409EFF;
       font-weight: bold; }
     .el-month-table td.today.start-date .cell,
     .el-month-table td.today.end-date .cell {
@@ -502,7 +499,7 @@
       margin: 0 auto;
       border-radius: 18px; }
       .el-month-table td .cell:hover {
-        color: #08b55c; }
+        color: #409EFF; }
     .el-month-table td.in-range div {
       background-color: #F2F6FC; }
       .el-month-table td.in-range div:hover {
@@ -513,7 +510,7 @@
     .el-month-table td.start-date .cell,
     .el-month-table td.end-date .cell {
       color: #FFFFFF;
-      background-color: #08b55c; }
+      background-color: #409EFF; }
     .el-month-table td.start-date div {
       border-top-left-radius: 24px;
       border-bottom-left-radius: 24px; }
@@ -521,7 +518,7 @@
       border-top-right-radius: 24px;
       border-bottom-right-radius: 24px; }
     .el-month-table td.current:not(.disabled) .cell {
-      color: #08b55c; }
+      color: #409EFF; }
 
 /* Element Chalk Variables */
 /* Transition
@@ -637,11 +634,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-year-table {
   font-size: 12px;
   margin: -1px;
@@ -653,7 +649,7 @@
     padding: 20px 3px;
     cursor: pointer; }
     .el-year-table td.today .cell {
-      color: #08b55c;
+      color: #409EFF;
       font-weight: bold; }
     .el-year-table td.disabled .cell {
       background-color: #F5F7FA;
@@ -669,9 +665,9 @@
       color: #606266;
       margin: 0 auto; }
       .el-year-table td .cell:hover {
-        color: #08b55c; }
+        color: #409EFF; }
     .el-year-table td.current:not(.disabled) .cell {
-      color: #08b55c; }
+      color: #409EFF; }
 
 /* Element Chalk Variables */
 /* Transition
@@ -787,11 +783,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-time-spinner.has-seconds .el-time-spinner__wrapper {
   width: 33.3%; }
 
@@ -828,7 +823,7 @@
   line-height: 30px;
   cursor: pointer; }
   .el-time-spinner__arrow:hover {
-    color: #08b55c; }
+    color: #409EFF; }
   .el-time-spinner__arrow.el-icon-arrow-up {
     top: 10px; }
   .el-time-spinner__arrow.el-icon-arrow-down {
@@ -982,11 +977,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -1109,11 +1103,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Element Chalk Variables */
 /* Transition
 -------------------------- */
@@ -1228,11 +1221,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .fade-in-linear-enter-active,
 .fade-in-linear-leave-active {
   -webkit-transition: opacity 200ms linear;
@@ -1425,9 +1417,9 @@
   line-height: 1; }
 
 .el-range-editor.is-active {
-  border-color: #08b55c; }
+  border-color: #409EFF; }
   .el-range-editor.is-active:hover {
-    border-color: #08b55c; }
+    border-color: #409EFF; }
 
 .el-range-editor--medium.el-input__inner {
   height: 36px; }
@@ -1607,11 +1599,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* BEM support Func
  -------------------------- */
 /* Element Chalk Variables */
@@ -1728,11 +1719,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -1855,11 +1845,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-picker-panel {
   color: #606266;
   border: 1px solid #E4E7ED;
@@ -1896,10 +1885,10 @@
     outline: none;
     cursor: pointer; }
     .el-picker-panel__shortcut:hover {
-      color: #08b55c; }
+      color: #409EFF; }
     .el-picker-panel__shortcut.active {
       background-color: #e6f1fe;
-      color: #08b55c; }
+      color: #409EFF; }
   .el-picker-panel__btn {
     border: 1px solid #dcdcdc;
     color: #333;
@@ -1922,7 +1911,7 @@
     outline: none;
     margin-top: 8px; }
     .el-picker-panel__icon-btn:hover {
-      color: #08b55c; }
+      color: #409EFF; }
     .el-picker-panel__icon-btn.is-disabled {
       color: #bbb; }
       .el-picker-panel__icon-btn.is-disabled:hover {
@@ -1991,9 +1980,9 @@
     cursor: pointer;
     color: #606266; }
     .el-date-picker__header-label:hover {
-      color: #08b55c; }
+      color: #409EFF; }
     .el-date-picker__header-label.active {
-      color: #08b55c; }
+      color: #409EFF; }
   .el-date-picker__prev-btn {
     float: left; }
   .el-date-picker__next-btn {
@@ -2121,11 +2110,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-date-range-picker {
   width: 646px; }
   .el-date-range-picker.has-sidebar {
@@ -2306,11 +2294,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-time-range-picker {
   width: 354px;
   overflow: visible; }
@@ -2447,11 +2434,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-time-panel {
   margin: 5px 0;
   border: solid 1px #E4E7ED;
@@ -2520,7 +2506,7 @@
     color: #303133; }
     .el-time-panel__btn.confirm {
       font-weight: 800;
-      color: #08b55c; }
+      color: #409EFF; }
 
 /* BEM support Func
  -------------------------- */
@@ -2638,11 +2624,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -2765,11 +2750,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-textarea {
   position: relative;
   display: inline-block;
@@ -2804,7 +2788,7 @@
       border-color: #C0C4CC; }
     .el-textarea__inner:focus {
       outline: none;
-      border-color: #08b55c; }
+      border-color: #409EFF; }
   .el-textarea .el-input__count {
     color: #909399;
     background: #FFFFFF;
@@ -2904,7 +2888,7 @@
       border-color: #C0C4CC; }
     .el-input__inner:focus {
       outline: none;
-      border-color: #08b55c; }
+      border-color: #409EFF; }
   .el-input__suffix {
     position: absolute;
     height: 100%;
@@ -2943,7 +2927,7 @@
     pointer-events: none; }
   .el-input.is-active .el-input__inner {
     outline: none;
-    border-color: #08b55c; }
+    border-color: #409EFF; }
   .el-input.is-disabled .el-input__inner {
     background-color: #F5F7FA;
     border-color: #E4E7ED;
@@ -3171,11 +3155,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -3298,11 +3281,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-scrollbar {
   overflow: hidden;
   position: relative; }
@@ -3464,11 +3446,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -3591,11 +3572,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-popper .popper__arrow,
 .el-popper .popper__arrow::after {
   position: absolute;

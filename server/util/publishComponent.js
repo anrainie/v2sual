@@ -6,7 +6,7 @@ const {
   execFile
 } = require('child_process');
 
-let cmpsPath = path.resolve(__dirname, '../../project/runtime/src/@aweb-components');
+let cmpsPath = path.resolve(__dirname, '../@aweb-components');
 
 let publishList = [];
 
@@ -25,7 +25,7 @@ fs.readdirSync(cmpsPath).forEach(function (file) {
 //   }
 //   console.log('成功');
 // });
-var doSomething = function (distPath) {
+var doSomething = function (distPath,moduleName) {
   // execFile('npm version ', ['patch'], {
   //       shell: true,
   //     cwd: distPath
@@ -35,8 +35,12 @@ var doSomething = function (distPath) {
   //     }
   //     console.log(stdout);
   // });
-
   console.log(distPath);
+  // spawnSync(`npm unpublish ${moduleName} --force`, {
+  //   shell: true,
+  //   cwd: distPath
+  // });
+
   execFile('npm ', ['publish'], {
     shell: true,
     cwd: distPath
@@ -50,5 +54,7 @@ var doSomething = function (distPath) {
 
 for (let i = 0; i < publishList.length; i++) {
   let distPath = path.resolve(cmpsPath, `./${publishList[i]}`);
+  // let moduleName = `@aweb-components/${publishList[i]}`;
+
   doSomething(distPath);
 }
