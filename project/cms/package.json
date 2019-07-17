@@ -1,0 +1,122 @@
+{
+    "name": "@aweb-template/vue-spa",
+    "version": "6.1.0",
+    "private": false,
+    "author": "zhanghaixian@agree.com.cn",
+    "description": "pc端Vue版SPA",
+    "scripts": {
+        "style": "vue-cli-service build --no-clean",
+        "component": "vue build -t lib -d v2sual ./src/@aweb-components/aweb.components.js",
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint",
+        "theme": "et",
+        "mock": "node ./server.js",
+        "buildP": "node ./build-page.js"
+    },
+    "dependencies": {
+        "@v2-components/v2-component-btn": "^6.0.0",
+        "@v2-components/v2-component-calendar": "^6.0.0",
+        "@v2-components/v2-component-card": "^6.0.0",
+        "@v2-components/v2-component-carousel": "^6.0.0",
+        "@v2-components/v2-component-echart": "^6.0.0",
+        "@v2-components/v2-component-etable": "^6.0.0",
+        "@v2-components/v2-component-icon": "^6.0.0",
+        "@v2-components/v2-component-image": "^6.0.0",
+        "@v2-components/v2-component-steps": "^6.0.0",
+        "@v2-components/v2-component-table": "^6.0.0",
+        "@v2-components/v2-component-tabs": "^6.0.0",
+        "@v2-components/v2-component-text": "^6.0.0",
+        "@v2-components/v2-component-text-value": "^6.0.0",
+        "@v2-components/v2-component-tree": "^6.0.0",
+        "@v2-components/v2-echart-bar": "^6.0.0",
+        "@v2-components/v2-echart-line": "^6.0.0",
+        "@v2-components/v2-form-cascader": "^6.0.0",
+        "@v2-components/v2-form-checkbox": "^6.0.0",
+        "@v2-components/v2-form-datepicker": "^6.0.0",
+        "@v2-components/v2-form-editor": "^6.0.0",
+        "@v2-components/v2-form-input": "^6.0.0",
+        "@v2-components/v2-form-inputnumber": "^6.0.0",
+        "@v2-components/v2-form-radio": "^6.0.0",
+        "@v2-components/v2-form-select": "^6.0.0",
+        "@v2-components/v2-form-slider": "^6.0.0",
+        "@v2-components/v2-form-switch": "^6.0.0",
+        "@v2-components/v2-form-timepicker": "^6.0.0",
+        "@v2-components/v2-form-transfer": "^6.0.0",
+        "@v2-components/v2-form-upload": "^6.0.0",
+        "@v2-components/v2-layout": "^6.0.0",
+        "@v2-components/v2-mobile-button": "^6.0.0",
+        "@v2-components/v2-mobile-image": "^6.0.0",
+        "@v2-components/v2-mobile-input": "^6.0.0",
+        "@v2-components/v2-mobile-radio": "^6.0.0",
+        "@v2-components/v2-mobile-steps": "^6.0.0",
+        "@v2-components/v2-mobile-uploader": "^6.0.0",
+        "@v2-components/v2-page": "^6.0.0",
+        "@v2-components/v2-switchable": "^6.0.0",
+        "animate.css": "^3.7.2",
+        "axios": "^0.18.0",
+        "babel-polyfill": "^6.26.0",
+        "element-ui": "^2.4.11",
+        "marked": "^0.6.3",
+        "nprogress": "^0.2.0",
+        "vant": "^2.0.7",
+        "vue": "^2.5.17",
+        "vue-axios": "^2.1.4",
+        "vue-router": "^3.0.2",
+        "vue-scroll": "^2.1.12",
+        "vuex": "^3.0.1",
+        "wangeditor": "^3.1.1"
+    },
+    "devDependencies": {
+        "shelljs": "^0.8.3",
+        "node-requirejs": "^0.1.1",
+        "koa-static": "^5.0.0",
+        "@vue/cli-plugin-babel": "^3.2.0",
+        "@vue/cli-plugin-eslint": "^3.2.0",
+        "@vue/cli-service": "^3.2.0",
+        "axios-mock-adapter": "^1.15.0",
+        "babel-eslint": "^10.0.1",
+        "babel-loader": "^7.1.5",
+        "element-theme": "^2.0.1",
+        "element-theme-chalk": "^2.9.1",
+        "eslint": "^5.8.0",
+        "eslint-plugin-vue": "^5.0.0-0",
+        "koa": "^2.7.0",
+        "koa-body": "^4.1.0",
+        "koa-router": "^7.4.0",
+        "less": "^3.9.0",
+        "less-loader": "^4.1.0",
+        "mockjs": "^1.0.1-beta3",
+        "node-sass": "^4.11.0",
+        "sass-loader": "^7.1.0",
+        "vue-template-compiler": "^2.5.17",
+        "webpack": "^4.28.2"
+    },
+    "eslintConfig": {
+        "root": true,
+        "env": {
+            "node": true
+        },
+        "extends": [
+            "plugin:vue/essential",
+            "eslint:recommended"
+        ],
+        "rules": {},
+        "parserOptions": {
+            "parser": "babel-eslint"
+        }
+    },
+    "postcss": {
+        "plugins": {
+            "autoprefixer": {}
+        }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 8"
+    ],
+    "buildfolder": "./src/views/example",
+    "__projectType": "awebVue",
+    "__finished": true
+}

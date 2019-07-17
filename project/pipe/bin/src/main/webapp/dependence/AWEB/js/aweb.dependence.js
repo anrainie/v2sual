@@ -1,0 +1,1 @@
+define(["jquery"],function($){return{deps:{css:["AWEB/css/aweb.css","AWEB/css/font-awesome.min.css","AWEB/css/icon-font.css","AWEB/css/aweb.page.css","Shim/css/ie8.css","AWEB/css/aweb.popover.css"],js:["es5"]},iconArr:[{namespace:"iconfont",file:"AWEB/css/icon-font.css"},{namespace:"fa",file:"AWEB/css/font-awesome.min.css"}]}});

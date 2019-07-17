@@ -1,32 +1,22 @@
 {
     "server": {
         "id": 123123,
-        "name": "v2sual",
+        "type": "v2sual",
         "port": 3000,
-        "host": "localhost"
+        "host": "localhost",
+        "preview": "http://localhost:7007"
     },
     "webide": {
         "port": 7003,
         "host": "http://localhost",
         "clientPort": 3000,
         "clientHost": "localhost",
-        "path":"/socket.io",
-        "publicPort":7003,
-        "condition": [
-            {
-                "pathInclude": "home/v2sual",
-                "host": "https://aui.awebide.com",
-                "port": 7003,
-                "clientPort": 443,
-                "clientHost": "https://v2sual.awebide.com",
-                "path":"/v2sual-socket/socket.io",
-                "publicPort":0
-            }
-        ]
+        "path": "/socket.io",
+        "publicPort": 7003
     },
     "runtime": {
         "base": "./runtime",
-        "component": "./src/@aweb-components",
+        "component": "./node_modules/@v2-components",
         "componentFile": "./src/@aweb-components/aweb.components.js",
         "pipe": "../pipe/src/main/webapp/plugins",
         "page": "./src/views",
@@ -141,16 +131,6 @@
                 "changeOrigin": true,
                 "pathRewrite": {
                     "v1/ds/": ""
-                },
-                "logLevel": "debug"
-            },
-            {
-                "name": "预览",
-                "source": "/preview",
-                "target": "http://localhost:7007/",
-                "changeOrigin": true,
-                "pathRewrite": {
-                    "v1/ds/preview": ""
                 },
                 "logLevel": "debug"
             }

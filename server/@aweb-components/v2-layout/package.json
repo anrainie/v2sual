@@ -1,0 +1,265 @@
+{
+  "author": {
+    "name": "zhanghaixian@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "布局",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconhengxiangbuju",
+    "type": "layout",
+    "href": "v2-layout",
+    "author": "zhanghaixian@agree.com.cn",
+    "version": 610000,
+    "accept": "",
+    "polymorphic": [{
+      "desp":"横向",
+      "default":{
+        "layout":[50, 50],
+        "realSize":[null,null],
+        "direction":"row"
+      }
+    },
+    {
+      "desp":"竖向",
+      "default":{
+        "layout":[50, 50],
+        "realSize":[null,null],
+        "direction":"col"
+      },
+      "icon": "iconshuxiangbuju"
+    },
+    {
+      "desp":"左右",
+      "default":{
+        "layout":[20, 80],
+        "realSize":[null,null],
+        "direction":"col"
+      },
+      "icon": "iconzuoyou"
+    },{
+      "desp":"上下",
+      "default":{
+        "layout":[20,80],
+        "realSize":[null,null],
+        "direction":"row"
+      },
+      "icon": "iconshangxia"
+    },{
+      "desp":"上中下",
+      "default":{
+        "layout":[33.3,33.3,33.3],
+        "realSize":[null,null,null],
+        "direction":"row"
+      },
+      "icon": "iconshangzhongxia"
+    },{
+      "desp":"左中下",
+      "default":{
+        "layout":[80,20],
+        "direction":"row",
+        "realSize":[null,null],
+        "children":[
+          {
+            "layout":[30,70],
+            "direction":"col",
+            "component":"v2-layout",
+            "children":[null,null]
+          },
+          {
+            "layout":[100],
+            "direction":"row",
+             "component":"v2-layout",
+            "children":[null]
+          }
+        ]
+
+      },
+      "icon": "iconzuozhongxia"
+    },{
+      "desp":"上左右",
+      "default":{
+        "layout":[20,80],
+        "direction":"row",
+        "realSize":[null,null],
+        "children":[
+          {
+            "layout":[100],
+            "direction":"row",
+            "component":"v2-layout",
+            "children":[null]
+          },{
+            "layout":[30,70],
+            "direction":"col",
+            "component":"v2-layout",
+            "children":[null,null]
+          }
+        ]
+
+      },
+      "icon": "iconshangzuoyou"
+    },{
+      "desp":"上左中下",
+      "default":{
+        "layout":[20,80],
+        "direction":"row",
+        "realSize":[null,null],
+        "children":[
+          {
+              
+            "layout":[100],
+            "direction":"row",
+            "component":"v2-layout",
+            "realSize":[null,null],
+            "children":[null]
+          },
+          {
+            "layout":[30,70],
+            "direction":"col",
+            "component":"v2-layout",
+            "children":[{
+                "layout":[100],
+                "direction":"row",
+                "component":"v2-layout",
+                "realSize":[null,null],
+                "children":[null]
+              },{
+                "layout":[70,30],
+                "direction":"row",
+                "component":"v2-layout",
+                "children":[null,null]
+              }
+            ]
+          }
+        ]
+
+      },
+      "icon": "iconshangzuozhongxia"
+    },{
+      "desp":"左上中",
+      "default":{
+        "layout":[30,70],
+        "direction":"col",
+        "children":[
+          {
+            "layout":[100],
+            "direction":"row",
+            "component":"v2-layout",
+            "children":[null]
+          },{
+            "layout":[20,80],
+            "direction":"row",
+            "component":"v2-layout",
+            "children":[null,null]
+          }
+        ]
+
+      },
+      "icon": "iconzuoshangzhong"
+    },{
+      "desp":"左中下",
+      "default":{
+        "layout":[30,70],
+        "direction":"col",
+        "children":[
+          {
+            "layout":[100],
+            "direction":"row",
+            "component":"v2-layout",
+            "children":[null]
+          },{
+            "layout":[80,20],
+            "direction":"row",
+            "component":"v2-layout",
+            "children":[null,null]
+          }
+        ]
+
+      },
+      "icon": "iconzuozhongxia"
+    }
+  ],
+    "name": "布局",
+    "option": [
+      {
+        "name": "direction",
+        "desp": "排列方式",
+        "defaultValue": "",
+        "type": "string_select",
+        "valueArray": [
+          "row",
+          "col"
+        ],
+        "despArray": [
+          "横排",
+          "竖排"
+        ]
+      },
+      {
+        "name": "layout",
+        "desp": "栅格",
+        "hidden": false,
+        "type": "string_input",
+        "isStringArray":true
+      },
+      {
+        "name": "rules",
+        "desp": "表单验证",
+        "defaultValue": "",
+        "type": "single_array",
+        "attrInEachElement": [
+          {
+            "name": "rule",
+            "desp": "规则",
+            "defaultValue": "",
+            "type": "string_input"
+          }
+        ]
+      }
+    ],
+    "css": {
+      "style": [
+        {
+          "desp": "容器",
+          "cssAttrs": "position top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+          "name": "divCtn"
+        }
+      ]
+    },
+    "editor": {
+      "name": "v2LayoutEditor",
+      "model": {
+        "def": {
+          "defheight": true,
+          "defwidth": true,
+          "defborder": true,
+          "defbackgroundStyle": true,
+          "defpaddingStyle": true
+        },
+        "defaultValue": {
+          "background-color": "#fff",
+          "background-image": "",
+          "padding-top": 0,
+          "padding-bottom": 0,
+          "padding-left": 0,
+          "padding-right": 0
+        },
+        "customStyle": {}
+      }
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "paramEditor": {
+    "path": "editor.vue",
+    "name": "v2LayoutEditor"
+  },
+  "name": "@v2-components/v2-layout",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.0",
+  "index": 10000002
+}
