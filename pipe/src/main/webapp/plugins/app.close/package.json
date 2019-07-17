@@ -1,5 +1,5 @@
 {
-    "name": "@aweb-plugins/app.close",
+    "name": "@aweb-pipe/app.close",
     "main": "index.js",
     "docs": {
         "desp": "关闭页面",
