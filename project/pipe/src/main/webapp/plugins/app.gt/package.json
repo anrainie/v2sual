@@ -1,5 +1,5 @@
 {
-    "name": "@aweb-plugins/app.gt",
+    "name": "@aweb-pipe/app.gt",
     "main": "index.js",
     "docs": {
         "desp": "大于",

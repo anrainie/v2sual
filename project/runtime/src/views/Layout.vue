@@ -208,7 +208,8 @@ export default {
       // rightClickHandler: null,
       // isRouterAlive: true,
       breadcrumbPath: [], // 面包屑路径
-      showBreadcrumbPath: false
+      showBreadcrumbPath: false,
+      searchVal:''
     };
   },
 
@@ -712,10 +713,12 @@ export default {
     // }
 
     .aweb-ctt {
-       height: 100%;
+      height: 100%;
       width: 100%;
+      
     }
   }
+  
 
   .aweb-footer {
     font-size: 13px;

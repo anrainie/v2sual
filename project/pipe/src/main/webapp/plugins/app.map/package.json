@@ -1,5 +1,5 @@
 {
-    "name": "@aweb-plugins/app.map",
+    "name": "@aweb-pipe/app.map",
     "main": "index.js",
     "docs": {
         "desp": "map",

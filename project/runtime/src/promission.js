@@ -231,31 +231,13 @@ function filterAsyncRouter(asyncRouterMap) {
 
   return accessedRouters
 }
-function getAsyncRouter(asyncRouterMap) {
 
-  const accessedRouters = asyncRouterMap.filter(route => {
-
-    if (route.component && typeof route.component === 'string') {
-      route.componentUrl = route.component;
-
-      route.component = _import(route.component);
-
-
-    }
-    if (route.children && route.children.length) {
-      route.children = getAsyncRouter(route.children)
-    }
-    return true
-  })
-
-  return accessedRouters
-}
 function searchCurrentRouter(path) {
 
   let paths = path.split('/'),
     cRoute, cRouteCopy;
   let result = "";
-  let gRouter = getRouter('router');
+
   if (paths.length > 1) {
     paths.forEach((ePath, idx) => {
 
@@ -277,10 +259,7 @@ function searchCurrentRouter(path) {
     cRouteCopy = global.menu.filter((item) => (item.children && item.children.length === 1 && item.children[0].path === path));
 
   }
-  // if (cRoute && cRouteCopy && cRouteCopy.length) {
-  //   result = getAsyncRouter(cRouteCopy)[0];
-  //   result.path = '/' + result.path;
-  // }
+
 
   if (cRoute && cRouteCopy && cRouteCopy.length) {
     if (cRoute.length === 1) {

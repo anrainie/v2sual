@@ -1,5 +1,5 @@
 {
-    "name": "@aweb-plugins/app.getExcelData",
+    "name": "@aweb-pipe/app.getExcelData",
     "main": "index.js",
     "docs": {
         "desp": "从Excel获取数据",

@@ -114,11 +114,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -241,11 +240,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-step {
   position: relative;
   -ms-flex-negative: 1;
@@ -278,8 +276,8 @@
       color: #F56C6C;
       border-color: #F56C6C; }
     .el-step__head.is-finish {
-      color: #08b55c;
-      border-color: #08b55c; }
+      color: #409EFF;
+      border-color: #409EFF; }
   .el-step__icon {
     position: relative;
     z-index: 1;
@@ -353,7 +351,7 @@
     .el-step__title.is-error {
       color: #F56C6C; }
     .el-step__title.is-finish {
-      color: #08b55c; }
+      color: #409EFF; }
   .el-step__description {
     padding-right: 10%;
     margin-top: -5px;
@@ -369,7 +367,7 @@
     .el-step__description.is-error {
       color: #F56C6C; }
     .el-step__description.is-finish {
-      color: #08b55c; }
+      color: #409EFF; }
   .el-step.is-horizontal {
     display: inline-block; }
     .el-step.is-horizontal .el-step__line {

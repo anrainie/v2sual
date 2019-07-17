@@ -1,0 +1,164 @@
+{
+  "author": {
+    "name": "fengjiarong@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "轮播图",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconkapian",
+    "type": "component",
+    "href": "v2-component-carousel",
+    "author": "fengjiarong@agree.com.cn",
+    "version": 610000,
+    "accept": "divCtn",
+    "name": "轮播图",
+    "option": [
+      {
+        "type": "array",
+        "name": "list",
+        "defaultValue": "",
+        "desp": "轮播项",
+        "attrInEachElement": [
+          {
+            "name": "src",
+            "desp": "图片源",
+            "defaultValue": "",
+            "type": "string_input"
+          },
+          {
+            "name": "alt",
+            "desp": "alt",
+            "defaultValue": "",
+            "type": "string_input"
+          },
+          {
+            "name": "title",
+            "desp": "title",
+            "defaultValue": "",
+            "type": "string_input"
+          },
+          {
+            "name": "width",
+            "desp": "宽度",
+            "defaultValue": "100%",
+            "type": "string_input"
+          },
+          {
+            "name": "height",
+            "desp": "高度",
+            "defaultValue": "",
+            "type": "string_input"
+          }
+        ]
+      },
+      {
+        "type": "string_select",
+        "name": "trigger",
+        "defaultValue": "hover",
+        "desp": "指示器的触发方式",
+        "valueArray": [
+          "hover",
+          "click"
+        ],
+        "despArray": [
+          "hover",
+          "click"
+        ]
+      },
+      {
+        "type": "boolean",
+        "name": "autoplay",
+        "defaultValue": true,
+        "desp": "是否自动播放"
+      },
+      {
+        "type": "string_input",
+        "name": "interval",
+        "defaultValue": "1000",
+        "desp": "自动切换的时间间隔"
+      },
+      {
+        "type": "string_select",
+        "name": "indicator",
+        "defaultValue": "",
+        "desp": "指示器的位置",
+        "valueArray": [
+          "",
+          "outside",
+          "none"
+        ],
+        "despArray": [
+          "默认",
+          "外部",
+          "隐藏"
+        ]
+      },
+      {
+        "type": "string_select",
+        "name": "arrow",
+        "defaultValue": "hover",
+        "desp": "切换箭头的显示时机",
+        "valueArray": [
+          "hover",
+          "always",
+          "never"
+        ],
+        "despArray": [
+          "hover",
+          "保持",
+          "隐藏"
+        ]
+      },
+      {
+        "type": "string_select",
+        "name": "type",
+        "defaultValue": "",
+        "desp": "走马灯的类型",
+        "valueArray": [
+          "",
+          "card"
+        ],
+        "despArray": [
+          "默认",
+          "卡片"
+        ]
+      },
+      {
+        "type": "string_select",
+        "name": "direction",
+        "defaultValue": "horizontal",
+        "desp": "展示方向",
+        "valueArray": [
+          "horizontal",
+          "vertical"
+        ],
+        "despArray": [
+          "横排",
+          "竖排"
+        ]
+      },
+      {
+        "type": "string_input",
+        "name": "height",
+        "defaultValue": "",
+        "desp": "高度"
+      }
+    ],
+    "css": {
+      "style": [
+       
+      ]
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@v2-components/v2-component-carousel",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.0",
+  "index":30000006
+}
