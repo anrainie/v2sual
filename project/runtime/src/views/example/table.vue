@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import v2ComponentCalendar from '@/@aweb-components/v2-component-calendar';
+import v2ComponentCalendar from '@v2-components/v2-component-calendar';
 
 export default {
   components:{

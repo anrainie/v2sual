@@ -1,0 +1,113 @@
+{
+  "author": {
+    "name": "fengjiarong@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "数值输入",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconshuzhishuru",
+    "type": "form",
+    "href": "v2-form-inputnumber",
+    "author": "fengjiarong@agree.com.cn",
+    "version": 610000,
+    "accept": "foundationRowCtn divCtn",
+    "name": "数值输入",
+    "option": [
+      {
+        "name": "label",
+        "desp": "标题",
+        "defaultValue":"标题",
+        "type": "string_input"
+      },
+      {
+        "name": "labelWitdh",
+        "desp": "标题宽度",
+        "defaultValue":"80px",
+        "type": "string_input"
+      },
+      {
+        "name": "titleMode",
+        "desp": "标题排列方式",
+        "defaultValue": "col",
+        "type": "string_select",
+        "valueArray": [
+          "row",
+          "col"
+        ],
+        "despArray": [
+          "同列排列",
+          "同行排列"
+        ]
+      },
+      {
+        "name": "value",
+        "desp": "值",
+        "defaultValue":1,
+        "type": "string_input"
+      },
+      {
+        "name": "disabled",
+        "desp": "是否禁用",
+        "defaultValue":false,
+        "type": "boolean"
+      },
+      {
+        "name": "isRequired",
+        "desp": "是否必填",
+        "defaultValue": false,
+        "type": "boolean"
+      },
+      {
+        "name": "min",
+        "desp": "最小值",
+        "defaultValue":1,
+        "type": "string_input"
+      },
+      {
+        "name": "max",
+        "desp": "最大值",
+        "defaultValue":10,
+        "type": "string_input"
+      },
+      {
+        "name": "step",
+        "desp": "步幅",
+        "defaultValue":1,
+        "type": "string_input"
+      },
+      {
+        "name": "precision",
+        "desp": "精度",
+        "defaultValue":1,
+        "type": "string_input"
+      }
+    ],
+     "css": {
+       "style": [ {
+           "desp": "标题",
+           "cssAttrs": "font-size color font-weight",
+           "name": "label"
+         }, {
+           "desp": "检验边框",
+           "cssAttrs": "border-color",
+           "name": "borderStyle"
+         }, {
+           "desp": "检验文字",
+           "cssAttrs": "color",
+           "name": "fontStyle"
+         }
+       ]
+     }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@v2-components/v2-form-inputnumber",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.0",
+  "index":20000002
+}

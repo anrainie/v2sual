@@ -1,0 +1,93 @@
+{
+  "author": {
+    "name": "zhanghaixian@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "树控件",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconzhuzhuangtu",
+    "type": "component",
+    "href": "v2-component-tree",
+    "author": "zhanghaixian@agree.com.cn",
+    "version": 610000,
+    "accept": "divCtn",
+    "name": "树",
+    "option": [
+      {
+        "type": "string_input",
+        "name": "configs",
+        "defaultValue": "",
+        "desp": "节点数据"
+      },
+      {
+        "type":"object",
+        "name":"defaultProps",
+         "desp":"字段映射",
+         "attr": [
+           {
+            "type": "string_input",
+            "name": "children",
+            "defaultValue": "children",
+            "desp": "子节点集名"
+           },
+           {
+            "type": "string_input",
+            "name": "label",
+            "defaultValue": "label",
+            "desp": "节点英文名"
+           }
+         ]
+      },
+      {
+        "name": "showCheckbox",
+        "desp": "是否显示勾选",
+        "defaultValue": false,
+        "type": "boolean"
+      },
+      {
+        "defaultValue":"",
+        "type": "string_input",
+        "desp": "ID字段名",
+        "name": "nodeKey",
+        "details": "其值为节点数据中的一个字段名，该字段在整棵树中是唯一的"
+      },
+      {
+        "defaultValue": [],
+        "type": "string_input",
+        "isStringArray":true,
+        "desp": "默认展开节点",
+        "name": "defExpanded",
+        "details": "填写数组，如：[1,2]"
+      },
+      {
+        "defaultValue": [],
+        "type": "string_input",
+        "isStringArray":true,
+        "desp": "默认选中节点",
+        "name": "defChecked",
+        "details": "填写数组，如：[1,2]"
+      }
+
+    ], 
+    "css":{
+      "style":[
+        {
+          "desp": "树容器",
+          "cssAttrs": "width height padding margin background-color",
+          "name": "treeWarpStyle"
+        }
+      ]
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@v2-components/v2-component-tree",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.0",
+  "index":31000001
+}

@@ -1,0 +1,89 @@
+{
+  "author": {
+    "name": "fengjiarong@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "标签页",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconbiaoge",
+    "type": "component",
+    "href": "v2-component-tabs",
+    "author": "fengjiarong@agree.com.cn",
+    "version": 610000,
+    "accept": "divCtn",
+    "name": "标签页",
+    "option": [
+      {
+        "type": "string_input",
+        "name": "active",
+        "defaultValue": "",
+        "desp": "当前激活标题值"
+      },
+      {
+        "type": "array",
+        "name": "list",
+        "defaultValue": "",
+        "desp": "标签页",
+        "attrInEachElement": [
+          {
+            "name": "label",
+            "desp": "标签文本",
+            "defaultValue": "",
+            "type": "string_input"
+          },
+          {
+            "name": "name",
+            "desp": "标签标识名",
+            "defaultValue": "",
+            "type": "string_input"
+          }
+        ]
+      },
+      {
+        "type": "string_select",
+        "name": "type",
+        "defaultValue": "",
+        "desp": "风格类型",
+        "valueArray": [
+          "",
+          "card",
+          "border-card"
+        ],
+        "despArray": [
+          "默认",
+          "类型一",
+          "类型二"
+        ]
+      },
+      {
+        "type": "string_select",
+        "name": "tabPosition",
+        "defaultValue": "top",
+        "desp": "选项卡位置",
+        "valueArray": [
+          "top",
+          "right",
+          "bottom",
+          "left"
+        ],
+        "despArray": [
+          "上",
+          "右",
+          "下",
+          "左"
+        ]
+      }
+    ]
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@v2-components/v2-component-tabs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.0",
+  "index": 30000003
+}
