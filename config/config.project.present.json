@@ -6,10 +6,20 @@
         "clientName":"网银",
         "clientHost":"https://v2sual.awebide.com",
         "clientPort":"443",
-        "base":"./runtime",
+        "base":"./project/runtime",
         "pipe":"../pipe/src/main/webapp/plugins",
-        "socketPath":"/v2sual-socket/socket.io",
+        "socketPath":"runtime/v2sual-socket/socket.io",
         "publicPort":"0",
-        "preview":"https://vue.awebide.com"
+        "preview":"https://vue.awebide.com/runtime"
+    },{
+        "clientId":"cms",
+        "clientName":"后台管理端",
+        "clientHost":"https://v2sual.awebide.com",
+        "clientPort":"443",
+        "base":"./project/cms",
+        "pipe":"../pipe/src/main/webapp/plugins",
+        "socketPath":"cms/v2sual-socket/socket.io",
+        "publicPort":"0",
+        "preview":"https://vue.awebide.com/cms"
     }]
 }
