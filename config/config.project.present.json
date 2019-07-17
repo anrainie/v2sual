@@ -8,7 +8,7 @@
         "clientPort":"443",
         "base":"./project/runtime",
         "pipe":"../pipe/src/main/webapp/plugins",
-        "socketPath":"runtime/v2sual-socket/socket.io",
+        "socketPath":"/v2sual-socket/socket.io",
         "publicPort":"0",
         "preview":"https://vue.awebide.com/runtime"
     },{
@@ -18,7 +18,7 @@
         "clientPort":"443",
         "base":"./project/cms",
         "pipe":"../pipe/src/main/webapp/plugins",
-        "socketPath":"cms/v2sual-socket/socket.io",
+        "socketPath":"/v2sual-socket/socket.io",
         "publicPort":"0",
         "preview":"https://vue.awebide.com/cms"
     }]
