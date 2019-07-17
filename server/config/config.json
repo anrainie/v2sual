@@ -57,7 +57,8 @@
         "page": {
             "consumption": {
                 "/v1/external/widget": "widget",
-                "/v1/external/dict": "dict"
+                "/v1/external/dict": "dict",
+                "packageInit": "init"
             }
         },
         "preview": {
