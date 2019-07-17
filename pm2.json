@@ -1,7 +1,38 @@
 {
-    "apps" : [{
-      "name"        : "v2sual",
-      "script"      : "launch.js",
-      "args"        : ["--config=./config/config.project.present.json"]
-    }]
-  }
+    "apps": [
+        {
+            "name": "runtime",
+            "script": "./server/server.js",
+            "args": [
+                "sh=https://aui.awebide.com",
+                "sp=7003",
+                "id=netbank",
+                "name=网银",
+                "ch=https://v2sual.awebide.com",
+                "cp=443",
+                "base=./project/runtime",
+                "pipe=../pipe/src/main/webapp/plugins",
+                "socket=/v2sual-socket/socket.io",
+                "pp=0",
+                "preview=https://vue.awebide.com/runtime"
+            ]
+        },
+        {
+            "name": "cms",
+            "script": "./server/server.js",
+            "args": [
+                "sh=https://aui.awebide.com",
+                "sp=7003",
+                "id=cms",
+                "name=后台管理端",
+                "ch=https://v2sual.awebide.com",
+                "cp=443",
+                "base=./project/cms",
+                "pipe=../pipe/src/main/webapp/plugins",
+                "socket=/v2sual-socket/socket.io",
+                "pp=0",
+                "preview=https://vue.awebide.com/cms"
+            ]
+        }
+    ]
+}
