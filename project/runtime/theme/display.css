@@ -112,11 +112,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* BEM support Func
  -------------------------- */
 /* Element Chalk Variables */
@@ -233,11 +232,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -272,6 +270,10 @@
 
 @media only screen and (max-width: 1199px) {
   .hidden-md-and-down {
+    display: none !important; } }
+
+@media only screen and (min-width: 1200px) {
+  .hidden-lg-and-up {
     display: none !important; } }
 
 @media only screen and (min-width: 1200px) and (max-width: 1919px) {

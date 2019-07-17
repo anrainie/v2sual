@@ -7,7 +7,7 @@
         :wid="`1563336155372`"
         :index="0"
         :pid="`root`"
-        @detailhandler=detailhandler
+    
       ></v2-component-table>
     </el-row>
   </v2container>

@@ -114,11 +114,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -241,11 +240,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* BEM support Func
  -------------------------- */
 /* Element Chalk Variables */
@@ -362,11 +360,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -489,11 +486,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* BEM support Func
  -------------------------- */
 /* Element Chalk Variables */
@@ -610,11 +606,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -737,11 +732,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* BEM support Func
  -------------------------- */
 /* Element Chalk Variables */
@@ -858,11 +852,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -985,11 +978,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-popper .popper__arrow,
 .el-popper .popper__arrow::after {
   position: absolute;
@@ -1081,7 +1073,7 @@
   box-sizing: border-box;
   margin: 5px 0; }
   .el-select-dropdown.is-multiple .el-select-dropdown__item.selected {
-    color: #08b55c;
+    color: #409EFF;
     background-color: #FFFFFF; }
     .el-select-dropdown.is-multiple .el-select-dropdown__item.selected.hover {
       background-color: #F5F7FA; }
@@ -1230,11 +1222,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -1357,11 +1348,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-textarea {
   position: relative;
   display: inline-block;
@@ -1396,7 +1386,7 @@
       border-color: #C0C4CC; }
     .el-textarea__inner:focus {
       outline: none;
-      border-color: #08b55c; }
+      border-color: #409EFF; }
   .el-textarea .el-input__count {
     color: #909399;
     background: #FFFFFF;
@@ -1496,7 +1486,7 @@
       border-color: #C0C4CC; }
     .el-input__inner:focus {
       outline: none;
-      border-color: #08b55c; }
+      border-color: #409EFF; }
   .el-input__suffix {
     position: absolute;
     height: 100%;
@@ -1535,7 +1525,7 @@
     pointer-events: none; }
   .el-input.is-active .el-input__inner {
     outline: none;
-    border-color: #08b55c; }
+    border-color: #409EFF; }
   .el-input.is-disabled .el-input__inner {
     background-color: #F5F7FA;
     border-color: #E4E7ED;
@@ -1763,11 +1753,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -1890,21 +1879,20 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-tag {
-  background-color: #e6f8ef;
-  border-color: #cef0de;
-  color: #08b55c;
+  background-color: #ecf5ff;
+  border-color: #d9ecff;
+  color: #409eff;
   display: inline-block;
   height: 32px;
   padding: 0 10px;
   line-height: 30px;
   font-size: 12px;
-  color: #08b55c;
+  color: #409EFF;
   border-width: 1px;
   border-style: solid;
   border-radius: 4px;
@@ -1912,12 +1900,12 @@
   box-sizing: border-box;
   white-space: nowrap; }
   .el-tag.is-hit {
-    border-color: #08b55c; }
+    border-color: #409EFF; }
   .el-tag .el-tag__close {
-    color: #08b55c; }
+    color: #409eff; }
     .el-tag .el-tag__close:hover {
       color: #FFFFFF;
-      background-color: #08b55c; }
+      background-color: #409eff; }
   .el-tag.el-tag--info {
     background-color: #f4f4f5;
     border-color: #e9e9eb;
@@ -1977,16 +1965,16 @@
     .el-tag .el-icon-close::before {
       display: block; }
   .el-tag--dark {
-    background-color: #08b55c;
-    border-color: #08b55c;
+    background-color: #409eff;
+    border-color: #409eff;
     color: white; }
     .el-tag--dark.is-hit {
-      border-color: #08b55c; }
+      border-color: #409EFF; }
     .el-tag--dark .el-tag__close {
       color: white; }
       .el-tag--dark .el-tag__close:hover {
         color: #FFFFFF;
-        background-color: #39c47d; }
+        background-color: #66b1ff; }
     .el-tag--dark.el-tag--info {
       background-color: #909399;
       border-color: #909399;
@@ -2033,15 +2021,15 @@
           background-color: #f78989; }
   .el-tag--plain {
     background-color: white;
-    border-color: #9ce1be;
-    color: #08b55c; }
+    border-color: #b3d8ff;
+    color: #409eff; }
     .el-tag--plain.is-hit {
-      border-color: #08b55c; }
+      border-color: #409EFF; }
     .el-tag--plain .el-tag__close {
-      color: #08b55c; }
+      color: #409eff; }
       .el-tag--plain .el-tag__close:hover {
         color: #FFFFFF;
-        background-color: #08b55c; }
+        background-color: #409eff; }
     .el-tag--plain.el-tag--info {
       background-color: white;
       border-color: #d3d4d6;
@@ -2224,11 +2212,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -2351,11 +2338,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-select-dropdown__item {
   font-size: 14px;
   padding: 0 20px;
@@ -2377,7 +2363,7 @@
   .el-select-dropdown__item.hover, .el-select-dropdown__item:hover {
     background-color: #F5F7FA; }
   .el-select-dropdown__item.selected {
-    color: #08b55c;
+    color: #409EFF;
     font-weight: bold; }
 
 /* BEM support Func
@@ -2496,11 +2482,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -2623,11 +2608,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-select-group {
   margin: 0;
   padding: 0; }
@@ -2771,11 +2755,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -2898,11 +2881,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-scrollbar {
   overflow: hidden;
   position: relative; }
@@ -2960,7 +2942,7 @@
     cursor: pointer;
     padding-right: 35px; }
     .el-select .el-input__inner:focus {
-      border-color: #08b55c; }
+      border-color: #409EFF; }
   .el-select .el-input .el-select__caret {
     color: #C0C4CC;
     font-size: 14px;
@@ -2990,7 +2972,7 @@
     .el-select .el-input.is-disabled .el-input__inner:hover {
       border-color: #E4E7ED; }
   .el-select .el-input.is-focus .el-input__inner {
-    border-color: #08b55c; }
+    border-color: #409EFF; }
   .el-select > .el-input {
     display: block; }
   .el-select__input {
@@ -3096,7 +3078,7 @@
     .el-pagination button:focus {
       outline: none; }
     .el-pagination button:hover {
-      color: #08b55c; }
+      color: #409EFF; }
     .el-pagination button:disabled {
       color: #C0C4CC;
       background-color: #FFFFFF;
@@ -3153,7 +3135,7 @@
       font-size: 13px;
       padding-left: 8px; }
       .el-pagination__sizes .el-input .el-input__inner:hover {
-        border-color: #08b55c; }
+        border-color: #409EFF; }
   .el-pagination__total {
     margin-right: 10px;
     font-weight: normal;
@@ -3200,9 +3182,9 @@
     .el-pagination.is-background .btn-prev:disabled, .el-pagination.is-background .btn-next:disabled {
       color: #C0C4CC; }
   .el-pagination.is-background .el-pager li:not(.disabled):hover {
-    color: #08b55c; }
+    color: #409EFF; }
   .el-pagination.is-background .el-pager li:not(.disabled).active {
-    background-color: #08b55c;
+    background-color: #409EFF;
     color: #FFFFFF; }
   .el-pagination.is-background.el-pagination--small .btn-prev,
   .el-pagination.is-background.el-pagination--small .btn-next,
@@ -3249,7 +3231,7 @@
     .el-pager li.active + li {
       border-left: 0; }
     .el-pager li:hover {
-      color: #08b55c; }
+      color: #409EFF; }
     .el-pager li.active {
-      color: #08b55c;
+      color: #409EFF;
       cursor: default; }

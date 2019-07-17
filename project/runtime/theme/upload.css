@@ -115,11 +115,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -244,11 +243,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 /* Break-points
  -------------------------- */
 /* Scrollbar
@@ -371,11 +369,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-progress {
   position: relative;
   line-height: 1; }
@@ -445,7 +442,7 @@
     left: 0;
     top: 0;
     height: 100%;
-    background-color: #08b55c;
+    background-color: #409EFF;
     text-align: right;
     border-radius: 100px;
     line-height: 1;
@@ -590,11 +587,10 @@
 --------------------------*/
 /* Calendar
 --------------------------*/
+/* Avatar
+--------------------------*/
 /* Break-point
 --------------------------*/
-:export {
-  theme: #08b55c; }
-
 .el-upload {
   display: inline-block;
   text-align: center;
@@ -629,13 +625,13 @@
       font-size: 28px;
       color: #8c939d; }
     .el-upload--picture-card:hover {
-      border-color: #08b55c;
-      color: #08b55c; }
+      border-color: #409EFF;
+      color: #409EFF; }
   .el-upload:focus {
-    border-color: #08b55c;
-    color: #08b55c; }
+    border-color: #409EFF;
+    color: #409EFF; }
     .el-upload:focus .el-upload-dragger {
-      border-color: #08b55c; }
+      border-color: #409EFF; }
 
 .el-upload-dragger {
   background-color: #fff;
@@ -665,13 +661,13 @@
     font-size: 14px;
     text-align: center; }
     .el-upload-dragger .el-upload__text em {
-      color: #08b55c;
+      color: #409EFF;
       font-style: normal; }
   .el-upload-dragger:hover {
-    border-color: #08b55c; }
+    border-color: #409EFF; }
   .el-upload-dragger.is-dragover {
     background-color: rgba(32, 159, 255, 0.06);
-    border: 2px dashed #08b55c; }
+    border: 2px dashed #409EFF; }
 
 .el-upload-list {
   margin: 0;
@@ -722,7 +718,7 @@
       font-size: 12px;
       cursor: pointer;
       opacity: 1;
-      color: #08b55c; }
+      color: #409EFF; }
     .el-upload-list__item:hover {
       background-color: #F5F7FA; }
       .el-upload-list__item:hover .el-icon-close {
@@ -732,7 +728,7 @@
     .el-upload-list__item.is-success .el-upload-list__item-status-label {
       display: block; }
     .el-upload-list__item.is-success .el-upload-list__item-name:hover, .el-upload-list__item.is-success .el-upload-list__item-name:focus {
-      color: #08b55c;
+      color: #409EFF;
       cursor: pointer; }
     .el-upload-list__item.is-success:focus:not(:hover) {
       /* 键盘focus */ }
@@ -776,7 +772,7 @@
     color: #606266;
     display: none; }
     .el-upload-list__item-delete:hover {
-      color: #08b55c; }
+      color: #409EFF; }
   .el-upload-list--picture-card {
     margin: 0;
     display: inline;
