@@ -1,16 +1,13 @@
 <template>
   <div class="commonSet-content v2-custom-el">
-      <div class="item-box">
+    <div class="item-box">
       <el-row>
         <el-col :span="6" class="slider-text-item">
           <span>定位:</span>
         </el-col>
         <el-col :span="13">
           <el-radio-group v-model="eModel.def.defPositionStyle" class="custom-el-radio-group">
-            <el-radio
-              :label="true"
-              @change="restore(['top','right','left','bottom'],true)"
-            >默认</el-radio>
+            <el-radio :label="true" @change="restore(['top','right','left','bottom'],true)">默认</el-radio>
             <el-radio :label="false">自定义</el-radio>
           </el-radio-group>
         </el-col>
@@ -20,19 +17,19 @@
         <div class="custom-def-padding-style"></div>
         <div class="custom-def-padding-item padding-top">
           <span>上</span>
-          <input type="text" v-model="eModel.customStyle['top']">
+          <input type="text" v-model="eModel.customStyle['top']" />
         </div>
         <div class="custom-def-padding-item padding-bottom">
           <span>下</span>
-          <input type="text" v-model="eModel.customStyle['bottom']">
+          <input type="text" v-model="eModel.customStyle['bottom']" />
         </div>
         <div class="custom-def-padding-item padding-left">
           <span>左</span>
-          <input type="text" v-model="eModel.customStyle['left']">
+          <input type="text" v-model="eModel.customStyle['left']" />
         </div>
         <div class="custom-def-padding-item padding-right">
           <span>右</span>
-          <input type="text" v-model="eModel.customStyle['right']">
+          <input type="text" v-model="eModel.customStyle['right']" />
         </div>
       </div>
     </div>
@@ -91,7 +88,7 @@
         </el-col>
       </el-row>
     </div>
-  <div class="item-box">
+    <div class="item-box">
       <el-row>
         <el-col :span="6" class="slider-text-item">
           <span>高度:</span>
@@ -141,11 +138,11 @@
             <i class="el-icon-caret-bottom"></i>
           </div>
 
-          <input type="text" v-model="eModel.customStyle['border-color']" class="border-color">
+          <input type="text" v-model="eModel.customStyle['border-color']" class="border-color" />
 
           <div class="border-width-box">
             <span>宽度</span>
-            <input type="text" v-model="eModel.customStyle['border-width']">
+            <input type="text" v-model="eModel.customStyle['border-width']" />
           </div>
         </div>
         <div class="custom-border-bottom">
@@ -229,19 +226,19 @@
         <div class="custom-def-padding-style"></div>
         <div class="custom-def-padding-item padding-top">
           <span>上</span>
-          <input type="text" v-model="eModel.customStyle['padding-top']">
+          <input type="text" v-model="eModel.customStyle['padding-top']" />
         </div>
         <div class="custom-def-padding-item padding-bottom">
           <span>下</span>
-          <input type="text" v-model="eModel.customStyle['padding-bottom']">
+          <input type="text" v-model="eModel.customStyle['padding-bottom']" />
         </div>
         <div class="custom-def-padding-item padding-left">
           <span>左</span>
-          <input type="text" v-model="eModel.customStyle['padding-left']">
+          <input type="text" v-model="eModel.customStyle['padding-left']" />
         </div>
         <div class="custom-def-padding-item padding-right">
           <span>右</span>
-          <input type="text" v-model="eModel.customStyle['padding-right']">
+          <input type="text" v-model="eModel.customStyle['padding-right']" />
         </div>
       </div>
     </div>
@@ -271,24 +268,19 @@
           <i class="el-icon-caret-bottom"></i>
         </div>
 
-        <input type="text" v-model="eModel.customStyle['background-color']">
+        <input type="text" v-model="eModel.customStyle['background-color']" />
       </div>
     </div>
 
- <div class=" item-box background-item mar-bot">
+    <div class="item-box background-item mar-bot">
       <span class="subtitle displayI">背景</span>
       <el-radio-group v-model="eModel.def.defbackgroundStyle">
         <el-radio :label="true" @change="restore(['background-color','background-image'])">默认</el-radio>
         <el-radio :label="false">自定义</el-radio>
       </el-radio-group>
-
-      
     </div>
 
-
     <div class="background-self-item mar-bot" v-show="!eModel.def.defbackgroundStyle">
-
-
       <div>
         <div class="color-item mar-bot">
           <span class="subtitle displayI"></span>
@@ -300,16 +292,15 @@
             v-model="eModel.customStyle['background-color']"
             alpha
           ></color-picker>
-        <!-- <el-color-picker v-model="eModel.customStyle['background-color']"></el-color-picker> -->
-        <span class="well-number displayI">#</span> 
+          <!-- <el-color-picker v-model="eModel.customStyle['background-color']"></el-color-picker> -->
+          <span class="well-number displayI">#</span>
           <input
-                  type="text"
-                  v-model="eModel.customStyle['background-color']"
-                  class="time-number input-set"
-          >
-  
-
-   </div>
+            type="text"
+            v-model="eModel.customStyle['background-color']"
+            class="time-number input-set"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -704,7 +695,6 @@ export default {
           margin: 16px auto 0;
           position: relative;
           border: 2px solid transparent;
-    
 
           > div {
             position: absolute;
@@ -749,10 +739,10 @@ export default {
               height: 14px;
               top: -8px;
               left: 12px;
-                 &.active {
+              &.active {
                 &::after {
                   top: 5px;
-                  right:-10px;
+                  right: -10px;
                   width: 66px;
                   height: 2px;
                 }
@@ -763,14 +753,14 @@ export default {
               height: 14px;
               bottom: -8px;
               left: 12px;
-                   &.active {
+              &.active {
                 &::after {
                   bottom: 5px;
-                  right:-10px;
+                  right: -10px;
                   width: 66px;
                   height: 2px;
                 }
-            }
+              }
             }
             &.active {
               background-color: #c6eceb;
