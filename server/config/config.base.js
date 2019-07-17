@@ -8,6 +8,7 @@ let serverHost,
   clientName,
   clientHost,
   clientPort,
+  outerClientPort,
   _base,
   _pipe,
   socketPath,
@@ -36,6 +37,9 @@ process.argv.forEach((p, index) => {
         break;
       case 'cp':
         clientPort = val;
+        break;
+      case 'ocp':
+        outerClientPort = val;
         break;
       case 'base':
         _base = val;
@@ -73,7 +77,7 @@ const webide = {
   host: serverHost || config.webide.host, //WebIDE 对外主机 localhost
   port: serverPort || config.webide.port, //WebIDE 对外端口 
   clientHost: clientHost || config.webide.clientHost, //V2sual 对外主机
-  clientPort: clientPort || config.webide.clientPort, //V2sual 对外端口
+  clientPort: outerClientPort || clientPort || config.webide.clientPort, //V2sual 对外端口
   path: socketPath || config.webide.path, //Socket.io 在 Ngnix 映射
   publicPort: publickPort || config.webide.publicPort //公网的socket 的 port
 
