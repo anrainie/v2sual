@@ -1,5 +1,5 @@
 {
-    "name": "@aweb-plugins/app.animateKill",
+    "name": "@aweb-pipe/app.animateKill",
     "main": "index.js",
     "docs": {
         "desp": "结束动画",

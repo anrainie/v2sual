@@ -1,5 +1,5 @@
 {
-    "name": "@aweb-plugins/app.animate",
+    "name": "@aweb-pipe/app.animate",
     "main": "index.js",
     "docs": {
         "desp": "动画效果",
