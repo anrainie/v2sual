@@ -245,6 +245,27 @@ const reader = {
         platform.sendErrorResult(req, e);
       }
     }
+  },
+  getPipe(platform){
+    return async req => {
+      let data  = req.data;
+      let pipePath = config.runtime.pipe;
+      let res ={};
+      try{
+        await fileUtil.getFileContent(nodejsPath.join(pipePath,data.name,"index.js")).then(content => {
+          res.index = content;
+        }).catch(e => {
+        })
+        await fileUtil.getFileContent(nodejsPath.join(pipePath,data.name,"package.json")).then(content => {
+          res.package = content;
+        }).catch(e => {
+        })
+        platform.sendSuccessResult(req, res);
+      }catch(e){
+        platform.sendErrorResult(req, e)
+
+      }
+    }
   }
 };
 
