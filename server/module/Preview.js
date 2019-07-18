@@ -135,11 +135,11 @@ class Preview {
           const absProjectPath = path.resolve(projectPath);
 
           //删除package-lock.josn
-          try {
-            fs.unlinkSync(path.resolve(absProjectPath, 'package-lock.json'));
-          } catch (e) {
-            console.log(e.message);
-          }
+          // try {
+          //   fs.unlinkSync(path.resolve(absProjectPath, 'package-lock.json'));
+          // } catch (e) {
+          //   console.log(e.message);
+          // }
 
           //先备份一次vue.config.js
           const vueConfigPath = path.join(config.runtime.base, 'vue.config.js');
