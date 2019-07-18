@@ -9,9 +9,29 @@
 ## 使用
 
 ```
+    //启动v2sual
     npm run server
+
+    //启动项目预览、模拟数据
+    cd ./project/项目名 
+    npm run serve
+    npm run mock
 ```
-使用该脚本，会自动把 v2sual 服务 和 各个项目的预览和假数据提起来。
+
+### 单独提起各个项目
+
+```
+//提起v2sual
+v2sual/ node ./server/server.js
+
+//提起项目 
+v2sual/project/项目名 npm run serve
+
+//提起项目模拟数据
+v2sual/project/项目名 npm run mock
+```
+
+
 
 ## 调试
 在 VSCode 中配置

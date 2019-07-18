@@ -57,6 +57,12 @@ class Preview {
     const projectPath = this.projectPath;
     return async function (ctx, next) {
       try {
+        //先备份一次vue.config.js
+        const vueConfigPath = path.join(config.runtime.base, 'vue.config.js');
+        const vueConfigBackup = fs.readFileSync(vueConfigPath, {
+          encoding: 'utf8'
+        });
+
         try {
           const componentPath = config.runtime.component;
 
@@ -141,11 +147,7 @@ class Preview {
           //   console.log(e.message);
           // }
 
-          //先备份一次vue.config.js
-          const vueConfigPath = path.join(config.runtime.base, 'vue.config.js');
-          const vueConfigBackup = fs.readFileSync(vueConfigPath, {
-            encoding: 'utf8'
-          });
+
 
 
           //重新安装一次依赖
@@ -198,14 +200,12 @@ class Preview {
           `)
           await execCmd(config.module.preview.script.script, absProjectPath);
 
-          fs.writeFileSync(vueConfigPath, vueConfigBackup);
+
         } catch (e) {
           Result.error(ctx, e);
-        } finally {
-
         }
 
-
+        fs.writeFileSync(vueConfigPath, vueConfigBackup);
 
         Result.success(ctx, {
           content: {
@@ -230,7 +230,10 @@ class Preview {
       try {
         const html = Buffer.from(fs.readFileSync(config.runtime.homepage)).toString();
 
-        const css = html.match(/<link[^>]+>/g).filter(l => l.indexOf('.css') !== -1 && l.startsWith('//') === false).map(e => e.match(/href=([^\s]+)/)).filter(e => !!e).map(e => e[1]);
+        const css = html
+          .match(/<link[^>]+>/g)
+          .filter(l => l.indexOf('.css') !== -1 && l.indexOf('=//') === -1)
+          .map(e => e.match(/href=([^\s]+)/)).filter(e => !!e).map(e => e[1]);
 
 
         const content = Array.from(new Set(css)).map(f => fs.readFileSync(path.resolve(path.join(config.runtime.dist, f)).toString()));
@@ -251,7 +254,7 @@ class Preview {
 
         platform.sendSuccessResult(req, js);
       } catch (e) {
-       // console.error(e)
+        // console.error(e)
         platform.sendErrorResult(req, e.message || e);
       }
     }

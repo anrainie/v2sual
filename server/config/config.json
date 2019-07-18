@@ -1,6 +1,6 @@
 {
     "server": {
-        "id": 123123,
+        "id": "netbank",
         "type": "v2sual",
         "port": 3000,
         "host": "localhost",
@@ -15,7 +15,7 @@
         "publicPort": 7003
     },
     "runtime": {
-        "base": "./runtime",
+        "base": "./project/runtime",
         "component": "../@v2-components",
         "componentFile": "./src/@aweb-components/aweb.components.js",
         "pipe": "../pipe/src/main/webapp/plugins",
