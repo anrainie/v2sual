@@ -16,7 +16,7 @@
 
 <script>
     import E from 'wangeditor'
-    import "wangeditor/release/wangEditor.min.css"
+    import "@/../node_modules/wangeditor/release/wangEditor.min.css"
 
     export default {
       name: 'v2-form-editor',

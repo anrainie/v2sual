@@ -2,9 +2,9 @@
     "server": {
         "id": "netbank",
         "type": "v2sual",
+        "name": "网银",
         "port": 3000,
-        "host": "localhost",
-        "preview": "http://localhost:7007"
+        "host": "localhost"
     },
     "webide": {
         "port": 7003,
@@ -12,7 +12,8 @@
         "clientPort": 3000,
         "clientHost": "localhost",
         "path": "/socket.io",
-        "publicPort": 7003
+        "publicPort": 7003,
+        "preview": "http://localhost:7007"
     },
     "runtime": {
         "base": "./project/runtime",
