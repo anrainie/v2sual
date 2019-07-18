@@ -8,7 +8,7 @@
         "clientId":"netbank",
         "clientName":"网银",
         "base":"./project/runtime",
-        "pipe":"../pipe/src/main/webapp/plugins",
+        "pipe":"../pipe",
         "preview":"http://localhost:7007",
         "script":[
             "npm run serve",
