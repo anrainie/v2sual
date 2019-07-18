@@ -93,9 +93,9 @@ if (config && config.projects && config.projects.length) {
             .then(r => {
                 const cmd = `node ./server/server.js ` + Object.keys(params).filter(k => !!params[k]).map(key => `${key}=${params[key]}`).join(' ');
 
-                //console.log(cmd);
+                console.log(cmd);
 
-                execCmd(cmd);
+                //execCmd(cmd);
 
                 //启动预览和假数据
                 if (p.script && p.script.length) {

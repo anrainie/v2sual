@@ -53,9 +53,9 @@ class Preview {
    *  @type GET
    *  @url /init
    */
-  init() {
+  init(platform) {
     const projectPath = this.projectPath;
-    return async function (ctx, next) {
+    return async function (req) {
       try {
         //先备份一次vue.config.js
         const vueConfigPath = path.join(config.runtime.base, 'vue.config.js');
@@ -201,19 +201,19 @@ class Preview {
           await execCmd(config.module.preview.script.script, absProjectPath);
 
 
+          platform.sendSuccessResult(req, JSON.stringify({
+            content: {
+              result: true,
+            }
+          }));
+
         } catch (e) {
-          Result.error(ctx, e);
+          platform.sendErrorResult(req, e);
         }
 
         fs.writeFileSync(vueConfigPath, vueConfigBackup);
-
-        Result.success(ctx, {
-          content: {
-            result: true,
-          }
-        });
       } catch (e) {
-        Result.error(ctx, e);
+        platform.sendErrorResult(req, e);
       }
     }
   }
@@ -270,10 +270,7 @@ module.exports = {
     const preview = new Preview(runtime);
     const router = Router();
 
-    Object.keys(consumption).map(c => {
-      console.log(`${c}- TEEE`)
-      return router.get(c, preview[consumption[c]]())
-    });
+    Object.keys(consumption).map(c => router.get(c, preview[consumption[c]]()));
 
     return router;
   }
