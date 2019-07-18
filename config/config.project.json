@@ -9,7 +9,11 @@
         "clientName":"网银",
         "base":"./project/runtime",
         "pipe":"../pipe/src/main/webapp/plugins",
-        "preview":"http://localhost:7007"
+        "preview":"http://localhost:7007",
+        "script":[
+            "npm run serve",
+            "npm run mock"
+        ]
     },{
         "clientHost":"http://localhost",
         "clientPort":"3001",
@@ -18,7 +22,11 @@
         "clientName":"后台管理端",
         "base":"./project/cms",
         "pipe":"../pipe/src/main/webapp/plugins",
-        "preview":"http://localhost:7009"
+        "preview":"http://localhost:7009",
+        "script":[
+            "npm run serve",
+            "npm run mock"
+        ]
     }]
     
 }
