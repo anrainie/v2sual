@@ -19,7 +19,7 @@
         "base": "./project/runtime",
         "component": "../@v2-components",
         "componentFile": "./src/@aweb-components/aweb.components.js",
-        "pipe": "../pipe/src/main/webapp/plugins",
+        "pipe": "../pipe",
         "page": "./src/views",
         "customWidget": "./src/views/_customWidget",
         "datadict": "./src/datadict",
@@ -91,7 +91,8 @@
                 "saveFile": "saveFile",
                 "createFile": "createFile",
                 "createFolder": "createFolder",
-                "deleteFile": "deleteFile"
+                "deleteFile": "deleteFile",
+                "getPipe": "getPipe"
             }
         },
         "test": {

@@ -114,8 +114,8 @@ let json2script = function (json, path) {
                     let ctx = this;
                         ${transfer.destroyed ? transfer.destroyed.code : ''}
                 },
-                pause(){/**页面切出**/},
-                resume(){/**页面切入**/},
+                deactivated(){/**页面切出**/},
+                activated(){/**页面切入**/},
 
             };
         </script>`

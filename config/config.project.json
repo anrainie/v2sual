@@ -9,7 +9,7 @@
             "clientId": "netbank",
             "clientName": "网银",
             "base": "./project/runtime",
-            "pipe": "../pipe/src/main/webapp/plugins",
+            "pipe": "../pipe",
             "preview": "http://localhost:7007",
             "previewLocalPorts": [
                 3000,
@@ -24,7 +24,7 @@
             "clientId": "cms",
             "clientName": "后台管理端",
             "base": "./project/cms",
-            "pipe": "../pipe/src/main/webapp/plugins",
+            "pipe": "../pipe",
             "preview": "http://localhost:7009",
             "previewLocalPorts": [
                 3001,
