@@ -6,8 +6,7 @@ const JSDOM = jsdom.JSDOM;
 var document = new JSDOM('').window.document;
 
 //=================================================== json转html ===========================================================
-const ignoreKey = ['children','style','widget','data','css','option','options','def','defaultValue','commonStyle','pid'];//先不作处理的属性
-const v2Layout = ['v2-layout-colctn','v2-layout-rowctn','v2-layout'];//转为v2container
+const v2Layout = ['v2-layout-colctn','v2-layout-rowctn','v2-layout','v2Container'];//转为v2container
 let dataBasket = [];//自定义组件的数据篮子
 
 let blockClass = function (index, parent) {
@@ -34,37 +33,6 @@ let isEmptyJson = function (json) {
     return json === null || json === undefined || JSON.stringify(json) === '{}';
 }
 
-//将json格式的属性变成 key1:value1;key2:value2; style属性 data属性
-let parseAttrJson = function (attrJson) {
-    let attr = '';
-    for (let key in attrJson) {
-        if (attrJson[key] != '') {
-            attr += key + ':' + attrJson[key] + ';';
-        }
-    }
-    return attr;
-}
-
-/**
- * 根据json往element中添加属性
- * @param {JSON} json 
- * @param {Element} element 
- */
-let appendAttribute = function(json,element){
-    if(json === null){
-        return;
-    }
-    for(let key in json){
-        if(ignoreKey.includes(key)){
-            continue;
-        }else if(key === 'layout'){
-            element.setAttribute(key,layout_c(json));
-        }else{
-            element.setAttribute(key,json[key]);
-        }
-    }
-    json.wid = json.id;
-}
 let appendComponent = function(parent,index,element){
     let child = parent.children[index];
     if(child === undefined){
@@ -191,6 +159,7 @@ let appendChildren = function(parentJson,element,isContainer){
         }
     }else{
         let layout = layout_c(parentJson);
+        let realSize = parentJson.realSize;
         for(let i = 0,len = layout.length ; i<len ; i++){
             if(parentJson.direction === 'col'){
                 let span = parseInt(layout instanceof Array ? Math.round(layout[i] * 24 / 100) : '2');
@@ -203,7 +172,12 @@ let appendChildren = function(parentJson,element,isContainer){
                 element.appendChild(eCol);
             }else{
                 let eRow = document.createElement('el-row');
-                let height = layout instanceof Array ? layout[i] + '%' : '50%';
+                let height = null;
+                if(realSize instanceof Array && realSize[i]){
+                    height = layout[i] + realSize[i];
+                }else{
+                    height = layout instanceof Array ? layout[i] + '%' : '50%';
+                }
                 eRow.setAttribute('class','V2ContainerBlock'+blockClass(i,parentJson));
                 eRow.setAttribute('style','height:'+ height + ';width:100%;');
                 eRow.setAttribute('key',i);
