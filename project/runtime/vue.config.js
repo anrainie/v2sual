@@ -1,9 +1,10 @@
 
 module.exports = {
-  baseUrl: './',
-
+  publichPath:'/runtime/',
   devServer: {
     port: 7007,
+    sockPort:443,
+    sockPath:'/runtime/sockjs-node',
     disableHostCheck: true,
     hotOnly: false,
     proxy: {
