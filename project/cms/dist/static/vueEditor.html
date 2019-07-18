@@ -101,15 +101,15 @@
 
             let content = $('<div></div>')
             area.append(content);
-            comp.$store=widget.$store;
-            comp.wid=widget.wid;
+            comp.$store = widget.$store;
+            comp.wid = widget.wid;
             comp.$mount(content[0]);
-            this.customEditor=comp;
+            this.customEditor = comp;
 
             this.showCustomEditor = true;
           },
           closeCustomEditor() {
-            if(this.customEditor)
+            if (this.customEditor)
               this.customEditor.$destroy();
             let area = $(this.$refs.customEditorArea);
             area.empty();
@@ -136,7 +136,7 @@
   </script>
 </head>
 
-<body style="">
+<body style="padding:5px;box-sizing: border-box;">
   <div></div>
 </body>
 
