@@ -130,12 +130,22 @@ let methodsToCode = function (obj) {
   let arr = [],
     i;
   for (i in obj) {
-    arr.push(
-      `${obj[i].name}(widget,item){
-                let ctx = this;
-                ${obj[i].code}
-            }, `
-    )
+    console.log(obj[i])
+    if(obj[i].custom){
+      arr.push(
+        `${obj[i].name}(${obj[i].params.join(',')}){
+                  let ctx = this;
+                  ${obj[i].code}
+              }, `
+      )
+    }else{
+      arr.push(
+        `${obj[i].name}(widget,item){
+                  let ctx = this;
+                  ${obj[i].code}
+              }, `
+      )
+    }
   }
   return arr.join("");
 }

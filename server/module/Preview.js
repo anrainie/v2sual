@@ -53,10 +53,16 @@ class Preview {
    *  @type GET
    *  @url /init
    */
-  init() {
+  init(platform) {
     const projectPath = this.projectPath;
-    return async function (ctx, next) {
+    return async function (req) {
       try {
+        //先备份一次vue.config.js
+        const vueConfigPath = path.join(config.runtime.base, 'vue.config.js');
+        const vueConfigBackup = fs.readFileSync(vueConfigPath, {
+          encoding: 'utf8'
+        });
+
         try {
           const componentPath = config.runtime.component;
 
@@ -135,17 +141,13 @@ class Preview {
           const absProjectPath = path.resolve(projectPath);
 
           //删除package-lock.josn
-          try {
-            fs.unlinkSync(path.resolve(absProjectPath, 'package-lock.json'));
-          } catch (e) {
-            console.log(e.message);
-          }
+          // try {
+          //   fs.unlinkSync(path.resolve(absProjectPath, 'package-lock.json'));
+          // } catch (e) {
+          //   console.log(e.message);
+          // }
 
-          //先备份一次vue.config.js
-          const vueConfigPath = path.join(config.runtime.base, 'vue.config.js');
-          const vueConfigBackup = fs.readFileSync(vueConfigPath, {
-            encoding: 'utf8'
-          });
+
 
 
           //重新安装一次依赖
@@ -198,22 +200,20 @@ class Preview {
           `)
           await execCmd(config.module.preview.script.script, absProjectPath);
 
-          fs.writeFileSync(vueConfigPath, vueConfigBackup);
-        } catch (e) {
-          Result.error(ctx, e);
-        } finally {
 
+          platform.sendSuccessResult(req, JSON.stringify({
+            content: {
+              result: true,
+            }
+          }));
+
+        } catch (e) {
+          platform.sendErrorResult(req, e);
         }
 
-
-
-        Result.success(ctx, {
-          content: {
-            result: true,
-          }
-        });
+        fs.writeFileSync(vueConfigPath, vueConfigBackup);
       } catch (e) {
-        Result.error(ctx, e);
+        platform.sendErrorResult(req, e);
       }
     }
   }
@@ -230,7 +230,10 @@ class Preview {
       try {
         const html = Buffer.from(fs.readFileSync(config.runtime.homepage)).toString();
 
-        const css = html.match(/<link[^>]+>/g).filter(l => l.indexOf('.css') !== -1 && l.startsWith('//') === false).map(e => e.match(/href=([^\s]+)/)).filter(e => !!e).map(e => e[1]);
+        const css = html
+          .match(/<link[^>]+>/g)
+          .filter(l => l.indexOf('.css') !== -1 && l.indexOf('=//') === -1)
+          .map(e => e.match(/href=([^\s]+)/)).filter(e => !!e).map(e => e[1]);
 
 
         const content = Array.from(new Set(css)).map(f => fs.readFileSync(path.resolve(path.join(config.runtime.dist, f)).toString()));
@@ -251,7 +254,7 @@ class Preview {
 
         platform.sendSuccessResult(req, js);
       } catch (e) {
-       // console.error(e)
+        // console.error(e)
         platform.sendErrorResult(req, e.message || e);
       }
     }
@@ -267,10 +270,7 @@ module.exports = {
     const preview = new Preview(runtime);
     const router = Router();
 
-    Object.keys(consumption).map(c => {
-      console.log(`${c}- TEEE`)
-      return router.get(c, preview[consumption[c]]())
-    });
+    Object.keys(consumption).map(c => router.get(c, preview[consumption[c]]()));
 
     return router;
   }

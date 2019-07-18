@@ -6,7 +6,8 @@
     "private": true,
     "scripts": {
         "project": "node  ./server/server.js",
-        "server": "node ./launch.js --config=./config/config.project.json",
+        "server": "node ./server/server.js sh=http://localhost sp=7003 id=netbank name=网银 ch=http://localhost cp=3000 ocp=3000 base=./project/runtime pipe=../pipe/src/main/webapp/plugins preview=http://localhost:7007",
+        "cms": "node ./server/server.js sh=http://localhost sp=7003 id=cms name=后台管理端 ch=http://localhost cp=3001 ocp=3001 base=./project/cms pipe=../pipe/src/main/webapp/plugins preview=http://localhost:7009",
         "present": "node ./launch.js --config=./config/config.project.present.json",
         "anra": "node ./launch.js --config=./config/config.project.anra.json",
         "toxhq": "node ./launch.js --config=./config/config.project.toxhq.json",
@@ -27,6 +28,7 @@
         "install": "^0.12.2",
         "jquery": "^3.3.1",
         "jquery-ui": "^1.12.1",
+        "kill-port": "^1.5.1",
         "less": "^3.9.0",
         "less-loader": "^4.1.0",
         "mockjs": "^1.0.1-beta3",

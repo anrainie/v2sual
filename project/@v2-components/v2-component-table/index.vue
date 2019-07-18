@@ -24,8 +24,8 @@
     </el-table-column>
 
      <el-table-column
-      v-if="model.toolBar"
-      :fixed="model.toolLocation"
+      v-if="model.toolBtns.length"
+      :fixed="model.toolBar && model.toolLocation"
       :label="model.toolTitle"
       :width="model.toolWidth">
       <template slot-scope="scope">

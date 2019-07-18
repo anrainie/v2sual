@@ -86,7 +86,7 @@ const webide = {
 const server = {
   ...config.server,
   id: clientId || config.server.id,
-  name: clientName || clientId || config.server.id,
+  name: clientName || clientId || config.server.name||config.server.id,
   port: clientPort || config.server.port,
   preview: preview || config.webide.preview//预览地址
 }
