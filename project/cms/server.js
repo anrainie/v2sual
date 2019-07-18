@@ -294,8 +294,8 @@ app.use(require('koa-static')(__dirname + '/public'))
 // http.createServer(app.callback()).listen(80);
 // https.createServer(options, app.callback()).listen(443);
 
-app.listen(7011, () => {
-	console.error(`服务器启动成功：7011`);
+app.listen(7010, () => {
+	console.error(`服务器启动成功：7010`);
 });
 
 
