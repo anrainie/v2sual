@@ -7,8 +7,8 @@ const getConfig = () => {
     publicPath: '/cms/',
     port: 7009,
     mockPort: 7008,
-    sockPort:7007,
-    sockPath:'/sockjs-node',
+    sockPort: 7007,
+    sockPath: '/sockjs-node',
 
   };
 
@@ -26,12 +26,14 @@ const getConfig = () => {
 
 const config = getConfig();
 
-console.log(config);
+//console.log(config);
+
+console.log('代理地址', `http://localhost:${config.mockPort}`)
 
 module.exports = {
   publicPath: config.publicPath,
   devServer: {
-    port: config.port|| 7009,
+    port: config.port || 7009,
     sockPort: config.sockPort,
     sockPath: config.sockPath,
     disableHostCheck: true,
