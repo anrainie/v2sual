@@ -8,7 +8,11 @@
         "clientName":"网银",
         "base":"./runtime",
         "pipe":"../pipe/src/main/webapp/plugins",
-        "preview":"http://localhost:7007"
+        "preview":"http://localhost:7007",
+        "script":[
+            "npm run server",
+            "npm run mock"
+        ]
     }]
     
 }

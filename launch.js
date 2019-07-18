@@ -53,6 +53,7 @@ const config = getConfig();
 
 if (config && config.projects && config.projects.length) {
     config.projects.map(p => {
+        //启动v2sual
         const params = {
             sh: config.serverHost,
             sp: config.serverPort,
@@ -60,17 +61,22 @@ if (config && config.projects && config.projects.length) {
             name: p.clientName,
             ch: p.clientHost,
             cp: p.clientPort,
-            ocp:p.outerClientPort||p.clientPort,
+            ocp: p.outerClientPort || p.clientPort,
             base: p.base,
             pipe: p.pipe,
             socket: p.socketPath,
             pp: p.publicPort,
-            preview:p.preview,
+            preview: p.preview,
         };
-        const cmd=`node ./server/server.js ` + Object.keys(params).filter(k => !!params[k]).map(key => `${key}=${params[key]}`).join(' ');
+        const cmd = `node ./server/server.js ` + Object.keys(params).filter(k => !!params[k]).map(key => `${key}=${params[key]}`).join(' ');
 
         console.log(cmd);
 
         execCmd(cmd);
+
+        //启动预览和假数据
+        if (p.script && p.script.length) {
+            p.script.forEach(s => execCmd(s, p.base));
+        }
     });
 }

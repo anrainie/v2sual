@@ -1,5 +1,4 @@
-html,
-body {
+html, body {
   height: 100%;
   width: 100%;
 }
@@ -52,7 +51,6 @@ body {
 }
 
 .V2ToolbarItem>i {
-
   margin-right: 4px;
   display: inline-block;
 }
@@ -85,10 +83,9 @@ body {
 }
 
 /* .V2ToolbarMenuItem:hover {
-    box-shadow: 0 0 1px 1px #00000021;
-  } */
-.V2ToolbarMenu [class*=" el-icon-"],
-.V2ToolbarMenu [class^=el-icon-] {
+  box-shadow: 0 0 1px 1px #00000021;
+} */
+.V2ToolbarMenu [class*=" el-icon-"], .V2ToolbarMenu [class^=el-icon-] {
   line-height: 30px;
 }
 
@@ -102,8 +99,6 @@ body {
   z-index: 10023;
   background: #fff;
 }
-
-
 
 .V2ToolbarMenu::before {
   content: "";
@@ -137,13 +132,9 @@ body {
   width: 88px;
   height: 80px;
   padding: 6px 10px 0 10px;
-
-
-
 }
 
 .V2ToolbarMenu.v2-layout-option .V2ToolbarMenuItem {
-
   width: 22px;
   height: 22px;
   /* height: auto; */
@@ -207,11 +198,10 @@ body {
   background-image: url("../img/icon9.png");
 }
 
-.V2CustomCptMask,
-.V2PageCptMask {
+.V2CustomCptMask, .V2PageCptMask {
   /* left: 0;
-  top: 0;
-  position: absolute; */
+top: 0;
+position: absolute; */
   width: 100%;
   min-height: 20px;
   z-index: 990;
@@ -229,7 +219,8 @@ body {
   font-size: .5rem;
   background: lightblue;
 }
-.V2PageCptMask:after{
+
+.V2PageCptMask:after {
   content: "[页面组件]";
   position: absolute;
   top: 0;
@@ -238,9 +229,38 @@ body {
   font-size: .5rem;
   background: lightblue;
 }
-.V2Switchable{
-  
+
+
+.V2TileArea {
+  width: 100%;
+  height: 100%;
 }
+
+.V2HArea {
+  width: 100%;
+}
+
+.V2VArea {
+  height: 100%;
+}
+
+.V2VArea,
+.V2HArea,
+.V2TileArea {
+  position: absolute;
+  transition: opacity .5s linear;
+  opacity: 0;
+}
+
+.V2VArea:hover,
+.V2HArea:hover,
+.V2TileArea:hover {
+  background: lightblue;
+  opacity: 1;
+}
+
+.V2Switchable {}
+
 .V2Switchable:after {
   content: "[切换容器]";
   position: absolute;
@@ -302,16 +322,14 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-  .V2Toolbar {}
+  .V2Toolbar {
+  }
 }
-
-
 
 .V2ToolbarSp {
   display: inline-block;
   vertical-align: middle;
   position: relative;
-
   width: 1px;
   height: 22px;
   background-color: #eee;
@@ -323,7 +341,7 @@ body {
 
 .V2ContainerBlock {
   position: relative;
-  transition: filter .2s linear, width .2s linear, height.2s linear,left .2s linear,top .2s linear;
+  transition: filter .2s linear, width .2s linear, height.2s linear, left .2s linear, top .2s linear;
 }
 
 /* 考虑用before/after */
@@ -333,12 +351,14 @@ body {
   filter: invert(10%) blur(.5px);
 }
 
+<<<<<<< HEAD
 
-.v2loopItem{
+=======
+>>>>>>> 7e05a624d9847d2f0fed182c98245c3ede1aeea6
+.v2loopItem {
   position: relative;
   float: left;
 }
-
 
 .unselected {
   opacity: .5;
@@ -382,7 +402,8 @@ body {
   right: 0;
 }
 
-.v2top {}
+.v2top {
+}
 
 .v2center {
   top: 50%;
@@ -395,7 +416,6 @@ body {
   position: absolute !important;
   bottom: 0;
 }
-
 
 .V2Dropable:hover {
   background-color: lightcyan;
@@ -459,16 +479,16 @@ body {
 }
 
 .context-menu > li {
-  position:relative
+  position: relative
 }
 
-.context-menu > div {
+.context-menu>div {
   display: inline-block;
   width: 100%;
   height: 2rem;
 }
 
-.context-menu > div > span {
+.context-menu>div>span {
   display: inline-block;
   margin: 0 auto;
   width: 0;
@@ -501,7 +521,7 @@ body {
 
 .context-menu-item-img {
   position: absolute;
-  left:.5rem;
+  left: .5rem;
   margin-bottom: .5rem;
 }
 
@@ -511,7 +531,7 @@ body {
   margin-right: 1.5rem;
 }
 
-.context-menu-item:hover > .context-menu-content{
+.context-menu-item:hover > .context-menu-content {
   background: #eee;
   color: #66b1ff;
 }
@@ -547,11 +567,84 @@ body {
 
 .subMenu {
   left: 11rem;
-  top:0px;
+  top: 0px;
 }
 
-.arrow-right{
+.arrow-right {
   position: absolute;
   top: 20%;
   right: 3px;
 }
+
+/*美化可切换tab样式 Start*/
+.V2CustomEditor>div>div>.el-tabs {
+  border-top: none;
+  box-shadow: none;
+}
+
+.V2CustomEditor>div>div>.el-tabs>.el-tabs__header {
+  background: none;
+  zoom:1; /* border: none; */
+  display: flex;
+}
+
+.V2CustomEditor>div>div>.el-tabs>.el-tabs__header:after {
+  content: '\20';
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.V2CustomEditor>div>div>.el-tabs>.el-tabs__header>span {
+  flex: 1px;
+}
+
+.V2CustomEditor>div>div>.el-tabs>.el-tabs__header>div {
+  min-width: 200px;
+}
+
+.V2CustomEditor>div>div>.el-tabs>.el-tabs__header .el-tabs__item {
+  /* height: 24px; */
+  background-color: #ffffff;
+  border: solid 1px #e2e2e2;
+  font-size: 12px;
+  padding: 7px 24px 5px;
+  line-height: 1;
+  height: 24px;
+  margin-top: 0;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* width: 128px; */
+}
+
+.V2CustomEditor>div>div>.el-tabs>.el-tabs__header .el-tabs__item:first-child {
+  border-top-left-radius: 4px;
+}
+
+.V2CustomEditor>div>div>.el-tabs>.el-tabs__header .el-tabs__item:last-child {
+  border-top-right-radius: 4px;
+}
+
+.V2CustomEditor>div>div>.el-tabs>.el-tabs__header .el-tabs__item.is-active {
+  border-bottom: none;
+}
+
+.V2CustomEditor>div>div>.el-tabs>.el-tabs__header .el-tabs__item .el-icon-close {
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  margin: 0;
+  line-height: 12px;
+  font-size: 12px;
+}
+
+.V2CustomEditor>div>div>.el-tabs>.el-tabs__header .el-tabs__item .el-icon-close:before {
+  transform: scale(.75);
+  position: relative;
+  top: 0.2px;
+}
+
+/*美化可切换tab样式 End*/

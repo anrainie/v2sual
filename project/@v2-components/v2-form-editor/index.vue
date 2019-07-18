@@ -8,7 +8,7 @@
       {{model.label}}</label>
      <div class="form-editor-ctn" :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
 
-        <div ref="wEditor" style="text-align:left" :style="model.style && model.style.ctnStyle"> <p>{{model.placeholder}}</p></div>
+        <div ref="wEditor" class="w-e-warp-ctn"  :style="model.style && model.style.ctnStyle" style="text-align:left;height:100%"> <p>{{model.placeholder}}</p></div>
          
      </div>
   </div>
@@ -30,6 +30,11 @@
         'model.disabled':{
           handler(val){
              this.wEditor.$textElem.attr('contenteditable', !val)
+          }
+        },
+        'model.value':{
+           handler(val){
+               this.wEditor.txt.html(val);
           }
         }
       },
@@ -66,11 +71,19 @@
   line-height: 40px;
   position: relative;
   font-size: 14px;
+   height: 100%;
+  .w-e-warp-ctn{
+    height:100% !important;
+  }
   .w-e-toolbar{
-    flex-wrap: wrap;
+    display:block;
+     .w-e-menu{
+      display: inline-block;
+    }
   }
   .w-e-text-container{
-    height: auto !important;
+      
+        height: 90% !important;
   }
   .w-e-toolbar .w-e-active i{
        color:$--color-primary;

@@ -89,7 +89,7 @@
         "desp": "按钮类型",
         "defaultValue": "",
         "valueArray": [
-          "",
+          "text",
           "primary",
           "success",
           "info",

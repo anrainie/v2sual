@@ -9,8 +9,9 @@
 ## 使用
 
 ```
-    npm run test
+    npm run server
 ```
+使用该脚本，会自动把 v2sual 服务 和 各个项目的预览和假数据提起来。
 
 ## 调试
 在 VSCode 中配置
