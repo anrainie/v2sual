@@ -171,8 +171,8 @@
                   <sub-page-ctn :page="subPageHref" :params="subPageParams" v-if="subDialogVisible"></sub-page-ctn> 
                 </transition>        
                 <div slot='footer' class='dialog-footer'>
-                <el-button @click="cancel">取消</el-button>
-                <el-button type='primary' @click="confirm">确定</el-button >
+               <el-button @click="cancel" v-if="subFooter('cancel')" >取消</el-button>
+                <el-button type='primary' v-if="subFooter('confirm')" @click="confirm">确定</el-button >
                 </div> 
             </el-dialog>
              <!-- 子页面容器 -->
@@ -429,6 +429,11 @@ export default {
       set(val) {
         this.$store.commit("set_url_map", val);
       }
+    },
+    subFooter(type){
+       return (type)=>{
+         return  this.$store.getters.subPageFooter(type);
+       }
     }
   },
   watch: {

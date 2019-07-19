@@ -5,32 +5,7 @@ import Layout from '@/views/Layout'
 
 
 export default {
-    
-    data() {
-        (this.$parent && this.$parent.params) &&  console.log('p',this.$parent);
-        return {
-            ...(this.$parent && this.$parent.params) || (this.$route && Object.keys(this.$route.query).length && this.$route.query) || {}
-        }
-    },
-    beforeRouteEnter(to, from, next) {
-        next((vm) => {
-            let toComp = vm.$router.getMatchedComponents(to)[1] ? vm.$router.getMatchedComponents(to)[1] : vm.$router.getMatchedComponents(to)[0];
 
-            toComp.resume && toComp.resume.call(vm);
-
-            vm.__resume && vm.__resume();
-
-        })
-    },
-    beforeRouteLeave(to, from, next) {
-        let fromCom = this.$router.getMatchedComponents(from)[1] ? this.$router.getMatchedComponents(from)[1] : this.$router.getMatchedComponents(from)[0];
-
-        fromCom.pause && fromCom.pause.call(this);
-
-        this.__pause && this.__pause();
-
-        next();
-    },
     methods: {
 
         async open(option) {
@@ -52,17 +27,19 @@ export default {
             let routerUrl;
             let openedTabs;
 
+            let self = this.$store.state.openedTabs? this:this.$store.state.root.$parent;
+
             if (status === false || status === 'false') return;
             
             path = !path ? page : path;
 
             let haseAdded = !routerTemp.filter(item => item.children && item.children.length && item.children[0].path === path.replace('/', '')).length;
-            if (!this.beforeOpen || await this.beforeOpen(option)) {
+            if (!self.beforeOpen || await self.beforeOpen(option)) {
                 switch (type) {
                     case 'SUB':
 
-                        this.$store.commit("set_D_visible", true);
-                        this.$store.commit("setModalCallback", {
+                        self.$store.commit("set_D_visible", true);
+                        self.$store.commit("setModalCallback", {
                             cancel: cancelCallback,
                             confirm: confirmCallback,
                             hideCancelBtn:hideCancelBtn,
@@ -70,11 +47,11 @@ export default {
                         })
                       
 
-                        this.$store.commit("set_subPageHref", page);
-                        this.$store.commit("set_subPageParams", params);
-                        this.$store.commit("set_subPageTitle", title);
+                        self.$store.commit("set_subPageHref", page);
+                        self.$store.commit("set_subPageParams", params);
+                        self.$store.commit("set_subPageTitle", title);
 
-                        this.__pause && this.__pause();
+                        self.__pause && self.__pause();
 
 
 
@@ -136,14 +113,14 @@ export default {
                         break;
                     default:
 
-                        openedTabs = this.$store.state.openedTabs;
+                        openedTabs = self.$store.state.openedTabs;
 
                         if (openedTabs.filter(item => item.route === path).length) {
                             router.push({
                                 path: path,
                                 query: params
                             });
-                            this.$store.commit("set_active_index", path);
+                            self.$store.commit("set_active_index", path);
                         } else {
 
                             if (!page && path !== '') {
@@ -208,27 +185,30 @@ export default {
                 },
                 openedTabs;
 
-            if (!this.beforeClose || await this.beforeClose(option)) {
-                if (this.$store.state.subDialogVisible) {
+         let self = this.$store.state.openedTabs? this:this.$store.state.root.$parent;
 
-                    this.$store.commit("set_D_visible", false);
+
+            if (!self.beforeClose || await self.beforeClose(option)) {
+                if (self.$store.state.subDialogVisible) {
+
+                    self.$store.commit("set_D_visible", false);
 
                 } else {
 
-                    path = !path ? this.$router.currentRoute.path : path;
+                    path = !path ? self.$router.currentRoute.path : path;
 
                     global.antRouter = global.antRouter.filter(item => (item.children && item.children.length && (item.children[0].path) !== path) || (item.children && !item.children.length) || (!item.children));
 
 
-                    this.$store.commit("delete_tabs", path);
-                    openedTabs = this.$store.state.openedTabs;
+                    self.$store.commit("delete_tabs", path);
+                    openedTabs = self.$store.state.openedTabs;
 
                     if (openedTabs && openedTabs.length >= 1) {
 
-                        this.$store.commit("set_active_index", openedTabs[openedTabs.length - 1].route);
+                        self.$store.commit("set_active_index", openedTabs[openedTabs.length - 1].route);
 
                         router.push({
-                            path: this.$store.state.activeIndex
+                            path: self.$store.state.activeIndex
                         });
 
                     }

@@ -162,9 +162,10 @@
       <section class="aweb-ctt">
         <!-- 子页面容器 START -->
         <router-view></router-view>
+      </section>
 
-        <!-- 弹窗 START -->
-        <!-- <el-dialog
+     <!-- 弹窗 START -->
+         <el-dialog
           :title="subPageTitle"
           :visible.sync="subDialogVisible"
           @close="closeDialog"
@@ -177,10 +178,8 @@
             <el-button @click="cancel">取消</el-button>
             <el-button type="primary" @click="confirm">确定</el-button>
           </div>
-        </el-dialog>-->
+        </el-dialog>
         <!-- 弹窗 END -->
-      </section>
-
       <!-- 内容区域 END -->
     </div>
     <div class="aweb-footer">欢迎 {{sysUserName}} 使用</div>
@@ -190,9 +189,8 @@
 <script>
 import { getObjArr, getRouter, saveRouter } from "../promission.js";
 
-// import rightMenu from "@/components/rightMenu";
-// import asyncComponent from "@/components/asyncComponent";
-// import subPageCtn from "@/components/subPageCtn";
+
+ import subPageCtn from "@/components/subPageCtn";
 
 export default {
   name: "layout",
@@ -296,82 +294,82 @@ export default {
           _this.$router.go(0);
         })
         .catch(() => {});
+    },
+    tabRightClick: function(e) {
+      if (e.target.classList[0] === "el-tabs__item") {
+        this.rightClickHandler = e;
+      }
+    },
+    reload() {
+      this.isRouterAlive = false;
+
+      this.$nextTick(function() {
+        this.isRouterAlive = true;
+      });
+    },
+    handleRightSelect: function(key) {
+      switch (key) {
+        case "refresh":
+          this.reload();
+
+          break;
+        case "close":
+          this.$store.commit("delete_tabs", this.activeIndex);
+          if (this.openedTabs && this.openedTabs.length >= 1) {
+            this.$store.commit(
+              "set_active_index",
+              this.openedTabs[this.openedTabs.length - 1].route
+            );
+
+            this.$router.push({
+              path: this.activeIndex,
+              query: this.URLQueryMap[this.activeIndex] || {}
+            });
+          }
+          break;
+
+        case "closeAll":
+          this.$store.commit("delete_allTabs");
+          break;
+      }
+    },
+    collapse: function() {
+      this.collapsed = !this.collapsed;
+    },
+    tabClick(tab) {
+      this.$router.push({
+        path: this.activeIndex,
+        query: this.URLQueryMap[this.activeIndex] || {}
+      });
+    },
+    tabRemove(targetName) {
+      this.$store.commit("delete_tabs", targetName);
+      if (this.activeIndex === targetName) {
+        if (this.openedTabs && this.openedTabs.length >= 1) {
+          this.$store.commit(
+            "set_active_index",
+            this.openedTabs[this.openedTabs.length - 1].route
+          );
+
+          this.$router.push({
+            path: this.activeIndex,
+            query: this.URLQueryMap[this.activeIndex] || {}
+          });
+        }
+      }
+    },
+    cancel() {
+      this.closeDialog();
+      this.$store.commit("do_cancel");
+    },
+    confirm() {
+      this.closeDialog();
+      this.$store.commit("do_confirm");
+    },
+    closeDialog() {
+      this.$store.commit("set_D_visible", false);
+      this.$store.commit("set_active_index", this.activeIndex);
     }
-    // tabRightClick: function(e) {
-    //   if (e.target.classList[0] === "el-tabs__item") {
-    //     this.rightClickHandler = e;
-    //   }
-    // },
-    // reload() {
-    //   this.isRouterAlive = false;
-
-    //   this.$nextTick(function() {
-    //     this.isRouterAlive = true;
-    //   });
-    // },
-    // handleRightSelect: function(key) {
-    //   switch (key) {
-    //     case "refresh":
-    //       this.reload();
-
-    //       break;
-    //     case "close":
-    //       this.$store.commit("delete_tabs", this.activeIndex);
-    //       if (this.openedTabs && this.openedTabs.length >= 1) {
-    //         this.$store.commit(
-    //           "set_active_index",
-    //           this.openedTabs[this.openedTabs.length - 1].route
-    //         );
-
-    //         this.$router.push({
-    //           path: this.activeIndex,
-    //           query: this.URLQueryMap[this.activeIndex] || {}
-    //         });
-    //       }
-    //       break;
-
-    //     case "closeAll":
-    //       this.$store.commit("delete_allTabs");
-    //       break;
-    //   }
-    // },
-    // collapse: function() {
-    //   this.collapsed = !this.collapsed;
-    // },
-    // tabClick(tab) {
-    //   this.$router.push({
-    //     path: this.activeIndex,
-    //     query: this.URLQueryMap[this.activeIndex] || {}
-    //   });
-    // },
-    // tabRemove(targetName) {
-    //   this.$store.commit("delete_tabs", targetName);
-    //   if (this.activeIndex === targetName) {
-    //     if (this.openedTabs && this.openedTabs.length >= 1) {
-    //       this.$store.commit(
-    //         "set_active_index",
-    //         this.openedTabs[this.openedTabs.length - 1].route
-    //       );
-
-    //       this.$router.push({
-    //         path: this.activeIndex,
-    //         query: this.URLQueryMap[this.activeIndex] || {}
-    //       });
-    //     }
-    //   }
-    // },
-    // cancel() {
-    //   this.closeDialog();
-    //   this.$store.commit("do_cancel");
-    // },
-    // confirm() {
-    //   this.closeDialog();
-    //   this.$store.commit("do_confirm");
-    // },
-    // closeDialog() {
-    //   this.$store.commit("set_D_visible", false);
-    //   this.$store.commit("set_active_index", this.activeIndex);
-    // },
   },
   mounted() {
     // console.log(this.axios.get())
@@ -393,113 +391,113 @@ export default {
   },
   updated() {},
   computed: {
-    // openedTabs() {
-    //   return this.$store.state.openedTabs;
-    // },
-    // activeIndex: {
-    //   get() {
-    //     return this.$store.state.activeIndex;
-    //   },
-    //   set(val) {
-    //     this.$store.commit("set_active_index", val);
-    //   }
-    // },
-    // subDialogVisible: {
-    //   get() {
-    //     return this.$store.state.subDialogVisible;
-    //   },
-    //   set(val) {
-    //     this.$store.commit("set_D_visible", val);
-    //   }
-    // },
-    // subPageHref: {
-    //   get() {
-    //     return this.$store.state.subPageHref;
-    //   },
-    //   set(val) {
-    //     this.$store.commit("set_subPageHref", val);
-    //   }
-    // },
-    // subPageParams: {
-    //   get() {
-    //     return this.$store.state.subPageParams;
-    //   },
-    //   set(val) {
-    //     this.$store.commit("set_subPageParams", val);
-    //   }
-    // },
-    // subPageTitle: {
-    //   get() {
-    //     return this.$store.state.subPageTitle;
-    //   },
-    //   set(val) {
-    //     this.$store.commit("set_subPageTitle", val);
-    //   }
-    // },
-    // rightMenuData() {
-    //   return this.$store.state.rightMenuData;
-    // },
-    // URLQueryMap: {
-    //   get() {
-    //     return this.$store.state.URLQueryMap;
-    //   },
-    //   set(val) {
-    //     this.$store.commit("set_url_map", val);
-    //   }
-    // }
+    openedTabs() {
+      return this.$store.state.openedTabs;
+    },
+    activeIndex: {
+      get() {
+        return this.$store.state.activeIndex;
+      },
+      set(val) {
+        this.$store.commit("set_active_index", val);
+      }
+    },
+    subDialogVisible: {
+      get() {
+        return this.$store.state.subDialogVisible;
+      },
+      set(val) {
+        this.$store.commit("set_D_visible", val);
+      }
+    },
+    subPageHref: {
+      get() {
+        return this.$store.state.subPageHref;
+      },
+      set(val) {
+        this.$store.commit("set_subPageHref", val);
+      }
+    },
+    subPageParams: {
+      get() {
+        return this.$store.state.subPageParams;
+      },
+      set(val) {
+        this.$store.commit("set_subPageParams", val);
+      }
+    },
+    subPageTitle: {
+      get() {
+        return this.$store.state.subPageTitle;
+      },
+      set(val) {
+        this.$store.commit("set_subPageTitle", val);
+      }
+    },
+    rightMenuData() {
+      return this.$store.state.rightMenuData;
+    },
+    URLQueryMap: {
+      get() {
+        return this.$store.state.URLQueryMap;
+      },
+      set(val) {
+        this.$store.commit("set_url_map", val);
+      }
+    }
   },
   watch: {
-    // $route(to, from) {
-    //   let flag = false;
-    //   if (to.meta.type === "BLANK") {
-    //     if (Object.keys(to.query).length) {
-    //       this.$store.commit("set_url_map", { path: to.path, query: to.query });
-    //     }
-    //   }
-    //   if (to.meta.type === "BLANK" || !to.meta.type) {
-    //     for (let item of this.openedTabs) {
-    //       if (item.route === to.path) {
-    //         this.$store.commit("set_active_index", to.path);
-    //         flag = true;
-    //         break;
-    //       }
-    //     }
-    //     if (!flag) {
-    //       this.$store.commit("add_tabs", {
-    //         route: to.path,
-    //         name: to.meta.title,
-    //         keepAlive: to.meta.keepAlive
-    //       });
-    //       this.$store.commit("set_active_index", to.path);
-    //     }
-    //   } else if (to.meta.type === "SELF") {
-    //     this.$store.commit("add_tabs", {
-    //       route: to.path,
-    //       name: to.meta.title,
-    //       keepAlive: to.meta.keepAlive
-    //     });
-    //     this.$store.commit("set_active_index", to.path);
-    //     this.$store.commit("delete_tabs", from.path);
-    //   }
-    // },
-    // subDialogVisible: {
-    //   immediate: true,
-    //   handler(newVal, oldVal) {
-    //     if (!newVal && oldVal) {
-    //       let currentPageConfig = this.$router.currentRoute.matched[1]
-    //         .components.default;
-    //       let currentPageIns = this.$router.currentRoute.matched[1].instances
-    //         .default;
-    //       currentPageConfig.resume &&
-    //         currentPageConfig.resume.call(currentPageIns);
-    //     }
-    //   }
-    // },
+    $route(to, from) {
+      let flag = false;
+      if (to.meta.type === "BLANK") {
+        if (Object.keys(to.query).length) {
+          this.$store.commit("set_url_map", { path: to.path, query: to.query });
+        }
+      }
+      if (to.meta.type === "BLANK" || !to.meta.type) {
+        for (let item of this.openedTabs) {
+          if (item.route === to.path) {
+            this.$store.commit("set_active_index", to.path);
+            flag = true;
+            break;
+          }
+        }
+        if (!flag) {
+          this.$store.commit("add_tabs", {
+            route: to.path,
+            name: to.meta.title,
+            keepAlive: to.meta.keepAlive
+          });
+          this.$store.commit("set_active_index", to.path);
+        }
+      } else if (to.meta.type === "SELF") {
+        this.$store.commit("add_tabs", {
+          route: to.path,
+          name: to.meta.title,
+          keepAlive: to.meta.keepAlive
+        });
+        this.$store.commit("set_active_index", to.path);
+        this.$store.commit("delete_tabs", from.path);
+      }
+    },
+    subDialogVisible: {
+      immediate: true,
+      handler(newVal, oldVal) {
+        if (!newVal && oldVal) {
+          let currentPageConfig = this.$router.currentRoute.matched[1]
+            .components.default;
+          let currentPageIns = this.$router.currentRoute.matched[1].instances
+            .default;
+          currentPageConfig.resume &&
+            currentPageConfig.resume.call(currentPageIns);
+        }
+      }
+    }
+  },
+  components: {
+
+    subPageCtn
   }
-  // components: {
-  //   rightMenu,
-  //   subPageCtn
-  // }
 };
 </script>
 

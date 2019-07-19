@@ -18,8 +18,9 @@
     "option": [
       {
         "name": "activeIndex",
-        "desp": "当前页索引",
-        "type": "string_input"
+        "desp": "页码变量",
+        "type": "variable_input",
+        "placeHolder":"请从数据篮子中选取一个整型变量"
       }
     ],
     "css": {

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import variables from '../element-variables.scss'
 
 Vue.use(Vuex)
 
@@ -8,6 +9,7 @@ export default new Vuex.Store({
     openedTabs: [], //所有打开的路由
     activeIndex: '', //激活状态
     subDialogVisible: false,
+    theme:variables.theme,
     subPageHref:'',
     subPageParams: '',
     _op_subPage:null,//弹窗子页面
@@ -31,6 +33,11 @@ export default new Vuex.Store({
         name: '关闭全部窗口',
         key: 'closeAll'
       }]
+  },
+  getters:{
+    subPageFooter:(state)=>(type)=>{
+       return !state[type+'Btn']; 
+    }
   },
   mutations: {
     // 添加tabs
@@ -77,6 +84,8 @@ export default new Vuex.Store({
     setModalCallback(state, callback) {
       this.state.cancelCallback = callback.cancel;
       this.state.confirmCallback = callback.confirm;
+      state.cancelBtn =callback.hideCancelBtn;
+      state.confirmBtn = callback.hideConfirmBtn;
     },
  
     do_cancel() {

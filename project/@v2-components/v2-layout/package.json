@@ -14,6 +14,13 @@
     "version": 610000,
     "accept": "",
     "polymorphic": [{
+      "desp":"单容器",
+      "default":{
+        "layout":[100],
+        "realSize":[null],
+        "direction":"row"
+      }
+    },{
       "desp":"横向",
       "default":{
         "layout":[50, 50],
@@ -62,15 +69,17 @@
         "realSize":[null,null],
         "children":[
           {
-            "layout":[30,70],
+            "layout":[20,80],
             "direction":"col",
             "component":"v2-layout",
+            "realSize":[null,null],
             "children":[null,null]
           },
           {
             "layout":[100],
             "direction":"row",
              "component":"v2-layout",
+             "realSize":[null],
             "children":[null]
           }
         ]
@@ -88,11 +97,13 @@
             "layout":[100],
             "direction":"row",
             "component":"v2-layout",
+            "realSize":[null],
             "children":[null]
           },{
             "layout":[30,70],
             "direction":"col",
             "component":"v2-layout",
+            "realSize":[null,null],
             "children":[null,null]
           }
         ]
@@ -111,22 +122,23 @@
             "layout":[100],
             "direction":"row",
             "component":"v2-layout",
-            "realSize":[null,null],
+            "realSize":[null],
             "children":[null]
           },
           {
-            "layout":[30,70],
+            "layout":[20,80],
             "direction":"col",
             "component":"v2-layout",
             "children":[{
                 "layout":[100],
                 "direction":"row",
                 "component":"v2-layout",
-                "realSize":[null,null],
+                "realSize":[null],
                 "children":[null]
               },{
-                "layout":[70,30],
+                "layout":[80,20],
                 "direction":"row",
+                "realSize":[null,null],
                 "component":"v2-layout",
                 "children":[null,null]
               }
@@ -139,17 +151,19 @@
     },{
       "desp":"左上中",
       "default":{
-        "layout":[30,70],
+        "layout":[20,80],
         "direction":"col",
         "children":[
           {
             "layout":[100],
             "direction":"row",
             "component":"v2-layout",
+            "realSize":[null],
             "children":[null]
           },{
             "layout":[20,80],
             "direction":"row",
+            "realSize":[null,null],
             "component":"v2-layout",
             "children":[null,null]
           }
@@ -160,17 +174,19 @@
     },{
       "desp":"左中下",
       "default":{
-        "layout":[30,70],
+        "layout":[20,80],
         "direction":"col",
         "children":[
           {
             "layout":[100],
             "direction":"row",
+            "realSize":[null],
             "component":"v2-layout",
             "children":[null]
           },{
             "layout":[80,20],
             "direction":"row",
+            "realSize":[null,null],
             "component":"v2-layout",
             "children":[null,null]
           }
@@ -219,27 +235,6 @@
           "name": "divCtn"
         }
       ]
-    },
-    "editor": {
-      "name": "v2LayoutEditor",
-      "model": {
-        "def": {
-          "defheight": true,
-          "defwidth": true,
-          "defborder": true,
-          "defbackgroundStyle": true,
-          "defpaddingStyle": true
-        },
-        "defaultValue": {
-          "background-color": "#fff",
-          "background-image": "",
-          "padding-top": 0,
-          "padding-bottom": 0,
-          "padding-left": 0,
-          "padding-right": 0
-        },
-        "customStyle": {}
-      }
     }
   },
   "keywords": [],

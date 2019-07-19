@@ -26,9 +26,6 @@ const getConfig = () => {
 
 const config = getConfig();
 
-//console.log(config);
-
-console.log('代理地址', `http://localhost:${config.mockPort}`)
 
 module.exports = {
   publicPath: config.publicPath,
@@ -40,7 +37,7 @@ module.exports = {
     hotOnly: false,
     proxy: {
       //假数据
-      '/mock': {
+      '/': {
         target: `http://localhost:${config.mockPort}`,
         changeOrigin: true,     // target是域名的话，需要这个参数，
         secure: false,          // 设置支持https协议的代理
