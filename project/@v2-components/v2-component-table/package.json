@@ -18,12 +18,51 @@
       "type": "edmCollection",
       "desp": "列定义",
       "name": "columns",
-      "edmKey": "sTitle",
+      "edmKey": "prop",
+      "edmLabel":"label",
       "hidden": false,
       "defaultValue": "",
       "valueArray": "",
       "replaceTemp": true,
-      "attrInEachElement": []
+      "attrInEachElement": [{
+        "defaultValue": "",
+        "type": "string_input",
+        "name": "prop",
+        "desp": "key"
+      },{
+        "defaultValue": "",
+        "type": "string_input",
+        "name": "label",
+        "desp": "列名"
+      },{
+        "defaultValue": "",
+        "valueArray": [
+          "",
+          "true",
+          "left",
+          "right"
+        ],
+        "type": "string_select",
+         "desp": "固定列",
+         "despArray": [
+                 "无",
+                 "固定",
+                 "左固定",
+                 "右固定"
+               ],
+          "name": "fixed"
+      },{
+        "defaultValue": "",
+        "type": "string_input",
+        "name": "width",
+        "desp": "列宽"
+      },
+      {
+        "defaultValue": false,
+        "type": "boolean",
+        "name": "sortable",
+        "desp": "是否排序"
+      }]
     },
     {
           "defaultValue": "",
@@ -40,6 +79,12 @@
                    "多选"
                  ],
             "name": "selection"
+    },
+    {
+      "defaultValue": false,
+      "type": "boolean",
+      "name": "openIndex",
+      "desp": "是否打开索引列"
     },
      {
        "defaultValue": false,
@@ -115,18 +160,56 @@
     },
     {
       "type": "string_input",
-      "name": "tableData",
+      "name": "tHeight",
       "defaultValue": "",
-      "disabled": true,
-      "desp": "表格数据"
+      "details":"表格高度，填写了则默认是固定表头",
+      "desp": "表格高度"
     },
     {
       "type": "string_input",
-      "name": "selectedRow",
+      "name": "tMaxHeight",
+      "details":"通过设置max-height属性为 Table 指定最大高度。此时若表格所需的高度大于最大高度，则会显示一个滚动条",
       "defaultValue": "",
-      "desp": "选中行"
+      "desp": "流体高度"
+    },
+    {
+      "type": "string_input",
+      "name": "tableData",
+      "defaultValue": "",
+      "desp": "表格数据"
     }
-  ]
+  ],
+  "css":{
+    "style": [],
+    "theme": [{
+      "desp": "类型选择",
+      "name": "tableType",
+      "defaultValue": "border",
+      "valueArray": [
+        "border",
+        "stripe"
+      ],
+      "despArray": [
+        "带边框",
+        "斑马纹"
+      ]
+    },{
+      "desp": "尺寸选择",
+      "name": "size",
+      "valueArray": [
+        "",
+        "medium",
+        "small",
+        "mini"
+      ],
+      "despArray": [
+        "默认",
+        "中等",
+        "小型",
+        "超小"
+      ]
+    }]
+}
   },
   "keywords": [],
   "license": "ISC",

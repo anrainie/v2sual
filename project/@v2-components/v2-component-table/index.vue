@@ -1,14 +1,23 @@
 <template>
   <div :class="widgetClass" :style="model.commonStyle">
     <el-table
-    
     :data="tableData"
     ref="_op_table_table"
     tooltip-effect="dark"
     style="width: 100%"
-    border
+    :height="model.tHeight||null"
+    :max-height="model.tMaxHeight||null"
+    :border="model.theme && model.theme.tableType==='border'?true:false"
+    :stripe="model.theme && model.theme.tableType==='stripe'?true:false"
     highlight-current-row  
+    :size="model.theme && model.theme.size"
   >
+   <el-table-column
+     v-if="model.openIndex"
+      type="index"
+    >
+    </el-table-column>
+
     <el-table-column
       v-if="model.selection==='multi'"
       type="selection"
@@ -18,9 +27,13 @@
     <el-table-column
       v-for="item in model.columns"
       v-if="item.__edm_collection"
-      :prop="item.sTitle"
-      :label="item.__edm_collection && (item.__edm_collection.PUBCODECNAME ||item.__edm_collection.description)"
-      :key="item.sTitle">
+      :prop="item.prop"
+      :label="item.label||(item.__edm_collection && (item.__edm_collection.PUBCODECNAME ||item.__edm_collection.description))"
+      :key="item.prop"
+      :fixed="item.fixed"
+      :width ="item.width"
+      :sortable ="item.sortable"
+      >
     </el-table-column>
 
      <el-table-column
@@ -73,6 +86,7 @@ export default {
         for(let i=0 ; i<size ; i++){
           result[i] = this.fakeData[(this.currentPage-1)*this.pageSize+i];
         }
+       
         return result;
       }
       // return (typeof this.model.tableData !=='string' && this.model.tableData ) || this.fakeData;
@@ -84,7 +98,7 @@ export default {
           for(let i=0;i<10;i++){
             let fakeRowData = {};
             columns.forEach((element,idx) => {
-               fakeRowData[element.sTitle] = 'rol'+i+'col'+idx
+               fakeRowData[element.prop] = 'rol'+i+'col'+idx
             });
             fakeData.push(fakeRowData);
           }
@@ -116,7 +130,7 @@ export default {
     
   },
   mounted(){
-
+     debugger;
   },
   watch:{
     'model.tableData':{

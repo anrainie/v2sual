@@ -9,6 +9,9 @@ import router from './router'
 import './api/index.js';
 import './utils/global.js'
 import './promission.js'
+window.Vue=Vue;
+
+import $ from "jquery"
 
 
 Vue.directive('focus', {
@@ -18,6 +21,7 @@ Vue.directive('focus', {
     el.focus()
   }
 })
+window.$ = $;
 
 Vue.config.productionTip = false;
 
