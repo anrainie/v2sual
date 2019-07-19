@@ -302,16 +302,31 @@ const pipeDir = () => {
     let filePath = path.join(pipePath, files[i]);
     let relativePath = trans2RelativePath(filePath);
     let fileInfo = path.parse(filePath);
-    let item = {
-      name: fileInfo.base,
-      label: fileInfo.base,
-      resId: 'pipe',
-      icon: "ideicon iconyemian",
-      type: 'file',
-      category: 100,
-      path: relativePath
-    };
-    res.push(item);
+
+    if (!EXCLUDE_MAP[filePath] && !path.basename(filePath).startsWith('.')) {
+      const stats = fs.lstatSync(filePath);
+      if (stats.isDirectory()) {
+        try {
+          let info = JSON.parse(fs.readFileSync(path.join(pipePath, fileInfo.base, "package.json")));
+          let name = info.docs.name;
+          let desp = info.docs.desp;
+          let item = {
+            name: name,
+            dirName: fileInfo.base,
+            label: desp,
+            resId: 'pipe',
+            icon: "ideicon iconyemian",
+            type: 'file',
+            category: 100,
+            path: relativePath
+          };
+          res.push(item);
+        } catch (e) {
+
+        }
+      }
+
+    }
   }
   return res;
 
@@ -358,14 +373,14 @@ const Navigator = {
       }, {
         name: 'statis',
         label: '项目资源',
-        path: path.join(config.runtime.base, 'public', 'img'),
+        path: trans2RelativePath(path.join(config.runtime.base, 'public', 'img')),
         resId: 'pathImg',
         type: 'folder',
         children: imgList
       }, {
         name: 'pipe',
         label: '管道',
-        path: path.join(config.runtime.pipe),
+        path: 'pipe',
         resId: 'pipe',
         type: 'folder',
         children: pipeList
@@ -380,6 +395,7 @@ const Navigator = {
     return async (req) => {
       try {
         let dirPath = req.data.path || req.data.end;
+        let viewPath;
         switch (req.data.path) {
           case "\\":
           case null:
@@ -389,9 +405,13 @@ const Navigator = {
             dirPath = listPath;
             this.getRootItems(platform, dirPath, req);
             break;
+          case "pipe":
+            viewPath = listDir(config.runtime.pipe);
+            platform.sendSuccessResult(req, viewPath);
+            break;
           default:
             //如果不是，则返回原始的
-            const viewPath = listDir(trans2AbsolutePath(dirPath));
+            viewPath = listDir(trans2AbsolutePath(dirPath));
             platform.sendSuccessResult(req, viewPath);
         }
 
