@@ -180,7 +180,6 @@
     }
   ],
   "css":{
-    "style": [],
     "theme": [{
       "desp": "类型选择",
       "name": "tableType",
