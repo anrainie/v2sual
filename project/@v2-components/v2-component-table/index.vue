@@ -26,7 +26,7 @@
     
     <el-table-column
       v-for="item in model.columns"
-      v-if="item.__edm_collection"
+       v-if="item.prop"
       :prop="item.prop"
       :label="item.label||(item.__edm_collection && (item.__edm_collection.PUBCODECNAME ||item.__edm_collection.description))"
       :key="item.prop"
