@@ -164,6 +164,9 @@ class Pipe {
             return item;
           });
         };
+        if(docs.returnValue){
+          delete docs.returnValue.show;
+        }
         fs.writeFileSync(nodejsPath.join(filePath, 'index.js'), req.data.index);
         fs.writeFileSync(nodejsPath.join(filePath, 'package.json'), JSON.stringify(packageJson));
         platform.sendSuccessResult(req, { status: true });
