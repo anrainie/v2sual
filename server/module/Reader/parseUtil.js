@@ -134,7 +134,11 @@ let appendComponent = function(parent,index,element){
     }
     if(element.localName === 'template'){
         if(element.parentElement.localName === 'v2-switchable'){
-            eCom.setAttribute('v-if',element.parentElement.getAttribute('activeIndex')+'=='+index);
+            let instance = element.parentElement.getAttribute('activeIndex');
+            if(instance.startsWith('$')){
+                instance = instance.substring('2',instance.length -1);
+            }
+            eCom.setAttribute('v-if',instance+'=='+index);
         }
         element.content.appendChild(eCom);
     }else{
