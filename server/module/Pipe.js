@@ -1,6 +1,16 @@
 const readDir = require('recursive-readdir');
 const fs = require('fs');
+const nodejsPath = require('path');
+const config = require('../config/config.base');
 
+const trans2absolute = p => {
+  try {
+    return nodejsPath.join(config.runtime.base, p);
+  } catch (e) {
+    p;
+    return '';
+  }
+};
 
 class Pipe {
   constructor(platform, path) {
@@ -85,9 +95,9 @@ class Pipe {
                 type: "Value",
                 value: item.defaultValue
               }
-            })||[{
-              type:'Value',
-              value:''
+            }) || [{
+              type: 'Value',
+              value: ''
             }]
           };
           switch (docs.category) {
@@ -104,7 +114,7 @@ class Pipe {
               res[4].item.push(obj);
               break;
             case 'animate':
-              res[5].item.push(obj); 
+              res[5].item.push(obj);
               break;
             case "string":
               res[6].item.push(obj);
@@ -134,6 +144,81 @@ class Pipe {
         //Result.success(ctx, vueFiles);
       } catch (e) {
         platform.sendErrorResult(req, e);
+      }
+    }
+  }
+  save() {
+    const {
+      path,
+      platform
+    } = this;
+    return async (req) => {
+      try {
+        let index = req.data.index;
+        let packageJson = JSON.parse(req.data.package);
+        let filePath = nodejsPath.join(config.runtime.pipe, req.data.dirName);
+        let docs = packageJson.docs;
+        if (docs.params) {
+          docs.params = docs.params.map(item => {
+            delete item.show;
+            return item;
+          });
+        };
+        fs.writeFileSync(nodejsPath.join(filePath, 'index.js'), req.data.index);
+        fs.writeFileSync(nodejsPath.join(filePath, 'package.json'), JSON.stringify(packageJson));
+        platform.sendSuccessResult(req, { status: true });
+      } catch (e) {
+        platform.sendErrorResult(req, { status: false, error: e });
+      }
+    }
+  }
+  create() {
+    const {
+      path,
+      platform
+    } = this;
+    return async (req) => {
+      let data = req.data;
+      let dirPath = nodejsPath.join(config.runtime.pipe, data.pipeName);
+      const indexTemplate = `(function(){
+      })`;
+      const packageTemplate = `{
+        "name": "@aweb-pipe/",
+        "main": "index.js",
+        "docs": {
+            "desp": "${data.pipeDesp}",
+            "name":  "${data.pipeName}",
+            "icon": "",
+            "category": "api",
+            "label": "",
+            "labelType": "front",
+            "belongTo": "function",
+            "hasReturn": false,
+            "returnValue": {
+                "name": "",
+                "desp": "",
+                "details": "",
+                "type": "string",
+                "defaultValue": ""
+            },
+            "params": []
+        },
+        "category": "自定义",
+        "description": "",
+        "version": "6.0.0"
+    }`;
+      try {
+        if (fs.existsSync(dirPath)) {
+          platform.sendErrorResult(req, "同名管道文件已存在");
+        } else {
+          fs.mkdirSync(dirPath);
+          fs.writeFileSync(nodejsPath.join(dirPath,".npmrc"),`registry=https://npm.awebide.com`)
+          fs.writeFileSync(nodejsPath.join(dirPath,"index.js"),indexTemplate);
+          fs.writeFileSync(nodejsPath.join(dirPath,"package.json"),packageTemplate);
+        }
+        platform.sendSuccessResult(req, { status: true });
+      } catch (e) {
+        platform.sendErrorResult(req, { status: false, error: e });
       }
     }
   }
