@@ -26,9 +26,6 @@ const getConfig = () => {
 
 const config = getConfig();
 
-//console.log(config);
-
-console.log('代理地址', `http://localhost:${config.mockPort}`)
 
 module.exports = {
   publicPath: config.publicPath,

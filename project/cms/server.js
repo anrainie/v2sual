@@ -8,10 +8,30 @@ const router = new Router()
 const shell = require('shelljs')
 
 const fs = require('fs')
-// var http = require('http');
-// var https = require('https');
 
+
+//获取配置
+const getConfig = () => {
+
+	let params = {
+		port: 7007
+	};
+
+	process.argv.filter(e => e.startsWith('--')).forEach(e => {
+		const f = e.replace(/^--/, '');
+		const parts = f.split('=');
+		params[params[0]] = parts.slice(1).join('=');
+		if (parts.length && parts[0]) {
+			params[parts[0]] = parts.slice(1).join('=')
+		}
+	});
+
+	return params;
+};
+
+const config=getConfig();
 let Users = [];
+
 
 for (let i = 0; i < 66; i++) {
 	Users.push(Mock.mock({
@@ -42,7 +62,7 @@ router.get('/-/user/list', (ctx) => {
 router.get('/-/user/listpage', (ctx) => {
 
 	let { page, name } = ctx.request.query;
-	
+
 	let mockUsers = Users.filter(user => {
 		if (name && user.name.indexOf(name) == -1) return false;
 		return true;
@@ -51,8 +71,8 @@ router.get('/-/user/listpage', (ctx) => {
 	mockUsers = mockUsers.filter((u, index) => index < 20 * page && index >= 20 * (page - 1));
 
 	ctx.body = {
-		status:true,
-		content:{
+		status: true,
+		content: {
 			total: total,
 			users: mockUsers
 		}
@@ -62,7 +82,7 @@ router.get('/-/user/listpage', (ctx) => {
 //删除用户
 router.get('/-/user/remove', (ctx) => {
 	let { id } = ctx.request.query;
-	
+
 	Users = Users.filter(u => u.id !== id);
 	ctx.body = {
 		code: 200,
@@ -87,17 +107,17 @@ router.get('/-/user/edit', (ctx) => {
 		}
 	});
 
-		ctx.body = {
-			code: 200,
-			msg: '编辑成功'
-		};
+	ctx.body = {
+		code: 200,
+		msg: '编辑成功'
+	};
 
 });
 
 //新增用户
 router.get('/-/user/add', (ctx) => {
-	let { name, addr, age, birth, sex } =ctx.request.query;
-	
+	let { name, addr, age, birth, sex } = ctx.request.query;
+
 	Users.push({
 		name: name,
 		addr: addr,
@@ -112,18 +132,18 @@ router.get('/-/user/add', (ctx) => {
 });
 //路由列表
 const routerList = [
-		{
-			"path": "open",
-			"name": "open",
-			"component": "spa/open",
-			"meta": {
-				"title": "OPEN",
-				"icon": "el-icon-goods"
-			}
-		},
+	{
+		"path": "open",
+		"name": "open",
+		"component": "spa/open",
+		"meta": {
+			"title": "OPEN",
+			"icon": "el-icon-goods"
+		}
+	},
 	{
 		"path": "spa",
-		"name":"spa",
+		"name": "spa",
 		"component": "spa/spa",
 		"meta": {
 			"title": "SPA",
@@ -195,11 +215,11 @@ const routerList = [
 					"icon": "el-icon-setting"
 				}
 			}
-			
+
 		]
 	}
 
-	
+
 ];
 
 
@@ -207,9 +227,9 @@ const routerList = [
 
 router.get('/-/router/get', function (ctx) {
 
-	ctx.body = { 
-		content:{
-			router: routerList 
+	ctx.body = {
+		content: {
+			router: routerList
 		},
 		status: true
 	}
@@ -217,12 +237,12 @@ router.get('/-/router/get', function (ctx) {
 
 router.post('/login', function (ctx) {
 	ctx.body = {
-		content:{
+		content: {
 			name: 'admin',
 			avatar: 'https://vue.awebide.com/img/user.png',
-			ctoken:'asdadaeff121123ada'
+			ctoken: 'asdadaeff121123ada'
 		},
-		status:true
+		status: true
 	}
 })
 
@@ -230,7 +250,7 @@ router.post('/login', function (ctx) {
 router.get('/-/gitlog/get', function (ctx) {
 	let _cmd = `git log --pretty=format:"%h - %an, %ar : %s"`;
 	//let t = `git log  --pretty=format:'{"commit": "%h","author": "%an","date": "%ad","message": "%s"}'`
-  
+
 	ctx.body = {
 		gitlog: new Promise((resolve, reject) => {
 			shell.exec(_cmd, (code, stdout, stderr) => {
@@ -248,31 +268,31 @@ router.get('/-/gitlog/get', function (ctx) {
 router.get('/-/getMainList', function (ctx) {
 
 	var mainList = {
-	
-			"result": [{
-				"name": "AWEB 社区",
-				"href": "https://www.awebide.com/"
-			}, {
-				"name": "AWEB 开发者中心",
-				"href": "https://docs.awebide.com"
-			}, {
-				"name": "资源市场",
-				"href": "https://market.awebide.com"
-			}, {
-				"name": "桌面示例",
-				"href": "https://pc.awebide.com"
-			}, {
-				"name": "监控示例",
-				"href": "https://monitor.awebide.com"
-			}, {
-				"name": "移动示例",
-				"href": "https://mobile.awebide.com"
-			}]
-		
+
+		"result": [{
+			"name": "AWEB 社区",
+			"href": "https://www.awebide.com/"
+		}, {
+			"name": "AWEB 开发者中心",
+			"href": "https://docs.awebide.com"
+		}, {
+			"name": "资源市场",
+			"href": "https://market.awebide.com"
+		}, {
+			"name": "桌面示例",
+			"href": "https://pc.awebide.com"
+		}, {
+			"name": "监控示例",
+			"href": "https://monitor.awebide.com"
+		}, {
+			"name": "移动示例",
+			"href": "https://mobile.awebide.com"
+		}]
+
 	};
 	ctx.body = {
-		content:mainList,
-		status:true
+		content: mainList,
+		status: true
 	}
 })
 
@@ -294,8 +314,8 @@ app.use(require('koa-static')(__dirname + '/public'))
 // http.createServer(app.callback()).listen(80);
 // https.createServer(options, app.callback()).listen(443);
 
-app.listen(7011, () => {
-	console.error(`服务器启动成功：7011`);
+app.listen(config.port, () => {
+	console.error(`服务器启动成功：${config.port}`);
 });
 
 
