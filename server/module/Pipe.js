@@ -209,7 +209,7 @@ class Pipe {
     }`;
       try {
         if (fs.existsSync(dirPath)) {
-          platform.sendErrorResult(req, { status: false, error: "改名字的文件已存在" });
+          platform.sendErrorResult(req, "同名管道文件已存在");
         } else {
           fs.mkdirSync(dirPath);
           fs.writeFileSync(nodejsPath.join(dirPath,".npmrc"),`registry=https://npm.awebide.com`)

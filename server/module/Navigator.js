@@ -406,7 +406,7 @@ const Navigator = {
             this.getRootItems(platform, dirPath, req);
             break;
           case "pipe":
-            viewPath = listDir(config.runtime.pipe);
+            viewPath = pipeDir(config.runtime.pipe);
             platform.sendSuccessResult(req, viewPath);
             break;
           default:
