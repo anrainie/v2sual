@@ -28,6 +28,11 @@ export default new Vuex.Store({
         key: 'closeAll'
       }]
   },
+  getters:{
+    subPageFooter:(state)=>(type)=>{
+       return !state[type+'Btn']; 
+    }
+  },
   mutations: {
     // 添加tabs
     add_tabs(state, data) {
@@ -59,11 +64,13 @@ export default new Vuex.Store({
       this.state.URLQueryMap[tab.path] = tab.query
     },
     set_D_visible(state, val) {
-      this.state.dialogVisible = val;
+      this.state.subDialogVisible = val;
     },
     setModalCallback(state, callback) {
       this.state.cancelCallback = callback.cancel;
       this.state.confirmCallback = callback.confirm;
+      state.cancelBtn =callback.hideCancelBtn;
+      state.confirmBtn = callback.hideConfirmBtn;
     },
     do_cancel() {
       this.state.cancelCallback();
