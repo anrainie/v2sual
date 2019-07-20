@@ -44,11 +44,82 @@
       
       },
       {
+        "name": "inputType",
+        "desp": "类型",
+        "defaultValue": "text",
+        "type": "string_select",
+        "valueArray": [
+          "text",
+          "textarea"
+        ],
+        "despArray": [
+          "单行文本",
+          "多行文本"
+        ]
+      },
+      {
+        "require":{
+          "inputType":"textarea"
+        },
+        "name": "rows",
+        "desp": "行数",
+        "defaultValue": "2",
+        "type": "string_input"
+      },
+      {
         "name": "placeholder",
         "desp": "placeholder",
         "defaultValue": "请选择",
         "type": "string_input"
+      },
+
+      {
+        "name": "prepend",
+        "desp": "前置",
+        "defaultValue": "",
+        "type": "string_input"
        
+      },
+      {
+        "name": "append",
+        "desp": "后置",
+        "defaultValue": "",
+        "type": "string_input"
+       
+      },
+      {
+        "name": "maxlength",
+        "desp": "最大长度",
+        "defaultValue": "",
+        "type": "string_input"
+       
+      },
+      {
+        "name": "minlength",
+        "desp": "最小长度",
+        "defaultValue": "",
+        "type": "string_input"
+       
+      },
+      {
+        "name": "prefixIcon",
+        "desp": "头部图标",
+        "defaultValue": "",
+        "type": "string_input"
+       
+      },
+      {
+        "name": "suffixIcon",
+        "desp": "尾部图标",
+        "defaultValue": "",
+        "type": "string_input"
+       
+      },
+      {
+        "name": "showWordLimit",
+        "desp": "是否显示字数统计",
+        "defaultValue": false,
+        "type": "boolean"
       },
       {
         "name": "value",
@@ -56,6 +127,7 @@
         "defaultValue": "",
         "type": "string_input"
       },
+      
       {
         "name": "clearable",
         "desp": "是否可清空",
@@ -107,16 +179,24 @@
           "desp": "标题",
           "cssAttrs": "font-size color font-weight",
           "name": "label"
-        }, {
-          "desp": "检验边框",
-          "cssAttrs": "border-color",
-          "name": "borderStyle"
-        }, {
-          "desp": "检验文字",
-          "cssAttrs": "color",
-          "name": "fontStyle"
         }
-      ]
+      ],
+      "theme": [{
+        "desp": "尺寸选择",
+        "name": "size",
+        "valueArray": [
+          "",
+          "medium",
+          "small",
+          "mini"
+        ],
+        "despArray": [
+          "较大",
+          "中等",
+          "小型",
+          "超小"
+        ]
+      }]
     }
   },
   "keywords": [],

@@ -255,11 +255,14 @@ const reader = {
         await fileUtil.getFileContent(nodejsPath.join(pipePath,data.name,"index.js")).then(content => {
           res.index = content;
         }).catch(e => {
+          console.log('管道index读取失败',e)
         })
         await fileUtil.getFileContent(nodejsPath.join(pipePath,data.name,"package.json")).then(content => {
           res.package = content;
         }).catch(e => {
+          console.log('管道package读取失败',e);
         })
+        res.dirName = data.name;
         platform.sendSuccessResult(req, res);
       }catch(e){
         platform.sendErrorResult(req, e)

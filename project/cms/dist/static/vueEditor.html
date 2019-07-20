@@ -3,6 +3,7 @@
 <head>
   <!--css-->
   <link rel="stylesheet" type="text/css" href="./common.css" />
+  <link rel="stylesheet" type="text/css" href="./ide_icon/iconfont.css" />
 
   <script>
     function getUrlParam(name) {
@@ -31,11 +32,16 @@
           <div>
             <v2Container  v-model="rootId" :style="$store.getters.editorStyle"></v2Container>
             <div
-            v-show="showCustomEditor" class="V2CustomEditor"
+            v-show="showCustomEditor" class="V2CustomEditor switchable-ctn-editor"
             style="position:fixed;background:white;width:100%;height:100%;left:0;top:0;z-index:1000;"
             >
-              <div>
-                <el-button size="mini" type="primary" @click="closeCustomEditor">退出编辑</el-button>  
+              <div class="switchable-ctn-editor-toolbar">
+                <el-breadcrumb separator="/">
+                  <el-breadcrumb-item v-for="l in label" :key="l.id">{{l.label}}</el-breadcrumb-item>
+                </el-breadcrumb>
+                <div class="switchable-ctn-editor-btn-group">
+                  <el-button size="mini" type="text" @click="closeCustomEditor" title="退出编辑" ><i class="ideicon iconfanhui"></i></el-button>  
+                </div>
               </div>
               <div ref="customEditorArea" ></div>
             </div>
@@ -71,6 +77,32 @@
           },
           display() {
             return this.$store.getters.editorStyle;
+          },
+          label() {
+            let ret = [];
+            if (this.showCustomEditor) {
+              const widgetStack = [];
+
+              let wid = this.customEditor.wid;
+
+              while (wid) {
+                const widget = this.$store.getters.model(wid);
+
+                if (widget && widget.id) {
+                  const config = this.$store.getters.widget[widget.component];
+                  widgetStack.push({
+                    id: widget.id,
+                    component: widget.component,
+                    label: config && config.name || widget.id
+                  });
+                }
+                wid = widget && widget.pid;
+              }
+
+              ret = widgetStack.reverse().filter(w => w.component !== 'v2-layout-colctn' && w.component !== 'v2-layout-rowctn');
+            }
+            console.log(ret);
+            return ret;
           }
         },
         mounted() {

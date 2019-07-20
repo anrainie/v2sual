@@ -8,13 +8,25 @@
       {{model.label}}</label>
      <div class="form-input-ctn" :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}">
       <el-input
+       :type="(model.theme && model.theme.inputType)||'text'"
       v-if="!model.autoComplete"
       v-model="model.value"
       ref="_op_formInput_input"
       :placeholder="model.placeholder"
       :clearable="model.clearable"
       :disabled="model.disabled"
-    ></el-input>
+      :size="model.theme && model.theme.size"
+       :maxlength="model.maxlength"
+       :minlength="model.minlength"
+       :show-word-limit="model.showWordLimit"
+       :prefix-icon="model.prefixIcon"
+       :suffix-icon="model.suffixIcon"
+       :rows="model.rows"
+    >
+        <template slot="prepend">{{model.prepend}}</template>
+        <template slot="append">{{model.append}}</template>
+    
+    </el-input>
 
       <el-autocomplete
       v-if="model.autoComplete"

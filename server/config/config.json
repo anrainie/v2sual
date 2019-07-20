@@ -82,7 +82,9 @@
         },
         "pipe": {
             "consumption": {
-                "/v1/pipe/list": "list"
+                "/v1/pipe/list": "list",
+                "savePipe": "save",
+                "createPipe": "create"
             }
         },
         "reader": {
