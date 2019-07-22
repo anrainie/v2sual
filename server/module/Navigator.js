@@ -178,7 +178,8 @@ const statisDir = () => {
             icon: "ideicon iconyemian",
             type: 'file',
             category: 100,
-            path: relativePath
+            path: relativePath,
+            extname: path.extname(filePath)
           };
           treeNode[0].children.push(item);
         }

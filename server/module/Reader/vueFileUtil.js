@@ -37,10 +37,13 @@ module.exports = {
       else res();
     });
     //将template写入vue文件中
-    fs.writeFile(path, parseUtil.json2html(text) + "\n" + logicFile.json2script(text,path), function (err) {
-      if (err) rej(err);
-      else res();
-    });
+    fs.writeFile(path, parseUtil.json2html(text) + "\n" 
+    + logicFile.json2script(text,path) + "\n"
+    + parseUtil.json2scss(text),
+    function (err) {
+        if (err) rej(err);
+        else res();
+      });
   }),
   createFile: ({
     path,

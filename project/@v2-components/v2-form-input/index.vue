@@ -23,8 +23,8 @@
        :suffix-icon="model.suffixIcon"
        :rows="model.rows"
     >
-        <template slot="prepend">{{model.prepend}}</template>
-        <template slot="append">{{model.append}}</template>
+        <template slot="prepend" v-if="model.prepend">{{model.prepend}}</template>
+        <template slot="append" v-if="model.append">{{model.append}}</template>
     
     </el-input>
 

@@ -316,6 +316,22 @@ let html2json = function (htmlStr) {
     return JSON.stringify(json);
 }
 
+//====================================================== json转scss  ========================================================
+let json2scss = function (jsonStr) {
+    let jsonObj = JSON.parse(jsonStr);
+    let scss = jsonObj.scssCode;//json中的scssCode
+    console.log(scss);
+    let scssEle = document.createElement('scss');
+    let styleEle = document.createElement('style');
+    styleEle.setAttribute('lang','scss');
+    styleEle.innerHTML = "\n"+ scss +"\n";
+    scssEle.appendChild(styleEle);
+    return scssEle.innerHTML;
+}
+
+
+
 //======================================================================================================================
 exports.json2html = json2html;
 exports.html2json = html2json;
+exports.json2scss = json2scss;
