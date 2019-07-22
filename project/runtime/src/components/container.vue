@@ -1,6 +1,6 @@
 <template>
   <!-- 展示时的布局容器 -->
-  <div class="V2Container" ref="wrap" :style="wrapStyle">
+  <div class="V2Container" ref="wrap" :style="wrapStyle" :class="widgetClass">
     <slot></slot>
   </div>
 </template>
