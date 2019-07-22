@@ -135,6 +135,9 @@ let appendComponent = function(parent,index,element){
     if(element.localName === 'template'){
         if(element.parentElement.localName === 'v2-switchable'){
             let instance = element.parentElement.getAttribute('activeIndex');
+            if(instance==null){
+                throw '[切换容器]没有填写页码变量';
+            }
             if(instance.startsWith('$')){
                 instance = instance.substring('2',instance.length -1);
             }
