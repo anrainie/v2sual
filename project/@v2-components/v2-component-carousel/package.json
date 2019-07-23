@@ -16,7 +16,7 @@
     "name": "轮播图",
     "option": [
       {
-        "type": "array",
+        "type": "string_input",
         "name": "list",
         "defaultValue": "",
         "desp": "轮播项",
