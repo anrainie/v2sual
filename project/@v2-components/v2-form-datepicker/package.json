@@ -101,6 +101,12 @@
         "type": "string_input"
       },
       {
+        "name": "valueFormat",
+        "desp": "赋值格式",
+        "defaultValue":"yyyyMMdd",
+        "type": "string_input"
+      },
+      {
         "name": "align",
         "desp": "对齐方式",
         "defaultValue":"left",

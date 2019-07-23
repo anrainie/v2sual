@@ -166,6 +166,7 @@
          <el-dialog
           :title="subPageTitle"
           :visible.sync="subDialogVisible"
+          :close-on-click-modal="false"
           @close="closeDialog"
           ref="_op_dialog_ctn"
         >

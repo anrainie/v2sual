@@ -34,7 +34,7 @@ export default {
   created(){
 
         this.$nextTick(()=>{
-          this.subComponent.resume.call(this.$refs._op_subPage);
+          this.subComponent.resume && this.subComponent.resume.call(this.$refs._op_subPage);
           this.$refs._op_subPage && this.$refs._op_subPage.__resume && this.$refs._op_subPage.__resume();
         })    
   },

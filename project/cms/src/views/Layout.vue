@@ -166,7 +166,7 @@
 
           </div>
               <!-- 子页面容器 -->
-              <el-dialog   :title="subPageTitle" :visible.sync='subDialogVisible' @close="closeDialog" ref="_op_dialog_ctn">
+              <el-dialog   :title="subPageTitle" :visible.sync='subDialogVisible' @close="closeDialog" ref="_op_dialog_ctn"  :close-on-click-modal="false">
                 <transition name="fade" mode="out-in"  v-if="subDialogVisible">                  
                   <sub-page-ctn :page="subPageHref" :params="subPageParams" v-if="subDialogVisible"></sub-page-ctn> 
                 </transition>        
