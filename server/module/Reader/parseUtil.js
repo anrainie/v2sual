@@ -178,7 +178,17 @@ let appendChildren = function(parentJson,element,isContainer){
                     width = layout instanceof Array ? layout[i] + '%' : '50%';
                 }
                 eCol.setAttribute('key',i);
-                eCol.setAttribute('style','height:100%;width:'+ width);
+                if(parentJson.ctnStyle && parentJson.ctnStyle[i]){
+                    let ctnCss = parentJson.ctnStyle[i];
+                    for(let name in ctnCss){
+                        !ctnCss[name]&& delete ctnCss[name]
+                    }
+                  
+                    eCol.setAttribute('style','height:100%;width:'+ width+';'+JSON.stringify(ctnCss).replace(/[{}]/g,'').replace(/",/g,";").replace(/"/g,""));
+                }else{
+                    eCol.setAttribute('style','height:100%;width:'+ width)
+                }
+                
                 appendComponent(parentJson,i,eCol);
                 element.appendChild(eCol);
             }else{
@@ -190,7 +200,17 @@ let appendChildren = function(parentJson,element,isContainer){
                     height = layout instanceof Array ? layout[i] + '%' : '50%';
                 }
                 eRow.setAttribute('class','V2ContainerBlock'+blockClass(i,parentJson));
-                eRow.setAttribute('style','height:'+ height + ';width:100%;');
+                if(parentJson.ctnStyle && parentJson.ctnStyle[i]){
+                    let ctnCss = parentJson.ctnStyle[i];
+                    for(let name in ctnCss){
+                        !ctnCss[name]&& delete ctnCss[name]
+                    }
+                
+                    eRow.setAttribute('style','height:'+ height + ';width:100%;'+JSON.stringify(ctnCss).replace(/[{}]/g,'').replace(/",/g,";").replace(/"/g,""));
+                }else{
+                    eRow.setAttribute('style','height:'+ height + ';width:100%;')
+                }
+             
                 eRow.setAttribute('key',i);
                 appendComponent(parentJson,i,eRow);
                 element.appendChild(eRow);
