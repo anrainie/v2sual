@@ -5,6 +5,8 @@ import Layout from '@/views/Layout'
 
 
 export default {
+
+    
     
     methods: {
 
@@ -27,7 +29,7 @@ export default {
             let routerUrl;
             let openedTabs;
 
-            let self = this.$store.state.openedTabs? this:this.$store.state.root.$parent;
+            let self = this.$store.state.openedTabs? this:this.$root;
 
             if (status === false || status === 'false') return;
             
@@ -186,7 +188,7 @@ export default {
                 },
                 openedTabs;
 
-         let self = this.$store.state.openedTabs? this:this.$store.state.root.$parent;
+         let self = this.$store.state.openedTabs? this:this.$root;
          
 
             if (!self.beforeClose || await self.beforeClose(option)) {
