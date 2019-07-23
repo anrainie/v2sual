@@ -62,7 +62,6 @@ let json2script = function (json, path) {
                 data(){
                     return{
                         "CONTENT":{structure:${JSON.stringify(structure)}},
-                        ROOT: this.$store.state.root,
                         ${isCustom?'':dataStr.join(",\n")}
                     }
                 },
