@@ -135,6 +135,9 @@ let appendComponent = function(parent,index,element){
     if(element.localName === 'template'){
         if(element.parentElement.localName === 'v2-switchable'){
             let instance = element.parentElement.getAttribute('activeIndex');
+            if(instance==null){
+                throw '[切换容器]没有填写页码变量';
+            }
             if(instance.startsWith('$')){
                 instance = instance.substring('2',instance.length -1);
             }
@@ -166,12 +169,16 @@ let appendChildren = function(parentJson,element,isContainer){
         let realSize = parentJson.realSize;
         for(let i = 0,len = layout.length ; i<len ; i++){
             if(parentJson.direction === 'col'){
-                let span = parseInt(layout instanceof Array ? Math.round(layout[i] * 24 / 100) : '2');
                 let eCol = document.createElement('el-col');
                 eCol.setAttribute('class','V2ContainerBlock'+blockClass(i,parentJson));
-                eCol.setAttribute(':span',span);
+                let width = null;
+                if(realSize instanceof Array && realSize[i]){
+                    width = layout[i] + realSize[i];
+                }else{
+                    width = layout instanceof Array ? layout[i] + '%' : '50%';
+                }
                 eCol.setAttribute('key',i);
-                eCol.setAttribute('style','height:100%;');
+                eCol.setAttribute('style','height:100%;width:'+ width);
                 appendComponent(parentJson,i,eCol);
                 element.appendChild(eCol);
             }else{
@@ -208,7 +215,7 @@ let json2html = function (jsonStr) {
     let eV2C = document.createElement('v2container');
     jsonV2C.wid = jsonV2C.id;
     eV2C.setAttribute(':wid', '`'+jsonV2C.wid+'`');
-    eV2C.setAttribute('style', 'width:'+display.width+';height:'+display.height);
+    // eV2C.setAttribute('style', 'width:'+display.width+';height:'+display.height);
     //添加子节点
     appendChildren(jsonV2C,eV2C,true);
     temp.content.appendChild(eV2C);
@@ -313,6 +320,22 @@ let html2json = function (htmlStr) {
     return JSON.stringify(json);
 }
 
+//====================================================== json转scss  ========================================================
+let json2scss = function (jsonStr) {
+    let jsonObj = JSON.parse(jsonStr);
+    let scss = jsonObj.scssCode;//json中的scssCode
+    console.log(scss);
+    let scssEle = document.createElement('scss');
+    let styleEle = document.createElement('style');
+    styleEle.setAttribute('lang','scss');
+    styleEle.innerHTML = "\n"+ scss +"\n";
+    scssEle.appendChild(styleEle);
+    return scssEle.innerHTML;
+}
+
+
+
 //======================================================================================================================
 exports.json2html = json2html;
 exports.html2json = html2json;
+exports.json2scss = json2scss;
