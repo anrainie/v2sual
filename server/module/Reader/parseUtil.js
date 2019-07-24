@@ -78,18 +78,21 @@ let appendComponent = function(parent,index,element){
                 if(!child.dataBasket[item]){
                     continue;
                 }
+                //自定义组件的属性将$item换为scope._item
                 if(child.dataBasket[item].startsWith('$item')){
                     component.setAttribute(':'+item,'scope._item.'+child.dataBasket[item].replace('$item.',''));
                 }else{
                     component.setAttribute(':'+item,child.dataBasket[item]);
                 }
                 if(item != item.toLocaleLowerCase()){
+                    //因为放到dom里面的属性只能为小写，最后需要替换，因此用一个数组记录需要替换的内容
                     let key = ':'+item.toLocaleLowerCase()+'="'+component.getAttribute(':'+item)+'"';
                     let value = ':'+item+'="'+component.getAttribute(':'+item)+'"';
                     dataBasket.push([key,value]);
                 }
             }
         }
+        //dom里面属性不能使用$,只能后来再替换
         let outerHtml = component.outerHTML.replace(':item',':$item').replace(':key',':$key');
         template.innerHTML = outerHtml;
         eCom.appendChild(template);
@@ -125,6 +128,7 @@ let appendComponent = function(parent,index,element){
         }
     }
     if(eCom.localName === 'v2-switchable'){
+        //如果是可切换容器，就往下添加一个template
         let template = document.createElement('template');
         if(child.activeIndex) eCom.setAttribute('activeIndex',child.activeIndex);
         eCom.appendChild(template);
@@ -133,7 +137,9 @@ let appendComponent = function(parent,index,element){
         appendChildren(child,eCom,isContainer);
     }
     if(element.localName === 'template'){
+        //如果是template，就往上判断是否为可切换容器
         if(element.parentElement.localName === 'v2-switchable'){
+            //如果是可切换容器，添加v-if
             let instance = element.parentElement.getAttribute('activeIndex');
             if(instance==null){
                 throw '[切换容器]没有填写页码变量';
@@ -157,6 +163,7 @@ let appendComponent = function(parent,index,element){
  */
 let appendChildren = function(parentJson,element,isContainer){
     if(!isContainer){
+        //非容器类，直接往下添加component
         if(isEmptyJson(parentJson) || isEmptyJson(parentJson.children)){
             return;
         }else{
@@ -168,53 +175,36 @@ let appendChildren = function(parentJson,element,isContainer){
         let layout = layout_c(parentJson);
         let realSize = parentJson.realSize;
         for(let i = 0,len = layout.length ; i<len ; i++){
+            //编译生成el-row和el-col
+            let el = null;
             if(parentJson.direction === 'col'){
-                let eCol = document.createElement('el-col');
-                eCol.setAttribute('class','V2ContainerBlock'+blockClass(i,parentJson));
-                let width = null;
-                if(realSize instanceof Array && realSize[i]){
-                    width = layout[i] + realSize[i];
-                }else{
-                    width = layout instanceof Array ? layout[i] + '%' : '50%';
-                }
-                eCol.setAttribute('key',i);
-                if(parentJson.ctnStyle && parentJson.ctnStyle[i]){
-                    let ctnCss = parentJson.ctnStyle[i];
-                    for(let name in ctnCss){
-                        !ctnCss[name]&& delete ctnCss[name]
-                    }
-                  
-                    eCol.setAttribute('style','height:100%;width:'+ width+';'+JSON.stringify(ctnCss).replace(/[{}]/g,'').replace(/",/g,";").replace(/"/g,""));
-                }else{
-                    eCol.setAttribute('style','height:100%;width:'+ width)
-                }
-                
-                appendComponent(parentJson,i,eCol);
-                element.appendChild(eCol);
+                el = document.createElement('el-col');
             }else{
-                let eRow = document.createElement('el-row');
-                let height = null;
-                if(realSize instanceof Array && realSize[i]){
-                    height = layout[i] + realSize[i];
-                }else{
-                    height = layout instanceof Array ? layout[i] + '%' : '50%';
-                }
-                eRow.setAttribute('class','V2ContainerBlock'+blockClass(i,parentJson));
-                if(parentJson.ctnStyle && parentJson.ctnStyle[i]){
-                    let ctnCss = parentJson.ctnStyle[i];
-                    for(let name in ctnCss){
-                        !ctnCss[name]&& delete ctnCss[name]
-                    }
-                
-                    eRow.setAttribute('style','height:'+ height + ';width:100%;'+JSON.stringify(ctnCss).replace(/[{}]/g,'').replace(/",/g,";").replace(/"/g,""));
-                }else{
-                    eRow.setAttribute('style','height:'+ height + ';width:100%;')
-                }
-             
-                eRow.setAttribute('key',i);
-                appendComponent(parentJson,i,eRow);
-                element.appendChild(eRow);
+                el = document.createElement('el-row');
             }
+            let height = null;
+            el.setAttribute('class','V2ContainerBlock'+blockClass(i,parentJson));
+            //计算高度：layout[i]+realSize[i]如80+px,50+%
+            if(realSize instanceof Array && realSize[i]){
+                height = layout[i] + realSize[i];
+            }else{
+                height = layout instanceof Array ? layout[i] + '%' : '50%';
+            }
+            if(parentJson.ctnStyle && parentJson.ctnStyle[i]){
+                let ctnCss = parentJson.ctnStyle[i];
+                for(let name in ctnCss){
+                    !ctnCss[name]&& delete ctnCss[name]
+                }
+            
+                el.setAttribute('style','height:'+ height + ';width:100%;'+JSON.stringify(ctnCss).replace(/[{}]/g,'').replace(/",/g,";").replace(/"/g,""));
+            }else{
+                el.setAttribute('style','height:'+ height + ';width:100%;')
+            }
+            
+            el.setAttribute('key',i);
+            //往下遍历component
+            appendComponent(parentJson,i,el);
+            element.appendChild(el);
         }
     }
 }
@@ -226,7 +216,6 @@ let appendChildren = function(parentJson,element,isContainer){
 let json2html = function (jsonStr) {
     let json = JSON.parse(jsonStr);
     let jsonV2C = json.structure;//json中的structure
-    let display = json.display;
     if (isEmptyJson(jsonV2C)) {
         return '';
     }
@@ -235,7 +224,6 @@ let json2html = function (jsonStr) {
     let eV2C = document.createElement('v2container');
     jsonV2C.wid = jsonV2C.id;
     eV2C.setAttribute(':wid', '`'+jsonV2C.wid+'`');
-    // eV2C.setAttribute('style', 'width:'+display.width+';height:'+display.height);
     //添加子节点
     appendChildren(jsonV2C,eV2C,true);
     temp.content.appendChild(eV2C);
