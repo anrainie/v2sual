@@ -35,12 +35,15 @@ export default {
         }
        */
       let events = self.model.events;
-      let editor = self.$store.state.root;
+      let isCustom = Boolean(self.model.cptpath&&self.model.cptpath.indexOf("_customWidget")!==-1);
+      let editor = isCustom?self.$parent.$store.getters.vueInstance("root").$parent:self.$store.state.root;
+      let dom=null;
       //在焦点管理中注册当前组件，会为它绑定基本的监听
       editor.focusManager.regist(self);
       for (let ref in events) {
         //找到对应的vue对象或者el
-        let dom = self.$refs[ref];
+        dom = isCustom?self:self.$refs[ref];
+        
         if (dom) {
           let devents = events[ref];
           for (let eventType in devents) {
