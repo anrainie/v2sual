@@ -56,7 +56,7 @@ let json2script = function (json, path) {
 
   if (transfer) {
     finalStr = `<script>
-            ${isCustom?`import {root,cpt,widget} from '@/utils/v2-view';`:`import {root} from '@/utils/v2-view';`}
+            ${isCustom?`import {root,cpt,widget} from '@/utils/v2-view';import events from "@/utils/events";`:`import {root} from '@/utils/v2-view';`}
             ${importList.length?importList.map(item=>`import ${item.desp} from '${item.path}'`).join(";"):''}
             export default{
                 data(){
@@ -68,7 +68,7 @@ let json2script = function (json, path) {
                 props:{
                   ${isCustom?porpStr.join(",\n"):''}
                 },
-                ${isCustom?`mixins:[root,cpt,widget],`:`mixins:[root],`}
+                ${isCustom?`mixins:[root,widget,cpt,events],`:`mixins:[root],`}
                 ${importList.length?`components:{${importList.map(item=>`${item.desp}`)}},`:''}
                 methods:{${self.methodsToCode(transfer.methods)}},
                 watch:{${self.methodsToCode(transfer.watch)}},
