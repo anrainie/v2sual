@@ -16,7 +16,8 @@
         :clearable="model.clearable"
         :placeholder="model.placeholder"
         :filterable="model.filterable"
-         :disabled="model.disabled"
+        :disabled="model.disabled"
+        :size="model.theme && model.theme.size"
       >
         <el-option
           v-for="item in (model.dataType==='def'?model.optionConfig: model.options)"

@@ -11,13 +11,30 @@
       :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"
     >
       <el-radio-group v-model="model.value" ref="_op_formRadio_group">
-        <el-radio
-          v-for="(item,index) in model.options"
-          :key="'radio-'+index"
-          :disabled="item.disabled"
-          :border="item.border"
-          :label="item.label"
-        >{{item.text}}</el-radio>
+   
+
+
+      <template   v-if="model.theme && model.theme.boxType !=='btn'">
+               <el-radio
+                v-for="(item,index) in model.options"
+                :key="'radio-'+index"
+                :disabled="item.disabled"
+                :border="model.theme && model.theme.boxType==='border'"
+                :label="item.label"
+                :size="model.theme && model.theme.size"
+               >{{item.text}}</el-radio>
+         </template>
+         <template  v-if="model.theme && model.theme.boxType ==='btn'">
+            <el-radio-button
+                v-for="(item,index) in model.options"
+                :key="'radio-'+index"
+                :disabled="item.disabled"
+                :label="item.label"
+                :size="model.theme && model.theme.size"
+              >{{item.text}}</el-radio-button>
+         </template>
+
+
       </el-radio-group>
     </div>
   </div>
@@ -26,8 +43,6 @@
 
 export default {
   name: "v2-form-radio",
-
-  mounted() {},
   data() {
     return {
       options: [
@@ -52,12 +67,6 @@ export default {
       ],
       value:""
     };
-  },
-  methods: {
-    
-  },
-  computed:{
-
   }
 };
 </script>
@@ -80,5 +89,11 @@ export default {
     .el-radio__label{
           line-height: 40px;
     }
+    .is-bordered{
+        .el-radio__label{
+            line-height: unset;
+      }
+    }
+   
 }
 </style>

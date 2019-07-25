@@ -26,13 +26,8 @@
       "style":[
         {
           "desp": "图标",
-          "cssAttrs": "font-size color font-weight",
+          "cssAttrs": "font-size font-weight",
           "name": "iStyle"
-        },
-        {
-          "desp": "图标容器",
-          "cssAttrs": "padding margin background-color",
-          "name": "iWarpStyle"
         }
       ]
     }

@@ -22,11 +22,7 @@
         "type": "string_input"
       }
     ],
-     "css": {
-       "style": [
-        
-       ]
-     }
+     "css": { }
   },
   "keywords": [],
   "license": "ISC",

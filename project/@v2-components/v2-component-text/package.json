@@ -32,7 +32,7 @@
       "style":[
         {
           "desp": "文本",
-          "cssAttrs": "font-family font-size color font-weight font-style text-decoration line-height text-align width height padding margin",
+          "cssAttrs": "font-family  font-weight font-style text-decoration line-height width height",
           "name": "textStyle"
         }
       ]

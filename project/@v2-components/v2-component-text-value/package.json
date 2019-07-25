@@ -40,24 +40,34 @@
         "name": "value",
         "defaultValue": "0",
         "desp": "值"
-      }
+      },
+      {
+        "valueArray": [
+            "text-value-col",
+            "text-value-row"
+        ],
+
+        "despArray": [
+            "竖向",
+            "横向"
+        ],
+ 
+        "type": "string_select",
+        "desp": "布局",
+        "name": "direction"
+    }
     ],
     "css": {
       "style": [
         {
-          "desp": "容器",
-          "cssAttrs": "background-color width height color margin",
-          "name": "ctn"
-        },
-        {
           "desp": "标题",
-          "cssAttrs": "background-color width height color margin",
+          "cssAttrs": "background-color width height color",
           "name": "title"
         },
        
         {
           "desp": "值",
-          "cssAttrs": "background-color width height color margin",
+          "cssAttrs": "background-color width height color",
           "name": "value"
         }
       ]
