@@ -336,11 +336,11 @@ export default {
     },
     cancel(){         
            this.closeDialog();
-           this.$store.commit("do_cancel");        
+           this.$store.commit("do_cancel",this.$refs.subpage.$refs._op_subPage);        
     },
     confirm(){
           this.closeDialog(); 
-          this.$store.commit("do_confirm");       
+          this.$store.commit("do_confirm",this.$refs.subpage.$refs._op_subPage);       
     },
     closeDialog(){
        this.$store.commit("set_D_visible",false);    

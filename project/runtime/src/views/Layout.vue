@@ -171,7 +171,7 @@
           ref="_op_dialog_ctn"
         >
           <transition name="fade" mode="out-in" v-if="subDialogVisible">
-            <sub-page-ctn :page="subPageHref" :params="subPageParams" v-if="subDialogVisible"></sub-page-ctn>
+            <sub-page-ctn ref="subpage" :page="subPageHref" :params="subPageParams" v-if="subDialogVisible"></sub-page-ctn>
           </transition>
           <div slot="footer" class="dialog-footer">
               <el-button @click="cancel" v-if="subFooter('cancel')" >取消</el-button>
@@ -362,11 +362,11 @@ export default {
     },
     cancel() {
       this.closeDialog();
-      this.$store.commit("do_cancel");
+      this.$store.commit("do_cancel",this.$refs.subpage.$refs._op_subPage);
     },
     confirm() {
       this.closeDialog();
-      this.$store.commit("do_confirm");
+      this.$store.commit("do_confirm",this.$refs.subpage.$refs._op_subPage);
     },
     closeDialog() {
       this.$store.commit("set_D_visible", false);

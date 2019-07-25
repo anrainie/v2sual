@@ -72,11 +72,11 @@ export default new Vuex.Store({
       state.cancelBtn =callback.hideCancelBtn;
       state.confirmBtn = callback.hideConfirmBtn;
     },
-    do_cancel() {
-      this.state.cancelCallback();
+    do_cancel(state,vueIns) {
+      this.state.cancelCallback(vueIns);
     },
-    do_confirm() {
-      this.state.confirmCallback();
+    do_confirm(state,vueIns) {
+      this.state.confirmCallback(vueIns);
     },
     set_subPageHref(state, herf) {
       this.state.subPageHref = herf;

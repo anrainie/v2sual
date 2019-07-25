@@ -27,6 +27,11 @@ export const cpt = {
       wid: this.wid,
       vue: this
     });
+  },
+  computed:{
+    model(){
+      return this.$parent.$store.getters.model(this.wid);
+    }
   }
 }
 

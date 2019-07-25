@@ -183,22 +183,32 @@ let appendChildren = function(parentJson,element,isContainer){
                 el = document.createElement('el-row');
             }
             let height = null;
+            let width = null;
             el.setAttribute('class','V2ContainerBlock'+blockClass(i,parentJson));
             //计算高度：layout[i]+realSize[i]如80+px,50+%
             if(realSize instanceof Array && realSize[i]){
                 height = layout[i] + realSize[i];
+                width = layout[i] + realSize[i];
             }else{
                 height = layout instanceof Array ? layout[i] + '%' : '50%';
+                width = layout instanceof Array ? layout[i] + '%' : '50%';
             }
             if(parentJson.ctnStyle && parentJson.ctnStyle[i]){
                 let ctnCss = parentJson.ctnStyle[i];
                 for(let name in ctnCss){
                     !ctnCss[name]&& delete ctnCss[name]
                 }
-            
-                el.setAttribute('style','height:'+ height + ';width:100%;'+JSON.stringify(ctnCss).replace(/[{}]/g,'').replace(/",/g,";").replace(/"/g,""));
+                if(parentJson.direction === 'col'){
+                    el.setAttribute('style','height:100%;width:'+ width+';'+JSON.stringify(ctnCss).replace(/[{}]/g,'').replace(/",/g,";").replace(/"/g,""));
+                }else{
+                    el.setAttribute('style','height:'+ height + ';width:100%;'+JSON.stringify(ctnCss).replace(/[{}]/g,'').replace(/",/g,";").replace(/"/g,""));
+                }
             }else{
-                el.setAttribute('style','height:'+ height + ';width:100%;')
+                if(parentJson.direction === 'col'){
+                    el.setAttribute('style','height:100%;width:'+ width);
+                }else{
+                    el.setAttribute('style','height:'+ height + ';width:100%;');
+                }
             }
             
             el.setAttribute('key',i);
