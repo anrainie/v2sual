@@ -279,6 +279,9 @@ export const widget = {
     wrapClass() {
       return {}
     },
+    root(){
+      return this.$store.state.root;
+    }
   },
   beforeDestroy() {
     this.$store.commit("unbind", this.wid);
