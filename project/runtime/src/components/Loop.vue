@@ -24,6 +24,10 @@ export default {
     return {};
   },
   created() {
+    this.$store.commit('regist.vue', {
+      wid: this.wid,
+      vue: this
+    });
     this.model.__loopKey = this.model.__loopTarget;
   },
   computed: {
