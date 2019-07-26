@@ -1,0 +1,38 @@
+{
+  "author": {
+    "name": "cai.yu@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "自由布局容器",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "icontubiao",
+    "type": "ctn",
+    "href": "v2-ctn-xy",
+    "author": "cai.yu@agree.com.cn",
+    "version": 610000,
+    "accept": "divCtn",
+    "name": "自由布局容器",
+    "customEditor": "v2EditorXYCtn",
+    "option": [
+      
+    ],
+    "css": {
+     
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@v2-components/v2-ctn-xy",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "editor": {
+    "path": "xyCtnEditor.vue",
+    "name": "v2EditorXYCtn"
+  },
+  "version": "6.0.0",
+  "index": 30000005
+}

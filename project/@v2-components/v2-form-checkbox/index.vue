@@ -11,13 +11,27 @@
       :style="model.titleMode ==='row'?{}:{marginLeft:model.labelWitdh}"
     >
       <el-checkbox-group v-model="checkList" ref="_op_formCheckbox_group">
-        <el-checkbox  
-         ref="_op_formCheckbox_checkbox"
-        v-for="(item,index) in model.options" 
-        :label="item.label" 
-        :key="index" 
-        :disabled="item.disabled"
-        >{{item.text}}</el-checkbox>
+        <template   v-if="model.theme && model.theme.boxType !=='btn'">
+              <el-checkbox  
+              ref="_op_formCheckbox_checkbox"
+              v-for="(item,index) in model.options" 
+              :label="item.label" 
+              :key="index" 
+              :border="model.theme && model.theme.boxType==='border'"
+              :size="model.theme && model.theme.size"
+              :disabled="item.disabled"
+              >{{item.text}}</el-checkbox>
+         </template>
+         <template  v-if="model.theme && model.theme.boxType ==='btn'">
+              <el-checkbox-button  
+            ref="_op_formCheckbox_checkbox"
+            v-for="(item,index) in model.options" 
+            :label="item.label" 
+            :key="index" 
+            :size="model.theme && model.theme.size"
+            :disabled="item.disabled"
+            >{{item.text}}</el-checkbox-button>
+         </template>
       </el-checkbox-group>
     </div>
   </div>
@@ -71,6 +85,11 @@ export default {
   .el-checkbox__label{
     line-height: 40px;
   }
+    .is-bordered{
+        .el-checkbox__label{
+            line-height: unset;
+      }
+    }
 }
 </style>
 

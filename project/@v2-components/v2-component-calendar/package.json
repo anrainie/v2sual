@@ -31,13 +31,7 @@
       }
     ],
     "css": {
-      "style": [
-        {
-          "desp": "卡片样式",
-          "cssAttrs": "width height color",
-          "name": "cardHeader"
-        }
-      ]
+  
     }
   },
   "keywords": [],

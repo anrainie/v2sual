@@ -16,6 +16,7 @@
         :expand-trigger="model.trigger"
         :options="model.options"
         v-model="selectVal"
+          :size="model.theme && model.theme.size"
         @change="handleChange"
         :placeholder="model.placeholder"
         :filterable="model.filterable"

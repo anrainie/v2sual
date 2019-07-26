@@ -73,12 +73,6 @@
             "type": "boolean"
           },
           {
-            "name": "border",
-            "desp": "是否带边框",
-            "defaultValue": false,
-            "type": "boolean"
-          },
-          {
             "name": "label",
             "desp": "对应值",
             "defaultValue": false,
@@ -93,18 +87,37 @@
           "desp": "标题",
           "cssAttrs": "font-size color font-weight",
           "name": "label"
-        },
-        {
-          "desp": "单选框",
-          "cssAttrs": "width height border-width border-radius padding margin",
-          "name": "radio"
-        },
-        {
-          "desp": "选项文字",
-          "cssAttrs": "font-size  color padding-left",
-          "name": "font"
         }
-      ]
+      ],
+       "theme": [{
+        "desp": "类型选择",
+        "name": "boxType",
+        "valueArray": [
+          "",
+          "btn",
+          "border"
+        ],
+        "despArray": [
+          "默认",
+          "按钮状",
+          "带边框"
+        ]
+      },{
+        "desp": "尺寸选择",
+        "name": "size",
+        "valueArray": [
+          "",
+          "medium",
+          "small",
+          "mini"
+        ],
+        "despArray": [
+          "较大",
+          "中等",
+          "小型",
+          "超小"
+        ]
+      }]
     }
   },
   "keywords": [],

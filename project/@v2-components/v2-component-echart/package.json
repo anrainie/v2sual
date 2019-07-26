@@ -23,13 +23,7 @@
       }
     ], 
     "css":{
-      "style":[
-        {
-          "desp": "图表容器",
-          "cssAttrs": "width height padding margin background-color",
-          "name": "chartWarpStyle"
-        }
-      ]
+   
     }
   },
   "keywords": [],

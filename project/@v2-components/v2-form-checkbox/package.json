@@ -92,7 +92,36 @@
           "cssAttrs": "font-size  color padding-left",
           "name": "font"
         }
-      ]
+      ],
+      "theme": [{
+        "desp": "类型选择",
+        "name": "boxType",
+        "valueArray": [
+          "",
+          "btn",
+          "border"
+        ],
+        "despArray": [
+          "默认",
+          "按钮状",
+          "带边框"
+        ]
+      },{
+        "desp": "尺寸选择",
+        "name": "size",
+        "valueArray": [
+          "",
+          "medium",
+          "small",
+          "mini"
+        ],
+        "despArray": [
+          "较大",
+          "中等",
+          "小型",
+          "超小"
+        ]
+      }]
     }
   },
   "keywords": [],

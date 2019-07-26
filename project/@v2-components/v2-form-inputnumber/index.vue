@@ -13,6 +13,9 @@
       :min="parseFloat(model.min)"
       :max="parseFloat(model.max)"
       :step="parseFloat(model.step)"
+      :controls="model.theme && model.theme.inputType==='none'?false:true"
+      :controls-position="model.theme && model.theme.inputType==='right'?'right':''"
+      :size="model.theme && model.theme.size"
       :precision="parseInt(model.precision)||0"
       :disabled="model.disabled"
     >
@@ -54,13 +57,22 @@
   font-size: 14px;
   .el-input-number{
     width: 100%;
-  }
   .el-input-number__increase,
   .el-input-number__decrease{
     >i{
-          line-height: 38px;
+          line-height: inherit;
     }
   }
+  }
+  .el-input-number.is-controls-right{
+  .el-input-number__increase,
+  .el-input-number__decrease{
+    >i{
+          line-height: initial;
+    }
+  }
+  }
+
 }
 </style>
 

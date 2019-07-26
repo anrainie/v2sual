@@ -228,13 +228,7 @@
       }
     ],
     "css": {
-      "style": [
-        {
-          "desp": "容器",
-          "cssAttrs": "position top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
-          "name": "divCtn"
-        }
-      ]
+     
     }
   },
   "keywords": [],
