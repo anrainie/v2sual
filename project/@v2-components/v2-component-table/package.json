@@ -62,11 +62,6 @@
         "type": "boolean",
         "name": "sortable",
         "desp": "是否排序"
-      },{
-        "defaultValue": "",
-        "type": "string_input",
-        "name": "template",
-        "desp": "列模板"
       }]
     },
     {
