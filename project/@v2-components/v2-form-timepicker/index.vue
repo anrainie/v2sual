@@ -15,7 +15,8 @@
         :picker-options="model.options"
         :placeholder="model.placeholder"
         :arrow-control="model.arrow"
-         :disabled="model.disabled"
+        :disabled="model.disabled"
+        :size="model.theme && model.theme.size"
       ></el-time-select>
 
       <el-time-picker
@@ -29,6 +30,7 @@
         :range-separator="model.rangeSeparator"
         :start-placeholder="model.startPlaceholder"
         :end-placeholder="model.endPlaceholder"
+        :size="model.theme && model.theme.size"
       ></el-time-picker>
     </div>
   </div>

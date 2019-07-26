@@ -148,17 +148,24 @@
           "desp": "标题",
           "cssAttrs": "font-size color font-weight",
           "name": "label"
-        } ,{
-          "desp": "检验边框",
-          "cssAttrs": "border-color",
-          "name": "borderStyle"
-        },
-        {
-          "desp": "检验文字",
-          "cssAttrs": "color",
-          "name": "fontStyle"
         }
-      ]
+      ],
+      "theme": [{
+        "desp": "尺寸选择",
+        "name": "size",
+        "valueArray": [
+          "",
+          "medium",
+          "small",
+          "mini"
+        ],
+        "despArray": [
+          "较大",
+          "中等",
+          "小型",
+          "超小"
+        ]
+      }]
       
     }
   },

@@ -89,16 +89,36 @@
            "desp": "标题",
            "cssAttrs": "font-size color font-weight",
            "name": "label"
-         }, {
-           "desp": "检验边框",
-           "cssAttrs": "border-color",
-           "name": "borderStyle"
-         }, {
-           "desp": "检验文字",
-           "cssAttrs": "color",
-           "name": "fontStyle"
          }
-       ]
+       ],
+       "theme": [{
+        "desp": "类型选择",
+        "name": "inputType",
+        "valueArray": [
+          "",
+          "right",
+          "none"
+        ],
+        "despArray": [
+          "左右按钮",
+          "右侧按钮",
+          "没有按钮"
+        ]
+      },{
+        "desp": "尺寸选择",
+        "name": "size",
+        "valueArray": [
+          "",
+          "large",
+          "small"
+  
+        ],
+        "despArray": [
+          "默认",
+          "较大",
+          "较小"
+        ]
+      }]
      }
   },
   "keywords": [],

@@ -1,7 +1,7 @@
 <template>
-  <div :style="iWarpStyle"  :class="widgetClass" >
-    <i ref="_op_componentIcon_icon" :class="model.icon?model.icon:'fa fa-user-o'" :style="model.style.iStyle"></i>
-  </div>
+ 
+    <i ref="_op_componentIcon_icon" :class="[model.icon?model.icon:'fa fa-user-o',...widgetClass]" :style="iStyle"></i>
+
 </template>
 
 <script>
@@ -15,9 +15,9 @@
       }
     },
     computed:{
-      iWarpStyle(){
+      iStyle(){
     
-          return {...this.model.style.iWarpStyle,...(this.model.commonStyle||{})}
+          return {...this.model.style.iStyle,...(this.model.commonStyle||{})}
         
       }
     },

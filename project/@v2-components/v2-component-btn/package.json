@@ -51,7 +51,7 @@
     "css":{
       	"style": [{
       	    "desp": "按钮",
-      	    "cssAttrs": "background-color width height color",
+      	    "cssAttrs": "background-color width height",
       	    "name": "btnStyle"
       	  }
       	],

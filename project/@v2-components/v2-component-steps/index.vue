@@ -1,5 +1,5 @@
 <template>
-  <div  :class="widgetClass" :style="{...(model.style && model.style.iWarpStyle)}">
+  <div  :class="widgetClass" :style="model.commonStyle">
     <el-steps
       :active="parseInt(model.active)"
       :direction="model.direction"

@@ -72,13 +72,7 @@
 
     ], 
     "css":{
-      "style":[
-        {
-          "desp": "树容器",
-          "cssAttrs": "width height padding margin background-color",
-          "name": "treeWarpStyle"
-        }
-      ]
+
     }
   },
   "keywords": [],

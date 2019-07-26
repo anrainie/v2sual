@@ -72,6 +72,7 @@ let json2script = function (json, path) {
                 ${importList.length?`components:{${importList.map(item=>`${item.desp}`)}},`:''}
                 methods:{${self.methodsToCode(transfer.methods)}},
                 watch:{${self.methodsToCode(transfer.watch)}},
+                computed:{${isCustom?`root(){return this.$store.state.root;}`:''}},
                 beforeCreate(){
                     let ctx = this;
                     ${transfer.beforeCreate ? transfer.beforeCreate.code : ''}

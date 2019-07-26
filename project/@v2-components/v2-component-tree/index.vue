@@ -1,7 +1,7 @@
 <template>
   <div
     :class="widgetClass"
-    :style="{...(model.style && model.style.treeWarpStyle),...model.commonStyle}"
+    :style="model.commonStyle"
   >
     <el-tree
       :data="myconfig"
