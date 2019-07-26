@@ -1,4 +1,4 @@
-<template><v2container :wid="`root`" style="width:100%;height:100%"><el-row class="V2ContainerBlock" style="height:100%;width:100%;" key="0"><v2container id="1563582557475" :wid="`1563582557475`" :index="0" :pid="`root`"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:8%;width:100%;" key="0"><v2-form-input class="V2Widget" id="1563876208204" :wid="`1563876208204`" :index="0" :pid="`1563582557475`"></v2-form-input></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:8%;width:100%;" key="1"><v2-form-input class="V2Widget" id="1563876301248" :wid="`1563876301248`" :index="1" :pid="`1563582557475`"></v2-form-input></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:8%;width:100%;" key="2"><v2-form-input class="V2Widget" id="1563876253373" :wid="`1563876253373`" :index="2" :pid="`1563582557475`"></v2-form-input></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:8%;width:100%;" key="3"><v2-form-input class="V2Widget" id="1563876246798" :wid="`1563876246798`" :index="3" :pid="`1563582557475`"></v2-form-input></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:8%;width:100%;" key="4"><v2-form-input class="V2Widget" id="1563876307252" :wid="`1563876307252`" :index="4" :pid="`1563582557475`"></v2-form-input></el-row><el-row class="V2ContainerBlock" style="height:10%;width:100%;" key="5"><v2empty class="V2Empty" id="1563582557475-5" :wid="`1563582557475-5`" :index="5" :pid="`1563582557475`"></v2empty></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;width:100%;" key="6"><v2loop class="V2Widget" id="1563766414906" :wid="`1563766414906`" :index="6" :pid="`1563582557475`"><template v-slot="scope"><v2-component-bankcard class="V2Widget" :id="`1563766414906-${scope._key}`" :wid="`1563766414906-${scope._key}`" :index="scope._key" :pid="`1563766414906`" :cpttype="`loopItem`" :$item="scope._item" :$key="scope._key" :activeIndex="0"></v2-component-bankcard></template></v2loop></el-row></v2container></el-row></v2container></template>
+<template><v2container :wid="`root`"><el-row class="V2ContainerBlock" style="height:100%;width:100%;" key="0"><v2container id="1563582557475" :wid="`1563582557475`" :index="0" :pid="`root`"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:8%;width:100%;opacity:1,border-radius:0px" key="0"><v2-form-input class="V2Widget" id="1563876208204" :wid="`1563876208204`" :index="0" :pid="`1563582557475`"></v2-form-input></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:8%;width:100%;opacity:1,border-radius:0px" key="1"><v2-form-input class="V2Widget" id="1563876301248" :wid="`1563876301248`" :index="1" :pid="`1563582557475`"></v2-form-input></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:8%;width:100%;" key="2"><v2-form-input class="V2Widget" id="1563876253373" :wid="`1563876253373`" :index="2" :pid="`1563582557475`"></v2-form-input></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:8%;width:100%;opacity:1,border-radius:0px" key="3"><v2-form-input class="V2Widget" id="1563876246798" :wid="`1563876246798`" :index="3" :pid="`1563582557475`"></v2-form-input></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:8%;width:100%;opacity:1,border-radius:0px" key="4"><v2-form-input class="V2Widget" id="1563876307252" :wid="`1563876307252`" :index="4" :pid="`1563582557475`"></v2-form-input></el-row><el-row class="V2ContainerBlock" style="height:10%;width:100%;opacity:1,border-radius:0px" key="5"><v2empty class="V2Empty" id="1563582557475-5" :wid="`1563582557475-5`" :index="5" :pid="`1563582557475`"></v2empty></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;width:100%;opacity:1,border-radius:0px" key="6"><v2loop class="V2Widget" id="1563766414906" :wid="`1563766414906`" :index="6" :pid="`1563582557475`"><template v-slot="scope"><v2-component-bankcard class="V2Widget" :id="`1563766414906-${scope._key}`" :wid="`1563766414906-${scope._key}`" :index="scope._key" :pid="`1563766414906`" :cpttype="`loopItem`" :$item="scope._item" :$key="scope._key" :activeIndex="0"></v2-component-bankcard></template></v2loop></el-row></v2container></el-row></v2container></template>
 <script>
             import {root} from '@/utils/v2-view';
             import v2ComponentBankcard from '@/views/_customWidget/bankCard.vue'
@@ -24,6 +24,13 @@ cardList:[
                 methods:{event0_1563258333580(widget,item){
                   let ctx = this;
                   
+            
+                    /*overview*/
+                        (async()=>{    const t5 = this.value1;
+})();
+                    /*overview over*/
+                    
+                    
               }, changeClick(){
                   let ctx = this;
                   
@@ -90,3 +97,6 @@ ctx.$store.commit("registerBind",{ vueObj:this, data:this.cardList, dataStr:"car
 
             };
         </script>
+<style lang="scss">
+
+</style>

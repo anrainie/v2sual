@@ -35,15 +35,17 @@ export default {
         }
        */
       let events = self.model.events;
-      let isCustom = Boolean(self.model.cptpath&&self.model.cptpath.indexOf("_customWidget")!==-1);
-      let editor = isCustom?self.$parent.$store.getters.vueInstance("root").$parent:self.$store.state.root;
-      let dom=null;
+      // let isCustom = Boolean(self.model.cptpath&&self.model.cptpath.indexOf("_customWidget")!==-1);
+      // let editor = isCustom?self.$parent.$store.getters.vueInstance("root").$parent:self.$store.state.root;
+      let editor = self.root;
+      let dom = null;
       //在焦点管理中注册当前组件，会为它绑定基本的监听
       editor.focusManager.regist(self);
       for (let ref in events) {
         //找到对应的vue对象或者el
-        dom = isCustom?self:self.$refs[ref];
-        
+        // dom = isCustom?self:self.$refs[ref];
+        dom = self.$refs[ref] || self;
+
         if (dom) {
           let devents = events[ref];
           for (let eventType in devents) {
@@ -53,7 +55,7 @@ export default {
               editor.focusManager.unbind(self, eventType);
               logics == logics.constructor == String ? [logics] : logics;
               //TODO dom可能是vue对象，也可能是一个dom元素，这里暂时只考虑vue对象
-              if(dom.$on){
+              if (dom.$on) {
                 dom.$on(eventType, function () {
                   let myargs = [...arguments];
                   let apply = () => {
@@ -73,7 +75,7 @@ export default {
                     apply();
                   }
                 });
-              }else{
+              } else {
                 $(dom).on(eventType, function () {
                   let myargs = [...arguments];
                   let apply = () => {
@@ -94,7 +96,7 @@ export default {
                   }
                 });
               }
-              
+
             }
           }
         }
