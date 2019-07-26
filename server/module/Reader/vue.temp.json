@@ -19,6 +19,7 @@
     "logic": {
         "methods": {},
         "watch": {},
+        "computed": {},
         "beforeCreate": {
           "labelObj": {
             "view": [],
