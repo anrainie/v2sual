@@ -1,0 +1,34 @@
+{
+    "name": "@aweb-pipe/app.close",
+    "main": "index.js",
+    "docs": {
+        "desp": "关闭页面",
+        "icon": "",
+        "name": "this.close",
+        "category": "api",
+        "label": "close",
+        "labelType": "front",
+        "belongTo": "function",
+        "hasReturn": false,
+        "returnValue": {
+            "name": "",
+            "desp": "",
+            "details": "",
+            "type": "string",
+            "defaultValue": ""
+        },
+        "params": [
+            {
+                "name": "option",
+                "desp": "option",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": ""
+            }
+        ]
+        
+    },
+    "category": "自定义",
+    "description": "",
+    "version": "6.0.0"
+}

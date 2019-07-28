@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["template"],{"7f80":function(e){e.exports={"structure[结构]":{"id[全局唯一标识]":"root","component[组件标识]":"v2Container","children[子元素]":[],"pid[父节点元素]":"","...custom[自定义]":{},style:{},"events[事件]":{__op_1:{click:"methodName",change:""}}},"logic[逻辑概览]":"函数字符串","baskect[数据篮子]":{}}}}]);

@@ -1,0 +1,85 @@
+{
+    "name": "@aweb-template/vue-spa",
+    "version": "2.1.6",
+    "private": false,
+    "author": "zhanghaixian@agree.com.cn",
+    "description": "pc端Vue版SPA",
+    "scripts": {
+        "style": "vue-cli-service build --no-clean",
+        "component": "vue build -t lib -d v2sual ./src/@aweb-components/aweb.components.js",
+        "preview": "vue-cli-service serve --publicPath=/runtime/ --sockPort=443 --sockPath=/runtime/sockjs-node --port=7007 --mockPort=7008",
+        "serve": "vue-cli-service serve --publicPath=./ --sockPort=7007 --sockPath=/sockjs-node --port=7007 --mockPort=7008",
+        "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint",
+        "theme": "et",
+        "mock": "node ./server.js --port=7008",
+        "buildP": "node ./build-page.js"
+    },
+    "dependencies": {
+        "@handsontable/vue": "^3.1.0",
+        "animate.css": "^3.7.2",
+        "axios": "^0.18.0",
+        "cache-loader": "^2.0.1",
+        "element-ui": "^2.9.1",
+        "handsontable": "^6.2.2",
+        "koa-static": "^5.0.0",
+        "node-requirejs": "^0.1.1",
+        "node-sass": "^4.12.0",
+        "nprogress": "^0.2.0",
+        "shelljs": "^0.8.3",
+        "systemjs": "^3.1.1",
+        "uuid-umd": "^3.3.2",
+        "vant": "^2.0.1",
+        "vue": "^2.6.10",
+        "vue-router": "^3.0.2",
+        "vuex": "^3.0.1",
+        "wangeditor": "^3.1.1"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "^3.2.0",
+        "@vue/cli-plugin-eslint": "^3.2.0",
+        "@vue/cli-service": "^3.2.0",
+        "axios-mock-adapter": "^1.15.0",
+        "babel-eslint": "^10.0.1",
+        "element-theme": "^2.0.1",
+        "element-theme-chalk": "^2.9.1",
+        "eslint": "^6.0.1",
+        "eslint-plugin-vue": "^5.0.0-0",
+        "koa": "^2.7.0",
+        "koa-body": "^4.1.0",
+        "koa-router": "^7.4.0",
+        "less": "^3.9.0",
+        "less-loader": "^4.1.0",
+        "mockjs": "^1.0.1-beta3",
+        "sass-loader": "^7.1.0",
+        "vue-template-compiler": "^2.6.10",
+        "webpack": "^4.28.2"
+    },
+    "eslintConfig": {
+        "root": true,
+        "env": {
+            "node": true
+        },
+        "extends": [
+            "plugin:vue/essential",
+            "eslint:recommended"
+        ],
+        "rules": {},
+        "parserOptions": {
+            "parser": "babel-eslint"
+        }
+    },
+    "postcss": {
+        "plugins": {
+            "autoprefixer": {}
+        }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 8"
+    ],
+    "buildfolder": "./src/views/example",
+    "__projectType": "awebVue",
+    "__finished": true
+}

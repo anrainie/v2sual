@@ -1,0 +1,36 @@
+{
+    "serverHost": "http://localhost",
+    "serverPort": "7003",
+    "projects": [
+        {
+            "clientHost": "http://localhost",
+            "clientPort": "3000",
+            "outerClientPort": "3000",
+            "clientId": "netbank",
+            "clientName": "网银",
+            "base": "./project/runtime",
+            "pipe": "../pipe",
+            "preview": "http://localhost:7007",
+            "previewLocalPorts": [
+                3000,
+                7007,
+                7008
+            ]
+        },
+        {
+            "clientHost": "http://localhost",
+            "clientPort": "3001",
+            "outerClientPort": "3001",
+            "clientId": "cms",
+            "clientName": "后台管理端",
+            "base": "./project/cms",
+            "pipe": "../pipe",
+            "preview": "http://localhost:7009",
+            "previewLocalPorts": [
+                3001,
+                7009,
+                7010
+            ]
+        }
+    ]
+}

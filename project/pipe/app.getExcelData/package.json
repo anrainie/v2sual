@@ -1,0 +1,40 @@
+{
+    "name": "@aweb-pipe/app.getExcelData",
+    "main": "index.js",
+    "docs": {
+        "desp": "从Excel获取数据",
+        "name": "pipe.getExcelData",
+        "belongTo": "function",
+        "params": [
+            {
+                "name": "params",
+                "desp": "参数",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": ""
+            },
+            {
+                "name": "params2",
+                "desp": "参数2",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": ""
+            }
+        ],
+        "hasReturn": true,
+        "returnValue": {
+            "name": "data",
+            "desp": "返回数据",
+            "details": "",
+            "type": "array",
+            "defaultValue": ""
+        },
+        "category": "dataSource",
+        "label": "excel",
+        "labelType": "excel",
+        "icon": "icondanfangfa"
+    },
+    "category": "DataSource",
+    "description": "",
+    "version": "6.0.0"
+}

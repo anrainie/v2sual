@@ -1,0 +1,46 @@
+{
+  "author": {
+    "name": "lijiancheng@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "日历",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconriqixuanze",
+    "type": "component",
+    "href": "v2-component-calendar",
+    "author": "lijiancheng@agree.com.cn",
+    "version": 610000,
+    "accept": "divCtn",
+    "name": "日历",
+    "option": [
+      {
+        "type": "string_input",
+        "name": "range",
+        "defaultValue": "[-1,0,1]",
+        "disabled": true,
+        "desp": "范围"
+      },
+      {
+        "type": "string_input",
+        "name": "currentDate",
+        "defaultValue": "new Date()",
+        "disabled": true,
+        "desp": "开始日期"
+      }
+    ],
+    "css": {
+  
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@v2-components/v2-component-calendar",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.0",
+  "index":30000015
+}

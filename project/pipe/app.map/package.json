@@ -1,0 +1,39 @@
+{
+    "name": "@aweb-pipe/app.map",
+    "main": "index.js",
+    "docs": {
+        "desp": "map",
+        "name": "map",
+        "category": "logic",
+        "label": "map",
+        "labelType": "function",
+        "belongTo": "function",
+        "params": [
+            {
+                "name": "",
+                "desp": "",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": ""
+            },
+            {
+                "name": "",
+                "desp": "",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": ""
+            }
+        ],
+        "hasReturn": false,
+        "returnValue": {
+            "name": "",
+            "desp": "",
+            "details": "",
+            "type": "string",
+            "defaultValue": ""
+        }
+    },
+    "category": "自定义",
+    "description": "",
+    "version": "6.0.0"
+}
