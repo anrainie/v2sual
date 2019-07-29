@@ -310,7 +310,7 @@ router.post('/-/upload', async (ctx, next) => {
     // 修改文件的名称
     var myDate = new Date();
     var newFilename = myDate.getTime()+'.'+file.name.split('.')[1];
-    var targetPath = path.join(__dirname, './dist/uploads/') + `/${newFilename}`;
+    var targetPath = path.join(__dirname, './dist/static/') + `/${newFilename}`;
     //创建可写流
     const upStream = fs.createWriteStream(targetPath);
     // 可读流通过管道写入可写流
