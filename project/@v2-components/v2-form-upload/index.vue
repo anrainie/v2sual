@@ -10,7 +10,7 @@
           <el-upload
             ref="_op_formUpload_upload"
             class="upload-demo"
-            :action="model.action"
+            action="/-/upload"
             :on-preview="handlePreview"
             :on-remove="handleRemove"
             :before-remove="beforeRemove"

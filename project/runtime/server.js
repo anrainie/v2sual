@@ -302,7 +302,7 @@ router.get('/-/theme/change', (ctx) => {
 
 
 });
-router.post('/-/uploadPic', async (ctx, next) => {
+router.post('/-/upload', async (ctx, next) => {
 
     const file = ctx.request.files.file; // 上传的文件在ctx.request.files.file
     // 创建可读流
