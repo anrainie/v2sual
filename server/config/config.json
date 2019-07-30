@@ -94,6 +94,7 @@
                 "createFile": "createFile",
                 "createFolder": "createFolder",
                 "deleteFile": "deleteFile",
+                "copyFile":"copyFile",
                 "getPipe": "getPipe"
             }
         },
