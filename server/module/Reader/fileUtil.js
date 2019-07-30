@@ -58,10 +58,10 @@ const fileUtil = {
   saveFile(path, content, logicOptions) {
     let writer = this.getFileWriter(path);
     return writer ? writer(path, content) : new Promise((res, rej) => {
-      try{
+      try {
         fs.writeFileSync(path, content);
         res()
-      }catch(e){
+      } catch (e) {
         rej(e)
       }
     });
@@ -113,6 +113,122 @@ const fileUtil = {
       }
     });
   },
+  copyFolder({
+    srcPath,
+    targetPath
+  }) {
+    return new Promise((res, rej) => {
+      try {
+        //文件名
+        let fileName = nodejsPath.basename(srcPath);
+
+        //目标文件路径
+        let targetFilePath = nodejsPath.join(targetPath, fileName);
+
+
+        //拷贝源路径到目标路径
+        try {
+          fs.copyFileSync(srcPath, targetFilePath);
+        } catch (e) {
+          rej(e);
+          return;
+        }
+
+        //获取源路径下的所有子文件
+        let files = fs.readdirSync(srcPath);
+        files.forEach((file) => {
+          //子文件源路径
+          let srcFilePath = nodejsPath.join(srcPath, file);
+          let stats = fs.statSync(srcFilePath);
+
+          if (stats.isDirectory()) {
+            this.copyFolder({ srcPath: srcFilePath, targetPath: targetFilePath });
+          } else {
+            this.copyFile({ srcPath: srcFilePath, targetPath: targetFilePath });
+          }
+        });
+      } catch (e) {
+        rej(e);
+        return;
+      }
+      res();
+    })
+  },
+  copyFile({
+    srcPath,
+    targetPath
+  }) {
+    return new Promise((res, rej) => {
+      try {
+        //文件名
+        let fileName = nodejsPath.basename(srcPath);
+
+        //目标文件路径
+        let targetFilePath = nodejsPath.join(targetPath, fileName);
+
+
+        //拷贝源路径到目标路径
+        try {
+          fs.copyFileSync(srcPath, targetFilePath);
+        } catch (e) {
+          rej(e);
+          return;
+        }
+
+        //如果文件名为.vue结尾，把def文件也一并拷贝
+        if (fileName.endsWith(".vue")) {
+          //def的源路径
+          let defSrcFilePath = srcPath + ".def";
+
+          if(fs.existsSync(defSrcFilePath)){
+            //def的文件名
+            let defFileName = fileName + ".def";
+
+            //目标def文件路径
+            let targetDefFilePath = nodejsPath.join(targetPath, defFileName);
+
+            //def的源路径拷贝到目标路径
+            try {
+              fs.copyFileSync(defSrcFilePath, targetDefFilePath);
+            } catch (e) {
+              rej(e);
+              return;
+            }
+          }
+
+
+        }
+      } catch (e) {
+        rej(e);
+        return;
+      }
+      res();
+    })
+  },
+  copyFiles({
+    paths,
+    targetPath,
+  }) {
+
+    return new Promise((res, rej) => {
+
+      paths.forEach(srcPath => {
+
+        let stats = fs.lstatSync(srcPath);
+        if (stats.isDirectory()) {
+          if (targetPath.startsWith(srcPath)) {
+            rej("目录不能拷贝到自身");
+            return;
+          }
+          this.copyFolder({ srcPath, targetPath });
+        } else {
+          this.copyFile({ srcPath, targetPath });
+        }
+      })
+
+      res();
+    })
+  },
   deleteFile({
     path,
     isDirectory = false
@@ -129,7 +245,7 @@ const fileUtil = {
           });
         } else if (stat.isFile()) {
           fs.unlinkSync(path);
-          fs.unlinkSync(path+'.def');
+          fs.unlinkSync(path + '.def');
         } else {
           rej('非法的文件类型' + path);
           return;
@@ -167,6 +283,32 @@ const reader = {
       }).catch(e => {
         platform.sendErrorResult(req, e)
       })
+    }
+  },
+  copyFile(platform) {
+    return async req => {
+
+      let paths = [];
+      req.data.path.forEach(path => {
+        paths.push(trans2absolute(path));
+      })
+
+      let targetPath = trans2absolute(req.data.pasteTarget);
+
+      try {
+        fileUtil.copyFiles({
+          paths,
+          targetPath
+        }).then(() => {
+          platform.sendSuccessResult(req, {});
+        }).catch(e => {
+          console.log(e)
+          platform.sendErrorResult(req, e)
+        })
+      } catch (e) {
+        console.log(e)
+        platform.sendErrorResult(req, e);
+      }
     }
   },
   deleteFile(platform) {
@@ -246,25 +388,25 @@ const reader = {
       }
     }
   },
-  getPipe(platform){
+  getPipe(platform) {
     return async req => {
-      let data  = req.data;
+      let data = req.data;
       let pipePath = config.runtime.pipe;
-      let res ={};
-      try{
-        await fileUtil.getFileContent(nodejsPath.join(pipePath,data.name,"index.js")).then(content => {
+      let res = {};
+      try {
+        await fileUtil.getFileContent(nodejsPath.join(pipePath, data.name, "index.js")).then(content => {
           res.index = content;
         }).catch(e => {
-          console.log('管道index读取失败',e)
+          console.log('管道index读取失败', e)
         })
-        await fileUtil.getFileContent(nodejsPath.join(pipePath,data.name,"package.json")).then(content => {
+        await fileUtil.getFileContent(nodejsPath.join(pipePath, data.name, "package.json")).then(content => {
           res.package = content;
         }).catch(e => {
-          console.log('管道package读取失败',e);
+          console.log('管道package读取失败', e);
         })
         res.dirName = data.name;
         platform.sendSuccessResult(req, res);
-      }catch(e){
+      } catch (e) {
         platform.sendErrorResult(req, e)
 
       }
