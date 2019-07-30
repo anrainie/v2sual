@@ -18,7 +18,7 @@
             multiple
             :limit="parseInt(model.limit)"
             :on-exceed="handleExceed"
-            :file-list="fileList">
+            :file-list="model.fileList">
             <el-button size="small" type="primary">{{model.btnText}}</el-button>
             <div slot="tip" class="el-upload__tip">{{model.prompt}}</div>
           </el-upload>
@@ -34,7 +34,7 @@
     },
     data () {
       return {
-        fileList:[]
+    
       }
     },
     methods: {
