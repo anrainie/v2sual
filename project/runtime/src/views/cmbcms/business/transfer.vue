@@ -105,8 +105,16 @@ ctx.$store.commit("registerBind",{ vueObj:this, data:this.tradeSerial.notify_pho
                     let ctx = this;
                         
                 },
-                deactivated(){/**页面切出**/},
-                activated(){/**页面切入**/},
+                deactivated(){
+                  /**页面切出**/
+                  let ctx = this;
+                  
+                },
+                activated(){
+                  /**页面切入**/
+                  let ctx = this;
+                  
+                },
 
             };
         </script>

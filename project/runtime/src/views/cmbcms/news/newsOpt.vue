@@ -36,6 +36,7 @@ news:{
             this.$message({
                 showClose: true,
                 message: res.data.retMsg,
+                duration: 0,
                 type: 'error'
             });
         }     
@@ -43,6 +44,7 @@ news:{
         this.$message({
                 showClose: true,
                 message: error,
+                duration: 0,
                 type: 'error'
         });
     });;
@@ -90,8 +92,16 @@ ctx.$store.commit("registerBind",{ vueObj:this, data:this.news.content, dataStr:
                     let ctx = this;
                         
                 },
-                deactivated(){/**页面切出**/},
-                activated(){/**页面切入**/},
+                deactivated(){
+                  /**页面切出**/
+                  let ctx = this;
+                  
+                },
+                activated(){
+                  /**页面切入**/
+                  let ctx = this;
+                  
+                },
 
             };
         </script>
