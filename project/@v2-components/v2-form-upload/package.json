@@ -42,6 +42,12 @@
         ]
       },
       {
+        "name": "fileList",
+        "type": "string_input",
+        "defaultValue":"",
+        "desp": "选择的文件"
+      },
+      {
         "name": "action",
         "type": "string_input",
         "defaultValue":"",

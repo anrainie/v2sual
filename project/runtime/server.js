@@ -28,7 +28,6 @@ const path = require('path');
 		
 // 		message: 'sdsdddds'
 // 	  });
-	  
 // });
 
 // var http = require('http');
@@ -303,12 +302,27 @@ router.get('/-/theme/change', (ctx) => {
 
 
 });
+router.post('/-/upload', async (ctx, next) => {
 
+    const file = ctx.request.files.file; // 上传的文件在ctx.request.files.file
+    // 创建可读流
+    const reader = fs.createReadStream(file.path);
+    // 修改文件的名称
+    var myDate = new Date();
+    var newFilename = myDate.getTime()+'.'+file.name.split('.')[1];
+    var targetPath = path.join(__dirname, './dist/static/') + `/${newFilename}`;
+    //创建可写流
+    const upStream = fs.createWriteStream(targetPath);
+    // 可读流通过管道写入可写流
+    reader.pipe(upStream);
+    //返回保存的路径
+    return ctx.body = { code: 200, status: true };
+});
 //若删掉代理，预览时候不能获取数据
 require('../../server/module/dataSource')(app,require('../../server/config/config.json').dataSource);
 
 //parser
-app.use(KoaBody());
+app.use(KoaBody({ multipart: true }));
 
 app.use(router.routes());
 

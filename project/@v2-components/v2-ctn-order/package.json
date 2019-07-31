@@ -4,17 +4,17 @@
   },
   "bundleDependencies": false,
   "deprecated": false,
-  "description": "自由布局容器",
+  "description": "顺序布局容器",
   "docs": {
     "belongTo": "aui",
     "icon": "icontubiao",
     "type": "ctn",
-    "href": "v2-ctn-xy",
+    "href": "v2-ctn-order",
     "author": "zhanghaixian@agree.com.cn",
     "version": 610000,
     "accept": "divCtn",
-    "name": "自由布局容器",
-    "customEditor": "v2EditorXYCtn",
+    "name": "顺序布局容器",
+    "customEditor": "v2EditorOrderCtn",
     "option": [
       
     ],
@@ -25,13 +25,13 @@
   "keywords": [],
   "license": "ISC",
   "main": "index.vue",
-  "name": "@v2-components/v2-ctn-xy",
+  "name": "@v2-components/v2-ctn-order",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "editor": {
-    "path": "xyCtnEditor.vue",
-    "name": "v2EditorXYCtn"
+    "path": "orderCtnEditor.vue",
+    "name": "v2EditorOrderCtn"
   },
   "version": "6.0.0",
   "index": 30000005
