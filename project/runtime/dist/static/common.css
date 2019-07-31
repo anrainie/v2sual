@@ -349,7 +349,7 @@ position: absolute; */
 
 /* 考虑用before/after */
 .v2selected {
-  box-shadow: inset 0px 0px 2px 2px darkcyan;
+  box-shadow: inset 0px 0px 0px 1px darkcyan;
   /* box-sizing: border-box; */
   /* filter: invert(10%) blur(.5px); */
 }
@@ -402,7 +402,7 @@ position: absolute; */
 }
 
 .dashBorder {
-  border: 1px dashed lightgray;
+  border: .5px dotted lightgray;
 }
 
 .hoveredElement {
