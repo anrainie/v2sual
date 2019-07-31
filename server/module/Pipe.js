@@ -183,8 +183,9 @@ class Pipe {
     return async (req) => {
       let data = req.data;
       let dirPath = nodejsPath.join(config.runtime.pipe, data.pipeName);
-      const indexTemplate = `(function(){
-      })`;
+      const indexTemplate = `export default()=>{
+        return ''
+      }`;
       const packageTemplate = `{
         "name": "@aweb-pipe/",
         "main": "index.js",

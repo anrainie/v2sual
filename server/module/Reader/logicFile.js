@@ -15,7 +15,7 @@ let str = `R._fun_(1,str,{"a":"b"},[1,2],R.add(1,R.add(2,2)))`,
   ObjectExpression = funarg[2],
   ArrayExpression = funarg[3],
   CallExpression = funarg[4];
-let dataList='';
+let dataList = '';
 
 /**
  * 将json转换成script
@@ -31,7 +31,7 @@ let json2script = function (json, path) {
     template, finalStr,
     self = this;
 
-    dataList=data;
+  dataList = data;
   let transfer = self.toCode(logic),
     dataStr = self.createData(data);
 
@@ -50,29 +50,28 @@ let json2script = function (json, path) {
   porpStr = self.createProp(data);
   transfer = self.bindData(logic, content.dataBasket.mapping);
 
-
   // transfer数据初始化
   if (!transfer.pollList) transfer.pollList = [];
 
   if (transfer) {
     finalStr = `<script>
-            ${isCustom?`import {root,cpt,widget} from '@/utils/v2-view';import events from "@/utils/events";`:`import {root} from '@/utils/v2-view';`}
-            ${importList.length?importList.map(item=>`import ${item.desp} from '${item.path}'`).join(";"):''}
+            ${isCustom ? `import {root,cpt,widget} from '@/utils/v2-view';import events from "@/utils/events";` : `import {root} from '@/utils/v2-view';`}
+            ${importList.length ? importList.map(item => `import ${item.desp} from '${item.path}'`).join(";") : ''}
             export default{
                 data(){
                     return{
                         "CONTENT":{structure:${JSON.stringify(structure)}},
-                        ${isCustom?'':dataStr.join(",\n")}
+                        ${isCustom ? '' : dataStr.join(",\n")}
                     }
                 },
                 props:{
-                  ${isCustom?porpStr.join(",\n"):''}
+                  ${isCustom ? porpStr.join(",\n") : ''}
                 },
-                ${isCustom?`mixins:[root,widget,cpt,events],`:`mixins:[root],`}
-                ${importList.length?`components:{${importList.map(item=>`${item.desp}`)}},`:''}
+                ${isCustom ? `mixins:[root,widget,cpt,events],` : `mixins:[root],`}
+                ${importList.length ? `components:{${importList.map(item => `${item.desp}`)}},` : ''}
                 methods:{${self.methodsToCode(transfer.methods)}},
                 watch:{${self.methodsToCode(transfer.watch)}},
-                computed:{${isCustom?`root(){return this.$store.state.root;}`:''}},
+                computed:{${self.computedToCode(transfer.computed)}},
                 beforeCreate(){
                     let ctx = this;
                     ${transfer.beforeCreate ? transfer.beforeCreate.code : ''}
@@ -115,8 +114,16 @@ let json2script = function (json, path) {
                     let ctx = this;
                         ${transfer.destroyed ? transfer.destroyed.code : ''}
                 },
-                deactivated(){/**页面切出**/},
-                activated(){/**页面切入**/},
+                deactivated(){
+                  /**页面切出**/
+                  let ctx = this;
+                  ${transfer.deactivated ? transfer.deactivated.code : ''}
+                },
+                activated(){
+                  /**页面切入**/
+                  let ctx = this;
+                  ${transfer.activated ? transfer.activated.code : ''}
+                },
 
             };
         </script>`
@@ -131,15 +138,14 @@ let methodsToCode = function (obj) {
   let arr = [],
     i;
   for (i in obj) {
-    console.log(obj[i])
-    if(obj[i].custom){
+    if (obj[i].custom) {
       arr.push(
         `${obj[i].name}(${obj[i].params.join(',')}){
                   let ctx = this;
                   ${obj[i].code}
               }, `
       )
-    }else{
+    } else {
       arr.push(
         `${obj[i].name}(widget,item){
                   let ctx = this;
@@ -149,6 +155,24 @@ let methodsToCode = function (obj) {
     }
   }
   return arr.join("");
+}
+
+let computedToCode = function (obj) {
+  let arr = [];
+  let i;
+  console.log(obj)
+  for (i in obj) {
+    if (obj[i]) {
+      arr.push(
+        `
+        ${obj[i].name}(){
+          ${obj[i].value}
+        }
+        `
+      )
+    }
+  }
+  return arr.join(",");
 }
 // 生成import
 let createImport = function (structureIndex) {
@@ -251,11 +275,11 @@ let toCode = function (logic) {
           });
           if (arr.length || outRes.length) {
             outCode = `
-            ${(obj.upCode&&obj.upCode.length!==0)?obj.upCode.join("\n"):''}
+            ${(obj.upCode && obj.upCode.length !== 0) ? obj.upCode.join("\n") : ''}
                     /*overview*/
                         (async()=>{${arr.join("\n")}\n${outRes.join("\n")}})();
                     /*overview over*/
-                    ${(obj.downCode&&obj.downCode.length!==0)?obj.downCode.join("\n"):''}
+                    ${(obj.downCode && obj.downCode.length !== 0) ? obj.downCode.join("\n") : ''}
                     `;
           } else {
             outCode = "";
@@ -325,7 +349,7 @@ let toCode = function (logic) {
         obj = logic[i];
         obj = self.transToPoll(obj);
         break;
-        // 周期函数
+      // 周期函数
       default:
         obj = logic[i]
         if (obj.labelObj) {
@@ -472,19 +496,19 @@ let transItem = function (item) {
   switch (option.type) {
     case "Value":
       temp = JSON.parse(JSON.stringify(Identifier));
-      if(dataList[option.value]){
-        temp.name =  `ctx.${option.value}`;
-      }else{
+      if (dataList[option.value]) {
+        temp.name = `ctx.${option.value}`;
+      } else {
         temp.name = option.value;
       }
       return temp;
       break;
     default:
       temp = JSON.parse(JSON.stringify(Literal));
-      if(dataList[option.value]){
-        temp.raw =`ctx.${option.value}`;
+      if (dataList[option.value]) {
+        temp.raw = `ctx.${option.value}`;
         temp.value = `ctx.${option.value}`;
-      }else{
+      } else {
         temp.raw = option.value;
         temp.value = option.value;
       }
@@ -507,3 +531,4 @@ exports.transToPoll = transToPoll;
 exports.__buildIndex = __buildIndex;
 exports.createProp = createProp;
 exports.toCamel = toCamel;
+exports.computedToCode = computedToCode;

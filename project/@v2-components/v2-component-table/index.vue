@@ -34,9 +34,9 @@
       :width ="item.width"
       :sortable ="item.sortable"
       >
-      <template slot-scope="scope" >
-        <div v-if="item.template" v-html="item.template"></div>
-      </template>
+      <!-- <template slot-scope="scope" v-if="item.template">
+        <div  v-html="item.template"></div>
+      </template> -->
     </el-table-column>
 
      <el-table-column

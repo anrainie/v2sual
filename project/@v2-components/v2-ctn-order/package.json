@@ -1,0 +1,38 @@
+{
+  "author": {
+    "name": "zhanghaixian@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "顺序布局容器",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "icontubiao",
+    "type": "ctn",
+    "href": "v2-ctn-order",
+    "author": "zhanghaixian@agree.com.cn",
+    "version": 610000,
+    "accept": "divCtn",
+    "name": "顺序布局容器",
+    "customEditor": "v2EditorOrderCtn",
+    "option": [
+      
+    ],
+    "css": {
+     
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@v2-components/v2-ctn-order",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "editor": {
+    "path": "orderCtnEditor.vue",
+    "name": "v2EditorOrderCtn"
+  },
+  "version": "6.0.0",
+  "index": 30000005
+}

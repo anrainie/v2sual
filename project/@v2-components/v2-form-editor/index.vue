@@ -73,7 +73,7 @@
   font-size: 14px;
    height: 100%;
   .w-e-warp-ctn{
-    height:100% !important;
+    // height:100% !important;
   }
   .w-e-toolbar{
     display:block;
