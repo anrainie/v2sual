@@ -9,8 +9,6 @@ body {
   margin-right: 4px;
 }
 
-
-
 .v2left {
   float: left;
 }
@@ -28,7 +26,8 @@ body {
   right: 0;
 }
 
-.v2top {}
+.v2top {
+}
 
 .v2center {
   top: 50%;
@@ -42,7 +41,6 @@ body {
   bottom: 0;
 }
 
-
 .v2-form-ctt.V2Widget {
   // margin: 10px;
 }
@@ -54,50 +52,60 @@ body {
 /**
  * 网银项目全局公共样式
  */
-.V2ContainerBlock .el-col {
-  // margin: 5px;
-  // // border: 1px solid #7EABFA;
-  // border: 1px solid #A4C6FF;
-  // border-radius: 5px;
+
+#app .aweb-container {
+  .aweb-main {
+    padding: 0 30px;
+  }
+
+  .V2ContainerBlock .el-col {
+    // margin: 5px;
+    // // border: 1px solid #7EABFA;
+    // border: 1px solid #A4C6FF;
+    // border-radius: 5px;
+  }
 }
+
 /**
  * 网银项目自定义组件样式
  * 命名规则采用 BEM(block__element--modifier)
  */
 
 // 图标快捷键
-.shortcut {}
-.shortcut__icon {
+.shortcut {
   text-align: center;
-  color: #455ECB;
-  font-size: 24px;
-}
-.shortcut__text {
-  text-align: center;
-  font-size: 12px;
+
+  .shortcut__icon {
+    position: relative;
+    top: 10px;
+    font-size: 24px;
+    color: #455ecb;
+  }
+  .shortcut__text {
+    font-size: 12px;
+  }
 }
 
 // 段落
-.article {}
-.article__header {
-  line-height: 30px;
-  font-size: 12px;
-  font-weight: bold;
-}
-.article__content {
-  font-size: 12px;
+.article {
+  .article__header {
+    line-height: 30px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .article__content {
+    font-size: 12px;
+  }
 }
 
 // 银行卡
 .bankcard {
-
 }
-
 .bankcard--type-01 {
   position: relative;
   padding: 10px;
   width: 260px;
-  height: 185px!important;
+  height: 185px !important;
   border-radius: 10px;
   text-align: center;
 
@@ -121,10 +129,12 @@ body {
     font-size: 13px;
     color: #fff;
 
-    .text-value-row i, .text-value-row span {
+    .text-value-row i,
+    .text-value-row span {
       flex: 2;
     }
-    .text-value-row i, .text-value-row p {
+    .text-value-row i,
+    .text-value-row p {
       flex: 3;
     }
 
@@ -133,6 +143,15 @@ body {
     }
 
     &.unfold {
+      animation: unfold 0.3s forwards;
+    }
+  }
+  @keyframes unfold {
+    from {
+      left: 0;
+      margin-left: -120px;
+    }
+    to {
       left: 50%;
       margin-left: -85px;
     }
@@ -159,7 +178,7 @@ body {
   }
 
   &:hover {
-    background: rgba(0, 0, 0, .1);
+    background: rgba(0, 0, 0, 0.1);
 
     .bankcard__name {
       display: none;
@@ -170,18 +189,90 @@ body {
   }
 }
 
+// 修改密码
+.pwd-change {
+  background: #f2f9ff;
+  // border: 1px solid #9fd6ff;
+  font-size: 14px;
+
+  .text-value-row {
+    i,
+    span,
+    p {
+      flex: none;
+    }
+  }
+
+  .pwd-change__title {
+    line-height: 30px;
+    background: #fff;
+    // border-bottom: 2px solid #9fd6ff;
+    border: 1px solid #9fd6ff;
+
+    i {
+      width: 30px;
+      line-height: 30px;
+    }
+  }
+  .pwd-change__form {
+    height: 202px;
+    border: 1px solid #9fd6ff;
+  }
+  .pwd-change__curCard {
+    line-height: 50px;
+    // border-bottom: 1px solid #9fd6ff;
+
+    span {
+      padding-right: 12px;
+      width: 30%;
+      box-sizing: border-box;
+      border-right: 1px solid #9fd6ff;
+      text-align: right;
+    }
+    p {
+      padding-left: 12px;
+    }
+  }
+  .pwd-change__input {
+    height: 50px;
+    line-height: 50px;
+    border-top: 1px solid #9fd6ff;
+
+    label {
+      height: 50px;
+      line-height: 50px;
+      border-right: 1px solid #9fd6ff;
+    }
+    .form-input-ctn {
+      padding-left: 12px;
+      height: 50px;
+      line-height: 50px;
+    }
+    .el-input {
+      text-align: left;
+    }
+    .el-input__inner {
+      width: 150px;
+      height: 30px;
+    }
+  }
+  .pwd-change__btn {
+    margin-top: 13px;
+    margin-left: calc(30% + 12px);
+  }
+}
+
 /**
  * 网银项目页面自定义样式(修改已有样式)
  */
 
-// .shortcuts--group-col {
-//   border: 1px solid #ccc;
-//   width: 100px;
-//   padding-top: 10px;
-//   border-radius: 5px;
-// }
+// ########## 主页 index ##########
+
+// ########## 交易查询 queryTransaction ##########
+
+// ########## 密码管理 pwdManager ##########
 
 
-.bankcards-wrap {
-  // background: #ff0000;
-}
+
+
+// ########## 页面 page ##########
