@@ -296,6 +296,9 @@ router.get('/-/getMainList', function (ctx) {
 	}
 })
 
+//若删掉代理，预览时候不能获取数据
+require('../../server/module/dataSource')(app,require('../../server/config/config.json').dataSource);
+
 
 //parser
 app.use(KoaBody());
@@ -313,6 +316,8 @@ app.use(require('koa-static')(__dirname + '/public'))
 
 // http.createServer(app.callback()).listen(80);
 // https.createServer(options, app.callback()).listen(443);
+
+
 
 app.listen(config.port, () => {
 	console.error(`服务器启动成功：${config.port}`);
