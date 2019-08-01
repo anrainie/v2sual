@@ -76,12 +76,12 @@
         "valueArray": [
           "text",
           "tag",
-          "expand"
+          "icon"
         ],
          "despArray": [
           "文本",
-          "标签",
-          "可展开"
+          "标签映射",
+          "图标映射"
         ]
       },{
           "require":{
@@ -97,7 +97,7 @@
               "type": "string_input"
            },{            
             "name": "text",
-            "desp": "对应标签名",
+            "desp": "标签文本",
             "defaultValue": "",
             "type": "string_input"
            },{
@@ -124,22 +124,22 @@
         }]
       },{
         "require":{
-          "type":"expand"
+          "type":"icon"
         },
-        "type": "single_array",
-        "name": "expandMap",
-        "desp": "展开显示的字段表",
+        "type": "array",
+        "name": "iconMap",
+        "desp": "图标映射表",
         "attrInEachElement":[{            
-            "name": "name",
-            "desp": "列英文名",
+            "name": "value",
+            "desp": "值",
             "defaultValue": "",
             "type": "string_input"
          },{            
-          "name": "label",
-          "desp": "中文名",
+          "name": "text",
+          "desp": "图标类名",
           "defaultValue": "",
           "type": "string_input"
-       }]
+         }]
     },{
       "require":{
         "openFilter":"true"
@@ -161,6 +161,7 @@
   }
   ]
     },
+
     {
           "defaultValue": "",
           "valueArray": [
@@ -274,7 +275,32 @@
       "name": "tableData",
       "defaultValue": "",
       "desp": "表格数据"
-    }
+    },
+    {
+      "defaultValue": false,
+      "type": "boolean",
+      "name": "expand",
+      "desp": "是否首列可展开"
+    },
+    {
+      "require":{
+        "expand":"true"
+      },
+      "type": "single_array",
+      "name": "expandMap",
+      "desp": "展开显示的字段表",
+      "attrInEachElement":[{            
+          "name": "name",
+          "desp": "列英文名",
+          "defaultValue": "",
+          "type": "string_input"
+       },{            
+        "name": "label",
+        "desp": "中文名",
+        "defaultValue": "",
+        "type": "string_input"
+     }]
+  }
   ],
   "css":{
     "theme": [{

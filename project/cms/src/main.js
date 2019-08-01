@@ -11,6 +11,9 @@ import './utils/global.js'
 import './promission.js'
 window.Vue=Vue;
 
+import Vant from 'vant';
+import 'vant/lib/index.css';
+
 import $ from "jquery"
 
 
@@ -32,6 +35,7 @@ import store from './store'
 import mixin from '@/utils/app.js'
 
 Vue.mixin(mixin);
+Vue.use(Vant);
 
 
 Vue.use(ElementUI)

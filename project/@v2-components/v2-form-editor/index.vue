@@ -39,6 +39,10 @@
         }
       },
       methods: {
+          $Enter(e) {
+            console.log(e.keyCode)
+            return false;
+          }
       
       },
       mounted() {
