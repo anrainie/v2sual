@@ -268,11 +268,14 @@ export const widget = {
     parent() {
       return this.$store.getters.model(this.parentId);
     },
+    root() {
+      return this.$store.state.root
+    },
     wrapClass() {
       return {}
-    }, 
-     widgetClass(){
-      return [...((this.model && this.model.layoutClass)||[]),...((this.model && this.model.customClass)||[])]
+    },
+    widgetClass() {
+      return [...((this.model && this.model.layoutClass) || []), ...((this.model && this.model.customClass) || [])]
     }
   },
   beforeDestroy() {
