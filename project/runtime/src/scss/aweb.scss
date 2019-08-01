@@ -55,7 +55,7 @@ body {
 
 #app .aweb-container {
   .aweb-main {
-    padding: 0 30px;
+    padding: 20px 30px;
     // width: 1000px;
     // margin: 0 auto;
     // background: #ffeeee;
@@ -67,6 +67,18 @@ body {
     // border: 1px solid #A4C6FF;
     // border-radius: 5px;
   }
+
+  // , 'grid__wrap' gridWrapClass
+  .grid__wrap {
+    margin: 0 10px 20px;
+    // border: 1px solid #7EABFA;
+    border: 1px solid #a4c6ff;
+    border-radius: 5px;
+  }
+
+  .el-tabs__nav {
+    margin-left: 15px;
+  }
 }
 
 /**
@@ -76,12 +88,14 @@ body {
 
 // 图标快捷键
 .shortcut {
+  margin: 8px 0;
+  height: 60px;
   text-align: center;
 
   .shortcut__icon {
     position: relative;
     top: 10px;
-    font-size: 24px;
+    font-size: 28px;
     color: #455ecb;
   }
   .shortcut__text {
@@ -107,7 +121,7 @@ body {
 .bankcard--type-01 {
   position: relative;
   padding: 10px;
-  width: 260px;
+  width: 250px;
   height: 185px !important;
   border-radius: 10px;
   text-align: center;
@@ -191,7 +205,7 @@ body {
     }
   }
 }
-.v2-form-ctt{
+.v2-form-ctt {
   padding: 6px;
   box-sizing: border-box;
 }
@@ -244,6 +258,7 @@ body {
     height: 50px;
     line-height: 50px;
     border-top: 1px solid #9fd6ff;
+    padding: 0;
 
     label {
       height: 50px;
@@ -273,6 +288,11 @@ body {
  * 网银项目页面自定义样式(修改已有样式)
  */
 
+.page__* {
+  width: 90%;
+  background: #000;
+}
+
 // ########## 主页 index ##########
 .page__index {
   .V2ContainerBlock .el-col {
@@ -281,13 +301,71 @@ body {
     // border: 1px solid #A4C6FF;
     // border-radius: 5px;
   }
+
+  .grid__wrap {
+    height: 280px;
+    overflow: hidden;
+  }
+
+  .V2Widget.aweb4-calendar {
+    height: 280px;
+    overflow: hidden;
+    margin: 0 10px 20px;
+    // border: 1px solid #7EABFA;
+    border: 1px solid #a4c6ff;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .aweb4-calendar .weekdays {
+    padding: 0;
+  }
+  .aweb4-calendar .days > li {
+    margin: 0;
+  }
+  .aweb4-calendar .days > li > div {
+    height: 40px;
+    padding: 0;
+  }
 }
 
 // ########## 交易查询 queryTransaction ##########
+.page__query-transaction {
+  .block__one {
+    height: 50px;
+    line-height: 50px;
+
+    .el-select .el-input {
+      width: 240px;
+    }
+  }
+  .block__two {
+    line-height: 50px;
+  }
+  .block__three {}
+  .block__four {}
+}
 
 // ########## 密码管理 pwdManager ##########
+.page__pwd-manager {
+  // select: ['pwd-manager__select'],
+  .pwd-manager__select {
+    height: 50px;
+    line-height: 50px;
+    background: #f2f9ff;
+    border: 1px solid #9fd6ff;
+    // margin-bottom: 20px;
 
-
-
+    .el-select .el-input {
+      width: 240px;
+    }
+  }
+  // note : ['article', 'pwd-manager__note']
+  .pwd-manager__note {
+    padding: 10px 20px 30px;
+    background: #fbfffa;
+    border: 1px solid #97e490;
+  }
+}
 
 // ########## 页面 page ##########
