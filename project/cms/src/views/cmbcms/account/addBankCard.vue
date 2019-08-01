@@ -31,6 +31,8 @@
                         (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/addBankCard',ctx.bankCard
     ).then(res=>{
         if(res.data.retType === 'SUCCESS'){
+            ctx.$root.$emit('refreshBankCardList');
+            ctx.close();
             this.$message({
                 showClose: true,
                 message: res.data.retMsg,
@@ -40,6 +42,7 @@
             this.$message({
                 showClose: true,
                 message: res.data.retMsg,
+                duration: 0,
                 type: 'error'
             });
         }
@@ -48,6 +51,7 @@
         this.$message({
                 showClose: true,
                 message: error,
+                duration: 0,
                 type: 'error'
         });
     });;
