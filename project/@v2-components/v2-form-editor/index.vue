@@ -96,6 +96,12 @@
     text-decoration: underline;
     color:$--color-primary;
   }
+  .w-e-text ul{
+        list-style: disc;
+  }
+  .w-e-text ol {
+      list-style: decimal;
+  }
 }
 
 </style>
