@@ -139,6 +139,15 @@
                     "v1/ds/": ""
                 },
                 "logLevel": "debug"
+            },{
+                "name": "招行内容管理",
+                "source": "/cmbcms",
+                "target": "http://10.8.3.120:8086",
+                "changeOrigin": true,
+                "pathRewrite": {
+                    "v1/ds/cmbcms": ""
+                },
+                "logLevel": "debug"
             }
         ]
     }
