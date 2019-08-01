@@ -33,10 +33,28 @@
       :fixed="item.fixed"
       :width ="item.width"
       :sortable ="item.sortable"
-      >
-      <!-- <template slot-scope="scope" v-if="item.template">
-        <div  v-html="item.template"></div>
-      </template> -->
+      :filters="item.openFilter? item.filterMap:null"
+      :filter-method="item.openFilter?filterhandler:null"
+      :type="item.type === 'expand' ? 'expand':''"
+      filter-placement="bottom-end">
+    
+     
+        <template slot-scope="scope">
+          <el-tag
+             v-if="item.type ==='tag'"
+            :type="getTagType(scope.row[item.prop],item.tagMap)"
+            disable-transitions>{{getTagText(scope.row[item.prop],item.tagMap)}}</el-tag>
+
+          <el-form label-position="left" inline class="v2-table-expand"   v-else-if="item.type ==='expand'" >
+          <el-form-item v-for="(ele,idx) in item.expandMap" v-if="ele.label" :label="ele.label" :key="idx">
+            <span>{{scope.row[ele.name]}}</span>
+          </el-form-item>   
+          </el-form>
+
+          <template v-else>{{scope.row[item.prop]}}</template>
+
+        </template>
+     
     </el-table-column>
 
      <el-table-column
@@ -129,11 +147,25 @@ export default {
     
       this.$store.state.root[eventHandler](index,row);
       
+    },
+    filterhandler(value,row,column){
+
+        const property = column['property'];
+        return row[property] === value;
+      
+    },
+    getTagType(value,tagMap){
+
+         return tagMap.filter(item=>item.value==value)[0].type
+    },
+    getTagText(value,tagMap){
+  
+         return tagMap.filter(item=>item.value==value)[0].text
     }
     
   },
   mounted(){
-     debugger;
+    
   },
   watch:{
     'model.tableData':{
@@ -146,3 +178,17 @@ export default {
 
 }
 </script>
+<style lang="scss">
+  .v2-table-expand {
+    font-size: 0;
+  }
+  .v2-table-expand label {
+    width: 90px;
+    color: #99a9bf;
+  }
+  .v2-table-expand .el-form-item {
+    margin-right: 0;
+    margin-bottom: 0;
+    width: 50%;
+  }
+</style>
