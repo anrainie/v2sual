@@ -12,7 +12,8 @@
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint",
         "theme": "et",
-        "mock": "node ./server.js --port=7011 --prefix=/cms",
+        "mock": "node ./server.js --port=7011",
+        "mockPreview": "node ./server.js --port=7011 --prefix=/cms",
         "buildP": "node ./build-page.js"
     },
     "dependencies": {
