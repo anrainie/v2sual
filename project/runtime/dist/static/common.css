@@ -198,6 +198,17 @@ box-shadow: 0 0 1px 1px #00000021;
   background-image: url("../img/icon9.png");
 }
 
+.V2XyBlock:after {
+  content: " ";
+  pointer-events: none;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  border: 1px dotted gray;
+}
+
 .V2CustomCptMask,
 .V2PageCptMask {
   /* left: 0;
@@ -343,7 +354,7 @@ position: absolute; */
 }
 
 .V2ContainerBlock {
-  position: relative;
+  /* position: relative; */
   transition: filter .2s linear, width .2s linear, height.2s linear, left .2s linear, top .2s linear;
 }
 
