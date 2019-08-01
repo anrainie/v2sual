@@ -60,7 +60,7 @@
             "name": "v2sual-runtime-mock",
             "script": "npm",
             "cwd":"/home/v2sual/project/runtime",
-            "args": "run mock",
+            "args": "run mockPreview",
             "out_file": "/home/v2sual/log/runtime-mock-app.log",
 		    "error_file": "/home/v2sual/log/runtime-mock-err.log"
         },
@@ -68,7 +68,7 @@
             "name": "v2sual-cms-mock",
             "script": "npm",
             "cwd":"/home/v2sual/project/cms",
-            "args": "run mock",
+            "args": "run mockPreview",
             "out_file": "/home/v2sual/log/cms-mock-app.log",
 		    "error_file": "/home/v2sual/log/cms-mock-err.log"
         }
