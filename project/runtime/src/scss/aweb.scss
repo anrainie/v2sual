@@ -56,6 +56,9 @@ body {
 #app .aweb-container {
   .aweb-main {
     padding: 0 30px;
+    // width: 1000px;
+    // margin: 0 auto;
+    // background: #ffeeee;
   }
 
   .V2ContainerBlock .el-col {
@@ -271,6 +274,14 @@ body {
  */
 
 // ########## 主页 index ##########
+.page__index {
+  .V2ContainerBlock .el-col {
+    // margin: 1%;
+    // // border: 1px solid #7EABFA;
+    // border: 1px solid #A4C6FF;
+    // border-radius: 5px;
+  }
+}
 
 // ########## 交易查询 queryTransaction ##########
 

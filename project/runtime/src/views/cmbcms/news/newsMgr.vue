@@ -32,6 +32,7 @@
             this.$message({
                 showClose: true,
                 message: res.data.retMsg,
+                duration: 0,
                 type: 'error'
             });
         }
@@ -40,6 +41,7 @@
         this.$message({
                 showClose: true,
                 message: error,
+                duration: 0,
                 type: 'error'
         });
     });;
@@ -111,8 +113,6 @@
                         (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/deleteNews',{id: row.id}
     ).then(res=>{
         if(res.data.retType === 'SUCCESS'){
-            ctx.$root.$store.state.loadingPage=true;
-
             ctx.queryNewsList();
             ctx.$message({
                 showClose: true,
@@ -123,6 +123,7 @@
             ctx.$message({
                 showClose: true,
                 message: res.data.retMsg,
+                duration: 0,
                 type: 'error'
             });
         }
@@ -131,6 +132,7 @@
         ctx.$message({
                 showClose: true,
                 message: error,
+                duration: 0,
                 type: 'error'
         });
     });;
@@ -182,8 +184,16 @@
                     let ctx = this;
                         
                 },
-                deactivated(){/**页面切出**/},
-                activated(){/**页面切入**/},
+                deactivated(){
+                  /**页面切出**/
+                  let ctx = this;
+                  
+                },
+                activated(){
+                  /**页面切入**/
+                  let ctx = this;
+                  
+                },
 
             };
         </script>

@@ -26,7 +26,14 @@ runtime/src/views/RateTest1.vue
 runtime/src/views/RateTest1.vue.def
 runtime/src/views/RateTest2.vue
 runtime/src/views/RateTest.vue
-runtime/src/views/**/*.vue
-runtime/src/views/**/*.def
-project/runtime/src/views/**/*.vue
-project/runtime/src/views/**/*.def
+
+project/runtime/src/views/testComp/*.vue
+project/runtime/src/views/testComp/*.def
+
+project/runtime/src/views/testComp/**/*.vue
+project/runtime/src/views/testComp/**/*.def
+
+# runtime/src/views/**/*.vue
+# runtime/src/views/**/*.def
+# project/runtime/src/views/**/*.vue
+# project/runtime/src/views/**/*.def
