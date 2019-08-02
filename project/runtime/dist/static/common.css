@@ -365,7 +365,7 @@ position: absolute; */
 }
 
 .V2ContainerBlock {
-  /* position: relative; */
+  position: relative;
   transition: filter .2s linear, width .2s linear, height.2s linear;
 }
 
