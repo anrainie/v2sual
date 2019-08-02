@@ -94,6 +94,7 @@
                 "createFile": "createFile",
                 "createFolder": "createFolder",
                 "deleteFile": "deleteFile",
+                "copyFile":"copyFile",
                 "getPipe": "getPipe"
             }
         },
@@ -146,6 +147,15 @@
                 "changeOrigin": true,
                 "pathRewrite": {
                     "v1/ds/": ""
+                },
+                "logLevel": "debug"
+            },{
+                "name": "招行内容管理",
+                "source": "/cmbcms",
+                "target": "http://192.168.0.38:8086",
+                "changeOrigin": true,
+                "pathRewrite": {
+                    "v1/ds/cmbcms": ""
                 },
                 "logLevel": "debug"
             }

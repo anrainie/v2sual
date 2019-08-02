@@ -12,7 +12,7 @@
                 "cp=3000",
                 "ocp=443",
                 "base=./project/runtime",
-                "pipe=../pipe/src/main/webapp/plugins",
+                "pipe=../pipe",
                 "socket=/v2sual-socket/socket.io",
                 "pp=0",
                 "preview=https://vue.awebide.com/runtime"
@@ -32,7 +32,7 @@
                 "cp=3001",
                 "ocp=443",
                 "base=./project/cms",
-                "pipe=../pipe/src/main/webapp/plugins",
+                "pipe=../pipe",
                 "socket=/v2sual-socket/socket.io",
                 "pp=0",
                 "preview=https://vue.awebide.com/cms"
@@ -44,7 +44,7 @@
             "name": "v2sual-runtime-spa",
             "script": "npm",
             "cwd":"/home/v2sual/project/runtime",
-            "args": "run serve",
+            "args": "run preview",
             "out_file": "/home/v2sual/log/runtime-spa-app.log",
 		    "error_file": "/home/v2sual/log/runtime-spa-err.log"
         },
@@ -52,7 +52,7 @@
             "name": "v2sual-cms-spa",
             "script": "npm",
             "cwd":"/home/v2sual/project/cms",
-            "args": "run serve",
+            "args": "run preview",
             "out_file": "/home/v2sual/log/cms-spa-app.log",
 		    "error_file": "/home/v2sual/log/cms-spa-err.log"
         },
@@ -60,7 +60,7 @@
             "name": "v2sual-runtime-mock",
             "script": "npm",
             "cwd":"/home/v2sual/project/runtime",
-            "args": "run mock",
+            "args": "run mockPreview",
             "out_file": "/home/v2sual/log/runtime-mock-app.log",
 		    "error_file": "/home/v2sual/log/runtime-mock-err.log"
         },
@@ -68,7 +68,7 @@
             "name": "v2sual-cms-mock",
             "script": "npm",
             "cwd":"/home/v2sual/project/cms",
-            "args": "run mock",
+            "args": "run mockPreview",
             "out_file": "/home/v2sual/log/cms-mock-app.log",
 		    "error_file": "/home/v2sual/log/cms-mock-err.log"
         }

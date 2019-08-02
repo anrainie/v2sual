@@ -174,6 +174,8 @@ export const widget = {
     if (this.cpttype == 'loopItem') {
       let content;
       let parentModel = this.$store.getters.model(this.pid);
+      if (parentModel == null)
+        return;
       content = JSON.parse(JSON.stringify(parentModel));
       content.id = this.wid;
       content.pid = this.pid;
@@ -270,8 +272,8 @@ export const widget = {
         ...(this.model.style ? this.model.style.label : {})
       };
     },
-    widgetClass(){
-      return [...((this.model && this.model.layoutClass)||[]),...((this.model && this.model.customClass)||[])]
+    widgetClass() {
+      return [...((this.model && this.model.layoutClass) || []), ...((this.model && this.model.customClass) || [])]
     },
     parent() {
       return this.$store.getters.model(this.parentId);

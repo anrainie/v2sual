@@ -100,14 +100,6 @@ let appendComponent = function(parent,index,element){
         eCom =  document.createElement(child.component);
         child.wid = wid;
         eCom.setAttribute('class','V2Widget')
-        //组件.布局
-        if(child && child.layoutClass && child.layoutClass !== ''){
-            let layoutClass = '';
-            child.layoutClass.map((item)=>{
-               layoutClass = layoutClass + item + ' ';
-            })
-            eCom.setAttribute(':class',"'"+layoutClass+"'");
-        }
     }
     eCom.setAttribute('id',wid);
     eCom.setAttribute(':wid','`'+wid+'`');
@@ -133,7 +125,15 @@ let appendComponent = function(parent,index,element){
         if(child.activeIndex) eCom.setAttribute('activeIndex',child.activeIndex);
         eCom.appendChild(template);
         appendChildren(child,template,isContainer);
-    }else{
+    }else if(eCom.localName === 'v2container'){
+        //判断父容器是否只包含一个元素,替换掉父容器
+        if(v2Layout.includes(parent.component) && parent.children.length == 1){
+            eCom = element.parentElement;
+            eCom.removeChild(element);
+            child.wid = parent.wid;
+        }
+        appendChildren(child,eCom,isContainer);
+    } else{
         appendChildren(child,eCom,isContainer);
     }
     if(element.localName === 'template'){
@@ -213,8 +213,8 @@ let appendChildren = function(parentJson,element,isContainer){
             
             el.setAttribute('key',i);
             //往下遍历component
-            appendComponent(parentJson,i,el);
             element.appendChild(el);
+            appendComponent(parentJson,i,el);
         }
     }
 }

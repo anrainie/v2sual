@@ -69,7 +69,7 @@
       {
         "name": "placeholder",
         "desp": "placeholder",
-        "defaultValue": "请选择",
+        "defaultValue": "请输入",
         "type": "string_input"
       },
 

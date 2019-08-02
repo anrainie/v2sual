@@ -42,16 +42,82 @@
         ]
       },
       {
+        "name": "type",
+        "desp": "类型",
+        "defaultValue": "normal",
+        "type": "string_select",
+        "valueArray": [
+          "normal",
+          "avatar",
+          "picture",
+          "thumbnail",
+          "picList",
+          "drag",
+          "hand"
+        ],
+        "despArray": [
+          "点击上传",
+          "头像上传",
+          "图片墙",
+          "缩略图",
+          "图片列表",
+          "拖拽上传",
+          "手动上传"
+        ]
+      },
+      {
+        "name": "fileList",
+        "type": "string_input",
+        "defaultValue":"",
+        "desp": "选择的文件"
+      },
+      {
         "name": "action",
         "type": "string_input",
         "defaultValue":"",
         "desp": "上传的地址"
       },
       {
+        "name": "limitType",
+        "type": "string_input",
+        "defaultValue":"image/jpeg,image/png",
+        "desp": "文件格式限制"
+      },
+      {
         "name": "limit",
         "type": "string_input",
         "defaultValue": 3,
         "desp": "最大允许上传个数"
+      },
+      {
+        "name": "limitSize",
+        "type": "string_input",
+        "defaultValue": 2,
+        "desp": "当个文件最大的M数"
+      },
+      {
+        "name": "data",
+        "type": "string_input",
+        "defaultValue": "",
+        "desp": "上传时附带的参数"
+      },
+      {
+        "name": "fileName",
+        "type": "string_input",
+        "defaultValue": "",
+        "desp": "上传的文件字段名"
+      },
+      {
+        "name": "autoUpload",
+        "desp": "是否自动上传",
+        "defaultValue": true,
+        "type": "boolean"
+      },
+      {
+        "name": "handleRemove",
+        "type": "string_input",
+        "defaultValue":"",
+        "desp": "删除文件回调方法"
       },
       {
         "name": "btnText",

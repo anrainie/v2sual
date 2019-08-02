@@ -1,6 +1,6 @@
 {
   "author": {
-    "name": "cai.yu@agree.com.cn"
+    "name": "zhanghaixian@agree.com.cn"
   },
   "bundleDependencies": false,
   "deprecated": false,
@@ -10,7 +10,7 @@
     "icon": "icontubiao",
     "type": "ctn",
     "href": "v2-ctn-xy",
-    "author": "cai.yu@agree.com.cn",
+    "author": "zhanghaixian@agree.com.cn",
     "version": 610000,
     "accept": "divCtn",
     "name": "自由布局容器",

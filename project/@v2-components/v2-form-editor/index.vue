@@ -39,6 +39,10 @@
         }
       },
       methods: {
+          $Enter(e) {
+            console.log(e.keyCode)
+            return false;
+          }
       
       },
       mounted() {
@@ -73,7 +77,7 @@
   font-size: 14px;
    height: 100%;
   .w-e-warp-ctn{
-    height:100% !important;
+    // height:100% !important;
   }
   .w-e-toolbar{
     display:block;
@@ -91,6 +95,12 @@
   a {
     text-decoration: underline;
     color:$--color-primary;
+  }
+  .w-e-text ul{
+        list-style: disc;
+  }
+  .w-e-text ol {
+      list-style: decimal;
   }
 }
 

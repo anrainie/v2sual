@@ -62,8 +62,106 @@
         "type": "boolean",
         "name": "sortable",
         "desp": "是否排序"
-      }]
+      },
+      {
+        "defaultValue": false,
+        "type": "boolean",
+        "name": "openFilter",
+        "desp": "添加过滤"
+      },{
+        "defaultValue": "text",
+        "type": "string_select",
+        "name": "type",
+        "desp": "列类型",
+        "valueArray": [
+          "text",
+          "tag",
+          "icon"
+        ],
+         "despArray": [
+          "文本",
+          "标签映射",
+          "图标映射"
+        ]
+      },{
+          "require":{
+            "type":"tag"
+          },
+          "type": "array",
+          "name": "tagMap",
+          "desp": "标签映射表",
+          "attrInEachElement":[{            
+              "name": "value",
+              "desp": "值",
+              "defaultValue": "",
+              "type": "string_input"
+           },{            
+            "name": "text",
+            "desp": "标签文本",
+            "defaultValue": "",
+            "type": "string_input"
+           },{
+              "name": "type",
+              "desp": "标签类型",
+              "defaultValue": "",
+              "valueArray": [
+                "text",
+                "primary",
+                "success",
+                "info",
+                "warning",
+                "danger"
+              ],
+              "type": "string_select",
+              "despArray": [
+                      "默认",
+                      "主要",
+                      "成功",
+                      "信息",
+                      "警告",
+                      "危险"
+                    ]
+        }]
+      },{
+        "require":{
+          "type":"icon"
+        },
+        "type": "array",
+        "name": "iconMap",
+        "desp": "图标映射表",
+        "attrInEachElement":[{            
+            "name": "value",
+            "desp": "值",
+            "defaultValue": "",
+            "type": "string_input"
+         },{            
+          "name": "text",
+          "desp": "图标类名",
+          "defaultValue": "",
+          "type": "string_input"
+         }]
+    },{
+      "require":{
+        "openFilter":"true"
+      },
+      "type": "array",
+      "name": "filterMap",
+      "desp": "过滤项",
+      "attrInEachElement":[{            
+          "name": "text",
+          "desp": "名称",
+          "defaultValue": "",
+          "type": "string_input"
+       },{            
+        "name": "value",
+        "desp": "值",
+        "defaultValue": "",
+        "type": "string_input"
+     }]
+  }
+  ]
     },
+
     {
           "defaultValue": "",
           "valueArray": [
@@ -177,7 +275,32 @@
       "name": "tableData",
       "defaultValue": "",
       "desp": "表格数据"
-    }
+    },
+    {
+      "defaultValue": false,
+      "type": "boolean",
+      "name": "expand",
+      "desp": "是否首列可展开"
+    },
+    {
+      "require":{
+        "expand":"true"
+      },
+      "type": "single_array",
+      "name": "expandMap",
+      "desp": "展开显示的字段表",
+      "attrInEachElement":[{            
+          "name": "name",
+          "desp": "列英文名",
+          "defaultValue": "",
+          "type": "string_input"
+       },{            
+        "name": "label",
+        "desp": "中文名",
+        "defaultValue": "",
+        "type": "string_input"
+     }]
+  }
   ],
   "css":{
     "theme": [{

@@ -114,8 +114,16 @@ let json2script = function (json, path) {
                     let ctx = this;
                         ${transfer.destroyed ? transfer.destroyed.code : ''}
                 },
-                deactivated(){/**页面切出**/},
-                activated(){/**页面切入**/},
+                deactivated(){
+                  /**页面切出**/
+                  let ctx = this;
+                  ${transfer.deactivated ? transfer.deactivated.code : ''}
+                },
+                activated(){
+                  /**页面切入**/
+                  let ctx = this;
+                  ${transfer.activated ? transfer.activated.code : ''}
+                },
 
             };
         </script>`

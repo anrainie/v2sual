@@ -51,7 +51,7 @@ export default {
               editor.focusManager.unbind(self, eventType);
               logics == logics.constructor == String ? [logics] : logics;
               //TODO dom可能是vue对象，也可能是一个dom元素，这里暂时只考虑vue对象
-              if(dom.$on){
+              if (dom.$on) {
                 dom.$on(eventType, function () {
                   let myargs = [...arguments];
                   let apply = () => {
@@ -71,7 +71,7 @@ export default {
                     apply();
                   }
                 });
-              }else{
+              } else {
                 $(dom).on(eventType, function () {
                   let myargs = [...arguments];
                   let apply = () => {
@@ -92,7 +92,7 @@ export default {
                   }
                 });
               }
-              
+
             }
           }
         }
