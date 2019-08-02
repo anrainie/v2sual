@@ -1,14 +1,14 @@
 <template>
   <div>
     <div
-      :class="widgetClass" 
+      :class="widgetClass"
       class="chart-content"
       ref="_op_componentEchart_chart"
-       :style="{...this.model.style.chartWarpStyle,...(this.model.commonStyle||{})}"
+      :style="{...this.model.style.chartWarpStyle,...(this.model.commonStyle||{})}"
     ></div>
     <div class="chart-tips" v-if="error">
       <p>本组件使用echart配置</p>
-      <hr>
+      <hr />
       <p>操作步骤:</p>
       <li>
         1、访问
@@ -45,14 +45,13 @@ export default {
   },
   methods: {
     configChanged(val) {
-     
       this.chart = echarts.init(this.$refs._op_componentEchart_chart);
       try {
         if (val && val.constructor == String) {
           let __temp;
           this.chart.setOption(eval("__temp=" + val));
         } else {
-          this.chart.setOption(val||{});
+          this.chart.setOption(val || {});
         }
         this.chart.resize();
         this.error = false;
@@ -82,13 +81,13 @@ export default {
   background-color: #fff;
   display: none;
 }
-.chart-content:hover{
+.chart-content:hover {
   color: blue;
 }
-.chart-content:hover +.chart-tips {
+.chart-content:hover + .chart-tips {
   display: block !important;
 }
-.chart-tips:hover{
+.chart-tips:hover {
   display: block !important;
 }
 </style>
