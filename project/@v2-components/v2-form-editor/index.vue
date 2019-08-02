@@ -39,6 +39,10 @@
         }
       },
       methods: {
+          $Enter(e) {
+            console.log(e.keyCode)
+            return false;
+          }
       
       },
       mounted() {
@@ -91,6 +95,12 @@
   a {
     text-decoration: underline;
     color:$--color-primary;
+  }
+  .w-e-text ul{
+        list-style: disc;
+  }
+  .w-e-text ol {
+      list-style: decimal;
   }
 }
 

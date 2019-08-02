@@ -62,10 +62,10 @@ ctx.$root.$on('currentPageIndex',({
         $axios
             .post("v1/ds/cmbcms/cmbcms/newSubAccount", ctx.subFormData)
             .then(res => {
-                if (res.data.retType === "SUCCESS") {
+                if (res.retType === "SUCCESS") {
                     this.$message({
                         showClose: true,
-                        message: res.data.retMsg,
+                        message: res.retMsg,
                         type: 'success'
                     });
                     ctx.currentPageIndex = index;
@@ -73,7 +73,7 @@ ctx.$root.$on('currentPageIndex',({
                 } else {
                 this.$message({
                     showClose: true,
-                    message: res.data.retMsg,
+                    message: res.retMsg,
                     type: "error"
                 });
                 }

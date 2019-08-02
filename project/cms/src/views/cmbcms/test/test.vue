@@ -48,16 +48,16 @@ ebank:{
                     /*overview*/
                         (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/newUser',ctx.user
     ).then(res=>{
-        if(res.data.retType === 'SUCCESS'){
+        if(res.retType === 'SUCCESS'){
             this.$message({
                 showClose: true,
-                message: res.data.retMsg,
+                message: res.retMsg,
                 type: 'success'
             });
         }else{
             this.$message({
                 showClose: true,
-                message: res.data.retMsg,
+                message: res.retMsg,
                 type: 'error'
             });
         }
@@ -71,16 +71,16 @@ ebank:{
     });
 // $axios.post('v1/ds/cmbcms/cmbcms/deleteUser',{identity_card:'44088319921029312121'}
 //     ).then(res=>{
-//         if(res.data.retType === 'SUCCESS'){
+//         if(res.retType === 'SUCCESS'){
 //             this.$message({
 //                 showClose: true,
-//                 message: res.data.retMsg,
+//                 message: res.retMsg,
 //                 type: 'success'
 //             });
 //         }else{
 //             this.$message({
 //                 showClose: true,
-//                 message: res.data.retMsg,
+//                 message: res.retMsg,
 //                 type: 'error'
 //             });
 //         }
@@ -104,16 +104,16 @@ ebank:{
                     /*overview*/
                         (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/newBankCard',ctx.card
     ).then(res=>{
-        if(res.data.retType === 'SUCCESS'){
+        if(res.retType === 'SUCCESS'){
             this.$message({
                 showClose: true,
-                message: res.data.retMsg,
+                message: res.retMsg,
                 type: 'success'
             });
         }else{
             this.$message({
                 showClose: true,
-                message: res.data.retMsg,
+                message: res.retMsg,
                 type: 'error'
             });
         }
@@ -136,16 +136,16 @@ ebank:{
                     /*overview*/
                         (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/newEban',ctx.ebank
     ).then(res=>{
-        if(res.data.retType === 'SUCCESS'){
+        if(res.retType === 'SUCCESS'){
             this.$message({
                 showClose: true,
-                message: res.data.retMsg,
+                message: res.retMsg,
                 type: 'success'
             });
         }else{
             this.$message({
                 showClose: true,
-                message: res.data.retMsg,
+                message: res.retMsg,
                 type: 'error'
             });
         }
@@ -175,16 +175,16 @@ ebank:{
     phone: "18918466283"
   })
   .then(res => {
-    if (res.data.retType === "SUCCESS") {
+    if (res.retType === "SUCCESS") {
       this.$message({
         showClose: true,
-        message: res.data.retMsg,
+        message: res.retMsg,
         type: "success"
       });
     } else {
       this.$message({
         showClose: true,
-        message: res.data.retMsg,
+        message: res.retMsg,
         type: "error"
       });
     }

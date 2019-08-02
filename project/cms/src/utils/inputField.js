@@ -9,7 +9,7 @@ const preview = {
       }
     },
     __getInputFields() {
-      return Array.prototype.map.call($(':input'), function (elem,index) {
+      return Array.prototype.map.call($('[contenteditable=true],:input'), function (elem,index) {
         return {
           elem,
           index: $(elem).attr('tabindex') || index|| Infinity
@@ -24,7 +24,7 @@ const preview = {
     },
     $Enter(e) {
       return this.$focusNext(e);
-    },
+    },  
     $ArrowLeft(e) {
       return this.$focusPrev(e);
     },

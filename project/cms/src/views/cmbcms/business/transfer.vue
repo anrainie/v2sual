@@ -31,17 +31,17 @@
                     /*overview*/
                         (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/transfer',ctx.tradeSerial
     ).then(res=>{
-        if(res.data.retType === 'SUCCESS'){
+        if(res.retType === 'SUCCESS'){
             this.$message({
                 showClose: true,
-                message: res.data.retMsg,
+                message: res.retMsg,
                 type: 'success',
                 duration: 0
             });
         }else{
             this.$message({
                 showClose: true,
-                message: res.data.retMsg,
+                message: res.retMsg,
                 type: 'error',
                 duration: 0
             });
@@ -105,8 +105,16 @@ ctx.$store.commit("registerBind",{ vueObj:this, data:this.tradeSerial.notify_pho
                     let ctx = this;
                         
                 },
-                deactivated(){/**页面切出**/},
-                activated(){/**页面切入**/},
+                deactivated(){
+                  /**页面切出**/
+                  let ctx = this;
+                  
+                },
+                activated(){
+                  /**页面切入**/
+                  let ctx = this;
+                  
+                },
 
             };
         </script>

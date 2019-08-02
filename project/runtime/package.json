@@ -13,6 +13,7 @@
         "lint": "vue-cli-service lint",
         "theme": "et",
         "mock": "node ./server.js --port=7008",
+        "mockPreview": "node ./server.js --port=7008 --prefix=/runtime",
         "buildP": "node ./build-page.js"
     },
     "dependencies": {

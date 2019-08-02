@@ -26,16 +26,19 @@ news:{
                     /*overview*/
                         (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/' + ctx.newsOptFlag,ctx.news
     ).then(res=>{
-        if(res.data.retType === 'SUCCESS'){
+        if(res.retType === 'SUCCESS'){
+            ctx.$root.$emit('refreshNewsList');
+            ctx.close();
             this.$message({
                 showClose: true,
-                message: res.data.retMsg,
+                message: res.retMsg,
                 type: 'success'
             });
         }else{
             this.$message({
                 showClose: true,
-                message: res.data.retMsg,
+                message: res.retMsg,
+                duration: 0,
                 type: 'error'
             });
         }     
@@ -43,6 +46,7 @@ news:{
         this.$message({
                 showClose: true,
                 message: error,
+                duration: 0,
                 type: 'error'
         });
     });;
@@ -90,8 +94,16 @@ ctx.$store.commit("registerBind",{ vueObj:this, data:this.news.content, dataStr:
                     let ctx = this;
                         
                 },
-                deactivated(){/**页面切出**/},
-                activated(){/**页面切入**/},
+                deactivated(){
+                  /**页面切出**/
+                  let ctx = this;
+                  
+                },
+                activated(){
+                  /**页面切入**/
+                  let ctx = this;
+                  
+                },
 
             };
         </script>

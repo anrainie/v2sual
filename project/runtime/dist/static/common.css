@@ -366,7 +366,7 @@ position: absolute; */
 
 .V2ContainerBlock {
   /* position: relative; */
-  transition: filter .2s linear, width .2s linear, height.2s linear, left .2s linear, top .2s linear;
+  transition: filter .2s linear, width .2s linear, height.2s linear;
 }
 
 /* 考虑用before/after */
@@ -374,6 +374,7 @@ position: absolute; */
   box-shadow: inset 0px 0px 0px 1px darkcyan;
   /* box-sizing: border-box; */
   /* filter: invert(10%) blur(.5px); */
+  position: relative;
 }
 
 .v2selected:after {
