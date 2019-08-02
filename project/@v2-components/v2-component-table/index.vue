@@ -23,10 +23,16 @@
       type="selection"
       width="55">
     </el-table-column>
-    
+     <el-table-column type="expand" v-if="model.expand">
+          <el-form label-position="left" inline class="v2-table-expand"   >
+          <el-form-item v-for="(ele,idx) in model.expandMap" v-if="ele.label" :label="ele.label" :key="idx">
+            <span>{{scope.row[ele.name]}}</span>
+          </el-form-item>   
+          </el-form>
+     </el-table-column>
     <el-table-column
       v-for="item in model.columns"
-       v-if="item.prop && item.label"
+      v-if="item.prop && item.label"
       :prop="item.prop"
       :label="item.label||(item.__edm_collection && (item.__edm_collection.PUBCODECNAME ||item.__edm_collection.description))"
       :key="item.prop"
@@ -35,21 +41,15 @@
       :sortable ="item.sortable"
       :filters="item.openFilter? item.filterMap:null"
       :filter-method="item.openFilter?filterhandler:null"
-      :type="item.type === 'expand' ? 'expand':''"
       filter-placement="bottom-end">
     
-     
         <template slot-scope="scope">
           <el-tag
              v-if="item.type ==='tag'"
             :type="getTagType(scope.row[item.prop],item.tagMap)"
             disable-transitions>{{getTagText(scope.row[item.prop],item.tagMap)}}</el-tag>
 
-          <el-form label-position="left" inline class="v2-table-expand"   v-else-if="item.type ==='expand'" >
-          <el-form-item v-for="(ele,idx) in item.expandMap" v-if="ele.label" :label="ele.label" :key="idx">
-            <span>{{scope.row[ele.name]}}</span>
-          </el-form-item>   
-          </el-form>
+         <i v-else-if="item.type ==='icon'" :class="getTagText(scope.row[item.prop],item.iconMap)"></i>
 
           <template v-else>{{scope.row[item.prop]}}</template>
 

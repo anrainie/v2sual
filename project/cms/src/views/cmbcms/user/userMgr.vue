@@ -5,7 +5,7 @@
             export default{
                 data(){
                     return{
-                        "CONTENT":{structure:{"id":"root","component":"v2Container","direction":"row","layout":[100],"style":{"width":"100%","height":"100%"},"data":{},"children":[{"style":{"divCtn":{"position":"","top":"","right":"","bottom":"","left":"","overflow":"","margin":"","padding":"","height":"","width":"","max-height":"","max-width":"","min-height":"","min-width":""}},"direction":"row","rules":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-layout","href":"v2-layout","children":[{"style":{"textStyle":{"text-align":"","margin":"","padding":"","height":"","width":"","line-height":"","font-family":"","font-size":"","font-weight":"","font-style":"","color":"","text-decoration":""}},"text":"客户管理","editable":false,"customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"id":1563783423809,"pid":1563783431348,"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":"","color":"","opacity":1,"border-radius":"0px"},"ctnClass":""},{"theme":{"btnType":"","size":""},"style":{"btnStyle":{"background-color":"","height":"","width":""}},"btnName":"添加客户","shape":"def","loading":false,"disabled":false,"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-btn","href":"v2-component-btn","children":[],"events":{"_root":{},"_op_componentBtn_btn":{"click":["addUser"]}},"id":1564542611330,"pid":1563783431348,"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":""}},{"theme":{"tableType":"border","size":"mini"},"columns":[{"active":true,"prop":"columns0","label":"","fixed":"","width":"","sortable":false},{"active":true,"prop":"identity_card","label":"身份证号","fixed":"","width":"","sortable":false},{"active":true,"prop":"name","label":"姓名","fixed":"","width":"","sortable":false},{"active":true,"prop":"gender","label":"性别","fixed":"","width":"","sortable":false},{"active":true,"prop":"birthday","label":"生日日期","fixed":"","width":"","sortable":false},{"active":true,"prop":"phone","label":"电话号码","fixed":"","width":"","sortable":false},{"active":true,"prop":"email","label":"邮箱","fixed":"","width":"","sortable":false},{"active":true,"prop":"address","label":"住址","fixed":"","width":"","sortable":false}],"selection":"","openIndex":false,"toolBar":false,"toolTitle":"操作列","toolLocation":"right","toolWidth":"300","toolBtns":[{"active":true,"btnName":" 编辑","type":"primary","handler":"editUser"},{"active":true,"btnName":"删除","type":"danger","handler":"deleteUser"}],"tHeight":"","tMaxHeight":"","tableData":"${userListData}","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-table","href":"v2-component-table","children":[],"events":{},"id":1563785672702,"pid":1563783431348,"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":"","color":""},"ctnClass":""}],"events":{},"layout":["10","10","80"],"realSize":["%","%","%"],"id":1563783431348,"pid":"root","commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":"","color":"","opacity":1,"border-radius":"0px"},"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}],"ctnClass":""}],"events":{}}},
+                        "CONTENT":{structure:{"id":"root","component":"v2Container","direction":"row","layout":[100],"style":{"width":"100%","height":"100%"},"data":{},"children":[{"style":{"divCtn":{"position":"","top":"","right":"","bottom":"","left":"","overflow":"","margin":"","padding":"","height":"","width":"","max-height":"","max-width":"","min-height":"","min-width":""}},"direction":"row","rules":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-layout","href":"v2-layout","children":[{"style":{"textStyle":{"text-align":"","margin":"","padding":"","height":"","width":"","line-height":"","font-family":"","font-size":"","font-weight":"","font-style":"","color":"","text-decoration":""}},"text":"客户管理","editable":false,"customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"id":1563783423809,"pid":1563783431348,"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":"","color":"","opacity":1,"border-radius":"0px"},"ctnClass":""},{"theme":{"btnType":"","size":""},"style":{"btnStyle":{"background-color":"","height":"","width":""}},"btnName":"添加客户","shape":"def","loading":false,"disabled":false,"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-btn","href":"v2-component-btn","children":[],"events":{"_root":{},"_op_componentBtn_btn":{"click":["addUser"]}},"id":1564542611330,"pid":1563783431348,"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":""}},{"theme":{"tableType":"border","size":"mini"},"columns":[{"active":true,"prop":"columns0","label":"","fixed":"","width":"","sortable":false},{"active":true,"prop":"identity_card","label":"身份证号","fixed":"","width":"","sortable":false},{"active":true,"prop":"name","label":"姓名","fixed":"","width":"","sortable":false},{"active":true,"prop":"gender","label":"性别","fixed":"","width":"","sortable":false,"type":"tag","tagMap":[{"active":true,"value":"0","text":"男","type":"primary"},{"active":true,"value":"1","text":"女","type":"danger"}],"openFilter":true,"filterMap":[{"active":true,"value":"0","text":"男"},{"active":true,"text":"女","value":"1"}]},{"active":true,"prop":"birthday","label":"生日日期","fixed":"","width":"","sortable":false},{"active":true,"prop":"phone","label":"电话号码","fixed":"","width":"","sortable":false},{"active":true,"prop":"email","label":"邮箱","fixed":"","width":"","sortable":false},{"active":true,"prop":"address","label":"住址","fixed":"","width":"","sortable":false}],"selection":"","openIndex":false,"toolBar":false,"toolTitle":"操作列","toolLocation":"right","toolWidth":"200","toolBtns":[{"active":true,"btnName":" 编辑","type":"primary","handler":"editUser"},{"active":true,"btnName":"删除","type":"danger","handler":"deleteUser"}],"tHeight":"","tMaxHeight":"","tableData":"${userListData}","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-table","href":"v2-component-table","children":[],"events":{},"id":1563785672702,"pid":1563783431348,"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":"","color":""},"ctnClass":""}],"events":{},"layout":["10","10","80"],"realSize":["%","%","%"],"id":1563783431348,"pid":"root","commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":"","color":"","opacity":1,"border-radius":"0px"},"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}],"ctnClass":""}],"events":{}}},
                         userListData:[
     
 ]
@@ -50,13 +50,13 @@
     ).then(res=>{
         debugger;
 
-        if(res.data.retType === 'SUCCESS'){
-            ctx.userListData = res.data.jsonData;
+        if(res.retType === 'SUCCESS'){
+            ctx.userListData = res.jsonData;
             ctx.$store.state.root.$store.state.loadingPage=false;
         }else{
             this.$message({
                 showClose: true,
-                message: res.data.retMsg,
+                message: res.retMsg,
                 duration: 0,
                 type: 'error'
             });
@@ -81,19 +81,19 @@
                     /*overview*/
                         (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/deleteUser',{identity_card: row.identity_card}
     ).then(res=>{
-        if(res.data.retType === 'SUCCESS'){
+        if(res.retType === 'SUCCESS'){
             ctx.$root.$store.state.loadingPage=true;
 
             ctx.queryUserList();
             ctx.$message({
                 showClose: true,
-                message: res.data.retMsg,
+                message: res.retMsg,
                 type: 'success'
             });
         }else{
             ctx.$message({
                 showClose: true,
-                message: res.data.retMsg,
+                message: res.retMsg,
                 duration: 0,
                 type: 'error'
             });
@@ -177,10 +177,10 @@
 //         $axios
 //             .post("v1/ds/cmbcms/cmbcms/newSubAccount", ctx.subFormData)
 //             .then(res => {
-//                 if (res.data.retType === "SUCCESS") {
+//                 if (res.retType === "SUCCESS") {
 //                     this.$message({
 //                         showClose: true,
-//                         message: res.data.retMsg,
+//                         message: res.retMsg,
 //                         type: 'success'
 //                     });
 //                     ctx.currentPageIndex = index;
@@ -188,7 +188,7 @@
 //                 } else {
 //                 this.$message({
 //                     showClose: true,
-//                     message: res.data.retMsg,
+//                     message: res.retMsg,
 //                     type: "error"
 //                 });
 //                 }

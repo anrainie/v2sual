@@ -13,6 +13,28 @@ const app = new Koa();
 
 const fs = require("fs");
 const path = require("path");
+
+//获取配置
+const getConfig = () => {
+
+	let params = {
+		port: 7007
+	};
+
+	process.argv.filter(e => e.startsWith('--')).forEach(e => {
+		const f = e.replace(/^--/, '');
+		const parts = f.split('=');
+		params[params[0]] = parts.slice(1).join('=');
+		if (parts.length && parts[0]) {
+			params[parts[0]] = parts.slice(1).join('=')
+		}
+	});
+
+	return params;
+};
+
+const config=getConfig();
+
 // const Server = require('socket.io');
 // const io = new Server();
 
@@ -276,7 +298,8 @@ router.post("/-/upload", async (ctx, next) => {
 //若删掉代理，预览时候不能获取数据
 require("../../server/module/dataSource")(
   app,
-  require("../../server/config/config.json").dataSource
+  require("../../server/config/config.json").dataSource, 
+  config.prefix
 );
 
 //parser

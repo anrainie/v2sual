@@ -79,19 +79,19 @@
                     /*overview*/
                         (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/deleteIntroduce',{id: row.id}
     ).then(res=>{
-        if(res.data.retType === 'SUCCESS'){
+        if(res.retType === 'SUCCESS'){
             ctx.$root.$store.state.loadingPage=true;
 
             ctx.queryIntroduceList();
             ctx.$message({
                 showClose: true,
-                message: res.data.retMsg,
+                message: res.retMsg,
                 type: 'success'
             });
         }else{
             ctx.$message({
                 showClose: true,
-                message: res.data.retMsg,
+                message: res.retMsg,
                 type: 'error'
             });
         }
@@ -116,13 +116,13 @@
     ).then(res=>{
         debugger;
 
-        if(res.data.retType === 'SUCCESS'){
-            ctx.introduceListData = res.data.jsonData;
+        if(res.retType === 'SUCCESS'){
+            ctx.introduceListData = res.jsonData;
             ctx.$store.state.root.$store.state.loadingPage=false;
         }else{
             this.$message({
                 showClose: true,
-                message: res.data.retMsg,
+                message: res.retMsg,
                 type: 'error'
             });
         }

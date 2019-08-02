@@ -26,16 +26,18 @@ news:{
                     /*overview*/
                         (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/' + ctx.newsOptFlag,ctx.news
     ).then(res=>{
-        if(res.data.retType === 'SUCCESS'){
+        if(res.retType === 'SUCCESS'){
+            ctx.$root.$emit('refreshNewsList');
+            ctx.close();
             this.$message({
                 showClose: true,
-                message: res.data.retMsg,
+                message: res.retMsg,
                 type: 'success'
             });
         }else{
             this.$message({
                 showClose: true,
-                message: res.data.retMsg,
+                message: res.retMsg,
                 duration: 0,
                 type: 'error'
             });
