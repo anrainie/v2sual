@@ -75,13 +75,7 @@
             "realSize":[null,null],
             "children":[null,null]
           },
-          {
-            "layout":[100],
-            "direction":"row",
-             "component":"v2-layout",
-             "realSize":[null],
-            "children":[null]
-          }
+          null
         ]
 
       },
@@ -93,13 +87,8 @@
         "direction":"row",
         "realSize":[null,null],
         "children":[
+          null,
           {
-            "layout":[100],
-            "direction":"row",
-            "component":"v2-layout",
-            "realSize":[null],
-            "children":[null]
-          },{
             "layout":[30,70],
             "direction":"col",
             "component":"v2-layout",
@@ -117,25 +106,14 @@
         "direction":"row",
         "realSize":[null,null],
         "children":[
-          {
-              
-            "layout":[100],
-            "direction":"row",
-            "component":"v2-layout",
-            "realSize":[null],
-            "children":[null]
-          },
+          null,
           {
             "layout":[20,80],
             "direction":"col",
             "component":"v2-layout",
-            "children":[{
-                "layout":[100],
-                "direction":"row",
-                "component":"v2-layout",
-                "realSize":[null],
-                "children":[null]
-              },{
+            "children":[
+              null,
+              {
                 "layout":[80,20],
                 "direction":"row",
                 "realSize":[null,null],
@@ -154,13 +132,8 @@
         "layout":[20,80],
         "direction":"col",
         "children":[
+          null,
           {
-            "layout":[100],
-            "direction":"row",
-            "component":"v2-layout",
-            "realSize":[null],
-            "children":[null]
-          },{
             "layout":[20,80],
             "direction":"row",
             "realSize":[null,null],
@@ -177,13 +150,8 @@
         "layout":[20,80],
         "direction":"col",
         "children":[
+          null,
           {
-            "layout":[100],
-            "direction":"row",
-            "realSize":[null],
-            "component":"v2-layout",
-            "children":[null]
-          },{
             "layout":[80,20],
             "direction":"row",
             "realSize":[null,null],
