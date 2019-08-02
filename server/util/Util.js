@@ -1,26 +1,132 @@
-
-
 const path = require("path");
 const fs = require("fs");
 const {spawn} = require("child_process");
 const rimraf = require("rimraf");
-
+const urllib=require("urllib");
+const compressing=require("compressing");
+const mkdirp=require("mkdirp");
+const request=require("request");
 
 module.exports={
 
-    //  mkdir(path){
+    $get(url){
+        return new Promise((resolve,reject)=>{
+            request.get({
+                url: url
+            }, (error, xhr, content) => {
+                if (!error && xhr.statusCode === 200) {
+                    resolve(content)
+                }else{
+                    reject(error);
+                }
+            })
+        })
         
-    //     return new Promise((resolve,reject)=>{
+    },
+   
+    urlLib(urlPath){
+        return new Promise((resolve,reject)=>{
+            urllib.request(urlPath, {
+                streaming: true,
+                followRedirect: true
+                })
+                .then((result) =>{
+
+                    if(result.status===200){
+                        resolve(result.res);
+                    }else{
+                        reject(result);
+                    }  
+                    
+                })
+
+                .catch((error)=>{
+                    reject(error);
+                })
+        })
+ 
+    },
+    
+
+    uncompress(result,srcPath,tag){
+        return new Promise((resolve,reject)=>{
+            compressing[tag||'tgz'].uncompress(result,srcPath).then(()=>{
+                resolve();
+            })
+            .catch((error)=>{
+                reject(error);
+            });
+        })
+       
+    },
+
+    async copyDir (src,dest){
+        try {
+            let seed=await this.readdir(src);
+            let cursor=-1,item;
+
+            if(!fs.existsSync(dest)){
+                await this.mkdir(dest);
+            }
+
+            while(item=seed[++cursor]){
+    
+                    let srcPath=path.join(src,item);
+                    let targetPath=path.join(dest,item);
+                    let itemStat=await this.stat(srcPath);
+                    if(itemStat.isFile()){
+                        let readable=fs.createReadStream(srcPath);
+                        let writeable=fs.createWriteStream(targetPath);
+                        readable.pipe(writeable);
+
+                    }else if(itemStat.isDirectory()){
+                       if(!fs.existsSync(targetPath)){
+                           await this.mkdir(targetPath);
+                       }
+
+                       let itemDir=await this.readdir(srcPath);
+                       itemDir.forEach((_item)=>{
+                            seed.push(`${item}/${_item}`);
+                       })
+
+                    }
+
+               
+            }
+        } catch (error) {
+            console.log(error);
+        }   
+
+       
+
+    },
+
+    mkdir(path){
+        
+        return new Promise((resolve,reject)=>{
                 
-    //             mkdirp(path,function(err){
-    //                     if (err) {
-    //                       reject(err)
-    //                     }else{
-    //                       resolve(true);
-    //                     }
-    //             });
-    //     })
-    // }
+                mkdirp(path,function(err){
+                        if (err) {
+                          reject(err)
+                        }else{
+                          resolve(true);
+                        }
+                });
+        })
+    },
+    stat(file) {
+        return new Promise((resolve, reject) => {
+            fs.stat(file, (err, data) => {
+                if(err) {
+                    reject(err);
+                } else {
+                    resolve(data);
+                }
+            });
+        });
+    },
+
+
     rename(src,dest){
         
         return new Promise((resolve,reject)=>{
@@ -73,7 +179,7 @@ module.exports={
 
         })
     },
-     writeFile (file, data) {
+    writeFile (file, data) {
       
 
         return new Promise(async (resolve, reject) => {
@@ -100,9 +206,6 @@ module.exports={
             
         });
     },
-
-    
-    
     readdir(file){
         return new Promise((resolve, reject) => {
             fs.readdir(file, (err, data) => {
@@ -114,36 +217,7 @@ module.exports={
             });
         });
 
-     
-        
     },
-
-    // copyFile(src,dest){
-    //     return new Promise((resolve,reject)=>{
-    //         copy(src, dest,function(err){
-    //             if(err){
-    //                 reject(err)
-    //             }
-    //             resolve();
-    //         })
-    //     })
-    // },
-
-   
-
-    stat(file) {
-        return new Promise((resolve, reject) => {
-            fs.stat(file, (err, data) => {
-                if(err) {
-                    reject(err);
-                } else {
-                    resolve(data);
-                }
-            });
-        });
-    },
-
-
     readFile(file) {
   
         return new Promise((resolve, reject) => {
@@ -157,7 +231,7 @@ module.exports={
         });
     },
 
-     getUID () {
+    getUID () {
         var sId = "",
             i = 24;
         for (; i--;) {

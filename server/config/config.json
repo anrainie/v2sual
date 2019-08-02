@@ -104,6 +104,16 @@
                     "/v1/dictTest/tableOp": "tableOpera"
                 }
             }
+        },
+        "project":{
+            "consumption": {
+                "/project/themeLayout": "getThemeLayout",
+                "/project/new":"newProject",
+                "/project/install":"install"
+            },
+            "http":{
+               
+            }
         }
     },
     "static": [

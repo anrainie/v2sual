@@ -55,6 +55,16 @@ app.use(staticRouter(config.static));
 const tableRouter = require('./module/test/table').router(config.module.test.table.http);
 app.use(tableRouter.routes());
 
+// 新建项目
+//require('./module/newProject/index').consume(platform,config.module.project.consumption)
+
+const newProject = require('./module/newProject');
+
+newProject.consume(platform,config.module.project.consumption);
+
+const projectRouter = newProject.router(config.module.project.http);
+app.use(projectRouter.routes());
+
 //异常处理
 app.on("error", (err, ctx) => console.log(new Date(), ":", err));
 
