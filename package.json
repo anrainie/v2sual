@@ -12,7 +12,7 @@
           "anra": "node ./launch.js --config=./config/config.project.anra.json",
           "toxhq": "node ./launch.js --config=./config/config.project.toxhq.json",
           "xhq": "node ./launch.js --config=./config/config.project.xhq.json",
-          "empty": "node  --inspect-brk=9000 ./server/server.js  sh=http://localhost sp=7003 id=empty name=新建项目 ch=http://localhost cp=3002 ocp=3002 base=./project/empty  preview=http://localhost:3002",
+          "empty": "node ./server/server.js  sh=http://localhost sp=7003 id=empty name=新建项目 ch=http://localhost cp=3002 ocp=3002 base=./project/empty  preview=http://localhost:3002",
   
 
       },
