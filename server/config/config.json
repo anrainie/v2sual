@@ -17,9 +17,10 @@
     },
     "runtime": {
         "base": "./project/runtime",
-        "component": "../@v2-components",
+        "component": "./node_modules/@v2-components",
         "componentFile": "./src/@aweb-components/aweb.components.js",
-        "pipe": "../pipe",
+        "platformPipe":"./node_modules/@v2-pipe",
+        "pipe": "./src/pipe",
         "page": "./src/views",
         "customWidget": "./src/views/_customWidget",
         "datadict": "./src/datadict",
@@ -123,8 +124,8 @@
             "dir": "./dist"
         },
         {
-            "router": "/v1/runtime/",
-            "dir": "./dist"
+            "router": "/v1/runtime/static",
+            "dir": "../static"
         }
     ],
     "dataSource": {

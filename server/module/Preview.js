@@ -13,6 +13,7 @@ const Router = require('koa-router');
 // const ParseDom = Parser.parseDOM;
 
 const config = require('../config/config.base');
+const configJson=require("../config/config.json");
 
 
 const execCmd = function (cmd, cwd) {
@@ -36,12 +37,35 @@ const execCmd = function (cmd, cwd) {
   });
 };
 
+const getPipe=async function(pipePath){
+  let map={};
+  if(fs.existsSync(pipePath)){
+    const pipes = await readDir(pipePath);
+    pipes
+    //读取每一个package.json
+    .filter(f => f.lastIndexOf('package.json') !== -1)
+    //读取组件和编辑器
+    .forEach(f => {
+      try {
+        const contentStr = fs.readFileSync(f).toString();
+        const content = JSON.parse(contentStr);
+        const scope=content.name;
+        vueMap[name] =scope ;
+        return {
+          name: name[name.length - 1],
+          path: path.relative(path.dirname(context.componentFile), f)
+        }
+
+      } catch (e) { }
+    });
+  }
+}
 class Preview {
 
-  constructor(projectPath = config.runtime.base,componentPath,componentFile) {
+  constructor(projectPath = config.runtime.base, componentPath, componentFile) {
     this.projectPath = projectPath;
-    this.componentPath=componentPath||config.runtime.component;
-    this.componentFile=componentFile||config.runtime.componentFil;
+    this.componentPath = componentPath || config.runtime.component;
+    this.componentFile = componentFile || config.runtime.componentFile;
   }
   /**
    * @private
@@ -57,74 +81,125 @@ class Preview {
    */
   init(platform) {
     const projectPath = this.projectPath;
-    const context=this;
+    const context = this;
     return async function (req) {
       // try {
-        //先备份一次vue.config.js
-        // const vueConfigPath = path.join(projectPath, 'vue.config.js');
-        // const vueConfigBackup = fs.readFileSync(vueConfigPath, {
-        //   encoding: 'utf8'
-        // });
+      //先备份一次vue.config.js
+      // const vueConfigPath = path.join(projectPath, 'vue.config.js');
+      // const vueConfigBackup = fs.readFileSync(vueConfigPath, {
+      //   encoding: 'utf8'
+      // });
 
-        try {
-          // const componentPath = config.runtime.component;
+      try {
+        // const componentPath = config.runtime.component;
 
-          const files = await readDir(context.componentPath);
+        const absProjectPath = path.resolve(projectPath);
 
-          //组件列表
-          let vueMap = {};
-          files
-            //读取每一个package.json
-            .filter(f => f.lastIndexOf('package.json') !== -1)
-            //读取组件和编辑器
-            .forEach(f => {
-              try {
-                const contentStr = fs.readFileSync(f).toString();
-                const content = JSON.parse(contentStr);
+        const files = await readDir(context.componentPath);
+               
+        //项目组件列表
+        let vueMap = {};
+        files
+          //读取每一个package.json
+          .filter(f => f.lastIndexOf('package.json') !== -1)
+          //读取组件和编辑器
+          .forEach(f => {
+            try {
+              const contentStr = fs.readFileSync(f).toString();
+              const content = JSON.parse(contentStr);
 
-                const paths = f.split(path.sep);
-                const name = camelcase(paths[paths.length - 2]);
-                const filepath = path.relative(path.dirname(context.componentFile), path.dirname(f));
+              const paths = f.split(path.sep);
+              const scope=content.name;
+              const name = camelcase(paths[paths.length - 2]);
+              // const filepath = path.relative(path.dirname(context.componentFile), path.dirname(f));
 
+              vueMap[name] =scope ;
 
-                vueMap[name] = path.join(filepath, content.main);
+              //参数编辑器
+              if (content.paramEditor) {
+                vueMap[content.paramEditor.name] = path.join(scope, content.paramEditor.path);
+              }
 
-                //参数编辑器
-                if (content.paramEditor) {
-                  vueMap[content.paramEditor.name] = path.join(filepath, content.paramEditor.path);
-                }
-
-                //自定义组件编辑器
-                if (content.editor) {
-                  vueMap[content.editor.name] = path.join(filepath, content.editor.path);
-                }
-              } catch (e) { }
-            });
-          const vueFiles = Object.keys(vueMap).map(n => {
-            return {
-              name: n,
-              path: `./${vueMap[n]}`
-            }
+              //自定义组件编辑器
+              if (content.editor) {
+                vueMap[content.editor.name] = path.join(scope, content.editor.path);
+              }
+            } catch (e) { }
           });
 
-          //pipe
-          const pipes = await readDir(config.runtime.pipe);
-          const pipeList = pipes
+        const vueFiles = Object.keys(vueMap).map(n => {
+          return {
+            name: n,
+            path: `${vueMap[n]}`
+          }
+        });
+
+     
+        
+
+        //pipe
+      
+        let pipeMap={};
+        let pipeList=[];
+        const pipePath=path.join(context.projectPath,configJson.runtime.pipe);
+        if(fs.existsSync(pipePath)){
+          const pipes = await readDir(pipePath);
+           pipeList = pipes
             .filter(f => f.lastIndexOf('package.json') !== -1)
-            .map(f => f.replace(path.sep + 'package.json', ''))
-            .sort()
+            // .map(f => f.replace(path.sep + 'package.json', ''))
+            // .sort()
+            
             .map(f => {
-              const paths = f.split(path.sep);
-              const name = (paths[paths.length - 1]).split('.');
+                        
+              let repath=f.replace(path.sep + 'package.json', '');
+              let contentStr = fs.readFileSync(f).toString();
+              let content = JSON.parse(contentStr);
+              let  name=content.docs.name;
+              let nameArr= name.split('.');
+              name=nameArr[nameArr.length-1];
+              // const paths = f.split(path.sep);
+              // const name = (paths[paths.length - 1]).split('.');
+              pipeMap[name]=true;
               return {
-                name: name[name.length - 1],
-                path: path.relative(path.dirname(context.componentFile), f)
+                name: name,
+                path: path.relative(path.dirname(context.componentFile), repath)
               }
             })
+  
+        }
+      
+        const platformPipePath=path.join(context.projectPath,configJson.runtime.platformPipe);
+        if(fs.existsSync(platformPipePath)){
+          const pipes = await readDir(platformPipePath);
+           pipes
+            .filter(f => f.lastIndexOf('package.json') !== -1)
+            // .map(f => f.replace(path.sep + 'package.json', ''))
+            // .sort()
+            .forEach(f => {
+              let contentStr = fs.readFileSync(f).toString();
+              let content = JSON.parse(contentStr);
+              let name=content.docs.name;
+              let nameArr= name.split('.');
+              name=nameArr[nameArr.length-1];
+              if(!pipeMap[name]){
+                pipeList.push({
+                  name: name,
+                  path: content.name
+                })
+              }
+           
+              // const paths = f.split(path.sep);
+              // const name = (paths[paths.length - 1]).split('.');
+              // return {
+              //   name: name[name.length-1],
+              //   path: 
+              // }
+            })
+        }
 
 
-          //生成Vue Use
-          const content = `        
+        //生成Vue Use
+        const content = `        
           ${vueFiles.map(f => `import ${f.name}  from '${f.path.replace(/\\/g, '/')}'`).join(';\n')}
 
           ${pipeList.map(f => `import ${f.name}  from '${f.path.replace(/\\/g, '/')}'`).join(';\n')}
@@ -139,83 +214,80 @@ class Preview {
             ${vueFiles.map(f => `${f.name}`).join(',\n\t')}
           }`;
 
-          await util.writeFile(context.componentFile,content);
-          // const list = await new Promise((res, rej) => fs.writeFile(config.runtime.componentFile, content, err => err ? rej(err) : res('success')));
+        await util.writeFile(context.componentFile, content);
 
-          const absProjectPath = path.resolve(projectPath);
-
-          //删除package-lock.josn
-          // try {
-          //   fs.unlinkSync(path.resolve(absProjectPath, 'package-lock.json'));
-          // } catch (e) {
-          //   console.log(e.message);
-          // }
+        //删除package-lock.josn
+        // try {
+        //   fs.unlinkSync(path.resolve(absProjectPath, 'package-lock.json'));
+        // } catch (e) {
+        //   console.log(e.message);
+        // }
 
 
+        //重新安装一次依赖
+        // const initDev = await execCmd(`${config.module.preview.script.init} --registry=https://npm.awebide.com`, absProjectPath);
+
+        //npm run style  生成样式
+        //覆盖一下，生成独立css的，方便所见即所得
+        // fs.writeFileSync(vueConfigPath, `
+        //   module.exports = {
+        //       baseUrl: './',
+        //       devServer: {
+        //         port: 7007
+        //       },
+        //       productionSourceMap: false,
+        //       filenameHashing: false,
+        //       css: {
+        //         loaderOptions: {
+        //           sass: {
+        //             // 向全局sass样式传入共享的全局变量
+        //             data: '@import "./element-variables.scss";'
+        //           }
+        //         }
+        //       }
+        //   }
+        // `)
+        //打包样式
+        await execCmd(config.module.preview.script.style, absProjectPath);
+
+        // npm run script 生成脚本
+        //再覆盖一下，生成组件内css的，方便样式配置可以
+        // fs.writeFileSync(vueConfigPath, `
+        //   module.exports = {
+        //       baseUrl: './',
+        //       devServer: {
+        //         port: 7007
+        //       },
+        //       productionSourceMap: false,
+        //       filenameHashing: false,
+        //       css: {
+        //           modules: false,
+        //           extract: false,
+        //           sourceMap: false,
+        //           loaderOptions: {
+        //             sass: {
+        //               // 向全局sass样式传入共享的全局变量
+        //               data: '@import "./element-variables.scss";'
+        //             }
+        //           }
+        //       }
+        //   }
+        // `)
+        //打包组件
+        await execCmd(config.module.preview.script.script, absProjectPath);
 
 
-          //重新安装一次依赖
-          const initDev = await execCmd(`${config.module.preview.script.init} --registry=https://npm.awebide.com`  , absProjectPath);
+        platform.sendSuccessResult(req, JSON.stringify({
+          content: {
+            result: true,
+          }
+        }));
 
-          //npm run style  生成样式
-          //覆盖一下，生成独立css的，方便所见即所得
-          // fs.writeFileSync(vueConfigPath, `
-          //   module.exports = {
-          //       baseUrl: './',
-          //       devServer: {
-          //         port: 7007
-          //       },
-          //       productionSourceMap: false,
-          //       filenameHashing: false,
-          //       css: {
-          //         loaderOptions: {
-          //           sass: {
-          //             // 向全局sass样式传入共享的全局变量
-          //             data: '@import "./element-variables.scss";'
-          //           }
-          //         }
-          //       }
-          //   }
-          // `)
-          await execCmd(config.module.preview.script.style, absProjectPath);
+      } catch (e) {
+        platform.sendErrorResult(req, e);
+      }
 
-          // npm run script 生成脚本
-          //再覆盖一下，生成组件内css的，方便样式配置可以
-          // fs.writeFileSync(vueConfigPath, `
-          //   module.exports = {
-          //       baseUrl: './',
-          //       devServer: {
-          //         port: 7007
-          //       },
-          //       productionSourceMap: false,
-          //       filenameHashing: false,
-          //       css: {
-          //           modules: false,
-          //           extract: false,
-          //           sourceMap: false,
-          //           loaderOptions: {
-          //             sass: {
-          //               // 向全局sass样式传入共享的全局变量
-          //               data: '@import "./element-variables.scss";'
-          //             }
-          //           }
-          //       }
-          //   }
-          // `)
-          await execCmd(config.module.preview.script.script, absProjectPath);
-
-
-          platform.sendSuccessResult(req, JSON.stringify({
-            content: {
-              result: true,
-            }
-          }));
-
-        } catch (e) {
-          platform.sendErrorResult(req, e);
-        }
-
-        // fs.writeFileSync(vueConfigPath, vueConfigBackup);
+      // fs.writeFileSync(vueConfigPath, vueConfigBackup);
       // } catch (e) {
       //   platform.sendErrorResult(req, e);
       // }
@@ -278,5 +350,5 @@ module.exports = {
 
     return router;
   },
-  Preview:Preview
+  Preview: Preview
 };

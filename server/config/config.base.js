@@ -63,6 +63,8 @@ const base = path.resolve(process.cwd(), _base || config.runtime.base);
 const component = path.resolve(base, config.runtime.component);
 const componentFile = path.resolve(base, config.runtime.componentFile);
 const pipe = path.resolve(base, _pipe || config.runtime.pipe);
+const platformPipe = path.resolve(base,  config.runtime.platformPipe);
+
 const datadict = path.resolve(base, config.runtime.datadict);
 const page = path.resolve(base, config.runtime.page);
 const customWidget = path.resolve(base, config.runtime.customWidget);
@@ -111,7 +113,8 @@ module.exports = {
     page,
     customWidget,
     dist,
-    homepage
+    homepage,
+    platformPipe
   },
 
   static: config.static.map(s => {

@@ -3,6 +3,7 @@ const fs = require('fs');
 
 const config = require('../config/config.base');
 const listPath = config.runtime.page;
+const util =require('../util/Util');
 
 const NAVIGATOR = config.module.navigator;
 const CATEGORY = NAVIGATOR.category;
@@ -26,6 +27,7 @@ const listDir = (dirPath = listPath) => {
         let filePath = path.join(dirPath, files[i]);
         let relativePath = trans2RelativePath(filePath);
         let stat = fs.lstatSync(dirPath + path.sep + files[i]);
+        
         if (stat.isDirectory()) {
           let DirInfo = listDir(filePath);
           let name = path.basename(filePath);
@@ -123,7 +125,7 @@ const listDir = (dirPath = listPath) => {
 
   return treeNode;
 }
-const statisDir = () => {
+const statisDir = async() => {
   const stylePath = path.join(config.runtime.base, 'src', 'scss');
   const statisPath = path.join(config.runtime.base, 'public');
   const themePath = path.join(config.runtime.base, 'theme');
@@ -162,29 +164,37 @@ const statisDir = () => {
   ];
   //style
   try {
-    const stats = fs.lstatSync(stylePath);
-    if (stats.isDirectory()) {
-      let files = fs.readdirSync(stylePath);
-      for (let i = 0; i < files.length; i++) {
-        let filePath = path.join(stylePath, files[i]);
-        let relativePath = trans2RelativePath(filePath);
-        let stat = fs.lstatSync(stylePath + path.sep + files[i]);
-        if (path.extname(filePath) === '.scss') {
-          let fileInfo = path.parse(filePath);
-          let item = {
-            name: fileInfo.base,
-            label: fileInfo.base,
-            resId: 'style',
-            icon: "ideicon iconyemian",
-            type: 'file',
-            category: 100,
-            path: relativePath,
-            extname: path.extname(filePath)
-          };
-          treeNode[0].children.push(item);
+    if(!fs.existsSync(stylePath)){
+      await util.mkdir(stylePath);
+    }
+      const stats = fs.lstatSync(stylePath);
+      if (stats.isDirectory()) {
+        let files = fs.readdirSync(stylePath);
+        for (let i = 0; i < files.length; i++) {
+          let filePath = path.join(stylePath, files[i]);
+          let relativePath = trans2RelativePath(filePath);
+          if(fs.existsSync(filePath)){
+          let stat = fs.lstatSync(stylePath + path.sep + files[i]);
+          if (path.extname(filePath) === '.scss') {
+            let fileInfo = path.parse(filePath);
+            let item = {
+              name: fileInfo.base,
+              label: fileInfo.base,
+              resId: 'style',
+              icon: "ideicon iconyemian",
+              type: 'file',
+              category: 100,
+              path: relativePath,
+              extname: path.extname(filePath)
+            };
+            treeNode[0].children.push(item);
+          }
+          }
+        
         }
       }
-    }
+    
+   
     // theme
     treeNode[1].children = scanDir(themePath);
     //statis
@@ -295,9 +305,14 @@ const sorter = (a, b) => {
   }
   return a.category > b.category ? 1 : -1;
 }
-const pipeDir = () => {
+const pipeDir = async() => {
   let res = [];
+  
   let pipePath = config.runtime.pipe;
+  if(!fs.existsSync(pipePath)){
+     await util.mkdir(pipePath)
+  }
+
   let files = fs.readdirSync(pipePath);
   for (let i = 0; i < files.length; i++) {
     let filePath = path.join(pipePath, files[i]);
@@ -334,14 +349,18 @@ const pipeDir = () => {
 }
 
 const Navigator = {
-  getRootItems(platform, dirPath, req) {
+  async getRootItems(platform, dirPath, req) {
     try {
+      let _entryPath=path.join(dirPath,CATEGORY.ENTRY.NAME);
+      let _widgetPath=path.join(dirPath,CATEGORY.CUSTOM_WIDGET.NAME);
+      if(!fs.existsSync(_entryPath)){await util.mkdir(_entryPath)};
+      if(!fs.existsSync(_widgetPath)){await util.mkdir(_widgetPath)}
       const viewPath = listDir(dirPath);
       const imgPath = path.join(config.runtime.base, 'public', 'img');
       // const imgList = listDir(imgPath);
       let flowPath = JSON.parse(JSON.stringify(viewPath.filter(v => v.entry).map(e => e.children)[0] || []));
-      let imgList = statisDir();
-      let pipeList = pipeDir();
+      let imgList =await statisDir();
+      let pipeList =await pipeDir();
       //rename flow
       let copy = [].concat(flowPath);
       let item;
@@ -404,15 +423,18 @@ const Navigator = {
             //case listPath:
             //如果是根目录，则返回整理过的文件夹
             dirPath = listPath;
-            this.getRootItems(platform, dirPath, req);
+            let time=new Date().getTime()
+            console.log(time)
+            await this.getRootItems(platform, dirPath, req);
+            console.log((new Date().getTime())-time)
             break;
           case "pipe":
-            viewPath = pipeDir(config.runtime.pipe);
+            viewPath =await pipeDir(config.runtime.pipe);
             platform.sendSuccessResult(req, viewPath);
             break;
           default:
             //如果不是，则返回原始的
-            viewPath = listDir(trans2AbsolutePath(dirPath));
+            viewPath = await listDir(trans2AbsolutePath(dirPath));
             platform.sendSuccessResult(req, viewPath);
         }
 

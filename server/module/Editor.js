@@ -47,9 +47,10 @@ let editor = {
               })
             }
           });
+          
+       // 自定义组件
+       if(fs.existsSync(config.runtime.customWidget)){
 
-
-        // 自定义组件
         const customWidgets = await readDir(config.runtime.customWidget);
 
         customWidgets
@@ -101,6 +102,8 @@ let editor = {
               console.log(e);
             }
           });
+       }
+      
         platform.sendSuccessResult(req, menu.sort(sorter));
       } catch (e) {
         platform.sendErrorResult(req, e);

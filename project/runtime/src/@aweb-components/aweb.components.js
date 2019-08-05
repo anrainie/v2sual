@@ -58,16 +58,16 @@ import open  from '../../../pipe/app.open'
 
           let app = {
             $get,
-	$post,
-	animate,
-	animateKill,
-	close,
-	get,
-	getAfaData,
-	getExcelData,
-	gt,
-	map,
-	open
+			$post,
+			animate,
+			animateKill,
+			close,
+			get,
+			getAfaData,
+			getExcelData,
+			gt,
+			map,
+			open
           };
 
           window.pipe = app;

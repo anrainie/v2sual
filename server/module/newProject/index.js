@@ -6,7 +6,10 @@ const Router = require("koa-router");
 // const Result = require('../../util/Result');
  const {Preview} = require("../Preview");
  const config=require("../../config/config.json");
-// // const exec = require('child_process').exec;
+
+const {
+  exec
+} = require('child_process');
 let project = {
   'getThemeLayout'(platform) {
     return async (req) => {
@@ -58,7 +61,7 @@ let project = {
             let content = await util.readFile(packageJsonPath);
             content = JSON.parse(content.toString());
             !content.scripts && (content.scripts = {})
-            content.scripts[name] = `node  ./server/server.js sh=http://localhost sp=7003 id=${name} name=${desp} ch=http://localhost cp=${serverPort} ocp=${serverPort} base=./project/${name} pipe=../pipe preview=http://localhost:${port}`;
+            content.scripts[name] = `node  ./server/server.js sh=http://localhost sp=7003 id=${name} name=${desp} ch=http://localhost cp=${serverPort} ocp=${serverPort} base=./project/${name}  preview=http://localhost:${port}`;
             await util.writeFile(packageJsonPath, JSON.stringify(content, null, 6));
 
           }
@@ -82,7 +85,10 @@ let project = {
     return async (req) => {
 
       let dest = path.resolve(process.cwd(), `./project/${req.data.name}`);
-      const preview = new Preview(dest,'',path.join(dest,config.runtime.componentFile));
+      
+      await util.execCmd(`${config.module.preview.script.init} --registry=https://npm.awebide.com`, dest);
+
+      const preview = new Preview(dest,path.join(dest,config.runtime.component),path.join(dest,config.runtime.componentFile));
       preview.init(platform)(req);
 
       // let installProecess = exec('npm install --registry=https://npm.awebide.com', { encoding: "utf8", cwd: dest }, function (error, stdout, stderr) {

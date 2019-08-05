@@ -52,7 +52,7 @@ const init=async(opt={})=>{
                    map[`${item.name}`]=`^${item.version}`
                    packageData.dependencies={...packageData.dependencies,...map}
                    !packageData.scripts &&  (packageData.scripts={})
-                   packageData.scripts.server=`vue-cli-service serve --publicPath=./ --sockPort=${port} --sockPath=/sockjs-node --port=${port} --mockPort=${mockPort}`;
+                   packageData.scripts.serve=`vue-cli-service serve --publicPath=./ --sockPort=${port} --sockPath=/sockjs-node --port=${port} --mockPort=${mockPort}`;
                    packageData.scripts.preview=`vue-cli-service serve --publicPath=/${name}/ --sockPort=443 --sockPath=/${name}/sockjs-node --port=${port} --mockPort=${mockPort}`;
                    packageData.scripts.mock=`node ./server.js --port=${mockPort}`;
                    packageData.scripts.component=`vue build -t lib -d v2sual ./src/@aweb-components/aweb.components.js`;

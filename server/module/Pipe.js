@@ -187,7 +187,7 @@ class Pipe {
         return ''
       }`;
       const packageTemplate = `{
-        "name": "@aweb-pipe/",
+        "name": "@v2-pipe/${data.pipeName}",
         "main": "index.js",
         "docs": {
             "desp": "${data.pipeDesp}",

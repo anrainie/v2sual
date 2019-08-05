@@ -1,6 +1,6 @@
 const path = require("path");
 const fs = require("fs");
-const {spawn} = require("child_process");
+const {spawn,exec} = require("child_process");
 const rimraf = require("rimraf");
 const urllib=require("urllib");
 const compressing=require("compressing");
@@ -101,6 +101,27 @@ module.exports={
 
     },
 
+     execCmd  (cmd, cwd) {
+        return new Promise((res, rej) => {
+          const process = exec(cmd, {
+            encoding: "utf8",
+            cwd
+          }, async (error, stdout, stderr) => {
+            error ? rej(error) : res({
+              error,
+              stdout,
+              stderr
+            })
+          });
+          process.stderr.on('data', data => console.log(data));
+          process.stdout.on('data', data => console.log(data));
+          process.stdout.on('close', data => {
+            console.log(data);
+            res(data);
+          });
+        });
+      },
+      
     mkdir(path){
         
         return new Promise((resolve,reject)=>{
