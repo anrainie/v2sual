@@ -11,6 +11,7 @@ let serverHost,
   outerClientPort,
   _base,
   _pipe,
+  _component,
   socketPath,
   publickPort,
   preview;
@@ -47,6 +48,9 @@ process.argv.forEach((p, index) => {
       case 'pipe':
         _pipe = val;
         break;
+      case 'component':
+        _component=val;
+        break;
       case 'socket':
         socketPath = val;
         break;
@@ -60,7 +64,7 @@ process.argv.forEach((p, index) => {
 
 //runtime
 const base = path.resolve(process.cwd(), _base || config.runtime.base);
-const component = path.resolve(base, config.runtime.component);
+const component = path.resolve(base, _component||config.runtime.component);
 const componentFile = path.resolve(base, config.runtime.componentFile);
 const pipe = path.resolve(base, _pipe || config.runtime.pipe);
 const platformPipe = path.resolve(base,  config.runtime.platformPipe);

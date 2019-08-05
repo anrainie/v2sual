@@ -37,32 +37,11 @@ const execCmd = function (cmd, cwd) {
   });
 };
 
-const getPipe=async function(pipePath){
-  let map={};
-  if(fs.existsSync(pipePath)){
-    const pipes = await readDir(pipePath);
-    pipes
-    //读取每一个package.json
-    .filter(f => f.lastIndexOf('package.json') !== -1)
-    //读取组件和编辑器
-    .forEach(f => {
-      try {
-        const contentStr = fs.readFileSync(f).toString();
-        const content = JSON.parse(contentStr);
-        const scope=content.name;
-        vueMap[name] =scope ;
-        return {
-          name: name[name.length - 1],
-          path: path.relative(path.dirname(context.componentFile), f)
-        }
 
-      } catch (e) { }
-    });
-  }
-}
 class Preview {
 
-  constructor(projectPath = config.runtime.base, componentPath, componentFile) {
+  constructor(projectPath = config.runtime.base, componentPath, componentFile,isInit) {
+    this.isInit=isInit||false;
     this.projectPath = projectPath;
     this.componentPath = componentPath || config.runtime.component;
     this.componentFile = componentFile || config.runtime.componentFile;
@@ -83,14 +62,15 @@ class Preview {
     const projectPath = this.projectPath;
     const context = this;
     return async function (req) {
-      // try {
-      //先备份一次vue.config.js
-      // const vueConfigPath = path.join(projectPath, 'vue.config.js');
-      // const vueConfigBackup = fs.readFileSync(vueConfigPath, {
-      //   encoding: 'utf8'
-      // });
+      try {
+      // 先备份一次vue.config.js
+      const vueConfigPath = path.join(projectPath, 'vue.config.js');
+      const vueConfigBackup = fs.readFileSync(vueConfigPath, {
+        encoding: 'utf8'
+      });
 
       try {
+      
         // const componentPath = config.runtime.component;
 
         const absProjectPath = path.resolve(projectPath);
@@ -105,24 +85,28 @@ class Preview {
           //读取组件和编辑器
           .forEach(f => {
             try {
+                          // .map(f => f.replace(path.sep + 'package.json', ''))
+                let rePath= f.replace(path.sep + 'package.json', '');
+       
               const contentStr = fs.readFileSync(f).toString();
               const content = JSON.parse(contentStr);
 
               const paths = f.split(path.sep);
-              const scope=content.name;
+              // const scope=content.name;
               const name = camelcase(paths[paths.length - 2]);
-              // const filepath = path.relative(path.dirname(context.componentFile), path.dirname(f));
+            
+              const filepath = path.relative(path.dirname(context.componentFile), rePath);
 
-              vueMap[name] =scope ;
+              vueMap[name] =filepath ;
 
               //参数编辑器
               if (content.paramEditor) {
-                vueMap[content.paramEditor.name] = path.join(scope, content.paramEditor.path);
+                vueMap[content.paramEditor.name] = path.join(filepath, content.paramEditor.path);
               }
 
               //自定义组件编辑器
               if (content.editor) {
-                vueMap[content.editor.name] = path.join(scope, content.editor.path);
+                vueMap[content.editor.name] = path.join(filepath, content.editor.path);
               }
             } catch (e) { }
           });
@@ -159,6 +143,8 @@ class Preview {
               name=nameArr[nameArr.length-1];
               // const paths = f.split(path.sep);
               // const name = (paths[paths.length - 1]).split('.');
+              // const filepath = path.relative(path.dirname(context.componentFile), rePath);
+
               pipeMap[name]=true;
               return {
                 name: name,
@@ -225,54 +211,57 @@ class Preview {
 
 
         //重新安装一次依赖
-        // const initDev = await execCmd(`${config.module.preview.script.init} --registry=https://npm.awebide.com`, absProjectPath);
+        if(!context.isInit){
+          await execCmd(`${config.module.preview.script.init} --registry=https://npm.awebide.com`, absProjectPath);
+
+        }
 
         //npm run style  生成样式
         //覆盖一下，生成独立css的，方便所见即所得
-        // fs.writeFileSync(vueConfigPath, `
-        //   module.exports = {
-        //       baseUrl: './',
-        //       devServer: {
-        //         port: 7007
-        //       },
-        //       productionSourceMap: false,
-        //       filenameHashing: false,
-        //       css: {
-        //         loaderOptions: {
-        //           sass: {
-        //             // 向全局sass样式传入共享的全局变量
-        //             data: '@import "./element-variables.scss";'
-        //           }
-        //         }
-        //       }
-        //   }
-        // `)
+        fs.writeFileSync(vueConfigPath, `
+          module.exports = {
+              baseUrl: './',
+              devServer: {
+                port: 7007
+              },
+              productionSourceMap: false,
+              filenameHashing: false,
+              css: {
+                loaderOptions: {
+                  sass: {
+                    // 向全局sass样式传入共享的全局变量
+                    data: '@import "./element-variables.scss";'
+                  }
+                }
+              }
+          }
+        `)
         //打包样式
         await execCmd(config.module.preview.script.style, absProjectPath);
 
         // npm run script 生成脚本
         //再覆盖一下，生成组件内css的，方便样式配置可以
-        // fs.writeFileSync(vueConfigPath, `
-        //   module.exports = {
-        //       baseUrl: './',
-        //       devServer: {
-        //         port: 7007
-        //       },
-        //       productionSourceMap: false,
-        //       filenameHashing: false,
-        //       css: {
-        //           modules: false,
-        //           extract: false,
-        //           sourceMap: false,
-        //           loaderOptions: {
-        //             sass: {
-        //               // 向全局sass样式传入共享的全局变量
-        //               data: '@import "./element-variables.scss";'
-        //             }
-        //           }
-        //       }
-        //   }
-        // `)
+        fs.writeFileSync(vueConfigPath, `
+          module.exports = {
+              baseUrl: './',
+              devServer: {
+                port: 7007
+              },
+              productionSourceMap: false,
+              filenameHashing: false,
+              css: {
+                  modules: false,
+                  extract: false,
+                  sourceMap: false,
+                  loaderOptions: {
+                    sass: {
+                      // 向全局sass样式传入共享的全局变量
+                      data: '@import "./element-variables.scss";'
+                    }
+                  }
+              }
+          }
+        `)
         //打包组件
         await execCmd(config.module.preview.script.script, absProjectPath);
 
@@ -287,10 +276,10 @@ class Preview {
         platform.sendErrorResult(req, e);
       }
 
-      // fs.writeFileSync(vueConfigPath, vueConfigBackup);
-      // } catch (e) {
-      //   platform.sendErrorResult(req, e);
-      // }
+      fs.writeFileSync(vueConfigPath, vueConfigBackup);
+      } catch (e) {
+        platform.sendErrorResult(req, e);
+      }
     }
   }
 

@@ -88,7 +88,7 @@ let project = {
       
       await util.execCmd(`${config.module.preview.script.init} --registry=https://npm.awebide.com`, dest);
 
-      const preview = new Preview(dest,path.join(dest,config.runtime.component),path.join(dest,config.runtime.componentFile));
+      const preview = new Preview(dest,path.join(dest,config.runtime.component),path.join(dest,config.runtime.componentFile),true);
       preview.init(platform)(req);
 
       // let installProecess = exec('npm install --registry=https://npm.awebide.com', { encoding: "utf8", cwd: dest }, function (error, stdout, stderr) {
