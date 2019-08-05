@@ -61,7 +61,7 @@ let project = {
             let content = await util.readFile(packageJsonPath);
             content = JSON.parse(content.toString());
             !content.scripts && (content.scripts = {})
-            content.scripts[name] = `node  ./server/server.js sh=http://localhost sp=7003 id=${name} name=${desp} ch=http://localhost cp=${serverPort} ocp=${serverPort} base=./project/${name}  preview=http://localhost:${port}`;
+            content.scripts[name] = `node  ./server/server.js sh=http://localhost sp=7003 id=${name} name=${desp} ch=http://localhost cp=${serverPort} ocp=${serverPort} base=./project/${name} pipe=../pipe  preview=http://localhost:${port}`;
             await util.writeFile(packageJsonPath, JSON.stringify(content, null, 6));
 
           }
