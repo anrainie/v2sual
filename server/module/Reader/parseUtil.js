@@ -49,6 +49,14 @@ let appendComponent = function(parent,index,element){
         eCom =  document.createElement('v2container');
         isContainer = true;
         child.wid = wid;
+    }else if(child.component == 'v2-page'){
+        //页面传参
+        eCom =  document.createElement('v2-page');
+        if(child.params && child.params.startsWith('$')){
+            eCom.setAttribute(':params',child.params.substring('2',child.params.length -1));
+        }else{
+            eCom.setAttribute(':params',child.params);
+        }
     }else if(child.__type === 'loop'){
         eCom = document.createElement('v2loop');
         child.wid = wid;
