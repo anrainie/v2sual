@@ -124,7 +124,11 @@
             "dir": "./dist"
         },
         {
-            "router": "/v1/runtime/static",
+            "router": "/v1/runtime/",
+            "dir": "./dist"
+        },
+        {
+            "router": "/v1/v2sual/static",
             "dir": "../static"
         }
     ],
