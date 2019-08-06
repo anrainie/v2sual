@@ -6,7 +6,7 @@ const Router = require("koa-router");
 // const Result = require('../../util/Result');
 const { Preview } = require("../Preview");
 const config = require("../../config/config.json");
-
+const template=require('./projectPm2Template.json');
 const net = require('net');
 
 // 检测端口是否被占用
@@ -109,6 +109,11 @@ let project = {
             await util.writeFile(packageJsonPath, JSON.stringify(content, null, 6));
 
           }
+
+          
+
+          
+
           platform.sendSuccessResult(req, '下载成功');
 
         } else {
@@ -128,10 +133,22 @@ let project = {
   'install'(platform) {
     return async (req) => {
 
-
-      let dest = path.resolve(process.cwd(), `./project/${req.data.name}`);
+      let { name, desp,serverPort} = req.data;
+      let cwdPath=process.cwd();
+      let dest = path.resolve(cwdPath, `./project/${name}`);
 
       await util.execCmd(`${config.module.preview.script.init} --registry=https://npm.awebide.com`, dest);
+
+      await util.writeFile(path.join(cwdPath,`./${name}.json`),JSON.stringify(template,null,8).replace(/__projectName__/g,name).replace(/__projectDesp__/g,desp).replace(/__serverPort__/g,serverPort));
+      await util.writeFile(path.join(cwdPath,`./log/${name}-server-app.log`),'');
+      await util.writeFile(path.join(cwdPath,`./log/${name}-server-err.log`),'');
+      await util.writeFile(path.join(cwdPath,`./log/${name}-spa-app.log`),'');
+      await util.writeFile(path.join(cwdPath,`./log/${name}-spa-err.log`),'');
+      await util.writeFile(path.join(cwdPath,`./log/${name}-mock-app.log`),'');
+      await util.writeFile(path.join(cwdPath,`./log/${name}-mock-err.log`),'');
+
+
+
 
       const preview = new Preview(dest, path.join(dest, config.runtime.component), path.join(dest, config.runtime.componentFile), true);
       preview.init(platform)(req);
