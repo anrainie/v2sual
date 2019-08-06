@@ -19,7 +19,8 @@
         "type": "string_input",
         "name": "configs",
         "defaultValue": "",
-        "desp": "配置单"
+        "desp": "配置单",
+        "details":"编辑需要的样式，复制其配置单"
       }
     ], 
     "css":{
