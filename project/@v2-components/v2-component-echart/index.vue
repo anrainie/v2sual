@@ -4,7 +4,7 @@
       :class="widgetClass"
       class="chart-content"
       ref="_op_componentEchart_chart"
-      :style="{...this.model.style.chartWarpStyle,...(this.model.commonStyle||{})}"
+      :style="model.commonStyle"
     ></div>
     <div class="chart-tips" v-if="error">
       <p>本组件使用echart配置</p>
@@ -39,6 +39,7 @@ export default {
   watch: {
     "model.configs": {
       handler(val) {
+    
         this.configChanged(val);
       }
     }
@@ -62,7 +63,9 @@ export default {
       }
     }
   },
-  mounted() {}
+  mounted() {
+ 
+  }
 };
 </script>
 
