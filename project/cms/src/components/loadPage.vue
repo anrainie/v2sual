@@ -1,5 +1,5 @@
 <template>
-    <asyncComponent :page="model.page" :params="model.param||{}"></asyncComponent>
+    <asyncComponent :page="model.page" :params="$props.params||{}" :keepAlive='false' v-bind="$attrs" v-on="$listeners"></asyncComponent>
 </template>
 
 
@@ -12,12 +12,17 @@ import asyncComponent from './asyncComponent'
 export default {
     name:"v2Page",
     mixins,
+    props:{
+     params:Object
+    },
     data(){
         return {}
     },
     mounted(){
       console.log(`@/views/${this.model.page}`)
        console.log(this.model)
+
+       console.log(this)
     },
     components:{
       asyncComponent  
