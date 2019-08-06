@@ -4,7 +4,8 @@
       :class="widgetClass"
       class="chart-content"
       ref="_op_componentEchart_chart"
-      :style="model.commonStyle"
+     
+      :style="chartCtnStyle"
     ></div>
     <div class="chart-tips" v-if="error">
       <p>本组件使用echart配置</p>
@@ -34,6 +35,14 @@ export default {
   computed: {
     extraClass() {
       return this.error ? "echart-error" : "echart-normal";
+    },
+    chartCtnStyle(){
+        let x = {
+          ...(this.model.commonStyle||{})
+        };
+        x.height = (x.height != "" && x.height) || '400px';
+        x.width = (x.width != "" && x.width) || '400px';
+        return x;
     }
   },
   watch: {
