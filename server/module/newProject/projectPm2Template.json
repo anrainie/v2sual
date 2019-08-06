@@ -1,0 +1,43 @@
+{
+    "apps": [
+        {
+            "name": "v2sual-__projectName__-server",
+            "script": "./server/server.js",
+            "args": [
+                "sh=https://aui.awebide.com",
+                "sp=7003",
+                "id=__projectName__",
+                "name=__projectDesp__",
+                "ch=https://v2sual.awebide.com",
+                "cp=__serverPort__",
+                "ocp=443",
+                "base=./project/__projectName__",
+                "pipe=../pipe",
+                "socket=/v2sual-socket/socket.io",
+                "pp=0",
+                "preview=https://vue.awebide.com/__projectName__"
+            ],
+            "out_file": "/home/v2sual/log/__projectName__-server-app.log",
+		    "error_file": "/home/v2sual/log/__projectName__-server-err.log"
+        },
+        
+        {
+            "name": "v2sual-__projectName__-spa",
+            "script": "npm",
+            "cwd":"/home/v2sual/project/__projectName__",
+            "args": "run preview",
+            "out_file": "/home/v2sual/log/__projectName__-spa-app.log",
+		    "error_file": "/home/v2sual/log/__projectName__-spa-err.log"
+        },
+    
+        {
+            "name": "v2sual-__projectName__-mock",
+            "script": "npm",
+            "cwd":"/home/v2sual/project/__projectName__",
+            "args": "run mockPreview",
+            "out_file": "/home/v2sual/log/__projectName__-mock-app.log",
+		    "error_file": "/home/v2sual/log/__projectName__-mock-err.log"
+        }
+       
+    ]
+}

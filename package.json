@@ -7,12 +7,12 @@
       "scripts": {
             "project": "node  ./server/server.js",
             "server": "node ./server/server.js sh=http://localhost sp=7003 id=netbank name=网银 ch=http://localhost cp=3000 ocp=3000 base=./project/runtime pipe=../pipe component=../@v2-components preview=http://localhost:7007",
-            "cms": "node ./server/server.js sh=http://localhost sp=7003 id=cms name=后台管理端 ch=http://localhost cp=3001 ocp=3001 base=./project/cms pipe=../pipe component=../@v2-components preview=http://localhost:7009",
+            "cms": "node  ./server/server.js sh=http://localhost sp=7003 id=cms name=后台管理端 ch=http://localhost cp=3001 ocp=3001 base=./project/cms pipe=../pipe component=../@v2-components preview=http://localhost:7009",
             "present": "node ./launch.js --config=./config/config.project.present.json",
             "anra": "node ./launch.js --config=./config/config.project.anra.json",
             "toxhq": "node ./launch.js --config=./config/config.project.toxhq.json",
             "xhq": "node ./launch.js --config=./config/config.project.xhq.json",
-            "empty": "node ./server/server.js sh=http://localhost sp=7003 id=empty name=新建项目 ch=http://localhost cp=3002 ocp=3002 base=./project/empty  preview=http://localhost:3002"
+            "empty": "node  ./server/server.js sh=http://localhost sp=7003 id=empty name=新建项目 ch=http://localhost cp=3002 ocp=3002 base=./project/empty  preview=http://localhost:3002"
       },
       "dependencies": {
             "@handsontable/vue": "^3.1.0",

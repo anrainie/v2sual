@@ -14,13 +14,16 @@
     "version": 610000,
     "accept": "divCtn",
     "name": "按钮",
-    "option": [ {
+    "option": [ 
+      
+      {
       "type": "string_input",
       "name": "btnName",
       "defaultValue": "按钮",
       "disabled": true,
       "desp": "按钮"
-    },{
+    },
+    {
       "defaultValue": "def",
       "valueArray": [
         "def",
@@ -42,7 +45,19 @@
       "type": "boolean",
       "name": "loading",
       "desp":"是否加载状态"
-    }, {
+    },{
+      "type": "string_input",
+      "name": "leftIcon",
+      "defaultValue": "",
+      "disabled": true,
+      "desp": "左侧图标"
+    },{
+      "type": "string_input",
+      "name": "rightIcon",
+      "defaultValue": "",
+      "disabled": true,
+      "desp": "右侧图标"
+    },{
       "defaultValue": false,
       "type": "boolean",
       "name": "disabled",

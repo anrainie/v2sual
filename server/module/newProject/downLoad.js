@@ -55,6 +55,7 @@ const init=async(opt={})=>{
                    packageData.scripts.serve=`vue-cli-service serve --publicPath=./ --sockPort=${port} --sockPath=/sockjs-node --port=${port} --mockPort=${mockPort}`;
                    packageData.scripts.preview=`vue-cli-service serve --publicPath=/${name}/ --sockPort=443 --sockPath=/${name}/sockjs-node --port=${port} --mockPort=${mockPort}`;
                    packageData.scripts.mock=`node ./server.js --port=${mockPort}`;
+                   packageData.scripts.mockPreview=`node ./server.js --port=${mockPort} --prefix=/${name}`;
                    packageData.scripts.component=`vue build -t lib -d v2sual ./src/@aweb-components/aweb.components.js`;
                }
            }

@@ -27,7 +27,7 @@ async function get_Route_FilePath(ctx, data) {
 }
 
 async function toSend(ctx, dir, router) {
-    const index = ctx.request.url.lastIndexOf(router) + router.length
+    const index = (router && ctx.request.url.lastIndexOf(router) +( router.length))||0
     const fileUrl = ctx.request.url.substring(index)
     let filePath = Path.join(dir, fileUrl)
     if (filePath.indexOf('?') !== -1) {
