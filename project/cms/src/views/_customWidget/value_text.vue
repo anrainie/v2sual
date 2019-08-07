@@ -1,6 +1,6 @@
 <template><v2container :wid="`root`"><el-row class="V2ContainerBlock" style="height:100%;width:100%;" key="0"><v2container id="1562239317513" :wid="`1562239317513`" :index="0" :pid="`root`"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;width:100%;" key="0"><v2-component-text class="V2Widget" id="1562239326023" :wid="`1562239326023`" :index="0" :pid="`1562239317513`"></v2-component-text></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;width:100%;" key="1"><v2-component-text class="V2Widget" id="1562239327057" :wid="`1562239327057`" :index="1" :pid="`1562239317513`"></v2-component-text></el-row></v2container></el-row></v2container></template>
 <script>
-            import {root,cpt,widget} from '@/utils/v2-view';
+            import {root,cpt,widget} from '@/ideLib/mixin/v2-view';
             
             export default{
                 data(){

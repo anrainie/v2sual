@@ -1,6 +1,6 @@
 <template><v2container :wid="`root`"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:100%;width:100%;" key="0"><v2-ctn-xy class="V2Widget" id="1564717796451" :wid="`1564717796451`" :index="0" :pid="`root`"></v2-ctn-xy></el-row></v2container></template>
 <script>
-            import {root} from '@/utils/v2-view';
+            import {root} from '@/ideLib/mixin/v2-view';
             
             export default{
                 data(){

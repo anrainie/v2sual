@@ -26,7 +26,7 @@ export default {
             deep:true,
             handler(val){
                 this.fData = val;
-                debugger;
+            
             
                 this.$emit('getDataFromSub',this.testVal);
             }
@@ -52,7 +52,7 @@ export default {
        }
      },
      mounted(){
-         debugger;
+        
      
      }
 }

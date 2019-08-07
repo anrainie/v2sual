@@ -1,14 +1,12 @@
-import * as api from './api';
+
 import axios from 'axios';
 import source from './source.js';
-import router from '../router';
+import  {router} from '@/lib';
 import { MessageBox,Notification } from 'element-ui';
-
 
 for(let i  in source){
     axios[i] = source[i];
   }
-
 // axios 配置
 axios.defaults.timeout = 5000;
 axios.defaults.withCredentials = true;
@@ -48,19 +46,15 @@ axios.interceptors.response.use(
           return data
       } else {
         switch(data.errorCode){
+          
           case '100001':
-          // global.location.href = './#/login'
           MessageBox.confirm('会话超时，请重新登录！')
           .then(()=> {
-              router.push('/login');
-              sessionStorage.removeItem("user");        
-              localStorage.setItem('router','');
-              localStorage.setItem('menu','');
-              localStorage.removeItem('ctoken');
-              global.antRouter = '';
-              global.pageMap = {};
-              global.hasLogin = false;
-              router.go(0);
+        
+              sessionStorage.removeItem("user"); 
+              localStorage.removeItem('ctoken');  
+              router.push('/login');   
+  
           })
           .catch(()=> {});
         
@@ -72,6 +66,7 @@ axios.interceptors.response.use(
               message: '系统错误0X06:'+data.errorMsg||'字段校验失败'                
           })
           break;
+
 
           default:
               return data;
@@ -85,15 +80,12 @@ axios.interceptors.response.use(
         switch (error.response.status) {
           case 401:
             // 401 清除token信息并跳转到登录页面
-            // global.token = null;
+            localStorage.removeItem('ctoken');
             router.push('/login');
-            router.go(0);
+            // router.go(0);
         }
       }
   
       return Promise.reject(error.response.data)
     });
 
-global.$axios = axios;
-
-export default api;

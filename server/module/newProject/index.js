@@ -18,7 +18,6 @@ function portIsOccupied(port) {
     server.on('listening', function () { // 执行这块代码说明端口未被占用
       server.close() // 关闭服务
       resolve(false);
-      //  console.log('The port【' + port + '】 is available.') // 控制台输出信息
     })
 
     server.on('error', function (err) {
@@ -74,7 +73,7 @@ let project = {
 
       try {
 
-        let { name, serverPort, desp, port,mockPort} = req.data;
+        let { name, serverPort, desp, port,mockPort,component,pipe} = req.data;
         let hasPort,hasMorkPort,hasServerPort
         
         try{
@@ -105,7 +104,11 @@ let project = {
             let content = await util.readFile(packageJsonPath);
             content = JSON.parse(content.toString());
             !content.scripts && (content.scripts = {})
-            content.scripts[name] = `node  ./server/server.js sh=http://localhost sp=7003 id=${name} name=${desp} ch=http://localhost cp=${serverPort} ocp=${serverPort} base=./project/${name} pipe=../pipe  preview=http://localhost:${port}`;
+
+            component=component|| config.runtime.component;
+            pipe=pipe||config.runtime.pipe;
+            
+            content.scripts[name] = `node  ./server/server.js sh=http://localhost sp=7003 id=${name} name=${desp} ch=http://localhost cp=${serverPort} ocp=${serverPort} base=./project/${name} pipe=${pipe} component=${component}  preview=http://localhost:${port}`;
             await util.writeFile(packageJsonPath, JSON.stringify(content, null, 6));
 
           }
@@ -133,9 +136,10 @@ let project = {
   'install'(platform) {
     return async (req) => {
 
-      let { name, desp,serverPort} = req.data;
+      let { name, desp,serverPort,component,pipe} = req.data;
       let cwdPath=process.cwd();
       let dest = path.resolve(cwdPath, `./project/${name}`);
+
 
       await util.execCmd(`${config.module.preview.script.init} --registry=https://npm.awebide.com`, dest);
 
@@ -147,34 +151,17 @@ let project = {
       await util.writeFile(path.join(cwdPath,`./log/${name}-mock-app.log`),'');
       await util.writeFile(path.join(cwdPath,`./log/${name}-mock-err.log`),'');
 
+      component=component|| config.runtime.component;
+      pipe=pipe||config.runtime.pipe;
 
+      let componentPath=path.join(dest,component);
+      if(!fs.existsSync(componentPath)){
+        await util.mkdir(componentPath);
+      }
 
-
-      const preview = new Preview(dest, path.join(dest, config.runtime.component), path.join(dest, config.runtime.componentFile), true);
+      const preview = new Preview(dest, componentPath, path.join(dest, config.runtime.componentFile), true);
       preview.init(platform)(req);
 
-      // let installProecess = exec('npm install --registry=https://npm.awebide.com', { encoding: "utf8", cwd: dest }, function (error, stdout, stderr) {
-      //   if (error) {
-      //     platform.sendErrorResult(req, error);
-
-      //   } else {
-      //     platform.sendSuccessResult(req, '安装成功!');
-      //   }
-
-
-      // })
-      // installProecess.stderr.on('data', data => {
-
-      //   console.log(data)
-
-
-      // });
-
-      // installProecess.stdout.on('data', data => {
-      //   console.log(data)
-
-
-      // });
     }
   }
 }
