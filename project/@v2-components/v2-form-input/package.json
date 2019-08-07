@@ -20,7 +20,6 @@
         "desp": "标题",
         "defaultValue": "标题",
         "type": "string_input"
-      
       },
       {
         "name": "titleMode",

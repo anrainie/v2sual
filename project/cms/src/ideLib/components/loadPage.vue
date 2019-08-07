@@ -1,5 +1,5 @@
 <template>
-    <asyncComponent :page="model.page" :params="model.param||{}"></asyncComponent>
+    <asyncComponent :page="model.page" :params="$props.params||{}" :keepAlive='false' v-bind="$attrs" v-on="$listeners"></asyncComponent>
 </template>
 
 
@@ -12,6 +12,9 @@ let mixins = [widget];
 export default {
     name:"v2Page",
     mixins,
+    props:{
+     params:Object
+    },
     data(){
         return {}
     },
