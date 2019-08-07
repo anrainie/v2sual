@@ -29,24 +29,51 @@ let editor = {
   'widget'(platform) {
     return async (req) => {
       try {
+        
         let menu = [];
-        //功能组件
-        const components = (await readDir(config.runtime.component));
-
-        components
+        let componentMap={};
+        const getComponent=(components)=>{
+          components
           .filter(f => path.parse(f).base === 'package.json' && fs.existsSync(f))
           .forEach(f => {
             const contentStr = fs.readFileSync(f, 'utf8').toString();
             const content = JSON.parse(contentStr);
-
+            
             if (content.docs) {
-              menu.push({
+              componentMap[content.docs.href]={
                 ...content.docs,
                 main: content.main,
                 index: content.index
-              })
+              };
+              
             }
           });
+        }
+      
+
+        //平台级组件
+        const platformPath=config.runtime.platformComponent;
+        if(fs.existsSync(platformPath)){
+          const platformComponents = (await readDir(platformPath));
+          getComponent(platformComponents);
+      
+        }
+
+
+        //项目级组件
+        const projectPath=config.runtime.component;
+        if(fs.existsSync(projectPath)){
+          const projectComponents = (await readDir(projectPath));
+          getComponent(projectComponents);
+  
+        }
+
+        //功能组件
+        Object.keys(componentMap).forEach((i)=>{
+               menu.push(componentMap[i]);
+        })
+
+       
           
        // 自定义组件
        if(fs.existsSync(config.runtime.customWidget)){
