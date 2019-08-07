@@ -12,7 +12,8 @@
                 "cp=__serverPort__",
                 "ocp=443",
                 "base=./project/__projectName__",
-                "pipe=../pipe",
+                "pipe=__pipe__",
+                "component=__component__",
                 "socket=/v2sual-socket/socket.io",
                 "pp=0",
                 "preview=https://vue.awebide.com/__projectName__"

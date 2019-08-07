@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["package"],{"5ba0":function(e){e.exports={name:"@v2-layout/manager",version:"6.0.1",description:"管理端首页布局",main:"index.js",scripts:{test:'echo "Error: no test specified" && exit 1'},keywords:[],author:"wubingyu@agree.com.cn",license:"ISC"}}}]);

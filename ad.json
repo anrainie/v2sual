@@ -1,0 +1,41 @@
+{
+        "apps": [
+                {
+                        "name": "v2sual-ad-server",
+                        "script": "./server/server.js",
+                        "args": [
+                                "sh=https://aui.awebide.com",
+                                "sp=7003",
+                                "id=ad",
+                                "name=广告投放",
+                                "ch=https://v2sual.awebide.com",
+                                "cp=3005",
+                                "ocp=443",
+                                "base=./project/ad",
+                                "pipe=./pipe",
+                                "component=./src/v2Components",
+                                "socket=/v2sual-socket/socket.io",
+                                "pp=0",
+                                "preview=https://vue.awebide.com/ad"
+                        ],
+                        "out_file": "/home/v2sual/log/ad-server-app.log",
+                        "error_file": "/home/v2sual/log/ad-server-err.log"
+                },
+                {
+                        "name": "v2sual-ad-spa",
+                        "script": "npm",
+                        "cwd": "/home/v2sual/project/ad",
+                        "args": "run preview",
+                        "out_file": "/home/v2sual/log/ad-spa-app.log",
+                        "error_file": "/home/v2sual/log/ad-spa-err.log"
+                },
+                {
+                        "name": "v2sual-ad-mock",
+                        "script": "npm",
+                        "cwd": "/home/v2sual/project/ad",
+                        "args": "run mockPreview",
+                        "out_file": "/home/v2sual/log/ad-mock-app.log",
+                        "error_file": "/home/v2sual/log/ad-mock-err.log"
+                }
+        ]
+}

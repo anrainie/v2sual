@@ -6,7 +6,7 @@ const Router = require("koa-router");
 // const Result = require('../../util/Result');
 const { Preview } = require("../Preview");
 const config = require("../../config/config.json");
-const template=require('./projectPm2Template.json');
+const template = require('./projectPm2Template.json');
 const net = require('net');
 
 // 检测端口是否被占用
@@ -73,27 +73,27 @@ let project = {
 
       try {
 
-        let { name, serverPort, desp, port,mockPort,component,pipe} = req.data;
-        let hasPort,hasMorkPort,hasServerPort
-        
-        try{
-           hasPort=await portIsOccupied(port);
-           hasMorkPort=await portIsOccupied(mockPort);
-           hasServerPort=await portIsOccupied(serverPort);
-        }catch(e){
+        let { name, serverPort, desp, port, mockPort, component, pipe } = req.data;
+        let hasPort, hasMorkPort, hasServerPort
+
+        try {
+          hasPort = await portIsOccupied(port);
+          hasMorkPort = await portIsOccupied(mockPort);
+          hasServerPort = await portIsOccupied(serverPort);
+        } catch (e) {
 
         }
-      
-        let msg=[];
-        if(hasPort) msg.push('前端端口已经占用，请修改！') ;
-        if(hasMorkPort) msg.push('假数据端口已经占用，请修改！') ;
-        if(hasServerPort) msg.push('后台端口已经占用，请修改！') ;
-        //  let hasUsePort= isAvailablePort.some(item=>!item);
-         if(msg.length){
 
-            platform.sendErrorResult(req, msg.join('\n'));
-            return;
-         }
+        let msg = [];
+        if (hasPort) msg.push('前端端口已经占用，请修改！');
+        if (hasMorkPort) msg.push('假数据端口已经占用，请修改！');
+        if (hasServerPort) msg.push('后台端口已经占用，请修改！');
+        //  let hasUsePort= isAvailablePort.some(item=>!item);
+        if (msg.length) {
+
+          platform.sendErrorResult(req, msg.join('\n'));
+          return;
+        }
 
 
         let dest = path.resolve(process.cwd(), `./project/${name}`);
@@ -105,17 +105,17 @@ let project = {
             content = JSON.parse(content.toString());
             !content.scripts && (content.scripts = {})
 
-            component=component|| config.runtime.component;
-            pipe=pipe||config.runtime.pipe;
-            
+            component = component || config.runtime.component;
+            pipe = pipe || config.runtime.pipe;
+
             content.scripts[name] = `node  ./server/server.js sh=http://localhost sp=7003 id=${name} name=${desp} ch=http://localhost cp=${serverPort} ocp=${serverPort} base=./project/${name} pipe=${pipe} component=${component}  preview=http://localhost:${port}`;
             await util.writeFile(packageJsonPath, JSON.stringify(content, null, 6));
 
           }
 
-          
 
-          
+
+
 
           platform.sendSuccessResult(req, '下载成功');
 
@@ -136,26 +136,31 @@ let project = {
   'install'(platform) {
     return async (req) => {
 
-      let { name, desp,serverPort,component,pipe} = req.data;
-      let cwdPath=process.cwd();
+      let { name, desp, serverPort, component, pipe } = req.data;
+      let cwdPath = process.cwd();
       let dest = path.resolve(cwdPath, `./project/${name}`);
 
-
+      component = component || config.runtime.component;
+      pipe = pipe || config.runtime.pipe;
       await util.execCmd(`${config.module.preview.script.init} --registry=https://npm.awebide.com`, dest);
+      let pm2Json = JSON.stringify(template, null, 8)
+        .replace(/__projectName__/g, name).replace(/__projectDesp__/g, desp).replace(/__serverPort__/g, serverPort)
+        .replace(/__component__/g, component)
+        .replace(/__pipe__/g, pipe);
 
-      await util.writeFile(path.join(cwdPath,`./${name}.json`),JSON.stringify(template,null,8).replace(/__projectName__/g,name).replace(/__projectDesp__/g,desp).replace(/__serverPort__/g,serverPort));
-      await util.writeFile(path.join(cwdPath,`./log/${name}-server-app.log`),'');
-      await util.writeFile(path.join(cwdPath,`./log/${name}-server-err.log`),'');
-      await util.writeFile(path.join(cwdPath,`./log/${name}-spa-app.log`),'');
-      await util.writeFile(path.join(cwdPath,`./log/${name}-spa-err.log`),'');
-      await util.writeFile(path.join(cwdPath,`./log/${name}-mock-app.log`),'');
-      await util.writeFile(path.join(cwdPath,`./log/${name}-mock-err.log`),'');
 
-      component=component|| config.runtime.component;
-      pipe=pipe||config.runtime.pipe;
+      await util.writeFile(path.join(cwdPath, `./${name}.json`), pm2Json);
+      await util.writeFile(path.join(cwdPath, `./log/${name}-server-app.log`), '');
+      await util.writeFile(path.join(cwdPath, `./log/${name}-server-err.log`), '');
+      await util.writeFile(path.join(cwdPath, `./log/${name}-spa-app.log`), '');
+      await util.writeFile(path.join(cwdPath, `./log/${name}-spa-err.log`), '');
+      await util.writeFile(path.join(cwdPath, `./log/${name}-mock-app.log`), '');
+      await util.writeFile(path.join(cwdPath, `./log/${name}-mock-err.log`), '');
 
-      let componentPath=path.join(dest,component);
-      if(!fs.existsSync(componentPath)){
+
+
+      let componentPath = path.join(dest, component);
+      if (!fs.existsSync(componentPath)) {
         await util.mkdir(componentPath);
       }
 
