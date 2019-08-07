@@ -1,0 +1,4433 @@
+{
+    "serialId": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "业务流水号",
+        "description": "业务流水号",
+        "COLSCALE": "0",
+        "name": "serialId",
+        "Parameter": {
+          "pname": "serialId",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77",
+        "like":true
+      },
+      "organId": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "机构号",
+        "description": "机构号",
+        "COLSCALE": "0",
+        "name": "organId",
+        "Parameter": {
+          "pname": "字段长度",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77",
+        "like":true
+      },
+      "employeeId2": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "复核柜员号",
+        "description": "复核柜员号",
+        "COLSCALE": "0",
+        "name": "employeeId2",
+        "Parameter": {
+          "pname": "字段长度",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77",
+        "like":true
+      },
+      "tradeId": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "交易号",
+        "description": "交易号",
+        "COLSCALE": "0",
+        "name": "tradeId",
+        "Parameter": {
+          "pname": "字段长度",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77",
+        "like":true
+      },
+      "tradeName": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "交易名",
+        "description": "交易名",
+        "COLSCALE": "0",
+        "name": "tradeName",
+        "Parameter": {
+          "pname": "字段长度",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77",
+        "like":true
+      },
+      "employeeId": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "柜员号",
+        "description": "柜员号",
+        "COLSCALE": "0",
+        "name": "employeeId",
+        "Parameter": {
+          "pname": "字段长度",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77",
+        "like":true
+      },
+      "state": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "交易状态",
+        "description": "交易状态",
+        "COLSCALE": "0",
+        "name": "state",
+        "Parameter": {
+          "pname": "字段长度",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77",
+        "like":true
+      },
+      "type": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "交易类型",
+        "description": "交易类型",
+        "COLSCALE": "0",
+        "name": "type",
+        "Parameter": {
+          "pname": "字段长度",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77",
+        "like":true
+      },
+      "start": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "交易起始时间",
+        "description": "交易起始时间",
+        "COLSCALE": "0",
+        "name": "start",
+        "Parameter": {
+          "pname": "字段长度",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77",
+        "like":true
+      },
+      "end": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "交易结束时间",
+        "description": "交易结束时间",
+        "COLSCALE": "0",
+        "name": "end",
+        "Parameter": {
+          "pname": "字段长度",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77",
+        "like":true
+      },
+      "startAndEndTime": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "起始结束时间",
+        "description": "起始结束时间",
+        "COLSCALE": "0",
+        "name": "startAndEndTime",
+        "Parameter": {
+          "pname": "字段长度",
+          "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77"
+      },
+    "definer": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "definer",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "579307B9FF7F4BD4B28B143E579DC48C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77"
+    },
+    "TASK_CREATE_USER": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "任务创建人",
+        "COLSCALE": "0",
+        "name": "TASK_CREATE_USER",
+        "description": "任务创建人",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "A3D6737878674EB3B15D021B0FF7B4B8",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "USR_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "USR_ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "057B51E8925A49449F769865220F762E",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "Owner": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Owner",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "64"
+        },
+        "type": "String",
+        "UUID": "4E59964FEFB543D6955337737EC12DF9",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "64"
+    },
+    "Proc_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Proc_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "27"
+        },
+        "type": "String",
+        "UUID": "5C51966E2CBB40D3A288DE1923F1E79A",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "27"
+    },
+    "last_insert_id": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "last_insert_id",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "E4878F1E89434526A36C400687575EB8",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "Process_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Process_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "949EAD8401974E91985A097DC3826B41",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "APP_NAME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "应用名称",
+        "COLSCALE": "0",
+        "name": "APP_NAME",
+        "description": "应用名称",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "A9739995D3384937A91361E248A738AA",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "USR_CREATETIME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "创建时间",
+        "COLSCALE": "0",
+        "name": "USR_CREATETIME",
+        "description": "创建时间",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "30"
+        },
+        "type": "String",
+        "UUID": "627F4B136A1F447B8D3B901851E0AFD0",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "30"
+    },
+    "Create_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Create_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "5B91F9CBBCDA47868956FEDE73F18243",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "interval_value": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "interval_value",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "B6A752A43EF9404F9F192BE54C5FDB50",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "Column_name": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Column_name",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "64"
+        },
+        "type": "String",
+        "UUID": "205BE2C472DB4C929B95664053E1E274",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "64"
+    },
+    "parent_category_id": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "parent_category_id",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "5"
+        },
+        "type": "Integer",
+        "UUID": "5B60EEDD090C457A8C474127E0ABA2CF",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "5"
+    },
+    "TASK_DEAD_LINE": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "任务截止时间",
+        "COLSCALE": "0",
+        "name": "TASK_DEAD_LINE",
+        "description": "任务截止时间",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "EED22E4CD0A447A2998E217C7C1C7465",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "x509_issuer": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "x509_issuer",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "65535"
+        },
+        "type": "Object",
+        "UUID": "A0D227E0FDCC4EC1BD9A442485FAF39E",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "65535"
+    },
+    "MEN_PID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "父节点ID",
+        "COLSCALE": "0",
+        "name": "MEN_PID",
+        "description": "父节点ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "763D95CFCEB24F03A7C7B599C3364DF4",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "With_grant": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "0",
+        "COLSCALE": "0",
+        "name": "With_grant",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "3"
+        },
+        "type": "Integer",
+        "UUID": "0B275550918F4C728871F3714233444B",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "3"
+    },
+    "ULG_SESSIONID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "Session会话ID",
+        "COLSCALE": "0",
+        "name": "ULG_SESSIONID",
+        "description": "Session会话ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "7A1FA94B46E6437CB54BB44E48876A8D",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "query_time": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "query_time",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "0"
+        },
+        "type": "Time",
+        "UUID": "AE1C13E19A3F40AC9DC66BEDD5E3A13C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "0"
+    },
+    "Wrapper": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Wrapper",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "64"
+        },
+        "type": "String",
+        "UUID": "DD0CA56B7E6C4AF2971C71F022C7158B",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "64"
+    },
+    "Is_DST": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "0",
+        "COLSCALE": "0",
+        "name": "Is_DST",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "3"
+        },
+        "type": "Integer",
+        "UUID": "E31AF44F988C4A0E83522D0EF92AD583",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "3"
+    },
+    "Event_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Event_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "411D2B958485469B8A1AF65BC25D6069",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "Delete_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Delete_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "0271B2681F2041A48E185C5ED0607040",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "AMV_UPDATE_TIME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "更新时间",
+        "COLSCALE": "0",
+        "name": "AMV_UPDATE_TIME",
+        "description": "更新时间",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "30"
+        },
+        "type": "String",
+        "UUID": "B10E982516794DE299B12127A661A945",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "30"
+    },
+    "help_topic_id": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "help_topic_id",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "B10FAAE784D24C278246758280CAB3A0",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "APP_NICKNAME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "应用别名",
+        "COLSCALE": "0",
+        "name": "APP_NICKNAME",
+        "description": "应用别名",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "0E5C63F9A44A4369B60D63491D45D00A",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "DEMO_NAME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "案例名称",
+        "COLSCALE": "0",
+        "name": "DEMO_NAME",
+        "description": "案例名称",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "100"
+        },
+        "type": "String",
+        "UUID": "30D453941D10412DA8F4D04FB6EC09CA",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "100"
+    },
+    "version": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "版本",
+        "COLSCALE": "0",
+        "name": "version",
+        "description": "版本",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "20"
+        },
+        "type": "String",
+        "UUID": "1A1FE4F0D3C94984A933A09325235526",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "20"
+    },
+    "ULG_USER_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "用户名",
+        "COLSCALE": "0",
+        "name": "ULG_USER_ID",
+        "description": "用户名",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "063F27E094E34459B61AB3834F785E49",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "USR_USERTYPE": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "用户类型，0:管理员，1:普通用户",
+        "COLSCALE": "0",
+        "name": "USR_USERTYPE",
+        "description": "用户类型，0:管理员，1:普通用户",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "75FCA08A6FB34A919118B2A2988A4775",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "Offset": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "0",
+        "COLSCALE": "0",
+        "name": "Offset",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "DB1D62B68881449AA253B0D7AA955E0E",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "Grantor": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Grantor",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "77"
+        },
+        "type": "String",
+        "UUID": "53FCE176D4C343C0930125CAD7321226",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "77"
+    },
+    "TASK_CANDIDATES": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "任务执行人",
+        "COLSCALE": "0",
+        "name": "TASK_CANDIDATES",
+        "description": "任务执行人",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "800"
+        },
+        "type": "String",
+        "UUID": "9FDF48CC143C47B0B6D5678172C54010",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "800"
+    },
+    "MEN_NAME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "节点名",
+        "COLSCALE": "0",
+        "name": "MEN_NAME",
+        "description": "节点名",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "100"
+        },
+        "type": "String",
+        "UUID": "2A1BD7368B124CC698DC34F18EB6312A",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "100"
+    },
+    "COINS_YESTERDAY_NUM": {
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "昨天金币数",
+        "description": "昨天金币数",
+        "type": "Integer",
+        "CODINGRULE": "UTF-8",
+        "default": "0",
+        "COLSCALE": "0",
+        "name": "COINS_YESTERDAY_NUM",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "UUID": "36C5BC9E7D844FAB94CEE7CF7AB026F1",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "returns": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "returns",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "2147483647"
+        },
+        "type": "Object",
+        "UUID": "0F58D78F9DC94BB5B041F075313C1D8B",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "2147483647"
+    },
+    "deletes": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "deletes",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "20"
+        },
+        "type": "Long",
+        "UUID": "90B56A1790A247C1938FA0029F9F8968",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "20"
+    },
+    "rows_examined": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "rows_examined",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "3B08CA2334E0456BB48B84A1CF74BCDD",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "USR_MAILBOX": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "邮箱",
+        "COLSCALE": "0",
+        "name": "USR_MAILBOX",
+        "description": "邮箱",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "4BD5389948F5407FB9F25DA290999F54",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "Timestamp": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "CURRENT_TIMESTAMP",
+        "COLSCALE": "0",
+        "name": "Timestamp",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "0"
+        },
+        "type": "Date",
+        "UUID": "B910536710E14BE1B516ED2A0D066EE5",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "0"
+    },
+    "collation_connection": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "collation_connection",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "32"
+        },
+        "type": "String",
+        "UUID": "7DD0DDDF609E467884F09755A15D7E76",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "32"
+    },
+    "example": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "example",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "65535"
+        },
+        "type": "Object",
+        "UUID": "920A2BA6E72241BA94CE98DB92B5EA09",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "65535"
+    },
+    "APP_ZIP": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "二进制包文件表",
+        "COLSCALE": "0",
+        "name": "APP_ZIP",
+        "description": "二进制包文件表",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "2147483647"
+        },
+        "type": "Object",
+        "UUID": "7D2FB3CE73494D0EB4EDFE8239901D22",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "2147483647"
+    },
+    "authentication_string": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "authentication_string",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "65535"
+        },
+        "type": "Object",
+        "UUID": "7E0E91F8FE9044B2823812C3BB38D0FD",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "65535"
+    },
+    "GLB_DESC": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "描述",
+        "COLSCALE": "0",
+        "name": "GLB_DESC",
+        "description": "描述",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "200"
+        },
+        "type": "String",
+        "UUID": "FF3714F5AB724C89A445F4B162C4662C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "200"
+    },
+    "Alter_routine_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Alter_routine_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "C4C0863EE5C74A5FAE81AFD69264370F",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "MEN_REMARK": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "备注信息",
+        "COLSCALE": "0",
+        "name": "MEN_REMARK",
+        "description": "备注信息",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "200"
+        },
+        "type": "String",
+        "UUID": "82E1B2F360994A1E80A1E313AD3F1E29",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "200"
+    },
+    "Lock_tables_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Lock_tables_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "11D4D25B0FA645C988839A3453F2F611",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "APP_FILELIST": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "MD5加密静态资源文件列表",
+        "COLSCALE": "0",
+        "name": "APP_FILELIST",
+        "description": "MD5加密静态资源文件列表",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "2147483647"
+        },
+        "type": "Object",
+        "UUID": "0C302F9F88114BCFAD48AAC97187EBCF",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "2147483647"
+    },
+    "GTU_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "ID",
+        "COLSCALE": "0",
+        "name": "GTU_ID",
+        "description": "ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "AA3C8B5E430D455FBE348BBF38912951",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "MEN_ICON": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "菜单图标",
+        "COLSCALE": "0",
+        "name": "MEN_ICON",
+        "description": "菜单图标",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "100"
+        },
+        "type": "String",
+        "UUID": "DB4227A50BE74ACABA1E904AB5A8D192",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "100"
+    },
+    "max_questions": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "0",
+        "COLSCALE": "0",
+        "name": "max_questions",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "71DF12AFFA27466E861A985199550E4E",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "max_connections": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "0",
+        "COLSCALE": "0",
+        "name": "max_connections",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "D76D52257A254D13B79C9D1F88AF5BC0",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "USK_KEYWORD": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "搜索词条",
+        "COLSCALE": "0",
+        "name": "USK_KEYWORD",
+        "description": "搜索词条",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "100"
+        },
+        "type": "String",
+        "UUID": "778A39812CA24333973573864CA2BCF0",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "100"
+    },
+    "COINS_NUM": {
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "总金币数",
+        "description": "总金币数",
+        "type": "Integer",
+        "CODINGRULE": "UTF-8",
+        "default": "0",
+        "COLSCALE": "0",
+        "name": "COINS_NUM",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "UUID": "78E064BC98184BA994D4AF7C4A5FF401",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "jar_group": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "组织",
+        "COLSCALE": "0",
+        "name": "jar_group",
+        "description": "组织",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "100"
+        },
+        "type": "String",
+        "UUID": "091623DBE98A4A69A959130AD29C056D",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "100"
+    },
+    "TASK_DESCRIPTION": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "详情描述",
+        "COLSCALE": "0",
+        "name": "TASK_DESCRIPTION",
+        "description": "详情描述",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "2147483647"
+        },
+        "type": "Object",
+        "UUID": "435FFFF840A145AA877E24C0E2EBEDF1",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "2147483647"
+    },
+    "RESC_NAME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "案例名称",
+        "COLSCALE": "0",
+        "name": "RESC_NAME",
+        "description": "案例名称",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "C8DEBC4739924E0DB9889217AC3A12D5",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "plugin": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "plugin",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "64"
+        },
+        "type": "String",
+        "UUID": "5F1D8AAAD87E45F8B01B6C3628087989",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "64"
+    },
+    "Reload_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Reload_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "BFB7E5858C0E4EC5B80FBBB52DF87CD2",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "TASK_UPDATE_TIME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "任务更新时间",
+        "COLSCALE": "0",
+        "name": "TASK_UPDATE_TIME",
+        "description": "任务更新时间",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "588C15F3EF604642A5A4DE99444CDCB8",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "inserts": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "inserts",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "20"
+        },
+        "type": "Long",
+        "UUID": "02FAA5FF63FC4474BE3F670BEBA6A3D7",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "20"
+    },
+    "Create_user_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Create_user_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "581A74786E2740A48668105D1AD794B8",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "Column_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Column_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "31"
+        },
+        "type": "String",
+        "UUID": "D8050706BED145BE89FDE7264CD64C55",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "31"
+    },
+    "db": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "db",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "64"
+        },
+        "type": "String",
+        "UUID": "C003A1B121EF4F6A8AEC59239C085E3D",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "64"
+    },
+    "Socket": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Socket",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "64"
+        },
+        "type": "String",
+        "UUID": "DE5BF103AD184C38A96284540628C113",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "64"
+    },
+    "AMV_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "验证ID",
+        "COLSCALE": "0",
+        "name": "AMV_ID",
+        "description": "验证ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "E06D2A5CE52842FD84A5BCF7EA9C0EA3",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "GIFT_PIC": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "奖品图片",
+        "COLSCALE": "0",
+        "name": "GIFT_PIC",
+        "description": "奖品图片",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "2147483647"
+        },
+        "type": "Object",
+        "UUID": "F25CB333905047F499A252966C609274",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "2147483647"
+    },
+    "Port": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "0",
+        "COLSCALE": "0",
+        "name": "Port",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "8DBBF0D1FE8148D7AF9ABFA5C7458C6A",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "dl": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "dl",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "128"
+        },
+        "type": "String",
+        "UUID": "DDE15E3AFDC2433287C4D5C3012CFAC2",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "128"
+    },
+    "ssl_cipher": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "ssl_cipher",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "65535"
+        },
+        "type": "Object",
+        "UUID": "86BF727538C442119AEC351A2ACC839E",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "65535"
+    },
+    "language": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "SQL",
+        "COLSCALE": "0",
+        "name": "language",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "3"
+        },
+        "type": "String",
+        "UUID": "0DFB1FCEF9B84617B586E009016011E8",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "3"
+    },
+    "GIFT_NUM": {
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "奖品数",
+        "description": "奖品数",
+        "type": "Integer",
+        "CODINGRULE": "UTF-8",
+        "default": "0",
+        "COLSCALE": "0",
+        "name": "GIFT_NUM",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "UUID": "62A376B2A2A647B58D18ED47CEE5B433",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "TASK_REG_DEAD_LINE": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "报名截止时间",
+        "COLSCALE": "0",
+        "name": "TASK_REG_DEAD_LINE",
+        "description": "报名截止时间",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "46A4F691FA664434BD095A3E9998E79B",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "Name": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Name",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "64"
+        },
+        "type": "String",
+        "UUID": "51B68709A16F45509149481F29CEEB17",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "64"
+    },
+    "RTM_ROL_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "角色ID",
+        "COLSCALE": "0",
+        "name": "RTM_ROL_ID",
+        "description": "角色ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "226C8FBF49484D6F8A17D9CA425E35A7",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "Show_view_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Show_view_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "0CB2FB60B2C24D1C9F62DC2B62E698A2",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "UTR_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "UTR_ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "9A5D30CA42184DF0A653A74CD49186CE",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "Create_tmp_table_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Create_tmp_table_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "89176105C0FE4F3488E71D33C4B0687D",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "starts": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "starts",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "0"
+        },
+        "type": "Date",
+        "UUID": "068B7B19255A4D58B29A40C9EDB66143",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "0"
+    },
+    "USR_USERNAME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "用户名",
+        "COLSCALE": "0",
+        "name": "USR_USERNAME",
+        "description": "用户名",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "2300C2FEBB7746E7BADF4502A4CDD7AF",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "Db": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Db",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "64"
+        },
+        "type": "String",
+        "UUID": "8B05DCE36F304B6C8D14125CDBC152EF",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "64"
+    },
+    "ret": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "0",
+        "COLSCALE": "0",
+        "name": "ret",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "3"
+        },
+        "type": "Integer",
+        "UUID": "5B324AA916CE440682799AD987CDA275",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "3"
+    },
+    "GTU_PHONE": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "手机号",
+        "COLSCALE": "0",
+        "name": "GTU_PHONE",
+        "description": "手机号",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "20"
+        },
+        "type": "String",
+        "UUID": "26F67FF23F0744F4BC38C1F0ADFFE3CA",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "20"
+    },
+    "AMV_MAIL": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "邮箱",
+        "COLSCALE": "0",
+        "name": "AMV_MAIL",
+        "description": "邮箱",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "B324668925454E18996231B81FCBE0E9",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "USR_STATE": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "状态 0:未生效，1:生效 , 2:锁定",
+        "COLSCALE": "0",
+        "name": "USR_STATE",
+        "description": "状态 0:未生效，1:生效 , 2:锁定",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "AF3BDCB0874541B6ADB880B9FE67AB4C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "GLB_VALUE": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "常量的值",
+        "COLSCALE": "0",
+        "name": "GLB_VALUE",
+        "description": "常量的值",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "200"
+        },
+        "type": "String",
+        "UUID": "02EF9ADA6E884DFA9C0CEB61841D26CC",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "200"
+    },
+    "USR_REMARK": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "备注",
+        "COLSCALE": "0",
+        "name": "USR_REMARK",
+        "description": "备注",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "200"
+        },
+        "type": "String",
+        "UUID": "9410C568041D4682A4EE3A1E4618FA58",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "200"
+    },
+    "GTU_ADDRESS": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "邮寄地址",
+        "COLSCALE": "0",
+        "name": "GTU_ADDRESS",
+        "description": "邮寄地址",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "200"
+        },
+        "type": "String",
+        "UUID": "4B4F0A1F5A89486EA83380DEDAF9B255",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "200"
+    },
+    "start_time": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "CURRENT_TIMESTAMP",
+        "COLSCALE": "0",
+        "name": "start_time",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "0"
+        },
+        "type": "Date",
+        "UUID": "43BF6CE3BD0F43A6ABA84F574E8C2974",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "0"
+    },
+    "specific_name": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "specific_name",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "64"
+        },
+        "type": "String",
+        "UUID": "1CFE52809A214E409FD2225A97C91257",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "64"
+    },
+    "COINS_USER_NAME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "用户名",
+        "COLSCALE": "0",
+        "name": "COINS_USER_NAME",
+        "description": "用户名",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "5C2194EBC58640DF98A2B00C2D031877",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "name": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "名称",
+        "COLSCALE": "0",
+        "name": "name",
+        "description": "名称",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "100"
+        },
+        "type": "String",
+        "UUID": "8FF704AD5AA74D2B864CD0E7E063C9C4",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "100"
+    },
+    "USK_PAGE_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "搜索页面id",
+        "COLSCALE": "0",
+        "name": "USK_PAGE_ID",
+        "description": "搜索页面id",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "C437F20D0F994062B68D915C21E9AE2C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "APP_PLATFORM": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "应用平台",
+        "COLSCALE": "0",
+        "name": "APP_PLATFORM",
+        "description": "应用平台",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "4BBD59958CA34B11B072425E61941C8C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "Create_routine_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Create_routine_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "8BAD713234EB4820BFF5A6D8153E4671",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "Proxied_host": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Proxied_host",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "60"
+        },
+        "type": "String",
+        "UUID": "D8610379E08A4A9BB1CA5AB1CEBA7BE1",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "60"
+    },
+    "Repl_slave_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Repl_slave_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "37EC677EC59B4CDAAB92DBFCAE164A35",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "Trigger_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Trigger_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "289F6CAF2CB24F6B9EDD4BDE7A59C871",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "Transition_type_id": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Transition_type_id",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "57A79FD62B9145FBBC7078A63ACA12BB",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "description": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "description",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "65535"
+        },
+        "type": "Object",
+        "UUID": "55EA8DF347BF43DC9748D487421986C0",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "65535"
+    },
+    "originator": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "originator",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "DAE7FBD17E8E4956B6F764E7DA226D57",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "updates": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "updates",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "20"
+        },
+        "type": "Long",
+        "UUID": "5AC16F1624414AA7B0CE4341D7D5E5A7",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "20"
+    },
+    "APP_VERSION": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "应用版本",
+        "COLSCALE": "0",
+        "name": "APP_VERSION",
+        "description": "应用版本",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "20"
+        },
+        "type": "String",
+        "UUID": "E2B689910BBC46179B820088261A83DB",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "20"
+    },
+    "Correction": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Correction",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "6156E1BDA8C44F47B8D7F9D3E57B1C8F",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "GTU_RECEIVER": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "收件人",
+        "COLSCALE": "0",
+        "name": "GTU_RECEIVER",
+        "description": "收件人",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "90227D599C4546048BE6339A1805D904",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "APP_DATE": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "上传日期",
+        "COLSCALE": "0",
+        "name": "APP_DATE",
+        "description": "上传日期",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "78AE8078C02C4B4A813BCEDF7121537E",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "Create_tablespace_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Create_tablespace_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "B8AC86D126E04EC3A74A90D781317BD8",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "Execute_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Execute_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "1EB32532D99F41D58E5A04A395CAF0F8",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "ends": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "ends",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "0"
+        },
+        "type": "Date",
+        "UUID": "270725596B6D4F768252AD55F122EB38",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "0"
+    },
+    "URL_MEN_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "URL_MEN_ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "100"
+        },
+        "type": "String",
+        "UUID": "9540731FDB8C422DB488ECAD228F5CCE",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "100"
+    },
+    "TU_TASK_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "任务ID",
+        "COLSCALE": "0",
+        "name": "TU_TASK_ID",
+        "description": "任务ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "F386B88DAE774199B978A8B7493AF72B",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "Repl_client_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Repl_client_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "FA77191C79494BC69255DD51630E594B",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "ROL_REMARK": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "备注",
+        "COLSCALE": "0",
+        "name": "ROL_REMARK",
+        "description": "备注",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "200"
+        },
+        "type": "String",
+        "UUID": "6153388853544D6382A7F43704264812",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "200"
+    },
+    "ssl_type": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "ssl_type",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "9"
+        },
+        "type": "String",
+        "UUID": "340B237D46A44B0A907BEDE3EB0CB7A5",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "9"
+    },
+    "security_type": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "DEFINER",
+        "COLSCALE": "0",
+        "name": "security_type",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "7"
+        },
+        "type": "String",
+        "UUID": "D56B38AEC9E44D0B8731D236DA11C2C5",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "7"
+    },
+    "Password": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Password",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "64"
+        },
+        "type": "String",
+        "UUID": "617A06AC635D4415B8DA2E30365A5B0A",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "64"
+    },
+    "Proxied_user": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Proxied_user",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "16"
+        },
+        "type": "String",
+        "UUID": "9F2C6067F8A440DE945F8541A34F3CF6",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "16"
+    },
+    "GIFT_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "ID",
+        "COLSCALE": "0",
+        "name": "GIFT_ID",
+        "description": "ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "AB10898EB4E143B7B501A6AC401ED91A",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "RESC_RESOURCE": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "源码压缩包二进制文件",
+        "COLSCALE": "0",
+        "name": "RESC_RESOURCE",
+        "description": "源码压缩包二进制文件",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "2147483647"
+        },
+        "type": "Object",
+        "UUID": "4B2442EAC6F34815B45DCD82F1EF547C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "2147483647"
+    },
+    "MEN_VALUE": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "url值，为空时，无对应的页面",
+        "COLSCALE": "0",
+        "name": "MEN_VALUE",
+        "description": "url值，为空时，无对应的页面",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "200"
+        },
+        "type": "String",
+        "UUID": "C7E3932800E4484494A3971499675FF0",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "200"
+    },
+    "USK_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "搜索词条ID",
+        "COLSCALE": "0",
+        "name": "USK_ID",
+        "description": "搜索词条ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "2846510FB220410A8408CDFA3E71523E",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "max_user_connections": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "0",
+        "COLSCALE": "0",
+        "name": "max_user_connections",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "EBD82BF835DD42F5828725C360116344",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "sql_mode": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "sql_mode",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "478"
+        },
+        "type": "String",
+        "UUID": "77D48046759A4B46950244433885F4A1",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "478"
+    },
+    "Username": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Username",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "64"
+        },
+        "type": "String",
+        "UUID": "E7B373C5DDE24F98B42851FF3DD64D22",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "64"
+    },
+    "USR_UPDATETIME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "更新时间",
+        "COLSCALE": "0",
+        "name": "USR_UPDATETIME",
+        "description": "更新时间",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "30"
+        },
+        "type": "String",
+        "UUID": "B02110C22FE84DED996977DF8988D434",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "30"
+    },
+    "comment": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "comment",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "64"
+        },
+        "type": "String",
+        "UUID": "8C7DA021E3FC45C0A56616375B09BB03",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "64"
+    },
+    "ROL_CREATEUSER": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "创建用户",
+        "COLSCALE": "0",
+        "name": "ROL_CREATEUSER",
+        "description": "创建用户",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "ACD8ED653E354DA488B374B8DA7F11A6",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "Show_db_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Show_db_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "17A253FDF7CF4A4FB0DC24907794C107",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "Alter_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Alter_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "0DF12CC25D9F4EFFAFA4ACC9DA2A9257",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "TASK_CREATE_TIME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "任务创建时间",
+        "COLSCALE": "0",
+        "name": "TASK_CREATE_TIME",
+        "description": "任务创建时间",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "F4B5DCACAE29479387D2A715A18EB445",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "References_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "References_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "837DDEECB7B1417DBBB6892C37D3FE08",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "URL_ACCESS": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "URL_ACCESS",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "31000E615FCB46E9846634C36915E069",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "UTR_ROL_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "角色ID",
+        "COLSCALE": "0",
+        "name": "UTR_ROL_ID",
+        "description": "角色ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "D872B3C764B44F4E84CA69D784E9486A",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "USR_LASTLOGINTIME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "最后登录成功时间",
+        "COLSCALE": "0",
+        "name": "USR_LASTLOGINTIME",
+        "description": "最后登录成功时间",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "30"
+        },
+        "type": "String",
+        "UUID": "EC27EFB2D2B348AF9EF21024CE8C1DBE",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "30"
+    },
+    "RTM_ACCESS": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "角色对应菜单的等级",
+        "COLSCALE": "0",
+        "name": "RTM_ACCESS",
+        "description": "角色对应菜单的等级",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "208CCA95F7314C8E896C2033F8144902",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "Drop_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Drop_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "45CC5C2146994919966622F949EDD3CB",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "USK_TYPE": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "搜索的位置，位置有：widget（组件）/developer（开发者中心）/menu（工具栏菜单）/appApi（应用接口）",
+        "COLSCALE": "0",
+        "name": "USK_TYPE",
+        "description": "搜索的位置，位置有：widget（组件）/developer（开发者中心）/menu（工具栏菜单）/appApi（应用接口）",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "B52E82080ABE4E0FA2DCF3B4BF9538A4",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "USR_CREATEUSER": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "创建用户",
+        "COLSCALE": "0",
+        "name": "USR_CREATEUSER",
+        "description": "创建用户",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "304FA89F34CE4D38B8F1939ADD9158A8",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "type": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "type",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "9"
+        },
+        "type": "String",
+        "UUID": "34EFD441B1864E07826C9411D364763C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "9"
+    },
+    "URL_DESC": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "URL_DESC",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "100"
+        },
+        "type": "String",
+        "UUID": "B9ADA2770ACD470DB0FAC7CE812D629C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "100"
+    },
+    "MEN_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "MEN_ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "BB30929AD2364EE8953F78A0BA3D310D",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "ACC_CODE": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "权限码",
+        "COLSCALE": "0",
+        "name": "ACC_CODE",
+        "description": "权限码",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "E8F4BB1725E94029A3C7543757B3DA50",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "Insert_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Insert_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "646F5BC711694E09BA8E59BBD190E973",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "sql_data_access": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "CONTAINS_SQL",
+        "COLSCALE": "0",
+        "name": "sql_data_access",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "17"
+        },
+        "type": "String",
+        "UUID": "5C0135377039480F8DE70C6FEB57274B",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "17"
+    },
+    "download_url": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "下载链接",
+        "COLSCALE": "0",
+        "name": "download_url",
+        "description": "下载链接",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "200"
+        },
+        "type": "String",
+        "UUID": "ACBC29D3FC12495D97F75EF7E59A901D",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "200"
+    },
+    "id": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "id",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "100"
+        },
+        "type": "String",
+        "UUID": "FCB98DF8591E4F80ADFEA877CB665A4D",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "100"
+    },
+    "execute_at": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "execute_at",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "0"
+        },
+        "type": "Date",
+        "UUID": "54F9752865594A6F94A865A63721AC99",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "0"
+    },
+    "AMV_CREATE_TIME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "创建时间",
+        "COLSCALE": "0",
+        "name": "AMV_CREATE_TIME",
+        "description": "创建时间",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "30"
+        },
+        "type": "String",
+        "UUID": "1AC132BC921C443EA67BB9956D25F387",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "30"
+    },
+    "USR_LASTHOSTADDRESS": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "用户ip",
+        "COLSCALE": "0",
+        "name": "USR_LASTHOSTADDRESS",
+        "description": "用户ip",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "20"
+        },
+        "type": "String",
+        "UUID": "33376CF988014DDD897DBD4731B48401",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "20"
+    },
+    "Shutdown_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Shutdown_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "7DA10ECBF1514F7EA5B3322D4C0A4C8D",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "Position": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Position",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "20"
+        },
+        "type": "Long",
+        "UUID": "40163E24801C4440915F6BFE16035687",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "20"
+    },
+    "ROL_NAME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "角色名",
+        "COLSCALE": "0",
+        "name": "ROL_NAME",
+        "description": "角色名",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "100"
+        },
+        "type": "String",
+        "UUID": "CA3829CF957B4CA99B1D6B00DDC75C68",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "100"
+    },
+    "USR_NICKNAME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "昵称",
+        "COLSCALE": "0",
+        "name": "USR_NICKNAME",
+        "description": "昵称",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "D28FC1ED7153426A99C9E1E2CE2BDBA5",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "max_updates": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "0",
+        "COLSCALE": "0",
+        "name": "max_updates",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "BE041A3CCC0F4BD0A07870938D45D91D",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "command_type": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "command_type",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "64"
+        },
+        "type": "String",
+        "UUID": "3B728DA9E2714C62BFB3C61C5BCB090E",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "64"
+    },
+    "TU_USER_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "用户ID",
+        "COLSCALE": "0",
+        "name": "TU_USER_ID",
+        "description": "用户ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "78462F9A094B4A3696D9DCC3F300BF06",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "RESC_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "案例源码id，id同aweb_menu",
+        "COLSCALE": "0",
+        "name": "RESC_ID",
+        "description": "案例源码id，id同aweb_menu",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "B05D61CC87E445BEBE9C2FBECAE79530",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "USR_PASSWORD": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "密码",
+        "COLSCALE": "0",
+        "name": "USR_PASSWORD",
+        "description": "密码",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "300"
+        },
+        "type": "String",
+        "UUID": "FAF5DED69F324137A09A95097549D6F9",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "300"
+    },
+    "APP_DEV": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "应用设备",
+        "COLSCALE": "0",
+        "name": "APP_DEV",
+        "description": "应用设备",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "9A12A394ED8544B7A1ED48FA8711EA93",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "DEMO_URL": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "案例路径",
+        "COLSCALE": "0",
+        "name": "DEMO_URL",
+        "description": "案例路径",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "200"
+        },
+        "type": "String",
+        "UUID": "CDEBCFB62D554CD0A17AE59C10913444",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "200"
+    },
+    "TASK_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "任务单id",
+        "COLSCALE": "0",
+        "name": "TASK_ID",
+        "description": "任务单id",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "9185D13A26674EECA3371AB1C06B4558",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "RTM_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "RTM_ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "8736B03F365C46DA94665C3E53AE0009",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "APP_QRCODE": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "下载二维码",
+        "COLSCALE": "0",
+        "name": "APP_QRCODE",
+        "description": "下载二维码",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "16777215"
+        },
+        "type": "Object",
+        "UUID": "4CFA7D49616A421FB983BF3E211DF253",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "16777215"
+    },
+    "status": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "ENABLED",
+        "COLSCALE": "0",
+        "name": "status",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "18"
+        },
+        "type": "String",
+        "UUID": "B9B997CB49C64C5B923BDF0705C902E8",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "18"
+    },
+    "SYS_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "系统ID",
+        "COLSCALE": "0",
+        "name": "SYS_ID",
+        "description": "系统ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "20"
+        },
+        "type": "String",
+        "UUID": "087CDAA5AA064E0394C5FA7450E55DE1",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "20"
+    },
+    "Routine_type": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Routine_type",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "9"
+        },
+        "type": "String",
+        "UUID": "CF283934A0454632B1A04B0D92D8E977",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "9"
+    },
+    "MEN_SEQ": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "菜单序号",
+        "COLSCALE": "0",
+        "name": "MEN_SEQ",
+        "description": "菜单序号",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "5"
+        },
+        "type": "String",
+        "UUID": "D8031B9B25BD4EEFAB70F53A4A6A5072",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "5"
+    },
+    "Index_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Index_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "17A0AF9FD8064CF7AE0CB982F702D473",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "TASK_STATUS": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "任务状态：0:初始状态， 1：执行中（已分配）， 2：关闭， 3： 终止 ",
+        "COLSCALE": "0",
+        "name": "TASK_STATUS",
+        "description": "任务状态：0:初始状态， 1：执行中（已分配）， 2：关闭， 3： 终止 ",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "2F3FED41B41C4D90892C0279F3B12CA8",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "epoch": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "epoch",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "20"
+        },
+        "type": "Long",
+        "UUID": "D0683995E7044A8C8E7B96D961572EA3",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "20"
+    },
+    "APP_USER": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "上传用户",
+        "COLSCALE": "0",
+        "name": "APP_USER",
+        "description": "上传用户",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "3C3F9C5F5C7D4F2288F4F1DE7C56F399",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "db_collation": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "db_collation",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "32"
+        },
+        "type": "String",
+        "UUID": "D984373EE8E2491092993F5ABF34125A",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "32"
+    },
+    "AMV_VERIFY_STATUS": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "验证状态",
+        "COLSCALE": "0",
+        "name": "AMV_VERIFY_STATUS",
+        "description": "验证状态",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "2"
+        },
+        "type": "String",
+        "UUID": "E9F1A0875D6943B0ADF7BB559579F4D1",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "2"
+    },
+    "DEMO_TYPE": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "案例打开方式",
+        "COLSCALE": "0",
+        "name": "DEMO_TYPE",
+        "description": "案例打开方式",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "String",
+        "UUID": "275A2103AF8546BC9A6ECF37E6D8A850",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "ULG_LASTHOST": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "最后登录HOST",
+        "COLSCALE": "0",
+        "name": "ULG_LASTHOST",
+        "description": "最后登录HOST",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "25"
+        },
+        "type": "String",
+        "UUID": "4EDCABA0FDAC46629781B25371D4071E",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "25"
+    },
+    "GTU_GIFT_NUM": {
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "兑奖数量",
+        "description": "兑奖数量",
+        "type": "Integer",
+        "CODINGRULE": "UTF-8",
+        "default": "0",
+        "COLSCALE": "0",
+        "name": "GTU_GIFT_NUM",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "UUID": "AF402583EBC1412C83F33E9B8022D102",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "TU_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "关联表id",
+        "COLSCALE": "0",
+        "name": "TU_ID",
+        "description": "关联表id",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "0DA7FD62BD134A9D942CC779738F6028",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "body_utf8": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "body_utf8",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "2147483647"
+        },
+        "type": "Object",
+        "UUID": "87FF1BED468E4DDE806DF4EC3BE0C32A",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "2147483647"
+    },
+    "Table_name": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Table_name",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "64"
+        },
+        "type": "String",
+        "UUID": "C25EE928CA074F69AE8E497CBCDCB0C5",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "64"
+    },
+    "APP_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "应用ID",
+        "COLSCALE": "0",
+        "name": "APP_ID",
+        "description": "应用ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "100"
+        },
+        "type": "String",
+        "UUID": "74A836590DDC46798580E71EF7F0CE67",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "100"
+    },
+    "USK_AUI_VERSION": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "aui2版本",
+        "COLSCALE": "0",
+        "name": "USK_AUI_VERSION",
+        "description": "aui2版本",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "DEB6E73EEC9245ECB39F8820C262BABE",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "COINS_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "ID",
+        "COLSCALE": "0",
+        "name": "COINS_ID",
+        "description": "ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "C06E9082DA694D9997E1582128CFB240",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "MEN_TYPE": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "菜单渲染位置",
+        "COLSCALE": "0",
+        "name": "MEN_TYPE",
+        "description": "菜单渲染位置",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "20"
+        },
+        "type": "String",
+        "UUID": "04B406C0A5FE4E30B019493428FBE5F0",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "20"
+    },
+    "help_keyword_id": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "help_keyword_id",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "04EA642DF7B24F3F9CD9EE6E36964688",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "Grant_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Grant_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "717E956CE4B645BB98195C9D6B11E8C3",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "USR_LOCKTIME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "锁定开始时间",
+        "COLSCALE": "0",
+        "name": "USR_LOCKTIME",
+        "description": "锁定开始时间",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "30"
+        },
+        "type": "String",
+        "UUID": "53F8E444B19747B8817195C2162449DB",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "30"
+    },
+    "GTU_GIFT_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "奖品ID",
+        "COLSCALE": "0",
+        "name": "GTU_GIFT_ID",
+        "description": "奖品ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "4DE59EDB77B24F7AA9A6636457DCE918",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "GTU_STATUS": {
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "发货状态： 0：未发货，1： 发货中， 2：已收",
+        "description": "发货状态： 0：未发货，1： 发货中， 2：已收",
+        "type": "String",
+        "CODINGRULE": "UTF-8",
+        "default": "0",
+        "COLSCALE": "0",
+        "name": "GTU_STATUS",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "20"
+        },
+        "UUID": "A448BA159EF14FDC9090EE419629D726",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "20"
+    },
+    "url": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "url",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "65535"
+        },
+        "type": "Object",
+        "UUID": "738DFCA870204499ADACECDAA26832C6",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "65535"
+    },
+    "insert_id": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "insert_id",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "8AC5740B8E064A23AC2A422B260BE807",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "Super_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Super_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "E5BBE81122634DD3A7060B3E9F5F95A1",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "Time_zone_id": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Time_zone_id",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "CCEB3FDA17714F5F82DB8357D4003DCF",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "TU_STATUS": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "状态： 0：初始，1：已申请，执行中， 2：关闭， 3：终止",
+        "COLSCALE": "0",
+        "name": "TU_STATUS",
+        "description": "状态： 0：初始，1：已申请，执行中， 2：关闭， 3：终止",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "4036B4D8F5204909856ED36417A2DFE1",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "describe_doc": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "describe_doc",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "100"
+        },
+        "type": "String",
+        "UUID": "11C010A6161D4D81A9980D920E76E62C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "100"
+    },
+    "GTU_TYPE": {
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "收取方式， 0：现取， 1：邮寄",
+        "description": "收取方式， 0：现取， 1：邮寄",
+        "type": "Integer",
+        "CODINGRULE": "UTF-8",
+        "default": "0",
+        "COLSCALE": "0",
+        "name": "GTU_TYPE",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "UUID": "6C2B9749A8B4424DB179B7BFB126092D",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "Update_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Update_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "8D3F5DDD08724EDFA2FF8EB04171B308",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "USK_HREF": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "搜索的链接",
+        "COLSCALE": "0",
+        "name": "USK_HREF",
+        "description": "搜索的链接",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "500"
+        },
+        "type": "String",
+        "UUID": "A355BECAEAB248B9BB3F6F98B7AF2311",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "500"
+    },
+    "sql_text": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "sql_text",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "16777215"
+        },
+        "type": "Object",
+        "UUID": "054C2CA5F82C49BA94FB1E3345E3AAFF",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "16777215"
+    },
+    "Abbreviation": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Abbreviation",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "8"
+        },
+        "type": "String",
+        "UUID": "205BC2DDDCC94F1297C697FF759430AF",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "8"
+    },
+    "argument": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "argument",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "16777215"
+        },
+        "type": "Object",
+        "UUID": "6D620BBF95B14FBC91BAB720EA52BE83",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "16777215"
+    },
+    "Table_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Table_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "98"
+        },
+        "type": "String",
+        "UUID": "6BE2DA9BC38646B3B1D2ADB569F75525",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "98"
+    },
+    "File_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "File_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "91D077DBBCB84A65AB379BCA7C03909B",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "TASK_ASSIGNEE": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "任务审批人",
+        "COLSCALE": "0",
+        "name": "TASK_ASSIGNEE",
+        "description": "任务审批人",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "800"
+        },
+        "type": "String",
+        "UUID": "FD8F4DB6216E41EDA1341789ABE1382E",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "800"
+    },
+    "body": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "body",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "2147483647"
+        },
+        "type": "Object",
+        "UUID": "9E07BB81015B490DB31351499B0DFC43",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "2147483647"
+    },
+    "Use_leap_seconds": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Use_leap_seconds",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "91ADF2C232FD4C1FB1BCE4987D9FB72E",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "schemaops": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "schemaops",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "20"
+        },
+        "type": "Long",
+        "UUID": "1EBB9851445841EAB36B352D172FA459",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "20"
+    },
+    "character_set_client": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "character_set_client",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "32"
+        },
+        "type": "String",
+        "UUID": "DB588E4A3E0141C8928B075333D37F8D",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "32"
+    },
+    "thread_id": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "thread_id",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "3BA0450F1F5C42F18C1BA586E3788D50",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "GIFT_COIN": {
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "奖品所需金币数",
+        "description": "奖品所需金币数",
+        "type": "Integer",
+        "CODINGRULE": "UTF-8",
+        "default": "0",
+        "COLSCALE": "0",
+        "name": "GIFT_COIN",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "UUID": "79DF02E199704867B4122A81CE55D881",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "MEN_LANG": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "菜单项语言",
+        "COLSCALE": "0",
+        "name": "MEN_LANG",
+        "description": "菜单项语言",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "String",
+        "UUID": "FBE6380CE38C4058955984E2A008C134",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "Create_view_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Create_view_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "9A694C6BFD034C0E9541E855393DB8B5",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "modified": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "0000-00-00 00:00:00",
+        "COLSCALE": "0",
+        "name": "modified",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "0"
+        },
+        "type": "Date",
+        "UUID": "B8100EE5627B44A88CEE7AA964BCE2AC",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "0"
+    },
+    "USK_TIME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "搜索时间",
+        "COLSCALE": "0",
+        "name": "USK_TIME",
+        "description": "搜索时间",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "264FEA40F34C4D7F92296E464FA0FD77",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "GIFT_DESP": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "奖品描述",
+        "COLSCALE": "0",
+        "name": "GIFT_DESP",
+        "description": "奖品描述",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "500"
+        },
+        "type": "String",
+        "UUID": "8F0C02C9A37B43EF903598147CBAFC6B",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "500"
+    },
+    "interval_field": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "interval_field",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "18"
+        },
+        "type": "String",
+        "UUID": "078BDACB2BB54624A73FB4DF351D160E",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "18"
+    },
+    "UUID": "0D743F94CF6E48C9846265B97CFB05E3",
+    "TASK_EXTENSION": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "预留扩展字段",
+        "COLSCALE": "0",
+        "name": "TASK_EXTENSION",
+        "description": "预留扩展字段",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "2147483647"
+        },
+        "type": "Object",
+        "UUID": "CBCBB8F72B054A57A89F6B964E333C23",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "2147483647"
+    },
+    "APP_URL": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "下载链接",
+        "COLSCALE": "0",
+        "name": "APP_URL",
+        "description": "下载链接",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "200"
+        },
+        "type": "String",
+        "UUID": "AEE32C67CB3D45A696E67F10F15ADAAC",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "200"
+    },
+    "GLB_KEY": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "常量的键",
+        "COLSCALE": "0",
+        "name": "GLB_KEY",
+        "description": "常量的键",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "200"
+        },
+        "type": "String",
+        "UUID": "7290613E324B4C5F8BB513FE5A8B4301",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "200"
+    },
+    "TASK_NAME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "任务名称",
+        "COLSCALE": "0",
+        "name": "TASK_NAME",
+        "description": "任务名称",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "C9104AF507634684AC633B9931D6E959",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "created": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "CURRENT_TIMESTAMP",
+        "COLSCALE": "0",
+        "name": "created",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "0"
+        },
+        "type": "Date",
+        "UUID": "AA84192855EF4BEDA3B3116957F5FEC9",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "0"
+    },
+    "Transition_time": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Transition_time",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "19"
+        },
+        "type": "Long",
+        "UUID": "59BBA28D38754E59BF26B2FAF5C7AD45",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "19"
+    },
+    "x509_subject": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "x509_subject",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "65535"
+        },
+        "type": "Object",
+        "UUID": "10678962A468413F9253A76328F6C83A",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "65535"
+    },
+    "user_host": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "user_host",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "16777215"
+        },
+        "type": "Object",
+        "UUID": "2025BEC1949C4814BF36D3AE82405589",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "16777215"
+    },
+    "server_id": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "server_id",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "E24A5EE6DAA548E790442AE03E071687",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "is_deterministic": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "NO",
+        "COLSCALE": "0",
+        "name": "is_deterministic",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "3"
+        },
+        "type": "String",
+        "UUID": "E3A4F4477B8C4003AC2191C9D45A159B",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "3"
+    },
+    "ACC_DESC": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "描述",
+        "COLSCALE": "0",
+        "name": "ACC_DESC",
+        "description": "描述",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "100"
+        },
+        "type": "String",
+        "UUID": "4FCFB53906CC498C87A774D7C964146E",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "100"
+    },
+    "AMV_CAPTCHA": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "验证码",
+        "COLSCALE": "0",
+        "name": "AMV_CAPTCHA",
+        "description": "验证码",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "String",
+        "UUID": "7807C7A02D0040B0AD067A361E788AE7",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "help_category_id": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "help_category_id",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "5"
+        },
+        "type": "Integer",
+        "UUID": "392DE867005946839EF4956AEC858652",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "5"
+    },
+    "URL_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "URL_ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "200"
+        },
+        "type": "String",
+        "UUID": "560CF8CDEC564AF390BA8B173ABF5A19",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "200"
+    },
+    "COINS_CHANGE_NUM": {
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "已兑换金币数",
+        "description": "已兑换金币数",
+        "type": "Integer",
+        "CODINGRULE": "UTF-8",
+        "default": "0",
+        "COLSCALE": "0",
+        "name": "COINS_CHANGE_NUM",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "UUID": "3D61F31592344446BD1516ACD781B8F1",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "USR_TELEPHONE": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "电话号码",
+        "COLSCALE": "0",
+        "name": "USR_TELEPHONE",
+        "description": "电话号码",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "20"
+        },
+        "type": "String",
+        "UUID": "D388DE0A38D1482D88DEA7E3FE50E8EE",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "20"
+    },
+    "File": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "File",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "255"
+        },
+        "type": "String",
+        "UUID": "9F96846CE67943348D9DB5D514E31052",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "255"
+    },
+    "USR_FAILEDLOGINCOUNT": {
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "连续登录错误次数",
+        "description": "连续登录错误次数",
+        "type": "String",
+        "CODINGRULE": "UTF-8",
+        "default": "0",
+        "COLSCALE": "0",
+        "name": "USR_FAILEDLOGINCOUNT",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "2"
+        },
+        "UUID": "9120A291C1CE4EB19CF18D6C45691F51",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "2"
+    },
+    "DEMO_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "案例ID",
+        "COLSCALE": "0",
+        "name": "DEMO_ID",
+        "description": "案例ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "9C5E571419BB4D30AD9AAEE7A39D50B3",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "ROL_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "ROL_ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "581FAD94838B449BBA8B0AEF6956B290",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "RTM_MEN_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "菜单ID",
+        "COLSCALE": "0",
+        "name": "RTM_MEN_ID",
+        "description": "菜单ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "3DD9B6C9E9B84113AB94652E8AFC3209",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "User": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "User",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "16"
+        },
+        "type": "String",
+        "UUID": "27801D4746094733BAF0B9BAD4092D61",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "16"
+    },
+    "Server_name": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Server_name",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "64"
+        },
+        "type": "String",
+        "UUID": "4B76298BF8F44C8F8BE82C4EA432EEA9",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "64"
+    },
+    "GTU_USERNAME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "兑奖者",
+        "COLSCALE": "0",
+        "name": "GTU_USERNAME",
+        "description": "兑奖者",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "1A00273E196145B4AD0889228F7FDC7F",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "Select_priv": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "N",
+        "COLSCALE": "0",
+        "name": "Select_priv",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "1D6C603C4E5E4123AB030BF906289B73",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "RESC_TYPE": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "案例类型， 表单案例、表格案例、功能组件案例、容器案例、Echart图表案例、组件组合案例、其他类型案例等",
+        "COLSCALE": "0",
+        "name": "RESC_TYPE",
+        "description": "案例类型， 表单案例、表格案例、功能组件案例、容器案例、Echart图表案例、组件组合案例、其他类型案例等",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "20"
+        },
+        "type": "String",
+        "UUID": "44CCD57D4DD34FD5B9A6BACE87265AEB",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "20"
+    },
+    "ROL_UPDATETIME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "更新时间",
+        "COLSCALE": "0",
+        "name": "ROL_UPDATETIME",
+        "description": "更新时间",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "30"
+        },
+        "type": "String",
+        "UUID": "1288A6547E5C4BE8B84A588ED0B5A63C",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "30"
+    },
+    "UTR_USR_ID": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "用户ID",
+        "COLSCALE": "0",
+        "name": "UTR_USR_ID",
+        "description": "用户ID",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "CDFA7A4E0FA9420E963DA2733E9FA136",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "last_executed": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "last_executed",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "0"
+        },
+        "type": "Date",
+        "UUID": "BF1DF31020E148CC848AFFB22BD40F9D",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "0"
+    },
+    "GIFT_NAME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "奖品名称",
+        "COLSCALE": "0",
+        "name": "GIFT_NAME",
+        "description": "奖品名称",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "04515D10D7A0491085F6801465EAF8C0",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "APP_DESP": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "应用描述",
+        "COLSCALE": "0",
+        "name": "APP_DESP",
+        "description": "应用描述",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "200"
+        },
+        "type": "String",
+        "UUID": "1915BCF64001463D8CB290A231ACDB3E",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "200"
+    },
+    "APP_TIMES": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "下载次数",
+        "COLSCALE": "0",
+        "name": "APP_TIMES",
+        "description": "下载次数",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "FF9A9552C5FD40F196EF87D04C963141",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "MEN_STATE": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "MEN_STATE",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "1"
+        },
+        "type": "String",
+        "UUID": "405AE0ED33AF4778BDD47AFCAF66EF7D",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "1"
+    },
+    "Host": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Host",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "60"
+        },
+        "type": "String",
+        "UUID": "E601A11A481444FFAC7CFBC2127C0028",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "60"
+    },
+    "TU_FINISH_DEAD_LINE": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "预计完成时间",
+        "COLSCALE": "0",
+        "name": "TU_FINISH_DEAD_LINE",
+        "description": "预计完成时间",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "50"
+        },
+        "type": "String",
+        "UUID": "1CAA26FA17644A37B4365CE8A251D617",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "50"
+    },
+    "time_zone": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "SYSTEM",
+        "COLSCALE": "0",
+        "name": "time_zone",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "64"
+        },
+        "type": "String",
+        "UUID": "EEA7FFC14AD14B7A9B8E8B5A3F4F8609",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "64"
+    },
+    "param_list": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "param_list",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "65535"
+        },
+        "type": "Object",
+        "UUID": "416ED1F99CB247B3A065C497A267E491",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "65535"
+    },
+    "lock_time": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "lock_time",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "0"
+        },
+        "type": "Time",
+        "UUID": "16CA66FE163A4E36896A7C5065EB620D",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "0"
+    },
+    "rows_sent": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "rows_sent",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "9A431B444CC34DC7AC2A29A68CD23526",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "Routine_name": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "COLSCALE": "0",
+        "name": "Routine_name",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "64"
+        },
+        "type": "String",
+        "UUID": "AA950F74033040D4937A6A83544A5A8F",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "64"
+    },
+    "COINS_TODAY_NUM": {
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "今天金币数",
+        "description": "今天金币数",
+        "type": "Integer",
+        "CODINGRULE": "UTF-8",
+        "default": "0",
+        "COLSCALE": "0",
+        "name": "COINS_TODAY_NUM",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "UUID": "8C979CACA352489CB3C47CD5F8E6C86A",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "ROL_CREATETIME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "创建时间",
+        "COLSCALE": "0",
+        "name": "ROL_CREATETIME",
+        "description": "创建时间",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "30"
+        },
+        "type": "String",
+        "UUID": "00F5FF54FFAF4075BF6E2EFA37626D4A",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "30"
+    },
+    "USR_LASTFAILEDLOGINTIME": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "最后登录失败时间",
+        "COLSCALE": "0",
+        "name": "USR_LASTFAILEDLOGINTIME",
+        "description": "最后登录失败时间",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "30"
+        },
+        "type": "String",
+        "UUID": "4F3B8141853547BE8918E74E81AAEC4E",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "30"
+    },
+    "USK_NUM": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "PUBCODECNAME": "搜索匹配数量",
+        "COLSCALE": "0",
+        "name": "USK_NUM",
+        "description": "搜索匹配数量",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "10"
+        },
+        "type": "Integer",
+        "UUID": "81BDFF1EE8AA44E794E9697D282B8E5A",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "10"
+    },
+    "on_completion": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "DROP",
+        "COLSCALE": "0",
+        "name": "on_completion",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "8"
+        },
+        "type": "String",
+        "UUID": "8D92CA8BD2084307A7028934C6C0373E",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "8"
+    },
+    "event_time": {
+        "CODINGRULE": "UTF-8",
+        "DICTTYPE": "2",
+        "default": "CURRENT_TIMESTAMP",
+        "COLSCALE": "0",
+        "name": "event_time",
+        "Parameter": {
+            "pname": "字段长度",
+            "pvalue": "0"
+        },
+        "type": "Date",
+        "UUID": "004EC1F7378B40C5A174EA275EFA01C9",
+        "EDITION": "v0.0.1",
+        "APPLYAREA": "casdf.cadf",
+        "fieldLength": "0"
+    }
+}
