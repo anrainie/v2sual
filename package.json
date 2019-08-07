@@ -12,7 +12,8 @@
             "anra": "node ./launch.js --config=./config/config.project.anra.json",
             "toxhq": "node ./launch.js --config=./config/config.project.toxhq.json",
             "xhq": "node ./launch.js --config=./config/config.project.xhq.json",
-            "empty": "node  ./server/server.js sh=http://localhost sp=7003 id=empty name=新建项目 ch=http://localhost cp=3002 ocp=3002 base=./project/empty  preview=http://localhost:3002"
+            "empty": "node  ./server/server.js sh=http://localhost sp=7003 id=empty name=新建项目 ch=http://localhost cp=3002 ocp=3002 base=./project/empty  preview=http://localhost:3002",
+            "ad": "node  ./server/server.js sh=http://localhost sp=7003 id=ad name=广告投放 ch=http://localhost cp=3005 ocp=3005 base=./project/ad pipe=./pipe component=./src/v2Components  preview=http://localhost:7033"
       },
       "dependencies": {
             "@handsontable/vue": "^3.1.0",
