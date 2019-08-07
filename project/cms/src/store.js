@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import variables from '../element-variables.scss'
 
 Vue.use(Vuex)
 
@@ -9,7 +8,6 @@ export default new Vuex.Store({
     openedTabs: [], //所有打开的路由
     activeIndex: '', //激活状态
     subDialogVisible: false,
-    theme:variables.theme,
     subPageHref:'',
     subPageParams: '',
     _op_subPage:null,//弹窗子页面
@@ -42,7 +40,7 @@ export default new Vuex.Store({
   mutations: {
     // 添加tabs
     add_tabs(state, data) {
-      global.pageMap[data.route] = true;
+      // global.pageMap[data.route] = true;
       this.state.openedTabs.push(data);
     },
     // 删除tabs
@@ -59,12 +57,15 @@ export default new Vuex.Store({
     delete_left_tabs(state,idx){
       let cIdx = state.openedTabs.findIndex(item=>item.route ===idx);
       state.openedTabs.splice(0,cIdx);
+      // this.state.activeIndex!== idx && (this.state.activeIndex=idx)
 
+      
     },
     delete_right_tabs(state,idx){
       let cIdx = state.openedTabs.findIndex(item=>item.route ===idx);
       let num = state.openedTabs.length-cIdx
       state.openedTabs.splice(cIdx+1,num);
+      // this.state.activeIndex!== idx && (this.state.activeIndex=idx)
      
     },
     delete_allTabs() {
@@ -82,17 +83,17 @@ export default new Vuex.Store({
       this.state.subDialogVisible = val;
     },
     setModalCallback(state, callback) {
-      this.state.cancelCallback = callback.cancel;
-      this.state.confirmCallback = callback.confirm;
+      state.cancelCallback = callback.cancel;
+      state.confirmCallback = callback.confirm;
       state.cancelBtn =callback.hideCancelBtn;
       state.confirmBtn = callback.hideConfirmBtn;
     },
- 
-    do_cancel(state,vueIns) {
-      this.state.cancelCallback(vueIns);
+    
+    do_cancel() {
+      this.state.cancelCallback();
     },
-    do_confirm(state,vueIns) {
-      this.state.confirmCallback(vueIns);
+    do_confirm() {
+      this.state.confirmCallback();
     },
     set_subPageHref(state, herf) {
       this.state.subPageHref = herf;

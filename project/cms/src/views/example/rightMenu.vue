@@ -96,7 +96,6 @@
 
 <script>
 
-import rightMenu from '@/components/rightMenu'
 export default {
   data() {
     return {
@@ -141,9 +140,7 @@ export default {
 
    }
   },
-  components:{
-    rightMenu
-  },
+
       resume(){
       console.log('右键菜单页面resume')
     },

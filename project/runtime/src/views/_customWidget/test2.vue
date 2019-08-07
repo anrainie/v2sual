@@ -33,8 +33,8 @@
   </v2container>
 </template>
 <script>
-import { root, cpt, widget } from "@/utils/v2-view";
-import events from "@/utils/events";
+import { root, cpt, widget } from "@/ideLib/mixin/v2-view";
+import events from "@/ideLib/mixin/events";
 
 export default {
   data() {

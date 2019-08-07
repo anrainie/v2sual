@@ -33,7 +33,6 @@
    </el-row>
 </template>
 <script>
-import asyncComponent from '@/components/asyncComponent'
 
 export default {
     data(){
@@ -75,9 +74,7 @@ export default {
             id:'122'
         }]
     },
-    components:{
-        asyncComponent
-    },
+
     resume(){
       console.log('动态子页面resume')
     },

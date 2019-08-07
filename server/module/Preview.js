@@ -9,9 +9,6 @@ const {
 const Result = require('../util/Result');
 const Router = require('koa-router');
 
-// const { Parser } = require("htmlparser2");
-// const ParseDom = Parser.parseDOM;
-
 const config = require('../config/config.base');
 const configJson=require("../config/config.json");
 
@@ -71,46 +68,81 @@ class Preview {
 
       try {
       
-        // const componentPath = config.runtime.component;
 
         const absProjectPath = path.resolve(projectPath);
 
-        const files = await readDir(context.componentPath);
                
-        //项目组件列表
+        //组件列表
         let vueMap = {};
-        files
-          //读取每一个package.json
-          .filter(f => f.lastIndexOf('package.json') !== -1)
-          //读取组件和编辑器
-          .forEach(f => {
-            try {
-                          // .map(f => f.replace(path.sep + 'package.json', ''))
-                let rePath= f.replace(path.sep + 'package.json', '');
+
+        //平台级组件
+        const platformComponentPath=path.join(context.projectPath,configJson.runtime.platformComponent);
+        if(fs.existsSync(platformComponentPath)){
+          const components = await readDir(platformComponentPath);
+          components
+            .filter(f => f.lastIndexOf('package.json') !== -1)
        
+            .forEach(f => {
+     
               const contentStr = fs.readFileSync(f).toString();
               const content = JSON.parse(contentStr);
 
               const paths = f.split(path.sep);
-              // const scope=content.name;
+              const scope=content.name;
               const name = camelcase(paths[paths.length - 2]);
-            
-              const filepath = path.relative(path.dirname(context.componentFile), rePath);
 
-              vueMap[name] =filepath ;
+              vueMap[name] =scope ;
 
               //参数编辑器
               if (content.paramEditor) {
-                vueMap[content.paramEditor.name] = path.join(filepath, content.paramEditor.path);
+                vueMap[content.paramEditor.name] = path.join(scope, content.paramEditor.path);
               }
-
               //自定义组件编辑器
               if (content.editor) {
-                vueMap[content.editor.name] = path.join(filepath, content.editor.path);
+                vueMap[content.editor.name] = path.join(scope, content.editor.path);
               }
-            } catch (e) { }
-          });
+           
+            })
+        }
 
+
+        //项目级组件
+        if(fs.existsSync(context.componentPath)){
+          const files = await readDir(context.componentPath);
+          files
+            //读取每一个package.json
+            .filter(f => f.lastIndexOf('package.json') !== -1)
+            //读取组件和编辑器
+            .forEach(f => {
+              try {
+                            // .map(f => f.replace(path.sep + 'package.json', ''))
+                let rePath= f.replace(path.sep + 'package.json', '');
+         
+                const contentStr = fs.readFileSync(f).toString();
+                const content = JSON.parse(contentStr);
+  
+                const paths = f.split(path.sep);
+                // const scope=content.name;
+                const name = camelcase(paths[paths.length - 2]);
+              
+                const filepath = path.relative(path.dirname(context.componentFile), rePath);
+  
+                vueMap[name] =filepath ;
+  
+                //参数编辑器
+                if (content.paramEditor) {
+                  vueMap[content.paramEditor.name] = path.join(filepath, content.paramEditor.path);
+                }
+  
+                //自定义组件编辑器
+                if (content.editor) {
+                  vueMap[content.editor.name] = path.join(filepath, content.editor.path);
+                }
+              } catch (e) { }
+            });
+        
+        }
+      
         const vueFiles = Object.keys(vueMap).map(n => {
           return {
             name: n,
@@ -118,11 +150,7 @@ class Preview {
           }
         });
 
-     
-        
-
         //pipe
-      
         let pipeMap={};
         let pipeList=[];
         const pipePath=path.join(context.projectPath,configJson.runtime.pipe);
@@ -141,10 +169,6 @@ class Preview {
               let  name=content.docs.name;
               let nameArr= name.split('.');
               name=nameArr[nameArr.length-1];
-              // const paths = f.split(path.sep);
-              // const name = (paths[paths.length - 1]).split('.');
-              // const filepath = path.relative(path.dirname(context.componentFile), rePath);
-
               pipeMap[name]=true;
               return {
                 name: name,
@@ -159,8 +183,7 @@ class Preview {
           const pipes = await readDir(platformPipePath);
            pipes
             .filter(f => f.lastIndexOf('package.json') !== -1)
-            // .map(f => f.replace(path.sep + 'package.json', ''))
-            // .sort()
+
             .forEach(f => {
               let contentStr = fs.readFileSync(f).toString();
               let content = JSON.parse(contentStr);
@@ -174,12 +197,6 @@ class Preview {
                 })
               }
            
-              // const paths = f.split(path.sep);
-              // const name = (paths[paths.length - 1]).split('.');
-              // return {
-              //   name: name[name.length-1],
-              //   path: 
-              // }
             })
         }
 

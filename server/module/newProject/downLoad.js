@@ -40,25 +40,7 @@ const init=async(opt={})=>{
                 console.log('成功下载vue-spa');
             }
 
-           //修改package.json 管道和组件,port
-           let packageJsonPath=path.resolve(dest,'./package.json'),packageData={};
-           if(fs.existsSync(packageJsonPath)){
-               packageData=await util.readFile(packageJsonPath);
-               packageData=JSON.parse(packageData.toString());
-
-               let deps=[...content.v2Components,...content.v2Pipes];
-               for(let i=-1,item;item=deps[++i];){
-                   let map={};
-                   map[`${item.name}`]=`^${item.version}`
-                   packageData.dependencies={...packageData.dependencies,...map}
-                   !packageData.scripts &&  (packageData.scripts={})
-                   packageData.scripts.serve=`vue-cli-service serve --publicPath=./ --sockPort=${port} --sockPath=/sockjs-node --port=${port} --mockPort=${mockPort}`;
-                   packageData.scripts.preview=`vue-cli-service serve --publicPath=/${name}/ --sockPort=443 --sockPath=/${name}/sockjs-node --port=${port} --mockPort=${mockPort}`;
-                   packageData.scripts.mock=`node ./server.js --port=${mockPort}`;
-                   packageData.scripts.mockPreview=`node ./server.js --port=${mockPort} --prefix=/${name}`;
-                   packageData.scripts.component=`vue build -t lib -d v2sual ./src/@aweb-components/aweb.components.js`;
-               }
-           }
+         
         
             //下载webide基础项目
             if(supportScope.length){
@@ -68,6 +50,25 @@ const init=async(opt={})=>{
                 console.log('成功下载WEBIDE基础项目');
             }
         
+              //修改package.json 管道和组件,port
+            let packageJsonPath=path.resolve(dest,'./package.json'),packageData={};
+            if(fs.existsSync(packageJsonPath)){
+                packageData=await util.readFile(packageJsonPath);
+                packageData=JSON.parse(packageData.toString());
+
+                let deps=[...content.v2Components,...content.v2Pipes];
+                for(let i=-1,item;item=deps[++i];){
+                    let map={};
+                    map[`${item.name}`]=`^${item.version}`
+                    packageData.dependencies={...packageData.dependencies,...map}
+                    !packageData.scripts &&  (packageData.scripts={})
+                    packageData.scripts.serve=`vue-cli-service serve --publicPath=./ --sockPort=${port} --sockPath=/sockjs-node --port=${port} --mockPort=${mockPort} --sockHost=localhost`;
+                    packageData.scripts.preview=`vue-cli-service serve --publicPath=/${name}/ --sockPort=443 --sockPath=/${name}/sockjs-node --port=${port} --mockPort=${mockPort} --sockHost=vue.awebide.com"`;
+                    packageData.scripts.mock=`node ./server.js --port=${mockPort}`;
+                    packageData.scripts.mockPreview=`node ./server.js --port=${mockPort} --prefix=/${name}`;
+                    packageData.scripts.component=`vue build -t lib -d v2sual ./src/@aweb-components/aweb.components.js`;
+                }
+            }
            
 
             if(theme){

@@ -1,6 +1,6 @@
 <template><v2container :wid="`root`"><el-row class="V2ContainerBlock" style="height:100%;width:100%;" key="0"><v2container id="1564380751797" :wid="`1564380751797`" :index="0" :pid="`root`"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:10%;width:100%;" key="0"><v2-component-text class="V2Widget" id="1564380818823" :wid="`1564380818823`" :index="0" :pid="`1564380751797`"></v2-component-text></el-row><el-row class="V2ContainerBlock" style="height:90%;width:100%;" key="1"><v2container id="1564380855419" :wid="`1564380855419`" :index="1" :pid="`1564380751797`"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:10%;width:100%;" key="0"><v2-component-btn class="V2Widget" id="1564380946704" :wid="`1564380946704`" :index="0" :pid="`1564380855419`"></v2-component-btn></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:90%;width:100%;" key="1"><v2-component-table class="V2Widget" id="1564380937088" :wid="`1564380937088`" :index="1" :pid="`1564380855419`"></v2-component-table></el-row></v2container></el-row></v2container></el-row></v2container></template>
 <script>
-            import {root} from '@/utils/v2-view';
+            import {root} from '@/ideLib/mixin/v2-view';
             
             export default{
                 data(){

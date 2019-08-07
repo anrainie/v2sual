@@ -29,7 +29,7 @@
   </v2container>
 </template>
 <script>
-import { root, cpt, widget } from "@/utils/v2-view";
+import { root, cpt, widget } from "@/ideLib/mixin/v2-view";
 
 export default {
   data() {

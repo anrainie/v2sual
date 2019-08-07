@@ -1,5 +1,5 @@
 	<template>
-  <el-row class="aweb-container"  ref="layout">
+  <el-row class="aweb-container"  ref="layout" name="layout">
     <el-col :span="24" class="aweb-header">
       <el-col
         :span="10"
@@ -15,7 +15,7 @@
 
       <el-col :span="6" class="aweb-userinfo">
 
-          <el-tooltip  effect="dark" content="下载后端案例" placement="top">
+        <el-tooltip  effect="dark" content="下载后端案例" placement="top">
             <el-button icon="el-icon-sold-out" circle class="aweb-download-btn" @click="openMarket('end')"></el-button>
         </el-tooltip>
 
@@ -54,7 +54,6 @@
           :collapse="collapsed"
           @select="handleSelectMenu"
         >
-
           <template v-for="item in routerData" v-if="!item.hidden">
             
               <el-submenu  v-if="item.children && item.children.length && !item.isLeaf || (item.isLeaf && item.isRedirect)" :index="item.path+'#'+item.componentUrl+'#'+(item.meta && item.meta.title && item.meta.title)" :key="item.path">
@@ -132,9 +131,11 @@
               v-model="activeIndex"
               type="border-card"
               closable
+
               v-if="openedTabs.length"
               @tab-click="tabClick"
               @tab-remove="tabRemove"
+
               @contextmenu.native="tabRightClick"
             >
    
@@ -143,14 +144,13 @@
                 v-for="item in openedTabs"
                 :label="item.name"
                 :name="item.route"
+                :route="item.route"
               >
               <el-col :span="24" class="aweb-ctt-wrap" >
         
                 <transition name="fade" mode="out-in"> 
                  
                       <!-- <router-view  ></router-view> -->
-                    
-          
                      <keep-alive v-if="isRouterAlive">                           
                           <router-view  v-if="(activeIndex===item.route)"></router-view>
                       </keep-alive>
@@ -166,12 +166,12 @@
 
           </div>
               <!-- 子页面容器 -->
-              <el-dialog   :title="subPageTitle" :visible.sync='subDialogVisible' @close="closeDialog" ref="_op_dialog_ctn"  :close-on-click-modal="false">
+              <el-dialog   :title="subPageTitle" :visible.sync='subDialogVisible' @close="closeDialog" ref="_op_dialog_ctn">
                 <transition name="fade" mode="out-in"  v-if="subDialogVisible">                  
-                  <sub-page-ctn :page="subPageHref" :params="subPageParams" v-if="subDialogVisible"></sub-page-ctn> 
+                  <sub-page-ctn :page="subPageHref" :params="subPageParams" v-if="subDialogVisible" ></sub-page-ctn> 
                 </transition>        
                 <div slot='footer' class='dialog-footer'>
-               <el-button @click="cancel" v-if="subFooter('cancel')" >取消</el-button>
+                <el-button @click="cancel" v-if="subFooter('cancel')" >取消</el-button>
                 <el-button type='primary' v-if="subFooter('confirm')" @click="confirm">确定</el-button >
                 </div> 
             </el-dialog>
@@ -184,17 +184,17 @@
 </template>
 <script>
 
-import {getObjArr, getRouter,saveRouter} from '../promission.js'
+    
+import {getMenuRoutes,addMenuToRoutes,mixins} from '@/lib'
+import { getRoutersList } from '@/api/api.js'
+import {caseRouter} from '@/api/case.js'
 
-import rightMenu from '@/components/rightMenu'
-import asyncComponent from '@/components/asyncComponent'
-import subPageCtn from '@/components/subPageCtn'
-
+const caseList= process.env.NODE_ENV === 'production'?[]:caseRouter;
 export default {
   name:'layout',
   data() {
     return {
-      routerData:global.menu?global.menu:getRouter('menu'),
+      routerData:JSON.parse(JSON.stringify(getMenuRoutes())),
       sysLogo:"img/logo.png",
       sysName: "AWEB_ADMIN",
       collapsed: false,
@@ -205,7 +205,34 @@ export default {
       clickTab: false
     };
   },
+
+ async beforeRouteEnter(to, from, next){
+      
+      try{
+        let menus=getMenuRoutes();
+        if(!menus.length){
+          // let menus=await getMenu();
+          let path = to.redirectedFrom || to.path;
+          let menuData=[...menus,...caseList];
+          addMenuToRoutes(menuData);
+          next(path);
+        }else{
+          next()
+        }
+      }catch(e){
+      
+      console.log(e);
+        next();
+      }
+
+ },
+  mixins:[mixins],
+
   methods: {
+    beforeClose(){
+      console.log("333")
+      return true;
+    },
     handleSelectMenu:function(key, keyPath){
        console.log('key',key);
 
@@ -231,6 +258,8 @@ export default {
         e.stopPropagation();
         e.preventDefault();
         this.rightClickHandler = e;
+        // this.rightClickTaget
+
       }else{
         return true;
       }
@@ -244,6 +273,11 @@ export default {
           })
         },
     handleRightSelect:function(key){
+        // let id= this.rightClickHandler&& this.rightClickHandler.toElement.id,activeIndex;
+        // if(id){
+        //   id=id.replace('tab-','');
+        // }
+        let  activeIndex=this.activeIndex;
 
        switch(key){
          case'refresh':
@@ -252,21 +286,14 @@ export default {
             
           break;
          case'close':
-
-            this.$store.commit("delete_tabs", this.activeIndex);
-            if (this.openedTabs && this.openedTabs.length >= 1) {
-
-              this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
-
-              this.$router.push({ path: this.activeIndex,query:this.URLQueryMap[this.activeIndex] ||{}});
-
-            }
+            let targetRoute=this.getCurrentRouteMatched(activeIndex);
+            targetRoute.instances.default.close({path:activeIndex});
            break;  
            case'closeLeft':
 
             if (this.openedTabs && this.openedTabs.length >= 1) {
 
-              this.$store.commit("delete_left_tabs", this.activeIndex);
+              this.$store.commit("delete_left_tabs", activeIndex);
              
             }
            break;
@@ -274,7 +301,7 @@ export default {
 
             if (this.openedTabs && this.openedTabs.length >= 1) {
 
-              this.$store.commit("delete_right_tabs", this.activeIndex);
+              this.$store.commit("delete_right_tabs", activeIndex);
              
             }
          
@@ -290,23 +317,17 @@ export default {
     logout: function() {
       var _this = this;
       this.$confirm("确认退出吗?", "提示", {
-        //type: 'warning'
       })
         .then(() => {
-          this.$deleteAxios(`${global.$axios.server}/signOut.do`, {}).then(function(
+          this.$deleteAxios(`${this.$axios.server}/signOut.do`, {}).then(function(
             data
           ) {
             if (data.status) {
               sessionStorage.removeItem("user");
               _this.$router.push("/login");
-              saveRouter("router", "");
-              saveRouter("menu", "");
-              global.antRouter = "";
-              global.pageMap = {};
-              global.hasLogin = false;
-              // _this.$router.go(0);
+              // global.pageMap = {};
             } else {
-              this.$notify.error({
+              _this.$notify.error({
                 title: "退出登录失败"
               });
             }
@@ -323,24 +344,27 @@ export default {
 
     },
     tabRemove(targetName) {
-      this.$store.commit("delete_tabs", targetName);
-      if (this.activeIndex === targetName) {
-        if (this.openedTabs && this.openedTabs.length >= 1) {
+      
+       let targetRoute=this.getCurrentRouteMatched (targetName);
+      targetRoute.instances.default.close({path:targetName});
 
-          this.$store.commit("set_active_index", this.openedTabs[this.openedTabs.length - 1].route);
-
-          this.$router.push({ path: this.activeIndex ,query:this.URLQueryMap[this.activeIndex] ||{}});
-
-        }
-      }
+     
     },
+
+    getCurrentRouteMatched(targetName ){
+        let currentRoute= this.$router.match(targetName)
+        let matched=currentRoute.matched.filter(item=>item.path===currentRoute.path)  
+        return matched[0];
+    },
+
+  
     cancel(){         
            this.closeDialog();
-           this.$store.commit("do_cancel",this.$refs.subpage.$refs._op_subPage);        
+           this.$store.commit("do_cancel");        
     },
     confirm(){
           this.closeDialog(); 
-          this.$store.commit("do_confirm",this.$refs.subpage.$refs._op_subPage);       
+          this.$store.commit("do_confirm");       
     },
     closeDialog(){
        this.$store.commit("set_D_visible",false);    
@@ -356,10 +380,14 @@ export default {
       }
      
     }
+   
   },
+
+  
   mounted() {
-    console.log('routerData',this.routerData)
+    // this.getMenu();
     let user = sessionStorage.getItem("user");
+   
     if (user) {
       user = JSON.parse(user);
       this.sysUserName = user.name || "";
@@ -371,7 +399,7 @@ export default {
         
       });
     
-  this.$store.commit("set_active_index", this.$route.path);
+    this.$store.commit("set_active_index", this.$route.path);
 
   },
   computed: {
@@ -439,7 +467,7 @@ export default {
   watch: {
     $route(to, from) {
       let flag = false;
-      
+     
       if(to.meta.type ==='BLANK'){
         if(Object.keys(to.query).length){
             this.$store.commit("set_url_map",({path:to.path,query:to.query}))
@@ -484,21 +512,21 @@ export default {
 
      
     },
+ 
     subDialogVisible:{
        immediate:true,
        handler(newVal, oldVal){
            if(!newVal && oldVal){
-              let currentPageConfig =  this.$router.currentRoute.matched[1].components.default;
-              let currentPageIns = this.$router.currentRoute.matched[1].instances.default;
+             let currentRoute=this.$router.currentRoute;
+              let matched=currentRoute.matched.filter(item=>item.path===currentRoute.path)  
+              let currentPageConfig =  matched[0].components.default;
+              let currentPageIns = matched[0].instances.default;
                currentPageConfig.resume && currentPageConfig.resume.call(currentPageIns);                
            }
        }
     }
-  },
-  components:{
-    rightMenu,
-    subPageCtn
   }
+
 };
 </script>
 

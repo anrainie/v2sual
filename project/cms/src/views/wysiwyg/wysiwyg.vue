@@ -70,7 +70,7 @@
   </v2container>
 </template>
 <script>
-import { root } from "@/utils/v2-view";
+import { root } from "@/ideLib/mixin/v2-view";
 
 export default {
   data() {

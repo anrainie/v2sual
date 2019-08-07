@@ -7,6 +7,8 @@ export const caseRouter=[
             "title": "OPEN",
             "icon": "el-icon-goods"
         }
+
+
     },
 {
     "path": "spa",
@@ -68,7 +70,7 @@ export const caseRouter=[
         }, {
             "path": "dynForm",
             "name": "dynForm",
-            "component": "example/dynForm",
+            "component": "example/dynFormCase",
             "meta": {
                 "title": "动态表单",
                 "icon": "el-icon-setting"

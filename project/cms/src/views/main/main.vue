@@ -15,8 +15,10 @@
 </template>
 
 <script>
-import app from "@/utils/app.js";
+import  {mixins} from '@/lib';
+
 export default {
+  mixins:[mixins],
   data() {
     return {
       mainList: [
@@ -47,7 +49,7 @@ export default {
       ]
     };
   },
-  mixins: [app],
+
   methods: {
     closeCurrentPage() {
       this.close();

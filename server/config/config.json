@@ -17,10 +17,11 @@
     },
     "runtime": {
         "base": "./project/runtime",
-        "component": "./node_modules/@v2-components",
+        "component": "./src/v2Components",
+        "platformComponent":"./node_modules/@v2-components",
         "componentFile": "./src/@aweb-components/aweb.components.js",
         "platformPipe":"./node_modules/@v2-pipe",
-        "pipe": "../pipe",
+        "pipe": "./pipe",
         "page": "./src/views",
         "customWidget": "./src/views/_customWidget",
         "datadict": "./src/datadict",

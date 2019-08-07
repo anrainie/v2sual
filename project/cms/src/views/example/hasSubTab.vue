@@ -27,7 +27,6 @@
 <script>
 
 
-import asyncComponent from '@/components/asyncComponent'
 
   export default {
     data() {
@@ -194,9 +193,7 @@ import asyncComponent from '@/components/asyncComponent'
         this.page.totalRecords = this.tableData.length;
       }
     },
-    components:{
-      asyncComponent
-    },
+
       resume(){
       console.log('子tab页面resume')
     },

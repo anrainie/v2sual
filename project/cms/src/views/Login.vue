@@ -1,61 +1,65 @@
 <template>
   <el-form
-    :model="ruleForm2"
-    :rules="rules2"
-    ref="ruleForm2"
+    :model="ruleForm"
+    :rules="rules"
+    ref="ruleForm"
     label-position="left"
     label-width="0px"
     class="demo-ruleForm cus-login-container"
   >
     <h3 class="cus-title">赞同管理系统</h3>
     <el-form-item prop="account">
-      <el-input type="text" v-model="ruleForm2.account" auto-complete="off" placeholder="账号"></el-input>
+      <el-input type="text" v-model="ruleForm.account" auto-complete="off" placeholder="账号"></el-input>
     </el-form-item>
     <el-form-item prop="checkPass">
-      <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off" placeholder="密码"></el-input>
+      <el-input type="password" v-model="ruleForm.checkPass" auto-complete="off" placeholder="密码"></el-input>
     </el-form-item>
+
     <el-form-item prop="identifyCode">
-      <identifyInput @setIdentifyCode="setIdentifyCode" placeholder="验证码"></identifyInput>
+      <div class="cus-code-input">
+        <el-input class="input" maxlength="8" placeholder="请输入验证码" v-model="ruleForm.identifyCode"></el-input>
+        <div class="cus-identifying-code" @click="getIdentifyingCode(true)">
+          <img
+            style="height:40px; width: 100px; cursor: pointer;"
+            alt="点击更换"
+            :src="identifyCodeSrc"
+            title="点击更换"
+          />
+        </div>
+      </div>
     </el-form-item>
 
     <el-form-item style="width:100%;">
       <el-button
         type="primary"
         class="cus-submit-btn"
-        native-type="submit" 
-        @click.native.prevent="handleSubmit2"
-    
+        native-type="submit"
+        @click.native.prevent="handleSubmit"
         :loading="logining"
       >登录</el-button>
     </el-form-item>
     <!-- <el-form-item style="width:100%;">
       <el-checkbox v-model="checked" class="cus-remember" text-color="#771faa">记住密码</el-checkbox>
       <el-button type="text" class="cus-forget-passWord">忘记密码</el-button>
-    </el-form-item> -->
+    </el-form-item>-->
   </el-form>
 </template>
 
 <script>
-import { requestLogin, getRoutersList } from "@/api/api";
-import { saveRouter, getRouter, addDynRoute } from "@/promission.js";
-
-import identifyInput from "../components/identifyInput.vue";
-
+import { requestLogin,verifyImage } from "@/api/api";
+import  {mixins} from '@/lib';
 export default {
+  mixins:[mixins],
   data() {
     return {
+      identifyCodeSrc: verifyImage,
       logining: false,
-      user: {
-        name: "admin123",
-        avatar:
-          "https://s.gravatar.com/avatar/f30a9191dda93b5389965ed99f57f850?s=50&d=retro"
-      },
-      ruleForm2: {
+      ruleForm: {
         account: "admin123",
         checkPass: "",
         identifyCode: ""
       },
-      rules2: {
+      rules: {
         account: [
           { required: true, message: "请输入账号", trigger: "blur" }
           //{ validator: validaePass }
@@ -63,8 +67,8 @@ export default {
         checkPass: [
           { required: true, message: "请输入密码", trigger: "blur" }
           //{ validator: validaePass2 }
-		],
-		identifyCode: [
+        ],
+        identifyCode: [
           { required: true, message: "请输入验证码", trigger: "blur" }
           //{ validator: validaePass2 }
         ]
@@ -72,150 +76,110 @@ export default {
       checked: false
     };
   },
-  created(){
-
-  },
+  created() {},
   methods: {
-
-    handleReset2() {
-      this.$refs.ruleForm2.resetFields();
+    handleReset() {
+      this.$refs.ruleForm.resetFields();
     },
-    setIdentifyCode(code) {
-      this.ruleForm2.identifyCode = code;
-    },
-    getMenu:function(list){
-      var context = this;
-      let menus = [],
-          menuObj = {},
-          menuParent = {},
-          result = list||[];
-
-      if(result.length){
-      
-        result.sort((a,b)=>{
-          return parseInt(a.seq,10)-parseInt(b.seq,10);
-        }).map(i=>{
-          !i.pid&&(i.pid='');
-          let p=menuObj[i.pid];
-          if(!p){
-            p=menuObj[i.pid]={
-              id:i.pid,
-              children:[]
-            }
-          }else{
-            !p.children&&(p.children=[]);
-          }
-          let item=menuObj[i.id]||{
-            id:i.id,
-          };
-          item.pid=i.pid||"";
-          item.name = i.id;
-          item.path = i.id;
-          item.component=i.value;
-          item.meta ={title:i.name,icon:i.icon};
-          menuObj[i.id]=item;
-          p.children.push(item);
-        });
-
-        Object.keys(menuObj)
-            .filter(e=>!menuObj[e].children)
-            .map(e=>delete menuObj[e]);
-
-        return menuObj[''].children;
-
+    getIdentifyingCode: function(bRefresh) {
+      if (bRefresh) {
+        this.identifyCodeSrc = `${verifyImage}?${Math.random()}`;
       }
     },
 
-    handleSubmit2(ev) {
+    getMenu: function(list) {
+      var context = this;
+      let menus = [],
+        menuObj = {},
+        menuParent = {},
+        result = list || [];
+
+      if (result.length) {
+        result
+          .sort((a, b) => {
+            return parseInt(a.seq, 10) - parseInt(b.seq, 10);
+          })
+          .map(i => {
+            !i.pid && (i.pid = "");
+            let p = menuObj[i.pid];
+            if (!p) {
+              p = menuObj[i.pid] = {
+                id: i.pid,
+                children: []
+              };
+            } else {
+              !p.children && (p.children = []);
+            }
+            let item = menuObj[i.id] || {
+              id: i.id
+            };
+            item.pid = i.pid || "";
+            item.name = i.id;
+            item.path = i.id;
+            item.component = i.value;
+            item.meta = { title: i.name, icon: i.icon };
+            menuObj[i.id] = item;
+            p.children.push(item);
+          });
+
+        Object.keys(menuObj)
+          .filter(e => !menuObj[e].children)
+          .map(e => delete menuObj[e]);
+
+        return menuObj[""].children;
+      }
+    },
+
+    handleSubmit(ev) {
       var _this = this;
-      this.$refs.ruleForm2.validate(valid => {
+      this.$refs.ruleForm.validate(valid => {
         if (valid) {
-          
           var loginParams = {
-            username: this.ruleForm2.account,
-            password: this.ruleForm2.checkPass,
-            checkCode: this.ruleForm2.identifyCode
+            username: this.ruleForm.account,
+            password: this.ruleForm.checkPass,
+            checkCode: this.ruleForm.identifyCode
           };
-		  this.logining = true;
+          this.logining = true;
           requestLogin(loginParams)
             .then(response => {
               this.logining = false;
               if (response.status && response.content) {
-                window.localStorage.setItem('ctoken', response.content.result||'');
+                window.localStorage.setItem(
+                  "ctoken",
+                  response.content.result || ""
+                );
                 sessionStorage.setItem(
                   "user",
                   JSON.stringify({
-                    name: this.ruleForm2.account,
+                    name: this.ruleForm.account,
                     avatar: "./img/user.png"
                   })
                 );
-                global.hasLogin = true;
-
-                getRoutersList().then(res => {
-                  if (res.status) {  
-                    var list = res&&res.content&&res.content.menus||[],
-                        menus =  _this.getMenu(list);                
-                    //addDynRoute(res.content.router);
-                    addDynRoute(menus);
-                    _this.$store.state.openedTabs = [];
-
-                    _this.$router.push({ path: "/" });
-                  }
+                _this.$store.state.openedTabs = [];
+                _this.$router.push({ path: "/" });
+  
+              } else {
+                _this.$notify({
+                  title: "登录失败",
+                  message: response.errorMsg,
+                  type: "error"
                 });
-
-              }else{
-                    this.$notify({
-                      title: "登录失败",
-                      message:response.errorMsg,
-                      type: "error"
-                    });  
               }
             })
             .catch(err => {
               this.logining = false;
               this.$notify({
-                title:'登录失败',
+                title: "登录失败",
                 message: err.errorMsg,
                 type: "error"
               });
             });
-          // requestLogin(loginParams).then(response => {
-          //   this.logining = false;
-
-          // if (response) {
-          //   sessionStorage.setItem(
-          //     "user",
-          //     JSON.stringify({
-          //       name: this.ruleForm2.account,
-          //       avatar: "./img/user.png"
-          //     })
-          //   );
-          //   global.hasLogin = true;W
-
-          //   getRoutersList().then(res => {
-          //     addDynRoute(res.data.router);
-
-          //     _this.$store.state.openedTabs = [];
-
-          //     _this.$router.push({ path: "/" });
-          //   });
-          // } else {
-          //   this.$message({
-          //     message: response.errorMsg,
-          //     type: "warning"
-          //   });
-          // }
-
-          // });
         } else {
           console.log("error submit!!");
           return false;
         }
       });
     }
-  },
-  components: {
-    identifyInput
   }
 };
 </script>
@@ -236,6 +200,16 @@ export default {
   background: #fff;
   border: 1px solid #eaeaea;
   box-shadow: 0 0 25px #cac6c6;
+  .cus-identifying-code {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 5;
+    width: 102px; /*设置图片显示的宽*/
+    height: 40px; /*图片显示的高*/
+    background: #e2e2e2;
+    margin: 0;
+  }
   .cus-title {
     margin: 0px auto 40px auto;
     text-align: center;

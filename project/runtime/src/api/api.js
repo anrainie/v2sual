@@ -1,25 +1,77 @@
 import axios from 'axios';
+import qs from 'qs';
 
-axios.defaults.withCredentials = true
-global.$axios = axios;
-//  let base = '';
- //let base = process.env.NODE_ENV ==='production'?'https://www.awebide.com:7001':''
-let base = process.env.NODE_ENV === 'production' ? '' : 'mock'
+//登录
 
-export const requestLogin = params => { return axios.post(`${base}/login`, params).then(res => res.data); };
+export const requestLogin = params => {
+  return axios.post(
+    `${axios.server}/signIn.do`,
+    qs.stringify(params), {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    }
+  ).then(res => {
+    return res;
+  });
+};
 
-export const getRoutersList = params => { return axios.get(`${base}/-/router/get`, { params: params }); };
+//菜单
+export const getRoutersList = params=>{
+  var paramsObj = params||{};
 
-export const getUserList = params => { return axios.get(`${base}/-/user/list`, { params: params }); };
+  paramsObj.ctoken = window.localStorage.getItem('ctoken')||'';
+  return axios.get(`${axios.server}/springmvc/menu/loadMenu.do`,{
+    params:paramsObj
+  })
 
-export const removeUser = params => { return axios.get(`${base}/-/user/remove`, { params: params }); };
+}
+//验证码
+export const verifyImage=`${axios.server}/verifyImage.do`;
 
-export const editUser = params => { return axios.get(`${base}/-/user/edit`, { params: params }); };
+//export  const requestLogin = params => {
+//   return axios.post(`${axios.mock}/login`, params).then(res => res.data);
+// };
 
-export const addUser = params => { return axios.get(`${base}/-/user/add`, { params: params }); };
 
-export const getUserListPage = params => { return axios.get(`${base}/-/user/listpage`, { params: params }); };
+// export const getRoutersList = params => {
+//   return axios.get(`${axios.mock}/-/router/get`, {
+//     params: params
+//   });
+// };
 
-export const getMainList = params => { return axios.get(`${base}/-/getMainList`, { params: params }); };
+export const getUserList = params => {
+  return axios.get(`${axios.mock}/-/user/list`, {
+    params: params
+  });
+};
 
-export const changeTheme = params => { return axios.get(`${base}/-/theme/change`, { params: params }); };
+export const removeUser = params => {
+  return axios.get(`${axios.mock}/-/user/remove`, {
+    params: params
+  });
+};
+
+export const editUser = params => {
+  return axios.get(`${axios.mock}/-/user/edit`, {
+    params: params
+  });
+};
+
+export const addUser = params => {
+  return axios.get(`${axios.mock}/-/user/add`, {
+    params: params
+  });
+};
+
+export const getUserListPage = params => {
+  return axios.get(`${axios.mock}/-/user/listpage`, {
+    params: params
+  });
+};
+
+export const getMainList = params => {
+  return axios.get(`${axios.mock}/-/getMainList`, {
+    params: params
+  });
+};
