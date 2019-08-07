@@ -1,0 +1,6146 @@
+<template>
+  <v2container :wid="`root`">
+    <el-row class="V2ContainerBlock" style="height:100%;width:100%;" key="0">
+      <v2container id="1559701542973" :wid="`1559701542973`" :index="0" :pid="`root`">
+        <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0">
+          <v2container id="1559701544604" :wid="`1559701544604`" :index="0" :pid="`1559701542973`">
+            <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0">
+              <v2container
+                id="1559701546404"
+                :wid="`1559701546404`"
+                :index="0"
+                :pid="`1559701544604`"
+              >
+                <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0">
+                  <v2container
+                    id="1559701576947"
+                    :wid="`1559701576947`"
+                    :index="0"
+                    :pid="`1559701546404`"
+                  >
+                    <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0">
+                      <v2container
+                        id="1559701601990"
+                        :wid="`1559701601990`"
+                        :index="0"
+                        :pid="`1559701576947`"
+                      >
+                        <el-col class="V2ContainerBlock" :span="12" key="0" style="height:100%;">
+                          <v2container
+                            id="1559701728991"
+                            :wid="`1559701728991`"
+                            :index="0"
+                            :pid="`1559701601990`"
+                          >
+                            <el-col
+                              class="V2ContainerBlock borderBox dashBorder"
+                              :span="14"
+                              key="0"
+                              style="height:100%;"
+                            >
+                              <v2-form-select
+                                class="V2Widget"
+                                id="1559701893072"
+                                :wid="`1559701893072`"
+                                :index="0"
+                                :pid="`1559701728991`"
+                              ></v2-form-select>
+                            </el-col>
+                            <el-col
+                              class="V2ContainerBlock"
+                              :span="10"
+                              key="1"
+                              style="height:100%;"
+                            >
+                              <v2empty
+                                class="V2Empty"
+                                id="1559701728991-1"
+                                :wid="`1559701728991-1`"
+                                :index="1"
+                                :pid="`1559701728991`"
+                              ></v2empty>
+                            </el-col>
+                          </v2container>
+                        </el-col>
+                        <el-col class="V2ContainerBlock" :span="12" key="1" style="height:100%;">
+                          <v2container
+                            id="1559701914943"
+                            :wid="`1559701914943`"
+                            :index="1"
+                            :pid="`1559701601990`"
+                          >
+                            <el-col
+                              class="V2ContainerBlock borderBox dashBorder"
+                              :span="14"
+                              key="0"
+                              style="height:100%;"
+                            >
+                              <v2-form-select
+                                class="V2Widget"
+                                id="1559701933752"
+                                :wid="`1559701933752`"
+                                :index="0"
+                                :pid="`1559701914943`"
+                              ></v2-form-select>
+                            </el-col>
+                            <el-col
+                              class="V2ContainerBlock"
+                              :span="10"
+                              key="1"
+                              style="height:100%;"
+                            >
+                              <v2empty
+                                class="V2Empty"
+                                id="1559701914943-1"
+                                :wid="`1559701914943-1`"
+                                :index="1"
+                                :pid="`1559701914943`"
+                              ></v2empty>
+                            </el-col>
+                          </v2container>
+                        </el-col>
+                      </v2container>
+                    </el-row>
+                    <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1">
+                      <v2container
+                        id="1559701698842"
+                        :wid="`1559701698842`"
+                        :index="1"
+                        :pid="`1559701576947`"
+                      >
+                        <el-col class="V2ContainerBlock" :span="12" key="0" style="height:100%;">
+                          <v2container
+                            id="1559701727214"
+                            :wid="`1559701727214`"
+                            :index="0"
+                            :pid="`1559701698842`"
+                          >
+                            <el-col
+                              class="V2ContainerBlock borderBox dashBorder"
+                              :span="14"
+                              key="0"
+                              style="height:100%;"
+                            >
+                              <v2-form-select
+                                class="V2Widget"
+                                id="1559701946510"
+                                :wid="`1559701946510`"
+                                :index="0"
+                                :pid="`1559701727214`"
+                              ></v2-form-select>
+                            </el-col>
+                            <el-col
+                              class="V2ContainerBlock"
+                              :span="10"
+                              key="1"
+                              style="height:100%;"
+                            >
+                              <v2empty
+                                class="V2Empty"
+                                id="1559701727214-1"
+                                :wid="`1559701727214-1`"
+                                :index="1"
+                                :pid="`1559701727214`"
+                              ></v2empty>
+                            </el-col>
+                          </v2container>
+                        </el-col>
+                        <el-col class="V2ContainerBlock" :span="12" key="1" style="height:100%;">
+                          <v2container
+                            id="1559701917215"
+                            :wid="`1559701917215`"
+                            :index="1"
+                            :pid="`1559701698842`"
+                          >
+                            <el-col
+                              class="V2ContainerBlock borderBox dashBorder"
+                              :span="14"
+                              key="0"
+                              style="height:100%;"
+                            >
+                              <v2-form-select
+                                class="V2Widget"
+                                id="1559701951021"
+                                :wid="`1559701951021`"
+                                :index="0"
+                                :pid="`1559701917215`"
+                              ></v2-form-select>
+                            </el-col>
+                            <el-col
+                              class="V2ContainerBlock"
+                              :span="10"
+                              key="1"
+                              style="height:100%;"
+                            >
+                              <v2empty
+                                class="V2Empty"
+                                id="1559701917215-1"
+                                :wid="`1559701917215-1`"
+                                :index="1"
+                                :pid="`1559701917215`"
+                              ></v2empty>
+                            </el-col>
+                          </v2container>
+                        </el-col>
+                      </v2container>
+                    </el-row>
+                  </v2container>
+                </el-row>
+                <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1">
+                  <v2container
+                    id="1559701578994"
+                    :wid="`1559701578994`"
+                    :index="1"
+                    :pid="`1559701546404`"
+                  >
+                    <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0">
+                      <v2container
+                        id="1559701701035"
+                        :wid="`1559701701035`"
+                        :index="0"
+                        :pid="`1559701578994`"
+                      >
+                        <el-col class="V2ContainerBlock" :span="12" key="0" style="height:100%;">
+                          <v2container
+                            id="1559701703444"
+                            :wid="`1559701703444`"
+                            :index="0"
+                            :pid="`1559701701035`"
+                          >
+                            <el-col
+                              class="V2ContainerBlock borderBox dashBorder"
+                              :span="14"
+                              key="0"
+                              style="height:100%;"
+                            >
+                              <v2-form-input
+                                class="V2Widget"
+                                id="1559701980923"
+                                :wid="`1559701980923`"
+                                :index="0"
+                                :pid="`1559701703444`"
+                              ></v2-form-input>
+                            </el-col>
+                            <el-col
+                              class="V2ContainerBlock"
+                              :span="10"
+                              key="1"
+                              style="height:100%;"
+                            >
+                              <v2empty
+                                class="V2Empty"
+                                id="1559701703444-1"
+                                :wid="`1559701703444-1`"
+                                :index="1"
+                                :pid="`1559701703444`"
+                              ></v2empty>
+                            </el-col>
+                          </v2container>
+                        </el-col>
+                        <el-col class="V2ContainerBlock" :span="12" key="1" style="height:100%;">
+                          <v2container
+                            id="1559701919138"
+                            :wid="`1559701919138`"
+                            :index="1"
+                            :pid="`1559701701035`"
+                          >
+                            <el-col
+                              class="V2ContainerBlock borderBox dashBorder"
+                              :span="14"
+                              key="0"
+                              style="height:100%;"
+                            >
+                              <v2-form-input
+                                class="V2Widget"
+                                id="1559701984096"
+                                :wid="`1559701984096`"
+                                :index="0"
+                                :pid="`1559701919138`"
+                              ></v2-form-input>
+                            </el-col>
+                            <el-col
+                              class="V2ContainerBlock"
+                              :span="10"
+                              key="1"
+                              style="height:100%;"
+                            >
+                              <v2empty
+                                class="V2Empty"
+                                id="1559701919138-1"
+                                :wid="`1559701919138-1`"
+                                :index="1"
+                                :pid="`1559701919138`"
+                              ></v2empty>
+                            </el-col>
+                          </v2container>
+                        </el-col>
+                      </v2container>
+                    </el-row>
+                    <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1">
+                      <v2container
+                        id="1559701715817"
+                        :wid="`1559701715817`"
+                        :index="1"
+                        :pid="`1559701578994`"
+                      >
+                        <el-col class="V2ContainerBlock" :span="12" key="0" style="height:100%;">
+                          <v2container
+                            id="1559701725605"
+                            :wid="`1559701725605`"
+                            :index="0"
+                            :pid="`1559701715817`"
+                          >
+                            <el-col
+                              class="V2ContainerBlock borderBox dashBorder"
+                              :span="14"
+                              key="0"
+                              style="height:100%;"
+                            >
+                              <v2-form-input
+                                class="V2Widget"
+                                id="1559701998687"
+                                :wid="`1559701998687`"
+                                :index="0"
+                                :pid="`1559701725605`"
+                              ></v2-form-input>
+                            </el-col>
+                            <el-col
+                              class="V2ContainerBlock"
+                              :span="10"
+                              key="1"
+                              style="height:100%;"
+                            >
+                              <v2empty
+                                class="V2Empty"
+                                id="1559701725605-1"
+                                :wid="`1559701725605-1`"
+                                :index="1"
+                                :pid="`1559701725605`"
+                              ></v2empty>
+                            </el-col>
+                          </v2container>
+                        </el-col>
+                        <el-col class="V2ContainerBlock" :span="12" key="1" style="height:100%;">
+                          <v2container
+                            id="1559701920860"
+                            :wid="`1559701920860`"
+                            :index="1"
+                            :pid="`1559701715817`"
+                          >
+                            <el-col
+                              class="V2ContainerBlock borderBox dashBorder"
+                              :span="14"
+                              key="0"
+                              style="height:100%;"
+                            >
+                              <v2-form-input
+                                class="V2Widget"
+                                id="1559702001860"
+                                :wid="`1559702001860`"
+                                :index="0"
+                                :pid="`1559701920860`"
+                              ></v2-form-input>
+                            </el-col>
+                            <el-col
+                              class="V2ContainerBlock"
+                              :span="10"
+                              key="1"
+                              style="height:100%;"
+                            >
+                              <v2empty
+                                class="V2Empty"
+                                id="1559701920860-1"
+                                :wid="`1559701920860-1`"
+                                :index="1"
+                                :pid="`1559701920860`"
+                              ></v2empty>
+                            </el-col>
+                          </v2container>
+                        </el-col>
+                      </v2container>
+                    </el-row>
+                  </v2container>
+                </el-row>
+              </v2container>
+            </el-row>
+            <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1">
+              <v2container
+                id="1559701548485"
+                :wid="`1559701548485`"
+                :index="1"
+                :pid="`1559701544604`"
+              >
+                <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0">
+                  <v2container
+                    id="1559701575147"
+                    :wid="`1559701575147`"
+                    :index="0"
+                    :pid="`1559701548485`"
+                  >
+                    <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0">
+                      <v2container
+                        id="1559701718078"
+                        :wid="`1559701718078`"
+                        :index="0"
+                        :pid="`1559701575147`"
+                      >
+                        <el-col class="V2ContainerBlock" :span="12" key="0" style="height:100%;">
+                          <v2container
+                            id="1559701770390"
+                            :wid="`1559701770390`"
+                            :index="0"
+                            :pid="`1559701718078`"
+                          >
+                            <el-col
+                              class="V2ContainerBlock borderBox dashBorder"
+                              :span="14"
+                              key="0"
+                              style="height:100%;"
+                            >
+                              <v2-form-datepicker
+                                class="V2Widget"
+                                id="1559702019207"
+                                :wid="`1559702019207`"
+                                :index="0"
+                                :pid="`1559701770390`"
+                              ></v2-form-datepicker>
+                            </el-col>
+                            <el-col
+                              class="V2ContainerBlock"
+                              :span="10"
+                              key="1"
+                              style="height:100%;"
+                            >
+                              <v2empty
+                                class="V2Empty"
+                                id="1559701770390-1"
+                                :wid="`1559701770390-1`"
+                                :index="1"
+                                :pid="`1559701770390`"
+                              ></v2empty>
+                            </el-col>
+                          </v2container>
+                        </el-col>
+                        <el-col class="V2ContainerBlock" :span="12" key="1" style="height:100%;">
+                          <v2container
+                            id="1559701922480"
+                            :wid="`1559701922480`"
+                            :index="1"
+                            :pid="`1559701718078`"
+                          >
+                            <el-col
+                              class="V2ContainerBlock borderBox dashBorder"
+                              :span="14"
+                              key="0"
+                              style="height:100%;"
+                            >
+                              <v2-form-datepicker
+                                class="V2Widget"
+                                id="1559702021411"
+                                :wid="`1559702021411`"
+                                :index="0"
+                                :pid="`1559701922480`"
+                              ></v2-form-datepicker>
+                            </el-col>
+                            <el-col
+                              class="V2ContainerBlock"
+                              :span="10"
+                              key="1"
+                              style="height:100%;"
+                            >
+                              <v2empty
+                                class="V2Empty"
+                                id="1559701922480-1"
+                                :wid="`1559701922480-1`"
+                                :index="1"
+                                :pid="`1559701922480`"
+                              ></v2empty>
+                            </el-col>
+                          </v2container>
+                        </el-col>
+                      </v2container>
+                    </el-row>
+                    <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1">
+                      <v2empty
+                        class="V2Empty"
+                        id="1559701575147-1"
+                        :wid="`1559701575147-1`"
+                        :index="1"
+                        :pid="`1559701575147`"
+                      ></v2empty>
+                    </el-row>
+                  </v2container>
+                </el-row>
+                <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1">
+                  <v2container
+                    id="1559723085128"
+                    :wid="`1559723085128`"
+                    :index="1"
+                    :pid="`1559701548485`"
+                  >
+                    <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="0">
+                      <v2container
+                        id="1560324437074"
+                        :wid="`1560324437074`"
+                        :index="0"
+                        :pid="`1559723085128`"
+                      >
+                        <el-col class="V2ContainerBlock" :span="12" key="0" style="height:100%;">
+                          <v2empty
+                            class="V2Empty"
+                            id="1560324437074-0"
+                            :wid="`1560324437074-0`"
+                            :index="0"
+                            :pid="`1560324437074`"
+                          ></v2empty>
+                        </el-col>
+                        <el-col class="V2ContainerBlock" :span="12" key="1" style="height:100%;">
+                          <v2container
+                            id="1560324443888"
+                            :wid="`1560324443888`"
+                            :index="1"
+                            :pid="`1560324437074`"
+                          >
+                            <el-col
+                              class="V2ContainerBlock borderBox dashBorder"
+                              :span="14"
+                              key="0"
+                              style="height:100%;"
+                            >
+                              <v2-component-btn
+                                class="V2Widget"
+                                id="1560765565313"
+                                :wid="`1560765565313`"
+                                :index="0"
+                                :pid="`1560324443888`"
+                              ></v2-component-btn>
+                            </el-col>
+                            <el-col
+                              class="V2ContainerBlock"
+                              :span="10"
+                              key="1"
+                              style="height:100%;"
+                            >
+                              <v2empty
+                                class="V2Empty"
+                                id="1560324443888-1"
+                                :wid="`1560324443888-1`"
+                                :index="1"
+                                :pid="`1560324443888`"
+                              ></v2empty>
+                            </el-col>
+                          </v2container>
+                        </el-col>
+                      </v2container>
+                    </el-row>
+                    <el-row class="V2ContainerBlock" style="height:50%;width:100%;" key="1">
+                      <v2container
+                        id="1559729032657"
+                        :wid="`1559729032657`"
+                        :index="1"
+                        :pid="`1559723085128`"
+                      >
+                        <el-col class="V2ContainerBlock" :span="12" key="0" style="height:100%;">
+                          <v2container
+                            id="1559729035582"
+                            :wid="`1559729035582`"
+                            :index="0"
+                            :pid="`1559729032657`"
+                          >
+                            <el-col
+                              class="V2ContainerBlock"
+                              :span="12"
+                              key="0"
+                              style="height:100%;"
+                            >
+                              <v2container
+                                id="1559729043087"
+                                :wid="`1559729043087`"
+                                :index="0"
+                                :pid="`1559729035582`"
+                              >
+                                <el-col
+                                  class="V2ContainerBlock"
+                                  :span="12"
+                                  key="0"
+                                  style="height:100%;"
+                                >
+                                  <v2empty
+                                    class="V2Empty"
+                                    id="1559729043087-0"
+                                    :wid="`1559729043087-0`"
+                                    :index="0"
+                                    :pid="`1559729043087`"
+                                  ></v2empty>
+                                </el-col>
+                                <el-col
+                                  class="V2ContainerBlock"
+                                  :span="12"
+                                  key="1"
+                                  style="height:100%;"
+                                >
+                                  <v2empty
+                                    class="V2Empty"
+                                    id="1559729043087-1"
+                                    :wid="`1559729043087-1`"
+                                    :index="1"
+                                    :pid="`1559729043087`"
+                                  ></v2empty>
+                                </el-col>
+                              </v2container>
+                            </el-col>
+                            <el-col
+                              class="V2ContainerBlock"
+                              :span="12"
+                              key="1"
+                              style="height:100%;"
+                            >
+                              <v2empty
+                                class="V2Empty"
+                                id="1559729035582-1"
+                                :wid="`1559729035582-1`"
+                                :index="1"
+                                :pid="`1559729035582`"
+                              ></v2empty>
+                            </el-col>
+                          </v2container>
+                        </el-col>
+                        <el-col class="V2ContainerBlock" :span="12" key="1" style="height:100%;">
+                          <v2empty
+                            class="V2Empty"
+                            id="1559729032657-1"
+                            :wid="`1559729032657-1`"
+                            :index="1"
+                            :pid="`1559729032657`"
+                          ></v2empty>
+                        </el-col>
+                      </v2container>
+                    </el-row>
+                  </v2container>
+                </el-row>
+              </v2container>
+            </el-row>
+          </v2container>
+        </el-row>
+        <el-row
+          class="V2ContainerBlock borderBox dashBorder"
+          style="height:50%;width:100%;"
+          key="1"
+        >
+          <v2-component-table
+            class="V2Widget"
+            id="1559722996456"
+            :wid="`1559722996456`"
+            :index="1"
+            :pid="`1559701542973`"
+          ></v2-component-table>
+        </el-row>
+      </v2container>
+    </el-row>
+  </v2container>
+</template>
+<script>
+import { root } from "@/utils/v2-view";
+
+export default {
+  data() {
+    return {
+      CONTENT: {
+        structure: {
+          id: "root",
+          component: "v2Container",
+          direction: "row",
+          layout: [100],
+          style: { width: "100%", height: "100%" },
+          children: [
+            {
+              style: {
+                divCtn: {
+                  position: "",
+                  top: "",
+                  right: "",
+                  bottom: "",
+                  left: "",
+                  overflow: "",
+                  margin: "",
+                  padding: "",
+                  height: "",
+                  width: "",
+                  "max-height": "",
+                  "max-width": "",
+                  "min-height": "",
+                  "min-width": ""
+                }
+              },
+              direction: "row",
+              layout: "[50,50]",
+              rules: "",
+              def: {
+                defheight: true,
+                defborder: true,
+                defbackgroundStyle: true,
+                defpaddingStyle: true
+              },
+              defaultValue: {
+                "background-color": "#fff",
+                "background-image": "",
+                "padding-top": 0,
+                "padding-bottom": 0,
+                "padding-left": 0,
+                "padding-right": 0
+              },
+              customStyle: { opacity: 1, "border-radius": "0px" },
+              href: "v2-layout-colctn",
+              component: "v2-layout-colctn",
+              widget: {
+                belongTo: "aui",
+                icon: "iconhengxiangbuju",
+                type: "layout",
+                href: "v2-layout-colctn",
+                author: "zhanghaixian@agree.com.cn",
+                version: 510000,
+                accept: "",
+                name: "横向布局",
+                option: [
+                  {
+                    name: "direction",
+                    desp: "排列方式",
+                    defaultValue: "row",
+                    type: "string_select",
+                    valueArray: ["row", "col"],
+                    despArray: ["横排", "竖排"]
+                  },
+                  {
+                    name: "layout",
+                    desp: "栅格",
+                    hidden: false,
+                    defaultValue: [50, 50],
+                    type: "string_input"
+                  },
+                  {
+                    name: "rules",
+                    desp: "表单验证",
+                    defaultValue: "",
+                    type: "single_array",
+                    attrInEachElement: [
+                      {
+                        name: "rule",
+                        desp: "规则",
+                        defaultValue: "",
+                        type: "string_input"
+                      }
+                    ]
+                  }
+                ],
+                css: {
+                  style: [
+                    {
+                      desp: "容器",
+                      cssAttrs:
+                        "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                      name: "divCtn"
+                    }
+                  ]
+                },
+                editor: {
+                  name: "v2LayoutEditor",
+                  model: {
+                    def: {
+                      defheight: true,
+                      defborder: true,
+                      defbackgroundStyle: true,
+                      defpaddingStyle: true
+                    },
+                    defaultValue: {
+                      "background-color": "#fff",
+                      "background-image": "",
+                      "padding-top": 0,
+                      "padding-bottom": 0,
+                      "padding-left": 0,
+                      "padding-right": 0
+                    },
+                    customStyle: {}
+                  }
+                },
+                main: "index.vue"
+              },
+              children: [
+                {
+                  style: {
+                    divCtn: {
+                      position: "",
+                      top: "",
+                      right: "",
+                      bottom: "",
+                      left: "",
+                      overflow: "",
+                      margin: "",
+                      padding: "",
+                      height: "",
+                      width: "",
+                      "max-height": "",
+                      "max-width": "",
+                      "min-height": "",
+                      "min-width": ""
+                    }
+                  },
+                  direction: "row",
+                  layout: "[50,50]",
+                  rules: "",
+                  def: {
+                    defheight: true,
+                    defborder: true,
+                    defbackgroundStyle: true,
+                    defpaddingStyle: false
+                  },
+                  defaultValue: {
+                    "background-color": "#fff",
+                    "background-image": "",
+                    "padding-top": 0,
+                    "padding-bottom": 0,
+                    "padding-left": 0,
+                    "padding-right": 0
+                  },
+                  customStyle: { "padding-top": "12px" },
+                  href: "v2-layout-colctn",
+                  component: "v2-layout-colctn",
+                  widget: {
+                    belongTo: "aui",
+                    icon: "iconhengxiangbuju",
+                    type: "layout",
+                    href: "v2-layout-colctn",
+                    author: "zhanghaixian@agree.com.cn",
+                    version: 510000,
+                    accept: "",
+                    name: "横向布局",
+                    option: [
+                      {
+                        name: "direction",
+                        desp: "排列方式",
+                        defaultValue: "row",
+                        type: "string_select",
+                        valueArray: ["row", "col"],
+                        despArray: ["横排", "竖排"]
+                      },
+                      {
+                        name: "layout",
+                        desp: "栅格",
+                        hidden: false,
+                        defaultValue: [50, 50],
+                        type: "string_input"
+                      },
+                      {
+                        name: "rules",
+                        desp: "表单验证",
+                        defaultValue: "",
+                        type: "single_array",
+                        attrInEachElement: [
+                          {
+                            name: "rule",
+                            desp: "规则",
+                            defaultValue: "",
+                            type: "string_input"
+                          }
+                        ]
+                      }
+                    ],
+                    css: {
+                      style: [
+                        {
+                          desp: "容器",
+                          cssAttrs:
+                            "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                          name: "divCtn"
+                        }
+                      ]
+                    },
+                    editor: {
+                      name: "v2LayoutEditor",
+                      model: {
+                        def: {
+                          defheight: true,
+                          defborder: true,
+                          defbackgroundStyle: true,
+                          defpaddingStyle: true
+                        },
+                        defaultValue: {
+                          "background-color": "#fff",
+                          "background-image": "",
+                          "padding-top": 0,
+                          "padding-bottom": 0,
+                          "padding-left": 0,
+                          "padding-right": 0
+                        },
+                        customStyle: {}
+                      }
+                    },
+                    main: "index.vue"
+                  },
+                  children: [
+                    {
+                      style: {
+                        divCtn: {
+                          position: "",
+                          top: "",
+                          right: "",
+                          bottom: "",
+                          left: "",
+                          overflow: "",
+                          margin: "",
+                          padding: "",
+                          height: "",
+                          width: "",
+                          "max-height": "",
+                          "max-width": "",
+                          "min-height": "",
+                          "min-width": ""
+                        }
+                      },
+                      direction: "row",
+                      layout: "[50,50]",
+                      rules: "",
+                      def: {
+                        defheight: true,
+                        defborder: true,
+                        defbackgroundStyle: true,
+                        defpaddingStyle: true
+                      },
+                      defaultValue: {
+                        "background-color": "#fff",
+                        "background-image": "",
+                        "padding-top": 0,
+                        "padding-bottom": 0,
+                        "padding-left": 0,
+                        "padding-right": 0
+                      },
+                      customStyle: {},
+                      href: "v2-layout-colctn",
+                      component: "v2-layout-colctn",
+                      widget: {
+                        belongTo: "aui",
+                        icon: "iconhengxiangbuju",
+                        type: "layout",
+                        href: "v2-layout-colctn",
+                        author: "zhanghaixian@agree.com.cn",
+                        version: 510000,
+                        accept: "",
+                        name: "横向布局",
+                        option: [
+                          {
+                            name: "direction",
+                            desp: "排列方式",
+                            defaultValue: "row",
+                            type: "string_select",
+                            valueArray: ["row", "col"],
+                            despArray: ["横排", "竖排"]
+                          },
+                          {
+                            name: "layout",
+                            desp: "栅格",
+                            hidden: false,
+                            defaultValue: [50, 50],
+                            type: "string_input"
+                          },
+                          {
+                            name: "rules",
+                            desp: "表单验证",
+                            defaultValue: "",
+                            type: "single_array",
+                            attrInEachElement: [
+                              {
+                                name: "rule",
+                                desp: "规则",
+                                defaultValue: "",
+                                type: "string_input"
+                              }
+                            ]
+                          }
+                        ],
+                        css: {
+                          style: [
+                            {
+                              desp: "容器",
+                              cssAttrs:
+                                "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                              name: "divCtn"
+                            }
+                          ]
+                        },
+                        editor: {
+                          name: "v2LayoutEditor",
+                          model: {
+                            def: {
+                              defheight: true,
+                              defborder: true,
+                              defbackgroundStyle: true,
+                              defpaddingStyle: true
+                            },
+                            defaultValue: {
+                              "background-color": "#fff",
+                              "background-image": "",
+                              "padding-top": 0,
+                              "padding-bottom": 0,
+                              "padding-left": 0,
+                              "padding-right": 0
+                            },
+                            customStyle: {}
+                          }
+                        },
+                        main: "index.vue"
+                      },
+                      children: [
+                        {
+                          style: {
+                            divCtn: {
+                              position: "",
+                              top: "",
+                              right: "",
+                              bottom: "",
+                              left: "",
+                              overflow: "",
+                              margin: "",
+                              padding: "",
+                              height: "",
+                              width: "",
+                              "max-height": "",
+                              "max-width": "",
+                              "min-height": "",
+                              "min-width": ""
+                            }
+                          },
+                          direction: "row",
+                          layout: "[50,50]",
+                          rules: "",
+                          def: {
+                            defheight: true,
+                            defborder: true,
+                            defbackgroundStyle: true,
+                            defpaddingStyle: true
+                          },
+                          defaultValue: {
+                            "background-color": "#fff",
+                            "background-image": "",
+                            "padding-top": 0,
+                            "padding-bottom": 0,
+                            "padding-left": 0,
+                            "padding-right": 0
+                          },
+                          customStyle: {},
+                          href: "v2-layout-colctn",
+                          component: "v2-layout-colctn",
+                          widget: {
+                            belongTo: "aui",
+                            icon: "iconhengxiangbuju",
+                            type: "layout",
+                            href: "v2-layout-colctn",
+                            author: "zhanghaixian@agree.com.cn",
+                            version: 510000,
+                            accept: "",
+                            name: "横向布局",
+                            option: [
+                              {
+                                name: "direction",
+                                desp: "排列方式",
+                                defaultValue: "row",
+                                type: "string_select",
+                                valueArray: ["row", "col"],
+                                despArray: ["横排", "竖排"]
+                              },
+                              {
+                                name: "layout",
+                                desp: "栅格",
+                                hidden: false,
+                                defaultValue: [50, 50],
+                                type: "string_input"
+                              },
+                              {
+                                name: "rules",
+                                desp: "表单验证",
+                                defaultValue: "",
+                                type: "single_array",
+                                attrInEachElement: [
+                                  {
+                                    name: "rule",
+                                    desp: "规则",
+                                    defaultValue: "",
+                                    type: "string_input"
+                                  }
+                                ]
+                              }
+                            ],
+                            css: {
+                              style: [
+                                {
+                                  desp: "容器",
+                                  cssAttrs:
+                                    "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                  name: "divCtn"
+                                }
+                              ]
+                            },
+                            editor: {
+                              name: "v2LayoutEditor",
+                              model: {
+                                def: {
+                                  defheight: true,
+                                  defborder: true,
+                                  defbackgroundStyle: true,
+                                  defpaddingStyle: true
+                                },
+                                defaultValue: {
+                                  "background-color": "#fff",
+                                  "background-image": "",
+                                  "padding-top": 0,
+                                  "padding-bottom": 0,
+                                  "padding-left": 0,
+                                  "padding-right": 0
+                                },
+                                customStyle: {}
+                              }
+                            },
+                            main: "index.vue"
+                          },
+                          children: [
+                            {
+                              style: {
+                                divCtn: {
+                                  position: "",
+                                  top: "",
+                                  right: "",
+                                  bottom: "",
+                                  left: "",
+                                  overflow: "",
+                                  margin: "",
+                                  padding: "",
+                                  height: "",
+                                  width: "",
+                                  "max-height": "",
+                                  "max-width": "",
+                                  "min-height": "",
+                                  "min-width": ""
+                                }
+                              },
+                              direction: "col",
+                              layout: "[50,50]",
+                              rules: "",
+                              def: {
+                                defheight: true,
+                                defborder: true,
+                                defbackgroundStyle: true,
+                                defpaddingStyle: true
+                              },
+                              defaultValue: {
+                                "background-color": "#fff",
+                                "background-image": "",
+                                "padding-top": 0,
+                                "padding-bottom": 0,
+                                "padding-left": 0,
+                                "padding-right": 0
+                              },
+                              customStyle: {},
+                              href: "v2-layout-rowctn",
+                              component: "v2-layout-rowctn",
+                              widget: {
+                                belongTo: "aui",
+                                icon: "iconshuxiangbuju",
+                                type: "layout",
+                                href: "v2-layout-rowctn",
+                                author: "zhanghaixian@agree.com.cn",
+                                version: 510000,
+                                accept: "",
+                                name: "竖向布局",
+                                option: [
+                                  {
+                                    name: "direction",
+                                    desp: "排列方式",
+                                    defaultValue: "col",
+                                    type: "string_select",
+                                    valueArray: ["row", "col"],
+                                    despArray: ["横排", "竖排"]
+                                  },
+                                  {
+                                    name: "layout",
+                                    desp: "栅格",
+                                    hidden: false,
+                                    defaultValue: [50, 50],
+                                    type: "string_input"
+                                  },
+                                  {
+                                    name: "rules",
+                                    desp: "表单验证",
+                                    defaultValue: "",
+                                    type: "single_array",
+                                    attrInEachElement: [
+                                      {
+                                        name: "rule",
+                                        desp: "规则",
+                                        defaultValue: "",
+                                        type: "string_input"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                css: {
+                                  style: [
+                                    {
+                                      desp: "子容器",
+                                      cssAttrs:
+                                        "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                      name: "divCtn"
+                                    }
+                                  ]
+                                },
+                                editor: {
+                                  name: "v2LayoutEditor",
+                                  model: {
+                                    def: {
+                                      defheight: true,
+                                      defborder: true,
+                                      defbackgroundStyle: true,
+                                      defpaddingStyle: true
+                                    },
+                                    defaultValue: {
+                                      "background-color": "#fff",
+                                      "background-image": "",
+                                      "padding-top": 0,
+                                      "padding-bottom": 0,
+                                      "padding-left": 0,
+                                      "padding-right": 0
+                                    },
+                                    customStyle: {}
+                                  }
+                                },
+                                main: "index.vue"
+                              },
+                              children: [
+                                {
+                                  style: {
+                                    divCtn: {
+                                      position: "",
+                                      top: "px",
+                                      right: "px",
+                                      bottom: "px",
+                                      left: "px",
+                                      overflow: "",
+                                      margin: "",
+                                      padding: "",
+                                      height: "px",
+                                      width: "px",
+                                      "max-height": "px",
+                                      "max-width": "px",
+                                      "min-height": "px",
+                                      "min-width": "px"
+                                    }
+                                  },
+                                  direction: "col",
+                                  layout: "[60,40]",
+                                  rules: "",
+                                  def: {
+                                    defheight: true,
+                                    defborder: true,
+                                    defbackgroundStyle: true,
+                                    defpaddingStyle: false
+                                  },
+                                  defaultValue: {
+                                    "background-color": "#fff",
+                                    "background-image": "",
+                                    "padding-top": 0,
+                                    "padding-bottom": 0,
+                                    "padding-left": 0,
+                                    "padding-right": 0
+                                  },
+                                  customStyle: {
+                                    opacity: 1,
+                                    "border-radius": "0px",
+                                    "padding-top": "",
+                                    "padding-left": "",
+                                    "padding-bottom": ""
+                                  },
+                                  href: "v2-layout-rowctn",
+                                  component: "v2-layout-rowctn",
+                                  widget: {
+                                    belongTo: "aui",
+                                    icon: "iconshuxiangbuju",
+                                    type: "layout",
+                                    href: "v2-layout-rowctn",
+                                    author: "zhanghaixian@agree.com.cn",
+                                    version: 510000,
+                                    accept: "",
+                                    name: "竖向布局",
+                                    option: [
+                                      {
+                                        name: "direction",
+                                        desp: "排列方式",
+                                        defaultValue: "col",
+                                        type: "string_select",
+                                        valueArray: ["row", "col"],
+                                        despArray: ["横排", "竖排"]
+                                      },
+                                      {
+                                        name: "layout",
+                                        desp: "栅格",
+                                        hidden: false,
+                                        defaultValue: [50, 50],
+                                        type: "string_input"
+                                      },
+                                      {
+                                        name: "rules",
+                                        desp: "表单验证",
+                                        defaultValue: "",
+                                        type: "single_array",
+                                        attrInEachElement: [
+                                          {
+                                            name: "rule",
+                                            desp: "规则",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    css: {
+                                      style: [
+                                        {
+                                          desp: "子容器",
+                                          cssAttrs:
+                                            "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                          name: "divCtn"
+                                        }
+                                      ]
+                                    },
+                                    editor: {
+                                      name: "v2LayoutEditor",
+                                      model: {
+                                        def: {
+                                          defheight: true,
+                                          defborder: true,
+                                          defbackgroundStyle: true,
+                                          defpaddingStyle: true
+                                        },
+                                        defaultValue: {
+                                          "background-color": "#fff",
+                                          "background-image": "",
+                                          "padding-top": 0,
+                                          "padding-bottom": 0,
+                                          "padding-left": 0,
+                                          "padding-right": 0
+                                        },
+                                        customStyle: {}
+                                      }
+                                    },
+                                    main: "index.vue"
+                                  },
+                                  children: [
+                                    {
+                                      style: {
+                                        label: {
+                                          "font-size": "px",
+                                          "font-weight": "",
+                                          color: ""
+                                        },
+                                        borderStyle: { "border-color": "" },
+                                        fontStyle: { color: "" }
+                                      },
+                                      label: "机构号",
+                                      labelWitdh: "130px",
+                                      titleMode: "col",
+                                      placeholder: "请选择",
+                                      value: "orgId",
+                                      dataType: "def",
+                                      optionConfig: "orgList",
+                                      options: [
+                                        {
+                                          active: "true",
+                                          value: "1",
+                                          label: "选项1"
+                                        }
+                                      ],
+                                      clearable: false,
+                                      filterable: true,
+                                      disabled: false,
+                                      isRequired: false,
+                                      rules: "",
+                                      href: "v2-form-select",
+                                      component: "v2-form-select",
+                                      widget: {
+                                        belongTo: "aui",
+                                        icon: "iconxuanzeqi",
+                                        type: "form",
+                                        href: "v2-form-select",
+                                        author: "fengjiarong@agree.com.cn",
+                                        version: 510000,
+                                        accept: "foundationRowCtn divCtn",
+                                        name: "下拉框",
+                                        option: [
+                                          {
+                                            name: "label",
+                                            desp: "标题",
+                                            defaultValue: "标题",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "labelWitdh",
+                                            desp: "标题宽度",
+                                            defaultValue: "80px",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "titleMode",
+                                            desp: "标题排列方式",
+                                            defaultValue: "col",
+                                            type: "string_select",
+                                            valueArray: ["row", "col"],
+                                            despArray: ["同列排列", "同行排列"]
+                                          },
+                                          {
+                                            name: "placeholder",
+                                            desp: "placeholder",
+                                            defaultValue: "请选择",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "value",
+                                            desp: "选择值",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "dataType",
+                                            desp: "初始数据定义",
+                                            defaultValue: "def",
+                                            type: "string_select",
+                                            valueArray: ["def", "cus"],
+                                            despArray: ["默认", "字段映射"]
+                                          },
+                                          {
+                                            require: { dataType: "def" },
+                                            name: "optionConfig",
+                                            desp: "下拉项",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            require: { dataType: "cus" },
+                                            name: "options",
+                                            desp: "配置项",
+                                            defaultValue: "",
+                                            type: "array",
+                                            attrInEachElement: [
+                                              {
+                                                name: "value",
+                                                desp: "值",
+                                                defaultValue: "1",
+                                                type: "string_input"
+                                              },
+                                              {
+                                                name: "label",
+                                                desp: "文本",
+                                                defaultValue: "选项1",
+                                                type: "string_input"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            name: "clearable",
+                                            desp: "是否可清空",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "filterable",
+                                            desp: "是否可搜索",
+                                            defaultValue: true,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "disabled",
+                                            desp: "是否禁填",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "isRequired",
+                                            desp: "是否必填",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "rules",
+                                            desp: "验证规则",
+                                            defaultValue: "",
+                                            type: "single_array",
+                                            attrInEachElement: [
+                                              {
+                                                name: "rule",
+                                                desp: "规则",
+                                                defaultValue: "",
+                                                type: "string_input"
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        css: {
+                                          style: [
+                                            {
+                                              desp: "标题",
+                                              cssAttrs:
+                                                "font-size color font-weight",
+                                              name: "label"
+                                            },
+                                            {
+                                              desp: "检验边框",
+                                              cssAttrs: "border-color",
+                                              name: "borderStyle"
+                                            },
+                                            {
+                                              desp: "检验文字",
+                                              cssAttrs: "color",
+                                              name: "fontStyle"
+                                            }
+                                          ]
+                                        },
+                                        main: "index.vue"
+                                      },
+                                      children: [],
+                                      events: {
+                                        _op_formSelect_select: {
+                                          change: ["event0_1559701893072"]
+                                        }
+                                      },
+                                      id: 1559701893072,
+                                      pid: 1559701728991
+                                    },
+                                    null
+                                  ],
+                                  events: {},
+                                  id: 1559701728991,
+                                  pid: 1559701601990
+                                },
+                                {
+                                  style: {
+                                    divCtn: {
+                                      position: "",
+                                      top: "px",
+                                      right: "px",
+                                      bottom: "px",
+                                      left: "px",
+                                      overflow: "",
+                                      margin: "",
+                                      padding: "",
+                                      height: "px",
+                                      width: "px",
+                                      "max-height": "px",
+                                      "max-width": "px",
+                                      "min-height": "px",
+                                      "min-width": "px"
+                                    }
+                                  },
+                                  direction: "col",
+                                  layout: "[60,40]",
+                                  rules: "",
+                                  def: {
+                                    defheight: true,
+                                    defborder: true,
+                                    defbackgroundStyle: true,
+                                    defpaddingStyle: false
+                                  },
+                                  defaultValue: {
+                                    "background-color": "#fff",
+                                    "background-image": "",
+                                    "padding-top": 0,
+                                    "padding-bottom": 0,
+                                    "padding-left": 0,
+                                    "padding-right": 0
+                                  },
+                                  customStyle: {
+                                    opacity: 1,
+                                    "border-radius": "0px",
+                                    "padding-top": "",
+                                    "padding-bottom": ""
+                                  },
+                                  href: "v2-layout-rowctn",
+                                  component: "v2-layout-rowctn",
+                                  widget: {
+                                    belongTo: "aui",
+                                    icon: "iconshuxiangbuju",
+                                    type: "layout",
+                                    href: "v2-layout-rowctn",
+                                    author: "zhanghaixian@agree.com.cn",
+                                    version: 510000,
+                                    accept: "",
+                                    name: "竖向布局",
+                                    option: [
+                                      {
+                                        name: "direction",
+                                        desp: "排列方式",
+                                        defaultValue: "col",
+                                        type: "string_select",
+                                        valueArray: ["row", "col"],
+                                        despArray: ["横排", "竖排"]
+                                      },
+                                      {
+                                        name: "layout",
+                                        desp: "栅格",
+                                        hidden: false,
+                                        defaultValue: [50, 50],
+                                        type: "string_input"
+                                      },
+                                      {
+                                        name: "rules",
+                                        desp: "表单验证",
+                                        defaultValue: "",
+                                        type: "single_array",
+                                        attrInEachElement: [
+                                          {
+                                            name: "rule",
+                                            desp: "规则",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    css: {
+                                      style: [
+                                        {
+                                          desp: "子容器",
+                                          cssAttrs:
+                                            "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                          name: "divCtn"
+                                        }
+                                      ]
+                                    },
+                                    editor: {
+                                      name: "v2LayoutEditor",
+                                      model: {
+                                        def: {
+                                          defheight: true,
+                                          defborder: true,
+                                          defbackgroundStyle: true,
+                                          defpaddingStyle: true
+                                        },
+                                        defaultValue: {
+                                          "background-color": "#fff",
+                                          "background-image": "",
+                                          "padding-top": 0,
+                                          "padding-bottom": 0,
+                                          "padding-left": 0,
+                                          "padding-right": 0
+                                        },
+                                        customStyle: {}
+                                      }
+                                    },
+                                    main: "index.vue"
+                                  },
+                                  children: [
+                                    {
+                                      style: {
+                                        label: {
+                                          "font-size": "px",
+                                          "font-weight": "",
+                                          color: ""
+                                        },
+                                        borderStyle: { "border-color": "" },
+                                        fontStyle: { color: "" }
+                                      },
+                                      label: "柜员号",
+                                      labelWitdh: "130px",
+                                      titleMode: "col",
+                                      placeholder: "请选择",
+                                      value: "employeeId",
+                                      dataType: "def",
+                                      optionConfig: "employeeList",
+                                      options: [
+                                        {
+                                          active: "true",
+                                          value: "1",
+                                          label: "选项1"
+                                        }
+                                      ],
+                                      clearable: false,
+                                      filterable: true,
+                                      disabled: false,
+                                      isRequired: false,
+                                      rules: "",
+                                      href: "v2-form-select",
+                                      component: "v2-form-select",
+                                      widget: {
+                                        belongTo: "aui",
+                                        icon: "iconxuanzeqi",
+                                        type: "form",
+                                        href: "v2-form-select",
+                                        author: "fengjiarong@agree.com.cn",
+                                        version: 510000,
+                                        accept: "foundationRowCtn divCtn",
+                                        name: "下拉框",
+                                        option: [
+                                          {
+                                            name: "label",
+                                            desp: "标题",
+                                            defaultValue: "标题",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "labelWitdh",
+                                            desp: "标题宽度",
+                                            defaultValue: "80px",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "titleMode",
+                                            desp: "标题排列方式",
+                                            defaultValue: "col",
+                                            type: "string_select",
+                                            valueArray: ["row", "col"],
+                                            despArray: ["同列排列", "同行排列"]
+                                          },
+                                          {
+                                            name: "placeholder",
+                                            desp: "placeholder",
+                                            defaultValue: "请选择",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "value",
+                                            desp: "选择值",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "dataType",
+                                            desp: "初始数据定义",
+                                            defaultValue: "def",
+                                            type: "string_select",
+                                            valueArray: ["def", "cus"],
+                                            despArray: ["默认", "字段映射"]
+                                          },
+                                          {
+                                            require: { dataType: "def" },
+                                            name: "optionConfig",
+                                            desp: "下拉项",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            require: { dataType: "cus" },
+                                            name: "options",
+                                            desp: "配置项",
+                                            defaultValue: "",
+                                            type: "array",
+                                            attrInEachElement: [
+                                              {
+                                                name: "value",
+                                                desp: "值",
+                                                defaultValue: "1",
+                                                type: "string_input"
+                                              },
+                                              {
+                                                name: "label",
+                                                desp: "文本",
+                                                defaultValue: "选项1",
+                                                type: "string_input"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            name: "clearable",
+                                            desp: "是否可清空",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "filterable",
+                                            desp: "是否可搜索",
+                                            defaultValue: true,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "disabled",
+                                            desp: "是否禁填",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "isRequired",
+                                            desp: "是否必填",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "rules",
+                                            desp: "验证规则",
+                                            defaultValue: "",
+                                            type: "single_array",
+                                            attrInEachElement: [
+                                              {
+                                                name: "rule",
+                                                desp: "规则",
+                                                defaultValue: "",
+                                                type: "string_input"
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        css: {
+                                          style: [
+                                            {
+                                              desp: "标题",
+                                              cssAttrs:
+                                                "font-size color font-weight",
+                                              name: "label"
+                                            },
+                                            {
+                                              desp: "检验边框",
+                                              cssAttrs: "border-color",
+                                              name: "borderStyle"
+                                            },
+                                            {
+                                              desp: "检验文字",
+                                              cssAttrs: "color",
+                                              name: "fontStyle"
+                                            }
+                                          ]
+                                        },
+                                        main: "index.vue"
+                                      },
+                                      children: [],
+                                      events: {
+                                        _op_formSelect_select: {
+                                          change: ["event0_1559701933752"]
+                                        }
+                                      },
+                                      id: 1559701933752,
+                                      pid: 1559701914943
+                                    },
+                                    null
+                                  ],
+                                  events: {},
+                                  id: 1559701914943,
+                                  pid: 1559701601990
+                                }
+                              ],
+                              events: {},
+                              id: 1559701601990,
+                              pid: 1559701576947
+                            },
+                            {
+                              style: {
+                                divCtn: {
+                                  position: "",
+                                  top: "",
+                                  right: "",
+                                  bottom: "",
+                                  left: "",
+                                  overflow: "",
+                                  margin: "",
+                                  padding: "",
+                                  height: "",
+                                  width: "",
+                                  "max-height": "",
+                                  "max-width": "",
+                                  "min-height": "",
+                                  "min-width": ""
+                                }
+                              },
+                              direction: "col",
+                              layout: "[50,50]",
+                              rules: "",
+                              def: {
+                                defheight: true,
+                                defborder: true,
+                                defbackgroundStyle: true,
+                                defpaddingStyle: true
+                              },
+                              defaultValue: {
+                                "background-color": "#fff",
+                                "background-image": "",
+                                "padding-top": 0,
+                                "padding-bottom": 0,
+                                "padding-left": 0,
+                                "padding-right": 0
+                              },
+                              customStyle: {},
+                              href: "v2-layout-rowctn",
+                              component: "v2-layout-rowctn",
+                              widget: {
+                                belongTo: "aui",
+                                icon: "iconshuxiangbuju",
+                                type: "layout",
+                                href: "v2-layout-rowctn",
+                                author: "zhanghaixian@agree.com.cn",
+                                version: 510000,
+                                accept: "",
+                                name: "竖向布局",
+                                option: [
+                                  {
+                                    name: "direction",
+                                    desp: "排列方式",
+                                    defaultValue: "col",
+                                    type: "string_select",
+                                    valueArray: ["row", "col"],
+                                    despArray: ["横排", "竖排"]
+                                  },
+                                  {
+                                    name: "layout",
+                                    desp: "栅格",
+                                    hidden: false,
+                                    defaultValue: [50, 50],
+                                    type: "string_input"
+                                  },
+                                  {
+                                    name: "rules",
+                                    desp: "表单验证",
+                                    defaultValue: "",
+                                    type: "single_array",
+                                    attrInEachElement: [
+                                      {
+                                        name: "rule",
+                                        desp: "规则",
+                                        defaultValue: "",
+                                        type: "string_input"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                css: {
+                                  style: [
+                                    {
+                                      desp: "子容器",
+                                      cssAttrs:
+                                        "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                      name: "divCtn"
+                                    }
+                                  ]
+                                },
+                                editor: {
+                                  name: "v2LayoutEditor",
+                                  model: {
+                                    def: {
+                                      defheight: true,
+                                      defborder: true,
+                                      defbackgroundStyle: true,
+                                      defpaddingStyle: true
+                                    },
+                                    defaultValue: {
+                                      "background-color": "#fff",
+                                      "background-image": "",
+                                      "padding-top": 0,
+                                      "padding-bottom": 0,
+                                      "padding-left": 0,
+                                      "padding-right": 0
+                                    },
+                                    customStyle: {}
+                                  }
+                                },
+                                main: "index.vue"
+                              },
+                              children: [
+                                {
+                                  style: {
+                                    divCtn: {
+                                      position: "",
+                                      top: "px",
+                                      right: "px",
+                                      bottom: "px",
+                                      left: "px",
+                                      overflow: "",
+                                      margin: "",
+                                      padding: "",
+                                      height: "px",
+                                      width: "px",
+                                      "max-height": "px",
+                                      "max-width": "px",
+                                      "min-height": "px",
+                                      "min-width": "px"
+                                    }
+                                  },
+                                  direction: "col",
+                                  layout: "[60,40]",
+                                  rules: "",
+                                  def: {
+                                    defheight: true,
+                                    defborder: true,
+                                    defbackgroundStyle: true,
+                                    defpaddingStyle: false
+                                  },
+                                  defaultValue: {
+                                    "background-color": "#fff",
+                                    "background-image": "",
+                                    "padding-top": 0,
+                                    "padding-bottom": 0,
+                                    "padding-left": 0,
+                                    "padding-right": 0
+                                  },
+                                  customStyle: {
+                                    opacity: 1,
+                                    "border-radius": "0px",
+                                    "padding-top": "",
+                                    "padding-bottom": ""
+                                  },
+                                  href: "v2-layout-rowctn",
+                                  component: "v2-layout-rowctn",
+                                  widget: {
+                                    belongTo: "aui",
+                                    icon: "iconshuxiangbuju",
+                                    type: "layout",
+                                    href: "v2-layout-rowctn",
+                                    author: "zhanghaixian@agree.com.cn",
+                                    version: 510000,
+                                    accept: "",
+                                    name: "竖向布局",
+                                    option: [
+                                      {
+                                        name: "direction",
+                                        desp: "排列方式",
+                                        defaultValue: "col",
+                                        type: "string_select",
+                                        valueArray: ["row", "col"],
+                                        despArray: ["横排", "竖排"]
+                                      },
+                                      {
+                                        name: "layout",
+                                        desp: "栅格",
+                                        hidden: false,
+                                        defaultValue: [50, 50],
+                                        type: "string_input"
+                                      },
+                                      {
+                                        name: "rules",
+                                        desp: "表单验证",
+                                        defaultValue: "",
+                                        type: "single_array",
+                                        attrInEachElement: [
+                                          {
+                                            name: "rule",
+                                            desp: "规则",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    css: {
+                                      style: [
+                                        {
+                                          desp: "子容器",
+                                          cssAttrs:
+                                            "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                          name: "divCtn"
+                                        }
+                                      ]
+                                    },
+                                    editor: {
+                                      name: "v2LayoutEditor",
+                                      model: {
+                                        def: {
+                                          defheight: true,
+                                          defborder: true,
+                                          defbackgroundStyle: true,
+                                          defpaddingStyle: true
+                                        },
+                                        defaultValue: {
+                                          "background-color": "#fff",
+                                          "background-image": "",
+                                          "padding-top": 0,
+                                          "padding-bottom": 0,
+                                          "padding-left": 0,
+                                          "padding-right": 0
+                                        },
+                                        customStyle: {}
+                                      }
+                                    },
+                                    main: "index.vue"
+                                  },
+                                  children: [
+                                    {
+                                      style: {
+                                        label: {
+                                          "font-size": "px",
+                                          "font-weight": "",
+                                          color: ""
+                                        },
+                                        borderStyle: { "border-color": "" },
+                                        fontStyle: { color: "" }
+                                      },
+                                      label: "交易类型",
+                                      labelWitdh: "130px",
+                                      titleMode: "col",
+                                      placeholder: "请选择",
+                                      value: "tradeType",
+                                      dataType: "cus",
+                                      optionConfig: "",
+                                      options: [
+                                        {
+                                          active: "true",
+                                          value: "0",
+                                          label: "大额交易"
+                                        },
+                                        {
+                                          active: true,
+                                          value: "1",
+                                          label: "小额交易"
+                                        },
+                                        {
+                                          active: true,
+                                          value: "2",
+                                          label: "二代网银"
+                                        }
+                                      ],
+                                      clearable: false,
+                                      filterable: true,
+                                      disabled: false,
+                                      isRequired: false,
+                                      rules: "",
+                                      href: "v2-form-select",
+                                      component: "v2-form-select",
+                                      widget: {
+                                        belongTo: "aui",
+                                        icon: "iconxuanzeqi",
+                                        type: "form",
+                                        href: "v2-form-select",
+                                        author: "fengjiarong@agree.com.cn",
+                                        version: 510000,
+                                        accept: "foundationRowCtn divCtn",
+                                        name: "下拉框",
+                                        option: [
+                                          {
+                                            name: "label",
+                                            desp: "标题",
+                                            defaultValue: "标题",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "labelWitdh",
+                                            desp: "标题宽度",
+                                            defaultValue: "80px",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "titleMode",
+                                            desp: "标题排列方式",
+                                            defaultValue: "col",
+                                            type: "string_select",
+                                            valueArray: ["row", "col"],
+                                            despArray: ["同列排列", "同行排列"]
+                                          },
+                                          {
+                                            name: "placeholder",
+                                            desp: "placeholder",
+                                            defaultValue: "请选择",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "value",
+                                            desp: "选择值",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "dataType",
+                                            desp: "初始数据定义",
+                                            defaultValue: "def",
+                                            type: "string_select",
+                                            valueArray: ["def", "cus"],
+                                            despArray: ["默认", "字段映射"]
+                                          },
+                                          {
+                                            require: { dataType: "def" },
+                                            name: "optionConfig",
+                                            desp: "下拉项",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            require: { dataType: "cus" },
+                                            name: "options",
+                                            desp: "配置项",
+                                            defaultValue: "",
+                                            type: "array",
+                                            attrInEachElement: [
+                                              {
+                                                name: "value",
+                                                desp: "值",
+                                                defaultValue: "1",
+                                                type: "string_input"
+                                              },
+                                              {
+                                                name: "label",
+                                                desp: "文本",
+                                                defaultValue: "选项1",
+                                                type: "string_input"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            name: "clearable",
+                                            desp: "是否可清空",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "filterable",
+                                            desp: "是否可搜索",
+                                            defaultValue: true,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "disabled",
+                                            desp: "是否禁填",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "isRequired",
+                                            desp: "是否必填",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "rules",
+                                            desp: "验证规则",
+                                            defaultValue: "",
+                                            type: "single_array",
+                                            attrInEachElement: [
+                                              {
+                                                name: "rule",
+                                                desp: "规则",
+                                                defaultValue: "",
+                                                type: "string_input"
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        css: {
+                                          style: [
+                                            {
+                                              desp: "标题",
+                                              cssAttrs:
+                                                "font-size color font-weight",
+                                              name: "label"
+                                            },
+                                            {
+                                              desp: "检验边框",
+                                              cssAttrs: "border-color",
+                                              name: "borderStyle"
+                                            },
+                                            {
+                                              desp: "检验文字",
+                                              cssAttrs: "color",
+                                              name: "fontStyle"
+                                            }
+                                          ]
+                                        },
+                                        main: "index.vue"
+                                      },
+                                      children: [],
+                                      events: {},
+                                      id: 1559701946510,
+                                      pid: 1559701727214
+                                    },
+                                    null
+                                  ],
+                                  events: {},
+                                  id: 1559701727214,
+                                  pid: 1559701698842
+                                },
+                                {
+                                  style: {
+                                    divCtn: {
+                                      position: "",
+                                      top: "px",
+                                      right: "px",
+                                      bottom: "px",
+                                      left: "px",
+                                      overflow: "",
+                                      margin: "",
+                                      padding: "",
+                                      height: "px",
+                                      width: "px",
+                                      "max-height": "px",
+                                      "max-width": "px",
+                                      "min-height": "px",
+                                      "min-width": "px"
+                                    }
+                                  },
+                                  direction: "col",
+                                  layout: "[60,40]",
+                                  rules: "",
+                                  def: {
+                                    defheight: true,
+                                    defborder: true,
+                                    defbackgroundStyle: true,
+                                    defpaddingStyle: false
+                                  },
+                                  defaultValue: {
+                                    "background-color": "#fff",
+                                    "background-image": "",
+                                    "padding-top": 0,
+                                    "padding-bottom": 0,
+                                    "padding-left": 0,
+                                    "padding-right": 0
+                                  },
+                                  customStyle: {
+                                    opacity: 1,
+                                    "border-radius": "0px",
+                                    "padding-top": "",
+                                    "padding-bottom": ""
+                                  },
+                                  href: "v2-layout-rowctn",
+                                  component: "v2-layout-rowctn",
+                                  widget: {
+                                    belongTo: "aui",
+                                    icon: "iconshuxiangbuju",
+                                    type: "layout",
+                                    href: "v2-layout-rowctn",
+                                    author: "zhanghaixian@agree.com.cn",
+                                    version: 510000,
+                                    accept: "",
+                                    name: "竖向布局",
+                                    option: [
+                                      {
+                                        name: "direction",
+                                        desp: "排列方式",
+                                        defaultValue: "col",
+                                        type: "string_select",
+                                        valueArray: ["row", "col"],
+                                        despArray: ["横排", "竖排"]
+                                      },
+                                      {
+                                        name: "layout",
+                                        desp: "栅格",
+                                        hidden: false,
+                                        defaultValue: [50, 50],
+                                        type: "string_input"
+                                      },
+                                      {
+                                        name: "rules",
+                                        desp: "表单验证",
+                                        defaultValue: "",
+                                        type: "single_array",
+                                        attrInEachElement: [
+                                          {
+                                            name: "rule",
+                                            desp: "规则",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    css: {
+                                      style: [
+                                        {
+                                          desp: "子容器",
+                                          cssAttrs:
+                                            "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                          name: "divCtn"
+                                        }
+                                      ]
+                                    },
+                                    editor: {
+                                      name: "v2LayoutEditor",
+                                      model: {
+                                        def: {
+                                          defheight: true,
+                                          defborder: true,
+                                          defbackgroundStyle: true,
+                                          defpaddingStyle: true
+                                        },
+                                        defaultValue: {
+                                          "background-color": "#fff",
+                                          "background-image": "",
+                                          "padding-top": 0,
+                                          "padding-bottom": 0,
+                                          "padding-left": 0,
+                                          "padding-right": 0
+                                        },
+                                        customStyle: {}
+                                      }
+                                    },
+                                    main: "index.vue"
+                                  },
+                                  children: [
+                                    {
+                                      style: {
+                                        label: {
+                                          "font-size": "px",
+                                          "font-weight": "",
+                                          color: ""
+                                        },
+                                        borderStyle: { "border-color": "" },
+                                        fontStyle: { color: "" }
+                                      },
+                                      label: "交易状态",
+                                      labelWitdh: "130px",
+                                      titleMode: "col",
+                                      placeholder: "请选择",
+                                      value: "tradeStatus",
+                                      dataType: "cus",
+                                      optionConfig: "",
+                                      options: [
+                                        {
+                                          active: "true",
+                                          value: "0",
+                                          label: "已完成"
+                                        },
+                                        {
+                                          active: true,
+                                          value: "1",
+                                          label: "待付款"
+                                        },
+                                        {
+                                          active: true,
+                                          value: "2",
+                                          label: "已终止"
+                                        }
+                                      ],
+                                      clearable: false,
+                                      filterable: true,
+                                      disabled: false,
+                                      isRequired: false,
+                                      rules: "",
+                                      href: "v2-form-select",
+                                      component: "v2-form-select",
+                                      widget: {
+                                        belongTo: "aui",
+                                        icon: "iconxuanzeqi",
+                                        type: "form",
+                                        href: "v2-form-select",
+                                        author: "fengjiarong@agree.com.cn",
+                                        version: 510000,
+                                        accept: "foundationRowCtn divCtn",
+                                        name: "下拉框",
+                                        option: [
+                                          {
+                                            name: "label",
+                                            desp: "标题",
+                                            defaultValue: "标题",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "labelWitdh",
+                                            desp: "标题宽度",
+                                            defaultValue: "80px",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "titleMode",
+                                            desp: "标题排列方式",
+                                            defaultValue: "col",
+                                            type: "string_select",
+                                            valueArray: ["row", "col"],
+                                            despArray: ["同列排列", "同行排列"]
+                                          },
+                                          {
+                                            name: "placeholder",
+                                            desp: "placeholder",
+                                            defaultValue: "请选择",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "value",
+                                            desp: "选择值",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "dataType",
+                                            desp: "初始数据定义",
+                                            defaultValue: "def",
+                                            type: "string_select",
+                                            valueArray: ["def", "cus"],
+                                            despArray: ["默认", "字段映射"]
+                                          },
+                                          {
+                                            require: { dataType: "def" },
+                                            name: "optionConfig",
+                                            desp: "下拉项",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            require: { dataType: "cus" },
+                                            name: "options",
+                                            desp: "配置项",
+                                            defaultValue: "",
+                                            type: "array",
+                                            attrInEachElement: [
+                                              {
+                                                name: "value",
+                                                desp: "值",
+                                                defaultValue: "1",
+                                                type: "string_input"
+                                              },
+                                              {
+                                                name: "label",
+                                                desp: "文本",
+                                                defaultValue: "选项1",
+                                                type: "string_input"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            name: "clearable",
+                                            desp: "是否可清空",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "filterable",
+                                            desp: "是否可搜索",
+                                            defaultValue: true,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "disabled",
+                                            desp: "是否禁填",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "isRequired",
+                                            desp: "是否必填",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "rules",
+                                            desp: "验证规则",
+                                            defaultValue: "",
+                                            type: "single_array",
+                                            attrInEachElement: [
+                                              {
+                                                name: "rule",
+                                                desp: "规则",
+                                                defaultValue: "",
+                                                type: "string_input"
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        css: {
+                                          style: [
+                                            {
+                                              desp: "标题",
+                                              cssAttrs:
+                                                "font-size color font-weight",
+                                              name: "label"
+                                            },
+                                            {
+                                              desp: "检验边框",
+                                              cssAttrs: "border-color",
+                                              name: "borderStyle"
+                                            },
+                                            {
+                                              desp: "检验文字",
+                                              cssAttrs: "color",
+                                              name: "fontStyle"
+                                            }
+                                          ]
+                                        },
+                                        main: "index.vue"
+                                      },
+                                      children: [],
+                                      events: {},
+                                      id: 1559701951021,
+                                      pid: 1559701917215
+                                    },
+                                    null
+                                  ],
+                                  events: {},
+                                  id: 1559701917215,
+                                  pid: 1559701698842
+                                }
+                              ],
+                              events: {},
+                              id: 1559701698842,
+                              pid: 1559701576947
+                            }
+                          ],
+                          events: {},
+                          id: 1559701576947,
+                          pid: 1559701546404
+                        },
+                        {
+                          style: {
+                            divCtn: {
+                              position: "",
+                              top: "",
+                              right: "",
+                              bottom: "",
+                              left: "",
+                              overflow: "",
+                              margin: "",
+                              padding: "",
+                              height: "",
+                              width: "",
+                              "max-height": "",
+                              "max-width": "",
+                              "min-height": "",
+                              "min-width": ""
+                            }
+                          },
+                          direction: "row",
+                          layout: "[50,50]",
+                          rules: "",
+                          def: {
+                            defheight: true,
+                            defborder: true,
+                            defbackgroundStyle: true,
+                            defpaddingStyle: true
+                          },
+                          defaultValue: {
+                            "background-color": "#fff",
+                            "background-image": "",
+                            "padding-top": 0,
+                            "padding-bottom": 0,
+                            "padding-left": 0,
+                            "padding-right": 0
+                          },
+                          customStyle: {},
+                          href: "v2-layout-colctn",
+                          component: "v2-layout-colctn",
+                          widget: {
+                            belongTo: "aui",
+                            icon: "iconhengxiangbuju",
+                            type: "layout",
+                            href: "v2-layout-colctn",
+                            author: "zhanghaixian@agree.com.cn",
+                            version: 510000,
+                            accept: "",
+                            name: "横向布局",
+                            option: [
+                              {
+                                name: "direction",
+                                desp: "排列方式",
+                                defaultValue: "row",
+                                type: "string_select",
+                                valueArray: ["row", "col"],
+                                despArray: ["横排", "竖排"]
+                              },
+                              {
+                                name: "layout",
+                                desp: "栅格",
+                                hidden: false,
+                                defaultValue: [50, 50],
+                                type: "string_input"
+                              },
+                              {
+                                name: "rules",
+                                desp: "表单验证",
+                                defaultValue: "",
+                                type: "single_array",
+                                attrInEachElement: [
+                                  {
+                                    name: "rule",
+                                    desp: "规则",
+                                    defaultValue: "",
+                                    type: "string_input"
+                                  }
+                                ]
+                              }
+                            ],
+                            css: {
+                              style: [
+                                {
+                                  desp: "容器",
+                                  cssAttrs:
+                                    "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                  name: "divCtn"
+                                }
+                              ]
+                            },
+                            editor: {
+                              name: "v2LayoutEditor",
+                              model: {
+                                def: {
+                                  defheight: true,
+                                  defborder: true,
+                                  defbackgroundStyle: true,
+                                  defpaddingStyle: true
+                                },
+                                defaultValue: {
+                                  "background-color": "#fff",
+                                  "background-image": "",
+                                  "padding-top": 0,
+                                  "padding-bottom": 0,
+                                  "padding-left": 0,
+                                  "padding-right": 0
+                                },
+                                customStyle: {}
+                              }
+                            },
+                            main: "index.vue"
+                          },
+                          children: [
+                            {
+                              style: {
+                                divCtn: {
+                                  position: "",
+                                  top: "",
+                                  right: "",
+                                  bottom: "",
+                                  left: "",
+                                  overflow: "",
+                                  margin: "",
+                                  padding: "",
+                                  height: "",
+                                  width: "",
+                                  "max-height": "",
+                                  "max-width": "",
+                                  "min-height": "",
+                                  "min-width": ""
+                                }
+                              },
+                              direction: "col",
+                              layout: "[50,50]",
+                              rules: "",
+                              def: {
+                                defheight: true,
+                                defborder: true,
+                                defbackgroundStyle: true,
+                                defpaddingStyle: true
+                              },
+                              defaultValue: {
+                                "background-color": "#fff",
+                                "background-image": "",
+                                "padding-top": 0,
+                                "padding-bottom": 0,
+                                "padding-left": 0,
+                                "padding-right": 0
+                              },
+                              customStyle: {},
+                              href: "v2-layout-rowctn",
+                              component: "v2-layout-rowctn",
+                              widget: {
+                                belongTo: "aui",
+                                icon: "iconshuxiangbuju",
+                                type: "layout",
+                                href: "v2-layout-rowctn",
+                                author: "zhanghaixian@agree.com.cn",
+                                version: 510000,
+                                accept: "",
+                                name: "竖向布局",
+                                option: [
+                                  {
+                                    name: "direction",
+                                    desp: "排列方式",
+                                    defaultValue: "col",
+                                    type: "string_select",
+                                    valueArray: ["row", "col"],
+                                    despArray: ["横排", "竖排"]
+                                  },
+                                  {
+                                    name: "layout",
+                                    desp: "栅格",
+                                    hidden: false,
+                                    defaultValue: [50, 50],
+                                    type: "string_input"
+                                  },
+                                  {
+                                    name: "rules",
+                                    desp: "表单验证",
+                                    defaultValue: "",
+                                    type: "single_array",
+                                    attrInEachElement: [
+                                      {
+                                        name: "rule",
+                                        desp: "规则",
+                                        defaultValue: "",
+                                        type: "string_input"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                css: {
+                                  style: [
+                                    {
+                                      desp: "子容器",
+                                      cssAttrs:
+                                        "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                      name: "divCtn"
+                                    }
+                                  ]
+                                },
+                                editor: {
+                                  name: "v2LayoutEditor",
+                                  model: {
+                                    def: {
+                                      defheight: true,
+                                      defborder: true,
+                                      defbackgroundStyle: true,
+                                      defpaddingStyle: true
+                                    },
+                                    defaultValue: {
+                                      "background-color": "#fff",
+                                      "background-image": "",
+                                      "padding-top": 0,
+                                      "padding-bottom": 0,
+                                      "padding-left": 0,
+                                      "padding-right": 0
+                                    },
+                                    customStyle: {}
+                                  }
+                                },
+                                main: "index.vue"
+                              },
+                              children: [
+                                {
+                                  style: {
+                                    divCtn: {
+                                      position: "",
+                                      top: "px",
+                                      right: "px",
+                                      bottom: "px",
+                                      left: "px",
+                                      overflow: "",
+                                      margin: "",
+                                      padding: "",
+                                      height: "px",
+                                      width: "px",
+                                      "max-height": "px",
+                                      "max-width": "px",
+                                      "min-height": "px",
+                                      "min-width": "px"
+                                    }
+                                  },
+                                  direction: "col",
+                                  layout: "[60,40]",
+                                  rules: "",
+                                  def: {
+                                    defheight: true,
+                                    defborder: true,
+                                    defbackgroundStyle: true,
+                                    defpaddingStyle: false
+                                  },
+                                  defaultValue: {
+                                    "background-color": "#fff",
+                                    "background-image": "",
+                                    "padding-top": 0,
+                                    "padding-bottom": 0,
+                                    "padding-left": 0,
+                                    "padding-right": 0
+                                  },
+                                  customStyle: {
+                                    opacity: 1,
+                                    "border-radius": "0px",
+                                    "padding-top": "",
+                                    "padding-bottom": ""
+                                  },
+                                  href: "v2-layout-rowctn",
+                                  component: "v2-layout-rowctn",
+                                  widget: {
+                                    belongTo: "aui",
+                                    icon: "iconshuxiangbuju",
+                                    type: "layout",
+                                    href: "v2-layout-rowctn",
+                                    author: "zhanghaixian@agree.com.cn",
+                                    version: 510000,
+                                    accept: "",
+                                    name: "竖向布局",
+                                    option: [
+                                      {
+                                        name: "direction",
+                                        desp: "排列方式",
+                                        defaultValue: "col",
+                                        type: "string_select",
+                                        valueArray: ["row", "col"],
+                                        despArray: ["横排", "竖排"]
+                                      },
+                                      {
+                                        name: "layout",
+                                        desp: "栅格",
+                                        hidden: false,
+                                        defaultValue: [50, 50],
+                                        type: "string_input"
+                                      },
+                                      {
+                                        name: "rules",
+                                        desp: "表单验证",
+                                        defaultValue: "",
+                                        type: "single_array",
+                                        attrInEachElement: [
+                                          {
+                                            name: "rule",
+                                            desp: "规则",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    css: {
+                                      style: [
+                                        {
+                                          desp: "子容器",
+                                          cssAttrs:
+                                            "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                          name: "divCtn"
+                                        }
+                                      ]
+                                    },
+                                    editor: {
+                                      name: "v2LayoutEditor",
+                                      model: {
+                                        def: {
+                                          defheight: true,
+                                          defborder: true,
+                                          defbackgroundStyle: true,
+                                          defpaddingStyle: true
+                                        },
+                                        defaultValue: {
+                                          "background-color": "#fff",
+                                          "background-image": "",
+                                          "padding-top": 0,
+                                          "padding-bottom": 0,
+                                          "padding-left": 0,
+                                          "padding-right": 0
+                                        },
+                                        customStyle: {}
+                                      }
+                                    },
+                                    main: "index.vue"
+                                  },
+                                  children: [
+                                    {
+                                      style: {
+                                        label: {
+                                          "font-size": "px",
+                                          "font-weight": "",
+                                          color: ""
+                                        },
+                                        borderStyle: { "border-color": "" },
+                                        fontStyle: { color: "" }
+                                      },
+                                      label: "交易码",
+                                      titleMode: "col",
+                                      labelWitdh: "130px",
+                                      placeholder: "请选择",
+                                      value: "",
+                                      clearable: false,
+                                      disabled: false,
+                                      isRequired: false,
+                                      autoComplete: true,
+                                      suggestion: "tradeCodeList",
+                                      rules: "",
+                                      href: "v2-form-input",
+                                      component: "v2-form-input",
+                                      widget: {
+                                        belongTo: "aui",
+                                        icon: "iconshurukuang",
+                                        type: "form",
+                                        href: "v2-form-input",
+                                        author: "fengjiarong@agree.com.cn",
+                                        version: 510000,
+                                        accept: "foundationRowCtn divCtn",
+                                        name: "输入框",
+                                        option: [
+                                          {
+                                            name: "label",
+                                            desp: "标题",
+                                            defaultValue: "标题",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "titleMode",
+                                            desp: "标题排列方式",
+                                            defaultValue: "col",
+                                            type: "string_select",
+                                            valueArray: ["row", "col"],
+                                            despArray: ["同列排列", "同行排列"]
+                                          },
+                                          {
+                                            name: "labelWitdh",
+                                            desp: "标题宽度",
+                                            defaultValue: "80px",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "placeholder",
+                                            desp: "placeholder",
+                                            defaultValue: "请选择",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "value",
+                                            desp: "值",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "clearable",
+                                            desp: "是否可清空",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "disabled",
+                                            desp: "是否禁填",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "isRequired",
+                                            desp: "是否必填",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "autoComplete",
+                                            desp: "开启输入建议",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            require: { autoComplete: true },
+                                            name: "suggestion",
+                                            desp: "输入建议列表",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "rules",
+                                            desp: "验证规则",
+                                            defaultValue: "",
+                                            type: "single_array",
+                                            attrInEachElement: [
+                                              {
+                                                name: "rule",
+                                                desp: "规则",
+                                                defaultValue: "",
+                                                type: "string_input"
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        css: {
+                                          style: [
+                                            {
+                                              desp: "标题",
+                                              cssAttrs:
+                                                "font-size color font-weight",
+                                              name: "label"
+                                            },
+                                            {
+                                              desp: "检验边框",
+                                              cssAttrs: "border-color",
+                                              name: "borderStyle"
+                                            },
+                                            {
+                                              desp: "检验文字",
+                                              cssAttrs: "color",
+                                              name: "fontStyle"
+                                            }
+                                          ]
+                                        },
+                                        main: "index.vue"
+                                      },
+                                      children: [],
+                                      events: {
+                                        _op_formInput_input: {
+                                          select: ["event0_1559701980923"]
+                                        }
+                                      },
+                                      id: 1559701980923,
+                                      pid: 1559701703444
+                                    },
+                                    null
+                                  ],
+                                  events: {},
+                                  id: 1559701703444,
+                                  pid: 1559701701035
+                                },
+                                {
+                                  style: {
+                                    divCtn: {
+                                      position: "",
+                                      top: "px",
+                                      right: "px",
+                                      bottom: "px",
+                                      left: "px",
+                                      overflow: "",
+                                      margin: "",
+                                      padding: "",
+                                      height: "px",
+                                      width: "px",
+                                      "max-height": "px",
+                                      "max-width": "px",
+                                      "min-height": "px",
+                                      "min-width": "px"
+                                    }
+                                  },
+                                  direction: "col",
+                                  layout: "[60,40]",
+                                  rules: "",
+                                  def: {
+                                    defheight: true,
+                                    defborder: true,
+                                    defbackgroundStyle: true,
+                                    defpaddingStyle: false
+                                  },
+                                  defaultValue: {
+                                    "background-color": "#fff",
+                                    "background-image": "",
+                                    "padding-top": 0,
+                                    "padding-bottom": 0,
+                                    "padding-left": 0,
+                                    "padding-right": 0
+                                  },
+                                  customStyle: {
+                                    opacity: 1,
+                                    "border-radius": "0px",
+                                    "padding-top": "",
+                                    "padding-bottom": ""
+                                  },
+                                  href: "v2-layout-rowctn",
+                                  component: "v2-layout-rowctn",
+                                  widget: {
+                                    belongTo: "aui",
+                                    icon: "iconshuxiangbuju",
+                                    type: "layout",
+                                    href: "v2-layout-rowctn",
+                                    author: "zhanghaixian@agree.com.cn",
+                                    version: 510000,
+                                    accept: "",
+                                    name: "竖向布局",
+                                    option: [
+                                      {
+                                        name: "direction",
+                                        desp: "排列方式",
+                                        defaultValue: "col",
+                                        type: "string_select",
+                                        valueArray: ["row", "col"],
+                                        despArray: ["横排", "竖排"]
+                                      },
+                                      {
+                                        name: "layout",
+                                        desp: "栅格",
+                                        hidden: false,
+                                        defaultValue: [50, 50],
+                                        type: "string_input"
+                                      },
+                                      {
+                                        name: "rules",
+                                        desp: "表单验证",
+                                        defaultValue: "",
+                                        type: "single_array",
+                                        attrInEachElement: [
+                                          {
+                                            name: "rule",
+                                            desp: "规则",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    css: {
+                                      style: [
+                                        {
+                                          desp: "子容器",
+                                          cssAttrs:
+                                            "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                          name: "divCtn"
+                                        }
+                                      ]
+                                    },
+                                    editor: {
+                                      name: "v2LayoutEditor",
+                                      model: {
+                                        def: {
+                                          defheight: true,
+                                          defborder: true,
+                                          defbackgroundStyle: true,
+                                          defpaddingStyle: true
+                                        },
+                                        defaultValue: {
+                                          "background-color": "#fff",
+                                          "background-image": "",
+                                          "padding-top": 0,
+                                          "padding-bottom": 0,
+                                          "padding-left": 0,
+                                          "padding-right": 0
+                                        },
+                                        customStyle: {}
+                                      }
+                                    },
+                                    main: "index.vue"
+                                  },
+                                  children: [
+                                    {
+                                      style: {
+                                        label: {
+                                          "font-size": "px",
+                                          "font-weight": "",
+                                          color: ""
+                                        },
+                                        borderStyle: { "border-color": "" },
+                                        fontStyle: { color: "" }
+                                      },
+                                      label: "交易名称",
+                                      titleMode: "col",
+                                      labelWitdh: "130px",
+                                      placeholder: "请选择",
+                                      value: "tradeName",
+                                      clearable: false,
+                                      disabled: true,
+                                      isRequired: false,
+                                      autoComplete: false,
+                                      suggestion: "",
+                                      rules: "",
+                                      href: "v2-form-input",
+                                      component: "v2-form-input",
+                                      widget: {
+                                        belongTo: "aui",
+                                        icon: "iconshurukuang",
+                                        type: "form",
+                                        href: "v2-form-input",
+                                        author: "fengjiarong@agree.com.cn",
+                                        version: 510000,
+                                        accept: "foundationRowCtn divCtn",
+                                        name: "输入框",
+                                        option: [
+                                          {
+                                            name: "label",
+                                            desp: "标题",
+                                            defaultValue: "标题",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "titleMode",
+                                            desp: "标题排列方式",
+                                            defaultValue: "col",
+                                            type: "string_select",
+                                            valueArray: ["row", "col"],
+                                            despArray: ["同列排列", "同行排列"]
+                                          },
+                                          {
+                                            name: "labelWitdh",
+                                            desp: "标题宽度",
+                                            defaultValue: "80px",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "placeholder",
+                                            desp: "placeholder",
+                                            defaultValue: "请选择",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "value",
+                                            desp: "值",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "clearable",
+                                            desp: "是否可清空",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "disabled",
+                                            desp: "是否禁填",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "isRequired",
+                                            desp: "是否必填",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "autoComplete",
+                                            desp: "开启输入建议",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            require: { autoComplete: true },
+                                            name: "suggestion",
+                                            desp: "输入建议列表",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "rules",
+                                            desp: "验证规则",
+                                            defaultValue: "",
+                                            type: "single_array",
+                                            attrInEachElement: [
+                                              {
+                                                name: "rule",
+                                                desp: "规则",
+                                                defaultValue: "",
+                                                type: "string_input"
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        css: {
+                                          style: [
+                                            {
+                                              desp: "标题",
+                                              cssAttrs:
+                                                "font-size color font-weight",
+                                              name: "label"
+                                            },
+                                            {
+                                              desp: "检验边框",
+                                              cssAttrs: "border-color",
+                                              name: "borderStyle"
+                                            },
+                                            {
+                                              desp: "检验文字",
+                                              cssAttrs: "color",
+                                              name: "fontStyle"
+                                            }
+                                          ]
+                                        },
+                                        main: "index.vue"
+                                      },
+                                      children: [],
+                                      events: {},
+                                      id: 1559701984096,
+                                      pid: 1559701919138
+                                    },
+                                    null
+                                  ],
+                                  events: {},
+                                  id: 1559701919138,
+                                  pid: 1559701701035
+                                }
+                              ],
+                              events: {},
+                              id: 1559701701035,
+                              pid: 1559701578994
+                            },
+                            {
+                              style: {
+                                divCtn: {
+                                  position: "",
+                                  top: "",
+                                  right: "",
+                                  bottom: "",
+                                  left: "",
+                                  overflow: "",
+                                  margin: "",
+                                  padding: "",
+                                  height: "",
+                                  width: "",
+                                  "max-height": "",
+                                  "max-width": "",
+                                  "min-height": "",
+                                  "min-width": ""
+                                }
+                              },
+                              direction: "col",
+                              layout: "[50,50]",
+                              rules: "",
+                              def: {
+                                defheight: true,
+                                defborder: true,
+                                defbackgroundStyle: true,
+                                defpaddingStyle: true
+                              },
+                              defaultValue: {
+                                "background-color": "#fff",
+                                "background-image": "",
+                                "padding-top": 0,
+                                "padding-bottom": 0,
+                                "padding-left": 0,
+                                "padding-right": 0
+                              },
+                              customStyle: {},
+                              href: "v2-layout-rowctn",
+                              component: "v2-layout-rowctn",
+                              widget: {
+                                belongTo: "aui",
+                                icon: "iconshuxiangbuju",
+                                type: "layout",
+                                href: "v2-layout-rowctn",
+                                author: "zhanghaixian@agree.com.cn",
+                                version: 510000,
+                                accept: "",
+                                name: "竖向布局",
+                                option: [
+                                  {
+                                    name: "direction",
+                                    desp: "排列方式",
+                                    defaultValue: "col",
+                                    type: "string_select",
+                                    valueArray: ["row", "col"],
+                                    despArray: ["横排", "竖排"]
+                                  },
+                                  {
+                                    name: "layout",
+                                    desp: "栅格",
+                                    hidden: false,
+                                    defaultValue: [50, 50],
+                                    type: "string_input"
+                                  },
+                                  {
+                                    name: "rules",
+                                    desp: "表单验证",
+                                    defaultValue: "",
+                                    type: "single_array",
+                                    attrInEachElement: [
+                                      {
+                                        name: "rule",
+                                        desp: "规则",
+                                        defaultValue: "",
+                                        type: "string_input"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                css: {
+                                  style: [
+                                    {
+                                      desp: "子容器",
+                                      cssAttrs:
+                                        "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                      name: "divCtn"
+                                    }
+                                  ]
+                                },
+                                editor: {
+                                  name: "v2LayoutEditor",
+                                  model: {
+                                    def: {
+                                      defheight: true,
+                                      defborder: true,
+                                      defbackgroundStyle: true,
+                                      defpaddingStyle: true
+                                    },
+                                    defaultValue: {
+                                      "background-color": "#fff",
+                                      "background-image": "",
+                                      "padding-top": 0,
+                                      "padding-bottom": 0,
+                                      "padding-left": 0,
+                                      "padding-right": 0
+                                    },
+                                    customStyle: {}
+                                  }
+                                },
+                                main: "index.vue"
+                              },
+                              children: [
+                                {
+                                  style: {
+                                    divCtn: {
+                                      position: "",
+                                      top: "px",
+                                      right: "px",
+                                      bottom: "px",
+                                      left: "px",
+                                      overflow: "",
+                                      margin: "",
+                                      padding: "",
+                                      height: "px",
+                                      width: "px",
+                                      "max-height": "px",
+                                      "max-width": "px",
+                                      "min-height": "px",
+                                      "min-width": "px"
+                                    }
+                                  },
+                                  direction: "col",
+                                  layout: "[60,40]",
+                                  rules: "",
+                                  def: {
+                                    defheight: true,
+                                    defborder: true,
+                                    defbackgroundStyle: true,
+                                    defpaddingStyle: false
+                                  },
+                                  defaultValue: {
+                                    "background-color": "#fff",
+                                    "background-image": "",
+                                    "padding-top": 0,
+                                    "padding-bottom": 0,
+                                    "padding-left": 0,
+                                    "padding-right": 0
+                                  },
+                                  customStyle: {
+                                    opacity: 1,
+                                    "border-radius": "0px",
+                                    "padding-top": "",
+                                    "padding-bottom": ""
+                                  },
+                                  href: "v2-layout-rowctn",
+                                  component: "v2-layout-rowctn",
+                                  widget: {
+                                    belongTo: "aui",
+                                    icon: "iconshuxiangbuju",
+                                    type: "layout",
+                                    href: "v2-layout-rowctn",
+                                    author: "zhanghaixian@agree.com.cn",
+                                    version: 510000,
+                                    accept: "",
+                                    name: "竖向布局",
+                                    option: [
+                                      {
+                                        name: "direction",
+                                        desp: "排列方式",
+                                        defaultValue: "col",
+                                        type: "string_select",
+                                        valueArray: ["row", "col"],
+                                        despArray: ["横排", "竖排"]
+                                      },
+                                      {
+                                        name: "layout",
+                                        desp: "栅格",
+                                        hidden: false,
+                                        defaultValue: [50, 50],
+                                        type: "string_input"
+                                      },
+                                      {
+                                        name: "rules",
+                                        desp: "表单验证",
+                                        defaultValue: "",
+                                        type: "single_array",
+                                        attrInEachElement: [
+                                          {
+                                            name: "rule",
+                                            desp: "规则",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    css: {
+                                      style: [
+                                        {
+                                          desp: "子容器",
+                                          cssAttrs:
+                                            "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                          name: "divCtn"
+                                        }
+                                      ]
+                                    },
+                                    editor: {
+                                      name: "v2LayoutEditor",
+                                      model: {
+                                        def: {
+                                          defheight: true,
+                                          defborder: true,
+                                          defbackgroundStyle: true,
+                                          defpaddingStyle: true
+                                        },
+                                        defaultValue: {
+                                          "background-color": "#fff",
+                                          "background-image": "",
+                                          "padding-top": 0,
+                                          "padding-bottom": 0,
+                                          "padding-left": 0,
+                                          "padding-right": 0
+                                        },
+                                        customStyle: {}
+                                      }
+                                    },
+                                    main: "index.vue"
+                                  },
+                                  children: [
+                                    {
+                                      style: {
+                                        label: {
+                                          "font-size": "px",
+                                          "font-weight": "",
+                                          color: ""
+                                        },
+                                        borderStyle: { "border-color": "" },
+                                        fontStyle: { color: "" }
+                                      },
+                                      label: "关联系统流水号",
+                                      titleMode: "col",
+                                      labelWitdh: "130px",
+                                      placeholder: "请选择",
+                                      value: "",
+                                      clearable: false,
+                                      disabled: false,
+                                      isRequired: false,
+                                      autoComplete: false,
+                                      suggestion: "",
+                                      rules: "",
+                                      href: "v2-form-input",
+                                      component: "v2-form-input",
+                                      widget: {
+                                        belongTo: "aui",
+                                        icon: "iconshurukuang",
+                                        type: "form",
+                                        href: "v2-form-input",
+                                        author: "fengjiarong@agree.com.cn",
+                                        version: 510000,
+                                        accept: "foundationRowCtn divCtn",
+                                        name: "输入框",
+                                        option: [
+                                          {
+                                            name: "label",
+                                            desp: "标题",
+                                            defaultValue: "标题",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "titleMode",
+                                            desp: "标题排列方式",
+                                            defaultValue: "col",
+                                            type: "string_select",
+                                            valueArray: ["row", "col"],
+                                            despArray: ["同列排列", "同行排列"]
+                                          },
+                                          {
+                                            name: "labelWitdh",
+                                            desp: "标题宽度",
+                                            defaultValue: "80px",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "placeholder",
+                                            desp: "placeholder",
+                                            defaultValue: "请选择",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "value",
+                                            desp: "值",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "clearable",
+                                            desp: "是否可清空",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "disabled",
+                                            desp: "是否禁填",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "isRequired",
+                                            desp: "是否必填",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "autoComplete",
+                                            desp: "开启输入建议",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            require: { autoComplete: true },
+                                            name: "suggestion",
+                                            desp: "输入建议列表",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "rules",
+                                            desp: "验证规则",
+                                            defaultValue: "",
+                                            type: "single_array",
+                                            attrInEachElement: [
+                                              {
+                                                name: "rule",
+                                                desp: "规则",
+                                                defaultValue: "",
+                                                type: "string_input"
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        css: {
+                                          style: [
+                                            {
+                                              desp: "标题",
+                                              cssAttrs:
+                                                "font-size color font-weight",
+                                              name: "label"
+                                            },
+                                            {
+                                              desp: "检验边框",
+                                              cssAttrs: "border-color",
+                                              name: "borderStyle"
+                                            },
+                                            {
+                                              desp: "检验文字",
+                                              cssAttrs: "color",
+                                              name: "fontStyle"
+                                            }
+                                          ]
+                                        },
+                                        main: "index.vue"
+                                      },
+                                      children: [],
+                                      events: {},
+                                      id: 1559701998687,
+                                      pid: 1559701725605
+                                    },
+                                    null
+                                  ],
+                                  events: {},
+                                  id: 1559701725605,
+                                  pid: 1559701715817
+                                },
+                                {
+                                  style: {
+                                    divCtn: {
+                                      position: "",
+                                      top: "px",
+                                      right: "px",
+                                      bottom: "px",
+                                      left: "px",
+                                      overflow: "",
+                                      margin: "",
+                                      padding: "",
+                                      height: "px",
+                                      width: "px",
+                                      "max-height": "px",
+                                      "max-width": "px",
+                                      "min-height": "px",
+                                      "min-width": "px"
+                                    }
+                                  },
+                                  direction: "col",
+                                  layout: "[60,40]",
+                                  rules: "",
+                                  def: {
+                                    defheight: true,
+                                    defborder: true,
+                                    defbackgroundStyle: true,
+                                    defpaddingStyle: false
+                                  },
+                                  defaultValue: {
+                                    "background-color": "#fff",
+                                    "background-image": "",
+                                    "padding-top": 0,
+                                    "padding-bottom": 0,
+                                    "padding-left": 0,
+                                    "padding-right": 0
+                                  },
+                                  customStyle: {
+                                    opacity: 1,
+                                    "border-radius": "0px",
+                                    "padding-top": "",
+                                    "padding-bottom": ""
+                                  },
+                                  href: "v2-layout-rowctn",
+                                  component: "v2-layout-rowctn",
+                                  widget: {
+                                    belongTo: "aui",
+                                    icon: "iconshuxiangbuju",
+                                    type: "layout",
+                                    href: "v2-layout-rowctn",
+                                    author: "zhanghaixian@agree.com.cn",
+                                    version: 510000,
+                                    accept: "",
+                                    name: "竖向布局",
+                                    option: [
+                                      {
+                                        name: "direction",
+                                        desp: "排列方式",
+                                        defaultValue: "col",
+                                        type: "string_select",
+                                        valueArray: ["row", "col"],
+                                        despArray: ["横排", "竖排"]
+                                      },
+                                      {
+                                        name: "layout",
+                                        desp: "栅格",
+                                        hidden: false,
+                                        defaultValue: [50, 50],
+                                        type: "string_input"
+                                      },
+                                      {
+                                        name: "rules",
+                                        desp: "表单验证",
+                                        defaultValue: "",
+                                        type: "single_array",
+                                        attrInEachElement: [
+                                          {
+                                            name: "rule",
+                                            desp: "规则",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    css: {
+                                      style: [
+                                        {
+                                          desp: "子容器",
+                                          cssAttrs:
+                                            "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                          name: "divCtn"
+                                        }
+                                      ]
+                                    },
+                                    editor: {
+                                      name: "v2LayoutEditor",
+                                      model: {
+                                        def: {
+                                          defheight: true,
+                                          defborder: true,
+                                          defbackgroundStyle: true,
+                                          defpaddingStyle: true
+                                        },
+                                        defaultValue: {
+                                          "background-color": "#fff",
+                                          "background-image": "",
+                                          "padding-top": 0,
+                                          "padding-bottom": 0,
+                                          "padding-left": 0,
+                                          "padding-right": 0
+                                        },
+                                        customStyle: {}
+                                      }
+                                    },
+                                    main: "index.vue"
+                                  },
+                                  children: [
+                                    {
+                                      style: {
+                                        label: {
+                                          "font-size": "px",
+                                          "font-weight": "",
+                                          color: ""
+                                        },
+                                        borderStyle: { "border-color": "" },
+                                        fontStyle: { color: "" }
+                                      },
+                                      label: "业务流水号",
+                                      titleMode: "col",
+                                      labelWitdh: "130px",
+                                      placeholder: "请选择",
+                                      value: "",
+                                      clearable: false,
+                                      disabled: false,
+                                      isRequired: false,
+                                      autoComplete: false,
+                                      suggestion: "",
+                                      rules: "",
+                                      href: "v2-form-input",
+                                      component: "v2-form-input",
+                                      widget: {
+                                        belongTo: "aui",
+                                        icon: "iconshurukuang",
+                                        type: "form",
+                                        href: "v2-form-input",
+                                        author: "fengjiarong@agree.com.cn",
+                                        version: 510000,
+                                        accept: "foundationRowCtn divCtn",
+                                        name: "输入框",
+                                        option: [
+                                          {
+                                            name: "label",
+                                            desp: "标题",
+                                            defaultValue: "标题",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "titleMode",
+                                            desp: "标题排列方式",
+                                            defaultValue: "col",
+                                            type: "string_select",
+                                            valueArray: ["row", "col"],
+                                            despArray: ["同列排列", "同行排列"]
+                                          },
+                                          {
+                                            name: "labelWitdh",
+                                            desp: "标题宽度",
+                                            defaultValue: "80px",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "placeholder",
+                                            desp: "placeholder",
+                                            defaultValue: "请选择",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "value",
+                                            desp: "值",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "clearable",
+                                            desp: "是否可清空",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "disabled",
+                                            desp: "是否禁填",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "isRequired",
+                                            desp: "是否必填",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "autoComplete",
+                                            desp: "开启输入建议",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            require: { autoComplete: true },
+                                            name: "suggestion",
+                                            desp: "输入建议列表",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "rules",
+                                            desp: "验证规则",
+                                            defaultValue: "",
+                                            type: "single_array",
+                                            attrInEachElement: [
+                                              {
+                                                name: "rule",
+                                                desp: "规则",
+                                                defaultValue: "",
+                                                type: "string_input"
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        css: {
+                                          style: [
+                                            {
+                                              desp: "标题",
+                                              cssAttrs:
+                                                "font-size color font-weight",
+                                              name: "label"
+                                            },
+                                            {
+                                              desp: "检验边框",
+                                              cssAttrs: "border-color",
+                                              name: "borderStyle"
+                                            },
+                                            {
+                                              desp: "检验文字",
+                                              cssAttrs: "color",
+                                              name: "fontStyle"
+                                            }
+                                          ]
+                                        },
+                                        main: "index.vue"
+                                      },
+                                      children: [],
+                                      events: {},
+                                      id: 1559702001860,
+                                      pid: 1559701920860
+                                    },
+                                    null
+                                  ],
+                                  events: {},
+                                  id: 1559701920860,
+                                  pid: 1559701715817
+                                }
+                              ],
+                              events: {},
+                              id: 1559701715817,
+                              pid: 1559701578994
+                            }
+                          ],
+                          events: {},
+                          id: 1559701578994,
+                          pid: 1559701546404
+                        }
+                      ],
+                      events: {},
+                      id: 1559701546404,
+                      pid: 1559701544604
+                    },
+                    {
+                      style: {
+                        divCtn: {
+                          position: "",
+                          top: "",
+                          right: "",
+                          bottom: "",
+                          left: "",
+                          overflow: "",
+                          margin: "",
+                          padding: "",
+                          height: "",
+                          width: "",
+                          "max-height": "",
+                          "max-width": "",
+                          "min-height": "",
+                          "min-width": ""
+                        }
+                      },
+                      direction: "row",
+                      layout: "[50,50]",
+                      rules: "",
+                      def: {
+                        defheight: true,
+                        defborder: true,
+                        defbackgroundStyle: true,
+                        defpaddingStyle: true
+                      },
+                      defaultValue: {
+                        "background-color": "#fff",
+                        "background-image": "",
+                        "padding-top": 0,
+                        "padding-bottom": 0,
+                        "padding-left": 0,
+                        "padding-right": 0
+                      },
+                      customStyle: { opacity: 1, "border-radius": "0px" },
+                      href: "v2-layout-colctn",
+                      component: "v2-layout-colctn",
+                      widget: {
+                        belongTo: "aui",
+                        icon: "iconhengxiangbuju",
+                        type: "layout",
+                        href: "v2-layout-colctn",
+                        author: "zhanghaixian@agree.com.cn",
+                        version: 510000,
+                        accept: "",
+                        name: "横向布局",
+                        option: [
+                          {
+                            name: "direction",
+                            desp: "排列方式",
+                            defaultValue: "row",
+                            type: "string_select",
+                            valueArray: ["row", "col"],
+                            despArray: ["横排", "竖排"]
+                          },
+                          {
+                            name: "layout",
+                            desp: "栅格",
+                            hidden: false,
+                            defaultValue: [50, 50],
+                            type: "string_input"
+                          },
+                          {
+                            name: "rules",
+                            desp: "表单验证",
+                            defaultValue: "",
+                            type: "single_array",
+                            attrInEachElement: [
+                              {
+                                name: "rule",
+                                desp: "规则",
+                                defaultValue: "",
+                                type: "string_input"
+                              }
+                            ]
+                          }
+                        ],
+                        css: {
+                          style: [
+                            {
+                              desp: "容器",
+                              cssAttrs:
+                                "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                              name: "divCtn"
+                            }
+                          ]
+                        },
+                        editor: {
+                          name: "v2LayoutEditor",
+                          model: {
+                            def: {
+                              defheight: true,
+                              defborder: true,
+                              defbackgroundStyle: true,
+                              defpaddingStyle: true
+                            },
+                            defaultValue: {
+                              "background-color": "#fff",
+                              "background-image": "",
+                              "padding-top": 0,
+                              "padding-bottom": 0,
+                              "padding-left": 0,
+                              "padding-right": 0
+                            },
+                            customStyle: {}
+                          }
+                        },
+                        main: "index.vue"
+                      },
+                      children: [
+                        {
+                          style: {
+                            divCtn: {
+                              position: "",
+                              top: "px",
+                              right: "px",
+                              bottom: "px",
+                              left: "px",
+                              overflow: "",
+                              margin: "",
+                              padding: "",
+                              height: "px",
+                              width: "px",
+                              "max-height": "px",
+                              "max-width": "px",
+                              "min-height": "px",
+                              "min-width": "px"
+                            }
+                          },
+                          direction: "row",
+                          layout: "[50,50]",
+                          rules: "",
+                          def: {
+                            defheight: true,
+                            defborder: true,
+                            defbackgroundStyle: true,
+                            defpaddingStyle: true
+                          },
+                          defaultValue: {
+                            "background-color": "#fff",
+                            "background-image": "",
+                            "padding-top": 0,
+                            "padding-bottom": 0,
+                            "padding-left": 0,
+                            "padding-right": 0
+                          },
+                          customStyle: { opacity: 1, "border-radius": "0px" },
+                          href: "v2-layout-colctn",
+                          component: "v2-layout-colctn",
+                          widget: {
+                            belongTo: "aui",
+                            icon: "iconhengxiangbuju",
+                            type: "layout",
+                            href: "v2-layout-colctn",
+                            author: "zhanghaixian@agree.com.cn",
+                            version: 510000,
+                            accept: "",
+                            name: "横向布局",
+                            option: [
+                              {
+                                name: "direction",
+                                desp: "排列方式",
+                                defaultValue: "row",
+                                type: "string_select",
+                                valueArray: ["row", "col"],
+                                despArray: ["横排", "竖排"]
+                              },
+                              {
+                                name: "layout",
+                                desp: "栅格",
+                                hidden: false,
+                                defaultValue: [50, 50],
+                                type: "string_input"
+                              },
+                              {
+                                name: "rules",
+                                desp: "表单验证",
+                                defaultValue: "",
+                                type: "single_array",
+                                attrInEachElement: [
+                                  {
+                                    name: "rule",
+                                    desp: "规则",
+                                    defaultValue: "",
+                                    type: "string_input"
+                                  }
+                                ]
+                              }
+                            ],
+                            css: {
+                              style: [
+                                {
+                                  desp: "容器",
+                                  cssAttrs:
+                                    "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                  name: "divCtn"
+                                }
+                              ]
+                            },
+                            editor: {
+                              name: "v2LayoutEditor",
+                              model: {
+                                def: {
+                                  defheight: true,
+                                  defborder: true,
+                                  defbackgroundStyle: true,
+                                  defpaddingStyle: true
+                                },
+                                defaultValue: {
+                                  "background-color": "#fff",
+                                  "background-image": "",
+                                  "padding-top": 0,
+                                  "padding-bottom": 0,
+                                  "padding-left": 0,
+                                  "padding-right": 0
+                                },
+                                customStyle: {}
+                              }
+                            },
+                            main: "index.vue"
+                          },
+                          children: [
+                            {
+                              style: {
+                                divCtn: {
+                                  position: "",
+                                  top: "",
+                                  right: "",
+                                  bottom: "",
+                                  left: "",
+                                  overflow: "",
+                                  margin: "",
+                                  padding: "",
+                                  height: "",
+                                  width: "",
+                                  "max-height": "",
+                                  "max-width": "",
+                                  "min-height": "",
+                                  "min-width": ""
+                                }
+                              },
+                              direction: "col",
+                              layout: "[50,50]",
+                              rules: "",
+                              def: {
+                                defheight: true,
+                                defborder: true,
+                                defbackgroundStyle: true,
+                                defpaddingStyle: true
+                              },
+                              defaultValue: {
+                                "background-color": "#fff",
+                                "background-image": "",
+                                "padding-top": 0,
+                                "padding-bottom": 0,
+                                "padding-left": 0,
+                                "padding-right": 0
+                              },
+                              customStyle: {},
+                              href: "v2-layout-rowctn",
+                              component: "v2-layout-rowctn",
+                              widget: {
+                                belongTo: "aui",
+                                icon: "iconshuxiangbuju",
+                                type: "layout",
+                                href: "v2-layout-rowctn",
+                                author: "zhanghaixian@agree.com.cn",
+                                version: 510000,
+                                accept: "",
+                                name: "竖向布局",
+                                option: [
+                                  {
+                                    name: "direction",
+                                    desp: "排列方式",
+                                    defaultValue: "col",
+                                    type: "string_select",
+                                    valueArray: ["row", "col"],
+                                    despArray: ["横排", "竖排"]
+                                  },
+                                  {
+                                    name: "layout",
+                                    desp: "栅格",
+                                    hidden: false,
+                                    defaultValue: [50, 50],
+                                    type: "string_input"
+                                  },
+                                  {
+                                    name: "rules",
+                                    desp: "表单验证",
+                                    defaultValue: "",
+                                    type: "single_array",
+                                    attrInEachElement: [
+                                      {
+                                        name: "rule",
+                                        desp: "规则",
+                                        defaultValue: "",
+                                        type: "string_input"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                css: {
+                                  style: [
+                                    {
+                                      desp: "子容器",
+                                      cssAttrs:
+                                        "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                      name: "divCtn"
+                                    }
+                                  ]
+                                },
+                                editor: {
+                                  name: "v2LayoutEditor",
+                                  model: {
+                                    def: {
+                                      defheight: true,
+                                      defborder: true,
+                                      defbackgroundStyle: true,
+                                      defpaddingStyle: true
+                                    },
+                                    defaultValue: {
+                                      "background-color": "#fff",
+                                      "background-image": "",
+                                      "padding-top": 0,
+                                      "padding-bottom": 0,
+                                      "padding-left": 0,
+                                      "padding-right": 0
+                                    },
+                                    customStyle: {}
+                                  }
+                                },
+                                main: "index.vue"
+                              },
+                              children: [
+                                {
+                                  style: {
+                                    divCtn: {
+                                      position: "",
+                                      top: "px",
+                                      right: "px",
+                                      bottom: "px",
+                                      left: "px",
+                                      overflow: "",
+                                      margin: "",
+                                      padding: "",
+                                      height: "px",
+                                      width: "px",
+                                      "max-height": "px",
+                                      "max-width": "px",
+                                      "min-height": "px",
+                                      "min-width": "px"
+                                    }
+                                  },
+                                  direction: "col",
+                                  layout: "[60,40]",
+                                  rules: "",
+                                  def: {
+                                    defheight: true,
+                                    defborder: true,
+                                    defbackgroundStyle: true,
+                                    defpaddingStyle: false
+                                  },
+                                  defaultValue: {
+                                    "background-color": "#fff",
+                                    "background-image": "",
+                                    "padding-top": 0,
+                                    "padding-bottom": 0,
+                                    "padding-left": 0,
+                                    "padding-right": 0
+                                  },
+                                  customStyle: {
+                                    opacity: 1,
+                                    "border-radius": "0px",
+                                    "padding-top": "",
+                                    "padding-bottom": ""
+                                  },
+                                  href: "v2-layout-rowctn",
+                                  component: "v2-layout-rowctn",
+                                  widget: {
+                                    belongTo: "aui",
+                                    icon: "iconshuxiangbuju",
+                                    type: "layout",
+                                    href: "v2-layout-rowctn",
+                                    author: "zhanghaixian@agree.com.cn",
+                                    version: 510000,
+                                    accept: "",
+                                    name: "竖向布局",
+                                    option: [
+                                      {
+                                        name: "direction",
+                                        desp: "排列方式",
+                                        defaultValue: "col",
+                                        type: "string_select",
+                                        valueArray: ["row", "col"],
+                                        despArray: ["横排", "竖排"]
+                                      },
+                                      {
+                                        name: "layout",
+                                        desp: "栅格",
+                                        hidden: false,
+                                        defaultValue: [50, 50],
+                                        type: "string_input"
+                                      },
+                                      {
+                                        name: "rules",
+                                        desp: "表单验证",
+                                        defaultValue: "",
+                                        type: "single_array",
+                                        attrInEachElement: [
+                                          {
+                                            name: "rule",
+                                            desp: "规则",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    css: {
+                                      style: [
+                                        {
+                                          desp: "子容器",
+                                          cssAttrs:
+                                            "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                          name: "divCtn"
+                                        }
+                                      ]
+                                    },
+                                    editor: {
+                                      name: "v2LayoutEditor",
+                                      model: {
+                                        def: {
+                                          defheight: true,
+                                          defborder: true,
+                                          defbackgroundStyle: true,
+                                          defpaddingStyle: true
+                                        },
+                                        defaultValue: {
+                                          "background-color": "#fff",
+                                          "background-image": "",
+                                          "padding-top": 0,
+                                          "padding-bottom": 0,
+                                          "padding-left": 0,
+                                          "padding-right": 0
+                                        },
+                                        customStyle: {}
+                                      }
+                                    },
+                                    main: "index.vue"
+                                  },
+                                  children: [
+                                    {
+                                      style: {
+                                        label: {
+                                          "font-size": "px",
+                                          "font-weight": "",
+                                          color: ""
+                                        },
+                                        borderStyle: { "border-color": "" },
+                                        fontStyle: { color: "" }
+                                      },
+                                      label: "交易开始时间",
+                                      labelWitdh: "130px",
+                                      titleMode: "col",
+                                      value: "",
+                                      placeholder: "请选择",
+                                      type: "date",
+                                      disabled: false,
+                                      isRequired: false,
+                                      clearable: true,
+                                      format: "yyyy 年 MM 月 dd 日",
+                                      align: "left",
+                                      href: "v2-form-datepicker",
+                                      component: "v2-form-datepicker",
+                                      widget: {
+                                        belongTo: "aui",
+                                        icon: "iconriqixuanze",
+                                        type: "form",
+                                        href: "v2-form-datepicker",
+                                        author: "fengjiarong@agree.com.cn",
+                                        version: 510000,
+                                        accept: "foundationRowCtn divCtn",
+                                        name: "日期选择器",
+                                        option: [
+                                          {
+                                            name: "label",
+                                            desp: "标题",
+                                            defaultValue: "标题",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "labelWitdh",
+                                            desp: "标题宽度",
+                                            defaultValue: "80px",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "titleMode",
+                                            desp: "标题排列方式",
+                                            defaultValue: "col",
+                                            type: "string_select",
+                                            valueArray: ["row", "col"],
+                                            despArray: ["同列排列", "同行排列"]
+                                          },
+                                          {
+                                            name: "value",
+                                            desp: "选择值",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "placeholder",
+                                            desp: "placeholder",
+                                            defaultValue: "请选择",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "type",
+                                            desp: "日期单位",
+                                            defaultValue: "date",
+                                            type: "string_select",
+                                            valueArray: [
+                                              "date",
+                                              "week",
+                                              "month",
+                                              "year",
+                                              "dates",
+                                              "daterange"
+                                            ],
+                                            despArray: [
+                                              "日",
+                                              "周",
+                                              "月",
+                                              "年",
+                                              "多个日期",
+                                              "日期范围"
+                                            ]
+                                          },
+                                          {
+                                            name: "disabled",
+                                            desp: "是否禁用",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "isRequired",
+                                            desp: "是否必填",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "clearable",
+                                            desp: "是否显示清除按钮",
+                                            defaultValue: true,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "format",
+                                            desp: "显示格式",
+                                            defaultValue: "yyyy 年 MM 月 dd 日",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "align",
+                                            desp: "对齐方式",
+                                            defaultValue: "left",
+                                            type: "string_select",
+                                            valueArray: [
+                                              "left",
+                                              "center",
+                                              "right"
+                                            ],
+                                            despArray: ["左", "中", "右"]
+                                          }
+                                        ],
+                                        css: {
+                                          style: [
+                                            {
+                                              desp: "标题",
+                                              cssAttrs:
+                                                "font-size font-weight color",
+                                              name: "label"
+                                            },
+                                            {
+                                              desp: "检验边框",
+                                              cssAttrs: "border-color",
+                                              name: "borderStyle"
+                                            },
+                                            {
+                                              desp: "检验文字",
+                                              cssAttrs: "color",
+                                              name: "fontStyle"
+                                            }
+                                          ]
+                                        },
+                                        main: "index.vue"
+                                      },
+                                      children: [],
+                                      events: {},
+                                      id: 1559702019207,
+                                      pid: 1559701770390
+                                    },
+                                    null
+                                  ],
+                                  events: {},
+                                  id: 1559701770390,
+                                  pid: 1559701718078
+                                },
+                                {
+                                  style: {
+                                    divCtn: {
+                                      position: "",
+                                      top: "px",
+                                      right: "px",
+                                      bottom: "px",
+                                      left: "px",
+                                      overflow: "",
+                                      margin: "",
+                                      padding: "",
+                                      height: "px",
+                                      width: "px",
+                                      "max-height": "px",
+                                      "max-width": "px",
+                                      "min-height": "px",
+                                      "min-width": "px"
+                                    }
+                                  },
+                                  direction: "col",
+                                  layout: "[60,40]",
+                                  rules: "",
+                                  def: {
+                                    defheight: true,
+                                    defborder: true,
+                                    defbackgroundStyle: true,
+                                    defpaddingStyle: false
+                                  },
+                                  defaultValue: {
+                                    "background-color": "#fff",
+                                    "background-image": "",
+                                    "padding-top": 0,
+                                    "padding-bottom": 0,
+                                    "padding-left": 0,
+                                    "padding-right": 0
+                                  },
+                                  customStyle: {
+                                    opacity: 1,
+                                    "border-radius": "0px",
+                                    "padding-top": "",
+                                    "padding-bottom": ""
+                                  },
+                                  href: "v2-layout-rowctn",
+                                  component: "v2-layout-rowctn",
+                                  widget: {
+                                    belongTo: "aui",
+                                    icon: "iconshuxiangbuju",
+                                    type: "layout",
+                                    href: "v2-layout-rowctn",
+                                    author: "zhanghaixian@agree.com.cn",
+                                    version: 510000,
+                                    accept: "",
+                                    name: "竖向布局",
+                                    option: [
+                                      {
+                                        name: "direction",
+                                        desp: "排列方式",
+                                        defaultValue: "col",
+                                        type: "string_select",
+                                        valueArray: ["row", "col"],
+                                        despArray: ["横排", "竖排"]
+                                      },
+                                      {
+                                        name: "layout",
+                                        desp: "栅格",
+                                        hidden: false,
+                                        defaultValue: [50, 50],
+                                        type: "string_input"
+                                      },
+                                      {
+                                        name: "rules",
+                                        desp: "表单验证",
+                                        defaultValue: "",
+                                        type: "single_array",
+                                        attrInEachElement: [
+                                          {
+                                            name: "rule",
+                                            desp: "规则",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    css: {
+                                      style: [
+                                        {
+                                          desp: "子容器",
+                                          cssAttrs:
+                                            "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                          name: "divCtn"
+                                        }
+                                      ]
+                                    },
+                                    editor: {
+                                      name: "v2LayoutEditor",
+                                      model: {
+                                        def: {
+                                          defheight: true,
+                                          defborder: true,
+                                          defbackgroundStyle: true,
+                                          defpaddingStyle: true
+                                        },
+                                        defaultValue: {
+                                          "background-color": "#fff",
+                                          "background-image": "",
+                                          "padding-top": 0,
+                                          "padding-bottom": 0,
+                                          "padding-left": 0,
+                                          "padding-right": 0
+                                        },
+                                        customStyle: {}
+                                      }
+                                    },
+                                    main: "index.vue"
+                                  },
+                                  children: [
+                                    {
+                                      style: {
+                                        label: {
+                                          "font-size": "px",
+                                          "font-weight": "",
+                                          color: ""
+                                        },
+                                        borderStyle: { "border-color": "" },
+                                        fontStyle: { color: "" }
+                                      },
+                                      label: "交易结束时间",
+                                      labelWitdh: "130px",
+                                      titleMode: "col",
+                                      value: "",
+                                      placeholder: "请选择",
+                                      type: "date",
+                                      disabled: false,
+                                      isRequired: false,
+                                      clearable: true,
+                                      format: "yyyy 年 MM 月 dd 日",
+                                      align: "left",
+                                      href: "v2-form-datepicker",
+                                      component: "v2-form-datepicker",
+                                      widget: {
+                                        belongTo: "aui",
+                                        icon: "iconriqixuanze",
+                                        type: "form",
+                                        href: "v2-form-datepicker",
+                                        author: "fengjiarong@agree.com.cn",
+                                        version: 510000,
+                                        accept: "foundationRowCtn divCtn",
+                                        name: "日期选择器",
+                                        option: [
+                                          {
+                                            name: "label",
+                                            desp: "标题",
+                                            defaultValue: "标题",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "labelWitdh",
+                                            desp: "标题宽度",
+                                            defaultValue: "80px",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "titleMode",
+                                            desp: "标题排列方式",
+                                            defaultValue: "col",
+                                            type: "string_select",
+                                            valueArray: ["row", "col"],
+                                            despArray: ["同列排列", "同行排列"]
+                                          },
+                                          {
+                                            name: "value",
+                                            desp: "选择值",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "placeholder",
+                                            desp: "placeholder",
+                                            defaultValue: "请选择",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "type",
+                                            desp: "日期单位",
+                                            defaultValue: "date",
+                                            type: "string_select",
+                                            valueArray: [
+                                              "date",
+                                              "week",
+                                              "month",
+                                              "year",
+                                              "dates",
+                                              "daterange"
+                                            ],
+                                            despArray: [
+                                              "日",
+                                              "周",
+                                              "月",
+                                              "年",
+                                              "多个日期",
+                                              "日期范围"
+                                            ]
+                                          },
+                                          {
+                                            name: "disabled",
+                                            desp: "是否禁用",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "isRequired",
+                                            desp: "是否必填",
+                                            defaultValue: false,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "clearable",
+                                            desp: "是否显示清除按钮",
+                                            defaultValue: true,
+                                            type: "boolean"
+                                          },
+                                          {
+                                            name: "format",
+                                            desp: "显示格式",
+                                            defaultValue: "yyyy 年 MM 月 dd 日",
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "align",
+                                            desp: "对齐方式",
+                                            defaultValue: "left",
+                                            type: "string_select",
+                                            valueArray: [
+                                              "left",
+                                              "center",
+                                              "right"
+                                            ],
+                                            despArray: ["左", "中", "右"]
+                                          }
+                                        ],
+                                        css: {
+                                          style: [
+                                            {
+                                              desp: "标题",
+                                              cssAttrs:
+                                                "font-size font-weight color",
+                                              name: "label"
+                                            },
+                                            {
+                                              desp: "检验边框",
+                                              cssAttrs: "border-color",
+                                              name: "borderStyle"
+                                            },
+                                            {
+                                              desp: "检验文字",
+                                              cssAttrs: "color",
+                                              name: "fontStyle"
+                                            }
+                                          ]
+                                        },
+                                        main: "index.vue"
+                                      },
+                                      children: [],
+                                      events: {},
+                                      id: 1559702021411,
+                                      pid: 1559701922480
+                                    },
+                                    null
+                                  ],
+                                  events: {},
+                                  id: 1559701922480,
+                                  pid: 1559701718078
+                                }
+                              ],
+                              events: {},
+                              id: 1559701718078,
+                              pid: 1559701575147
+                            },
+                            null
+                          ],
+                          events: {},
+                          id: 1559701575147,
+                          pid: 1559701548485
+                        },
+                        {
+                          style: {
+                            divCtn: {
+                              position: "",
+                              top: "",
+                              right: "",
+                              bottom: "",
+                              left: "",
+                              overflow: "",
+                              margin: "",
+                              padding: "",
+                              height: "",
+                              width: "",
+                              "max-height": "",
+                              "max-width": "",
+                              "min-height": "",
+                              "min-width": ""
+                            }
+                          },
+                          direction: "row",
+                          layout: [50, 50],
+                          rules: "",
+                          def: {
+                            defheight: true,
+                            defborder: true,
+                            defbackgroundStyle: true,
+                            defpaddingStyle: true
+                          },
+                          defaultValue: {
+                            "background-color": "#fff",
+                            "background-image": "",
+                            "padding-top": 0,
+                            "padding-bottom": 0,
+                            "padding-left": 0,
+                            "padding-right": 0
+                          },
+                          customStyle: {},
+                          href: "v2-layout-colctn",
+                          component: "v2-layout-colctn",
+                          widget: {
+                            belongTo: "aui",
+                            icon: "iconhengxiangbuju",
+                            type: "layout",
+                            href: "v2-layout-colctn",
+                            author: "zhanghaixian@agree.com.cn",
+                            version: 510000,
+                            accept: "",
+                            name: "横向布局",
+                            option: [
+                              {
+                                name: "direction",
+                                desp: "排列方式",
+                                defaultValue: "row",
+                                type: "string_select",
+                                valueArray: ["row", "col"],
+                                despArray: ["横排", "竖排"]
+                              },
+                              {
+                                name: "layout",
+                                desp: "栅格",
+                                hidden: false,
+                                defaultValue: [50, 50],
+                                type: "string_input"
+                              },
+                              {
+                                name: "rules",
+                                desp: "表单验证",
+                                defaultValue: "",
+                                type: "single_array",
+                                attrInEachElement: [
+                                  {
+                                    name: "rule",
+                                    desp: "规则",
+                                    defaultValue: "",
+                                    type: "string_input"
+                                  }
+                                ]
+                              }
+                            ],
+                            css: {
+                              style: [
+                                {
+                                  desp: "容器",
+                                  cssAttrs:
+                                    "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                  name: "divCtn"
+                                }
+                              ]
+                            },
+                            editor: {
+                              name: "v2LayoutEditor",
+                              model: {
+                                def: {
+                                  defheight: true,
+                                  defborder: true,
+                                  defbackgroundStyle: true,
+                                  defpaddingStyle: true
+                                },
+                                defaultValue: {
+                                  "background-color": "#fff",
+                                  "background-image": "",
+                                  "padding-top": 0,
+                                  "padding-bottom": 0,
+                                  "padding-left": 0,
+                                  "padding-right": 0
+                                },
+                                customStyle: {}
+                              }
+                            },
+                            main: "index.vue"
+                          },
+                          children: [
+                            {
+                              style: {
+                                divCtn: {
+                                  position: "",
+                                  top: "",
+                                  right: "",
+                                  bottom: "",
+                                  left: "",
+                                  overflow: "",
+                                  margin: "",
+                                  padding: "",
+                                  height: "",
+                                  width: "",
+                                  "max-height": "",
+                                  "max-width": "",
+                                  "min-height": "",
+                                  "min-width": ""
+                                }
+                              },
+                              direction: "col",
+                              layout: [50, 50],
+                              rules: "",
+                              __type: "",
+                              __loopTarget: "",
+                              __loopKey: "",
+                              __capacity: "1",
+                              def: {
+                                defheight: true,
+                                defborder: true,
+                                defbackgroundStyle: true,
+                                defpaddingStyle: true
+                              },
+                              defaultValue: {
+                                "background-color": "#fff",
+                                "background-image": "",
+                                "padding-top": 0,
+                                "padding-bottom": 0,
+                                "padding-left": 0,
+                                "padding-right": 0
+                              },
+                              customStyle: {},
+                              href: "v2-layout-rowctn",
+                              component: "v2-layout-rowctn",
+                              children: [
+                                null,
+                                {
+                                  style: {
+                                    divCtn: {
+                                      position: "",
+                                      top: "",
+                                      right: "",
+                                      bottom: "",
+                                      left: "",
+                                      overflow: "",
+                                      margin: "",
+                                      padding: "",
+                                      height: "",
+                                      width: "",
+                                      "max-height": "",
+                                      "max-width": "",
+                                      "min-height": "",
+                                      "min-width": ""
+                                    }
+                                  },
+                                  direction: "col",
+                                  layout: [58, 42],
+                                  rules: "",
+                                  __type: "",
+                                  __loopTarget: "",
+                                  __loopKey: "",
+                                  __capacity: "1",
+                                  def: {
+                                    defheight: true,
+                                    defborder: true,
+                                    defbackgroundStyle: true,
+                                    defpaddingStyle: true
+                                  },
+                                  defaultValue: {
+                                    "background-color": "#fff",
+                                    "background-image": "",
+                                    "padding-top": 0,
+                                    "padding-bottom": 0,
+                                    "padding-left": 0,
+                                    "padding-right": 0
+                                  },
+                                  customStyle: {
+                                    opacity: 1,
+                                    "border-radius": "0px"
+                                  },
+                                  href: "v2-layout-rowctn",
+                                  component: "v2-layout-rowctn",
+                                  children: [
+                                    {
+                                      theme: { btnType: "primary", size: "" },
+                                      style: {
+                                        btnStyle: {
+                                          "background-color": "",
+                                          height: "",
+                                          width: "128px",
+                                          color: ""
+                                        },
+                                        btnWrapStyle: {
+                                          margin: "",
+                                          "margin-top": "",
+                                          "margin-right": "",
+                                          "margin-bottom": "",
+                                          "margin-left": "",
+                                          padding: "",
+                                          "padding-top": "",
+                                          "padding-right": "",
+                                          "padding-bottom": "",
+                                          "padding-left": ""
+                                        }
+                                      },
+                                      btnName: "按钮",
+                                      shape: "def",
+                                      loading: false,
+                                      disabled: false,
+                                      __type: "",
+                                      __loopTarget: "",
+                                      __loopKey: "",
+                                      __capacity: "1",
+                                      href: "v2-component-btn",
+                                      component: "v2-component-btn",
+                                      children: [],
+                                      events: {
+                                        _op_componentBtn_btn: {
+                                          click: ["event0_1560765565313"]
+                                        }
+                                      },
+                                      id: 1560765565313,
+                                      pid: 1560324443888,
+                                      layoutClass: ["v2right", "v2center"]
+                                    },
+                                    null
+                                  ],
+                                  events: {},
+                                  id: 1560324443888,
+                                  pid: 1560324437074
+                                }
+                              ],
+                              events: {},
+                              id: 1560324437074,
+                              pid: 1559723085128
+                            },
+                            {
+                              style: {
+                                divCtn: {
+                                  position: "",
+                                  top: "",
+                                  right: "",
+                                  bottom: "",
+                                  left: "",
+                                  overflow: "",
+                                  margin: "",
+                                  padding: "",
+                                  height: "",
+                                  width: "",
+                                  "max-height": "",
+                                  "max-width": "",
+                                  "min-height": "",
+                                  "min-width": ""
+                                }
+                              },
+                              direction: "col",
+                              layout: "[50,50]",
+                              rules: "",
+                              def: {
+                                defheight: true,
+                                defborder: true,
+                                defbackgroundStyle: true,
+                                defpaddingStyle: true
+                              },
+                              defaultValue: {
+                                "background-color": "#fff",
+                                "background-image": "",
+                                "padding-top": 0,
+                                "padding-bottom": 0,
+                                "padding-left": 0,
+                                "padding-right": 0
+                              },
+                              customStyle: {
+                                opacity: 1,
+                                "border-radius": "0px"
+                              },
+                              href: "v2-layout-rowctn",
+                              component: "v2-layout-rowctn",
+                              widget: {
+                                belongTo: "aui",
+                                icon: "iconshuxiangbuju",
+                                type: "layout",
+                                href: "v2-layout-rowctn",
+                                author: "zhanghaixian@agree.com.cn",
+                                version: 510000,
+                                accept: "",
+                                name: "竖向布局",
+                                option: [
+                                  {
+                                    name: "direction",
+                                    desp: "排列方式",
+                                    defaultValue: "col",
+                                    type: "string_select",
+                                    valueArray: ["row", "col"],
+                                    despArray: ["横排", "竖排"]
+                                  },
+                                  {
+                                    name: "layout",
+                                    desp: "栅格",
+                                    hidden: false,
+                                    defaultValue: [50, 50],
+                                    type: "string_input"
+                                  },
+                                  {
+                                    name: "rules",
+                                    desp: "表单验证",
+                                    defaultValue: "",
+                                    type: "single_array",
+                                    attrInEachElement: [
+                                      {
+                                        name: "rule",
+                                        desp: "规则",
+                                        defaultValue: "",
+                                        type: "string_input"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                css: {
+                                  style: [
+                                    {
+                                      desp: "子容器",
+                                      cssAttrs:
+                                        "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                      name: "divCtn"
+                                    }
+                                  ]
+                                },
+                                editor: {
+                                  name: "v2LayoutEditor",
+                                  model: {
+                                    def: {
+                                      defheight: true,
+                                      defborder: true,
+                                      defbackgroundStyle: true,
+                                      defpaddingStyle: true
+                                    },
+                                    defaultValue: {
+                                      "background-color": "#fff",
+                                      "background-image": "",
+                                      "padding-top": 0,
+                                      "padding-bottom": 0,
+                                      "padding-left": 0,
+                                      "padding-right": 0
+                                    },
+                                    customStyle: {}
+                                  }
+                                },
+                                main: "index.vue"
+                              },
+                              children: [
+                                {
+                                  style: {
+                                    divCtn: {
+                                      position: "",
+                                      top: "",
+                                      right: "",
+                                      bottom: "",
+                                      left: "",
+                                      overflow: "",
+                                      margin: "",
+                                      padding: "",
+                                      height: "",
+                                      width: "",
+                                      "max-height": "",
+                                      "max-width": "",
+                                      "min-height": "",
+                                      "min-width": ""
+                                    }
+                                  },
+                                  direction: "col",
+                                  layout: "[50,50]",
+                                  rules: "",
+                                  def: {
+                                    defheight: true,
+                                    defborder: true,
+                                    defbackgroundStyle: true,
+                                    defpaddingStyle: true
+                                  },
+                                  defaultValue: {
+                                    "background-color": "#fff",
+                                    "background-image": "",
+                                    "padding-top": 0,
+                                    "padding-bottom": 0,
+                                    "padding-left": 0,
+                                    "padding-right": 0
+                                  },
+                                  customStyle: {},
+                                  href: "v2-layout-rowctn",
+                                  component: "v2-layout-rowctn",
+                                  widget: {
+                                    belongTo: "aui",
+                                    icon: "iconshuxiangbuju",
+                                    type: "layout",
+                                    href: "v2-layout-rowctn",
+                                    author: "zhanghaixian@agree.com.cn",
+                                    version: 510000,
+                                    accept: "",
+                                    name: "竖向布局",
+                                    option: [
+                                      {
+                                        name: "direction",
+                                        desp: "排列方式",
+                                        defaultValue: "col",
+                                        type: "string_select",
+                                        valueArray: ["row", "col"],
+                                        despArray: ["横排", "竖排"]
+                                      },
+                                      {
+                                        name: "layout",
+                                        desp: "栅格",
+                                        hidden: false,
+                                        defaultValue: [50, 50],
+                                        type: "string_input"
+                                      },
+                                      {
+                                        name: "rules",
+                                        desp: "表单验证",
+                                        defaultValue: "",
+                                        type: "single_array",
+                                        attrInEachElement: [
+                                          {
+                                            name: "rule",
+                                            desp: "规则",
+                                            defaultValue: "",
+                                            type: "string_input"
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    css: {
+                                      style: [
+                                        {
+                                          desp: "子容器",
+                                          cssAttrs:
+                                            "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                          name: "divCtn"
+                                        }
+                                      ]
+                                    },
+                                    editor: {
+                                      name: "v2LayoutEditor",
+                                      model: {
+                                        def: {
+                                          defheight: true,
+                                          defborder: true,
+                                          defbackgroundStyle: true,
+                                          defpaddingStyle: true
+                                        },
+                                        defaultValue: {
+                                          "background-color": "#fff",
+                                          "background-image": "",
+                                          "padding-top": 0,
+                                          "padding-bottom": 0,
+                                          "padding-left": 0,
+                                          "padding-right": 0
+                                        },
+                                        customStyle: {}
+                                      }
+                                    },
+                                    main: "index.vue"
+                                  },
+                                  children: [
+                                    {
+                                      style: {
+                                        divCtn: {
+                                          position: "",
+                                          top: "",
+                                          right: "",
+                                          bottom: "",
+                                          left: "",
+                                          overflow: "",
+                                          margin: "",
+                                          padding: "",
+                                          height: "",
+                                          width: "",
+                                          "max-height": "",
+                                          "max-width": "",
+                                          "min-height": "",
+                                          "min-width": ""
+                                        }
+                                      },
+                                      direction: "col",
+                                      layout: "[50,50]",
+                                      rules: "",
+                                      def: {
+                                        defheight: true,
+                                        defborder: true,
+                                        defbackgroundStyle: true,
+                                        defpaddingStyle: false
+                                      },
+                                      defaultValue: {
+                                        "background-color": "#fff",
+                                        "background-image": "",
+                                        "padding-top": 0,
+                                        "padding-bottom": 0,
+                                        "padding-left": 0,
+                                        "padding-right": 0
+                                      },
+                                      customStyle: {
+                                        opacity: 1,
+                                        "border-radius": "0px",
+                                        "padding-left": "12px"
+                                      },
+                                      href: "v2-layout-rowctn",
+                                      component: "v2-layout-rowctn",
+                                      widget: {
+                                        belongTo: "aui",
+                                        icon: "iconshuxiangbuju",
+                                        type: "layout",
+                                        href: "v2-layout-rowctn",
+                                        author: "zhanghaixian@agree.com.cn",
+                                        version: 510000,
+                                        accept: "",
+                                        name: "竖向布局",
+                                        option: [
+                                          {
+                                            name: "direction",
+                                            desp: "排列方式",
+                                            defaultValue: "col",
+                                            type: "string_select",
+                                            valueArray: ["row", "col"],
+                                            despArray: ["横排", "竖排"]
+                                          },
+                                          {
+                                            name: "layout",
+                                            desp: "栅格",
+                                            hidden: false,
+                                            defaultValue: [50, 50],
+                                            type: "string_input"
+                                          },
+                                          {
+                                            name: "rules",
+                                            desp: "表单验证",
+                                            defaultValue: "",
+                                            type: "single_array",
+                                            attrInEachElement: [
+                                              {
+                                                name: "rule",
+                                                desp: "规则",
+                                                defaultValue: "",
+                                                type: "string_input"
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        css: {
+                                          style: [
+                                            {
+                                              desp: "子容器",
+                                              cssAttrs:
+                                                "top right bottom left width height min-width max-width min-height max-height position overflow margin padding",
+                                              name: "divCtn"
+                                            }
+                                          ]
+                                        },
+                                        editor: {
+                                          name: "v2LayoutEditor",
+                                          model: {
+                                            def: {
+                                              defheight: true,
+                                              defborder: true,
+                                              defbackgroundStyle: true,
+                                              defpaddingStyle: true
+                                            },
+                                            defaultValue: {
+                                              "background-color": "#fff",
+                                              "background-image": "",
+                                              "padding-top": 0,
+                                              "padding-bottom": 0,
+                                              "padding-left": 0,
+                                              "padding-right": 0
+                                            },
+                                            customStyle: {}
+                                          }
+                                        },
+                                        main: "index.vue"
+                                      },
+                                      children: [null, null],
+                                      events: {},
+                                      id: 1559729043087,
+                                      pid: 1559729035582
+                                    },
+                                    null
+                                  ],
+                                  events: {},
+                                  id: 1559729035582,
+                                  pid: 1559729032657
+                                },
+                                null
+                              ],
+                              events: {},
+                              id: 1559729032657,
+                              pid: 1559723085128
+                            }
+                          ],
+                          events: {},
+                          id: 1559723085128,
+                          pid: 1559701548485
+                        }
+                      ],
+                      events: {},
+                      id: 1559701548485,
+                      pid: 1559701544604
+                    }
+                  ],
+                  events: {},
+                  id: 1559701544604,
+                  pid: 1559701542973
+                },
+                {
+                  columns: [
+                    { active: true, sTitle: "columns0" },
+                    {
+                      active: true,
+                      sTitle: "serialId",
+                      __edm_collection: {
+                        CODINGRULE: "UTF-8",
+                        DICTTYPE: "2",
+                        PUBCODECNAME: "业务流水号",
+                        description: "业务流水号",
+                        COLSCALE: "0",
+                        name: "serialId",
+                        Parameter: { pname: "serialId", pvalue: "77" },
+                        type: "String",
+                        UUID: "579307B9FF7F4BD4B28B143E579DC48C",
+                        EDITION: "v0.0.1",
+                        APPLYAREA: "casdf.cadf",
+                        fieldLength: "77",
+                        like: true,
+                        desp: "业务流水号"
+                      }
+                    },
+                    {
+                      active: true,
+                      sTitle: "start",
+                      __edm_collection: {
+                        CODINGRULE: "UTF-8",
+                        DICTTYPE: "2",
+                        PUBCODECNAME: "交易起始时间",
+                        description: "交易起始时间",
+                        COLSCALE: "0",
+                        name: "start",
+                        Parameter: { pname: "字段长度", pvalue: "77" },
+                        type: "String",
+                        UUID: "579307B9FF7F4BD4B28B143E579DC48C",
+                        EDITION: "v0.0.1",
+                        APPLYAREA: "casdf.cadf",
+                        fieldLength: "77",
+                        like: true,
+                        desp: "交易起始时间"
+                      }
+                    },
+                    {
+                      active: true,
+                      sTitle: "end",
+                      __edm_collection: {
+                        CODINGRULE: "UTF-8",
+                        DICTTYPE: "2",
+                        PUBCODECNAME: "交易结束时间",
+                        description: "交易结束时间",
+                        COLSCALE: "0",
+                        name: "end",
+                        Parameter: { pname: "字段长度", pvalue: "77" },
+                        type: "String",
+                        UUID: "579307B9FF7F4BD4B28B143E579DC48C",
+                        EDITION: "v0.0.1",
+                        APPLYAREA: "casdf.cadf",
+                        fieldLength: "77",
+                        like: true,
+                        desp: "交易结束时间"
+                      }
+                    },
+                    {
+                      active: true,
+                      sTitle: "employeeId2",
+                      __edm_collection: {
+                        CODINGRULE: "UTF-8",
+                        DICTTYPE: "2",
+                        PUBCODECNAME: "复核柜员号",
+                        description: "复核柜员号",
+                        COLSCALE: "0",
+                        name: "employeeId2",
+                        Parameter: { pname: "字段长度", pvalue: "77" },
+                        type: "String",
+                        UUID: "579307B9FF7F4BD4B28B143E579DC48C",
+                        EDITION: "v0.0.1",
+                        APPLYAREA: "casdf.cadf",
+                        fieldLength: "77",
+                        like: true,
+                        desp: "复核柜员号"
+                      }
+                    },
+                    {
+                      active: true,
+                      sTitle: "employeeId",
+                      __edm_collection: {
+                        CODINGRULE: "UTF-8",
+                        DICTTYPE: "2",
+                        PUBCODECNAME: "柜员号",
+                        description: "柜员号",
+                        COLSCALE: "0",
+                        name: "employeeId",
+                        Parameter: { pname: "字段长度", pvalue: "77" },
+                        type: "String",
+                        UUID: "579307B9FF7F4BD4B28B143E579DC48C",
+                        EDITION: "v0.0.1",
+                        APPLYAREA: "casdf.cadf",
+                        fieldLength: "77",
+                        like: true,
+                        desp: "柜员号"
+                      }
+                    },
+                    {
+                      active: true,
+                      sTitle: "tradeId",
+                      __edm_collection: {
+                        CODINGRULE: "UTF-8",
+                        DICTTYPE: "2",
+                        PUBCODECNAME: "交易号",
+                        description: "交易号",
+                        COLSCALE: "0",
+                        name: "tradeId",
+                        Parameter: { pname: "字段长度", pvalue: "77" },
+                        type: "String",
+                        UUID: "579307B9FF7F4BD4B28B143E579DC48C",
+                        EDITION: "v0.0.1",
+                        APPLYAREA: "casdf.cadf",
+                        fieldLength: "77",
+                        like: true,
+                        desp: "交易号"
+                      }
+                    },
+                    {
+                      active: true,
+                      sTitle: "tradeName",
+                      __edm_collection: {
+                        CODINGRULE: "UTF-8",
+                        DICTTYPE: "2",
+                        PUBCODECNAME: "交易名",
+                        description: "交易名",
+                        COLSCALE: "0",
+                        name: "tradeName",
+                        Parameter: { pname: "字段长度", pvalue: "77" },
+                        type: "String",
+                        UUID: "579307B9FF7F4BD4B28B143E579DC48C",
+                        EDITION: "v0.0.1",
+                        APPLYAREA: "casdf.cadf",
+                        fieldLength: "77",
+                        like: true,
+                        desp: "交易名"
+                      }
+                    },
+                    {
+                      active: true,
+                      sTitle: "state",
+                      __edm_collection: {
+                        CODINGRULE: "UTF-8",
+                        DICTTYPE: "2",
+                        PUBCODECNAME: "交易状态",
+                        description: "交易状态",
+                        COLSCALE: "0",
+                        name: "state",
+                        Parameter: { pname: "字段长度", pvalue: "77" },
+                        type: "String",
+                        UUID: "579307B9FF7F4BD4B28B143E579DC48C",
+                        EDITION: "v0.0.1",
+                        APPLYAREA: "casdf.cadf",
+                        fieldLength: "77",
+                        like: true,
+                        desp: "交易状态"
+                      }
+                    }
+                  ],
+                  selection: "single",
+                  toolBar: false,
+                  toolTitle: "操作列",
+                  toolLocation: "right",
+                  toolWidth: "100",
+                  toolBtns: [{ active: "true", btnName: "详情" }],
+                  tableData: "tableData",
+                  selectedRow: "",
+                  href: "v2-component-table",
+                  component: "v2-component-table",
+                  widget: {
+                    belongTo: "aui",
+                    icon: "iconbiaoge",
+                    type: "component",
+                    href: "v2-component-table",
+                    author: "zhanghaixian@agree.com.cn",
+                    version: 610000,
+                    accept: "divCtn",
+                    name: "表格",
+                    option: [
+                      {
+                        type: "edmCollection",
+                        desp: "列定义",
+                        name: "columns",
+                        edmKey: "sTitle",
+                        hidden: false,
+                        defaultValue: "",
+                        valueArray: "",
+                        replaceTemp: true,
+                        attrInEachElement: []
+                      },
+                      {
+                        defaultValue: "",
+                        valueArray: ["", "single", "multi"],
+                        type: "string_select",
+                        desp: "选择器",
+                        despArray: ["无", "单选", "多选"],
+                        name: "selection"
+                      },
+                      {
+                        defaultValue: false,
+                        type: "boolean",
+                        name: "toolBar",
+                        desp: "是否打开固定列"
+                      },
+                      {
+                        defaultValue: "操作列",
+                        type: "string_input",
+                        name: "toolTitle",
+                        desp: "固定列名"
+                      },
+                      {
+                        defaultValue: "right",
+                        valueArray: ["right", "left"],
+                        type: "string_select",
+                        desp: "固定位置",
+                        despArray: ["左边", "右边"],
+                        name: "toolLocation"
+                      },
+                      {
+                        type: "string_input",
+                        name: "toolWidth",
+                        defaultValue: 100,
+                        desp: "固定列宽度"
+                      },
+                      {
+                        type: "array",
+                        name: "toolBtns",
+                        desp: "固定列按钮",
+                        attrInEachElement: [
+                          {
+                            name: "btnName",
+                            desp: "按钮名",
+                            defaultValue: "详情",
+                            type: "string_input"
+                          }
+                        ]
+                      },
+                      {
+                        type: "string_input",
+                        name: "tableData",
+                        defaultValue: "",
+                        disabled: true,
+                        desp: "表格数据"
+                      },
+                      {
+                        type: "string_input",
+                        name: "selectedRow",
+                        defaultValue: "",
+                        desp: "选中行"
+                      }
+                    ],
+                    main: "index.vue"
+                  },
+                  children: [],
+                  events: {
+                    _op_table_table: {
+                      "current-change": ["event0_1559722996456"]
+                    }
+                  },
+                  id: 1559722996456,
+                  pid: 1559701542973
+                }
+              ],
+              events: {},
+              id: 1559701542973,
+              pid: "root"
+            }
+          ]
+        }
+      },
+      orgList: "",
+      orgId: "",
+      employeeList: "",
+      employeeId: "",
+      tableData: "",
+      currentRow: "",
+      tradeType: "",
+      tradeStatus: "",
+      tradeName: "",
+      btnBg: "red"
+    };
+  },
+  props: {
+    orgList: {
+      default: () => {
+        return "";
+      }
+    },
+    orgId: {
+      default: () => {
+        return "";
+      }
+    },
+    employeeList: {
+      default: () => {
+        return "";
+      }
+    },
+    employeeId: {
+      default: () => {
+        return "";
+      }
+    },
+    tableData: {
+      default: () => {
+        return "";
+      }
+    },
+    currentRow: {
+      default: () => {
+        return "";
+      }
+    },
+    tradeType: {
+      default: () => {
+        return "";
+      }
+    },
+    tradeStatus: {
+      default: () => {
+        return "";
+      }
+    },
+    tradeCodeList: {
+      default: () => {
+        return [
+          {
+            label: 123,
+            value: 4134
+          },
+          {
+            label: 1241,
+            value: 1234
+          }
+        ];
+      }
+    },
+    tradeName: {
+      default: () => {
+        return "";
+      }
+    },
+    btnBg: {
+      default: () => {
+        return "red";
+      }
+    }
+  },
+  mixins: [root],
+
+  methods: {
+    event0_1559701893072(widget, item) {
+      let ctx = this;
+
+      (async () => {
+        const t1 = await pipe.getExcelData(
+          "柜员表",
+          `(e,index)=>index?(e[2]==${item}?{value:e[0],label:e[1]}:false):false`
+        );
+        ctx.employeeList = t1;
+      })();
+      /*overview*/
+      (async () => {
+        const t1 = await pipe.getExcelData(
+          "柜员表",
+          `(e,index)=>index?(e[2]==${item}?{value:e[0],label:e[1]}:false):false`
+        );
+        ctx.employeeList = t1;
+      })();
+      /*overview over*/
+    },
+    event0_1559723090517(widget, item) {
+      let ctx = this;
+
+      (async () => {
+        const t1 = await this.open({
+          status: true,
+          path: "/table/detail",
+          page: "example/TradeFlowTable",
+          title: "交易子流水",
+          type: "BLANK",
+          params: item
+        });
+      })();
+      /*overview*/
+      (async () => {
+        const t1 = await this.open({
+          status: true,
+          path: "/table/detail",
+          page: "example/TradeFlowTable",
+          title: "交易子流水",
+          type: "BLANK",
+          params: item
+        });
+      })();
+      /*overview over*/
+    },
+    event0_1559722996456(widget, item) {
+      let ctx = this;
+
+      (async () => {
+        const t1 = await this.open({
+          status: true,
+          path: "/table/detail",
+          page: "example/TradeFlowTable",
+          title: "交易子流水",
+          type: "BLANK",
+          params: {
+            serialId: item.serialId
+          }
+        });
+        ctx.currentRow = item;
+      })();
+      /*overview*/
+      (async () => {
+        const t1 = await this.open({
+          status: true,
+          path: "/table/detail",
+          page: "example/TradeFlowTable",
+          title: "交易子流水",
+          type: "BLANK",
+          params: { serialId: item.serialId }
+        });
+        ctx.currentRow = item;
+      })();
+      /*overview over*/
+    },
+    event0_1559729051006(widget, item) {
+      let ctx = this;
+
+      (async () => {
+        const t1 = await this.open({
+          status: true,
+          path: "/table/detail",
+          page: "example/A1",
+          title: "新增",
+          type: "SUB"
+        });
+      })();
+      /*overview*/
+      (async () => {
+        const t1 = await this.open({
+          status: true,
+          path: "/table/detail",
+          page: "example/A1",
+          title: "新增",
+          type: "SUB"
+        });
+      })();
+      /*overview over*/
+    },
+    event0_1559729054595(widget, item) {
+      let ctx = this;
+
+      (async () => {
+        const t1 = await this.open({
+          status: true,
+          path: "/table/detail",
+          page: "example/A1",
+          title: "编辑",
+          type: "SUB"
+        });
+      })();
+      /*overview*/
+      (async () => {
+        const t1 = await this.open({
+          status: true,
+          path: "/table/detail",
+          page: "example/A1",
+          title: "编辑",
+          type: "SUB"
+        });
+      })();
+      /*overview over*/
+    },
+    event0_1559701933752(widget, item) {
+      let ctx = this;
+
+      (async () => {
+        const t1 = await pipe.getExcelData(
+          "交易表",
+          `(e,index)=>index?(e[2]==${item}?{label:e[0],value:e[0],name:e[1]}:false):false`
+        );
+        ctx.tradeCodeList = t1;
+      })();
+      /*overview*/
+      (async () => {
+        const t1 = await pipe.getExcelData(
+          "交易表",
+          `(e,index)=>index?(e[2]==${item}?{label:e[0],value:e[0],name:e[1]}:false):false`
+        );
+        ctx.tradeCodeList = t1;
+      })();
+      /*overview over*/
+    },
+    event0_1559701980923(widget, item) {
+      let ctx = this;
+
+      (async () => {
+        const t1 = await this.value1;
+        ctx.tradeName = item.name;
+      })();
+      /*overview*/
+      (async () => {
+        const t1 = await this.value1;
+        ctx.tradeName = item.name;
+      })();
+      /*overview over*/
+    },
+    event0_1560765565313(widget, item) {
+      let ctx = this;
+
+      (async () => {
+        const t1 = await pipe.getExcelData(
+          "交易流水表",
+          `(e,index)=>index? ((e[1]==${ctx.orgId} && e[5]==${ctx.employeeId} )?{serialId:e[0],organId:e[1],employeeId2:e[2],tradeId:e[3],tradeName:e[4],employeeId:e[5],state:e[6],type:e[7],start:e[8],end:e[9]}:false):false`
+        );
+        ctx.tableData = t1;
+      })();
+      /*overview*/
+      (async () => {
+        const t1 = await pipe.getExcelData(
+          "交易流水表",
+          `(e,index)=>index? ((e[1]==${ctx.orgId} && e[5]==${ctx.employeeId} )?{serialId:e[0],organId:e[1],employeeId2:e[2],tradeId:e[3],tradeName:e[4],employeeId:e[5],state:e[6],type:e[7],start:e[8],end:e[9]}:false):false`
+        );
+        ctx.tableData = t1;
+      })();
+      /*overview over*/
+    }
+  },
+  watch: {},
+  beforeCreate() {
+    let ctx = this;
+
+    /*overview*/
+    (async () => {
+      const t1 = await pipe.getExcelData(
+        "机构表",
+        `(e,index)=>index?{label:e[1],value:e[0]}:false`
+      );
+      ctx.orgList = t1;
+      ctx.btnBg = "black";
+    })();
+    /*overview over*/
+  },
+  created() {
+    let ctx = this;
+
+    /**bind**/ ctx.$store.commit("registerBind", {
+      vueObj: this,
+      data: this.orgId,
+      dataStr: "orgId",
+      wid: 1559701893072,
+      modelKey: "value"
+    });
+    ctx.$store.commit("registerBind", {
+      vueObj: this,
+      data: this.orgList,
+      dataStr: "orgList",
+      wid: 1559701893072,
+      modelKey: "optionConfig"
+    });
+    ctx.$store.commit("registerBind", {
+      vueObj: this,
+      data: this.employeeId,
+      dataStr: "employeeId",
+      wid: 1559701933752,
+      modelKey: "value"
+    });
+    ctx.$store.commit("registerBind", {
+      vueObj: this,
+      data: this.employeeList,
+      dataStr: "employeeList",
+      wid: 1559701933752,
+      modelKey: "optionConfig"
+    });
+    ctx.$store.commit("registerBind", {
+      vueObj: this,
+      data: this.tableData,
+      dataStr: "tableData",
+      wid: 1559722996456,
+      modelKey: "tableData"
+    });
+    ctx.$store.commit("registerBind", {
+      vueObj: this,
+      data: this.tradeType,
+      dataStr: "tradeType",
+      wid: 1559701946510,
+      modelKey: "value"
+    });
+    ctx.$store.commit("registerBind", {
+      vueObj: this,
+      data: this.tradeStatus,
+      dataStr: "tradeStatus",
+      wid: 1559701951021,
+      modelKey: "value"
+    });
+    ctx.$store.commit("registerBind", {
+      vueObj: this,
+      data: this.tradeCodeList,
+      dataStr: "tradeCodeList",
+      wid: 1559701980923,
+      modelKey: "suggestion"
+    });
+    ctx.$store.commit("registerBind", {
+      vueObj: this,
+      data: this.tradeName,
+      dataStr: "tradeName",
+      wid: 1559701984096,
+      modelKey: "value"
+    }); /**bind over**/
+  },
+  beforeMount() {
+    let ctx = this;
+  },
+  mounted() {
+    let ctx = this;
+
+    /*overview*/
+    (async () => {
+      const t2 = await pipe.getExcelData(
+        "交易流水表",
+        `(e,index)=>index? {serialId:e[0],organId:e[1],employeeId2:e[2],tradeId:e[3],tradeName:e[4],employeeId:e[5],state:e[6],type:e[7],start:e[8],end:e[9]}:false`
+      );
+      ctx.tableData = t2;
+    })();
+    /*overview over*/
+  },
+  beforeUpdate() {
+    let ctx = this;
+  },
+  updated() {
+    let ctx = this;
+  },
+  beforeDestroy() {
+    let ctx = this;
+  },
+  destroyed() {
+    let ctx = this;
+  },
+  pause() {
+    /**页面切出**/
+  },
+  resume() {
+    /**页面切入**/
+  }
+};
+</script>
