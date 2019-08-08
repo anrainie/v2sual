@@ -1,0 +1,8 @@
+{
+    "name": "ad1",
+    "desc": "第一个广告",
+    "entry": "./index.vue",
+    "pageList": [],
+    "img": "./img/shoutcut.png",
+    "animate": ""
+}
