@@ -44,7 +44,8 @@
                 }
             },
             "exclude": [
-                "Layout.vue"
+                "Layout.vue",
+                "Home.vue"
             ]
         },
         "pageFlow": {
@@ -129,8 +130,9 @@
             "dir": "./dist"
         },
         {
-            "router": "/v1/v2sual/static",
-            "dir": "../static"
+            
+            "router": "/v1/v2sual/",
+            "dir": "./node_modules/@v2-lib/v2sual/sources"
         }
     ],
     "dataSource": {

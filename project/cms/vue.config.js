@@ -1,5 +1,5 @@
 
-
+const path=require("path");
 //获取配置
 const getConfig = () => {
 
@@ -29,6 +29,13 @@ const config = getConfig();
 
 module.exports = {
   publicPath: config.publicPath,
+  configureWebpack:{
+    resolve: {
+      alias: {
+        '@v2-lib/v2sual': path.resolve(__dirname,'../v2sual')
+      }
+    }
+  },
   devServer: {
     port: config.port || 7009,
     sockPort: config.sockPort,

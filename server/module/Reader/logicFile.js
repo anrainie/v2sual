@@ -55,7 +55,7 @@ let json2script = function (json, path) {
 
   if (transfer) {
     finalStr = `<script>
-            ${isCustom ? `import {root,cpt,widget} from '@/ideLib/mixin/v2-view';import events from "@/ideLib/mixin/events";` : `import {root} from '@/ideLib/mixin/v2-view';`}
+            ${isCustom ? `import {root,cpt,widget} from '@v2-lib/v2sual/mixin/v2-view';import events from "@v2-lib/v2sual/mixin/events";` : `import {root} from '@v2-lib/v2sual/mixin/v2-view';`}
             ${importList.length ? importList.map(item => `import ${item.desp} from '${item.path}'`).join(";") : ''}
             export default{
                 data(){
@@ -129,7 +129,7 @@ let json2script = function (json, path) {
         </script>`
   } else {
     template = `export default{data(){return{}},methods:{},watch:{}}`
-    finalStr = `<script>import {root} from '@/ideLib/mixin/v2-view';${template}</script>`
+    finalStr = `<script>import {root} from '@v2-lib/v2sual/mixin/v2-view';${template}</script>`
   }
   return finalStr;
 }

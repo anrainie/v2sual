@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { app } from "@/utils/app.js";
+import { app } from "@/lib/mixin";
 export default {
   data() {
     return {};

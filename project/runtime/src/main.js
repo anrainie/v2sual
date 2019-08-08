@@ -9,7 +9,7 @@ import '../theme/index.css'
 import './api/index.js';
 import  router from './router'
 import Lib from  './lib'
-import ideLib from './ideLib'
+import ideLib from '@v2-lib/v2sual'
 import store from './store'
 
 import $ from "jquery";
@@ -34,7 +34,7 @@ router.beforeEach((to, from, next) => {
   let hash=decodeURI(window.location.hash);
 
   let wpath = hash.split('?')[0].replace('#/', '');
-  let routes= router.options.routes
+  let routes= router.options.routes;
   if (localStorage.getItem('openWindow') && localStorage.getItem('openWindow') === wpath) {
     routes.push({
       path: '/' + wpath,
