@@ -1,6 +1,6 @@
 <template><v2container :wid="`root`"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:100%;width:100%;" key="0"><v2-ctn-xy class="V2Widget" id="1565074463526" :wid="`1565074463526`" :index="0" :pid="`root`"><v2-component-image class="V2Widget" id="1565074987647" :wid="`1565074987647`" :index="0" :pid="`1565074463526`"></v2-component-image><v2-component-text class="V2Widget" id="1565075006446" :wid="`1565075006446`" :index="1" :pid="`1565074463526`"></v2-component-text><v2-component-text class="V2Widget" id="1565075113447" :wid="`1565075113447`" :index="2" :pid="`1565074463526`"></v2-component-text><v2-component-text class="V2Widget" id="1565075072616" :wid="`1565075072616`" :index="3" :pid="`1565074463526`"></v2-component-text><v2empty class="V2Empty" id="1565074463526-4" :wid="`1565074463526-4`" :index="4" :pid="`1565074463526`"></v2empty><v2empty class="V2Empty" id="1565074463526-5" :wid="`1565074463526-5`" :index="5" :pid="`1565074463526`"></v2empty></v2-ctn-xy></el-row></v2container></template>
 <script>
-            import {root} from '@/utils/v2-view';
+            import {root} from '@v2-lib/v2sual/mixin/v2-view';
             
             export default{
                 data(){

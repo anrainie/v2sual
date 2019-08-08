@@ -33,7 +33,6 @@
    </el-row>
 </template>
 <script>
-import asyncComponent from '@/components/asyncComponent'
 
 export default {
     data(){
@@ -74,9 +73,6 @@ export default {
             page:'example/table',
             id:'122'
         }]
-    },
-    components:{
-        asyncComponent
     }
 }
 </script>

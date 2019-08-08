@@ -130,7 +130,7 @@
         },
         {
             "router": "/v1/v2sual/static",
-            "dir": "../static"
+            "dir": "./node_modules/@v2-lib/v2sual/static"
         }
     ],
     "dataSource": {

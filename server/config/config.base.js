@@ -12,6 +12,7 @@ let serverHost,
   _base,
   _pipe,
   _component,
+  _static,
   socketPath,
   publickPort,
   preview;
@@ -51,6 +52,9 @@ process.argv.forEach((p, index) => {
       case 'component':
         _component=val;
         break;
+      case 'static':
+         _static=val;
+      break;
       case 'socket':
         socketPath = val;
         break;
@@ -98,6 +102,19 @@ const server = {
   preview: preview || config.webide.preview//预览地址
 }
 
+const static=config.static.map(s => {
+  let dir=s.dir;
+  if(s.router==='/v1/v2sual/static'){
+    console.log(_static)
+    dir=_static||dir;
+  }
+  
+  return {
+    router: s.router,
+    dir: path.resolve(path.join(base, dir))
+  }
+})
+
 
 module.exports = {
   ...config,
@@ -122,11 +139,5 @@ module.exports = {
     platformPipe,
     platformComponent
   },
-
-  static: config.static.map(s => {
-    return {
-      router: s.router,
-      dir: path.resolve(path.join(base, s.dir))
-    }
-  })
+  static
 };

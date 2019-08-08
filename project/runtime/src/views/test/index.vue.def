@@ -1,0 +1,141 @@
+{
+    "structure": {
+           "id": "root",
+        "component": "v2Container",
+        "direction": "row",
+        "layout": [
+            100
+        ],
+        "style": {
+            "width": "100%",
+            "height": "100%"
+        },
+        "data": {},
+        "children": [
+            null
+        ],
+        "events": {}
+    },
+    "logic": {
+        "methods": {},
+        "watch": {},
+        "computed": {},
+        "beforeCreate": {
+            "labelObj": {
+                "view": [],
+                "output": []
+            },
+            "code": "",
+            "upCode": [],
+            "downCode": []
+        },
+        "created": {
+            "labelObj": {
+                "view": [],
+                "output": []
+            },
+            "code": "",
+            "upCode": [],
+            "downCode": []
+        },
+        "beforeMount": {
+            "labelObj": {
+                "view": [],
+                "output": []
+            },
+            "code": "",
+            "upCode": [],
+            "downCode": []
+        },
+        "mounted": {
+            "labelObj": {
+                "view": [],
+                "output": []
+            },
+            "code": "",
+            "upCode": [],
+            "downCode": []
+        },
+        "beforeUpdate": {
+            "labelObj": {
+                "view": [],
+                "output": []
+            },
+            "code": "",
+            "upCode": [],
+            "downCode": []
+        },
+        "updated": {
+            "labelObj": {
+                "view": [],
+                "output": []
+            },
+            "code": "",
+            "upCode": [],
+            "downCode": []
+        },
+        "beforeDestroy": {
+            "labelObj": {
+                "view": [],
+                "output": []
+            },
+            "code": "",
+            "upCode": [],
+            "downCode": []
+        },
+        "destroyed": {
+            "labelObj": {
+                "view": [],
+                "output": []
+            },
+            "code": "",
+            "upCode": [],
+            "downCode": []
+        },
+        "activated": {
+            "labelObj": {
+                "view": [],
+                "output": []
+            },
+            "code": ""
+        },
+        "deactivated": {
+            "labelObj": {
+                "view": [],
+                "output": []
+            },
+            "code": ""
+        },
+        "pollList": []
+    },
+    "dataBasket": {
+        "data": {
+            "ctnClass": "[\r\n    \"test-demo\"\r\n]"
+        },
+        "list": [
+            {
+                "name": "ctnClass",
+                "desp": "ctnClass",
+                "value": "[\r\n    \"test-demo\"\r\n]"
+            }
+        ],
+        "mapping": {
+            "1565230849487": [
+                {
+                    "id": 1565230849487,
+                    "modelValue": "ctnClass",
+                    "dataValue": "ctnClass",
+                    "type": ""
+                }
+            ]
+        }
+    },
+    "events": {},
+    "display": {
+        "icon": "icontongyong",
+        "desp": "首页",
+        "width": "100%",
+        "height": "100%"
+    },
+    "scssCode": ""
+}

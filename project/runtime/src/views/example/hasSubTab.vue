@@ -27,8 +27,6 @@
 <script>
 
 
-import asyncComponent from '@/components/asyncComponent'
-
   export default {
     data() {
       return {
@@ -193,9 +191,6 @@ import asyncComponent from '@/components/asyncComponent'
       initTab(){
         this.page.totalRecords = this.tableData.length;
       }
-    },
-    components:{
-      asyncComponent
     }
   };
 </script>

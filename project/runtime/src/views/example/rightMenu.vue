@@ -96,7 +96,7 @@
 
 <script>
 
-import rightMenu from '@/components/rightMenu'
+
 export default {
   data() {
     return {
@@ -140,9 +140,6 @@ export default {
    treeRightSelect(){
 
    }
-  },
-  components:{
-    rightMenu
   }
 }
 </script>
