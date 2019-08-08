@@ -130,7 +130,7 @@
             "dir": "./dist"
         },
         {
-            "router": "/v1/v2sual/static",
+            "router": "/v1/v2sual/",
             "dir": "../static"
         }
     ],
