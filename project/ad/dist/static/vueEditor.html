@@ -29,7 +29,11 @@
         store: parent.$store,
         mixins: [window.parent.mixins],
         template: `
-          <div>
+          <div style="display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;">
 
             <v2EditorXYCtn  v-model="rootId" :style="$store.getters.editorStyle"></v2EditorXYCtn>
             <div
@@ -100,7 +104,8 @@
                 wid = widget && widget.pid;
               }
 
-              ret = widgetStack.reverse().filter(w => w.component !== 'v2-layout-colctn' && w.component !== 'v2-layout-rowctn');
+              ret = widgetStack.reverse().filter(w => w.component !== 'v2-layout-colctn' && w.component !==
+                'v2-layout-rowctn');
             }
             console.log(ret);
             return ret;
