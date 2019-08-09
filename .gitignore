@@ -32,6 +32,11 @@ project/runtime/src/views/testComp/*.def
 
 project/runtime/src/views/testComp/**/*.vue
 project/runtime/src/views/testComp/**/*.def
+project/**/anra/*.vue
+project/**/anra/*.def
+project/**/ad/*.vue
+project/**/ad/*.def
+
 
 project/runtime/src/views/anrainie/*.vue
 project/runtime/src/views/anrainie/*.def

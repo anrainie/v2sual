@@ -9,7 +9,7 @@ import '../theme/index.css'
 import './api/index.js';
 import  router from './router'
 import Lib from  './lib'
-import ideLib from './ideLib'
+import ideLib from '@v2-lib/v2sual'
 import store from './store'
 import Vant from 'vant';
 import 'vant/lib/index.css';

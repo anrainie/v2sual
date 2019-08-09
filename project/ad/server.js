@@ -3,8 +3,12 @@ const Router = require('koa-router')
 const KoaBody = require('koa-body')
 KoaBody({ multipart: true })
 const Mock = require('mockjs')
+const cors = require('koa2-cors');
+
 const app = new Koa()
+app.use(cors());
 const router = new Router()
+
 const shell = require('shelljs')
 const path=require('path');
 const fs = require('fs')
@@ -350,7 +354,7 @@ router.get('/-/getFileList', async ctx => {
 			.map(f => {
 				try {
 					return {
-						path: f.replace(projectPath,''),
+						path: f.replace(projectPath,'').replace(/\\/g,'/'),
 						md5: md5File.sync(f)
 					}
 				} catch (e) {
