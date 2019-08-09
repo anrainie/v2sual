@@ -133,6 +133,9 @@
             
             "router": "/v1/v2sual/",
             "dir": "./node_modules/@v2-lib/v2sual/sources"
+        },{
+            "router":"/v1/public",
+            "dir":"./public"
         }
     ],
     "dataSource": {

@@ -416,6 +416,7 @@ const Navigator = {
       try {
         let dirPath = req.data.path || req.data.end;
         let viewPath;
+        console.log('getNaviItems',req);
         switch (req.data.path) {
           case "\\":
           case null:
