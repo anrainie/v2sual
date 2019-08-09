@@ -36,7 +36,7 @@
     height: 100%;
     background:lightgray;
     ">
-        <div style="background-color:white;">
+        <div style="background-color:white;" :style="$store.getters.editorStyle">
             <v2EditorXYCtn  v-model="rootId"  :style="$store.getters.editorStyle"></v2EditorXYCtn>
             <div
             v-show="showCustomEditor" class="V2CustomEditor switchable-ctn-editor"
