@@ -17,13 +17,6 @@
     "customEditor": "v2XXXXXEditor",
     "option": [
       {
-        "name": "activeIndex",
-        "desp": "页码变量",
-        "type": "variable_input",
-        "placeholder":"",
-        "defaultValue": "0"
-      },
-      {
         "name": "width",
         "desp": "容器宽度",
         "type": "variable_input",

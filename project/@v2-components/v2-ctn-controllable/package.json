@@ -1,0 +1,113 @@
+{
+  "author": {
+    "name": "zhucheng@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "可控块容器",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "icontongyong",
+    "type": "component",
+    "href": "v2-ctn-controllable",
+    "author": "zhucheng@agree.com.cn",
+    "version": 610000,
+    "accept": "divCtn",
+    "name": "可控块容器",
+    "customEditor": "v2ControllableEditor",
+    "option": [
+      {
+        "name": "display",
+        "desp": "display",
+        "type": "variable_input",
+        "placeholder":"输入数值和单位",
+        "defaultValue": "inline-block"
+      },
+      {
+        "name": "width",
+        "desp": "容器宽度",
+        "type": "variable_input",
+        "placeholder":"输入数值和单位",
+        "defaultValue": "300px"
+      },
+      {
+        "name": "height",
+        "desp": "容器高度",
+        "type": "variable_input",
+        "placeholder":"输入数值和单位",
+        "defaultValue": "200px"
+      },
+      {
+        "name": "margin",
+        "desp": "容器外边距",
+        "type": "variable_input",
+        "placeholder":"输入外边距",
+        "defaultValue": "10px"
+      },
+      {
+        "name": "padding",
+        "desp": "容器内边距",
+        "type": "variable_input",
+        "placeholder":"输入内边距",
+        "defaultValue": "10px"
+      },
+      {
+        "name": "background",
+        "desp": "容器背景",
+        "type": "variable_input",
+        "placeholder":"输入背景色",
+        "defaultValue": "#ddf"
+      },
+      {
+        "name": "border",
+        "desp": "容器边框",
+        "type": "variable_input",
+        "placeholder":"输入边框属性",
+        "defaultValue": "1px solid #ccc"
+      },
+      {
+        "name": "border",
+        "desp": "容器圆角",
+        "type": "variable_input",
+        "placeholder":"输入圆角值",
+        "defaultValue": "5px"
+      },
+      {
+        "name": "boxShadow",
+        "desp": "容器阴影",
+        "type": "variable_input",
+        "placeholder":"输入阴影属性",
+        "defaultValue": "1px 1px 5px #ccc"
+      },
+      {
+        "name": "thisClasss",
+        "desp": "容器类名",
+        "type": "variable_input",
+        "placeholder":"输入类名",
+        "defaultValue": "V2Controllable"
+      }
+    ],
+    "css": {
+      "style": [
+        {
+          "desp": "容器",
+          "cssAttrs": "padding margin background-color",
+          "name": "iWarpStyle"
+        }
+      ]
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@v2-components/v2-ctn-controllable",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "editor": {
+    "path": "ControllableEditor.vue",
+    "name": "v2ControllableEditor"
+  },
+  "version": "6.0.0",
+  "index": 30000005
+}

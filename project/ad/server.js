@@ -391,37 +391,37 @@ router.get('/-/theme/change', (ctx) => {
 const readDir = require('recursive-readdir');
 const md5File = require('md5-file')
 router.get('/-/getFileList', async ctx => {
-  const projectPath = path.resolve(__dirname, './dist');
-  const files = await readDir(projectPath);
+	const projectPath = path.resolve(__dirname, './dist');
+	const files = await readDir(projectPath);
 
-  ctx.response.type = 'json';
-  try {
-    const ret = files
-      .filter(f => f.indexOf('.') !== 0)
-      .map(f => {
-        try {
-          return {
-            path: f.replace(projectPath, ''),
-            md5: md5File.sync(f)
-          }
-        } catch (e) {
-          console.log(e);
-        }
-      })
-      .filter(f => !!f);
+	ctx.response.type = 'json';
+	try {
+		const ret=files
+			.filter(f => f.indexOf('.') !== 0)
+			.map(f => {
+				try {
+					return {
+						path: f.replace(projectPath,'').replace(/\\/g,'/'),
+						md5: md5File.sync(f)
+					}
+				} catch (e) {
+					console.log(e);
+				}
+			})
+			.filter(f => !!f);
 
+		
+		ctx.response.body = JSON.stringify({
+			status: true,
+			content: ret
+		});
 
-    ctx.response.body = JSON.stringify({
-      status: true,
-      content: ret
-    });
-
-  } catch (e) {
-    ctx.response.body = JSON.stringify({
-      status: false,
-      errorMsg: e.message
-    });
-  }
+	} catch (e) {
+		ctx.response.body = JSON.stringify({
+			status: false,
+			errorMsg:e.message
+		});
+	}
 });
 
 //若删掉代理，预览时候不能获取数据
