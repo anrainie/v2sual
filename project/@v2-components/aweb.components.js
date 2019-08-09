@@ -41,6 +41,9 @@ import v2Page  from './v2-page/index.vue';
 import v2Switchable  from './v2-switchable/index.vue';
 import v2EditorSwitch  from './v2-switchable/switchEditor.vue'
 
+import v2XXXXX  from './v2-XXXXX/index.vue';
+import v2XXXXXEditor  from './v2-XXXXX/XXXXXEditor.vue'
+
           import $get  from '../pipe/src/main/webapp/plugins/app.$get';
 import $post  from '../pipe/src/main/webapp/plugins/app.$post';
 import animate  from '../pipe/src/main/webapp/plugins/app.animate';
@@ -110,5 +113,8 @@ import open  from '../pipe/src/main/webapp/plugins/app.open';
 	v2MobileUploader,
 	v2Page,
 	v2Switchable,
-	v2EditorSwitch
+	v2EditorSwitch,
+
+	v2XXXXX,
+	v2XXXXXEditor
           }

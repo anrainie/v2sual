@@ -5,21 +5,12 @@ import Layout from '@/views/Layout'
 import Login from "@/views/Login"
 import noFound from "@/views/404"
 import Main from "@/views/main/main"
+import Home from "@/views/Home"
 
 let mainRouter = [{
   path: "/",
   component: Layout,
-  redirect: 'main',
   children:[
-    {
-      path: "/main",
-      name: 'main',
-      component: Main,
-      meta: {
-        title: "首页",
-        icon: "el-icon-goods"
-      },
-    },
     {
       path: '/404',
       component: noFound,
@@ -32,6 +23,9 @@ let mainRouter = [{
 }, {
   path: "/login",
   component: Login,
+}, {
+  path: "/home",
+  component: Home,
 },
 {
   path: '*',
