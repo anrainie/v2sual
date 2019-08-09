@@ -75,3 +75,10 @@ export const getMainList = params => {
     params: params
   });
 };
+
+export const getbrotherPageList = params => {
+  debugger;
+  return axios.get(`${axios.mock}/-/getbrotherPageList`, {
+    params: params
+  });
+};
