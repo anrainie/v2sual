@@ -7,14 +7,14 @@
       "scripts": {
             "style": "vue-cli-service build --no-clean",
             "serve": "vue-cli-service serve --publicPath=./ --sockPort=7033 --sockPath=/sockjs-node --port=7033 --mockPort=7034 --sockHost=localhost",
-            "build": "vue-cli-service build",
+            "build": "vue-cli-service build --mode development",
             "lint": "vue-cli-service lint",
             "theme": "et",
             "mock": "node ./server.js --port=7034",
             "buildP": "node ./build-page.js",
             "preview": "vue-cli-service serve --publicPath=/ad/ --sockPort=443 --sockPath=/ad/sockjs-node --port=7033 --mockPort=7034 --sockHost=vue.awebide.com",
             "mockPreview": "node ./server.js --port=7034 --prefix=/ad",
-            "component": "vue build -t lib -d v2sual -n @aweb-template/vue-spa ./src/@aweb-components/aweb.components.js"
+            "component": "vue-cli-service build -t lib -d v2sual -n @aweb-template/vue-spa ./src/@aweb-components/aweb.components.js"
       },
       "dependencies": {
             "animate.css": "^3.7.2",
@@ -93,11 +93,15 @@
             "koa-body": "^4.1.0",
             "koa-router": "^7.4.0",
             "koa-static": "^5.0.0",
+            "koa-static-server": "^1.4.0",
+            "koa2-cors": "^2.0.6",
             "less": "^3.9.0",
             "less-loader": "^4.1.0",
+            "md5-file": "^4.0.0",
             "mockjs": "^1.0.1-beta3",
             "node-requirejs": "^0.1.1",
             "node-sass": "^4.11.0",
+            "recursive-readdir": "^2.2.2",
             "sass-loader": "^7.1.0",
             "shelljs": "^0.8.3",
             "vue-template-compiler": "^2.5.17",
