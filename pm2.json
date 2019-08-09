@@ -1,6 +1,24 @@
 {
     "apps": [
         {
+            "name": "v2sual-empty-server",
+            "script": "./server/server.js",
+            "args": [
+                "sh=https://aui.awebide.com",
+                "sp=7003",
+                "id=empty",
+                "name=新建项目",
+                "ch=https://v2sual.awebide.com",
+                "cp=3002",
+                "ocp=443",
+                "base=./project/empty",
+                "socket=/v2sual-socket/socket.io",
+                "pp=0"
+            ],
+            "out_file": "/home/v2sual/log/runtime-server-app.log",
+		    "error_file": "/home/v2sual/log/runtime-server-err.log"
+        },
+        {
             "name": "v2sual-runtime-server",
             "script": "./server/server.js",
             "args": [
@@ -13,7 +31,7 @@
                 "ocp=443",
                 "base=./project/runtime",
                 "pipe=../pipe",
-                "static=../v2sual/static",
+                "static=../v2sual/sources",
                 "socket=/v2sual-socket/socket.io",
                 "pp=0",
                 "preview=https://vue.awebide.com/runtime"
@@ -34,7 +52,7 @@
                 "ocp=443",
                 "base=./project/cms",
                 "pipe=../pipe",
-                "static=../v2sual/static",
+                "static=../v2sual/sources",
                 "socket=/v2sual-socket/socket.io",
                 "pp=0",
                 "preview=https://vue.awebide.com/cms"
