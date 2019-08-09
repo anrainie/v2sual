@@ -42,6 +42,8 @@ project/runtime/src/views/anrainie/*.vue
 project/runtime/src/views/anrainie/*.def
 project/runtime/src/views/example/*.vue
 project/runtime/src/views/example/*.def
+project/runtime/src/views/anra/*.vue
+project/runtime/src/views/anra/*.def
 
 project/runtime/dist/js/*.js
 
