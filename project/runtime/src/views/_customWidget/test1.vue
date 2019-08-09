@@ -33,7 +33,7 @@
   </v2container>
 </template>
 <script>
-import { root, widget, cpt } from "@/utils/v2-view";
+import { root, widget, cpt } from "@v2-lib/v2sual/mixin/v2-view";
 
 export default {
   data() {

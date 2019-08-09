@@ -18,7 +18,7 @@
       {
         "type": "string_input",
         "name": "icon",
-        "defaultValue": "",
+        "defaultValue": "el-icon-setting",
         "desp": "图标"
       }
     ],

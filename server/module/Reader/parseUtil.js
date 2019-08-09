@@ -4,6 +4,8 @@
 const jsdom = require('jsdom');
 const JSDOM = jsdom.JSDOM;
 var document = new JSDOM('').window.document;
+const configBase = require('../../config/config.base');
+const ideType = configBase.server.type;
 
 //=================================================== json转html ===========================================================
 const v2Layout = ['v2-layout-colctn','v2-layout-rowctn','v2-layout','v2Container'];//转为v2container
@@ -239,11 +241,12 @@ let json2html = function (jsonStr) {
     }
     let root = document.createElement('v2c');
     let temp = document.createElement('template');
-    let eV2C = document.createElement('v2container');
+    let isAd = ideType ==='ad'
+    let eV2C = isAd? document.createElement('v2-ctn-xy'):document.createElement('v2container');
     jsonV2C.wid = jsonV2C.id;
     eV2C.setAttribute(':wid', '`'+jsonV2C.wid+'`');
     //添加子节点
-    appendChildren(jsonV2C,eV2C,true);
+    appendChildren(jsonV2C,eV2C,!isAd);
     temp.content.appendChild(eV2C);
     root.appendChild(temp);
     let html = root.innerHTML;

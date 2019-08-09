@@ -60,13 +60,16 @@ export default {
 <style lang="less" scoped>
 .app-container {
   text-align: center;
+  background: #fff;
+  height: 100%;
+
 }
 .welcome-wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
+  // width: 100%;
 }
 .example-link-list {
   margin: 0;

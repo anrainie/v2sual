@@ -1,6 +1,6 @@
 <template><v2container :wid="`root`"><el-row class="V2ContainerBlock" style="height:100%;width:100%;" key="0"><v2empty class="V2Empty" id="root-0" :wid="`root-0`" :index="0" :pid="`root`"></v2empty></el-row></v2container></template>
 <script>
-            import {root} from '@/ideLib/mixin/v2-view';
+            import {root} from '@v2-lib/v2sual/mixin/v2-view';
             
             export default{
                 data(){

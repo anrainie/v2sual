@@ -3,6 +3,7 @@ const config = require('./config.json');
 
 
 let serverHost,
+  ideType,
   serverPort,
   clientId,
   clientName,
@@ -12,6 +13,7 @@ let serverHost,
   _base,
   _pipe,
   _component,
+  _static,
   socketPath,
   publickPort,
   preview;
@@ -21,6 +23,9 @@ process.argv.forEach((p, index) => {
     let cmd = p.substr(0, c);
     let val = p.substr(c + 1);
     switch (cmd) {
+      case 'ide':
+        ideType = val;
+        break;
       case 'sh':
         serverHost = val;
         break;
@@ -49,8 +54,11 @@ process.argv.forEach((p, index) => {
         _pipe = val;
         break;
       case 'component':
-        _component=val;
+        _component = val;
         break;
+      case 'static':
+         _static=val;
+      break;
       case 'socket':
         socketPath = val;
         break;
@@ -64,11 +72,11 @@ process.argv.forEach((p, index) => {
 
 //runtime
 const base = path.resolve(process.cwd(), _base || config.runtime.base);
-const component = path.resolve(base, _component||config.runtime.component);
+const component = path.resolve(base, _component || config.runtime.component);
 const componentFile = path.resolve(base, config.runtime.componentFile);
 const pipe = path.resolve(base, _pipe || config.runtime.pipe);
-const platformPipe = path.resolve(base,  config.runtime.platformPipe);
-const platformComponent = path.resolve(base,  config.runtime.platformComponent);
+const platformPipe = path.resolve(base, config.runtime.platformPipe);
+const platformComponent = path.resolve(base, config.runtime.platformComponent);
 
 const datadict = path.resolve(base, config.runtime.datadict);
 const page = path.resolve(base, config.runtime.page);
@@ -93,10 +101,24 @@ const webide = {
 const server = {
   ...config.server,
   id: clientId || config.server.id,
-  name: clientName || clientId || config.server.name||config.server.id,
+  name: clientName || clientId || config.server.name || config.server.id,
   port: clientPort || config.server.port,
-  preview: preview || config.webide.preview//预览地址
+  preview: preview || config.webide.preview, //预览地址
+  type: ideType || config.server.type,
 }
+
+console.log(_static);
+const static=config.static.map(s => {
+  let dir=s.dir;
+  if(s.router==='/v1/v2sual/'){
+    dir=_static||dir;
+  }
+
+  return {
+    router: s.router,
+    dir: path.resolve(path.join(base, dir))
+  }
+})
 
 
 module.exports = {
@@ -122,11 +144,5 @@ module.exports = {
     platformPipe,
     platformComponent
   },
-
-  static: config.static.map(s => {
-    return {
-      router: s.router,
-      dir: path.resolve(path.join(base, s.dir))
-    }
-  })
+  static
 };

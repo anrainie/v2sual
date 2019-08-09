@@ -1,0 +1,182 @@
+<html>
+
+<head>
+  <!--css-->
+  <link rel="stylesheet" type="text/css" href="./common.css" />
+  <link rel="stylesheet" type="text/css" href="./ide_icon/iconfont.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <script>
+    function getUrlParam(name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+      var r = window.location.search.substr(1).match(reg); //匹配目标参数
+      if (r != null) return unescape(r[2]);
+      return null; //返回参数值
+    }
+    window.dispose = () => {
+      window.vueRoot.$destroy();
+    }
+    window.onload = () => {
+      window.$ = window.parent.$;
+      window.jQuery = window.parent.jQuery;
+      window.Vue = window.parent.Vue;
+      window.Vuex = window.parent.Vuex;
+
+      var id = getUrlParam("id");
+      var parent = window.parent.__dataPool[id];
+
+
+      window.vueRoot = new Vue({
+        store: parent.$store,
+        mixins: [window.parent.mixins],
+        template: `
+          <div style="display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background:lightgray;
+    ">
+        <div style="background-color:white;">
+            <v2EditorXYCtn  v-model="rootId"  :style="$store.getters.editorStyle"></v2EditorXYCtn>
+            <div
+            v-show="showCustomEditor" class="V2CustomEditor switchable-ctn-editor"
+            style="position:fixed;background:white;width:100%;height:100%;left:0;top:0;z-index:1000;"
+            >
+              <div class="switchable-ctn-editor-toolbar">
+                <el-breadcrumb separator="/">
+                  <el-breadcrumb-item v-for="l in label" :key="l.id">{{l.label}}</el-breadcrumb-item>
+                </el-breadcrumb>
+                <div class="switchable-ctn-editor-btn-group">
+                  <el-button size="mini" type="text" @click="closeCustomEditor" title="退出编辑" ><i class="ideicon iconfanhui"></i></el-button>  
+                </div>
+              </div>
+              <div ref="customEditorArea" ></div>
+            </div>
+            <contextmenu
+              ref="ide_contextMenu"
+              style="display: none;position: absolute;z-index:19999"
+              id="contextMenu"
+              :items="[]"
+              :config="{}">
+            </contextmenu></div>
+          </div>
+          `,
+        data() {
+          return {
+            showCustomEditor: false,
+            styleUpdated: false
+          }
+        },
+        watch: {
+          style(curval, oldval) {
+            this.loadedStyle();
+            //console.log(`最新值${curval}--旧值${oldval}`);
+          },
+          display() {
+            $(document.body)
+              .scrollTop(0)
+              .scrollLeft(0);
+          }
+        },
+        computed: { //同步了store中state内的orderid值
+          style() {
+            return this.$store.state.runtime.style;
+          },
+          display() {
+            return this.$store.getters.editorStyle;
+          },
+          label() {
+            let ret = [];
+            if (this.showCustomEditor) {
+              const widgetStack = [];
+
+              let wid = this.customEditor.wid;
+
+              while (wid) {
+                const widget = this.$store.getters.model(wid);
+
+                if (widget && widget.id) {
+                  const config = this.$store.getters.widget[widget.component];
+                  widgetStack.push({
+                    id: widget.id,
+                    component: widget.component,
+                    label: config && config.name || widget.id
+                  });
+                }
+                wid = widget && widget.pid;
+              }
+
+              ret = widgetStack.reverse().filter(w => w.component !== 'v2-layout-colctn' && w.component !== 'v2-layout-rowctn');
+            }
+            console.log(ret);
+            return ret;
+          }
+        },
+        mounted() {
+          //TODO 以下内容是为了支撑iframe的键盘鼠标事件，考虑移动到一个特定js文件
+          //绑定键盘
+          if (!this.style) {
+            this.loadStyle();
+          } else {
+            this.loadedStyle();
+          }
+
+
+          $(window)
+            .off(".keymap")
+            .on("keydown.keymap", e => {
+              return this.activeTool && this.activeTool.dispatchKeyEvent ?
+                this.activeTool.dispatchKeyEvent(this, e) :
+                true;
+            });
+        },
+        methods: {
+          openCustomEditor(widget) {
+            let Comp = Vue.component(widget.model.customEditor);
+            let comp = new Comp();
+
+            let area = $(this.$refs.customEditorArea);
+            console.log(this.$refs.customEditorArea);
+
+            let content = $('<div></div>')
+            area.append(content);
+            comp.$store = widget.$store;
+            comp.wid = widget.wid;
+            comp.$mount(content[0]);
+            this.customEditor = comp;
+
+            this.showCustomEditor = true;
+          },
+          closeCustomEditor() {
+            if (this.customEditor)
+              this.customEditor.$destroy();
+            let area = $(this.$refs.customEditorArea);
+            area.empty();
+
+            this.showCustomEditor = false;
+          },
+          loadStyle() {
+            parent.$store.commit('loading', true)
+          },
+          loadedStyle() {
+            if (!this.styleUpdated) {
+              this.styleUpdated = true;
+              $('head', window.document).append(this.style);
+
+              parent.$store.commit('loading', false);
+            }
+
+          }
+        }
+      });
+      vueRoot.$mount(document.body.children[0]);
+    }
+
+  </script>
+</head>
+
+<body style="padding:5px;box-sizing: border-box;">
+  <div></div>
+</body>
+
+</html>

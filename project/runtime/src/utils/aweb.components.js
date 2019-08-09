@@ -35,6 +35,9 @@ import v2Layout  from '@v2-components/v2-layout';
 import v2FormSlider  from '@v2-components/v2-form-slider';
 import v2MobileSteps  from '@v2-components/v2-mobile-steps';
 import v2Switchable  from '@v2-components/v2-switchable';
+
+import v2XXXXX  from '@v2-components/v2-XXXXX';
+
 import v2Page  from '@v2-components/v2-page';
 import v2ComponentSteps  from '@v2-components/v2-component-steps'
 
@@ -75,6 +78,9 @@ v2Layout,
 v2FormSlider,
 v2MobileSteps,
 v2Switchable,
+
+v2XXXXX,
+
 v2Page,
 v2ComponentSteps
   }

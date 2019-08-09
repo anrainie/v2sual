@@ -314,7 +314,7 @@ class Preview {
 
         const css = html
           .match(/<link[^>]+>/g)
-          .filter(l => l.indexOf('.css') !== -1 && l.indexOf('=//') === -1)
+          .filter(l => l.indexOf('.css') !== -1 && l.indexOf('=//') === -1 && l.indexOf('="http') === -1)
           .map(e => e.match(/href=([^\s]+)/)).filter(e => !!e).map(e => e[1]);
 
 

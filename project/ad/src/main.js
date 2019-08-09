@@ -9,11 +9,12 @@ import '../theme/index.css'
 import './api/index.js';
 import  router from './router'
 import Lib from  './lib'
-import ideLib from './ideLib'
+import ideLib from '@v2-lib/v2sual'
 import store from './store'
 import Vant from 'vant';
 import 'vant/lib/index.css';
 import $ from "jquery";
+
 
 Vue.use(Lib)
 Vue.use(ideLib)
@@ -49,16 +50,20 @@ router.beforeEach((to, from, next) => {
 
 
   if (wpath && urlParam && urlParam.indexOf('IDE') !== -1) {
-    routes[0].children.push({
-      path: '/'+wpath,
-      replace: true,
-      component: Lib._import(wpath),
-      meta: {
-        title: '预览',
-        type: 'preview'
-      }
-       });
-    router.addRoutes(routes);
+    // routes[0].children.push({
+    //   path: '/'+wpath,
+    //   replace: true,
+    //   component: Lib._import(wpath),
+    //   meta: {
+    //     title: '预览',
+    //     type: 'preview'
+    //   }
+    //    });
+    // router.addRoutes(routes);
+
+    if(to.path!=='/home'){
+         next('/home')
+    }
   }
 
   next();

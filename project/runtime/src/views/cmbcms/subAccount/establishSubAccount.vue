@@ -1,6 +1,6 @@
 <template><v2container :wid="`root`"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:100%;width:100%;" key="0"><v2-switchable class="V2Widget" id="1564466628237" :wid="`1564466628237`" :index="0" :pid="`root`" activeindex="currentPageIndex"><template><v2container id="1564466596099" :wid="`1564466596099`" :index="0" :pid="`1564466628237`" v-if="currentPageIndex==0"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:100%;width:100%;" key="0"><v2-page class="V2Widget" id="1564480496878" :wid="`1564480496878`" :index="0" :pid="`1564466596099`"></v2-page></el-row></v2container><v2container id="1564466766582" :wid="`1564466766582`" :index="1" :pid="`1564466628237`" v-if="currentPageIndex==1"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:100%;width:100%;" key="0"><v2-page class="V2Widget" id="1564467369335" :wid="`1564467369335`" :index="0" :pid="`1564466766582`"></v2-page></el-row></v2container><v2container id="1564467428690" :wid="`1564467428690`" :index="2" :pid="`1564466628237`" v-if="currentPageIndex==2"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:100%;width:100%;" key="0"><v2-page class="V2Widget" id="1564467467136" :wid="`1564467467136`" :index="0" :pid="`1564467428690`"></v2-page></el-row></v2container></template></v2-switchable></el-row></v2container></template>
 <script>
-            import {root} from '@/ideLib/mixin/v2-view';
+            import {root} from '@v2-lib/v2sual/mixin/v2-view';
             
             export default{
                 data(){

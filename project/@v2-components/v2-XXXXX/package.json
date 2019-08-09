@@ -1,0 +1,78 @@
+{
+  "author": {
+    "name": "zhucheng@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "一个听话的块组件",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "icontongyong",
+    "type": "component",
+    "href": "v2-XXXXX",
+    "author": "zhucheng@agree.com.cn",
+    "version": 610000,
+    "accept": "divCtn",
+    "name": "一个块容器",
+    "customEditor": "v2XXXXXEditor",
+    "option": [
+      {
+        "name": "activeIndex",
+        "desp": "页码变量",
+        "type": "variable_input",
+        "placeholder":"",
+        "defaultValue": "0"
+      },
+      {
+        "name": "width",
+        "desp": "容器宽度",
+        "type": "variable_input",
+        "placeholder":"输入数值和单位",
+        "defaultValue": "300px"
+      },
+      {
+        "name": "height",
+        "desp": "容器高度",
+        "type": "variable_input",
+        "placeholder":"输入数值和单位",
+        "defaultValue": "200px"
+      },
+      {
+        "name": "background",
+        "desp": "容器背景",
+        "type": "variable_input",
+        "placeholder":"输入背景色",
+        "defaultValue": "#f00"
+      },
+      {
+        "name": "thisClasss",
+        "desp": "容器类名",
+        "type": "variable_input",
+        "placeholder":"输入类名",
+        "defaultValue": "v2XXXXX"
+      }
+    ],
+    "css": {
+      "style": [
+        {
+          "desp": "容器",
+          "cssAttrs": "padding margin background-color",
+          "name": "iWarpStyle"
+        }
+      ]
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@v2-components/v2-XXXXX",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "editor": {
+    "path": "XXXXXEditor.vue",
+    "name": "v2XXXXXEditor"
+  },
+  "version": "6.0.0",
+  "index": 30000005
+}
