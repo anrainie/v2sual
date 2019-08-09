@@ -1,19 +1,32 @@
 	<template>
   <el-row class="aweb-container"  ref="layout" name="layout">
-
+    <el-button class="el-icon-video-play" @click="play"></el-button>
+    <el-button class="el-icon-video-pause" @click="stop"></el-button>
+    <el-col :span="4">
+      <el-select v-model="panimate" placeholder="切换动画" >
+                <el-option-group v-for="group in animOpts" :key="group.label" :label="group.label">
+                  <el-option
+                    v-for="item in group.options"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                  ></el-option>
+                </el-option-group>
+              </el-select>
+    </el-col>
     <el-row  class="aweb-body">
-      <el-col :span="4" class="ad-layout-left-ctn">
+ <!--       <el-col :span="4" class="ad-layout-left-ctn">
          <div v-for="(item,idx) in pages" class="ad-page-mini" :class="clickTabIdx==idx ?'actived':''"    :key="item" @click="selectPage(idx,item)">
                 <div class="ad-flag ad-flag-left">{{idx}}</div>
          </div>
       </el-col>
    
-       <el-col :span="16" class="aweb-ctt">
+       <el-col :span="16" class="aweb-ctt"> -->
             <transition :name="panimate">
               <router-view ></router-view>
             </transition>
              
-          
+<!--           
       </el-col>
        <el-col :span="4" class="ad-layout-right-ctn">
 
@@ -73,10 +86,12 @@
                   ></el-slider>
             
           </el-row>
-        </el-col>
+
+
+        </el-col>-->
     </el-row>
     
-  </el-row>
+  </el-row> 
 </template>
 <script>
 
@@ -85,12 +100,13 @@ import {getMenuRoutes,addMenuToRoutes,mixins} from '@/lib'
 import { getRoutersList } from '@/api/api.js'
 import {caseRouter} from '@/api/case.js'
 
+
 const caseList= process.env.NODE_ENV === 'production'?[]:caseRouter;
 export default {
   name:'layout',
   data() {
     return {
-
+      inter:{},
       clickTabIdx: null,
       pages:['central/a','central/b','central/c'],
       animate:{
@@ -237,7 +253,38 @@ export default {
         status:true,
         page:path
       })
+    },
+    stop(){
+      clearInterval(this.inter)
+    },
+    play(){
+      this.setPageInterval();
+    },
+    setPageInterval(){
+      debugger;
+    let i=0;
+   let paths=['ad1/page1','ad1/page2'];
+   this.open({
+     status:true,
+     page:'ad1/page1'
+   })
+    this.inter = setInterval(()=>{
+          console.log(i);
+        if(!paths[i]){
+          i=0;
+        };
+          this.open({
+            status:true,
+            page:paths[i],
+            path:paths[i]
+          })
+          i++;
+
+        },3000)
     }
+  },
+  mounted(){
+      this.setPageInterval();
   }
 
 }
@@ -249,8 +296,6 @@ export default {
   top: 0px;
   bottom: 0px;
   width: 100%;
-
-  background:rgb(91,91,92);
  .aweb-body{
     height: 100%;
  

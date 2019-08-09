@@ -7,7 +7,7 @@
  const projectScope=`${NPM_URL}/-/projectModules/`;
  const WEBIDE_TGZ=`${NPM_URL}/@aweb-template/AWEBIDE-support/download/@aweb-template/AWEBIDE-support-__version__.tgz`;
  const VUE_SPA_TGZ=`${NPM_URL}/@aweb-template/vue-spa/download/@aweb-template/vue-spa-__version__.tgz`;
-  const TGZ=`${NPM_URL}/__scope/download/__scope-__version__.tgz`;
+ const TGZ=`${NPM_URL}/__scope/download/__scope-__version__.tgz`;
 
 const downLoad=async(urlPath,dest,_target)=>{
     let vueData=await util.urlLib(urlPath);
@@ -55,7 +55,7 @@ const init=async(opt={})=>{
             if(fs.existsSync(packageJsonPath)){
                 packageData=await util.readFile(packageJsonPath);
                 packageData=JSON.parse(packageData.toString());
-                let deps=[...content.v2Components,...content.v2Pipes];
+                let deps=[...content.v2Components,...content.v2Pipes,...content.v2Lib];
                 for(let i=-1,item;item=deps[++i];){
                     let map={};
                     map[`${item.name}`]=`^${item.version}`

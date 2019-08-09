@@ -9,8 +9,10 @@ const fs = require('fs')
 const parseUtil = require('./parseUtil');
 const logicFile = require('./logicFile');
 const TEMPLATE = require('./vue.temp.json');
+const AD_TEMPLATE = require('./ad_vue.temp.json');
 const nodejsPath=require('path');
-
+const configBase = require('../../config/config.base');
+const ideType = configBase.server.type;
 module.exports = {
   read: (path) => new Promise((res, rej) => {
     //针对vue文件，读取同名.def文件
@@ -25,7 +27,15 @@ module.exports = {
       });
     } else {
       //不存在则读取template
-      res(JSON.stringify(TEMPLATE));
+      console.log('ideType',ideType);
+
+      if(ideType ==='ad'){
+        res(JSON.stringify(AD_TEMPLATE));
+      }else{
+        res(JSON.stringify(TEMPLATE));
+      }
+     
+
     }
   }),
   write: (path, content) => new Promise((res, rej) => {
@@ -50,10 +60,10 @@ module.exports = {
     name,
     props,
   }) => {
-    let template = TEMPLATE;
+    let template = ideType ==='ad'?AD_TEMPLATE:TEMPLATE;
     if (props) {
       template = {
-        ...TEMPLATE,
+        ...template,
         ...props,
 
         //修改时间的时间戳

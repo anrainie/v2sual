@@ -16,25 +16,25 @@ export default {
   name: 'v2-component-divider',
   data() {
     return {
-      contenPosition: 'center',
-      direction: 'horizontal'
+      // contenPosition: 'center',
+      // direction: 'horizontal'
     }
   },
   watch: {
-    'model.contenPosition': {
-      immediate: true,
-      handler: function(val) {
-        console.log(val)
-        this.contenPosition = val
-      }
-    },
-    'model.direction': {
-      immediate: true,
-      handler: function(val) {
-        console.log(val)
-        this.direction = val
-      }
-    }
+    // 'model.contenPosition': {
+    //   immediate: true,
+    //   handler: function(val) {
+    //     console.log(val)
+    //     this.contenPosition = val
+    //   }
+    // },
+    // 'model.direction': {
+    //   immediate: true,
+    //   handler: function(val) {
+    //     console.log(val)
+    //     this.direction = val
+    //   }
+    // }
   }
 }
 </script>

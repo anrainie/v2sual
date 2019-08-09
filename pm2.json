@@ -13,6 +13,7 @@
                 "ocp=443",
                 "base=./project/runtime",
                 "pipe=../pipe",
+                "static=../v2sual/static",
                 "socket=/v2sual-socket/socket.io",
                 "pp=0",
                 "preview=https://vue.awebide.com/runtime"
@@ -33,6 +34,7 @@
                 "ocp=443",
                 "base=./project/cms",
                 "pipe=../pipe",
+                "static=../v2sual/static",
                 "socket=/v2sual-socket/socket.io",
                 "pp=0",
                 "preview=https://vue.awebide.com/cms"

@@ -101,7 +101,6 @@ npm run mock
 </template>
 
 <script> 
-import asyncComponent from '@/components/asyncComponent'
 
 	export default {
 	  data() {
@@ -110,10 +109,8 @@ import asyncComponent from '@/components/asyncComponent'
 		},
 	  created() {},
 	  mounted(){},
-	  methods: {},
-	  components:{
-			asyncComponent
-		}
+	  methods: {}
+	
 	}
 </script>
 

@@ -15,6 +15,7 @@ import Vant from 'vant';
 import 'vant/lib/index.css';
 import $ from "jquery";
 
+
 Vue.use(Lib)
 Vue.use(ideLib)
 Vue.use(ElementUI)
@@ -49,16 +50,20 @@ router.beforeEach((to, from, next) => {
 
 
   if (wpath && urlParam && urlParam.indexOf('IDE') !== -1) {
-    routes[0].children.push({
-      path: '/'+wpath,
-      replace: true,
-      component: Lib._import(wpath),
-      meta: {
-        title: '预览',
-        type: 'preview'
-      }
-       });
-    router.addRoutes(routes);
+    // routes[0].children.push({
+    //   path: '/'+wpath,
+    //   replace: true,
+    //   component: Lib._import(wpath),
+    //   meta: {
+    //     title: '预览',
+    //     type: 'preview'
+    //   }
+    //    });
+    // router.addRoutes(routes);
+
+    if(to.path!=='/home'){
+         next('/home')
+    }
   }
 
   next();

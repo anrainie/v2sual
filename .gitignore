@@ -38,6 +38,14 @@ project/**/ad/*.vue
 project/**/ad/*.def
 
 
+project/runtime/src/views/anrainie/*.vue
+project/runtime/src/views/anrainie/*.def
+project/runtime/src/views/example/*.vue
+project/runtime/src/views/example/*.def
+
+project/runtime/dist/js/*.js
+
+
 # project/runtime/dist/js/*.js
 # runtime/src/views/**/*.vue
 # runtime/src/views/**/*.def
