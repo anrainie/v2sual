@@ -74,7 +74,7 @@
                 "/v1/preview/init": "init"
             },
             "script": {
-                "init": "npm i",
+                "init": "npm i --registry=https://npm.awebide.com",
                 "style": "npm run style",
                 "script": "npm run component"
             },

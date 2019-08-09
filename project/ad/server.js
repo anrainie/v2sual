@@ -354,7 +354,7 @@ router.get('/-/getFileList', async ctx => {
 			.map(f => {
 				try {
 					return {
-						path: f.replace(projectPath,''),
+						path: f.replace(projectPath,'').replace(/\\/g,'/'),
 						md5: md5File.sync(f)
 					}
 				} catch (e) {
