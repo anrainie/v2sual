@@ -1,5 +1,21 @@
 <template>
   <v2container :wid="`root`">
+    <el-row class="V2ContainerBlock borderBox dashBorder" style="height:100%;width:100%;" key="0">
+      <v2loop class="V2Widget" id="1565339962345" :wid="`1565339962345`" :index="0" :pid="`root`">
+        <template v-slot="scope">
+          <v2-component-text-value
+            class="V2Widget"
+            :id="`1565339962345-${scope._key}`"
+            :wid="`1565339962345-${scope._key}`"
+            :index="scope._key"
+            :pid="`1565339962345`"
+            :cpttype="`loopItem`"
+            :$item="scope._item"
+            :$key="scope._key"
+          ></v2-component-text-value>
+        </template>
+      </v2loop>
+    </el-row>
   </v2container>
 </template>
 <script>
@@ -12,39 +28,40 @@ export default {
         structure: {
           id: "root",
           component: "v2Container",
-          direction: "col",
-          layout: [50, 50],
+          direction: "row",
+          layout: [100],
           style: { width: "100%", height: "100%" },
           data: {},
           children: [
             {
-              theme: { size: "" },
               style: {
-                label: { "font-size": "", "font-weight": "", color: "" }
+                title: {
+                  "background-color": "",
+                  height: "",
+                  width: "",
+                  color: ""
+                },
+                value: {
+                  "background-color": "",
+                  height: "",
+                  width: "",
+                  color: ""
+                }
               },
-              label: "标题",
-              labelWitdh: "80px",
-              titleMode: "col",
-              placeholder: "请选择",
-              value: "",
-              dataType: "def",
-              optionConfig: "",
-              options: [{ active: "true", value: "", label: "" }],
-              clearable: false,
-              filterable: true,
-              disabled: false,
-              isRequired: false,
-              rules: "",
-              ctnClass: "${ctnClass}",
+              title: "${$item.text}",
+              type: "icon",
+              value: "${$item.icon}",
+              direction: "text-value-col",
+              ctnClass: "",
               customClass: "",
-              __type: "",
-              __loopTarget: "",
-              __capacity: "1",
-              component: "v2-form-select",
-              href: "v2-form-select",
+              __type: "loop",
+              __loopTarget: "keyVals",
+              __capacity: "2",
+              component: "v2-component-text-value",
+              href: "v2-component-text-value",
               children: [],
               events: {},
-              id: 1565230849487,
+              id: 1565339962345,
               pid: "root",
               commonStyle: {
                 position: "",
@@ -64,14 +81,14 @@ export default {
                 "margin-right": "",
                 "font-size": "",
                 color: ""
-              }
-            },
-            null
+              },
+              animate: { name: "", duration: 0, delay: 0, classCode: "" }
+            }
           ],
           events: {},
           ctnClass: "",
           customClass: "",
-          realSize: ["%", "%"],
+          realSize: ["%"],
           commonStyle: {
             position: "",
             top: "",
@@ -91,6 +108,7 @@ export default {
             "font-size": "",
             color: ""
           },
+          animate: { name: "", duration: 0, delay: 0, classCode: "" },
           ctnStyle: [
             {
               position: "",
@@ -117,7 +135,17 @@ export default {
           ]
         }
       },
-      ctnClass: ["test-demo"]
+      ctnClass: ["test-demo"],
+      keyVals: [
+        {
+          icon: "el-icon-eleme",
+          text: "文本"
+        },
+        {
+          icon: "el-icon-eleme",
+          text: "文本"
+        }
+      ]
     };
   },
   props: {},
@@ -138,6 +166,23 @@ export default {
       dataStr: "ctnClass",
       wid: 1565230849487,
       modelKey: "ctnClass"
+    });
+    ctx.$store.commit("registerBind", {
+      vueObj: this,
+      data: this.keyVals,
+      dataStr: "keyVals",
+      wid: 1565339962345,
+      modelKey: "__loopTarget"
+    });
+    ctx.$store.commit("registerBind", {
+      dataStr: "$item.icon",
+      wid: 1565339962345,
+      modelKey: "value"
+    });
+    ctx.$store.commit("registerBind", {
+      dataStr: "$item.text",
+      wid: 1565339962345,
+      modelKey: "title"
     }); /**bind over**/
   },
   beforeMount() {

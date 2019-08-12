@@ -28,7 +28,7 @@
         "desp": "容器宽度",
         "type": "variable_input",
         "placeholder":"输入数值和单位",
-        "defaultValue": "300px"
+        "defaultValue": "calc(100% - 20px)"
       },
       {
         "name": "height",
@@ -66,7 +66,7 @@
         "defaultValue": "1px solid #ccc"
       },
       {
-        "name": "border",
+        "name": "borderRadius",
         "desp": "容器圆角",
         "type": "variable_input",
         "placeholder":"输入圆角值",
