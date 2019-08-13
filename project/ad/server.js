@@ -321,22 +321,33 @@ router.get('/-/getMainList', function (ctx) {
 })
 
 router.get('/-/getbrotherPageList', function (ctx) {
-  let {
-    floderPath
-  } = ctx.request.query;
+ 
   let pathList = [];
-  let floder = path.resolve(__dirname, 'src/views/'+floderPath);
+  let floder = path.resolve(__dirname, 'src/views');
  
   fs.readdirSync(floder).forEach(function (file) {
-
-	let type = file.slice(file.lastIndexOf(".")+1).toLowerCase();  
-
-	if('vue'==type){
-		if(file.replace('.vue','') !=='index'){
-			pathList.push(`${floderPath}/`+file.replace('.vue',''))
-		}
-	}
-
+  
+        if(!file.startsWith('_') && fs.lstatSync(path.resolve(__dirname, 'src/views/'+file)).isDirectory()){
+          let floderInfo = {
+          name:file,
+          pages:[],
+          img:'img/ad.png',
+          href:file+'/index'
+        };
+        let subFloder = path.resolve(__dirname, 'src/views/'+file);
+        fs.readdirSync(subFloder).forEach(function (subFile) {
+          let type = subFile.slice(subFile.lastIndexOf(".")+1).toLowerCase();  
+  
+          if('vue'===type){
+            if(subFile.replace('.vue','') !=='index'){
+              floderInfo.pages.push(`${file}/`+subFile.replace('.vue',''))
+            }
+          }
+        })
+        console.log(JSON.stringify(floderInfo));
+        pathList.push(floderInfo)
+    }
+  
   })
   ctx.body = {
     content: pathList,

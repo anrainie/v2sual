@@ -1,57 +1,28 @@
 <template>
   <!-- 最终的加载页 -->
   <div>
-             <transition>
-              <router-view ></router-view>
-             </transition>
+
+   <router-view ></router-view>
+  
+ 
   </div>
 </template>
 
 
 <script>
 import {mixins} from '@/lib'
-import { getbrotherPageList } from '@/api/api.js';
+
 
 export default {
   data(){
     return {
       inter:{},
-      clickTabIdx: null,
       currentIndex:0,
-      animate:{
-        'animation-duration':0.5,
-        'animation-delay':null
-      },
-      stopFlag:false,
-      panimate:null,
+      stopFlag:false
     }
   },
   mixins: [mixins],
-    watch:{
-   panimate(val){
-     if(this.panimate){
-      const style = `<style>.${this.panimate}-enter-active {
-            animation:${this.panimate} ${this.animate['animation-duration']}s;
-            animation-delay:${this.animate['animation-delay']}s
-          }
-          .${this.panimate}-leave-active {
-            animation: ${this.panimate} ${this.animate['animation-duration']}s reverse;
-          }
-          </style>`
-
-           $('head', window.document).append(style);
-     }
-
-   }
-  },
   methods:{
-    selectPage(idx,path){
-      this.clickTabIdx = idx;
-      this.open({
-        status:true,
-        page:path
-      })
-    },
     stop(){
       
       clearInterval(this.inter)
@@ -93,7 +64,6 @@ export default {
   },
   mounted(){
     
-
     this.setPageInterval();
   }
 }
