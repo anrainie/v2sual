@@ -1,8 +1,8 @@
 	<template>
-  <el-row class="aweb-container"  ref="layout" name="layout">
-        <transition>
-              <router-view ></router-view>
-         </transition>
+  <el-row class="aweb-container"  ref="layout" >
+    
+        <router-view ></router-view>
+     
   </el-row> 
 </template>
 <script>
@@ -20,6 +20,7 @@ export default {
   mixins:[mixins],
 
   mounted(){
+    debugger;
       this.open({
           status:true,
           page:this.path,
@@ -27,6 +28,7 @@ export default {
             pages:this.pages
           }
         })
+  
  
   }
 

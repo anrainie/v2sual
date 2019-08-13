@@ -40,6 +40,7 @@ export  function getMenuRoutes(){
   return menuRoutes;
 }
 export function addMenuToRoutes(data){
+ 
   let menuRoute = filterAsyncRouter(data);
   menuRoutes.push(...menuRoute);
   routes[0].children.push(...data)

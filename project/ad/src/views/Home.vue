@@ -55,7 +55,8 @@
 import {mixins} from '@/lib'
 import { getbrotherPageList } from '@/api/api.js'
 import {caseRouter} from '@/api/case.js'
-
+import {addTabsRoutes} from '@/lib/router'
+import _import from '@/lib/util/_import_production.js'
 const caseList= process.env.NODE_ENV === 'production'?[]:caseRouter;
 export default {
   name:'layout',
@@ -99,7 +100,9 @@ export default {
 
   methods: {
     openDetailHandler(path,pages){
-     this.$router.push({path:'/',query:{path:path,pages:pages}})
+
+      this.$router.push({path:'/',query:{path:path,pages:pages}})
+   
     }
   },
   created(){
@@ -109,6 +112,26 @@ export default {
         if(res.status){
    
            that.adMenuData = res.content; 
+           let routerData = [];
+            //  res.content.forEach(item => {
+            //    let temp = {
+            //      path:item.href,
+            //      component:_import(item.href),
+            //      name:item.name,
+            //      children:[]
+            //    };
+            //    item.pages.forEach(ele=>{
+            //      let subPath = ele.split('/')[ele.split('/').length-1];
+            //      temp.children.push({
+            //         path:subPath,
+            //         component:_import(ele),
+            //         name:subPath,
+            //      })
+            //    })
+            //     addTabsRoutes(temp);
+            //  });
+          
+           
         }
         
       })

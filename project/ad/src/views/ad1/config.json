@@ -7,5 +7,9 @@
         "page2.vue"
     ],
     "img": "./img/shoutcut.png",
-    "animate": ""
+    "animate": "",
+    "display": {
+        "width": "400px",
+        "height": "600px"
+    }
 }

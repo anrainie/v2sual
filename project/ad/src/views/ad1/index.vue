@@ -1,8 +1,9 @@
 <template>
   <!-- 最终的加载页 -->
-  <div>
+  <div  class="ad-index">
+   
              <transition>
-              <router-view ></router-view>
+              <pageCtn :page="pageUrl" :style="config.display" class="ad-page-ctn"></pageCtn>
              </transition>
   </div>
 </template>
@@ -11,67 +12,37 @@
 <script>
 import {mixins} from '@/lib'
 import { getbrotherPageList } from '@/api/api.js';
-
+import pageCtn from '@/lib/components/asyncComponent';
+const config  = require('./config.json');
 export default {
   data(){
     return {
       inter:{},
       clickTabIdx: null,
       currentIndex:0,
-      animate:{
-        'animation-duration':0.5,
-        'animation-delay':null
-      },
       stopFlag:false,
       panimate:null,
+      config:config,
+      pageUrl:''
     }
   },
   mixins: [mixins],
-    watch:{
-   panimate(val){
-     if(this.panimate){
-      const style = `<style>.${this.panimate}-enter-active {
-            animation:${this.panimate} ${this.animate['animation-duration']}s;
-            animation-delay:${this.animate['animation-delay']}s
-          }
-          .${this.panimate}-leave-active {
-            animation: ${this.panimate} ${this.animate['animation-duration']}s reverse;
-          }
-          </style>`
-
-           $('head', window.document).append(style);
-     }
-
-   }
-  },
   methods:{
-    selectPage(idx,path){
-      this.clickTabIdx = idx;
-      this.open({
-        status:true,
-        page:path
-      })
-    },
     stop(){
-      
       clearInterval(this.inter)
       this.stopFlag = false;
     },
     play(){
-      
-      this.setPageInterval();
+       this.setPageInterval();
        this.stopFlag = true;
     },
     next(){
        if(!this.pages[this.currentIndex]){
           this.currentIndex=0;
         };
-          this.open({
-            status:true,
-            page:this.pages[this.currentIndex],
-            path:this.pages[this.currentIndex]
-          })
-          this.currentIndex++;
+        this.pageUrl = this.pages[this.currentIndex];
+
+        this.currentIndex++;
     },
     setPageInterval(){
     
@@ -81,20 +52,25 @@ export default {
           this.currentIndex=0;
         };
         
-          this.open({
-            status:true,
-            page:this.pages[this.currentIndex],
-            path:this.pages[this.currentIndex]
-          })
+         this.pageUrl = this.pages[this.currentIndex];
+
           this.currentIndex++;
 
         },3000)
     }
   },
   mounted(){
-    
-
-    this.setPageInterval();
+ 
+     this.setPageInterval();
+  },
+  components:{
+    pageCtn
   }
 }
 </script>
+<style lang="scss">
+.ad-page-ctn{
+  position:relative;
+  margin:0 auto;
+}
+</style>

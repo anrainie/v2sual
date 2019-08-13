@@ -77,7 +77,7 @@ export const getMainList = params => {
 };
 
 export const getbrotherPageList = params => {
-  debugger;
+
   return axios.get(`${axios.mock}/-/getbrotherPageList`, {
     params: params
   });
