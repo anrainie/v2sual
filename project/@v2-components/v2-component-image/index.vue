@@ -16,7 +16,7 @@ export default {
   computed: {
     outSrc() {
       let self = this;
-      let src = self.$store.getters.model(self.id).src;
+      let src = (self.$store.getters.model(self.id)&&self.$store.getters.model(self.id).src)||'';
 
 
       src = src.replace('"').replace("'");
@@ -84,6 +84,7 @@ export default {
             });
         };
       };
+      wrap.onmousedown = function(event){return false;}
     }
     console.log(self);
   }
