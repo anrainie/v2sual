@@ -111,6 +111,11 @@ let appendComponent = function(parent,index,element){
         child.wid = wid;
         eCom.setAttribute('class','V2Widget')
     }
+    //自定义组件样式customClass
+    if(child && child.customClass){
+        let customClass = child.customClass;
+        eCom.setAttribute(':class',customClass.startsWith('$')?customClass.substring('2',customClass.length -1):customClass);
+    }
     eCom.setAttribute('id',wid);
     eCom.setAttribute(':wid','`'+wid+'`');
     eCom.setAttribute(':index',index);
@@ -195,6 +200,11 @@ let appendChildren = function(parentJson,element,isContainer){
             let height = null;
             let width = null;
             el.setAttribute('class','V2ContainerBlock'+blockClass(i,parentJson));
+            //自定义容器样式ctnClass
+            if(parentJson.children[i] && parentJson.children[i].ctnClass){
+                let ctnClass = parentJson.children[i].ctnClass;
+                el.setAttribute(':class',ctnClass.startsWith('$')?ctnClass.substring('2',ctnClass.length -1):ctnClass);
+            }
             //计算高度：layout[i]+realSize[i]如80+px,50+%
             if(realSize instanceof Array && realSize[i]){
                 height = layout[i] + realSize[i];

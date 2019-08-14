@@ -13,3 +13,6 @@
  - 在v2sual的package.json 添加，如图
 
 ![](http://www.awebide.com:48000/showdoc/Public/Uploads/2019-08-08/5d4bf2dff419c.png)
+
+log:
+6.0.1 添加组件动画的绑定

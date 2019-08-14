@@ -272,7 +272,7 @@ export const widget = {
       return {}
     },
      widgetClass(){
-      return [...((this.model && this.model.layoutClass)||[]),...((this.model && this.model.customClass)||[])]
+      return [...((this.model && this.model.layoutClass)||[]),...((this.model && this.model.customClass)||[]),...((this.model && this.model.animate)||[])]
     }
   },
   beforeDestroy() {

@@ -4,7 +4,7 @@ import  {router} from '@/lib'
 import Layout from '@/views/Layout'
 import Login from "@/views/Login"
 import noFound from "@/views/404"
-import Main from "@/views/main/main"
+
 import Home from "@/views/Home"
 
 let mainRouter = [{
