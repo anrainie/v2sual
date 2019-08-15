@@ -10,9 +10,9 @@
 
 
 <script>
-import {mixins} from '@v2-lib/vue.spa.plugin'
+import {mixins} from '@/lib'
 import { getbrotherPageList } from '@/api/api.js';
-import pageCtn from '@v2-lib/vue.spa.plugin/components/asyncComponent';
+import pageCtn from '@/lib/components/asyncComponent';
 const config  = require('./config.json');
 export default {
   data(){

@@ -52,11 +52,11 @@
 <script>
 
     
-import {mixins} from '@v2-lib/vue.spa.plugin'
+import {mixins} from '@/lib'
 import { getbrotherPageList } from '@/api/api.js'
 import {caseRouter} from '@/api/case.js'
-import {addTabsRoutes} from '@v2-lib/vue.spa.plugin/router'
-import _import from '@v2-lib/vue.spa.plugin/util/_import_production.js'
+import {addTabsRoutes} from '@/lib/router'
+import _import from '@/lib/util/_import_production.js'
 const caseList= process.env.NODE_ENV === 'production'?[]:caseRouter;
 export default {
   name:'layout',

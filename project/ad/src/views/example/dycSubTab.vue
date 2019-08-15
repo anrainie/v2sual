@@ -33,7 +33,7 @@
    </el-row>
 </template>
 <script>
-import  {mixins} from '@v2-lib/vue.spa.plugin';
+import  {mixins} from '@/lib';
 export default {
   mixins:[mixins],
     data(){
