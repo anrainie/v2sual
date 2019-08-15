@@ -36,6 +36,10 @@ module.exports = {
       }
     }
   },
+  chainWebpack(config) {
+    config.plugins.delete('preload') 
+    config.plugins.delete('prefetch') 
+  },
   devServer: {
     port: config.port || 7009,
     sockPort: config.sockPort,
