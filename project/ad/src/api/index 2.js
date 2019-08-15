@@ -1,7 +1,9 @@
 
 import axios from 'axios';
 import source from './source.js';
+
 import { MessageBox,Notification } from 'element-ui';
+
 
 for(let i  in source){
     axios[i] = source[i];
@@ -52,7 +54,7 @@ axios.interceptors.response.use(
         
               sessionStorage.removeItem("user"); 
               localStorage.removeItem('ctoken');  
-              window.location.href = '/login';  
+              window.location.href = '/login';
   
           })
           .catch(()=> {});
@@ -71,7 +73,6 @@ axios.interceptors.response.use(
               return data;
       }
         // return Promise.reject(data)
-        
       }
     },
     error => {
@@ -81,7 +82,7 @@ axios.interceptors.response.use(
             // 401 清除token信息并跳转到登录页面
             localStorage.removeItem('ctoken');
             window.location.href = '/login';
-            // router.go(0);
+              // router.go(0);
         }
       }
   

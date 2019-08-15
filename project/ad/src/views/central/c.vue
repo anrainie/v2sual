@@ -11,7 +11,7 @@
 
 <script>
 
-import  {mixins} from '@/lib';
+import  {mixins} from '@v2-lib/vue.spa.plugin';
 export default {
   mixins:[mixins],
   data() {
