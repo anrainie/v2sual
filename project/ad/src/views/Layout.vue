@@ -37,9 +37,9 @@ export default {
 
 <style  lang="scss" scoped>
 .aweb-container {
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
+  // position: absolute;
+  // top: 0px;
+  // bottom: 0px;
   width: 100%;
  .aweb-body{
     height: 100%;
