@@ -14,7 +14,7 @@
             "buildP": "node ./build-page.js",
             "preview": "vue-cli-service serve --publicPath=/ad/ --sockPort=443 --sockPath=/ad/sockjs-node --port=7033 --mockPort=7034 --sockHost=vue.awebide.com",
             "mockPreview": "node ./server.js --port=7034 --prefix=/ad",
-            "component": "vue-cli-service build -t lib -d v2sual -n @aweb-template/vue-spa ./src/@aweb-components/aweb.components.js"
+            "component": "vue build -t lib -d v2sual -n @aweb-template/vue-spa ./src/@aweb-components/aweb.components.js"
       },
       "dependencies": {
             "@v2-components/v2-component-btn": "^6.0.0",
@@ -55,7 +55,7 @@
             "@v2-components/v2-mobile-uploader": "^6.0.0",
             "@v2-components/v2-page": "^6.0.0",
             "@v2-components/v2-switchable": "^6.0.0",
-            "@v2-lib/v2sual": "^6.0.0",
+            "@v2-lib/v2sual": "^6.0.1",
             "@v2-pipe/animate": "^6.0.0",
             "@v2-pipe/animateKill": "^6.0.0",
             "@v2-pipe/close": "^6.0.0",

@@ -29,7 +29,7 @@
                   
             
                     /*overview*/
-                        (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/transfer',ctx.tradeSerial
+                        (async()=>{    const t4 = this.$axios.post('v1/ds/cmbcms/cmbcms/transfer',ctx.tradeSerial
     ).then(res=>{
         if(res.retType === 'SUCCESS'){
             this.$message({

@@ -42,7 +42,7 @@
               <div class="ad-home-img-ctn" :title="item.name" :style="`background-image: url(${item.img}); background-size: cover;background-position: center center;`"></div>
               <div class="ad-home-title">{{item.name}}</div>
            </div>
-           <el-button class="ad-home-block-btn" @click="openDetailHandler">编辑</el-button>
+           <el-button class="ad-home-block-btn" @click="openDetailHandler(item.href,item.pages)">编辑</el-button>
          </div>
      </div>   
     </el-col>
@@ -52,53 +52,91 @@
 <script>
 
     
-import {getMenuRoutes,addMenuToRoutes,mixins} from '@/lib'
-import { getRoutersList } from '@/api/api.js'
+import {mixins} from '@/lib'
+import { getbrotherPageList } from '@/api/api.js'
 import {caseRouter} from '@/api/case.js'
-
+import {addTabsRoutes} from '@/lib/router'
+import _import from '@/lib/util/_import_production.js'
 const caseList= process.env.NODE_ENV === 'production'?[]:caseRouter;
 export default {
   name:'layout',
   data() {
     return {
-      routerData:JSON.parse(JSON.stringify(getMenuRoutes())),
       sysLogo:"img/logo.png",
       sysName: "AWEB_ADMIN",
       collapsed: false,
       sysUserName: "admin",
       sysUserAvatar: "https://s.gravatar.com/avatar/f30a9191dda93b5389965ed99f57f850?s=50&d=retro",  
-      rightClickHandler:null,
-      isRouterAlive: true,
-      clickTab: false,
       adMenuData:[{
         name:"人才招聘",
         pages:['central/a','central/b','central/c'],
-        img:'img/ad.png'
+        img:'img/ad.png',
+        href:'ad1/index'
       },{
         name:"公司概况",
         pages:['company/a','company/b','company/c'],
-        img:'img/ad.png'
+        img:'img/ad.png',
+         href:'ad1/index'
       },{
         name:"银行贷款",
         pages:['central/a','central/b','central/c'],
-        img:'img/ad.png'
+        img:'img/ad.png',
+        href:'ad1/index'
       },{
         name:"投资领航",
         pages:['central/a','central/b','central/c'],
-        img:'img/ad.png'
+        img:'img/ad.png',
+        href:'ad1/index'
+     
       },{
         name:"明星产品",
         pages:['central/a','central/b','central/c'],
-        img:'img/ad.png'
+        img:'img/ad.png',
+        href:'ad1/index'
       }]
     };
   },
   mixins:[mixins],
 
   methods: {
-    openDetailHandler(){
-       this.$router.push('/')
+    openDetailHandler(path,pages){
+
+      this.$router.push({path:'/layout',query:{path:path,pages:pages}})
+   
     }
+  },
+  created(){
+      let that = this;
+       let tempData = [{"name":"ad1","pages":["ad1/page1","ad1/page2","ad1/page3"],"img":"img/ad.png","href":"ad1/index"},{"name":"central","pages":["central/a","central/b","central/c"],"img":"img/ad.png","href":"central/index"},{"name":"example","pages":["example/dycSubTab","example/hasSubTab"],"img":"img/ad.png","href":"example/index"},{"name":"main","pages":["main/main"],"img":"img/ad.png","href":"main/index"}];
+           that.adMenuData = tempData; 
+      // getbrotherPageList().then(res=>{
+       
+      //   if(res.status){
+ 
+      //      that.adMenuData = res.content; 
+      //      let routerData = [];
+      //        res.content.forEach(item => {
+      //          let temp = {
+      //            path:item.href,
+      //            component:_import(item.href),
+      //            name:item.name,
+      //            children:[]
+      //          };
+      //          item.pages.forEach(ele=>{
+      //            let subPath = ele.split('/')[ele.split('/').length-1];
+      //            temp.children.push({
+      //               path:subPath,
+      //               component:_import(ele),
+      //               name:subPath,
+      //            })
+      //          })
+      //           addTabsRoutes(temp);
+      //        });
+          
+           
+      //   }
+        
+      // })
   },
   mounted() {
     // this.getMenu();
