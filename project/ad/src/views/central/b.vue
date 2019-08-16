@@ -1,63 +1,70 @@
-<template>
-  <div class="app-container">
-    <div class="welcome-wrapper">
-      <div class="welcome-ctn">
-        <img src="../../img/custom-aweb-logo.png" />
-        <h1 class="example-header">欢迎使用 AWEB！</h1>
-      </div>
-    </div>
-  </div>
-</template>
-
+<template><v2-ctn-xy :wid="`root`"></v2-ctn-xy></template>
 <script>
+            import {root} from '@v2-lib/v2sual/mixin/v2-view';
+            
+            export default{
+                data(){
+                    return{
+                        "CONTENT":{structure:{"id":"root","component":"v2EditorXYCtn","style":{"width":"100%","height":"100%"},"children":[],"ctnClass":"","customClass":"","commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"animate":["","animated"]}},
+                        
+                    }
+                },
+                props:{
+                  
+                },
+                mixins:[root],
+                
+                methods:{},
+                watch:{},
+                computed:{},
+                beforeCreate(){
+                    let ctx = this;
+                    
+                },
+                created(){
+                    let ctx = this;
+                    
+                    
+                    /**bind**//**bind over**/
+                },
+                beforeMount(){
+                    let ctx = this;
+                    
+                },
+                mounted(){
+                    let ctx = this;
+                    
+                    
+                },
+                beforeUpdate(){
+                    let ctx = this;
+                    
+                },
+                updated(){
+                    let ctx = this;
+                    
+                },
+                beforeDestroy(){ 
+                    let ctx = this;
+                        
+                },
+                destroyed(){
+                    let ctx = this;
+                        
+                },
+                deactivated(){
+                  /**页面切出**/
+                  let ctx = this;
+                  
+                },
+                activated(){
+                  /**页面切入**/
+                  let ctx = this;
+                  
+                },
 
-import  {mixins} from '@/lib';
-export default {
-  mixins:[mixins],
-  data() {
-    return {
-      mainList: [
-        {
-          name: "AWEB 社区",
-          href: "https://www.awebide.com/"
-        },
-        {
-          name: "AWEB 开发者中心",
-          href: "https://docs.awebide.com"
-        },
-        {
-          name: "资源市场",
-          href: "https://market.awebide.com"
-        },
-        {
-          name: "桌面示例",
-          href: "https://pc.awebide.com"
-        },
-        {
-          name: "监控示例",
-          href: "https://monitor.awebide.com"
-        },
-        {
-          name: "移动示例",
-          href: "https://mobile.awebide.com"
-        }
-      ]
-    };
-  },
-  methods: {
-    closeCurrentPage() {
-      this.close();
-    }
-  },
-  mounted() {}
-};
-</script>
-<style lang="less" scoped>
-.app-container {
-  text-align: center;
-  background: #fff;
-  height: 100%;
-
-}
+            };
+        </script>
+<style lang="scss">
 
 </style>

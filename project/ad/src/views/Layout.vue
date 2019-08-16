@@ -20,7 +20,7 @@ export default {
   mixins:[mixins],
 
   mounted(){
-    debugger;
+
       this.open({
           status:true,
           page:this.path,

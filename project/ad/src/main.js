@@ -14,7 +14,8 @@ import store from './store'
 import Vant from 'vant';
 import 'vant/lib/index.css';
 import $ from "jquery";
-
+import { getbrotherPageList } from '@/api/api.js'
+import {addTabsRoutes} from '@/lib/router'
 
 Vue.use(Lib)
 Vue.use(ideLib)
@@ -50,6 +51,24 @@ router.beforeEach((to, from, next) => {
 
 
   if (wpath && urlParam && urlParam.indexOf('IDE') !== -1) {
+    getbrotherPageList().then(res=>{
+       
+      if(res.status){
+
+           res.content.forEach(item => {
+             let temp = {
+               path:item.href,
+               component:Lib._import(item.href),
+               name:item.name,
+               children:[]
+             };
+              addTabsRoutes(temp);
+           });
+           let floder = res.content.filter(item=>item.name === wpath.split('/')[0])[0];
+       
+            next({path:'/'+floder.href,query:{pages:floder.pages}})
+      }
+    })
     // routes[0].children.push({
     //   path: '/'+wpath,
     //   replace: true,
@@ -61,9 +80,9 @@ router.beforeEach((to, from, next) => {
     //    });
     // router.addRoutes(routes);
 
-    if(to.path!=='/home'){
-         next('/home')
-    }
+    // if(to.path!=='/home'){
+    //      next('/home')
+    // }
   }
 
   next();

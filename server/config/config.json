@@ -169,7 +169,17 @@
                     "v1/ds/cmbcms": ""
                 },
                 "logLevel": "debug"
+            },{
+                "name":"VDA 数据源",
+                "source": "/dvms",
+                "target": "https://nanyan.agree.cn/dvms/",
+                "changeOrigin": true,
+                "pathRewrite": {
+                    "v1/ds/dvms": ""
+                },
+                "logLevel": "debug"
             }
+
         ]
     }
 }
