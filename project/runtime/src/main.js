@@ -9,10 +9,13 @@ import '../theme/index.css'
 import './api/index.js';
 import  router from './router'
 import Lib from  './lib'
-import ideLib from '@v2-lib/v2sual'
+import ideLib from './ideLib'
 import store from './store'
 
 import $ from "jquery";
+
+// import EbankUI from './@ebank-ui'
+// Vue.use(EbankUI)
 
 Vue.use(Lib)
 Vue.use(ideLib)

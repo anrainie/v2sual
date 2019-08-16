@@ -8,7 +8,7 @@
   "docs": {
     "belongTo": "aui",
     "icon": "icontongyong",
-    "type": "component",
+    "type": "ctn",
     "href": "v2-XXXXX",
     "author": "zhucheng@agree.com.cn",
     "version": 610000,
@@ -35,10 +35,10 @@
         "desp": "容器背景",
         "type": "variable_input",
         "placeholder":"输入背景色",
-        "defaultValue": "#f00"
+        "defaultValue": "#0ff"
       },
       {
-        "name": "thisClasss",
+        "name": "thisClass",
         "desp": "容器类名",
         "type": "variable_input",
         "placeholder":"输入类名",

@@ -1,12 +1,29 @@
 <template>
-    <div ref="wrap">
-        <slot>
-
-        </slot>
-    </div>
+  <!-- :style="`display:${model.display};width:${model.width};height:${model.height};margin:${model.margin};padding:${model.padding};background:${model.background};border:${model.border};border-radius:${model.borderRadius};boxShadow:${model.boxShadow};box-sizing:border-box;`" -->
+  <div
+    ref="wrap"
+    :style="ctnStyle"
+  >
+    <slot></slot>
+  </div>
 </template>
 <script>
-    export default{
-        
+export default {
+  computed: {
+    ctnStyle() {
+      return {
+        "display": this.model.display,
+        "width": this.model.width,
+        "height": this.model.height,
+        "margin": this.model.margin,
+        "padding": this.model.padding,
+        "background": this.model.background,
+        "border": this.model.border,
+        "border-radius": this.model.borderRadius,
+        "boxShadow": this.model.boxShadow,
+        "box-sizing": "border-box"
+      }
     }
+  },
+};
 </script>
