@@ -17,7 +17,7 @@ import $ from "jquery";
 // import EbankUI from './@ebank-ui'
 // Vue.use(EbankUI)
 
-Vue.use(Lib)
+Vue.use(Lib,{mixin: true})
 Vue.use(ideLib)
 Vue.use(ElementUI)
 Vue.directive('focus', {
