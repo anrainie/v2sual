@@ -28,7 +28,7 @@
                   
             
                     /*overview*/
-                        (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/addBankCard',ctx.bankCard
+                        (async()=>{    const t4 = this.$axios.post('v1/ds/cmbcms/cmbcms/addBankCard',ctx.bankCard
     ).then(res=>{
         if(res.retType === 'SUCCESS'){
             ctx.$root.$emit('refreshBankCardList');

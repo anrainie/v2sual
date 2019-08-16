@@ -1,0 +1,57 @@
+{
+  "name": "@v2-components/v2-ebank-paragraph",
+  "description": "标题段落",
+  "main": "index.vue",
+  "keywords": [],
+  "bundleDependencies": false,
+  "deprecated": false,
+  "index": 30000001,
+  "version": "6.0.0",
+  "license": "ISC",
+  "author": {
+    "name": "zhucheng@agree.com.cn"
+  },
+  "docs": {
+    "name": "标题段落",
+    "type": "component",
+    "href": "v2-ebank-paragraph",
+    "icon": "iconwenben",
+    "accept": "divCtn",
+    "belongTo": "aui",
+    "author": "zhucheng@agree.com.cn",
+    "version": 610000,
+    "option": [
+      {
+        "name": "icon",
+        "desp": "快捷键图标",
+        "type": "string_input",
+        "defaultValue": "el-icon-eleme"
+      },
+      {
+        "name": "name",
+        "desp": "快捷键名",
+        "type": "string_input",
+        "defaultValue": "一个快捷键"
+      },
+      {
+        "name": "path",
+        "desp": "链接地址",
+        "type": "string_input",
+        "defaultValue": "/index"
+      },
+      {
+        "name": "size",
+        "desp": "尺寸",
+        "type": "string_input",
+        "defaultValue": "normal"
+      }
+    ],
+    "css": {
+      "style": [],
+      "theme": []
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

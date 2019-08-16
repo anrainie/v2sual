@@ -1,7 +1,7 @@
 <template>
  
     <div class="picture"  :class="widgetClass" :style="model.commonStyle">
-      <img ref="imgComponent" :src="outSrc" :width="model.width" :height="model.height">
+      <img ref="imgComponent" :src="outSrc" :width="model.v2Width" :height="model.v2Height">
     </div>
 </template>
 <script>
@@ -35,6 +35,9 @@ export default {
     }
   },
   beforeMount(){
+    this.id = this.model.id;
+  },
+  beforeUpdate(){
     this.id = this.model.id;
   },
   mounted() {

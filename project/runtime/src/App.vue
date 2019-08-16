@@ -13,6 +13,8 @@ export default {
 
 <style lang="scss">
 @import './scss/aweb.scss';
+// @import './@ebank-ui/theme/index.scss';
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

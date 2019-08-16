@@ -57,7 +57,7 @@ bankCardListData:[
                   
             
                     /*overview*/
-                        (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/deleteBankCard',{card_num: row.card_num}
+                        (async()=>{    const t4 = this.$axios.post('v1/ds/cmbcms/cmbcms/deleteBankCard',{card_num: row.card_num}
     ).then(res=>{
         if(res.retType === 'SUCCESS'){
             ctx.queryBankCardList();
@@ -92,7 +92,7 @@ bankCardListData:[
                   
             
                     /*overview*/
-                        (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/queryBankCardList',{}
+                        (async()=>{    const t4 = this.$axios.post('v1/ds/cmbcms/cmbcms/queryBankCardList',{}
     ).then(res=>{
         debugger;
 

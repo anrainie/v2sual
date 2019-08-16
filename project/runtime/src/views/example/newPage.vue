@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { app } from "@/lib/mixin";
+import { app } from "@v2-lib/vue.spa.plugin/mixin";
 export default {
   data() {
     return {};

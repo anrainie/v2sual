@@ -115,23 +115,23 @@ export default {
  
       //      that.adMenuData = res.content; 
       //      let routerData = [];
-      //       //  res.content.forEach(item => {
-      //       //    let temp = {
-      //       //      path:item.href,
-      //       //      component:_import(item.href),
-      //       //      name:item.name,
-      //       //      children:[]
-      //       //    };
-      //       //    item.pages.forEach(ele=>{
-      //       //      let subPath = ele.split('/')[ele.split('/').length-1];
-      //       //      temp.children.push({
-      //       //         path:subPath,
-      //       //         component:_import(ele),
-      //       //         name:subPath,
-      //       //      })
-      //       //    })
-      //       //     addTabsRoutes(temp);
-      //       //  });
+      //        res.content.forEach(item => {
+      //          let temp = {
+      //            path:item.href,
+      //            component:_import(item.href),
+      //            name:item.name,
+      //            children:[]
+      //          };
+      //          item.pages.forEach(ele=>{
+      //            let subPath = ele.split('/')[ele.split('/').length-1];
+      //            temp.children.push({
+      //               path:subPath,
+      //               component:_import(ele),
+      //               name:subPath,
+      //            })
+      //          })
+      //           addTabsRoutes(temp);
+      //        });
           
            
       //   }
