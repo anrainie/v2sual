@@ -17,6 +17,7 @@
         "buildP": "node ./build-page.js"
     },
     "dependencies": {
+        "@v2-lib/vue.spa.plugin": "^6.0.0",
         "animate.css": "^3.7.2",
         "axios": "^0.18.0",
         "babel-polyfill": "^6.26.0",
