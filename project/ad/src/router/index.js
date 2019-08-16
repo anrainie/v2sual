@@ -9,6 +9,7 @@ import Home from "@/views/Home"
 
 let mainRouter = [{
   path: "/",
+  redirect:'/home',
   component: Layout,
   children:[
     {
@@ -26,6 +27,9 @@ let mainRouter = [{
 }, {
   path: "/home",
   component: Home,
+}, {
+  path: "/layout",
+  component: Layout,
 },
 {
   path: '*',

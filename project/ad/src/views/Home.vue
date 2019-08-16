@@ -101,40 +101,42 @@ export default {
   methods: {
     openDetailHandler(path,pages){
 
-      this.$router.push({path:'/',query:{path:path,pages:pages}})
+      this.$router.push({path:'/layout',query:{path:path,pages:pages}})
    
     }
   },
   created(){
       let that = this;
-      getbrotherPageList().then(res=>{
+       let tempData = [{"name":"ad1","pages":["ad1/page1","ad1/page2","ad1/page3"],"img":"img/ad.png","href":"ad1/index"},{"name":"central","pages":["central/a","central/b","central/c"],"img":"img/ad.png","href":"central/index"},{"name":"example","pages":["example/dycSubTab","example/hasSubTab"],"img":"img/ad.png","href":"example/index"},{"name":"main","pages":["main/main"],"img":"img/ad.png","href":"main/index"}];
+           that.adMenuData = tempData; 
+      // getbrotherPageList().then(res=>{
        
-        if(res.status){
-   
-           that.adMenuData = res.content; 
-           let routerData = [];
-            //  res.content.forEach(item => {
-            //    let temp = {
-            //      path:item.href,
-            //      component:_import(item.href),
-            //      name:item.name,
-            //      children:[]
-            //    };
-            //    item.pages.forEach(ele=>{
-            //      let subPath = ele.split('/')[ele.split('/').length-1];
-            //      temp.children.push({
-            //         path:subPath,
-            //         component:_import(ele),
-            //         name:subPath,
-            //      })
-            //    })
-            //     addTabsRoutes(temp);
-            //  });
+      //   if(res.status){
+ 
+      //      that.adMenuData = res.content; 
+      //      let routerData = [];
+      //       //  res.content.forEach(item => {
+      //       //    let temp = {
+      //       //      path:item.href,
+      //       //      component:_import(item.href),
+      //       //      name:item.name,
+      //       //      children:[]
+      //       //    };
+      //       //    item.pages.forEach(ele=>{
+      //       //      let subPath = ele.split('/')[ele.split('/').length-1];
+      //       //      temp.children.push({
+      //       //         path:subPath,
+      //       //         component:_import(ele),
+      //       //         name:subPath,
+      //       //      })
+      //       //    })
+      //       //     addTabsRoutes(temp);
+      //       //  });
           
            
-        }
+      //   }
         
-      })
+      // })
   },
   mounted() {
     // this.getMenu();
