@@ -185,7 +185,7 @@
 <script>
 
     
-import {getMenuRoutes,addMenuToRoutes,mixins} from '@/lib'
+import {getMenuRoutes,addMenuToRoutes,mixins} from '@v2-lib/vue.spa.plugin'
 import { getRoutersList } from '@/api/api.js'
 import {caseRouter} from '@/api/case.js'
 
