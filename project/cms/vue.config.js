@@ -44,6 +44,7 @@ module.exports = {
     port: config.port || 7009,
     sockPort: config.sockPort,
     sockPath: config.sockPath,
+    sockHost: config.sockHost,
     disableHostCheck: true,
     hotOnly: false,
     proxy: {
