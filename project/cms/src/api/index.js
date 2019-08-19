@@ -1,7 +1,6 @@
 
 import axios from 'axios';
 import source from './source.js';
-import  {router} from '@/lib';
 import { MessageBox,Notification } from 'element-ui';
 
 for(let i  in source){
@@ -53,7 +52,7 @@ axios.interceptors.response.use(
         
               sessionStorage.removeItem("user"); 
               localStorage.removeItem('ctoken');  
-              router.push('/login');   
+              window.location.href = './';
   
           })
           .catch(()=> {});
@@ -81,7 +80,7 @@ axios.interceptors.response.use(
           case 401:
             // 401 清除token信息并跳转到登录页面
             localStorage.removeItem('ctoken');
-            router.push('/login');
+            window.location.href = './';
             // router.go(0);
         }
       }

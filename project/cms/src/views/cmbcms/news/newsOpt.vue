@@ -24,7 +24,7 @@ news:{
                   
             
                     /*overview*/
-                        (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/' + ctx.newsOptFlag,ctx.news
+                        (async()=>{    const t4 = this.$axios.post('v1/ds/cmbcms/cmbcms/' + ctx.newsOptFlag,ctx.news
     ).then(res=>{
         if(res.retType === 'SUCCESS'){
             ctx.$root.$emit('refreshNewsList');

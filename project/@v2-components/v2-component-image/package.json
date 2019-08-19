@@ -23,13 +23,13 @@
       },
       {
         "type": "string_input",
-        "name": "height",
+        "name": "v2Height",
         "defaultValue": "100%",
         "desp": "高度"
       },
       {
         "type": "string_input",
-        "name": "width",
+        "name": "v2Width",
         "defaultValue": "100%",
         "desp": "宽度"
       }

@@ -1,10 +1,5 @@
 <template>
-        <div
-        class="V2XXXXX V2ContainerBlock"
-        :class="`${model.thisClasss}`"
-        ref="wrap"
-        :style="`width:${model.width};height:${model.height};background:${model.background};`"
-    >
+    <div ref="wrap">
         <slot>
 
         </slot>

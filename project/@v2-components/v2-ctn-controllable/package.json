@@ -8,7 +8,7 @@
   "docs": {
     "belongTo": "aui",
     "icon": "icontongyong",
-    "type": "component",
+    "type": "ctn",
     "href": "v2-ctn-controllable",
     "author": "zhucheng@agree.com.cn",
     "version": 610000,
@@ -80,7 +80,7 @@
         "defaultValue": "1px 1px 5px #ccc"
       },
       {
-        "name": "thisClasss",
+        "name": "thisClass",
         "desp": "容器类名",
         "type": "variable_input",
         "placeholder":"输入类名",

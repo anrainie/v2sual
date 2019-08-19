@@ -60,7 +60,7 @@ export default {
     }
   },
   mounted(){
- 
+    this.pageUrl=this.pages[this.currentIndex]
      this.setPageInterval();
   },
   components:{

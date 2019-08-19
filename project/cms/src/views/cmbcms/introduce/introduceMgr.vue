@@ -77,7 +77,7 @@
                   
             
                     /*overview*/
-                        (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/deleteIntroduce',{id: row.id}
+                        (async()=>{    const t4 = this.$axios.post('v1/ds/cmbcms/cmbcms/deleteIntroduce',{id: row.id}
     ).then(res=>{
         if(res.retType === 'SUCCESS'){
             ctx.$root.$store.state.loadingPage=true;
@@ -112,7 +112,7 @@
                   
             
                     /*overview*/
-                        (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/queryIntroduceList',{}
+                        (async()=>{    const t4 = this.$axios.post('v1/ds/cmbcms/cmbcms/queryIntroduceList',{}
     ).then(res=>{
         debugger;
 

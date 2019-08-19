@@ -46,7 +46,7 @@ ebank:{
                   
             
                     /*overview*/
-                        (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/newUser',ctx.user
+                        (async()=>{    const t4 = this.$axios.post('v1/ds/cmbcms/cmbcms/newUser',ctx.user
     ).then(res=>{
         if(res.retType === 'SUCCESS'){
             this.$message({
@@ -102,7 +102,7 @@ ebank:{
                   
             
                     /*overview*/
-                        (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/newBankCard',ctx.card
+                        (async()=>{    const t4 = this.$axios.post('v1/ds/cmbcms/cmbcms/newBankCard',ctx.card
     ).then(res=>{
         if(res.retType === 'SUCCESS'){
             this.$message({
@@ -134,7 +134,7 @@ ebank:{
                   
             
                     /*overview*/
-                        (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/newEban',ctx.ebank
+                        (async()=>{    const t4 = this.$axios.post('v1/ds/cmbcms/cmbcms/newEban',ctx.ebank
     ).then(res=>{
         if(res.retType === 'SUCCESS'){
             this.$message({
