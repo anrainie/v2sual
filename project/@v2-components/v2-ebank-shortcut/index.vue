@@ -16,6 +16,11 @@ export default {
     }
   },
   computed: {
+    isImg() {
+      let imgRE = /\.(gif|jpg|jpeg|bmp|png)/
+
+      return imgRE.test(this.model.icon)
+    },
     // shortcutProps() {
     //   return {
     //     icon: this.model.icon,
