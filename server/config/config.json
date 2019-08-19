@@ -166,6 +166,7 @@
                 "target": "http://192.168.0.38:8086",
                 "changeOrigin": true,
                 "pathRewrite": {
+                    "cms/v1/ds/cmbcms": "",
                     "v1/ds/cmbcms": ""
                 },
                 "logLevel": "debug"

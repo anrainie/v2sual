@@ -1,5 +1,5 @@
 {
-    "name": "ad1",
+    "name": "central",
     "desc": "第一个广告",
     "entry": "./index.vue",
     "pageList": [

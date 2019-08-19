@@ -83,7 +83,7 @@
 <script>
 
 
-import {getMenuRoutes,addMenuToRoutes,mixins} from '@/lib'
+import {getMenuRoutes,addMenuToRoutes,mixins} from '@v2-lib/vue.spa.plugin'
 import {caseRouter} from '@/api/case.js'
 // const caseList= process.env.NODE_ENV === 'production'?[]:caseRouter;
 

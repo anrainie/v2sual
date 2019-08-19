@@ -21,7 +21,7 @@
                   
             
                     /*overview*/
-                        (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/queryNewsList',{}
+                        (async()=>{    const t4 = this.$axios.post('v1/ds/cmbcms/cmbcms/queryNewsList',{}
     ).then(res=>{
         debugger;
 
@@ -110,7 +110,7 @@
                   
             
                     /*overview*/
-                        (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/deleteNews',{id: row.id}
+                        (async()=>{    const t4 = this.$axios.post('v1/ds/cmbcms/cmbcms/deleteNews',{id: row.id}
     ).then(res=>{
         if(res.retType === 'SUCCESS'){
             ctx.queryNewsList();

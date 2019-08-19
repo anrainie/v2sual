@@ -37,6 +37,9 @@ export default {
   beforeMount(){
     this.id = this.model.id;
   },
+  beforeUpdate(){
+    this.id = this.model.id;
+  },
   mounted() {
     let self = this;
     let wrap = self.$refs.imgComponent;

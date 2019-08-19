@@ -8,8 +8,8 @@ import ElementUI from 'element-ui'
 import '../theme/index.css'
 import './api/index.js';
 import  router from './router'
-import Lib from  './lib'
-import ideLib from '@v2-lib/v2sual'
+import Lib from  '@v2-lib/vue.spa.plugin'
+import ideLib from '@v2-lib/v2sual';
 import store from './store'
 import Vant from 'vant';
 import 'vant/lib/index.css';
@@ -19,6 +19,7 @@ Vue.use(Lib)
 Vue.use(ideLib)
 Vue.use(ElementUI)
 Vue.use(Vant);
+
 Vue.directive('focus', {
   // 当被绑定的元素插入到 DOM 中时……
   inserted: function (el) {

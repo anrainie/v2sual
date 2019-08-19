@@ -44,7 +44,7 @@ tradeSerialQueryData:{
                   
             
                     /*overview*/
-                        (async()=>{    const t4 = $axios.post('v1/ds/cmbcms/cmbcms/queryTradeSerial',ctx.tradeSerialQueryData
+                        (async()=>{    const t4 = this.$axios.post('v1/ds/cmbcms/cmbcms/queryTradeSerial',ctx.tradeSerialQueryData
     ).then(res=>{
         if(res.retType === 'SUCCESS'){
             ctx.tradeSerialListData = res.jsonData;           

@@ -64,7 +64,8 @@
         data() {
           return {
             showCustomEditor: false,
-            styleUpdated: false
+            styleUpdated: false,
+            zoomSize :1
           }
         },
         watch: {
@@ -126,9 +127,16 @@
             .off(".keymap")
             .on("keydown.keymap", e => {
               return this.activeTool && this.activeTool.dispatchKeyEvent ?
-                this.activeTool.dispatchKeyEvent(this, e) :
-                true;
+              this.activeTool.dispatchKeyEvent(this, e) :
+              true;
             });
+            
+          $(window)
+          .on("mousewheel.mousemap", e => {
+            return this.activeTool && this.activeTool.mouseWheelEvent ?
+              this.activeTool.mouseWheelEvent(this, e) :
+              true;
+          });
 
           this.initImgDrog();
 

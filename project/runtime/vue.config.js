@@ -37,6 +37,7 @@ module.exports = {
     port: config.port,
     sockPort: config.sockPort,
     sockPath: config.sockPath,
+    sockHost: config.sockHost,
     disableHostCheck: true,
     hotOnly: false,
     compress: true,
