@@ -1,0 +1,42 @@
+{
+  "author": {
+    "name": "chengengbi@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "实况天气",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconkapian",
+    "type": "component",
+    "href": "v2-component-weather",
+    "author": "chengengbi@agree.com.cn",
+    "version": 610000,
+    "accept": "divCtn",
+    "name": "实况天气",
+    "option": [
+      {
+        "type": "string_input",
+        "name": "cityName",
+        "defaultValue": "",
+        "disabled": true,
+        "desp": "城市名称"
+      }],
+    "css":{
+      "style": [{
+        "desp": "组件大小",
+        "cssAttrs": "width height",
+        "name": "componentSize"
+      }]
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@v2-components/v2-component-weather",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.0",
+  "index":30000001
+}

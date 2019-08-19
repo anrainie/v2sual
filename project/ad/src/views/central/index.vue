@@ -1,48 +1,48 @@
 <template>
   <!-- 最终的加载页 -->
-  <div>
-
-   <router-view ></router-view>
-  
- 
+  <div  class="ad-index">
+   
+             <transition>
+              <pageCtn :page="pageUrl" :style="config.display" class="ad-page-ctn"></pageCtn>
+             </transition>
   </div>
 </template>
 
 
 <script>
 import {mixins} from '@/lib'
-
-
+import { getbrotherPageList } from '@/api/api.js';
+import pageCtn from '@/lib/components/asyncComponent';
+const config  = require('./config.json');
 export default {
   data(){
     return {
       inter:{},
+      clickTabIdx: null,
       currentIndex:0,
-      stopFlag:false
+      stopFlag:false,
+      panimate:null,
+      config:config,
+      pageUrl:this.pages[this.currentIndex]
     }
   },
   mixins: [mixins],
   methods:{
     stop(){
-      
       clearInterval(this.inter)
       this.stopFlag = false;
     },
     play(){
-      
-      this.setPageInterval();
+       this.setPageInterval();
        this.stopFlag = true;
     },
     next(){
        if(!this.pages[this.currentIndex]){
           this.currentIndex=0;
         };
-          this.open({
-            status:true,
-            page:this.pages[this.currentIndex],
-            path:this.pages[this.currentIndex]
-          })
-          this.currentIndex++;
+        this.pageUrl = this.pages[this.currentIndex];
+
+        this.currentIndex++;
     },
     setPageInterval(){
     
@@ -52,19 +52,25 @@ export default {
           this.currentIndex=0;
         };
         
-          this.open({
-            status:true,
-            page:this.pages[this.currentIndex],
-            path:this.pages[this.currentIndex]
-          })
+         this.pageUrl = this.pages[this.currentIndex];
+
           this.currentIndex++;
 
         },3000)
     }
   },
   mounted(){
-    
-    this.setPageInterval();
+ 
+     this.setPageInterval();
+  },
+  components:{
+    pageCtn
   }
 }
 </script>
+<style lang="scss">
+.ad-page-ctn{
+  position:relative;
+  margin:0 auto;
+}
+</style>

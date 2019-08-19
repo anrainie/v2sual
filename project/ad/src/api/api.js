@@ -82,3 +82,11 @@ export const getbrotherPageList = params => {
     params: params
   });
 };
+
+
+export const getWeatherInfo = (url, mode, params) => {
+  return axios.get(`${url}/${mode}`, {
+    params: params,
+    withCredentials: false
+  });
+}
