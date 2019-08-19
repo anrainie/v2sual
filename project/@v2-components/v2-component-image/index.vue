@@ -1,7 +1,7 @@
 <template>
  
     <div class="picture"  :class="widgetClass" :style="model.commonStyle">
-      <img ref="imgComponent" :src="outSrc" :width="model.v2Width" :height="model.v2Height">
+      <img ref="imgComponent" :src="outSrc" :width="model.v2Width" :height="model.v2Height" ondragstart="return false;">
     </div>
 </template>
 <script>

@@ -55,6 +55,7 @@ let json2script = function (json, path) {
 
   if (transfer) {
     finalStr = `<script>
+            import  {mixins} from '@v2-lib/vue.spa.plugin';
             ${isCustom ? `import {root,cpt,widget} from '@v2-lib/v2sual/mixin/v2-view';import events from "@v2-lib/v2sual/mixin/events";` : `import {root} from '@v2-lib/v2sual/mixin/v2-view';`}
             ${importList.length ? importList.map(item => `import ${item.desp} from '${item.path}'`).join(";") : ''}
             export default{
@@ -67,7 +68,7 @@ let json2script = function (json, path) {
                 props:{
                   ${isCustom ? porpStr.join(",\n") : ''}
                 },
-                ${isCustom ? `mixins:[root,widget,cpt,events],` : `mixins:[root],`}
+                ${isCustom ? `mixins:[root,widget,cpt,events,mixins],` : `mixins:[root,mixins],`}
                 ${importList.length ? `components:{${importList.map(item => `${item.desp}`)}},` : ''}
                 methods:{${self.methodsToCode(transfer.methods)}},
                 watch:{${self.methodsToCode(transfer.watch)}},

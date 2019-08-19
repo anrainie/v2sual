@@ -23,7 +23,7 @@ export default {
       stopFlag:false,
       panimate:null,
       config:config,
-      pageUrl:''
+      pageUrl:""
     }
   },
   mixins: [mixins],
@@ -60,7 +60,7 @@ export default {
     }
   },
   mounted(){
-    this.pageUrl=this.pages[this.currentIndex]
+     this.pageUrl = this.pages[this.currentIndex]
      this.setPageInterval();
   },
   components:{
