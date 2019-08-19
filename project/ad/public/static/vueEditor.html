@@ -36,7 +36,7 @@
     height: 100%;
     background:lightgray;
     ">
-        <div style="background-color:white;" style="width:100%;height:100%;">
+        <div style="width:100%;height:100%;background:white;">
             <v2EditorXYCtn ref="editor" v-model="rootId"  style="width:100%;height:100%;"></v2EditorXYCtn>
             <div
             v-show="showCustomEditor" class="V2CustomEditor switchable-ctn-editor"
@@ -131,12 +131,23 @@
                 true;
             });
 
-          $(window)
-            .on("mousewheel.mousemap", e => {
-              return this.activeTool && this.activeTool.mouseWheelEvent ?
-                this.activeTool.mouseWheelEvent(this, e) :
+          // $(window)
+          //   .on("mousewheel.mousemap", e => {
+          //     return this.activeTool && this.activeTool.mouseWheelEvent ?
+          //       this.activeTool.mouseWheelEvent(this, e) :
+          //       true;
+          //   });
+          let self = this;
+          document.addEventListener("mousewheel", e => {
+            if (e.ctrlKey) {
+              e.preventDefault();
+              return self.activeTool && self.activeTool.mouseWheelEvent ?
+                self.activeTool.mouseWheelEvent(self, e) :
                 true;
-            });
+            }
+          }, {
+            passive: false
+          });
 
           this.initImgDrog();
 
