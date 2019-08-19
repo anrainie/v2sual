@@ -1,6 +1,6 @@
 
 
-import  {router} from '@/lib'
+import  {router} from '@v2-lib/vue.spa.plugin'
 import Layout from '@/views/Layout'
 import Login from "@/views/Login"
 import noFound from "@/views/404"

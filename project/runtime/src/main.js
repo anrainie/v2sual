@@ -8,8 +8,8 @@ import ElementUI from 'element-ui'
 import '../theme/index.css'
 import './api/index.js';
 import  router from './router'
-import Lib from  './lib'
-import ideLib from './ideLib'
+import Lib from  '@v2-lib/vue.spa.plugin'
+import ideLib from '@v2-lib/v2sual'
 import store from './store'
 
 import $ from "jquery";
@@ -17,7 +17,7 @@ import $ from "jquery";
 // import EbankUI from './@ebank-ui'
 // Vue.use(EbankUI)
 
-Vue.use(Lib)
+Vue.use(Lib,{mixin: true})
 Vue.use(ideLib)
 Vue.use(ElementUI)
 Vue.directive('focus', {

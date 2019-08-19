@@ -7,8 +7,8 @@
     "scripts": {
         "style": "vue-cli-service build --no-clean",
         "component": "vue build -t lib -d v2sual ./src/@aweb-components/aweb.components.js",
-        "preview": "vue-cli-service serve --publicPath=/cms/ --sockPort=443 --sockPath=/cms/sockjs-node --port=7009 --mockPort=7011",
-        "serve": "vue-cli-service serve --publicPath=./ --sockPort=7009 --sockPath=/sockjs-node --port=7009 --mockPort=7011",
+        "preview": "vue-cli-service serve --publicPath=/cms/ --sockPort=443 --sockPath=/cms/sockjs-node --port=7009 --mockPort=7011 --sockHost=vue.awebide.com",
+        "serve": "vue-cli-service serve --publicPath=./ --sockPort=7009 --sockPath=/sockjs-node --port=7009 --mockPort=7011 --sockHost=localhost",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint",
         "theme": "et",

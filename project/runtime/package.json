@@ -7,8 +7,8 @@
     "scripts": {
         "style": "vue-cli-service build --no-clean",
         "component": "vue build -t lib -d v2sual ./src/@aweb-components/aweb.components.js",
-        "preview": "vue-cli-service serve --publicPath=/runtime/ --sockPort=443 --sockPath=/runtime/sockjs-node --port=7007 --mockPort=7008",
-        "serve": "vue-cli-service serve --publicPath=./ --sockPort=7007 --sockPath=/sockjs-node --port=7007 --mockPort=7008",
+        "preview": "vue-cli-service serve --publicPath=/runtime/ --sockPort=443 --sockPath=/runtime/sockjs-node --port=7007 --mockPort=7008 --sockHost=vue.awebide.com",
+        "serve": "vue-cli-service serve --publicPath=./ --sockPort=7007 --sockPath=/sockjs-node --port=7007 --mockPort=7008 --sockHost=localhost",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint",
         "theme": "et",
@@ -18,6 +18,7 @@
     },
     "dependencies": {
         "@handsontable/vue": "^3.1.0",
+        "@v2-lib/vue.spa.plugin": "^6.0.0",
         "animate.css": "^3.7.2",
         "axios": "^0.18.0",
         "cache-loader": "^2.0.1",
