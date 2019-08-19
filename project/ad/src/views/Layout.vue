@@ -20,14 +20,14 @@ export default {
   mixins:[mixins],
 
   mounted(){
-
-      this.open({
-          status:true,
-          page:this.path,
-          params:{
-            pages:this.pages
-          }
-        })
+debugger;
+      // this.open({
+      //     status:true,
+      //     page:this.path,
+      //     params:{
+      //       pages:this.pages
+      //     }
+      //   })
   
  
   }
