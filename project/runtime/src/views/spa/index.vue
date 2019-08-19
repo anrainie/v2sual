@@ -11,8 +11,8 @@
   {
     name: '账户预览',
     title: '账户预览',
-    icon: 'el-icon-s-finance',
-    // icon: 'img/custom-aweb-logo.png',
+    // icon: 'el-icon-s-finance',
+    icon: 'img/custom-aweb-logo.png',
     iconPosition: 'top',
     route: {
       page: "spa/index",
