@@ -207,8 +207,14 @@ let appendChildren = function(parentJson,element,isContainer){
             }
             //计算高度：layout[i]+realSize[i]如80+px,50+%
             if(realSize instanceof Array && realSize[i]){
-                height = layout[i] + realSize[i];
-                width = layout[i] + realSize[i];
+                // 添加输入容器尺寸的功能 100px || calc(30% - 20px) ...
+                let _realSize = realSize[i] === '输入' ? '' : realSize[i];
+                // height = layout[i] + realSize[i];
+                // width = layout[i] + realSize[i];
+                height = layout[i] + _realSize;
+                width = layout[i] + _realSize;
+
+                debugger
             }else{
                 height = layout instanceof Array ? layout[i] + '%' : '50%';
                 width = layout instanceof Array ? layout[i] + '%' : '50%';
@@ -218,16 +224,22 @@ let appendChildren = function(parentJson,element,isContainer){
                 for(let name in ctnCss){
                     !ctnCss[name]&& delete ctnCss[name]
                 }
+                // 去掉容器的百分比尺寸
                 if(parentJson.direction === 'col'){
-                    el.setAttribute('style','height:100%;width:'+ width+';'+JSON.stringify(ctnCss).replace(/[{}]/g,'').replace(/",/g,";").replace(/"/g,""));
+                    // el.setAttribute('style','height:100%;width:'+ width+';'+JSON.stringify(ctnCss).replace(/[{}]/g,'').replace(/",/g,";").replace(/"/g,""));
+                    el.setAttribute('style','width:'+ width+';'+JSON.stringify(ctnCss).replace(/[{}]/g,'').replace(/",/g,";").replace(/"/g,""));
                 }else{
-                    el.setAttribute('style','height:'+ height + ';width:100%;'+JSON.stringify(ctnCss).replace(/[{}]/g,'').replace(/",/g,";").replace(/"/g,""));
+                    // el.setAttribute('style','height:'+ height + ';width:100%;'+JSON.stringify(ctnCss).replace(/[{}]/g,'').replace(/",/g,";").replace(/"/g,""));
+                    el.setAttribute('style','height:'+ height + ';'+JSON.stringify(ctnCss).replace(/[{}]/g,'').replace(/",/g,";").replace(/"/g,""));
                 }
             }else{
+                // 去掉容器的百分比尺寸
                 if(parentJson.direction === 'col'){
-                    el.setAttribute('style','height:100%;width:'+ width);
+                    // el.setAttribute('style','height:100%;width:'+ width);
+                    el.setAttribute('style','width:'+ width);
                 }else{
-                    el.setAttribute('style','height:'+ height + ';width:100%;');
+                    // el.setAttribute('style','height:'+ height + ';width:100%;');
+                    el.setAttribute('style','height:'+ height + ';');
                 }
             }
             
