@@ -221,7 +221,7 @@ position: absolute; */
   min-height: 20px;
   z-index: 990;
   /* opacity: .4; */
-  border: 2px solid lightblue;
+  /* border: 2px solid lightblue; */
   box-sizing: border-box;
 }
 .V2CustomCptMask,
