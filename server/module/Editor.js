@@ -104,7 +104,7 @@ let editor = {
                 }).filter(e=>!!e) : []
 
                 const item = {
-                  name: name,
+                  name: content.display && content.display.desp || '',
                   type: 'customWidget',
                   href: `v2-component-${name}`,
                   component: `v2-component-${name}`,
