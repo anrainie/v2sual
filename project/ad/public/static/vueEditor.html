@@ -131,6 +131,13 @@
                 true;
             });
 
+          $(window)
+            .on("keyup.keymap", e => {
+              return this.activeTool && this.activeTool.dispatchKeyUpEvent ?
+                this.activeTool.dispatchKeyUpEvent(this, e) :
+                true;
+            });
+
           // $(window)
           //   .on("mousewheel.mousemap", e => {
           //     return this.activeTool && this.activeTool.mouseWheelEvent ?

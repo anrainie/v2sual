@@ -1,12 +1,6 @@
 <template>
-  <div>
-    <div
-      :class="widgetClass"
-      class="chart-content"
-      ref="_op_componentEchart_chart"
-     
-      :style="chartCtnStyle"
-    ></div>
+  <div :style="chartCtnStyle">
+    <div :class="widgetClass" class="chart-content" style="width:100%;height:100%;" ref="_op_componentEchart_chart"></div>
     <div class="chart-tips" v-if="error">
       <p>本组件使用echart配置</p>
       <hr />
@@ -36,19 +30,19 @@ export default {
     extraClass() {
       return this.error ? "echart-error" : "echart-normal";
     },
-    chartCtnStyle(){
-        let x = {
-          ...(this.model.commonStyle||{})
-        };
-        x.height = (x.height != "" && x.height) || '400px';
-        x.width = (x.width != "" && x.width) || '400px';
-        return x;
+    chartCtnStyle() {
+      let x = {
+        ...(this.model.commonStyle || {})
+      };
+      x.height = (x.height != "" && x.height) || "400px";
+      x.width = (x.width != "" && x.width) || "400px";
+      this.chart&&this.chart.resize&&this.chart.resize();
+      return x;
     }
   },
   watch: {
     "model.configs": {
       handler(val) {
-    
         this.configChanged(val);
       }
     }
@@ -72,15 +66,15 @@ export default {
       }
     }
   },
-  mounted() {
- 
-  }
+  mounted() {}
 };
 </script>
 
 <style lang="scss" scoped>
 .chart-content {
   position: relative;
+  width: 100%;
+  height: 100%;
 }
 .chart-tips {
   position: absolute;

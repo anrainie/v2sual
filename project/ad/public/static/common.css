@@ -221,7 +221,7 @@ position: absolute; */
   min-height: 20px;
   z-index: 990;
   /* opacity: .4; */
-  border: 2px solid lightblue;
+  /* border: 2px solid lightblue; */
   box-sizing: border-box;
 }
 .V2CustomCptMask,
@@ -300,7 +300,7 @@ position: absolute; */
   left: 0;
   z-index: 7;
   font-size: 0.5rem;
-  background: lightblue;
+  /* background: lightblue; */
 }
 
 /*美化可切换tab样式 Start*/
