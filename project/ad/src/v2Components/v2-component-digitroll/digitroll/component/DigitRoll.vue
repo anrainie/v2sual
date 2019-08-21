@@ -74,9 +74,9 @@ export default {
        //${mode==='edit'?'v1/public/':''}
           divList = arrayFromCache(10).map((n, i) => `<div><img src="${this.mode!=='edit'?'v1/public/':''}img/digitroll/${i}.png" height="240px"  class="dr-picture"/></div>`);
     }else{
-         divList = arrayFromCache(10).map((n, i) => `<div style="background-image:url(${this.mode!=='edit'?'v1/public/':''}img/digitroll/bg.png);" class="num-bg">${i}</div>`);
+         divList = arrayFromCache(10).map((n, i) => `<div style="height:160px;background-image:url(${this.mode!=='edit'?'v1/public/':''}img/digitroll/bg.png);" class="num-bg">${i}</div>`);
      }
-   
+   debugger;
     let executeStra = null;
 
     if (typeof flipStra === 'boolean') {
@@ -348,7 +348,7 @@ export default {
     const $list = this.$refs.list;
 
     this.cellHeight = getHeight($list.querySelector('.d-roll-bar>div'));
- 
+ debugger;
     /** 警告：单元测试设置，请勿自己设置，影响正常计算 */
     if (!this.cellHeight && this.$attrs && this.$attrs.unitTest) {
       this.cellHeight = this.$attrs.unitTest.cellHeight;
