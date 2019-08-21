@@ -226,15 +226,16 @@
 
 
             parent.$el.addEventListener('dragenter', e => {
-
-              editor.startCreateElement({
-                element: imgJson,
-                desp: undefined,
-                hidden: undefined,
-                icon: "iconkapian",
-                name: "图片",
-                type: "component"
-              }, null, false);
+              if (e && e.dataTransfer.types && e.dataTransfer.types[0] === 'Files') {
+                editor.startCreateElement({
+                  element: imgJson,
+                  desp: undefined,
+                  hidden: undefined,
+                  icon: "iconkapian",
+                  name: "图片",
+                  type: "component"
+                }, null, false);
+              }
             })
 
 
@@ -263,7 +264,6 @@
               event.stopPropagation();
               event.preventDefault();
               // $(this.$refs.editor.$el).trigger('mouseup');
-
               if (event && event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files
                 .length) {
                 let data = event.dataTransfer.files[0];

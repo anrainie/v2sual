@@ -37,4 +37,15 @@ export default {
 //   min-height: 30px;
 //   height: 100%;
 // }
+
+// 清除浮动
+.V2Container {
+  zoom: 1;
+
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
 </style>
