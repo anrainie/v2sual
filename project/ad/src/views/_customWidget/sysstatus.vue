@@ -11,9 +11,9 @@
                     }
                 },
                 props:{
-                  measure:{default:()=>{return 21,057分钟}},
-rare:{default:()=>{return 40%}},
-delay:{default:()=>{return 231ms}},
+                  measure:{default:()=>{return `21,057分钟`}},
+rare:{default:()=>{return `40%`}},
+delay:{default:()=>{return `231ms`}},
 echartConfig:{default:()=>{return {
     title: {
         text: '折线图堆叠'

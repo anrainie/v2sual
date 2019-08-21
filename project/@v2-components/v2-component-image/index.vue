@@ -16,10 +16,12 @@ export default {
   computed: {
     outSrc() {
       let self = this;
-      let src = (self.$store.getters.model(self.id)&&self.$store.getters.model(self.id).src)||'';
+      // let src = (self.$store.getters.model(self.id)&&self.$store.getters.model(self.id).src)||'';
+      let Modelsrc = self.model.src || "";
+      let src;
 
 
-      src = src.replace('"').replace("'");
+      src = Modelsrc.replace(/'/g,"").replace(/"/g,"");
       if (self.mode === "edit") {
  
         return `v1/runtime/${src}`;

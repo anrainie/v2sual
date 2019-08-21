@@ -36,6 +36,7 @@
     </el-col>
 
     <el-col :span="24" class="aweb-body">
+      <digi></digi>
       <div class="aweb-ctt">
          <div v-for="(item,idx) in adMenuData" :key="idx" class="ad-home-item-ctn">
            <div class="ad-home-item-ctt">
@@ -52,12 +53,13 @@
 <script>
 
     
-import {mixins} from '@/lib'
+import {mixins} from '@v2-lib/vue.spa.plugin'
 import { getbrotherPageList } from '@/api/api.js'
 import {caseRouter} from '@/api/case.js'
-import {addTabsRoutes} from '@/lib/router'
-import _import from '@/lib/util/_import_production.js'
+import {addTabsRoutes} from '@v2-lib/vue.spa.plugin/router'
+import _import from '@v2-lib/vue.spa.plugin/util/_import_production.js'
 const caseList= process.env.NODE_ENV === 'production'?[]:caseRouter;
+import digi from '../v2Components/v2-component-digitroll/index.vue'
 export default {
   name:'layout',
   data() {
@@ -149,6 +151,9 @@ export default {
     }
 
     
+  },
+  components:{
+    digi
   }
 
 };
