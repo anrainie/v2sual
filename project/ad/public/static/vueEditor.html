@@ -287,12 +287,15 @@
                     })
                     .then(res => {
                       console.log("成功上传至" + res.path);
-                      self.$refs.editor.$performRequest('applyCreate', model => {
-                        model.src = `img/${name}`;
-                        if (!model.commonStyle) model.commonStyle = {}
-                        model.commonStyle.position = 'absolute';
-                        model.commonStyle.top = event.offsetY - (parseInt(model.height) / 2);
-                        model.commonStyle.left = event.offsetX - (parseInt(model.width) / 2);
+                      self.$refs.editor.$performRequest('applyCreate', {
+                        adImgDrog: true,
+                        afterCreate: model => {
+                          model.src = `img/${name}`;
+                          if (!model.commonStyle) model.commonStyle = {}
+                          model.commonStyle.position = 'absolute';
+                          model.commonStyle.top = event.offsetY - (parseInt(model.height) / 2);
+                          model.commonStyle.left = event.offsetX - (parseInt(model.width) / 2);
+                        }
                       });
                     })
                     .catch(rej => {
