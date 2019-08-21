@@ -10,7 +10,13 @@ const ideType = configBase.server.type;
 //=================================================== json转html ===========================================================
 const v2Layout = ['v2-layout-colctn','v2-layout-rowctn','v2-layout','v2Container'];//转为v2container
 let dataBasket = [];//自定义组件的数据篮子
+let dataBasketJson = {};//def文件中的dataBasket
 
+let isNumber = function(val){
+    var reg = new RegExp(/^[0-9]*$/);  
+      
+    return reg.test(val);
+}
 let blockClass = function (index, parent) {
     if (parent && parent.children[index] && !parent.children[index].layout) {
         return ' borderBox dashBorder';
@@ -114,7 +120,14 @@ let appendComponent = function(parent,index,element){
     //自定义组件样式customClass
     if(child && child.customClass){
         let customClass = child.customClass;
-        eCom.setAttribute(':class',customClass.startsWith('$')?customClass.substring('2',customClass.length -1):customClass);
+        if(customClass.startsWith('$')){
+            customClass = customClass.substring('2',customClass.length -1)
+        }else{
+            customClass = '['+customClass.split(',').map(item => {
+                return '`'+item+'`';
+            })+']';
+        }
+        eCom.setAttribute(':class',customClass);
     }
     eCom.setAttribute('id',wid);
     eCom.setAttribute(':wid','`'+wid+'`');
@@ -126,7 +139,24 @@ let appendComponent = function(parent,index,element){
             if(!child.dataBasket[item]){
                 continue;
             }
-            eCom.setAttribute(':'+item,child.dataBasket[item]);
+            //判断输入的类型
+            let itemValue = child.dataBasket[item];
+            if(dataBasketJson[itemValue] == undefined){
+                //字符串类型：`字符串`
+                if(itemValue.startsWith("'")||itemValue.startsWith('"')){
+                    itemValue = '`'+itemValue.replace(/"/g,"").replace(/'/g,"")+'`';
+                }else if(isNumber(itemValue)){
+                    //数字暂时不作处理
+                }else if(itemValue.startsWith('[')){
+                    //数组暂时不做处理
+                }else if(itemValue.startsWith('{')){
+                    //json、map暂时不做处理
+                }else {
+                    itemValue = '`'+itemValue+'`';
+                }
+            }
+            eCom.setAttribute(':'+item,itemValue);
+            //在dom中:key只能为小写，故编译之后需要进行大小写的调整
             if(item != item.toLocaleLowerCase()){
                 let key = ':'+item.toLocaleLowerCase()+'="'+eCom.getAttribute(':'+item)+'"';
                 let value = ':'+item+'="'+eCom.getAttribute(':'+item)+'"';
@@ -203,7 +233,14 @@ let appendChildren = function(parentJson,element,isContainer){
             //自定义容器样式ctnClass
             if(parentJson.children[i] && parentJson.children[i].ctnClass){
                 let ctnClass = parentJson.children[i].ctnClass;
-                el.setAttribute(':class',ctnClass.startsWith('$')?ctnClass.substring('2',ctnClass.length -1):ctnClass);
+                if(ctnClass.startsWith('$')){
+                    ctnClass = ctnClass.substring('2',ctnClass.length -1)
+                }else{
+                    ctnClass = '['+ctnClass.split(',').map(item => {
+                        return '`'+item+'`';
+                    })+']';
+                }
+                el.setAttribute(':class',ctnClass);
             }
             //计算高度：layout[i]+realSize[i]如80+px,50+%
             if(realSize instanceof Array && realSize[i]){
@@ -258,6 +295,7 @@ let appendChildren = function(parentJson,element,isContainer){
 let json2html = function (jsonStr) {
     let json = JSON.parse(jsonStr);
     let jsonV2C = json.structure;//json中的structure
+    dataBasketJson = json.dataBasket.data;
     if (isEmptyJson(jsonV2C)) {
         return '';
     }
