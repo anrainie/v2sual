@@ -36,8 +36,8 @@
     height: 100%;
     background:lightgray;
     ">
-        <div style="background-color:white;" :style="$store.getters.editorStyle">
-            <v2EditorXYCtn ref="editor" v-model="rootId"  :style="$store.getters.editorStyle"></v2EditorXYCtn>
+        <div style="width:100%;height:100%;background:white;">
+            <v2EditorXYCtn ref="editor" v-model="rootId"  style="width:100%;height:100%;"></v2EditorXYCtn>
             <div
             v-show="showCustomEditor" class="V2CustomEditor switchable-ctn-editor"
             style="position:fixed;background:white;width:100%;height:100%;left:0;top:0;z-index:1000;"
@@ -64,7 +64,7 @@
         data() {
           return {
             showCustomEditor: false,
-            styleUpdated: false
+            styleUpdated: false,
           }
         },
         watch: {
@@ -106,7 +106,8 @@
                 wid = widget && widget.pid;
               }
 
-              ret = widgetStack.reverse().filter(w => w.component !== 'v2-layout-colctn' && w.component !== 'v2-layout-rowctn');
+              ret = widgetStack.reverse().filter(w => w.component !== 'v2-layout-colctn' && w.component !==
+                'v2-layout-rowctn');
             }
             console.log(ret);
             return ret;
@@ -129,6 +130,31 @@
                 this.activeTool.dispatchKeyEvent(this, e) :
                 true;
             });
+
+          $(window)
+            .on("keyup.keymap", e => {
+              return this.activeTool && this.activeTool.dispatchKeyUpEvent ?
+                this.activeTool.dispatchKeyUpEvent(this, e) :
+                true;
+            });
+
+          // $(window)
+          //   .on("mousewheel.mousemap", e => {
+          //     return this.activeTool && this.activeTool.mouseWheelEvent ?
+          //       this.activeTool.mouseWheelEvent(this, e) :
+          //       true;
+          //   });
+          let self = this;
+          document.addEventListener("mousewheel", e => {
+            if (e.ctrlKey) {
+              e.preventDefault();
+              return self.activeTool && self.activeTool.mouseWheelEvent ?
+                self.activeTool.mouseWheelEvent(self, e) :
+                true;
+            }
+          }, {
+            passive: false
+          });
 
           this.initImgDrog();
 
@@ -178,7 +204,7 @@
             let imgJson = {
               children: [],
               component: "v2-component-image",
-              commonStyle:{},
+              commonStyle: {},
               cptpath: undefined,
               ctnClass: "",
               customClass: "",
@@ -238,7 +264,8 @@
               event.preventDefault();
               // $(this.$refs.editor.$el).trigger('mouseup');
 
-              if (event && event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files.length) {
+              if (event && event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files
+                .length) {
                 let data = event.dataTransfer.files[0];
                 let name = data.name;
                 let type = data.type;
@@ -260,12 +287,15 @@
                     })
                     .then(res => {
                       console.log("成功上传至" + res.path);
-                      self.$refs.editor.$performRequest('applyCreate', model => {
-                        model.src=`img/${name}`;
-                        if(!model.commonStyle) model.commonStyle={}
-                        model.commonStyle.position='absolute';
-                        model.commonStyle.top=event.offsetY-(parseInt(model.height)/2);
-                        model.commonStyle.left=event.offsetX-(parseInt(model.width)/2);
+                      self.$refs.editor.$performRequest('applyCreate', {
+                        adImgDrog: true,
+                        afterCreate: model => {
+                          model.src = `img/${name}`;
+                          if (!model.commonStyle) model.commonStyle = {}
+                          model.commonStyle.position = 'absolute';
+                          model.commonStyle.top = event.offsetY - (parseInt(model.height) / 2);
+                          model.commonStyle.left = event.offsetX - (parseInt(model.width) / 2);
+                        }
                       });
                     })
                     .catch(rej => {

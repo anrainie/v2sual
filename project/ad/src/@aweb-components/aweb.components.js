@@ -40,8 +40,8 @@ import v2MobileInput  from '@v2-components/v2-mobile-input';
 import v2ComponentIcon  from '@v2-components/v2-component-icon';
 import v2MobileRadio  from '@v2-components/v2-mobile-radio';
 import v2ComponentWeather  from '../v2Components/v2-component-weather'
-
-
+import v2VdaChart  from '../v2Components/v2-vda-chart'
+import v2ComponentDigitroll from '../v2Components/v2-component-digitroll'
           import animateKill  from '@v2-pipe/animateKill';
 import close  from '@v2-pipe/close';
 import animate  from '@v2-pipe/animate';
@@ -50,6 +50,7 @@ import map  from '@v2-pipe/map';
 import gt  from '@v2-pipe/gt';
 import open  from '@v2-pipe/open';
 import getExcelData  from '@v2-pipe/getExcelData'
+import vda from '../../pipe/pipe.vda.js'
 
           let app = {
             animateKill,
@@ -59,7 +60,8 @@ import getExcelData  from '@v2-pipe/getExcelData'
 	map,
 	gt,
 	open,
-	getExcelData
+	getExcelData,
+	vda
           };
 
           window.pipe = app;
@@ -105,5 +107,7 @@ import getExcelData  from '@v2-pipe/getExcelData'
 	v2MobileInput,
 	v2ComponentIcon,
 	v2MobileRadio,
-	v2ComponentWeather
+	v2ComponentWeather,
+	v2VdaChart,
+	v2ComponentDigitroll
           }
