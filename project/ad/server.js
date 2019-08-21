@@ -328,7 +328,7 @@ router.get('/-/getbrotherPageList', function (ctx) {
   fs.readdirSync(floder).forEach(function (file) {
   
         if(!file.startsWith('_') && fs.lstatSync(path.resolve(__dirname, 'src/views/'+file)).isDirectory()){
-          if(fs.existsSync(path.resolve(__dirname, 'src/views/'+file+'/index.vue'))){
+          if(fs.existsSync(path.resolve(__dirname, 'src/views/'+file+'/config.json'))){
             let floderInfo = {
               name:file,
               pages:[],

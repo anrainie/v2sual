@@ -1,6 +1,6 @@
 <template>
   <div :class="widgetClass"  :style="digitrollStyle">
-    <DigitRoll :rollDigits="model.digits" :isPic='false' :mode="modeType"/>
+    <DigitRoll :rollDigits="parseInt(model.digits)" :isPic='false' :mode="modeType"/>
   </div>
 
 </template>
@@ -16,9 +16,9 @@ export default {
   },
   computed:{
       digitrollStyle(){
-         this.model.commonStyle && (this.model.commonStyle['width']=(((this.model.digits+'').length*parseInt(this.model.dWidth))+200)+'px');
+         this.model.commonStyle && (this.model.commonStyle['width']=(((parseInt(this.model.digits)+'').length*parseInt(this.model.dWidth))+200)+'px');
          this.model.commonStyle && (this.model.commonStyle['height']=this.model.dHeight||'160px');
-         return this.model.commonStyle ||{"width":(((this.model.digits+'').length*112)+200)+'px',"height":'160px'}
+         return this.model.commonStyle ||{"width":(((parseInt(this.model.digits)+'').length*112)+200)+'px',"height":'160px'}
       }
   },
   mounted(){
