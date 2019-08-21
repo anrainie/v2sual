@@ -220,8 +220,8 @@ position: absolute; */
   width: 100%;
   min-height: 20px;
   z-index: 990;
-  opacity: .4;
-  border: 4px solid lightblue;
+  /* opacity: .4; */
+  /* border: 2px solid lightblue; */
   box-sizing: border-box;
 }
 .V2CustomCptMask,
@@ -233,11 +233,12 @@ position: absolute; */
   left: 0;
   z-index: 7;
   font-size: .5rem;
-  background: lightblue;
 }
 
 .V2CustomCptMask:after {
   content: "[自定义组件]";
+  position: absolute;
+  top: 0;
 }
 .V2PageCptMask:after {
   content: "[页面组件]";
@@ -299,7 +300,7 @@ position: absolute; */
   left: 0;
   z-index: 7;
   font-size: 0.5rem;
-  background: lightblue;
+  /* background: lightblue; */
 }
 
 /*美化可切换tab样式 Start*/
