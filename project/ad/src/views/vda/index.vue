@@ -1,0 +1,200 @@
+<template><v2-ctn-xy :wid="`root`"><v2-component-image class="V2Widget" id="1566293221411" :wid="`1566293221411`" :index="0" :pid="`root`"></v2-component-image><v2-component-echart class="V2Widget" id="1566280788498" :wid="`1566280788498`" :index="1" :pid="`root`"></v2-component-echart><v2-component-vdafolder class="V2Widget" id="1566290476467" :wid="`1566290476467`" :index="2" :pid="`root`" :title="'响应耗时'" :persent="'41'" :currentValue="223" :commonValue="261" :icon="'el-icon-arrow-down'" :textClass="['vda-f-text']" :valueClass="['valueUp']" :value="&quot;40%&quot;"></v2-component-vdafolder><v2-component-vdafolder class="V2Widget" id="1566290436910" :wid="`1566290436910`" :index="3" :pid="`root`" :title="'响应耗时'" :persent="'50%'" :currentValue="222" :commonValue="261" :icon="'el-icon-arrow-down'" :textClass="['vda-f-text']" :valueClass="['valueUp']" :value="&quot;40%&quot;"></v2-component-vdafolder><v2-component-vdafolder class="V2Widget" id="1566291445269" :wid="`1566291445269`" :index="4" :pid="`root`" :title="'响应耗时'" :persent="'50%'" :currentValue="222" :commonValue="261" :icon="'el-icon-arrow-down'" :textClass="['vda-f-text']" :valueClass="['valueUp']" :value="&quot;40%&quot;"></v2-component-vdafolder><v2-component-text class="V2Widget" :class="vda-f-text,payTitle" id="1566291506685" :wid="`1566291506685`" :index="5" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="vda-f-text,payTitle" id="1566292304284" :wid="`1566292304284`" :index="6" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="vda-f-text,payTitle" id="1566292220752" :wid="`1566292220752`" :index="7" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="vda-f-text" id="1566292479968" :wid="`1566292479968`" :index="8" :pid="`root`"></v2-component-text><v2-component-trademeasure class="V2Widget" id="1566295108291" :wid="`1566295108291`" :index="9" :pid="`root`" :imgUrl="'img/alipay.png'" :title="'支付宝'" :respTime="'384ms'" :succRare="'100%'" :config="alipayConfig"></v2-component-trademeasure><v2-component-trademeasure class="V2Widget" id="1566295483980" :wid="`1566295483980`" :index="10" :pid="`root`" :imgUrl="'img/alipay.png'" :title="'财付通'" :respTime="'384ms'" :succRare="'100%'" :config="alipayConfig"></v2-component-trademeasure><v2-component-milestone class="V2Widget" id="1566298220485" :wid="`1566298220485`" :index="11" :pid="`root`" :title="'1亿笔'" :time="'20:53'"></v2-component-milestone><v2-component-milestone class="V2Widget" id="1566298820313" :wid="`1566298820313`" :index="12" :pid="`root`" :title="'1亿笔'" :time="'20:53'"></v2-component-milestone><v2-component-milestone class="V2Widget" id="1566298802279" :wid="`1566298802279`" :index="13" :pid="`root`" :title="'1亿笔'" :time="'20:53'"></v2-component-milestone><v2-component-milestone class="V2Widget" id="1566298778290" :wid="`1566298778290`" :index="14" :pid="`root`" :title="'1亿笔'" :time="'20:53'"></v2-component-milestone><v2-component-milestone class="V2Widget" id="1566298838576" :wid="`1566298838576`" :index="15" :pid="`root`" :title="'1亿笔'" :time="'20:53'"></v2-component-milestone><v2-component-milestone_r class="V2Widget" id="1566299186836" :wid="`1566299186836`" :index="16" :pid="`root`" :title="'2亿笔'" :time="'未开始'"></v2-component-milestone_r><v2-component-milestone_r class="V2Widget" id="1566299237199" :wid="`1566299237199`" :index="17" :pid="`root`" :title="'2亿笔'" :time="'未开始'"></v2-component-milestone_r><v2-component-milestone_r class="V2Widget" id="1566299258681" :wid="`1566299258681`" :index="18" :pid="`root`" :title="'2亿笔'" :time="'未开始'"></v2-component-milestone_r><v2-component-milestone_r class="V2Widget" id="1566299222993" :wid="`1566299222993`" :index="19" :pid="`root`" :title="'2亿笔'" :time="'未开始'"></v2-component-milestone_r><v2-component-milestone_r class="V2Widget" id="1566299277580" :wid="`1566299277580`" :index="20" :pid="`root`" :title="'2亿笔'" :time="'未开始'"></v2-component-milestone_r><v2-component-text class="V2Widget" :class="vda-f-text" id="1566299518295" :wid="`1566299518295`" :index="21" :pid="`root`"></v2-component-text><v2-component-province class="V2Widget" id="1566301683786" :wid="`1566301683786`" :index="22" :pid="`root`" :detail="0" :name="'8.四川'"></v2-component-province><v2-component-province class="V2Widget" id="1566301987895" :wid="`1566301987895`" :index="23" :pid="`root`" :detail="0" :name="'8.四川'"></v2-component-province><v2-component-province class="V2Widget" id="1566301964246" :wid="`1566301964246`" :index="24" :pid="`root`" :detail="0" :name="'8.四川'"></v2-component-province><v2-component-province class="V2Widget" id="1566301952255" :wid="`1566301952255`" :index="25" :pid="`root`" :detail="0" :name="'8.四川'"></v2-component-province><v2-component-province class="V2Widget" id="1566301997070" :wid="`1566301997070`" :index="26" :pid="`root`" :detail="0" :name="'8.四川'"></v2-component-province><v2-component-paychannel class="V2Widget" id="1566302680808" :wid="`1566302680808`" :index="27" :pid="`root`" :title="'信用卡'" :delay="'245ms'" :config="paymentData"></v2-component-paychannel><v2-component-paychannel class="V2Widget" id="1566302733625" :wid="`1566302733625`" :index="28" :pid="`root`" :title="'借记卡'" :delay="'245ms'" :config="paymentData2"></v2-component-paychannel><v2-component-paychannel class="V2Widget" id="1566302680432" :wid="`1566302680432`" :index="29" :pid="`root`" :title="'合作行'" :delay="'245ms'" :config="paymentData3"></v2-component-paychannel><v2-component-text class="V2Widget" :class="vda-f-text" id="1566302916870" :wid="`1566302916870`" :index="30" :pid="`root`"></v2-component-text></v2-ctn-xy></template>
+<script>
+            import  {mixins} from '@v2-lib/vue.spa.plugin';
+            import {root} from '@v2-lib/v2sual/mixin/v2-view';
+            import v2ComponentPaychannel from '@/views/_customWidget/payChannel.vue';import v2ComponentProvince from '@/views/_customWidget/province.vue';import v2ComponentMilestone_r from '@/views/_customWidget/milestone_r.vue';import v2ComponentMilestone from '@/views/_customWidget/milestone.vue';import v2ComponentTrademeasure from '@/views/_customWidget/tradeMeasure.vue';import v2ComponentVdafolder from '@/views/_customWidget/vdafolder.vue'
+            export default{
+                data(){
+                    return{
+                        "CONTENT":{structure:{"id":"root","component":"v2EditorXYCtn","style":{"width":"100%","height":"100%"},"children":[{"style":{},"src":"img/vda-background.png","height":"100%","width":"100%","ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-image","href":"v2-component-image","children":[],"events":{},"commonStyle":{"position":"absolute","top":"-6.0032px","left":"-7.9897px"},"id":1566293221411,"pid":"root","animate":["","animated"]},{"style":{"chartWarpStyle":{"background-color":"","margin":"","padding":"","height":"","width":""}},"configs":"${chartConfig}","ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-echart","href":"v2-component-echart","children":[],"events":{},"commonStyle":{"position":"absolute","top":"532px","left":"34px","width":1128,"height":427},"id":1566280788498,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"'响应耗时'","persent":"'41'","currentValue":"223","commonValue":"261","icon":"'el-icon-arrow-down'","textClass":"['vda-f-text']","valueClass":"['valueUp']","value":"\"40%\""},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-vdafolder","href":"v2-component-vdafolder","cptpath":"\\src\\views\\_customWidget\\vdafolder.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"274px","right":"","left":"34.0003px","bottom":"","width":"321px","height":"229px","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"id":1566290476467,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"'响应耗时'","persent":"'50%'","currentValue":"222","commonValue":"261","icon":"'el-icon-arrow-down'","textClass":"['vda-f-text']","valueClass":"['valueUp']","value":"\"40%\""},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-vdafolder","href":"v2-component-vdafolder","cptpath":"\\src\\views\\_customWidget\\vdafolder.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"274px","right":"","left":"387px","bottom":"","width":"321px","height":"229px","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"id":1566290436910,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"'响应耗时'","persent":"'50%'","currentValue":"222","commonValue":"261","icon":"'el-icon-arrow-down'","textClass":"['vda-f-text']","valueClass":"['valueUp']","value":"\"40%\""},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-vdafolder","href":"v2-component-vdafolder","cptpath":"\\src\\views\\_customWidget\\vdafolder.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"274px","right":"","left":"738px","bottom":"","width":"321px","height":"229px","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"id":1566291445269,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"text-align":"","margin":"","padding":"","height":"","width":"","line-height":"","font-family":"","font-size":"","font-weight":"","font-style":"","color":"","text-decoration":""}},"text":"支付宝","editable":false,"ctnClass":"","customClass":"vda-f-text,payTitle","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"187px","left":"34.0003px","width":156,"height":45},"id":1566291506685,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"text-align":"","margin":"","padding":"","height":"","width":"","line-height":"","font-family":"","font-size":"","font-weight":"","font-style":"","color":"","text-decoration":""}},"text":"财付通","editable":false,"ctnClass":"","customClass":"vda-f-text,payTitle","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"187px","left":"190px","width":156,"height":45},"id":1566292304284,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"text-align":"","margin":"","padding":"","height":"","width":"","line-height":"","font-family":"","font-size":"","font-weight":"","font-style":"","color":"","text-decoration":""}},"text":"京东","editable":false,"ctnClass":"","customClass":"vda-f-text,payTitle","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"187px","left":"346.004px","width":156,"height":45},"id":1566292220752,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"text-align":"","margin":"","padding":"","height":"","width":"","line-height":"","font-family":"","font-size":"","font-weight":"","font-style":"","color":"","text-decoration":""}},"text":"${time}","editable":false,"ctnClass":"","customClass":"vda-f-text","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"51px","left":"45px","font-size":"40"},"id":1566292479968,"pid":"root","animate":["","animated"]},{"dataBasket":{"imgUrl":"'img/alipay.png'","title":"'支付宝'","respTime":"'384ms'","succRare":"'100%'","config":"alipayConfig"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-trademeasure","href":"v2-component-trademeasure","cptpath":"\\src\\views\\_customWidget\\tradeMeasure.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"995px","left":"34px","width":"1025px","height":"150px"},"id":1566295108291,"pid":"root","animate":["","animated"]},{"dataBasket":{"imgUrl":"'img/alipay.png'","title":"'财付通'","respTime":"'384ms'","succRare":"'100%'","config":"alipayConfig"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-trademeasure","href":"v2-component-trademeasure","cptpath":"\\src\\views\\_customWidget\\tradeMeasure.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"1171px","left":"34px","width":"1025px","height":"150px"},"id":1566295483980,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"'1亿笔'","time":"'20:53'"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-milestone","href":"v2-component-milestone","cptpath":"\\src\\views\\_customWidget\\milestone.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"1166px","left":"1050px","width":"150px","height":"85px"},"id":1566298220485,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"'1亿笔'","time":"'20:53'"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-milestone","href":"v2-component-milestone","cptpath":"\\src\\views\\_customWidget\\milestone.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"974px","left":"1112px","width":"150px","height":"85px"},"id":1566298820313,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"'1亿笔'","time":"'20:53'"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-milestone","href":"v2-component-milestone","cptpath":"\\src\\views\\_customWidget\\milestone.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"812px","left":"1211px","width":"150px","height":"85px"},"id":1566298802279,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"'1亿笔'","time":"'20:53'"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-milestone","href":"v2-component-milestone","cptpath":"\\src\\views\\_customWidget\\milestone.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"680px","left":"1354px","width":"150px","height":"85px"},"id":1566298778290,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"'1亿笔'","time":"'20:53'"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-milestone","href":"v2-component-milestone","cptpath":"\\src\\views\\_customWidget\\milestone.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"592px","left":"1516px","width":"150px","height":"85px"},"id":1566298838576,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"'2亿笔'","time":"'未开始'"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-milestone_r","href":"v2-component-milestone_r","cptpath":"\\src\\views\\_customWidget\\milestone_r.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"603px","left":"2181px","width":"150px","height":"85px"},"id":1566299186836,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"'2亿笔'","time":"'未开始'"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-milestone_r","href":"v2-component-milestone_r","cptpath":"\\src\\views\\_customWidget\\milestone_r.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"689px","left":"2339px","width":"150px","height":"85px"},"id":1566299237199,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"'2亿笔'","time":"'未开始'"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-milestone_r","href":"v2-component-milestone_r","cptpath":"\\src\\views\\_customWidget\\milestone_r.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"824px","left":"2484px","width":"150px","height":"85px"},"id":1566299258681,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"'2亿笔'","time":"'未开始'"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-milestone_r","href":"v2-component-milestone_r","cptpath":"\\src\\views\\_customWidget\\milestone_r.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"985px","left":"2588px","width":"150px","height":"85px"},"id":1566299222993,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"'2亿笔'","time":"'未开始'"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-milestone_r","href":"v2-component-milestone_r","cptpath":"\\src\\views\\_customWidget\\milestone_r.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"1177px","left":"2647px","width":"150px","height":"85px"},"id":1566299277580,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"text-align":"","margin":"","padding":"","height":"","width":"","line-height":"","font-family":"","font-size":"","font-weight":"","font-style":"","color":"","text-decoration":""}},"text":"支付渠道平均响应时间","editable":false,"ctnClass":"","customClass":"vda-f-text","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"187px","left":"2797px","font-size":"40"},"id":1566299518295,"pid":"root","animate":["","animated"]},{"dataBasket":{"detail":"0","name":"'8.四川'"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-province","href":"v2-component-province","cptpath":"\\src\\views\\_customWidget\\province.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"897px","left":"1811px","width":"240px","height":"230px"},"id":1566301683786,"pid":"root","animate":["","animated"]},{"dataBasket":{"detail":"0","name":"'8.四川'"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-province","href":"v2-component-province","cptpath":"\\src\\views\\_customWidget\\province.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"677px","left":"1504px","width":"240px","height":"230px"},"id":1566301987895,"pid":"root","animate":["","animated"]},{"dataBasket":{"detail":"0","name":"'8.四川'"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-province","href":"v2-component-province","cptpath":"\\src\\views\\_customWidget\\province.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"592px","left":"1959px","width":"240px","height":"230px"},"id":1566301964246,"pid":"root","animate":["","animated"]},{"dataBasket":{"detail":"0","name":"'8.四川'"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-province","href":"v2-component-province","cptpath":"\\src\\views\\_customWidget\\province.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"744px","left":"1909px","width":"240px","height":"230px"},"id":1566301952255,"pid":"root","animate":["","animated"]},{"dataBasket":{"detail":"0","name":"'8.四川'"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-province","href":"v2-component-province","cptpath":"\\src\\views\\_customWidget\\province.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"854px","left":"1446px","width":"240px","height":"230px"},"id":1566301997070,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"'信用卡'","delay":"'245ms'","config":"paymentData"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-paychannel","href":"v2-component-paychannel","cptpath":"\\src\\views\\_customWidget\\payChannel.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"274px","left":"2797px","width":"320px","height":"234px"},"id":1566302680808,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"'借记卡'","delay":"'245ms'","config":"paymentData2"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-paychannel","href":"v2-component-paychannel","cptpath":"\\src\\views\\_customWidget\\payChannel.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"274px","left":"3141px","width":"320px","height":"234px"},"id":1566302733625,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"'合作行'","delay":"'245ms'","config":"paymentData3"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-paychannel","href":"v2-component-paychannel","cptpath":"\\src\\views\\_customWidget\\payChannel.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"274px","left":"3476px","width":"320px","height":"234px"},"id":1566302680432,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"text-align":"","margin":"","padding":"","height":"","width":"","line-height":"","font-family":"","font-size":"","font-weight":"","font-style":"","color":"","text-decoration":""}},"text":"支付渠道平均响应时间","editable":false,"ctnClass":"","customClass":"vda-f-text","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"577px","left":"2797px","font-size":"40"},"id":1566302916870,"pid":"root","animate":["","animated"]}],"ctnClass":"","customClass":"","commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"animate":["","animated"],"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}]}},
+                        chartConfig:{
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        type: 'line',
+        areaStyle: {}
+    },{
+        data:[900,900,900,900,900,900,900],
+        type:'line'
+    }]
+},
+bgClass:['bg'],
+time:'2019年11月11日 23:54:19',
+alipayConfig:{
+    grid:{
+        left:'10%',
+        right:0,
+        top:10,
+        bottom:20
+    },
+    xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [120, 200, 150, 80, 70, 110, 130],
+        type: 'bar'
+    }]
+}
+,
+cftConfig:{},
+paymentData:{
+    legend: {},
+    tooltip: {},
+    dataset: {
+        source: [
+            ['product', '2015', '2016', '2017'],
+            ['Matcha Latte', 43.3, 85.8, 93.7],
+            ['Milk Tea', 83.1, 73.4, 55.1],
+            ['Cheese Cocoa', 86.4, 65.2, 82.5],
+            ['Walnut Brownie', 72.4, 53.9, 39.1]
+        ]
+    },
+    xAxis: {type: 'category'},
+    yAxis: {},
+    // Declare several bar series, each will be mapped
+    // to a column of dataset.source by default.
+    series: [
+        {type: 'bar'},
+        {type: 'bar'},
+        {type: 'bar'}
+    ]
+},
+paymentData2:"",
+paymentData3:""
+                    }
+                },
+                props:{
+                  
+                },
+                mixins:[root,mixins],
+                components:{v2ComponentPaychannel,v2ComponentProvince,v2ComponentMilestone_r,v2ComponentMilestone,v2ComponentTrademeasure,v2ComponentVdafolder},
+                methods:{},
+                watch:{},
+                computed:{},
+                beforeCreate(){
+                    let ctx = this;
+                    
+                },
+                created(){
+                    let ctx = this;
+                    
+                    
+                    /**bind**/ctx.$store.commit("registerBind",{ vueObj:this, data:this.time, dataStr:"time", wid:1565839620888, modelKey:"text" });
+ctx.$store.commit("registerBind",{ vueObj:this, data:this.chartConfig, dataStr:"chartConfig", wid:1566280248751, modelKey:"configs" });
+ctx.$store.commit("registerBind",{ vueObj:this, data:this.chartConfig, dataStr:"chartConfig", wid:1566280788498, modelKey:"configs" });
+ctx.$store.commit("registerBind",{ vueObj:this, data:this.bgClass, dataStr:"bgClass", wid:1566284432550, modelKey:"customClass" });
+ctx.$store.commit("registerBind",{ vueObj:this, data:this.time, dataStr:"time", wid:1566292479968, modelKey:"text" });
+ctx.$store.commit("registerBind",{ vueObj:this, data:this.alipayConfig, dataStr:"alipayConfig", wid:1566295108291, modelKey:"config" });
+ctx.$store.commit("registerBind",{ vueObj:this, data:this.alipayConfig, dataStr:"alipayConfig", wid:1566295483980, modelKey:"config" });
+ctx.$store.commit("registerBind",{ vueObj:this, data:this.paymentData, dataStr:"paymentData", wid:1566302680808, modelKey:"config" });
+ctx.$store.commit("registerBind",{ vueObj:this, data:this.paymentData2, dataStr:"paymentData2", wid:1566302733625, modelKey:"config" });
+ctx.$store.commit("registerBind",{ vueObj:this, data:this.paymentData3, dataStr:"paymentData3", wid:1566302680432, modelKey:"config" });/**bind over**/
+                },
+                beforeMount(){
+                    let ctx = this;
+                    
+                },
+                mounted(){
+                    let ctx = this;
+                    
+                    
+                },
+                beforeUpdate(){
+                    let ctx = this;
+                    
+                },
+                updated(){
+                    let ctx = this;
+                    
+                },
+                beforeDestroy(){ 
+                    let ctx = this;
+                        
+                },
+                destroyed(){
+                    let ctx = this;
+                        
+                },
+                deactivated(){
+                  /**页面切出**/
+                  let ctx = this;
+                  
+                },
+                activated(){
+                  /**页面切入**/
+                  let ctx = this;
+                  
+                },
+
+            };
+        </script>
+<style lang="scss">
+.vda-f-text{
+    color:rgb(200,170,122);
+}
+
+.vda-text2{
+    color:rgb(217,147,58);
+}
+
+.vda-value{
+    color:rgb(254,245,202);
+}
+
+.valueUp{
+    color:rgb(110,255,206);
+}
+
+.valueDown{
+    color:rgb(236,85,84);
+}
+
+.valueNormal{
+    color:rgb(254,245,202)
+}
+
+.payTitle{
+    font-size:22px;
+    opacity:.8;
+}
+
+.payTitle{
+    opacity:1;
+}
+
+.wave{
+ box-shadow: inset 0 0 20px 4px rgba(255,255,255,1);
+ top: 50%;
+ left: 50%;
+ margin-top: 97px;
+ position: absolute;
+ width: 16px;
+ height: 16px;
+ border-radius: 50%;
+ transform: translate(-50%,-50%) rotateX(70deg);
+ z-index: 1;
+ animation: boxShadow1 0.8s linear infinite;
+}
+
+@keyframes boxShadow1 {
+ 0% {
+  width: 0;
+  height: 0;
+ }
+ 100% {
+  width: 120px;
+  height: 120px;
+ }
+}
+</style>
