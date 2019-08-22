@@ -223,8 +223,23 @@ let bindData = function (logic, mapping) {
 // 生成data
 let createData = function (data) {
   let i, arr = [];
+  var reg = new RegExp(/^[0-9]*$/);
   for (i in data) {
-    arr.push(`${i}:${data[i] === "" ? '""' : data[i]}`);
+    //判断data类型
+    let val = data[i];
+    if(val.startsWith("'")||val.startsWith('"')){
+      //字符串类型暂时不做处理
+    }else if(reg.test(val)){
+      //数字类型暂时不做处理
+    }else if(val.startsWith('[')){
+      //数组类型暂时不做处理
+    }else if(val.startsWith('{')){
+      //json\map暂时不做处理
+    }else {
+      val = '`'+val+'`';
+    }
+
+    arr.push(`${i}:${val === "" ? '""' : val}`);
   }
   return arr;
 };
