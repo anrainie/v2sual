@@ -5,13 +5,15 @@ const host = 'v1/ds/dvms/vda';
 const signIn = 'loginController/signIn'
 const apiList = 'visualDataModelController/queryTreeDataModels';
 const dataPreview = 'visualDataModelController/dataPreview';
+const panelSource = 'visualConfPanelController/info/panel';
+const queryDmData = 'visualThemeController/queryDmData';
 const username = 'admin';
 const password = 'agreexian!';
 
 let token = '';
 
 const signInFn = () => {
-    return new Promise(r => {
+    return new Promise((r, j) => {
         axios.post(
             `${host}/${signIn}`,
             qs.stringify({
@@ -23,11 +25,17 @@ const signInFn = () => {
                 }
             }).then(res => {
                 if (res.status) {
-                    token = res.content.token
+                    if (res.data) {
+                        token = res.data.content.token;
+                    } else {
+                        token = res.content.token
+                    }
+                } else {
+                    j(res.errorMsg);
                 }
                 r(token);
-            }).catch(e=>{
-                debugger;
+            }).catch(e => {
+                j(e);
             })
     })
 }
@@ -46,5 +54,22 @@ export default {
             token: token,
             dmUid: id
         }));
+    },
+    //获取面板数据
+    panel(panelName) {
+        return axios.post(`${host}/${panelSource}`, qs.stringify({
+            token: token,
+            panelName
+        }))
+    },
+    //获取配置数据
+    paramAjax(params) {
+        return axios.post(`${host}/${queryDmData}`, qs.stringify({
+            token: token,
+            request: JSON.stringify({
+                userid: username,
+                paras: params
+            })
+        }))
     }
 }
