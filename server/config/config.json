@@ -161,22 +161,21 @@
                 },
                 "logLevel": "debug"
             },{
-                "name": "招行内容管理",
-                "source": "/cmbcms",
-                "target": "http://192.168.0.38:8086",
+                "name":"VDA 数据源",
+                "source": "/dvms",
+                "target": "https://nanyan.agree.cn/dvms/",
                 "changeOrigin": true,
                 "pathRewrite": {
-                    "cms/v1/ds/cmbcms": "",
-                    "v1/ds/cmbcms": ""
+                    "v1/ds/dvms": ""
                 },
                 "logLevel": "debug"
             },{
-                "name":"VDA 数据源",
-                "source": "/dvms",
-                "target": "https://nanyan.agree.cn/dvms",
+                "name":"VDA 请求",
+                "source": "/../vda",
+                "target": "https://nanyan.agree.cn/dvms/",
                 "changeOrigin": true,
                 "pathRewrite": {
-                    "v1/ds/dvms/": ""
+                    "v1/vda": "vda"
                 },
                 "logLevel": "debug"
             }
