@@ -173,10 +173,10 @@
             },{
                 "name":"VDA 数据源",
                 "source": "/dvms",
-                "target": "https://nanyan.agree.cn/dvms/",
+                "target": "https://nanyan.agree.cn/dvms",
                 "changeOrigin": true,
                 "pathRewrite": {
-                    "v1/ds/dvms": ""
+                    "v1/ds/dvms/": ""
                 },
                 "logLevel": "debug"
             }

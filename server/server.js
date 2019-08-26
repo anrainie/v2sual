@@ -20,6 +20,10 @@ const platform = new Platform({
 const app = new Koa();
 // 跨域
 app.use(cors());
+
+//数据源代理
+require('./module/dataSource')(app, config.dataSource);
+
 // parser
 app.use(koaBody());
 
@@ -44,8 +48,7 @@ Preview.consume(platform, config.module.preview.consumption, config.runtime.base
 app.use(previeRouter.routes());
 
 
-//数据源代理
-require('./module/dataSource')(app, config.dataSource);
+
 
 //预览静态路由(静态代理要在数据代理之后)
 app.use(staticRouter(config.static));
