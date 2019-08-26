@@ -55,6 +55,22 @@ export default {
             dmUid: id
         }));
     },
+    createPanel(name) {
+        return axios.post(`${host}/${this.createPanel}`), qs.stringify({
+            data: { 
+                "treeData": { 
+                    "treeNodeName": name, 
+                    "treePNodeName": "AWEB测试" 
+                },
+                 "panelData": {
+                      "name": name, 
+                      "id": "", 
+                      "visualConfPanelCharts": [] 
+                } 
+            },
+            token: token
+        })
+    },
     //获取面板数据
     panel(panelName) {
         return axios.post(`${host}/${panelSource}`, qs.stringify({

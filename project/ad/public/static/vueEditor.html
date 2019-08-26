@@ -65,6 +65,7 @@
           return {
             showCustomEditor: false,
             styleUpdated: false,
+            loadIframe:false
           }
         },
         watch: {
@@ -87,7 +88,7 @@
           },
           label() {
             let ret = [];
-            if (this.showCustomEditor) {
+            if (this.showCustomEditor && !this.loadIframe) {
               const widgetStack = [];
 
               let wid = this.customEditor.wid;
@@ -176,12 +177,30 @@
 
             this.showCustomEditor = true;
           },
+          openCustomIframeEditor(iframeSrc,widget,callback) {
+         
+         let area = $(this.$refs.customEditorArea);
+         console.log(this.$refs.customEditorArea);
+          this.customEditor = widget;
+         let content = $(`<div><iframe style="width:100%;height:100%" src="${iframeSrc}"></iframe></div>`)
+         area.append(content);
+         callback && callback(content);
+
+         this.loadIframe = true;
+         this.showCustomEditor = true;
+         },
           closeCustomEditor() {
-            if (this.customEditor)
+            if (this.customEditor && !this.loadIframe){
               this.customEditor.$destroy();
+            }else{
+          
+            
+              this.customEditor.updateChart && this.customEditor.updateChart();
+            }
+            
             let area = $(this.$refs.customEditorArea);
             area.empty();
-
+            
             this.showCustomEditor = false;
           },
           loadStyle() {
