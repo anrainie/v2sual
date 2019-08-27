@@ -27,6 +27,8 @@ require('./module/dataSource')(app, config.dataSource);
 // parser
 app.use(koaBody());
 
+
+
 //导航
 require('./module/Navigator').consume(platform, config.module.navigator.consumption);
 
