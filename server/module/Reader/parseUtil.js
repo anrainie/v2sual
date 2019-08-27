@@ -129,6 +129,14 @@ let appendComponent = function(parent,index,element){
         }
         eCom.setAttribute(':class',customClass);
     }
+    //自定义组件设置:style="model.commonStyle",由外部传进
+    if(child.cptpath){
+        let commonStyle = "";
+        for(let key in child.commonStyle){
+            commonStyle += key+":"+child.commonStyle[key]+";";
+        }
+        eCom.setAttribute(':style','`'+commonStyle+'`');
+    }
     eCom.setAttribute('id',wid);
     eCom.setAttribute(':wid','`'+wid+'`');
     eCom.setAttribute(':index',index);

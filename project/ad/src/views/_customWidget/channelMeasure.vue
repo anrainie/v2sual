@@ -1,4 +1,4 @@
-<template><v2-ctn-xy :wid="`root`"><v2-component-image class="V2Widget" id="1566352630724" :wid="`1566352630724`" :index="0" :pid="`root`"></v2-component-image><v2-component-text class="V2Widget" :class="vda-text2" id="1566352878221" :wid="`1566352878221`" :index="1" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="vda-value" id="1566352937700" :wid="`1566352937700`" :index="2" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="vda-value" id="1566352859055" :wid="`1566352859055`" :index="3" :pid="`root`"></v2-component-text></v2-ctn-xy></template>
+<template><v2-ctn-xy :wid="`root`"><v2-component-image class="V2Widget" id="1566352630724" :wid="`1566352630724`" :index="0" :pid="`root`"></v2-component-image><v2-component-text class="V2Widget" :class="[`vda-text2`]" id="1566352878221" :wid="`1566352878221`" :index="1" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-value`]" id="1566352937700" :wid="`1566352937700`" :index="2" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-value`]" id="1566352859055" :wid="`1566352859055`" :index="3" :pid="`root`"></v2-component-text></v2-ctn-xy></template>
 <script>
             import  {mixins} from '@v2-lib/vue.spa.plugin';
             import {root,cpt,widget} from '@v2-lib/v2sual/mixin/v2-view';import events from "@v2-lib/v2sual/mixin/events";
@@ -11,8 +11,8 @@
                     }
                 },
                 props:{
-                  title:{default:()=>{return 信用卡}},
-value:{default:()=>{return 123,13,4,123}}
+                  title:{default:()=>{return `信用卡`}},
+value:{default:()=>{return `123,13,4,123`}}
                 },
                 mixins:[root,widget,cpt,events,mixins],
                 

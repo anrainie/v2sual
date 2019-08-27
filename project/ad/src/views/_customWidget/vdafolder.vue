@@ -1,4 +1,4 @@
-<template><v2-ctn-xy :wid="`root`"><v2-component-image class="V2Widget" id="1565840802331" :wid="`1565840802331`" :index="0" :pid="`root`"></v2-component-image><v2-component-text class="V2Widget" :class="textClass" id="1565841096754" :wid="`1565841096754`" :index="1" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="textClass" id="1565852153584" :wid="`1565852153584`" :index="2" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="textClass" id="1565852170136" :wid="`1565852170136`" :index="3" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="vda-value" id="1565852210991" :wid="`1565852210991`" :index="4" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="vda-value" id="1565852275929" :wid="`1565852275929`" :index="5" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="textClass" id="1565852289033" :wid="`1565852289033`" :index="6" :pid="`root`"></v2-component-text><v2-component-icon class="V2Widget" id="1565852302374" :wid="`1565852302374`" :index="7" :pid="`root`"></v2-component-icon><v2-component-text class="V2Widget" :class="valueClass" id="1566269987549" :wid="`1566269987549`" :index="8" :pid="`root`"></v2-component-text></v2-ctn-xy></template>
+<template><v2-ctn-xy :wid="`root`"><v2-component-image class="V2Widget" id="1565840802331" :wid="`1565840802331`" :index="0" :pid="`root`"></v2-component-image><v2-component-text class="V2Widget" :class="textClass" id="1565841096754" :wid="`1565841096754`" :index="1" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="textClass" id="1565852153584" :wid="`1565852153584`" :index="2" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="textClass" id="1565852170136" :wid="`1565852170136`" :index="3" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-value`]" id="1565852210991" :wid="`1565852210991`" :index="4" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-value`]" id="1565852275929" :wid="`1565852275929`" :index="5" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="textClass" id="1565852289033" :wid="`1565852289033`" :index="6" :pid="`root`"></v2-component-text><v2-component-icon class="V2Widget" id="1565852302374" :wid="`1565852302374`" :index="7" :pid="`root`"></v2-component-icon><v2-component-text class="V2Widget" :class="valueClass" id="1566269987549" :wid="`1566269987549`" :index="8" :pid="`root`"></v2-component-text></v2-ctn-xy></template>
 <script>
             import  {mixins} from '@v2-lib/vue.spa.plugin';
             import {root,cpt,widget} from '@v2-lib/v2sual/mixin/v2-view';import events from "@v2-lib/v2sual/mixin/events";
@@ -11,14 +11,14 @@
                     }
                 },
                 props:{
-                  title:{default:()=>{return '响应耗时'}},
+                  title:{default:()=>{return `响应耗时`}},
 persent:{default:()=>{return '50%'}},
-currentValue:{default:()=>{return 222}},
-commonValue:{default:()=>{return 261}},
+currentValue:{default:()=>{return `222ms`}},
+commonValue:{default:()=>{return `261ms`}},
 icon:{default:()=>{return 'el-icon-arrow-down'}},
 textClass:{default:()=>{return ['vda-f-text']}},
 valueClass:{default:()=>{return ['valueUp']}},
-value:{default:()=>{return "40%"}}
+value:{default:()=>{return `40%`}}
                 },
                 mixins:[root,widget,cpt,events,mixins],
                 
