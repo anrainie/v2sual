@@ -57,7 +57,7 @@ export default {
         }));
     },
     createPanel(name) {
-        return axios.post(`${host}/${createPanelUrl}`), qs.stringify({
+        return axios.post(`${host}/${createPanelUrl}`, qs.stringify({
             data: {
                 "treeData": {
                     "treeNodeName": name,
@@ -76,7 +76,7 @@ export default {
                 }
             },
             token: token
-        })
+        }))
     },
     //获取面板数据
     panel(panelName) {
