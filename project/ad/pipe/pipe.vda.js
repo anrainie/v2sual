@@ -7,6 +7,7 @@ const apiList = 'visualDataModelController/queryTreeDataModels';
 const dataPreview = 'visualDataModelController/dataPreview';
 const panelSource = 'visualConfPanelController/info/panel';
 const queryDmData = 'visualThemeController/queryDmData';
+const createPanelUrl = 'visualConfPanelController/save/panel'
 const username = 'admin';
 const password = 'agreexian!';
 
@@ -56,7 +57,7 @@ export default {
         }));
     },
     createPanel(name) {
-        return axios.post(`${host}/${this.createPanel}`), qs.stringify({
+        return axios.post(`${host}/${createPanelUrl}`), qs.stringify({
             data: {
                 "treeData": {
                     "treeNodeName": name,
