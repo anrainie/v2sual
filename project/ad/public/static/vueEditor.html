@@ -146,7 +146,7 @@
           //       true;
           //   });
           let self = this;
-          document.addEventListener("mousewheel", e => {
+          window.addEventListener("mousewheel", e => {
             if (e.ctrlKey) {
               e.preventDefault();
               return self.activeTool && self.activeTool.mouseWheelEvent ?
@@ -333,7 +333,7 @@
   </script>
 </head>
 
-<body style="padding:5px;box-sizing: border-box;">
+<body style="box-sizing: border-box;">
   <div></div>
 </body>
 
