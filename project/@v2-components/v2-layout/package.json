@@ -13,157 +13,269 @@
     "author": "zhanghaixian@agree.com.cn",
     "version": 610000,
     "accept": "",
-    "polymorphic": [{
-      "desp":"单容器",
-      "default":{
-        "layout":[100],
-        "realSize":[null],
-        "direction":"row"
+    "polymorphic": [
+      {
+        "desp": "单容器",
+        "default": {
+          "layout": [
+            100
+          ],
+          "realSize": [
+            null
+          ],
+          "direction": "row"
+        }
+      },
+      {
+        "desp": "横向",
+        "default": {
+          "layout": [
+            50,
+            50
+          ],
+          "realSize": [
+            null,
+            null
+          ],
+          "direction": "row"
+        }
+      },
+      {
+        "desp": "竖向",
+        "default": {
+          "layout": [
+            50,
+            50
+          ],
+          "realSize": [
+            null,
+            null
+          ],
+          "direction": "col"
+        },
+        "icon": "iconshuxiangbuju"
+      },
+      {
+        "desp": "左右",
+        "default": {
+          "layout": [
+            20,
+            80
+          ],
+          "realSize": [
+            null,
+            null
+          ],
+          "direction": "col"
+        },
+        "icon": "iconzuoyou"
+      },
+      {
+        "desp": "上下",
+        "default": {
+          "layout": [
+            20,
+            80
+          ],
+          "realSize": [
+            null,
+            null
+          ],
+          "direction": "row"
+        },
+        "icon": "iconshangxia"
+      },
+      {
+        "desp": "上中下",
+        "default": {
+          "layout": [
+            33.3,
+            33.3,
+            33.3
+          ],
+          "realSize": [
+            null,
+            null,
+            null
+          ],
+          "direction": "row"
+        },
+        "icon": "iconshangzhongxia"
+      },
+      {
+        "desp": "左中下",
+        "default": {
+          "layout": [
+            80,
+            20
+          ],
+          "direction": "row",
+          "realSize": [
+            null,
+            null
+          ],
+          "children": [
+            {
+              "layout": [
+                20,
+                80
+              ],
+              "direction": "col",
+              "component": "v2-layout",
+              "realSize": [
+                null,
+                null
+              ],
+              "children": [
+                null,
+                null
+              ]
+            },
+            null
+          ]
+        },
+        "icon": "iconzuozhongxia"
+      },
+      {
+        "desp": "上左右",
+        "default": {
+          "layout": [
+            20,
+            80
+          ],
+          "direction": "row",
+          "realSize": [
+            null,
+            null
+          ],
+          "children": [
+            null,
+            {
+              "layout": [
+                30,
+                70
+              ],
+              "direction": "col",
+              "component": "v2-layout",
+              "realSize": [
+                null,
+                null
+              ],
+              "children": [
+                null,
+                null
+              ]
+            }
+          ]
+        },
+        "icon": "iconshangzuoyou"
+      },
+      {
+        "desp": "上左中下",
+        "default": {
+          "layout": [
+            20,
+            80
+          ],
+          "direction": "row",
+          "realSize": [
+            null,
+            null
+          ],
+          "children": [
+            null,
+            {
+              "layout": [
+                20,
+                80
+              ],
+              "direction": "col",
+              "component": "v2-layout",
+              "children": [
+                null,
+                {
+                  "layout": [
+                    80,
+                    20
+                  ],
+                  "direction": "row",
+                  "realSize": [
+                    null,
+                    null
+                  ],
+                  "component": "v2-layout",
+                  "children": [
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "icon": "iconshangzuozhongxia"
+      },
+      {
+        "desp": "左上中",
+        "default": {
+          "layout": [
+            20,
+            80
+          ],
+          "direction": "col",
+          "children": [
+            null,
+            {
+              "layout": [
+                20,
+                80
+              ],
+              "direction": "row",
+              "realSize": [
+                null,
+                null
+              ],
+              "component": "v2-layout",
+              "children": [
+                null,
+                null
+              ]
+            }
+          ]
+        },
+        "icon": "iconzuoshangzhong"
+      },
+      {
+        "desp": "左中下",
+        "default": {
+          "layout": [
+            20,
+            80
+          ],
+          "direction": "col",
+          "children": [
+            null,
+            {
+              "layout": [
+                80,
+                20
+              ],
+              "direction": "row",
+              "realSize": [
+                null,
+                null
+              ],
+              "component": "v2-layout",
+              "children": [
+                null,
+                null
+              ]
+            }
+          ]
+        },
+        "icon": "iconzuozhongxia"
       }
-    },{
-      "desp":"横向",
-      "default":{
-        "layout":[50, 50],
-        "realSize":[null,null],
-        "direction":"row"
-      }
-    },
-    {
-      "desp":"竖向",
-      "default":{
-        "layout":[50, 50],
-        "realSize":[null,null],
-        "direction":"col"
-      },
-      "icon": "iconshuxiangbuju"
-    },
-    {
-      "desp":"左右",
-      "default":{
-        "layout":[20, 80],
-        "realSize":[null,null],
-        "direction":"col"
-      },
-      "icon": "iconzuoyou"
-    },{
-      "desp":"上下",
-      "default":{
-        "layout":[20,80],
-        "realSize":[null,null],
-        "direction":"row"
-      },
-      "icon": "iconshangxia"
-    },{
-      "desp":"上中下",
-      "default":{
-        "layout":[33.3,33.3,33.3],
-        "realSize":[null,null,null],
-        "direction":"row"
-      },
-      "icon": "iconshangzhongxia"
-    },{
-      "desp":"左中下",
-      "default":{
-        "layout":[80,20],
-        "direction":"row",
-        "realSize":[null,null],
-        "children":[
-          {
-            "layout":[20,80],
-            "direction":"col",
-            "component":"v2-layout",
-            "realSize":[null,null],
-            "children":[null,null]
-          },
-          null
-        ]
-
-      },
-      "icon": "iconzuozhongxia"
-    },{
-      "desp":"上左右",
-      "default":{
-        "layout":[20,80],
-        "direction":"row",
-        "realSize":[null,null],
-        "children":[
-          null,
-          {
-            "layout":[30,70],
-            "direction":"col",
-            "component":"v2-layout",
-            "realSize":[null,null],
-            "children":[null,null]
-          }
-        ]
-
-      },
-      "icon": "iconshangzuoyou"
-    },{
-      "desp":"上左中下",
-      "default":{
-        "layout":[20,80],
-        "direction":"row",
-        "realSize":[null,null],
-        "children":[
-          null,
-          {
-            "layout":[20,80],
-            "direction":"col",
-            "component":"v2-layout",
-            "children":[
-              null,
-              {
-                "layout":[80,20],
-                "direction":"row",
-                "realSize":[null,null],
-                "component":"v2-layout",
-                "children":[null,null]
-              }
-            ]
-          }
-        ]
-
-      },
-      "icon": "iconshangzuozhongxia"
-    },{
-      "desp":"左上中",
-      "default":{
-        "layout":[20,80],
-        "direction":"col",
-        "children":[
-          null,
-          {
-            "layout":[20,80],
-            "direction":"row",
-            "realSize":[null,null],
-            "component":"v2-layout",
-            "children":[null,null]
-          }
-        ]
-
-      },
-      "icon": "iconzuoshangzhong"
-    },{
-      "desp":"左中下",
-      "default":{
-        "layout":[20,80],
-        "direction":"col",
-        "children":[
-          null,
-          {
-            "layout":[80,20],
-            "direction":"row",
-            "realSize":[null,null],
-            "component":"v2-layout",
-            "children":[null,null]
-          }
-        ]
-
-      },
-      "icon": "iconzuozhongxia"
-    }
-  ],
+    ],
     "name": "布局",
     "option": [
       {
@@ -195,9 +307,7 @@
         ]
       }
     ],
-    "css": {
-     
-    }
+    "css": {}
   },
   "keywords": [],
   "license": "ISC",
@@ -210,6 +320,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
+  "version": "6.0.1",
   "index": 10000002
 }

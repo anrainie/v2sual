@@ -82,7 +82,8 @@
         "type": "boolean",
         "defaultValue": false,
         "desp": "是否使用范围选择"
-      },{
+      },
+      {
         "name": "isRequired",
         "desp": "是否必填",
         "defaultValue": false,
@@ -90,7 +91,7 @@
       }
     ],
     "css": {
-      "style":[
+      "style": [
         {
           "desp": "标题",
           "cssAttrs": "font-size color font-weight",
@@ -106,6 +107,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":20000011
+  "version": "6.0.1",
+  "index": 20000011
 }

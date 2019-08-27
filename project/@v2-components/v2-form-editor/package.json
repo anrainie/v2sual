@@ -40,14 +40,12 @@
         "desp": "标题宽度",
         "defaultValue": "80px",
         "type": "string_input"
-      
       },
       {
         "name": "placeholder",
         "desp": "placeholder",
         "defaultValue": "请编辑",
         "type": "string_input"
-       
       },
       {
         "name": "value",
@@ -66,7 +64,8 @@
         "desp": "是否必填",
         "defaultValue": false,
         "type": "boolean"
-      },{
+      },
+      {
         "name": "rules",
         "desp": "验证规则",
         "defaultValue": "",
@@ -87,28 +86,31 @@
           "desp": "标题",
           "cssAttrs": "font-size color font-weight",
           "name": "label"
-        },{
+        },
+        {
           "desp": "编辑器",
           "cssAttrs": "width height",
           "name": "ctnStyle"
         }
       ],
-      "theme": [{
-        "desp": "尺寸选择",
-        "name": "size",
-        "valueArray": [
-          "",
-          "medium",
-          "small",
-          "mini"
-        ],
-        "despArray": [
-          "较大",
-          "中等",
-          "小型",
-          "超小"
-        ]
-      }]
+      "theme": [
+        {
+          "desp": "尺寸选择",
+          "name": "size",
+          "valueArray": [
+            "",
+            "medium",
+            "small",
+            "mini"
+          ],
+          "despArray": [
+            "较大",
+            "中等",
+            "小型",
+            "超小"
+          ]
+        }
+      ]
     }
   },
   "keywords": [],
@@ -118,6 +120,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":20000001
+  "version": "6.0.1",
+  "index": 20000001
 }

@@ -20,7 +20,7 @@
         "name": "activeIndex",
         "desp": "页码变量",
         "type": "variable_input",
-        "placeHolder":"请从数据篮子中选取一个整型变量"
+        "placeHolder": "请从数据篮子中选取一个整型变量"
       }
     ],
     "css": {
@@ -44,6 +44,6 @@
     "path": "switchEditor.vue",
     "name": "v2EditorSwitch"
   },
-  "version": "6.0.0",
+  "version": "6.0.1",
   "index": 30000005
 }

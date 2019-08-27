@@ -18,13 +18,13 @@
       {
         "type": "string_input",
         "desp": "标题",
-        "defaultValue":"标题",
+        "defaultValue": "标题",
         "name": "label"
       },
       {
         "name": "labelWitdh",
         "desp": "标题宽度",
-        "defaultValue":"80px",
+        "defaultValue": "80px",
         "type": "string_input"
       },
       {
@@ -50,13 +50,13 @@
       {
         "type": "string_input",
         "desp": "激活的文本",
-        "defaultValue":"开",
+        "defaultValue": "开",
         "name": "activeText"
       },
       {
         "type": "string_input",
         "desp": "未激活的文本",
-        "defaultValue":"关",
+        "defaultValue": "关",
         "name": "inactiveText"
       },
       {
@@ -64,7 +64,8 @@
         "desp": "是否禁填",
         "defaultValue": false,
         "type": "boolean"
-      },{
+      },
+      {
         "name": "isRequired",
         "desp": "是否必填",
         "defaultValue": false,
@@ -72,14 +73,14 @@
       }
     ],
     "css": {
-       "style": [
-         {
-           "desp": "标题",
-           "cssAttrs": "font-size font-weight color",
-           "name": "title"
-         }
-       ]
-     }
+      "style": [
+        {
+          "desp": "标题",
+          "cssAttrs": "font-size font-weight color",
+          "name": "title"
+        }
+      ]
+    }
   },
   "keywords": [],
   "license": "ISC",
@@ -88,6 +89,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":20000003
+  "version": "6.0.1",
+  "index": 20000003
 }

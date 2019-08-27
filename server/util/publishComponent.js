@@ -6,7 +6,7 @@ const {
   execFile
 } = require('child_process');
 
-let cmpsPath = path.resolve(__dirname, '../@aweb-components');
+let cmpsPath = path.resolve(__dirname, '../../project/@v2-components');
 
 let publishList = [];
 
@@ -19,7 +19,7 @@ fs.readdirSync(cmpsPath).forEach(function (file) {
   }
 });
 
-// fs.writeFileSync(path.resolve(__dirname, './cmpList.json'), JSON.stringify(data), 'utf8', function (err) {
+// fs.writeFileSync(path.resolve(__dirname, './cmpList.json'), JSON.stringify(publishList), 'utf8', function (err) {
 //   if (err) {
 //     console.error(err);
 //   }

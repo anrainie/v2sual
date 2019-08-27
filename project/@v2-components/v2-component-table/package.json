@@ -14,324 +14,349 @@
     "version": 610000,
     "accept": "divCtn",
     "name": "表格",
-    "option": [{
-      "type": "edmCollection",
-      "desp": "列定义",
-      "name": "columns",
-      "edmKey": "prop",
-      "edmLabel":"label",
-      "hidden": false,
-      "defaultValue": "",
-      "valueArray": "",
-      "replaceTemp": true,
-      "attrInEachElement": [{
+    "option": [
+      {
+        "type": "edmCollection",
+        "desp": "列定义",
+        "name": "columns",
+        "edmKey": "prop",
+        "edmLabel": "label",
+        "hidden": false,
         "defaultValue": "",
-        "type": "string_input",
-        "name": "prop",
-        "desp": "key"
-      },{
-        "defaultValue": "",
-        "type": "string_input",
-        "name": "label",
-        "desp": "列名"
-      },{
+        "valueArray": "",
+        "replaceTemp": true,
+        "attrInEachElement": [
+          {
+            "defaultValue": "",
+            "type": "string_input",
+            "name": "prop",
+            "desp": "key"
+          },
+          {
+            "defaultValue": "",
+            "type": "string_input",
+            "name": "label",
+            "desp": "列名"
+          },
+          {
+            "defaultValue": "",
+            "valueArray": [
+              "",
+              "true",
+              "left",
+              "right"
+            ],
+            "type": "string_select",
+            "desp": "固定列",
+            "despArray": [
+              "无",
+              "固定",
+              "左固定",
+              "右固定"
+            ],
+            "name": "fixed"
+          },
+          {
+            "defaultValue": "",
+            "type": "string_input",
+            "name": "width",
+            "desp": "列宽"
+          },
+          {
+            "defaultValue": false,
+            "type": "boolean",
+            "name": "sortable",
+            "desp": "是否排序"
+          },
+          {
+            "defaultValue": false,
+            "type": "boolean",
+            "name": "openFilter",
+            "desp": "添加过滤"
+          },
+          {
+            "defaultValue": "text",
+            "type": "string_select",
+            "name": "type",
+            "desp": "列类型",
+            "valueArray": [
+              "text",
+              "tag",
+              "icon"
+            ],
+            "despArray": [
+              "文本",
+              "标签映射",
+              "图标映射"
+            ]
+          },
+          {
+            "require": {
+              "type": "tag"
+            },
+            "type": "array",
+            "name": "tagMap",
+            "desp": "标签映射表",
+            "attrInEachElement": [
+              {
+                "name": "value",
+                "desp": "值",
+                "defaultValue": "",
+                "type": "string_input"
+              },
+              {
+                "name": "text",
+                "desp": "标签文本",
+                "defaultValue": "",
+                "type": "string_input"
+              },
+              {
+                "name": "type",
+                "desp": "标签类型",
+                "defaultValue": "",
+                "valueArray": [
+                  "text",
+                  "primary",
+                  "success",
+                  "info",
+                  "warning",
+                  "danger"
+                ],
+                "type": "string_select",
+                "despArray": [
+                  "默认",
+                  "主要",
+                  "成功",
+                  "信息",
+                  "警告",
+                  "危险"
+                ]
+              }
+            ]
+          },
+          {
+            "require": {
+              "type": "icon"
+            },
+            "type": "array",
+            "name": "iconMap",
+            "desp": "图标映射表",
+            "attrInEachElement": [
+              {
+                "name": "value",
+                "desp": "值",
+                "defaultValue": "",
+                "type": "string_input"
+              },
+              {
+                "name": "text",
+                "desp": "图标类名",
+                "defaultValue": "",
+                "type": "string_input"
+              }
+            ]
+          },
+          {
+            "require": {
+              "openFilter": "true"
+            },
+            "type": "array",
+            "name": "filterMap",
+            "desp": "过滤项",
+            "attrInEachElement": [
+              {
+                "name": "text",
+                "desp": "名称",
+                "defaultValue": "",
+                "type": "string_input"
+              },
+              {
+                "name": "value",
+                "desp": "值",
+                "defaultValue": "",
+                "type": "string_input"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "defaultValue": "",
         "valueArray": [
           "",
-          "true",
-          "left",
-          "right"
+          "single",
+          "multi"
         ],
         "type": "string_select",
-         "desp": "固定列",
-         "despArray": [
-                 "无",
-                 "固定",
-                 "左固定",
-                 "右固定"
-               ],
-          "name": "fixed"
-      },{
-        "defaultValue": "",
+        "desp": "选择器",
+        "despArray": [
+          "无",
+          "单选",
+          "多选"
+        ],
+        "name": "selection"
+      },
+      {
+        "defaultValue": false,
+        "type": "boolean",
+        "name": "openIndex",
+        "desp": "是否打开索引列"
+      },
+      {
+        "defaultValue": false,
+        "type": "boolean",
+        "name": "toolBar",
+        "desp": "是否打开固定列"
+      },
+      {
+        "defaultValue": "操作列",
         "type": "string_input",
-        "name": "width",
-        "desp": "列宽"
+        "name": "toolTitle",
+        "desp": "固定列名"
       },
       {
-        "defaultValue": false,
-        "type": "boolean",
-        "name": "sortable",
-        "desp": "是否排序"
-      },
-      {
-        "defaultValue": false,
-        "type": "boolean",
-        "name": "openFilter",
-        "desp": "添加过滤"
-      },{
-        "defaultValue": "text",
-        "type": "string_select",
-        "name": "type",
-        "desp": "列类型",
+        "defaultValue": "right",
         "valueArray": [
-          "text",
-          "tag",
-          "icon"
+          "right",
+          "left"
         ],
-         "despArray": [
-          "文本",
-          "标签映射",
-          "图标映射"
-        ]
-      },{
-          "require":{
-            "type":"tag"
-          },
-          "type": "array",
-          "name": "tagMap",
-          "desp": "标签映射表",
-          "attrInEachElement":[{            
-              "name": "value",
-              "desp": "值",
-              "defaultValue": "",
-              "type": "string_input"
-           },{            
-            "name": "text",
-            "desp": "标签文本",
-            "defaultValue": "",
-            "type": "string_input"
-           },{
-              "name": "type",
-              "desp": "标签类型",
-              "defaultValue": "",
-              "valueArray": [
-                "text",
-                "primary",
-                "success",
-                "info",
-                "warning",
-                "danger"
-              ],
-              "type": "string_select",
-              "despArray": [
-                      "默认",
-                      "主要",
-                      "成功",
-                      "信息",
-                      "警告",
-                      "危险"
-                    ]
-        }]
-      },{
-        "require":{
-          "type":"icon"
-        },
-        "type": "array",
-        "name": "iconMap",
-        "desp": "图标映射表",
-        "attrInEachElement":[{            
-            "name": "value",
-            "desp": "值",
-            "defaultValue": "",
-            "type": "string_input"
-         },{            
-          "name": "text",
-          "desp": "图标类名",
-          "defaultValue": "",
-          "type": "string_input"
-         }]
-    },{
-      "require":{
-        "openFilter":"true"
+        "type": "string_select",
+        "desp": "固定位置",
+        "despArray": [
+          "左边",
+          "右边"
+        ],
+        "name": "toolLocation"
       },
-      "type": "array",
-      "name": "filterMap",
-      "desp": "过滤项",
-      "attrInEachElement":[{            
-          "name": "text",
-          "desp": "名称",
-          "defaultValue": "",
-          "type": "string_input"
-       },{            
-        "name": "value",
-        "desp": "值",
+      {
+        "type": "string_input",
+        "name": "toolWidth",
+        "defaultValue": 100,
+        "desp": "固定列宽度"
+      },
+      {
+        "type": "array",
+        "name": "toolBtns",
+        "desp": "固定列按钮",
+        "attrInEachElement": [
+          {
+            "name": "btnName",
+            "desp": "按钮名",
+            "defaultValue": "详情",
+            "type": "string_input"
+          },
+          {
+            "name": "type",
+            "desp": "按钮类型",
+            "defaultValue": "",
+            "valueArray": [
+              "text",
+              "primary",
+              "success",
+              "info",
+              "warning",
+              "danger"
+            ],
+            "type": "string_select",
+            "despArray": [
+              "默认",
+              "主要",
+              "成功",
+              "信息",
+              "警告",
+              "危险"
+            ]
+          },
+          {
+            "name": "handler",
+            "desp": "事件名",
+            "defaultValue": "",
+            "type": "string_input"
+          }
+        ]
+      },
+      {
+        "type": "string_input",
+        "name": "tHeight",
         "defaultValue": "",
-        "type": "string_input"
-     }]
-  }
-  ]
-    },
-
-    {
-          "defaultValue": "",
+        "details": "表格高度，填写了则默认是固定表头",
+        "desp": "表格高度"
+      },
+      {
+        "type": "string_input",
+        "name": "tMaxHeight",
+        "details": "通过设置max-height属性为 Table 指定最大高度。此时若表格所需的高度大于最大高度，则会显示一个滚动条",
+        "defaultValue": "",
+        "desp": "流体高度"
+      },
+      {
+        "type": "string_input",
+        "name": "tableData",
+        "defaultValue": "",
+        "desp": "表格数据"
+      },
+      {
+        "defaultValue": false,
+        "type": "boolean",
+        "name": "expand",
+        "desp": "是否首列可展开"
+      },
+      {
+        "require": {
+          "expand": "true"
+        },
+        "type": "single_array",
+        "name": "expandMap",
+        "desp": "展开显示的字段表",
+        "attrInEachElement": [
+          {
+            "name": "name",
+            "desp": "列英文名",
+            "defaultValue": "",
+            "type": "string_input"
+          },
+          {
+            "name": "label",
+            "desp": "中文名",
+            "defaultValue": "",
+            "type": "string_input"
+          }
+        ]
+      }
+    ],
+    "css": {
+      "theme": [
+        {
+          "desp": "类型选择",
+          "name": "tableType",
+          "defaultValue": "border",
+          "valueArray": [
+            "border",
+            "stripe"
+          ],
+          "despArray": [
+            "带边框",
+            "斑马纹"
+          ]
+        },
+        {
+          "desp": "尺寸选择",
+          "name": "size",
           "valueArray": [
             "",
-            "single",
-            "multi"
+            "medium",
+            "small",
+            "mini"
           ],
-          "type": "string_select",
-           "desp": "选择器",
-           "despArray": [
-                   "无",
-                   "单选",
-                   "多选"
-                 ],
-            "name": "selection"
-    },
-    {
-      "defaultValue": false,
-      "type": "boolean",
-      "name": "openIndex",
-      "desp": "是否打开索引列"
-    },
-     {
-       "defaultValue": false,
-       "type": "boolean",
-       "name": "toolBar",
-       "desp": "是否打开固定列"
-     },
-     {
-       "defaultValue": "操作列",
-       "type": "string_input",
-       "name": "toolTitle",
-       "desp": "固定列名"
-     },
-     {
-       "defaultValue": "right",
-       "valueArray": [
-  
-         "right",
-         "left"
-       ],
-       "type": "string_select",
-       "desp": "固定位置",
-       "despArray": [
-         "左边",
-         "右边"
-       ],
-       "name": "toolLocation"
-     },
-      {
-         "type": "string_input",
-         "name": "toolWidth",
-         "defaultValue": 100,
-         "desp": "固定列宽度"
-    },
-    {
-      "type": "array",
-      "name": "toolBtns",
-      "desp": "固定列按钮",
-      "attrInEachElement":[{            
-          "name": "btnName",
-          "desp": "按钮名",
-          "defaultValue": "详情",
-          "type": "string_input"
-       },
-       {
-        "name": "type",
-        "desp": "按钮类型",
-        "defaultValue": "",
-        "valueArray": [
-          "text",
-          "primary",
-          "success",
-          "info",
-          "warning",
-          "danger"
-        ],
-        "type": "string_select",
-         "despArray": [
-                 "默认",
-                 "主要",
-                 "成功",
-                 "信息",
-                 "警告",
-                 "危险"
-               ]
-      },
-       {
-         "name": "handler",
-         "desp": "事件名",
-         "defaultValue": "",
-         "type": "string_input"
-       }]
-    },
-    {
-      "type": "string_input",
-      "name": "tHeight",
-      "defaultValue": "",
-      "details":"表格高度，填写了则默认是固定表头",
-      "desp": "表格高度"
-    },
-    {
-      "type": "string_input",
-      "name": "tMaxHeight",
-      "details":"通过设置max-height属性为 Table 指定最大高度。此时若表格所需的高度大于最大高度，则会显示一个滚动条",
-      "defaultValue": "",
-      "desp": "流体高度"
-    },
-    {
-      "type": "string_input",
-      "name": "tableData",
-      "defaultValue": "",
-      "desp": "表格数据"
-    },
-    {
-      "defaultValue": false,
-      "type": "boolean",
-      "name": "expand",
-      "desp": "是否首列可展开"
-    },
-    {
-      "require":{
-        "expand":"true"
-      },
-      "type": "single_array",
-      "name": "expandMap",
-      "desp": "展开显示的字段表",
-      "attrInEachElement":[{            
-          "name": "name",
-          "desp": "列英文名",
-          "defaultValue": "",
-          "type": "string_input"
-       },{            
-        "name": "label",
-        "desp": "中文名",
-        "defaultValue": "",
-        "type": "string_input"
-     }]
-  }
-  ],
-  "css":{
-    "theme": [{
-      "desp": "类型选择",
-      "name": "tableType",
-      "defaultValue": "border",
-      "valueArray": [
-        "border",
-        "stripe"
-      ],
-      "despArray": [
-        "带边框",
-        "斑马纹"
+          "despArray": [
+            "默认",
+            "中等",
+            "小型",
+            "超小"
+          ]
+        }
       ]
-    },{
-      "desp": "尺寸选择",
-      "name": "size",
-      "valueArray": [
-        "",
-        "medium",
-        "small",
-        "mini"
-      ],
-      "despArray": [
-        "默认",
-        "中等",
-        "小型",
-        "超小"
-      ]
-    }]
-}
+    }
   },
   "keywords": [],
   "license": "ISC",
@@ -340,6 +365,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":30000003
+  "version": "6.0.1",
+  "index": 30000003
 }

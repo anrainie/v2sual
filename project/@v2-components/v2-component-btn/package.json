@@ -14,93 +14,101 @@
     "version": 610000,
     "accept": "divCtn",
     "name": "按钮",
-    "option": [ 
-      
+    "option": [
       {
-      "type": "string_input",
-      "name": "btnName",
-      "defaultValue": "按钮",
-      "disabled": true,
-      "desp": "按钮"
-    },
-    {
-      "defaultValue": "def",
-      "valueArray": [
-        "def",
-        "plain",
-        "round",
-        "circle"
+        "type": "string_input",
+        "name": "btnName",
+        "defaultValue": "按钮",
+        "disabled": true,
+        "desp": "按钮"
+      },
+      {
+        "defaultValue": "def",
+        "valueArray": [
+          "def",
+          "plain",
+          "round",
+          "circle"
+        ],
+        "type": "string_select",
+        "desp": "形状",
+        "despArray": [
+          "默认",
+          "朴素",
+          "圆角",
+          "圆形"
+        ],
+        "name": "shape"
+      },
+      {
+        "defaultValue": false,
+        "type": "boolean",
+        "name": "loading",
+        "desp": "是否加载状态"
+      },
+      {
+        "type": "string_input",
+        "name": "leftIcon",
+        "defaultValue": "",
+        "disabled": true,
+        "desp": "左侧图标"
+      },
+      {
+        "type": "string_input",
+        "name": "rightIcon",
+        "defaultValue": "",
+        "disabled": true,
+        "desp": "右侧图标"
+      },
+      {
+        "defaultValue": false,
+        "type": "boolean",
+        "name": "disabled",
+        "desp": "是否禁用状态"
+      }
+    ],
+    "css": {
+      "style": [
+        {
+          "desp": "按钮",
+          "cssAttrs": "background-color width height",
+          "name": "btnStyle"
+        }
       ],
-      "type": "string_select",
-      "desp": "形状",
-      "despArray": [
-        "默认",
-        "朴素",
-        "圆角",
-        "圆形"
-      ],
-      "name": "shape"
-    },{
-      "defaultValue": false,
-      "type": "boolean",
-      "name": "loading",
-      "desp":"是否加载状态"
-    },{
-      "type": "string_input",
-      "name": "leftIcon",
-      "defaultValue": "",
-      "disabled": true,
-      "desp": "左侧图标"
-    },{
-      "type": "string_input",
-      "name": "rightIcon",
-      "defaultValue": "",
-      "disabled": true,
-      "desp": "右侧图标"
-    },{
-      "defaultValue": false,
-      "type": "boolean",
-      "name": "disabled",
-      "desp": "是否禁用状态"
-    }],
-    "css":{
-      	"style": [{
-      	    "desp": "按钮",
-      	    "cssAttrs": "background-color width height",
-      	    "name": "btnStyle"
-      	  }
-      	],
-      	"theme": [{
-      	  "desp": "类型选择",
+      "theme": [
+        {
+          "desp": "类型选择",
           "name": "btnType",
-      	  "valueArray": [
+          "valueArray": [
             "primary&shape=def",
             "normal&shape=plain",
             "danger&shape=def",
             "text&shape=def"
-      	  ],
-      	  "despArray": [
+          ],
+          "despArray": [
             "焦点",
             "普通",
             "警告",
             "文字"
-      	  ]
-      	},{
-      	  "desp": "尺寸选择",
-      	  "name": "size",
-      	  "valueArray": [
+          ]
+        },
+        {
+          "desp": "尺寸选择",
+          "name": "size",
+          "valueArray": [
             "",
-      	    "medium",
+            "medium",
             "small",
             "mini"
-      	  ],
-      	  "despArray": [
+          ],
+          "despArray": [
             "较大",
             "中等",
             "小型",
             "超小"
-      	  ]
-      	}]
+          ]
+        }
+      ]
     }
   },
   "keywords": [],
@@ -110,6 +118,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":30000001
+  "version": "6.0.1",
+  "index": 30000001
 }

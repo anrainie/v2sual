@@ -28,8 +28,8 @@
         "desp": "页面参数"
       }
     ],
-    "css":{
-      "style":[
+    "css": {
+      "style": [
         {
           "desp": "页面容器",
           "cssAttrs": "padding margin background-color",
@@ -45,6 +45,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":30000005
+  "version": "6.0.1",
+  "index": 30000005
 }

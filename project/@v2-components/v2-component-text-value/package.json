@@ -22,19 +22,17 @@
       },
       {
         "valueArray": [
-            "text",
-            "icon"
+          "text",
+          "icon"
         ],
-
         "despArray": [
-            "文本",
-            "图标"
+          "文本",
+          "图标"
         ],
- 
         "type": "string_select",
         "desp": "值类型",
         "name": "type"
-    },
+      },
       {
         "type": "string_input",
         "name": "value",
@@ -43,19 +41,17 @@
       },
       {
         "valueArray": [
-            "text-value-col",
-            "text-value-row"
+          "text-value-col",
+          "text-value-row"
         ],
-
         "despArray": [
-            "竖向",
-            "横向"
+          "竖向",
+          "横向"
         ],
- 
         "type": "string_select",
         "desp": "布局",
         "name": "direction"
-    }
+      }
     ],
     "css": {
       "style": [
@@ -64,7 +60,6 @@
           "cssAttrs": "background-color width height color",
           "name": "title"
         },
-       
         {
           "desp": "值",
           "cssAttrs": "background-color width height color",
@@ -80,6 +75,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":30000006
+  "version": "6.0.1",
+  "index": 30000006
 }

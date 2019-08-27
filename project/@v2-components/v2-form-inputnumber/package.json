@@ -18,13 +18,13 @@
       {
         "name": "label",
         "desp": "标题",
-        "defaultValue":"标题",
+        "defaultValue": "标题",
         "type": "string_input"
       },
       {
         "name": "labelWitdh",
         "desp": "标题宽度",
-        "defaultValue":"80px",
+        "defaultValue": "80px",
         "type": "string_input"
       },
       {
@@ -44,13 +44,13 @@
       {
         "name": "value",
         "desp": "值",
-        "defaultValue":1,
+        "defaultValue": 1,
         "type": "string_input"
       },
       {
         "name": "disabled",
         "desp": "是否禁用",
-        "defaultValue":false,
+        "defaultValue": false,
         "type": "boolean"
       },
       {
@@ -62,64 +62,67 @@
       {
         "name": "min",
         "desp": "最小值",
-        "defaultValue":1,
+        "defaultValue": 1,
         "type": "string_input"
       },
       {
         "name": "max",
         "desp": "最大值",
-        "defaultValue":10,
+        "defaultValue": 10,
         "type": "string_input"
       },
       {
         "name": "step",
         "desp": "步幅",
-        "defaultValue":1,
+        "defaultValue": 1,
         "type": "string_input"
       },
       {
         "name": "precision",
         "desp": "精度",
-        "defaultValue":1,
+        "defaultValue": 1,
         "type": "string_input"
       }
     ],
-     "css": {
-       "style": [ {
-           "desp": "标题",
-           "cssAttrs": "font-size color font-weight",
-           "name": "label"
-         }
-       ],
-       "theme": [{
-        "desp": "类型选择",
-        "name": "inputType",
-        "valueArray": [
-          "",
-          "right",
-          "none"
-        ],
-        "despArray": [
-          "左右按钮",
-          "右侧按钮",
-          "没有按钮"
-        ]
-      },{
-        "desp": "尺寸选择",
-        "name": "size",
-        "valueArray": [
-          "",
-          "large",
-          "small"
-  
-        ],
-        "despArray": [
-          "默认",
-          "较大",
-          "较小"
-        ]
-      }]
-     }
+    "css": {
+      "style": [
+        {
+          "desp": "标题",
+          "cssAttrs": "font-size color font-weight",
+          "name": "label"
+        }
+      ],
+      "theme": [
+        {
+          "desp": "类型选择",
+          "name": "inputType",
+          "valueArray": [
+            "",
+            "right",
+            "none"
+          ],
+          "despArray": [
+            "左右按钮",
+            "右侧按钮",
+            "没有按钮"
+          ]
+        },
+        {
+          "desp": "尺寸选择",
+          "name": "size",
+          "valueArray": [
+            "",
+            "large",
+            "small"
+          ],
+          "despArray": [
+            "默认",
+            "较大",
+            "较小"
+          ]
+        }
+      ]
+    }
   },
   "keywords": [],
   "license": "ISC",
@@ -128,6 +131,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":20000002
+  "version": "6.0.1",
+  "index": 20000002
 }

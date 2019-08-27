@@ -18,13 +18,13 @@
       {
         "name": "label",
         "desp": "标题",
-        "defaultValue":"标题",
+        "defaultValue": "标题",
         "type": "string_input"
       },
       {
         "name": "labelWitdh",
         "desp": "标题宽度",
-        "defaultValue":"80px",
+        "defaultValue": "80px",
         "type": "string_input"
       },
       {
@@ -43,7 +43,7 @@
       },
       {
         "name": "type",
-        "defaultValue":"select",
+        "defaultValue": "select",
         "desp": "类型",
         "type": "string_select",
         "valueArray": [
@@ -58,37 +58,37 @@
       {
         "name": "value",
         "type": "string_input",
-        "defaultValue":"",
+        "defaultValue": "",
         "desp": "选择值"
       },
       {
         "name": "placeholder",
         "type": "string_input",
-        "defaultValue":"请选择",
+        "defaultValue": "请选择",
         "desp": "placeholder"
       },
       {
         "name": "range",
         "type": "boolean",
-        "defaultValue":false,
+        "defaultValue": false,
         "desp": "是否为时间范围选择"
       },
       {
         "name": "rangeSeparator",
         "type": "string_input",
-        "defaultValue":"中部文本",
+        "defaultValue": "中部文本",
         "desp": "时间范围中间文本"
       },
       {
         "name": "startPlaceholder",
         "type": "string_input",
-        "defaultValue":"起始文本",
+        "defaultValue": "起始文本",
         "desp": "时间范围起始文本"
       },
       {
         "name": "endPlaceholder",
         "type": "string_input",
-        "defaultValue":"结束文本",
+        "defaultValue": "结束文本",
         "desp": "时间范围结束文本"
       },
       {
@@ -96,7 +96,8 @@
         "desp": "是否禁填",
         "defaultValue": false,
         "type": "boolean"
-      },{
+      },
+      {
         "name": "isRequired",
         "desp": "是否必填",
         "defaultValue": false,
@@ -104,28 +105,31 @@
       }
     ],
     "css": {
-      "style": [ {
+      "style": [
+        {
           "desp": "标题",
           "cssAttrs": "font-size color font-weight",
           "name": "label"
         }
       ],
-      "theme": [{
-       "desp": "尺寸选择",
-       "name": "size",
-       "valueArray": [
-         "",
-         "medium",
-         "small",
-         "mini"
-       ],
-       "despArray": [
-         "较大",
-         "中等",
-         "小型",
-         "超小"
-       ]
-     }]
+      "theme": [
+        {
+          "desp": "尺寸选择",
+          "name": "size",
+          "valueArray": [
+            "",
+            "medium",
+            "small",
+            "mini"
+          ],
+          "despArray": [
+            "较大",
+            "中等",
+            "小型",
+            "超小"
+          ]
+        }
+      ]
     }
   },
   "keywords": [],
@@ -135,6 +139,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":20000008
+  "version": "6.0.1",
+  "index": 20000008
 }

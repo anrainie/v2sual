@@ -71,12 +71,10 @@
               "左"
             ]
           }
-        
         ]
       }
     ],
-     "css": {
-     }
+    "css": {}
   },
   "keywords": [],
   "license": "ISC",
@@ -85,6 +83,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":20000010
+  "version": "6.0.1",
+  "index": 20000010
 }
