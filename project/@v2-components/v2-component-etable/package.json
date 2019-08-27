@@ -14,144 +14,147 @@
     "version": 610000,
     "accept": "divCtn",
     "name": "可编辑表",
-    "option": [{
-      "type": "array",
-      "desp": "列定义",
-      "name": "col",
-      "hidden": false,
-      "defaultValue": "",
-      "valueArray": "",
-      "replaceTemp": true,
-      "attrInEachElement": [{
-          "defaultValue": "A列",
-          "type": "string_input",
-          "desp": "列名",
-          "name": "sTitle"
-        },
-        {
-          "defaultValue": false,
-          "type": "boolean",
-          "desp": "是否作为返回值",
-          "name": "isReturned"
-        },
-        {
-          "defaultValue": "",
-          "type": "string_input",
-          "desp": "列宽",
-          "name": "width",
-          "details": "默认列宽平分整个容器"
-        },
-        {
-          "defaultValue": "",
-          "valueArray": [
-            "text",
-            "img",
-            "href",
-            "btn",
-            "checkbox",
-            "select",
-            "date",
-            "password"
-          ],
-          "type": "string_select",
-          "desp": "列类型",
-          "name": "columnType",
-          "despArray": [
-            "文本",
-            "图片",
-            "链接",
-            "按钮",
-            "复选框",
-            "下拉框",
-            "日期",
-            "密码"
-          ]
-        },
-        {
-          "defaultValue": "apple,banana,orange",
-          "require": {
-            "columnType": [
-              "select"
+    "option": [
+      {
+        "type": "array",
+        "desp": "列定义",
+        "name": "col",
+        "hidden": false,
+        "defaultValue": "",
+        "valueArray": "",
+        "replaceTemp": true,
+        "attrInEachElement": [
+          {
+            "defaultValue": "A列",
+            "type": "string_input",
+            "desp": "列名",
+            "name": "sTitle"
+          },
+          {
+            "defaultValue": false,
+            "type": "boolean",
+            "desp": "是否作为返回值",
+            "name": "isReturned"
+          },
+          {
+            "defaultValue": "",
+            "type": "string_input",
+            "desp": "列宽",
+            "name": "width",
+            "details": "默认列宽平分整个容器"
+          },
+          {
+            "defaultValue": "",
+            "valueArray": [
+              "text",
+              "img",
+              "href",
+              "btn",
+              "checkbox",
+              "select",
+              "date",
+              "password"
+            ],
+            "type": "string_select",
+            "desp": "列类型",
+            "name": "columnType",
+            "despArray": [
+              "文本",
+              "图片",
+              "链接",
+              "按钮",
+              "复选框",
+              "下拉框",
+              "日期",
+              "密码"
             ]
           },
-          "type": "string_input",
-          "desp": "下拉选项名",
-          "name": "dropDownOption",
-          "details": "表示该下拉列下拉选项，传入字符串数组"
-        },
-        {
-          "defaultValue": "1,2,3",
-          "require": {
-            "columnType": [
-              "select"
-            ]
+          {
+            "defaultValue": "apple,banana,orange",
+            "require": {
+              "columnType": [
+                "select"
+              ]
+            },
+            "type": "string_input",
+            "desp": "下拉选项名",
+            "name": "dropDownOption",
+            "details": "表示该下拉列下拉选项，传入字符串数组"
           },
-          "valueArray": "",
-          "type": "string_input",
-          "desp": "下拉选项值",
-          "name": "dropDownValue"
-        },
-        {
-          "defaultValue": false,
-          "type": "boolean",
-          "desp": "是否只读",
-          "name": "readOnly",
-          "details": "设置当前列是否只读"
-        },
-        {
-          "defaultValue": "apple,banana",
-          "require": {
-            "hasReadOnly": true,
-            "columnType": [
-              "select"
-            ]
+          {
+            "defaultValue": "1,2,3",
+            "require": {
+              "columnType": [
+                "select"
+              ]
+            },
+            "valueArray": "",
+            "type": "string_input",
+            "desp": "下拉选项值",
+            "name": "dropDownValue"
           },
-          "type": "string_input",
-          "desp": "下拉选项中不可修改数据",
-          "name": "cantMod",
-          "details": "类定义如果是下拉框，且存在这些数据则该数据不可更改，数据间以英文逗号分割，单个数据末尾也要加逗号"
-        },
-        {
-          "defaultValue": false,
-          "require": {
-            "columnType": [
-              "select"
-            ]
+          {
+            "defaultValue": false,
+            "type": "boolean",
+            "desp": "是否只读",
+            "name": "readOnly",
+            "details": "设置当前列是否只读"
           },
-          "type": "boolean",
-          "desp": "是否有只读数据",
-          "name": "hasReadOnly"
-        },
-        {
-          "defaultValue": true,
-          "type": "boolean",
-          "desp": "是否可见",
-          "name": "isVisible"
-        },
-        {
-          "defaultValue": 30,
-          "require": {
-            "columnType": [
-              "img"
-            ]
+          {
+            "defaultValue": "apple,banana",
+            "require": {
+              "hasReadOnly": true,
+              "columnType": [
+                "select"
+              ]
+            },
+            "type": "string_input",
+            "desp": "下拉选项中不可修改数据",
+            "name": "cantMod",
+            "details": "类定义如果是下拉框，且存在这些数据则该数据不可更改，数据间以英文逗号分割，单个数据末尾也要加逗号"
           },
-          "type": "string_input",
-          "desp": "图片高度",
-          "name": "imgHeight"
-        },
-        {
-          "defaultValue": 30,
-          "require": {
-            "columnType": [
-              "img"
-            ]
+          {
+            "defaultValue": false,
+            "require": {
+              "columnType": [
+                "select"
+              ]
+            },
+            "type": "boolean",
+            "desp": "是否有只读数据",
+            "name": "hasReadOnly"
           },
-          "type": "string_input",
-          "desp": "图片宽度",
-          "name": "imgWidth"
-        }
-      ]
-    }]
+          {
+            "defaultValue": true,
+            "type": "boolean",
+            "desp": "是否可见",
+            "name": "isVisible"
+          },
+          {
+            "defaultValue": 30,
+            "require": {
+              "columnType": [
+                "img"
+              ]
+            },
+            "type": "string_input",
+            "desp": "图片高度",
+            "name": "imgHeight"
+          },
+          {
+            "defaultValue": 30,
+            "require": {
+              "columnType": [
+                "img"
+              ]
+            },
+            "type": "string_input",
+            "desp": "图片宽度",
+            "name": "imgWidth"
+          }
+        ]
+      }
+    ]
   },
   "keywords": [],
   "license": "ISC",
@@ -160,6 +163,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":30000004
+  "version": "6.0.1",
+  "index": 30000004
 }

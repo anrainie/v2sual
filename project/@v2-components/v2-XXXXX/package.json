@@ -20,28 +20,28 @@
         "name": "width",
         "desp": "容器宽度",
         "type": "variable_input",
-        "placeholder":"输入数值和单位",
+        "placeholder": "输入数值和单位",
         "defaultValue": "300px"
       },
       {
         "name": "height",
         "desp": "容器高度",
         "type": "variable_input",
-        "placeholder":"输入数值和单位",
+        "placeholder": "输入数值和单位",
         "defaultValue": "200px"
       },
       {
         "name": "background",
         "desp": "容器背景",
         "type": "variable_input",
-        "placeholder":"输入背景色",
+        "placeholder": "输入背景色",
         "defaultValue": "#0ff"
       },
       {
         "name": "thisClass",
         "desp": "容器类名",
         "type": "variable_input",
-        "placeholder":"输入类名",
+        "placeholder": "输入类名",
         "defaultValue": "v2XXXXX"
       }
     ],
@@ -66,6 +66,6 @@
     "path": "XXXXXEditor.vue",
     "name": "v2XXXXXEditor"
   },
-  "version": "6.0.0",
+  "version": "6.0.1",
   "index": 30000005
 }

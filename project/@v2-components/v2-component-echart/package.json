@@ -20,12 +20,10 @@
         "name": "configs",
         "defaultValue": "",
         "desp": "配置单",
-        "details":"编辑需要的样式，复制其配置单"
+        "details": "编辑需要的样式，复制其配置单"
       }
-    ], 
-    "css":{
-   
-    }
+    ],
+    "css": {}
   },
   "keywords": [],
   "license": "ISC",
@@ -34,6 +32,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":31000001
+  "version": "6.0.1",
+  "index": 31000001
 }

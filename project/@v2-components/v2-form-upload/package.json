@@ -18,13 +18,13 @@
       {
         "name": "label",
         "desp": "标题",
-        "defaultValue":"标题",
+        "defaultValue": "标题",
         "type": "string_input"
       },
       {
         "name": "labelWitdh",
         "desp": "标题宽度",
-        "defaultValue":"80px",
+        "defaultValue": "80px",
         "type": "string_input"
       },
       {
@@ -68,19 +68,19 @@
       {
         "name": "fileList",
         "type": "string_input",
-        "defaultValue":"",
+        "defaultValue": "",
         "desp": "选择的文件"
       },
       {
         "name": "action",
         "type": "string_input",
-        "defaultValue":"",
+        "defaultValue": "",
         "desp": "上传的地址"
       },
       {
         "name": "limitType",
         "type": "string_input",
-        "defaultValue":"image/jpeg,image/png",
+        "defaultValue": "image/jpeg,image/png",
         "desp": "文件格式限制"
       },
       {
@@ -116,19 +116,19 @@
       {
         "name": "handleRemove",
         "type": "string_input",
-        "defaultValue":"",
+        "defaultValue": "",
         "desp": "删除文件回调方法"
       },
       {
         "name": "btnText",
         "type": "string_input",
-        "defaultValue":"按钮文本",
+        "defaultValue": "按钮文本",
         "desp": "按钮文本"
       },
       {
         "name": "prompt",
         "type": "string_input",
-        "defaultValue":"提示文本",
+        "defaultValue": "提示文本",
         "desp": "提示文本"
       },
       {
@@ -136,16 +136,15 @@
         "desp": "是否禁填",
         "defaultValue": false,
         "type": "boolean"
-      },{
+      },
+      {
         "name": "isRequired",
         "desp": "是否必填",
         "defaultValue": false,
         "type": "boolean"
       }
     ],
-    "css":{
-      
-    }
+    "css": {}
   },
   "keywords": [],
   "license": "ISC",
@@ -154,6 +153,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":20000009
+  "version": "6.0.1",
+  "index": 20000009
 }

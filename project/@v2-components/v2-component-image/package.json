@@ -34,9 +34,7 @@
         "desp": "宽度"
       }
     ],
-    "css": {
-      
-    }
+    "css": {}
   },
   "keywords": [],
   "license": "ISC",
@@ -45,6 +43,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":30000006
+  "version": "6.0.1",
+  "index": 30000006
 }

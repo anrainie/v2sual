@@ -20,62 +20,60 @@
         "name": "width",
         "desp": "容器宽度",
         "type": "variable_input",
-        "placeholder":"示例: 200%",
+        "placeholder": "示例: 200%",
         "defaultValue": ""
       },
       {
         "name": "height",
         "desp": "容器高度",
         "type": "variable_input",
-        "placeholder":"示例: 200px",
+        "placeholder": "示例: 200px",
         "defaultValue": ""
       },
       {
         "name": "margin",
         "desp": "容器外边距",
         "type": "variable_input",
-        "placeholder":"示例: 10px",
+        "placeholder": "示例: 10px",
         "defaultValue": ""
       },
       {
         "name": "padding",
         "desp": "容器内边距",
         "type": "variable_input",
-        "placeholder":"示例: 10px",
+        "placeholder": "示例: 10px",
         "defaultValue": ""
       },
       {
         "name": "background",
         "desp": "容器背景",
         "type": "variable_input",
-        "placeholder":"示例: #fff",
+        "placeholder": "示例: #fff",
         "defaultValue": ""
       },
       {
         "name": "border",
         "desp": "容器边框",
         "type": "variable_input",
-        "placeholder":"示例: 1px solid #ccc",
+        "placeholder": "示例: 1px solid #ccc",
         "defaultValue": ""
       },
       {
         "name": "borderRadius",
         "desp": "容器圆角",
         "type": "variable_input",
-        "placeholder":"示例: 5px",
+        "placeholder": "示例: 5px",
         "defaultValue": ""
       },
       {
         "name": "boxShadow",
         "desp": "容器阴影",
         "type": "variable_input",
-        "placeholder":"示例: 1px 1px 5px #ccc",
+        "placeholder": "示例: 1px 1px 5px #ccc",
         "defaultValue": ""
       }
     ],
-    "css": {
-     
-    }
+    "css": {}
   },
   "keywords": [],
   "license": "ISC",
@@ -88,6 +86,6 @@
     "path": "orderCtnEditor.vue",
     "name": "v2EditorOrderCtn"
   },
-  "version": "6.0.0",
+  "version": "6.0.1",
   "index": 30000005
 }
