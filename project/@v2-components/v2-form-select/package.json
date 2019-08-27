@@ -14,6 +14,7 @@
     "version": 610000,
     "accept": "foundationRowCtn divCtn",
     "name": "下拉框",
+    "inputfield":["value","optionConfig"],
     "option": [
       {
         "name": "label",
@@ -74,7 +75,7 @@
         "name": "optionConfig",
         "desp": "下拉项",
         "defaultValue":"",
-        "type": "string_input"
+        "type": "databasket_input"
       },
       {
         "require":{
