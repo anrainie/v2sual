@@ -1,6 +1,6 @@
 <template>
   <div :class="widgetClass"  :style="digitrollStyle">
-    <DigitRoll :rollDigits="parseInt(model.digits)" :isPic='false' :mode="modeType"/>
+    <DigitRoll :rollDigits="rollDigits" :isPic='false' :mode="modeType"/>
   </div>
 
 </template>
@@ -11,21 +11,36 @@ export default {
   name: "v2-component-digitroll",
   data() {
     return {
-     modeType:''
+     modeType:'edit',
+     rollDigits:820133288
     };
+  },
+  watch:{
+    'model.digits':{
+      
+      handler(val){
+        this.rollDigits = parseInt(val)
+      }
+    }
   },
   computed:{
       digitrollStyle(){
-         this.model.commonStyle && (this.model.commonStyle['width']=(((parseInt(this.model.digits)+'').length*parseInt(this.model.dWidth))+200)+'px');
+         this.model.commonStyle && (this.model.commonStyle['width']=(((this.rollDigits+'').length*parseInt(this.model.dWidth))+200)+'px');
          this.model.commonStyle && (this.model.commonStyle['height']=this.model.dHeight||'160px');
-         return this.model.commonStyle ||{"width":(((parseInt(this.model.digits)+'').length*112)+200)+'px',"height":'160px'}
+         return this.model.commonStyle ||{"width":(((this.rollDigits+'').length*112)+200)+'px',"height":'160px'}
       }
   },
-  mounted(){
+  created(){
     if(this.$ArrowDown && this.$ArrowLeft && this.$Tab){
-      this.modeType = 'edit'
+      this.modeType = 'runtime'
+    }else{
+      this.modeType ='edit'
     }
-  console.log('mode',this.modeType);
+  },
+  mounted(){
+       debugger;
+        console.log('mode',this.model);
+      this.rollDigits = parseInt(this.model.digits);
   },
   components: { DigitRoll }
 };

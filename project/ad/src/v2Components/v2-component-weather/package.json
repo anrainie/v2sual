@@ -8,7 +8,7 @@
   "docs": {
     "belongTo": "aui",
     "icon": "iconkapian",
-    "type": "component",
+    "type": "project",
     "href": "v2-component-weather",
     "author": "chengengbi@agree.com.cn",
     "version": 610000,

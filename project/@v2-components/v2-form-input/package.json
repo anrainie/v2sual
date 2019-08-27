@@ -14,6 +14,7 @@
     "version": 610000,
     "accept": "foundationRowCtn divCtn",
     "name": "输入框",
+    "inputfield":["value"],
     "option": [
       {
         "name": "label",

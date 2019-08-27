@@ -39,6 +39,7 @@ export default {
   },
   watch: {
     "model.configs": {
+    
       handler(option) {
           if(this.currentData){
            this.analyzeLineChart();
@@ -46,6 +47,7 @@ export default {
           }
         
       },
+      
       deep:true
     },
     "model.configs.url":(url)=>{
@@ -66,7 +68,7 @@ export default {
           this.chart.setOption(this.vdaData);
         } else {
           this.chart = echarts.init(this.$refs._op_componentEchart_chart);
-debugger;
+
           this.chart.setOption(this.vdaData);
         }
     },
@@ -81,7 +83,6 @@ debugger;
             xAxis: Array.from(new Set(data.map(e => e[option.x]))),
             yAxis: {}
 		        };
-		  debugger;
          let  yAxis=echartsOption.yAxis;
       
           data.forEach(e => {

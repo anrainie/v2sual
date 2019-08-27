@@ -160,7 +160,7 @@
 
         },
         methods: {
-          openCustomEditor(widget) {
+          openCustomEditor(widget,callback) {
             let Comp = Vue.component(widget.model.customEditor);
             let comp = new Comp();
 
@@ -176,6 +176,20 @@
 
             this.showCustomEditor = true;
           },
+          openCustomIframeEditor(iframeSrc,callback) {
+         
+            let area = $(this.$refs.customEditorArea);
+            console.log(this.$refs.customEditorArea);
+
+            let content = $(`<div><iframe style="":src="${iframeSrc}"></iframe></div>`)
+            area.append(content);
+            comp.$store = widget.$store;
+            comp.wid = widget.wid;
+            comp.$mount(content[0]);
+            this.customEditor = comp;
+            callback && callback();
+            this.showCustomEditor = true;
+            },
           closeCustomEditor() {
             if (this.customEditor)
               this.customEditor.$destroy();

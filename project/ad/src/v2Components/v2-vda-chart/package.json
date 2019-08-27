@@ -8,12 +8,13 @@
   "docs": {
     "belongTo": "aui",
     "icon": "iconzhuzhuangtu",
-    "type": "component",
+    "type": "project",
     "href": "v2-vda-chart",
     "author": "zhanghaixian@agree.com.cn",
     "version": 610000,
     "accept": "divCtn",
     "name": "vda图表",
+    "customEditor": "v2EditorVdaChart",
     "option": [
       {
         "type": "btn_popover",
@@ -27,6 +28,10 @@
     "css":{
    
     }
+  },
+  "editor": {
+    "path": "VDAChartEditor.vue",
+    "name": "v2EditorVdaChart"
   },
   "keywords": [],
   "license": "ISC",

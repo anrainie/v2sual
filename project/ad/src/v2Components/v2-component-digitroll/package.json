@@ -8,7 +8,7 @@
   "docs": {
     "belongTo": "aui",
     "icon": "iconanniu",
-    "type": "component",
+    "type": "project",
     "href": "v2-component-digitroll",
     "author": "zhanghaixian@agree.com.cn",
     "version": 610000,
