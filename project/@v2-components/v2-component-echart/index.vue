@@ -36,11 +36,16 @@ export default {
       };
       x.height = (x.height != "" && x.height) || "400px";
       x.width = (x.width != "" && x.width) || "400px";
-      this.chart&&this.chart.resize&&this.chart.resize();
       return x;
     }
   },
   watch: {
+    "mode.commonStyle.height"(){
+      this.chart&&this.chart.resize&&this.chart.resize();
+    },
+    "mode.commonStyle.width"(){
+      this.chart&&this.chart.resize&&this.chart.resize();
+    },
     "model.configs": {
       handler(val) {
         this.configChanged(val);
