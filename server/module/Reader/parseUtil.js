@@ -130,7 +130,7 @@ let appendComponent = function(parent,index,element){
         eCom.setAttribute(':class',customClass);
     }
     //自定义组件设置:style="model.commonStyle",由外部传进
-    if(child.cptpath){
+    if(child&&child.cptpath){
         let commonStyle = "";
         for(let key in child.commonStyle){
             commonStyle += key+":"+child.commonStyle[key]+";";
