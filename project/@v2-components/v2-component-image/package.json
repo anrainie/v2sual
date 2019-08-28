@@ -20,18 +20,6 @@
         "name": "src",
         "defaultValue": "",
         "desp": "路径"
-      },
-      {
-        "type": "string_input",
-        "name": "v2Height",
-        "defaultValue": "100%",
-        "desp": "高度"
-      },
-      {
-        "type": "string_input",
-        "name": "v2Width",
-        "defaultValue": "100%",
-        "desp": "宽度"
       }
     ],
     "css": {}

@@ -230,11 +230,9 @@
               customClass: "",
               customEditor: undefined,
               events: {},
-              v2Height: "100%",
               href: "v2-component-image",
               src: "",
-              style: {},
-              v2Width: "100%",
+              style: {}, 
               __capacity: "1",
               __loopTarget: "",
               __type: "",
@@ -246,7 +244,9 @@
 
 
             parent.$el.addEventListener('dragenter', e => {
-              if (e && e.dataTransfer.types && e.dataTransfer.types[0] === 'Files') {
+            
+              if ((e && e.dataTransfer.types && e.dataTransfer.types[0] === 'Files' )||(e && e.dataTransfer.types && e.dataTransfer.types[3] === 'v2imgsrc')) {
+               
                 editor.startCreateElement({
                   element: imgJson,
                   desp: undefined,
@@ -263,6 +263,7 @@
               event.stopPropagation();
               event.preventDefault();
             });
+         
 
             $domWindow.addEventListener('dragover', event => {
               event.stopPropagation();
@@ -284,8 +285,23 @@
               event.stopPropagation();
               event.preventDefault();
               // $(this.$refs.editor.$el).trigger('mouseup');
-              if (event && event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files
-                .length) {
+          
+              if(event.dataTransfer.getData("v2ImgSrc")){
+                  let src = event.dataTransfer.getData("v2ImgSrc")
+                   self.$refs.editor.$performRequest('applyCreate', {
+                        adImgDrog: true,
+                        afterCreate: model => {
+                         
+                          model.src = `img/${src}`;
+                          if (!model.commonStyle) model.commonStyle = {}
+                          model.commonStyle.position = 'absolute';
+                          model.commonStyle.top = event.offsetY - (parseInt(model.height) / 2);
+                          model.commonStyle.left = event.offsetX - (parseInt(model.width) / 2);
+                        }
+                      });
+            
+              }else if ((event && event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files
+                .length)) {
                 let data = event.dataTransfer.files[0];
                 let name = data.name;
                 let type = data.type;
