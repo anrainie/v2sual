@@ -20,6 +20,7 @@
       window.jQuery = window.parent.jQuery;
       window.Vue = window.parent.Vue;
       window.Vuex = window.parent.Vuex;
+      window.parent.THREE = window.THREE;
 
       var id = getUrlParam("id");
       var parent = window.parent.__dataPool[id];
@@ -335,6 +336,9 @@
 
 <body style="box-sizing: border-box;">
   <div></div>
+
+  <script src="../js/three.js"></script> 
+  <script src="../js/OrbitControls.js"></script> 
 </body>
 
 </html>

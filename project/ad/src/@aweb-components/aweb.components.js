@@ -42,6 +42,8 @@ import v2MobileRadio  from '@v2-components/v2-mobile-radio';
 import v2ComponentWeather  from '../v2Components/v2-component-weather'
 import v2VdaChart  from '../v2Components/v2-vda-chart'
 import v2ComponentDigitroll from '../v2Components/v2-component-digitroll'
+import v2Vda3dpie from '../v2Components/v2-vda-3dpie'
+
           import animateKill  from '@v2-pipe/animateKill';
 import close  from '@v2-pipe/close';
 import animate  from '@v2-pipe/animate';
@@ -109,5 +111,6 @@ import vda from '../../pipe/pipe.vda.js'
 	v2MobileRadio,
 	v2ComponentWeather,
 	v2VdaChart,
-	v2ComponentDigitroll
+	v2ComponentDigitroll,
+	v2Vda3dpie
           }
