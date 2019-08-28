@@ -16,7 +16,7 @@
         "ad": "node  ./server/server.js ide=ad sh=http://localhost sp=7003 id=ad name=广告投放 ch=http://localhost cp=3005 ocp=3005 base=./project/ad pipe=./pipe component=./src/v2Components  preview=http://localhost:7033",
         "installPlatform": "npm i koa socket.io-client rimraf path fs koa-router rimraf urllib compressing mkdirp request child_process",
         "platform": "node ./server/platform.js sh=http://localhost sp=7003 id=netbank name=网银 ch=http://localhost cp=3000 ocp=3000 base=./project/runtime pipe=../pipe component=../@v2-components static=../v2sual/sources preview=http://localhost:7007",
-        "vda": "node  ./server/server.js ide=ad sh=http://localhost sp=7003 id=vda name=VDA大屏 ch=http://localhost cp=3006 ocp=3006 base=./project/ad pipe=./pipe component=./src/v2Components preview=http://localhost:7037"
+        "vda": "node  ./server/server.js ide=ad sh=http://localhost sp=7003 id=vda name=VDA大屏 ch=http://localhost cp=3006 ocp=3006 base=./project/ad pipe=./pipe component=./src/v2Components preview=http://localhost:7034"
     },
     "dependencies": {
         "@handsontable/vue": "^3.1.0",
