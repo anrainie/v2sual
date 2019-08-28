@@ -58,23 +58,7 @@ export default {
     },
     createPanel(name) {
         return axios.post(`${host}/${createPanelUrl}`, qs.stringify({
-            data: {
-                "treeData": {
-                    "treeNodeName": name,
-                    "treePNodeName": "AWEB测试"
-                },
-                "panelData": {
-                    "name": name,
-                    "id": "",
-                    "visualConfPanelCharts": [{ 
-                        "id": "A599735F-CE75-4D22-AEE0-8911C46F2C0F", 
-                        "name": "未命名组件", 
-                        "type": "card", 
-                        "config": "{\"row\":0,\"x\":0,\"col\":0,\"y\":0,\"sizex\":10,\"width\":10,\"sizey\":71,\"height\":10,\"uuid\":\"A599735F-CE75-4D22-AEE0-8911C46F2C0F\",\"type\":\"card\",\"name\":\"未命名组件\",\"componentInfo\":{\"option\":[{\"row\":0,\"x\":0,\"col\":0,\"y\":0,\"sizex\":48,\"width\":48,\"sizey\":57,\"height\":48,\"uuid\":\"338F1C59-9F3F-4995-9BCF-17283A62B869\",\"type\":null,\"name\":\"未命名组件\",\"componentInfo\":{\"option\":{},\"config\":{}}}],\"config\":{\"backgroundColor\":\"\"}}}", 
-                        "pic": "" 
-                    }]
-                }
-            },
+            data: {"treeData":{"treeNodeName":name,"treePNodeName":"AWEB测试"},"panelData":{"name":name,"id":"","visualConfPanelCharts":[]}},
             token: token
         }))
     },
