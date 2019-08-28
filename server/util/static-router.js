@@ -30,7 +30,7 @@ async function toSend(ctx, dir, router) {
     try{
         const index = (router && ctx.request.url.lastIndexOf(router) +( router.length))||0
         const fileUrl = ctx.request.url.substring(index)
-        let filePath = Path.join(dir, fileUrl)
+        let filePath = Path.join(dir, decodeURIComponent(fileUrl))
         if (filePath.indexOf('?') !== -1) {
             filePath = filePath.split('?')[0];
         }
@@ -48,6 +48,7 @@ async function toSend(ctx, dir, router) {
             await send(ctx, filePath, { root: '/' });
         }
     }catch(e){
+        console.log(e);
         return new Promise(r=>{
             ctx.body = 'Not Found';
             r();
