@@ -49,16 +49,6 @@ export default {
       },
       
       deep:true
-    },
-    "model.configs.url":(url)=>{
-
-      // window.pipe.vda.data(url).then(res => {
-          //const fakeData =res.content;//真数据
-          const fakeData =itemData.content;//假数据
-           this.currentData = fakeData;
-           this.analyzeLineChart();
-           this.updateChart();
-        // });
     }
   },
   methods: {
