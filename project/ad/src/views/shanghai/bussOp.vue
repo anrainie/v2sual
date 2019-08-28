@@ -236,62 +236,131 @@ ctx.$store.commit("registerBind",{ vueObj:this, data:this.todayChart, dataStr:"t
                   
                 },
 
-            };
-        </script>
+    /**bind**/ ctx.$store.commit("registerBind", {
+      vueObj: this,
+      data: this.tradeMeConfig,
+      dataStr: "tradeMeConfig",
+      wid: 1566908349715,
+      modelKey: "tradeMeConfig"
+    });
+    ctx.$store.commit("registerBind", {
+      vueObj: this,
+      data: this.tradeMeConfig,
+      dataStr: "tradeMeConfig",
+      wid: 1566908369128,
+      modelKey: "tradeMeConfig"
+    });
+    ctx.$store.commit("registerBind", {
+      vueObj: this,
+      data: this.tradeMeConfig,
+      dataStr: "tradeMeConfig",
+      wid: 1566908545220,
+      modelKey: "tradeMeConfig"
+    });
+    ctx.$store.commit("registerBind", {
+      vueObj: this,
+      data: this.banksTransConfig,
+      dataStr: "banksTransConfig",
+      wid: 1566909477047,
+      modelKey: "configs"
+    });
+    ctx.$store.commit("registerBind", {
+      vueObj: this,
+      data: this.userAccDetail,
+      dataStr: "userAccDetail",
+      wid: 1566910292371,
+      modelKey: "configs"
+    });
+    ctx.$store.commit("registerBind", {
+      vueObj: this,
+      data: this.todayChart,
+      dataStr: "todayChart",
+      wid: 1566910838928,
+      modelKey: "configs"
+    }); /**bind over**/
+  },
+  beforeMount() {
+    let ctx = this;
+  },
+  mounted() {
+    let ctx = this;
+  },
+  beforeUpdate() {
+    let ctx = this;
+  },
+  updated() {
+    let ctx = this;
+  },
+  beforeDestroy() {
+    let ctx = this;
+  },
+  destroyed() {
+    let ctx = this;
+  },
+  deactivated() {
+    /**页面切出**/
+    let ctx = this;
+  },
+  activated() {
+    /**页面切入**/
+    let ctx = this;
+  }
+};
+</script>
 <style lang="scss">
-.s_title1{
-    font-size:16px;
-    font-family:RTWS YueGothic G0v1;
-    font-weight:400;
-    color:rgba(211,231,245,1);
+.s_title1 {
+  font-size: 16px;
+  font-family: RTWS YueGothic G0v1;
+  font-weight: 400;
+  color: rgba(211, 231, 245, 1);
 }
 
-.more_detail{
-    font-size:14px;
-font-family:RTWS YueGothic G0v1;
-font-weight:400;
-color:rgba(153,197,255,1);
+.more_detail {
+  font-size: 14px;
+  font-family: RTWS YueGothic G0v1;
+  font-weight: 400;
+  color: rgba(153, 197, 255, 1);
 }
 
-.s_num{
-    font-size:20px;
-font-family:RTWS YueGothic G0v1;
-font-weight:400;
-color:rgba(239,254,255,1);
+.s_num {
+  font-size: 20px;
+  font-family: RTWS YueGothic G0v1;
+  font-weight: 400;
+  color: rgba(239, 254, 255, 1);
 }
-.s_num_desc{
-    font-size:16px;
-font-family:RTWS YueGothic G0v1;
-font-weight:400;
-color:rgba(172,207,255,1);
+.s_num_desc {
+  font-size: 16px;
+  font-family: RTWS YueGothic G0v1;
+  font-weight: 400;
+  color: rgba(172, 207, 255, 1);
 }
-.h1_number{
-    font-size:64px;
-font-family:RTWS YueGothic G0v1;
-font-weight:400;
-color:rgba(229,247,255,1);
+.h1_number {
+  font-size: 64px;
+  font-family: RTWS YueGothic G0v1;
+  font-weight: 400;
+  color: rgba(229, 247, 255, 1);
 }
-.lastMonth1{
-    background:rgba(255,66,76,1);
-    border-radius:4px;
-    padding:5px 10px;
-    font-size:18px;
-font-family:RTWS YueGothic G0v1;
-font-weight:400;
-color:rgba(255,255,255,1);
+.lastMonth1 {
+  background: rgba(255, 66, 76, 1);
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 18px;
+  font-family: RTWS YueGothic G0v1;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
 }
 
-.lastMonth2{
-    background:rgba(22,160,96,1);
-    border-radius:4px;
-    padding:5px 10px;
-    font-size:18px;
-font-family:RTWS YueGothic G0v1;
-font-weight:400;
-color:rgba(255,255,255,1);
+.lastMonth2 {
+  background: rgba(22, 160, 96, 1);
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 18px;
+  font-family: RTWS YueGothic G0v1;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
 }
-.s_line{
-    border-top:2px dashed #4BA1F1;
-    height:10px;
+.s_line {
+  border-top: 2px dashed #4ba1f1;
+  height: 10px;
 }
 </style>

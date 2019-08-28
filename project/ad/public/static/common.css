@@ -796,3 +796,60 @@ position: absolute; */
 }
 
 /*美化可切换tab样式 End*/
+
+/*IDE样式*/
+.s_title1{
+  font-size:16px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight:400;
+  color:rgba(211,231,245,1);
+}
+
+.more_detail{
+  font-size:14px;
+font-family:RTWS YueGothic G0v1;
+font-weight:400;
+color:rgba(153,197,255,1);
+}
+
+.s_num{
+  font-size:20px;
+font-family:RTWS YueGothic G0v1;
+font-weight:400;
+color:rgba(239,254,255,1);
+}
+.s_num_desc{
+  font-size:16px;
+font-family:RTWS YueGothic G0v1;
+font-weight:400;
+color:rgba(172,207,255,1);
+}
+.h1_number{
+  font-size:64px;
+font-family:RTWS YueGothic G0v1;
+font-weight:400;
+color:rgba(229,247,255,1);
+}
+.lastMonth1{
+  background:rgba(255,66,76,1);
+  border-radius:4px;
+  padding:5px 10px;
+  font-size:18px;
+font-family:RTWS YueGothic G0v1;
+font-weight:400;
+color:rgba(255,255,255,1);
+}
+
+.lastMonth2{
+  background:rgba(22,160,96,1);
+  border-radius:4px;
+  padding:5px 10px;
+  font-size:18px;
+font-family:RTWS YueGothic G0v1;
+font-weight:400;
+color:rgba(255,255,255,1);
+}
+.s_line{
+  border-top:2px dashed #4BA1F1;
+  height:10px;
+}
