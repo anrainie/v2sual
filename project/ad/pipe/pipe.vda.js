@@ -58,7 +58,7 @@ export default {
     },
     createPanel(name) {
         return axios.post(`${host}/${createPanelUrl}`, qs.stringify({
-            data: {"treeData":{"treeNodeName":name,"treePNodeName":"AWEB测试"},"panelData":{"name":name,"id":"","visualConfPanelCharts":[]}},
+            data: JSON.stringify({"treeData":{"treeNodeName":name,"treePNodeName":"AWEB测试"},"panelData":{"name":name,"id":"","visualConfPanelCharts":[]}}),
             token: token
         }))
     },
