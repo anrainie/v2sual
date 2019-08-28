@@ -127,11 +127,11 @@ const dataSource = {
    proxy: config.dataSource.proxy.map(ds => {
       let target = ds.target
       if (ds.source === '/dvms' || ds.source === '/../vda') {
-        target = VDA_API
+        target = VDA_API || ds.target
       }
       return {
         ...ds,
-        target
+        target 
       }
   })
 }
