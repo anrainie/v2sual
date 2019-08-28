@@ -15,9 +15,8 @@ export default {
   data() {
     return {
       chart: null,
-      error: false,
-      currentData:{},
-      vdaData:{}
+  
+      threeInterval:null
     };
   },
   methods: {
@@ -27,7 +26,7 @@ export default {
               var data = option.data;
               var radius = option.itemStyle.radius || 20;
               var height = option.itemStyle.height || 100;
-debugger;
+
               var scene = new THREE.Scene();
               var camera = new THREE.PerspectiveCamera(75, option.width / option.height, 1, 1000);
               camera.position.x = 100;
@@ -184,7 +183,7 @@ debugger;
           });
 
           // 定时刷新数据
-          setInterval(() => {
+          this.threeInterval = setInterval(() => {
             var randomValue = [];
             var total = 0
             do{
@@ -204,6 +203,10 @@ debugger;
             });
             console.log('随机数据：'+randomValue);
           }, 1000)
+  },
+  destroyed(){
+    console.log('销毁3d')
+    clearInterval(this.threeInterval)
   }
 };
 </script>
