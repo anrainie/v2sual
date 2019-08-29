@@ -71,6 +71,10 @@ class Pipe {
         {
           desp: "接口",
           item: []
+        },
+        {
+          desp: "复合数据源",
+          item:[]
         }
 
         ]
@@ -122,6 +126,9 @@ class Pipe {
             case "api":
               res[7].item.push(obj);
               break;
+              case "compositeSource":
+                res[8].item.push(obj);
+                break;
             default:
               break;
           }
