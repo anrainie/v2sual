@@ -48,9 +48,7 @@
                 <el-breadcrumb separator="/">
                   <el-breadcrumb-item v-for="l in label" :key="l.id">{{l.label}}</el-breadcrumb-item>
                 </el-breadcrumb>
-                <div class="switchable-ctn-editor-btn-group">
-                  <el-button size="mini" type="text" @click="closeCustomEditor" title="退出编辑" ><i class="ideicon iconfanhui"></i></el-button>  
-                </div>
+              
               </div>
               <div ref="customEditorArea" ></div>
             </div>
@@ -194,10 +192,6 @@
           closeCustomEditor() {
             if (this.customEditor && !this.loadIframe){
               this.customEditor.$destroy();
-            }else{
-          
-            
-              this.customEditor.updateChart && this.customEditor.updateChart();
             }
             
             let area = $(this.$refs.customEditorArea);
