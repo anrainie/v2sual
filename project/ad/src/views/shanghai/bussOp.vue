@@ -217,7 +217,7 @@ banksTransConfig:{
             },
         },
     ]
-};
+}
 ,
 userAccDetail:{
     backgroundColor:'',
@@ -504,7 +504,7 @@ todayChart:{
             },
           }
     ]
-};
+}
 ,
 tradeMeConfig2:{
     backgroundColor:'',
