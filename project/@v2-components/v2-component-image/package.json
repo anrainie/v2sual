@@ -20,6 +20,11 @@
         "name": "src",
         "defaultValue": "",
         "desp": "路径"
+      },{
+        "defaultValue": false,
+        "type": "boolean",
+        "name": "fixation",
+        "desp": "固定原尺寸"
       }
     ],
     "css": {}
