@@ -1,6 +1,6 @@
 <template>
   <div data-widget-type="aweb4Calendar" class="aweb4-calendar" :class="widgetClass" :style="model.commonStyle" >
-    <el-tabs v-model="selectedMonth">
+    <el-tabs v-model="selectedMonth" @tab-click="handleClick">
       <el-tab-pane
         v-for="month in range"
         :key="month"
@@ -15,7 +15,7 @@
             <!--不是本月-->
             <div :class="{'other-month':item.disabled}">
               <i></i>
-              <span>{{ item.day.getDate() }}</span>
+              <span @click="speakDate(item)">{{ item.day.getDate() }}</span>
             </div>
           </li>
         </ul>
@@ -68,6 +68,17 @@ export default {
     this.selectedMonth = this.genMonthLabel(0);
   },
   methods: {
+    handleClick(tab, event) {
+      alert(this.selectedMonth)
+      console.log(tab, event);
+    },
+    speakDate(item) {
+      // alert(item.day)
+      console.log(item);
+      console.log(item.day.getFullYear());
+      console.log(item.day.getMonth() + 1);
+      console.log(item.day.getDate());
+    },
     formatMonthLabel(month) {
       return this.language.indexOf("zh") !== -1
         ? `${month}月`
