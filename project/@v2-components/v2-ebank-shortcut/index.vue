@@ -75,6 +75,7 @@ export default {
   padding: 5px;
   min-width: 50px;
   max-width: 200px;
+  box-sizing: border-box;
   text-align: center;
   cursor: pointer;
 
