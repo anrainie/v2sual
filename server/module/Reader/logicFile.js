@@ -248,6 +248,14 @@ let bindData = function (logic, mapping) {
 
 //格式化数据
 let formatData = function (val) {
+
+  try {
+    let _x;
+    eval("_x=" + val)
+    return val;
+  } catch (e) {
+    // console.error(e)
+  }
   var reg = new RegExp(/^[0-9]*$/);
   //判断数据类型,根据类型格式化
   if (val.startsWith("'") || val.startsWith('"')) {
@@ -271,7 +279,7 @@ let createData = function (data) {
     //格式化data
     let val = this.formatData(data[i]);
 
-    arr.push(`${i}:${val === "" ? '""' : val}`);
+    arr.push(`${i}:${val}`);
   }
   return arr;
 };
