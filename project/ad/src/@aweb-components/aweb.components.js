@@ -1,4 +1,4 @@
-        
+
         import v2ComponentBtn  from '@v2-components/v2-component-btn';
 import v2ComponentCalendar  from '@v2-components/v2-component-calendar';
 import v2ComponentCard  from '@v2-components/v2-component-card';
@@ -47,7 +47,8 @@ import v2ComponentWeather  from '../v2Components/v2-component-weather';
 import v2Vda3dpie  from '../v2Components/v2-vda-3dpie';
 import v2VdaChart  from '../v2Components/v2-vda-chart';
 import v2ComponentDigitroll  from '../v2Components/v2-component-digitroll'
-  
+import v2VdaPrettyGlobal from '../v2Components/v2-vda-pretty-global'
+
         import animate  from '../../../pipe/animate';
 import animateKill  from '../../../pipe/animateKill';
 import filter  from '../../../pipe/filter';
@@ -60,7 +61,7 @@ import map  from '../../../pipe/map';
 import mapping  from '../../../pipe/mapping';
 import open  from '../../../pipe/open';
 import vda  from '../../../pipe/vda'
-  
+
         let app = {
           animate,
 	animateKill,
@@ -75,9 +76,9 @@ import vda  from '../../../pipe/vda'
 	open,
 	vda
         };
-  
+
         window.pipe = app;
-  
+
         export default {
           v2ComponentBtn,
 	v2ComponentCalendar,
@@ -126,5 +127,6 @@ import vda  from '../../../pipe/vda'
 	v2ComponentWeather,
 	v2Vda3dpie,
 	v2VdaChart,
-	v2ComponentDigitroll
+	v2ComponentDigitroll,
+  v2VdaPrettyGlobal
         }

@@ -15,8 +15,7 @@
     "accept": "foundationRowCtn divCtn",
     "name": "下拉框",
     "inputfield": [
-      "value",
-      "optionConfig"
+      {"name":"value","desp":"选中值"}
     ],
     "option": [
       {
