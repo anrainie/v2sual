@@ -1,0 +1,69 @@
+{
+  "_from": "@v2-pipe/getExcelData@^6.0.0",
+  "_id": "@v2-pipe/getExcelData@6.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-PrMryeKHhMy0bF6JUchdsUOTrTY=",
+  "_location": "/@v2-pipe/getExcelData",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "@v2-pipe/getExcelData@^6.0.0",
+    "name": "@v2-pipe/getExcelData",
+    "escapedName": "@v2-pipe%2fgetExcelData",
+    "scope": "@v2-pipe",
+    "rawSpec": "^6.0.0",
+    "saveSpec": null,
+    "fetchSpec": "^6.0.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://npm.awebide.com/@v2-pipe/getExcelData/download/@v2-pipe/getExcelData-6.0.0.tgz",
+  "_shasum": "3eb32bc9e28784ccb46c5e8951c85db14393ad36",
+  "_spec": "@v2-pipe/getExcelData@^6.0.0",
+  "_where": "E:\\v2sual\\project\\ad",
+  "bundleDependencies": false,
+  "category": "DataSource",
+  "dependencies": {
+    "axios": "^0.18.0"
+  },
+  "deprecated": false,
+  "description": "从EXCEL获取数据",
+  "docs": {
+    "desp": "从Excel获取数据",
+    "name": "pipe.getExcelData",
+    "belongTo": "function",
+    "params": [
+      {
+        "name": "params",
+        "desp": "参数",
+        "type": "string",
+        "necessary": true,
+        "defaultValue": ""
+      },
+      {
+        "name": "params2",
+        "desp": "参数2",
+        "type": "string",
+        "necessary": true,
+        "defaultValue": ""
+      }
+    ],
+    "hasReturn": true,
+    "returnValue": {
+      "name": "data",
+      "desp": "返回数据",
+      "details": "",
+      "type": "array",
+      "defaultValue": ""
+    },
+    "category": "dataSource",
+    "label": "excel",
+    "labelType": "excel",
+    "icon": "icondanfangfa"
+  },
+  "main": "index.js",
+  "name": "@v2-pipe/getExcelData",
+  "version": "6.0.0"
+}

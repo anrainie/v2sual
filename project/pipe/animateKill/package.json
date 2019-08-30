@@ -1,0 +1,55 @@
+{
+  "_from": "@v2-pipe/animateKill@^6.0.0",
+  "_id": "@v2-pipe/animateKill@6.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-RY0tJqeYXO1boft39BkEmsZ1XiM=",
+  "_location": "/@v2-pipe/animateKill",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "@v2-pipe/animateKill@^6.0.0",
+    "name": "@v2-pipe/animateKill",
+    "escapedName": "@v2-pipe%2fanimateKill",
+    "scope": "@v2-pipe",
+    "rawSpec": "^6.0.0",
+    "saveSpec": null,
+    "fetchSpec": "^6.0.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://npm.awebide.com/@v2-pipe/animateKill/download/@v2-pipe/animateKill-6.0.0.tgz",
+  "_shasum": "458d2d26a7985ced5ba1fb77f419049ac6755e23",
+  "_spec": "@v2-pipe/animateKill@^6.0.0",
+  "_where": "E:\\v2sual\\project\\ad",
+  "bundleDependencies": false,
+  "category": "自定义",
+  "deprecated": false,
+  "description": "结束动画",
+  "docs": {
+    "desp": "结束动画",
+    "name": "animateKill",
+    "belongTo": "function",
+    "params": [
+      {
+        "name": "element",
+        "desp": "元素",
+        "type": "string",
+        "necessary": true,
+        "defaultValue": ""
+      }
+    ],
+    "hasReturn": true,
+    "returnValue": {
+      "name": "state",
+      "desp": "状态",
+      "details": "",
+      "type": "string",
+      "defaultValue": "animationkilled"
+    }
+  },
+  "main": "index.js",
+  "name": "@v2-pipe/animateKill",
+  "version": "6.0.0"
+}
