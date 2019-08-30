@@ -50,6 +50,13 @@ Preview.consume(platform, config.module.preview.consumption, config.runtime.base
 app.use(previeRouter.routes());
 
 
+//资源市场组件库
+const componentStore = require('./module/componentStore');
+
+// newProject.consume(platform,config.module.project.consumption);
+
+const componentStoreRouter = componentStore.router(config.module.componentStore.http);
+app.use(componentStoreRouter.routes());
 
 
 //预览静态路由(静态代理要在数据代理之后)
@@ -69,6 +76,9 @@ newProject.consume(platform,config.module.project.consumption);
 
 const projectRouter = newProject.router(config.module.project.http);
 app.use(projectRouter.routes());
+
+
+
 
 //异常处理
 app.on("error", (err, ctx) => console.log(new Date(), ":", err));

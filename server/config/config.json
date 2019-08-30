@@ -118,6 +118,17 @@
             "http":{
                
             }
+        },
+        "componentStore":{
+            "consumption": {
+                
+            },
+            "http":{
+               "/v1/component/list":"getComponentList",
+               "/v1/component/opt":"componentOpt",
+               "/v1/component/img":"imgList"
+            },
+            "server":"https://www.iosicongallery.com"
         }
     },
     "static": [
@@ -178,6 +189,16 @@
                     "v1/vda": "vda"
                 },
                 "logLevel": "debug"
+            },{
+                "name":"随机图标库",
+                "source":"/icons",
+                "target":"https://www.iosicongallery.com/",
+                "t":"https://www.iosicongallery.com/icons/fly-this-flight-control-tower-2019-04-19/128.png",
+                "changeOrigin":true,
+                "pathRewrite":{
+                    "v1/ds/icons":""
+                },
+                "logLevel":"debug"
             }
 
         ]
