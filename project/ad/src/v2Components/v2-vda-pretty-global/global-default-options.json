@@ -1,0 +1,66 @@
+{
+  "tooltip": {},
+  "globe": {
+    "baseTexture": "earth.jpg",
+    "displacementScale": 0.1,
+    "shading": "color",
+    "globeOuterRadius": 130,
+    "globeRadius": 100,
+    "viewControl": {
+      "distance": 1000,
+      "minDistance": 40,
+      "maxDistance": 400,
+      "panSensitivity": 1,
+      "orthographicSize": 50,
+      "maxOrthographicSize": 400,
+      "minOrthographicSize": 20,
+      "center": [ 0, 80, 0 ],
+      "autoRotate": false,
+      "animationDurationUpdate": 3000,
+      "damping": 0.8,
+      "targetCoord": [-121.48, -31.8]
+    },
+    "light": {
+      "ambient": {
+        "intensity": 0.1
+      },
+      "main": {
+        "intensity": 1.5
+      }
+    },
+    "layers": []
+  },
+  "visualMap": {
+    "max": 60,
+    "calculable": true,
+    "realtime": true,
+    "inRange": {
+      "color": [
+        "#313695",
+        "#4575b4",
+        "#74add1",
+        "#abd9e9",
+        "#e0f3f8",
+        "#ffffbf",
+        "#fee090",
+        "#fdae61",
+        "#f46d43",
+        "#d73027",
+        "#a50026"
+      ]
+    },
+    "outOfRange": {
+      "colorAlpha": 0
+    }
+  },
+  "series": [
+    {
+      "type": "bar3D",
+      "coordinateSystem": "globe",
+      "shading": "color",
+      "data": [],
+      "barSize": 1,
+      "minHeight": 0.2
+    }
+  ]
+}
