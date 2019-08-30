@@ -28,8 +28,8 @@
         "type": "boolean"
       }
     ],
-    "css":{
-      "style":[
+    "css": {
+      "style": [
         {
           "desp": "文本",
           "cssAttrs": "font-family  font-weight font-style text-decoration line-height width height",
@@ -45,6 +45,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":30000002
+  "version": "6.0.1",
+  "index": 30000002
 }

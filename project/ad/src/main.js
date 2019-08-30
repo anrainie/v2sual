@@ -8,14 +8,14 @@ import ElementUI from 'element-ui'
 import '../theme/index.css'
 import './api/index.js';
 import  router from './router'
-import Lib from  './lib'
+import Lib from  '@v2-lib/vue.spa.plugin'
 import ideLib from '@v2-lib/v2sual'
 import store from './store'
 import Vant from 'vant';
 import 'vant/lib/index.css';
 import $ from "jquery";
 import { getbrotherPageList } from '@/api/api.js'
-import {addTabsRoutes} from '@/lib/router'
+import {addTabsRoutes} from '@v2-lib/vue.spa.plugin/router'
 
 Vue.use(Lib)
 Vue.use(ideLib)
@@ -51,41 +51,59 @@ router.beforeEach((to, from, next) => {
 
 
   if (wpath && urlParam && urlParam.indexOf('IDE') !== -1) {
+         
+    routes[0].children.push({
+      path: '/'+wpath,
+      replace: true,
+      component: Lib._import(wpath),
+      meta: {
+        title: '预览',
+        type: 'preview'
+      }
+      });
+    router.addRoutes(routes);
+
     getbrotherPageList().then(res=>{
-       
       if(res.status){
 
-           res.content.forEach(item => {
-             let temp = {
-               path:item.href,
-               component:Lib._import(item.href),
-               name:item.name,
-               children:[]
-             };
-              addTabsRoutes(temp);
-           });
+           
            let floder = res.content.filter(item=>item.name === wpath.split('/')[0])[0];
-       
-            next({path:'/'+floder.href,query:{pages:floder.pages}})
+            if(floder){
+              res.content.forEach(item => {
+                let temp = {
+                  path:item.href,
+                  component:Lib._import(item.href),
+                  name:item.name,
+                  children:[]
+                };
+                 addTabsRoutes(temp);
+              });
+              next({path:'/'+floder.href,query:{pages:floder.pages}})
+            }else{
+                  
+              routes[0].children.push({
+                path: '/'+wpath,
+                replace: true,
+                component: Lib._import(wpath),
+                meta: {
+                  title: '预览',
+                  type: 'preview'
+                }
+                });
+              router.addRoutes(routes);
+            }
+           
       }
     })
-    // routes[0].children.push({
-    //   path: '/'+wpath,
-    //   replace: true,
-    //   component: Lib._import(wpath),
-    //   meta: {
-    //     title: '预览',
-    //     type: 'preview'
-    //   }
-    //    });
-    // router.addRoutes(routes);
 
-    // if(to.path!=='/home'){
-    //      next('/home')
-    // }
+  next()
+  }else{
+    next()
   }
+   
+  
 
-  next();
+ 
   
    
 })

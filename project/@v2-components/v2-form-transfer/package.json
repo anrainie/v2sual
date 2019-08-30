@@ -18,13 +18,13 @@
       {
         "name": "label",
         "desp": "标题",
-        "defaultValue":"标题",
+        "defaultValue": "标题",
         "type": "string_input"
       },
       {
         "name": "labelWitdh",
         "desp": "标题宽度",
-        "defaultValue":"80px",
+        "defaultValue": "80px",
         "type": "string_input"
       },
       {
@@ -44,7 +44,7 @@
       {
         "name": "value",
         "desp": "选择值",
-        "defaultValue":"",
+        "defaultValue": "",
         "type": "string_input"
       },
       {
@@ -52,7 +52,8 @@
         "desp": "是否可搜索",
         "defaultValue": true,
         "type": "boolean"
-      },{
+      },
+      {
         "name": "isRequired",
         "desp": "是否必填",
         "defaultValue": false,
@@ -61,32 +62,31 @@
       {
         "name": "titleLeft",
         "desp": "左标题",
-        "defaultValue":"左标题",
+        "defaultValue": "左标题",
         "type": "string_input"
       },
       {
         "name": "titleRight",
         "desp": "右标题",
-        "defaultValue":"右标题",
+        "defaultValue": "右标题",
         "type": "string_input"
       },
       {
         "name": "btnLeft",
         "desp": "左按钮文本",
-        "defaultValue":"左按钮文本",
+        "defaultValue": "左按钮文本",
         "type": "string_input"
       },
       {
         "name": "btnRight",
         "desp": "右按钮文本",
-        "defaultValue":"右按钮文本",
+        "defaultValue": "右按钮文本",
         "type": "string_input"
       },
       {
         "name": "options",
         "desp": "配置项",
         "type": "array",
-    
         "attrInEachElement": [
           {
             "name": "key",
@@ -109,14 +109,15 @@
         ]
       }
     ],
-     "css": {
-       "style": [{
-           "desp": "标题",
-           "cssAttrs": "font-size font-weight color",
-           "name": "title"
-         }
-       ]
-     }
+    "css": {
+      "style": [
+        {
+          "desp": "标题",
+          "cssAttrs": "font-size font-weight color",
+          "name": "title"
+        }
+      ]
+    }
   },
   "keywords": [],
   "license": "ISC",
@@ -125,6 +126,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":20000010
+  "version": "6.0.1",
+  "index": 20000010
 }

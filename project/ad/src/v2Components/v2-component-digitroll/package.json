@@ -1,0 +1,47 @@
+{
+  "author": {
+    "name": "zhanghaixian@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "按钮",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconanniu",
+    "type": "project",
+    "href": "v2-component-digitroll",
+    "author": "zhanghaixian@agree.com.cn",
+    "version": 610000,
+    "accept": "divCtn",
+    "name": "滚动数字",
+    "option": [
+      {
+      "type": "string_input",
+      "name": "digits",
+      "defaultValue": 610304839,
+      "disabled": true,
+      "desp": "数值"
+    }, {
+      "type": "string_input",
+      "name": "dWidth",
+      "defaultValue": "112px",
+      "disabled": true,
+      "desp": "单个数字宽度"
+    },{
+      "type": "string_input",
+      "name": "dHeight",
+      "defaultValue": "160px",
+      "disabled": true,
+      "desp": "单个数字高度"
+    }]
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@v2-components/v2-component-digitroll",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.0",
+  "index":30000001
+}

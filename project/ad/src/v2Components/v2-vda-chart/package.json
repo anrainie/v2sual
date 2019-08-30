@@ -1,0 +1,40 @@
+{
+  "author": {
+    "name": "zhanghaixian@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "图表",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconzhuzhuangtu",
+    "type": "project",
+    "href": "v2-vda-chart",
+    "author": "zhanghaixian@agree.com.cn",
+    "version": 610000,
+    "accept": "divCtn",
+    "name": "vda图表",
+    "option": [
+      {
+        "type": "string_input",
+        "name": "configs",
+        "defaultValue": "",
+        "desp": "配置单",
+        "details":"编辑需要的样式，复制其配置单"
+      }
+      
+    ], 
+    "css":{
+   
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@v2-components/v2-vda-chart",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.0",
+  "index":31000001
+}

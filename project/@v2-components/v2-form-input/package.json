@@ -14,6 +14,9 @@
     "version": 610000,
     "accept": "foundationRowCtn divCtn",
     "name": "输入框",
+    "inputfield": [
+      "value"
+    ],
     "option": [
       {
         "name": "label",
@@ -40,7 +43,6 @@
         "desp": "标题宽度",
         "defaultValue": "80px",
         "type": "string_input"
-      
       },
       {
         "name": "inputType",
@@ -57,8 +59,8 @@
         ]
       },
       {
-        "require":{
-          "inputType":"textarea"
+        "require": {
+          "inputType": "textarea"
         },
         "name": "rows",
         "desp": "行数",
@@ -71,48 +73,41 @@
         "defaultValue": "请输入",
         "type": "string_input"
       },
-
       {
         "name": "prepend",
         "desp": "前置",
         "defaultValue": "",
         "type": "string_input"
-       
       },
       {
         "name": "append",
         "desp": "后置",
         "defaultValue": "",
         "type": "string_input"
-       
       },
       {
         "name": "maxlength",
         "desp": "最大长度",
         "defaultValue": "",
         "type": "string_input"
-       
       },
       {
         "name": "minlength",
         "desp": "最小长度",
         "defaultValue": "",
         "type": "string_input"
-       
       },
       {
         "name": "prefixIcon",
         "desp": "头部图标",
         "defaultValue": "",
         "type": "string_input"
-       
       },
       {
         "name": "suffixIcon",
         "desp": "尾部图标",
         "defaultValue": "",
         "type": "string_input"
-       
       },
       {
         "name": "showWordLimit",
@@ -126,7 +121,6 @@
         "defaultValue": "",
         "type": "string_input"
       },
-      
       {
         "name": "clearable",
         "desp": "是否可清空",
@@ -144,20 +138,23 @@
         "desp": "是否必填",
         "defaultValue": false,
         "type": "boolean"
-      },{
+      },
+      {
         "name": "autoComplete",
         "desp": "开启输入建议",
         "defaultValue": false,
         "type": "boolean"
-      },{
-        "require":{
-           "autoComplete":true
+      },
+      {
+        "require": {
+          "autoComplete": true
         },
         "name": "suggestion",
         "desp": "输入建议列表",
         "defaultValue": "",
         "type": "string_input"
-      },{
+      },
+      {
         "name": "rules",
         "desp": "验证规则",
         "defaultValue": "",
@@ -180,22 +177,24 @@
           "name": "label"
         }
       ],
-      "theme": [{
-        "desp": "尺寸选择",
-        "name": "size",
-        "valueArray": [
-          "",
-          "medium",
-          "small",
-          "mini"
-        ],
-        "despArray": [
-          "较大",
-          "中等",
-          "小型",
-          "超小"
-        ]
-      }]
+      "theme": [
+        {
+          "desp": "尺寸选择",
+          "name": "size",
+          "valueArray": [
+            "",
+            "medium",
+            "small",
+            "mini"
+          ],
+          "despArray": [
+            "较大",
+            "中等",
+            "小型",
+            "超小"
+          ]
+        }
+      ]
     }
   },
   "keywords": [],
@@ -205,6 +204,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":20000001
+  "version": "6.0.1",
+  "index": 20000001
 }

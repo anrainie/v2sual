@@ -14,17 +14,21 @@
     "version": 610000,
     "accept": "foundationRowCtn divCtn",
     "name": "下拉框",
+    "inputfield": [
+      "value",
+      "optionConfig"
+    ],
     "option": [
       {
         "name": "label",
         "desp": "标题",
-        "defaultValue":"标题",
+        "defaultValue": "标题",
         "type": "string_input"
       },
       {
         "name": "labelWitdh",
         "desp": "标题宽度",
-        "defaultValue":"80px",
+        "defaultValue": "80px",
         "type": "string_input"
       },
       {
@@ -44,19 +48,19 @@
       {
         "name": "placeholder",
         "desp": "placeholder",
-        "defaultValue":"请选择",
+        "defaultValue": "请选择",
         "type": "string_input"
       },
       {
         "name": "value",
         "desp": "选择值",
-        "defaultValue":"",
+        "defaultValue": "",
         "type": "string_input"
       },
       {
         "name": "dataType",
         "desp": "初始数据定义",
-        "defaultValue":"def",
+        "defaultValue": "def",
         "type": "string_select",
         "valueArray": [
           "def",
@@ -68,17 +72,17 @@
         ]
       },
       {
-        "require":{
-          "dataType":"def"
+        "require": {
+          "dataType": "def"
         },
         "name": "optionConfig",
         "desp": "下拉项",
-        "defaultValue":"",
-        "type": "string_input"
+        "defaultValue": "",
+        "type": "databasket_input"
       },
       {
-        "require":{
-          "dataType":"cus"
+        "require": {
+          "dataType": "cus"
         },
         "name": "options",
         "desp": "配置项",
@@ -102,13 +106,13 @@
       {
         "name": "clearable",
         "desp": "是否可清空",
-        "defaultValue":false,
+        "defaultValue": false,
         "type": "boolean"
       },
       {
         "name": "filterable",
         "desp": "是否可搜索",
-        "defaultValue":true,
+        "defaultValue": true,
         "type": "boolean"
       },
       {
@@ -116,12 +120,14 @@
         "desp": "是否禁填",
         "defaultValue": false,
         "type": "boolean"
-      },{
+      },
+      {
         "name": "isRequired",
         "desp": "是否必填",
         "defaultValue": false,
         "type": "boolean"
-      },{
+      },
+      {
         "name": "rules",
         "desp": "验证规则",
         "defaultValue": "",
@@ -137,28 +143,31 @@
       }
     ],
     "css": {
-      "style": [ {
+      "style": [
+        {
           "desp": "标题",
           "cssAttrs": "font-size color font-weight",
           "name": "label"
         }
       ],
-       "theme": [{
-        "desp": "尺寸选择",
-        "name": "size",
-        "valueArray": [
-          "",
-          "medium",
-          "small",
-          "mini"
-        ],
-        "despArray": [
-          "较大",
-          "中等",
-          "小型",
-          "超小"
-        ]
-      }]
+      "theme": [
+        {
+          "desp": "尺寸选择",
+          "name": "size",
+          "valueArray": [
+            "",
+            "medium",
+            "small",
+            "mini"
+          ],
+          "despArray": [
+            "较大",
+            "中等",
+            "小型",
+            "超小"
+          ]
+        }
+      ]
     }
   },
   "keywords": [],
@@ -168,6 +177,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":20000006
+  "version": "6.0.1",
+  "index": 20000006
 }

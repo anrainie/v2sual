@@ -1,6 +1,8 @@
 
 
-import  {router} from '@/lib'
+// import  {router} from '@v2-lib/vue.spa.plugin'
+import Vue from "vue"
+import vueRouter from "vue-router"
 import Layout from '@/views/Layout'
 import Login from "@/views/Login"
 import noFound from "@/views/404"
@@ -40,11 +42,18 @@ let mainRouter = [{
 ];
 
 //addroutes 没有更新options 需要手动添加
-let routes=router.options.routes;
+// let routes=router.options.routes;
 
-if(!routes.length){
-  routes.push(...mainRouter)
-  router.addRoutes(routes);
-}
+// if(!routes.length){
+//   routes.push(...mainRouter)
+//   router.addRoutes(routes);
+// }
+
+// export default router;
+Vue.use(vueRouter);
+let router =new vueRouter({
+    routes: mainRouter
+  })
+window.router=router;
 
 export default router;

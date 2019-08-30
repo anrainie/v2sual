@@ -18,7 +18,7 @@
       {
         "name": "label",
         "desp": "标题",
-        "defaultValue":"标题",
+        "defaultValue": "标题",
         "type": "string_input"
       },
       {
@@ -30,7 +30,6 @@
       {
         "name": "titleMode",
         "desp": "标题排列方式",
-
         "defaultValue": "col",
         "type": "string_select",
         "valueArray": [
@@ -45,19 +44,19 @@
       {
         "name": "value",
         "desp": "选择值",
-        "defaultValue":"",
+        "defaultValue": "",
         "type": "string_input"
       },
       {
         "name": "placeholder",
         "desp": "placeholder",
-        "defaultValue":"请选择",
+        "defaultValue": "请选择",
         "type": "string_input"
       },
       {
         "name": "type",
         "desp": "日期单位",
-        "defaultValue":"date",
+        "defaultValue": "date",
         "type": "string_select",
         "valueArray": [
           "date",
@@ -79,7 +78,7 @@
       {
         "name": "disabled",
         "desp": "是否禁用",
-        "defaultValue":false,
+        "defaultValue": false,
         "type": "boolean"
       },
       {
@@ -91,25 +90,25 @@
       {
         "name": "clearable",
         "desp": "是否显示清除按钮",
-        "defaultValue":true,
+        "defaultValue": true,
         "type": "boolean"
       },
       {
         "name": "format",
         "desp": "显示格式",
-        "defaultValue":"yyyy 年 MM 月 dd 日",
+        "defaultValue": "yyyy 年 MM 月 dd 日",
         "type": "string_input"
       },
       {
         "name": "valueFormat",
         "desp": "赋值格式",
-        "defaultValue":"yyyyMMdd",
+        "defaultValue": "yyyyMMdd",
         "type": "string_input"
       },
       {
         "name": "align",
         "desp": "对齐方式",
-        "defaultValue":"left",
+        "defaultValue": "left",
         "type": "string_select",
         "valueArray": [
           "left",
@@ -123,7 +122,7 @@
         ]
       }
     ],
-     "css": {
+    "css": {
       "style": [
         {
           "desp": "标题",
@@ -131,22 +130,24 @@
           "name": "label"
         }
       ],
-      "theme": [{
-        "desp": "尺寸选择",
-        "name": "size",
-        "valueArray": [
-          "",
-          "medium",
-          "small",
-          "mini"
-        ],
-        "despArray": [
-          "较大",
-          "中等",
-          "小型",
-          "超小"
-        ]
-      }]
+      "theme": [
+        {
+          "desp": "尺寸选择",
+          "name": "size",
+          "valueArray": [
+            "",
+            "medium",
+            "small",
+            "mini"
+          ],
+          "despArray": [
+            "较大",
+            "中等",
+            "小型",
+            "超小"
+          ]
+        }
+      ]
     }
   },
   "keywords": [],
@@ -156,6 +157,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":20000007
+  "version": "6.0.1",
+  "index": 20000007
 }

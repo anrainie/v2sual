@@ -164,7 +164,7 @@ let project = {
         await util.mkdir(componentPath);
       }
 
-      const preview = new Preview(dest, componentPath, path.join(dest, config.runtime.componentFile), true);
+      const preview = new Preview(dest, componentPath, path.join(dest, config.runtime.componentFile), path.join(dest, config.runtime.pipe),true);
       preview.init(platform)(req);
 
     }

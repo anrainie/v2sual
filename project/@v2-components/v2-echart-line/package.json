@@ -14,7 +14,8 @@
     "version": 610000,
     "accept": "divCtn",
     "name": "折线图",
-    "option": [{
+    "option": [
+      {
         "hidden": false,
         "defaultValue": "",
         "valueArray": "",
@@ -30,7 +31,8 @@
         "name": "title",
         "details": "",
         "placeholder": "",
-        "attr": [{
+        "attr": [
+          {
             "hidden": false,
             "defaultValue": "主标题",
             "valueArray": "",
@@ -151,7 +153,8 @@
         "name": "legend",
         "details": "",
         "placeholder": "",
-        "attr": [{
+        "attr": [
+          {
             "hidden": false,
             "defaultValue": "",
             "valueArray": [
@@ -293,7 +296,8 @@
         "hasEvent": false,
         "dataList": "",
         "name": "xAxis",
-        "attrInEachElement": [{
+        "attrInEachElement": [
+          {
             "hidden": false,
             "defaultValue": "x坐标轴名",
             "valueArray": "",
@@ -449,7 +453,9 @@
         "placeholder": "",
         "edmKey": "",
         "despArray": "",
-        "append": [{}],
+        "append": [
+          {}
+        ],
         "direction": "",
         "validate": {
           "errorMessage": "",
@@ -479,7 +485,8 @@
         "hasEvent": false,
         "dataList": "",
         "name": "yAxis",
-        "attrInEachElement": [{
+        "attrInEachElement": [
+          {
             "hidden": false,
             "defaultValue": "y坐标轴名",
             "valueArray": "",
@@ -633,7 +640,9 @@
         "placeholder": "",
         "edmKey": "",
         "despArray": "",
-        "append": [{}],
+        "append": [
+          {}
+        ],
         "direction": "",
         "validate": {
           "errorMessage": "",
@@ -654,7 +663,8 @@
         "hasEvent": false,
         "dataList": "",
         "name": "series",
-        "attrInEachElement": [{
+        "attrInEachElement": [
+          {
             "hidden": false,
             "defaultValue": "",
             "valueArray": "",
@@ -762,7 +772,9 @@
         "placeholder": "",
         "edmKey": "name",
         "despArray": "",
-        "append": [{}],
+        "append": [
+          {}
+        ],
         "direction": "",
         "validate": {
           "errorMessage": "",
@@ -786,7 +798,8 @@
         "attrInEachElement": [],
         "details": "提示框组件。",
         "placeholder": "",
-        "attr": [{
+        "attr": [
+          {
             "hidden": false,
             "defaultValue": true,
             "valueArray": "",
@@ -892,7 +905,8 @@
         "attrInEachElement": [],
         "details": "",
         "placeholder": "",
-        "attr": [{
+        "attr": [
+          {
             "hidden": false,
             "defaultValue": "auto",
             "valueArray": "",
@@ -966,7 +980,8 @@
         "attrInEachElement": [],
         "details": "内置有导出图片，数据视图，动态类型切换，数据区域缩放，重置五个工具。",
         "placeholder": "",
-        "attr": [{
+        "attr": [
+          {
             "hidden": false,
             "defaultValue": true,
             "valueArray": "",
@@ -1218,7 +1233,8 @@
         "hasEvent": false,
         "dataList": "",
         "name": "dataZoom",
-        "attrInEachElement": [{
+        "attrInEachElement": [
+          {
             "hidden": false,
             "defaultValue": "",
             "valueArray": [
@@ -1318,6 +1334,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":31000003
+  "version": "6.0.1",
+  "index": 31000003
 }

@@ -11,9 +11,8 @@ const Result = require('../util/Result');
 
 const trans2absolute = p => {
   try {
-    return path.join(config.runtime.base, p);
+    return path.join(config.runtime.base, p.replace(/\\/g,path.sep));
   } catch (e) {
-    p;
     return '';
   }
 };

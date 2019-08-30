@@ -220,11 +220,32 @@ let bindData = function (logic, mapping) {
   return logic;
 };
 
+//格式化数据
+let formatData = function(val){
+  var reg = new RegExp(/^[0-9]*$/);
+  //判断数据类型,根据类型格式化
+  if(val.startsWith("'")||val.startsWith('"')){
+    //字符串类型暂时不做处理
+  }else if(reg.test(val)){
+    //数字类型暂时不做处理
+  }else if(val.startsWith('[')){
+    //数组类型暂时不做处理
+  }else if(val.startsWith('{')){
+    //json\map暂时不做处理
+  }else {
+    val = '`'+val+'`';
+  }
+  return val;
+}
+
 // 生成data
 let createData = function (data) {
   let i, arr = [];
   for (i in data) {
-    arr.push(`${i}:${data[i] === "" ? '""' : data[i]}`);
+    //格式化data
+    let val = this.formatData(data[i]);
+
+    arr.push(`${i}:${val === "" ? '""' : val}`);
   }
   return arr;
 };
@@ -243,7 +264,9 @@ let __buildIndex = (v, pool) => {
 let createProp = (data) => {
   let i, arr = [];
   for (i in data) {
-    arr.push(`${i}:{default:()=>{return ${data[i] === "" ? '""' : data[i]}}}`);
+    //格式化data
+    let val = this.formatData(data[i]);
+    arr.push(`${i}:{default:()=>{return ${val === "" ? '""' : val}}}`);
   }
   return arr;
 };
@@ -531,5 +554,6 @@ exports.bindData = bindData;
 exports.transToPoll = transToPoll;
 exports.__buildIndex = __buildIndex;
 exports.createProp = createProp;
+exports.formatData = formatData;
 exports.toCamel = toCamel;
 exports.computedToCode = computedToCode;

@@ -18,13 +18,13 @@
       {
         "name": "label",
         "desp": "标题",
-        "defaultValue":"标题",
+        "defaultValue": "标题",
         "type": "string_input"
       },
       {
         "name": "labelWitdh",
         "desp": "标题宽度",
-        "defaultValue":"80px",
+        "defaultValue": "80px",
         "type": "string_input"
       },
       {
@@ -44,7 +44,7 @@
       {
         "name": "value",
         "desp": "选中的值",
-        "defaultValue":"",
+        "defaultValue": "",
         "type": "string_input"
       },
       {
@@ -89,35 +89,38 @@
           "name": "label"
         }
       ],
-       "theme": [{
-        "desp": "类型选择",
-        "name": "boxType",
-        "valueArray": [
-          "",
-          "btn",
-          "border"
-        ],
-        "despArray": [
-          "默认",
-          "按钮状",
-          "带边框"
-        ]
-      },{
-        "desp": "尺寸选择",
-        "name": "size",
-        "valueArray": [
-          "",
-          "medium",
-          "small",
-          "mini"
-        ],
-        "despArray": [
-          "较大",
-          "中等",
-          "小型",
-          "超小"
-        ]
-      }]
+      "theme": [
+        {
+          "desp": "类型选择",
+          "name": "boxType",
+          "valueArray": [
+            "",
+            "btn",
+            "border"
+          ],
+          "despArray": [
+            "默认",
+            "按钮状",
+            "带边框"
+          ]
+        },
+        {
+          "desp": "尺寸选择",
+          "name": "size",
+          "valueArray": [
+            "",
+            "medium",
+            "small",
+            "mini"
+          ],
+          "despArray": [
+            "较大",
+            "中等",
+            "小型",
+            "超小"
+          ]
+        }
+      ]
     }
   },
   "keywords": [],
@@ -127,6 +130,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
-  "index":20000004
+  "version": "6.0.1",
+  "index": 20000004
 }

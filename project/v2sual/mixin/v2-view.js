@@ -271,13 +271,20 @@ export const widget = {
     wrapClass() {
       return {}
     },
-     widgetClass(){
-      return [...((this.model && this.model.layoutClass)||[]),...((this.model && this.model.customClass)||[]),...((this.model && this.model.animate)||[])]
+    widgetClass() {
+      return classAnaysis(this.model.layoutClass).concat(classAnaysis(this.model.customClass)).concat(classAnaysis(this.model.animate));
     }
   },
   beforeDestroy() {
     this.$store.commit("unbind", this.wid);
   }
+}
+
+const classAnaysis = function (arr) {
+  if (arr == null) return [];
+  if (arr.constructor == Array) return arr;
+  if (arr.constructor == String) return arr.split(',');
+  return [];
 }
 /**
  * 容器的性质，必须先mix widget

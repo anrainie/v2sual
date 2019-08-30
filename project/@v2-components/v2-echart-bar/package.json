@@ -145,9 +145,17 @@
             ]
           },
           {
-            "defaultValue": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+            "defaultValue": [
+              "Mon",
+              "Tue",
+              "Wed",
+              "Thu",
+              "Fri",
+              "Sat",
+              "Sun"
+            ],
             "type": "string_input",
-            "isStringArray":true,
+            "isStringArray": true,
             "desp": "轴数据",
             "name": "data",
             "details": "填写x坐标轴值的数组，如：[1,2,3,4,5,6,7,8]"
@@ -207,9 +215,9 @@
             ]
           },
           {
-            "defaultValue":"",
+            "defaultValue": "",
             "type": "string_input",
-            "isStringArray":true,
+            "isStringArray": true,
             "desp": "轴数据",
             "name": "data",
             "details": "填写y坐标轴值的数组，如：[1,2,3,4,5,6,7,8]"
@@ -261,9 +269,17 @@
             ]
           },
           {
-            "defaultValue":[120, 200, 150, 80, 70, 110, 130],
+            "defaultValue": [
+              120,
+              200,
+              150,
+              80,
+              70,
+              110,
+              130
+            ],
             "type": "string_input",
-            "isStringArray":true,
+            "isStringArray": true,
             "desp": "数据",
             "name": "data",
             "details": "填写y坐标轴值的数组，如：[1,2,3,4,5,6,7,8]"
@@ -514,6 +530,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.0",
+  "version": "6.0.1",
   "index": 31000002
 }
