@@ -14,10 +14,9 @@
     "version": 610000,
     "accept": "divCtn",
     "name": "vda图表",
-    "customEditor": "v2EditorVdaChart",
     "option": [
       {
-        "type": "btn_popover",
+        "type": "string_input",
         "name": "configs",
         "defaultValue": "",
         "desp": "配置单",
@@ -28,10 +27,6 @@
     "css":{
    
     }
-  },
-  "editor": {
-    "path": "VDAChartEditor.vue",
-    "name": "v2EditorVdaChart"
   },
   "keywords": [],
   "license": "ISC",
