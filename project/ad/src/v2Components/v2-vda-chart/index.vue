@@ -26,73 +26,74 @@ export default {
 
   watch: {
     "model.configs": {
-      handler() {
-       
-         this.updateChart();
-      },
-      
-      deep:true
+      handler(val) {
+        
+        val && this.updateChart();
+      }
+    }
+  },
+  computed:{
+    chartCtnStyle() {
+      let x = {
+        ...(this.model.commonStyle || {})
+      };
+      x.height = (x.height != "" && x.height) || "400px";
+      x.width = (x.width != "" && x.width) || "400px";
+      return x;
     }
   },
   methods: {
-  updateChart(){ 
-      this.showLoading =true;
-      this.chart = echarts.init(this.$refs._op_componentEchart_chart);
-       window.pipe.vda.panel(this.model.configs||"echarts-demo").then(res => {
-        try {
-          const panelConfig = JSON.parse(
-            (res.data?res.data.content:res.content).data.visualConfPanelCharts[0].config
-          );
-         
+      updateChart(){ 
+          this.showLoading =true;
+          this.chart = echarts.init(this.$refs._op_componentEchart_chart);
+          window.pipe.vda.panel(this.model.configs||"echarts-demo").then(res => {
+            try {
+              const panelConfig = JSON.parse(
+                (res.data?res.data.content:res.content).data.visualConfPanelCharts[0].config
+              );
+              const componentConfig =
+                panelConfig.componentInfo.option[0].componentInfo;
 
-          const componentConfig =
-            panelConfig.componentInfo.option[0].componentInfo;
+              const echartsOpt = componentConfig.option;
+              const request = componentConfig.config.paramAjax;
 
-          const echartsOpt = componentConfig.option;
-          const request = componentConfig.config.paramAjax;
+              !this.chart && (this.chart = echarts.init(this.$refs._op_componentEchart_chart))
 
-          !this.chart && (this.chart = echarts.init(this.$refs._op_componentEchart_chart))
+              window.pipe.vda.paramAjax(request).then(res => {
+                const data =  (res.data?res.data.content:res.content)[request[0].requestid];
+                const newOpt = { ...echartsOpt };
 
-          window.pipe.vda.paramAjax(request).then(res => {
-            const data =  (res.data?res.data.content:res.content)[request[0].requestid];
-            const newOpt = { ...echartsOpt };
-
-            componentConfig.config.dataSource.fields.forEach((xy, index) => {
-              switch (xy.parent) {
-                case "xAxisDragBox":
-                  newOpt.xAxis.data = data.map(e => e[xy.ename]);
-                  break;
-                case "yAxisDragBox":
-                  newOpt.series.forEach(s => {
-                    if (s.ename === xy.name) {
-                      s.lineData = s.data = data.map(e => e[xy.ename]);
-                    }
-                  });
-                  break;
-              }
-            });
-            this.showLoading =false;
-            this.showEditButton = false;
-        
+                componentConfig.config.dataSource.fields.forEach((xy, index) => {
+                  switch (xy.parent) {
+                    case "xAxisDragBox":
+                      newOpt.xAxis.data = data.map(e => e[xy.ename]);
+                      break;
+                    case "yAxisDragBox":
+                      newOpt.series.forEach(s => {
+                        if (s.ename === xy.name) {
+                          s.lineData = s.data = data.map(e => e[xy.ename]);
+                        }
+                      });
+                      break;
+                  }
+                });
+                this.showLoading =false;
+                this.showEditButton = false;
             
-            this.chart.setOption(newOpt);
-            // this.$notify.success({
-            //   title: "刷新成功！",
-            //   message: moment().format("HH:mm:ss")
-            // });
-            console.log('success',newOpt)
+                newOpt.backgroundColor = "transparent";
 
-           // loading.close();
-            //加载组件数据
+                this.chart.setOption(newOpt);
+             
+                console.log('success',newOpt)
+
+              // loading.close();
+                //加载组件数据
+              });
+            } catch (e) {
+              console.log('error')
+              
+            }
           });
-        } catch (e) {
-          console.log('error')
-          // this.$notify.error({
-          //   title: "预览失败",
-          //   message: e
-          // });
-        }
-      });
     }
   },
   mounted() {

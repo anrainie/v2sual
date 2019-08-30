@@ -3,6 +3,7 @@
 <head>
   <!--css-->
   <link rel="stylesheet" type="text/css" href="./common.css" />
+  <link rel="stylesheet" type="text/css" href="../css/theme.css" />
   <link rel="stylesheet" type="text/css" href="./ide_icon/iconfont.css" />
   <link rel="stylesheet" type="text/css" href="./animate.min.css">
   <script>
@@ -47,9 +48,7 @@
                 <el-breadcrumb separator="/">
                   <el-breadcrumb-item v-for="l in label" :key="l.id">{{l.label}}</el-breadcrumb-item>
                 </el-breadcrumb>
-                <div class="switchable-ctn-editor-btn-group">
-                  <el-button size="mini" type="text" @click="closeCustomEditor" title="退出编辑" ><i class="ideicon iconfanhui"></i></el-button>  
-                </div>
+              
               </div>
               <div ref="customEditorArea" ></div>
             </div>
@@ -193,10 +192,6 @@
           closeCustomEditor() {
             if (this.customEditor && !this.loadIframe){
               this.customEditor.$destroy();
-            }else{
-          
-            
-              this.customEditor.updateChart && this.customEditor.updateChart();
             }
             
             let area = $(this.$refs.customEditorArea);
