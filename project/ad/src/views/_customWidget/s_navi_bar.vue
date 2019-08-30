@@ -17,7 +17,11 @@
                 
                 methods:{},
                 watch:{},
-                computed:{},
+                computed:{
+        testCompu(){
+          return this.data
+        }
+        },
                 beforeCreate(){
                     let ctx = this;
                     

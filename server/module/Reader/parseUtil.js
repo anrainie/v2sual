@@ -88,6 +88,7 @@ let appendComponent = function(parent,index,element){
         component.setAttribute(':cpttype','`loopItem`');
         component.setAttribute(':item','scope._item');
         component.setAttribute(':key','scope._key');
+        component.setAttribute(':style','scope._style');
         //dataBasket不为空=>自定义组件
         if(child && child.dataBasket){
             for(let item in child.dataBasket){
