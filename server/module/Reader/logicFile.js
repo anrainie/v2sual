@@ -221,19 +221,27 @@ let bindData = function (logic, mapping) {
 };
 
 //格式化数据
-let formatData = function(val){
+let formatData = function (val) {
+
+  try {
+    let _x;
+    eval("_x=" + val)
+    return val;
+  } catch (e) {
+    // console.error(e)
+  }
   var reg = new RegExp(/^[0-9]*$/);
   //判断数据类型,根据类型格式化
-  if(val.startsWith("'")||val.startsWith('"')){
+  if (val.startsWith("'") || val.startsWith('"')) {
     //字符串类型暂时不做处理
-  }else if(reg.test(val)){
+  } else if (reg.test(val)) {
     //数字类型暂时不做处理
-  }else if(val.startsWith('[')){
+  } else if (val.startsWith('[')) {
     //数组类型暂时不做处理
-  }else if(val.startsWith('{')){
+  } else if (val.startsWith('{')) {
     //json\map暂时不做处理
-  }else {
-    val = '`'+val+'`';
+  } else {
+    val = '`' + val + '`';
   }
   return val;
 }
@@ -245,7 +253,7 @@ let createData = function (data) {
     //格式化data
     let val = this.formatData(data[i]);
 
-    arr.push(`${i}:${val === "" ? '""' : val}`);
+    arr.push(`${i}:${val}`);
   }
   return arr;
 };
@@ -373,7 +381,7 @@ let toCode = function (logic) {
         obj = logic[i];
         obj = self.transToPoll(obj);
         break;
-      // 周期函数
+        // 周期函数
       default:
         obj = logic[i]
         if (obj.labelObj) {
