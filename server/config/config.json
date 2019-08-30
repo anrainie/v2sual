@@ -118,6 +118,15 @@
             "http":{
                
             }
+        },
+        "componentStore":{
+            "consumption": {
+                
+            },
+            "http":{
+               "/v1/component/list":"getComponentList",
+               "/v1/component/opt":"componentOpt"
+            }
         }
     },
     "static": [
