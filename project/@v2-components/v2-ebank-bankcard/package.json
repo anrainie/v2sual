@@ -13,7 +13,7 @@
   },
   "docs": {
     "name": "银行卡",
-    "type": "component",
+    "type": "project",
     "href": "v2-ebank-bankcard",
     "icon": "iconkapian",
     "accept": "divCtn",
