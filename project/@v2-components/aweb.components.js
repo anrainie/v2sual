@@ -42,7 +42,7 @@ import v2Switchable  from './v2-switchable/index.vue';
 import v2EditorSwitch  from './v2-switchable/switchEditor.vue'
 
 import v2XXXXX  from './v2-XXXXX/index.vue';
-import v2XXXXXEditor  from './v2-XXXXX/XXXXXEditor.vue'
+import v2XXXXXEditor  from './v2-XXXXX/XXXXXEditor.vue';
 
           import $get  from '../pipe/src/main/webapp/plugins/app.$get';
 import $post  from '../pipe/src/main/webapp/plugins/app.$post';
