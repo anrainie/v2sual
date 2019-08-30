@@ -234,7 +234,9 @@ let bindData = function (logic, mapping) {
     mapping[i].map(item => {
       if (item.type === 'loop' && item.modelValue !== "__loopTarget") {
         arr.push(`ctx.$store.commit("registerBind",{ dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
-      } else {
+      } else if(item.type === 'composite'){
+        arr.push(`ctx.$store.commit("registerBind",{ vueObj:this, data:this.${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}",type:"computed" });`);
+      }else {
         arr.push(`ctx.$store.commit("registerBind",{ vueObj:this, data:this.${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
       }
     });
