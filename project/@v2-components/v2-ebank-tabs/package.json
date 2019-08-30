@@ -1,0 +1,96 @@
+{
+  "author": {
+    "name": "zhucheng@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "标签页",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconkapian",
+    "type": "project",
+    "href": "v2-ebank-tabs",
+    "author": "zhucheng@agree.com.cn",
+    "version": 610000,
+    "accept": "divCtn",
+    "name": "标签页",
+    "option": [
+      {
+        "type": "string_input",
+        "name": "active",
+        "defaultValue": "",
+        "desp": "激活标签索引",
+        "placeholder": "请绑定标签对应的索引"
+      },
+      {
+        "type": "string_input",
+        "name": "tabs",
+        "defaultValue": "",
+        "desp": "标签组",
+        "placeholder": "请绑定标签页数组数据"
+      },
+      {
+        "type": "string_select",
+        "name": "tabsType",
+        "defaultValue": "",
+        "desp": "标签风格",
+        "valueArray": [
+          "",
+          "card",
+          "border-card"
+        ],
+        "despArray": [
+          "简洁",
+          "选项卡",
+          "卡片化"
+        ]
+      },
+      {
+        "type": "boolean",
+        "name": "hasBtns",
+        "defaultValue": "false",
+        "desp": "是否有功能按钮组"
+      },
+      {
+        "type": "string_input",
+        "name": "btns",
+        "defaultValue": "",
+        "desp": "功能按钮组",
+        "placeholder": "请绑定功能按钮数组"
+      },
+      {
+        "type": "string_select",
+        "name": "btnsType",
+        "defaultValue": "text",
+        "desp": "按钮风格",
+        "valueArray": [
+          "text",
+          "",
+          "primary",
+          "success",
+          "info",
+          "warning",
+          "danger"
+        ],
+        "despArray": [
+          "文本",
+          "默认",
+          "主要",
+          "成功",
+          "信息",
+          "警告",
+          "危险"
+        ]
+      }
+    ]
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@v2-components/v2-ebank-tabs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.0",
+  "index": 30000003
+}

@@ -261,7 +261,7 @@ const fileUtil = {
 
 const trans2absolute = p => {
   try {
-    return nodejsPath.join(config.runtime.base, p);
+    return nodejsPath.join(config.runtime.base, p.replace(/\\/g,nodejsPath.sep));
   } catch (e) {
     p;
     return '';

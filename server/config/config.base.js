@@ -1,6 +1,8 @@
 const path = require('path');
 const config = require('./config.json');
 
+let PREVIEW_ENV = process.env.PREVIEW,
+    VDA_API = process.env.DVA_API
 
 let serverHost,
   ideType,
@@ -103,7 +105,7 @@ const server = {
   id: clientId || config.server.id,
   name: clientName || clientId || config.server.name || config.server.id,
   port: clientPort || config.server.port,
-  preview: preview || config.webide.preview, //预览地址
+  preview: PREVIEW_ENV || preview || config.webide.preview, //预览地址
   type: ideType || config.server.type,
 }
 
@@ -120,6 +122,19 @@ const static=config.static.map(s => {
   }
 })
 
+const dataSource = {
+   ...config.dataSource, 
+   proxy: config.dataSource.proxy.map(ds => {
+      let target = ds.target
+      if (ds.source === '/dvms' || ds.source === '/../vda') {
+        target = VDA_API || ds.target
+      }
+      return {
+        ...ds,
+        target 
+      }
+  })
+}
 
 module.exports = {
   ...config,
@@ -144,5 +159,6 @@ module.exports = {
     platformPipe,
     platformComponent
   },
-  static
+  static,
+  dataSource
 };

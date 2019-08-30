@@ -3,6 +3,7 @@
 <head>
   <!--css-->
   <link rel="stylesheet" type="text/css" href="./common.css" />
+  <link rel="stylesheet" type="text/css" href="../css/theme.css" />
   <link rel="stylesheet" type="text/css" href="./ide_icon/iconfont.css" />
   <link rel="stylesheet" type="text/css" href="./animate.min.css">
   <script>
@@ -20,6 +21,7 @@
       window.jQuery = window.parent.jQuery;
       window.Vue = window.parent.Vue;
       window.Vuex = window.parent.Vuex;
+      window.parent.THREE = window.THREE;
 
       var id = getUrlParam("id");
       var parent = window.parent.__dataPool[id];
@@ -46,9 +48,7 @@
                 <el-breadcrumb separator="/">
                   <el-breadcrumb-item v-for="l in label" :key="l.id">{{l.label}}</el-breadcrumb-item>
                 </el-breadcrumb>
-                <div class="switchable-ctn-editor-btn-group">
-                  <el-button size="mini" type="text" @click="closeCustomEditor" title="退出编辑" ><i class="ideicon iconfanhui"></i></el-button>  
-                </div>
+              
               </div>
               <div ref="customEditorArea" ></div>
             </div>
@@ -192,10 +192,6 @@
           closeCustomEditor() {
             if (this.customEditor && !this.loadIframe){
               this.customEditor.$destroy();
-            }else{
-          
-            
-              this.customEditor.updateChart && this.customEditor.updateChart();
             }
             
             let area = $(this.$refs.customEditorArea);
@@ -223,17 +219,36 @@
             let imgJson = {
               children: [],
               component: "v2-component-image",
-              commonStyle: {},
+              commonStyle: {
+                "position":"",
+                "top":"",
+                "right":"",
+                "left":"",
+                "bottom":"",
+                "width":"",
+                "height":"",
+                "padding-top": "",
+                "padding-bottom": "",
+                "padding-left": "",
+                "padding-right": "",
+                "margin-top": "",
+                "margin-bottom": "",
+                "margin-left": "",
+                "margin-right": "",
+                "font-size":"",
+                "color":"",
+                "animation-duration":'1s',
+                "animation-delay":''  
+              },
               cptpath: undefined,
               ctnClass: "",
               customClass: "",
               customEditor: undefined,
               events: {},
-              height: "100px",
               href: "v2-component-image",
               src: "",
-              style: {},
-              width: "100px",
+              fixation:false,
+              style: {}, 
               __capacity: "1",
               __loopTarget: "",
               __type: "",
@@ -245,7 +260,9 @@
 
 
             parent.$el.addEventListener('dragenter', e => {
-              if (e && e.dataTransfer.types && e.dataTransfer.types[0] === 'Files') {
+         
+              if ((e && e.dataTransfer.types && e.dataTransfer.types[0] === 'Files' )||(e && e.dataTransfer.types && e.dataTransfer.types[3] === 'v2imgsrc')) {
+               
                 editor.startCreateElement({
                   element: imgJson,
                   desp: undefined,
@@ -262,6 +279,7 @@
               event.stopPropagation();
               event.preventDefault();
             });
+         
 
             $domWindow.addEventListener('dragover', event => {
               event.stopPropagation();
@@ -283,18 +301,41 @@
               event.stopPropagation();
               event.preventDefault();
               // $(this.$refs.editor.$el).trigger('mouseup');
-              if (event && event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files
-                .length) {
+          
+              if(event.dataTransfer.getData("v2ImgSrc")){
+
+                  let src = event.dataTransfer.getData("v2ImgSrc");
+                  let tImgW = event.dataTransfer.getData("v2ImgWidth");
+                  let tImgH = event.dataTransfer.getData("v2ImgHeight")
+                   self.$refs.editor.$performRequest('applyCreate', {
+                        adImgDrog: true,
+                        afterCreate: model => {
+                          model.src = `img/${src}`;
+                          if (!model.commonStyle) self.$set(model,'commonStyle',{})
+                          self.$set(model.commonStyle,'position','absolute')
+                          self.$set(model.commonStyle,'width',tImgW+'px')
+                          self.$set(model.commonStyle,'height',tImgH+'px')
+                          self.$set(model.commonStyle,'top',event.offsetY - (tImgW / 2))
+                          self.$set(model.commonStyle,'left',event.offsetX - (tImgH / 2))
+                        }
+                      });
+            
+              }else if ((event && event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files
+                .length)) {
                 let data = event.dataTransfer.files[0];
                 let name = data.name;
                 let type = data.type;
                 let reader = new FileReader();
+              
                 if (!type.startsWith("image")) {
                   alert("只支持上传图片");
                   return null;
                 }
+             
                 reader.readAsDataURL(data);
                 reader.onload = e => {
+                  var tImg = new Image();
+                  tImg.src = e.target.result;
                   self
                     .apis("/v1/page/upload", {
                       params: {
@@ -309,11 +350,15 @@
                       self.$refs.editor.$performRequest('applyCreate', {
                         adImgDrog: true,
                         afterCreate: model => {
-                          model.src = `img/${name}`;
-                          if (!model.commonStyle) model.commonStyle = {}
-                          model.commonStyle.position = 'absolute';
-                          model.commonStyle.top = event.offsetY - (parseInt(model.height) / 2);
-                          model.commonStyle.left = event.offsetX - (parseInt(model.width) / 2);
+                          console.log('width,hight',tImg.naturalWidth,tImg.naturalHeight);
+                          model.src = `img/${name}`;  
+                          if (!model.commonStyle) self.$set(model,'commonStyle',{})
+                          self.$set(model.commonStyle,'position','absolute')
+                          self.$set(model.commonStyle,'width',tImg.naturalWidth+'px')
+                          self.$set(model.commonStyle,'height',tImg.naturalHeight+'px')
+                          self.$set(model.commonStyle,'top',event.offsetY - (tImg.naturalWidth / 2))
+                          self.$set(model.commonStyle,'left',event.offsetX - (tImg.naturalHeight / 2))
+                        
                         }
                       });
                     })
@@ -335,6 +380,9 @@
 
 <body style="box-sizing: border-box;">
   <div></div>
+
+  <script src="../js/three.js"></script> 
+  <script src="../js/OrbitControls.js"></script> 
 </body>
 
 </html>

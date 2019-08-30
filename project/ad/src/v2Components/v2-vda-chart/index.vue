@@ -6,12 +6,13 @@
       style="width:400px;height:400px"
       ref="_op_componentEchart_chart"
       :style="chartCtnStyle"
+      v-loading="showLoading"
     ></div>
   </div>
 </template>
 <script>
 import echarts from "echarts";
-const itemData = require('./dataPreview.json');
+
 
 export default {
   name: "v2-vda-chart",
@@ -19,168 +20,86 @@ export default {
   data() {
     return {
       chart: null,
-      error: false,
-      currentData:{},
-      vdaData:{}
+      showLoading: false
     };
   },
-  computed: {
-    extraClass() {
-      return this.error ? "echart-error" : "echart-normal";
-    },
-    chartCtnStyle(){
-        let x = {
-          ...(this.model.commonStyle||{})
-        };
-        x.height = (x.height != "" && x.height) || '400px';
-        x.width = (x.width != "" && x.width) || '400px';
-        return x;
-    }
-  },
+
   watch: {
     "model.configs": {
-    
-      handler(option) {
-          if(this.currentData){
-           this.analyzeLineChart();
-           this.updateChart();
-          }
+      handler(val) {
         
-      },
-      
-      deep:true
-    },
-    "model.configs.url":(url)=>{
-
-      // window.pipe.vda.data(url).then(res => {
-          //const fakeData =res.content;//真数据
-          const fakeData =itemData.content;//假数据
-           this.currentData = fakeData;
-           this.analyzeLineChart();
-           this.updateChart();
-        // });
+        val && this.updateChart();
+      }
+    }
+  },
+  computed:{
+    chartCtnStyle() {
+      let x = {
+        ...(this.model.commonStyle || {})
+      };
+      x.height = (x.height != "" && x.height) || "400px";
+      x.width = (x.width != "" && x.width) || "400px";
+      return x;
     }
   },
   methods: {
-    updateChart() {
-
-      if (this.chart) {
-          this.chart.setOption(this.vdaData);
-        } else {
+      updateChart(){ 
+          this.showLoading =true;
           this.chart = echarts.init(this.$refs._op_componentEchart_chart);
+          window.pipe.vda.panel(this.model.configs||"echarts-demo").then(res => {
+            try {
+              const panelConfig = JSON.parse(
+                (res.data?res.data.content:res.content).data.visualConfPanelCharts[0].config
+              );
+              const componentConfig =
+                panelConfig.componentInfo.option[0].componentInfo;
 
-          this.chart.setOption(this.vdaData);
-        }
-    },
-    analyzeLineChart(){
-          let data = this.currentData.data;
-          let fields =this.currentData.fields;
-          let option = this.model.configs;
-          let echartsOption = {
-            legend: option.countUp
-              ? [option.countLegend]
-              : option.legendName,
-            xAxis: Array.from(new Set(data.map(e => e[option.x]))),
-            yAxis: {}
-		        };
-         let  yAxis=echartsOption.yAxis;
-      
-          data.forEach(e => {
-            if (option.countUp) {
-              yAxis[e[option.x]] = yAxis[e[option.x]] || 0;
+              const echartsOpt = componentConfig.option;
+              const request = componentConfig.config.paramAjax;
 
-              yAxis[e[option.x]] += e[option.y];
-            } else {
-              yAxis[e[option.legend]] = yAxis[e[option.legend]] || {};
+              !this.chart && (this.chart = echarts.init(this.$refs._op_componentEchart_chart))
 
-              yAxis[e[option.legend]][e[option.x]] = e[option.y];
+              window.pipe.vda.paramAjax(request).then(res => {
+                const data =  (res.data?res.data.content:res.content)[request[0].requestid];
+                const newOpt = { ...echartsOpt };
+
+                componentConfig.config.dataSource.fields.forEach((xy, index) => {
+                  switch (xy.parent) {
+                    case "xAxisDragBox":
+                      newOpt.xAxis.data = data.map(e => e[xy.ename]);
+                      break;
+                    case "yAxisDragBox":
+                      newOpt.series.forEach(s => {
+                        if (s.ename === xy.name) {
+                          s.lineData = s.data = data.map(e => e[xy.ename]);
+                        }
+                      });
+                      break;
+                  }
+                });
+                this.showLoading =false;
+                this.showEditButton = false;
+            
+                newOpt.backgroundColor = "transparent";
+
+                this.chart.setOption(newOpt);
+             
+                console.log('success',newOpt)
+
+              // loading.close();
+                //加载组件数据
+              });
+            } catch (e) {
+              console.log('error')
+              
             }
           });
-
-          let seriesData = [];
-          echartsOption.xAxis.forEach(x => seriesData.push(yAxis[x] || 0));
-         
-          let vData= {
-            title: {
-              text: option.title||"折线图堆叠"
-            },
-            tooltip: {
-              trigger: "axis"
-            },
-            legend: {
-              data: echartsOption.legend, //["邮件营销", "联盟广告", "视频广告", "直接访问", "搜索引擎"]
-              show:option.showLegend
-            },
-            grid: {
-              top:'20px'
-        
-            },
-            toolbox: {
-            
-            },
-            xAxis: {
-              type: "category",
-              boundaryGap: false,
-              data: echartsOption.xAxis,
-              name:option.xTitle,
-              show:option.showXAxis
-
-            },
-            yAxis: {
-              type: "value",
-               name:option.yTitle,
-               show:option.showYAxis
-            },
-            series: option.countUp?[{
-              name:echartsOption.legend[0],
-              type:option.type,
-              barWidth: '40%',
-              data:echartsOption.xAxis.map(x => yAxis[x] || 0),
-                smooth:true,
-                symbol: 'none',
-                sampling: 'average',
-                itemStyle: {
-                    color: 'rgb(205, 209, 194)'
-                },
-                areaStyle: {
-                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                        offset: 0,
-                        color: 'rgb(254, 254, 254)'
-                    }, {
-                        offset: 1,
-                        color: 'rgb(84, 71, 62)'
-                    }])
-                },
-            }]:
-            echartsOption.legend.map(l => {
-                const legend = yAxis[l] || {};
-                return {
-                  name: l,
-                  type: option.type,
-                  data: echartsOption.xAxis.map(x => legend[x] || 0)
-                };
-              })
-          };
-
-         this.vdaData = vData;
-   
-        }
+    }
   },
   mounted() {
-      if(this.model.configs && this.model.configs.url){
-          // window.pipe.vda.data(url).then(res => {
-          //const fakeData =res.content;//真数据
-           const fakeData =itemData.content;//假数据
-           this.currentData = fakeData;
-           this.analyzeLineChart();
-           this.updateChart();
-          // });
-      }else{
-           const fakeData =itemData.content;//假数据
-           this.currentData = fakeData;
-           this.analyzeLineChart();
-           this.updateChart();
-      }
+     if(this.model.configs){
+      this.updateChart();
+    }
   }
 };
 </script>

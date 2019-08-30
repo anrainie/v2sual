@@ -74,6 +74,12 @@
           "下",
           "左"
         ]
+      },
+      {
+        "type": "string_input",
+        "name": "btns",
+        "defaultValue": "",
+        "desp": "功能按钮数组"
       }
     ]
   },

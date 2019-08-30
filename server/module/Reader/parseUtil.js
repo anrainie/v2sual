@@ -88,6 +88,7 @@ let appendComponent = function(parent,index,element){
         component.setAttribute(':cpttype','`loopItem`');
         component.setAttribute(':item','scope._item');
         component.setAttribute(':key','scope._key');
+        component.setAttribute(':style','scope._style');
         //dataBasket不为空=>自定义组件
         if(child && child.dataBasket){
             for(let item in child.dataBasket){
@@ -130,7 +131,7 @@ let appendComponent = function(parent,index,element){
         eCom.setAttribute(':class',customClass);
     }
     //自定义组件设置:style="model.commonStyle",由外部传进
-    if(child && child.cptpath){
+    if(child&&child.cptpath){
         let commonStyle = "";
         for(let key in child.commonStyle){
             commonStyle += key+":"+child.commonStyle[key]+";";

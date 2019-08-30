@@ -1,7 +1,10 @@
 import v2ComponentBtn from "../../../@v2-components/v2-component-btn";
 import v2ComponentCalendar from "../../../@v2-components/v2-component-calendar";
 import v2ComponentCard from "../../../@v2-components/v2-component-card";
+import v2ComponentCarousel from "../../../@v2-components/v2-component-carousel";
 import v2ComponentDivider from "../../../@v2-components/v2-component-divider";
+import v2ComponentEchart from "../../../@v2-components/v2-component-echart";
+import v2ComponentEtable from "../../../@v2-components/v2-component-etable";
 import v2ComponentIcon from "../../../@v2-components/v2-component-icon";
 import v2ComponentSteps from "../../../@v2-components/v2-component-steps";
 import v2ComponentImage from "../../../@v2-components/v2-component-image";
@@ -14,9 +17,9 @@ import v2CtnControllable from "../../../@v2-components/v2-ctn-controllable";
 import v2ControllableEditor from "../../../@v2-components/v2-ctn-controllable/ControllableEditor.vue";
 import v2CtnOrder from "../../../@v2-components/v2-ctn-order";
 import v2EditorOrderCtn from "../../../@v2-components/v2-ctn-order/orderCtnEditor.vue";
-import v2EchartBar from "../../../@v2-components/v2-echart-bar";
 import v2CtnXy from "../../../@v2-components/v2-ctn-xy";
 import v2EditorXYCtn from "../../../@v2-components/v2-ctn-xy/xyCtnEditor.vue";
+import v2EchartBar from "../../../@v2-components/v2-echart-bar";
 import v2EchartLine from "../../../@v2-components/v2-echart-line";
 import v2FormCheckbox from "../../../@v2-components/v2-form-checkbox";
 import v2FormCascader from "../../../@v2-components/v2-form-cascader";
@@ -27,6 +30,7 @@ import v2FormRadio from "../../../@v2-components/v2-form-radio";
 import v2FormInputnumber from "../../../@v2-components/v2-form-inputnumber";
 import v2FormSelect from "../../../@v2-components/v2-form-select";
 import v2FormSlider from "../../../@v2-components/v2-form-slider";
+import v2FormSwitch from "../../../@v2-components/v2-form-switch";
 import v2FormTimepicker from "../../../@v2-components/v2-form-timepicker";
 import v2FormTransfer from "../../../@v2-components/v2-form-transfer";
 import v2FormUpload from "../../../@v2-components/v2-form-upload";
@@ -45,8 +49,10 @@ import v2Xxxxx from "../../../@v2-components/v2-XXXXX";
 import v2XXXXXEditor from "../../../@v2-components/v2-XXXXX/XXXXXEditor.vue";
 
 import v2EbankBankcard from "../../../@v2-components/v2-ebank-bankcard";
+import v2EbankCalendar from "../../../@v2-components/v2-ebank-calendar";
 import v2EbankParagraph from "../../../@v2-components/v2-ebank-paragraph";
 import v2EbankShortcut from "../../../@v2-components/v2-ebank-shortcut";
+import v2EbankTabs from "../../../@v2-components/v2-ebank-tabs";
 
 let app = {};
 
@@ -56,7 +62,10 @@ export default {
   v2ComponentBtn,
   v2ComponentCalendar,
   v2ComponentCard,
+  v2ComponentCarousel,
   v2ComponentDivider,
+  v2ComponentEchart,
+  v2ComponentEtable,
   v2ComponentIcon,
   v2ComponentSteps,
   v2ComponentImage,
@@ -69,9 +78,9 @@ export default {
   v2ControllableEditor,
   v2CtnOrder,
   v2EditorOrderCtn,
-  v2EchartBar,
   v2CtnXy,
   v2EditorXYCtn,
+  v2EchartBar,
   v2EchartLine,
   v2FormCheckbox,
   v2FormCascader,
@@ -82,6 +91,7 @@ export default {
   v2FormInputnumber,
   v2FormSelect,
   v2FormSlider,
+  v2FormSwitch,
   v2FormTimepicker,
   v2FormTransfer,
   v2FormUpload,
@@ -99,6 +109,8 @@ export default {
   v2Xxxxx,
   v2XXXXXEditor,
   v2EbankBankcard,
+  v2EbankCalendar,
   v2EbankParagraph,
-  v2EbankShortcut
+  v2EbankShortcut,
+  v2EbankTabs,
 };

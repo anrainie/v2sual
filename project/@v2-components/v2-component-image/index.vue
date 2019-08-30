@@ -1,7 +1,7 @@
 <template>
  
-    <div class="picture"  :class="widgetClass" :style="model.commonStyle">
-      <img ref="imgComponent" :src="outSrc" :width="model.v2Width" :height="model.v2Height" ondragstart="return false;">
+    <div class="v2-picture" :class="widgetClass"  :style="model.commonStyle">
+      <img ref="imgComponent" :src="outSrc" width="100%" height="100%" ondragstart="return false;">
     </div>
 </template>
 <script>
@@ -35,6 +35,20 @@ export default {
     changeSrc(val){
       this.$store.getters.model(this.id).src = val;
     }
+  },
+  watch:{
+     "model.commonStyle.width"(val){
+        this.model.fixation && (this.model.commonStyle.width =this.$refs.imgComponent.naturalWidth)
+     },
+     "model.commonStyle.height"(val){  
+      this.model.fixation && (this.model.commonStyle.height =this.$refs.imgComponent.naturalHeight)
+     },
+     "model.fixation"(val){
+       if(val){
+         this.model.commonStyle.width =this.$refs.imgComponent.naturalWidth;
+         this.model.commonStyle.height =this.$refs.imgComponent.naturalHeight
+       }
+     }
   },
   beforeMount(){
     this.id = this.model.id;
@@ -92,8 +106,13 @@ export default {
       wrap.onmousedown = function(event){return false;}
     }
     console.log(self);
+ 
   }
 };
 </script>
 <style lang="scss" scoped>
+.v2-picture{
+  width:100px;
+  height:100px;
+}
 </style>

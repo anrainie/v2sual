@@ -1,1 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["0515-details-vue-def"],{b9e8:function(e,n){throw new Error('Module parse failed: Unexpected token (1:12)\nYou may need an appropriate loader to handle this file type.\n> {"structure":{}}')}}]);

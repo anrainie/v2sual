@@ -20,18 +20,11 @@
         "name": "src",
         "defaultValue": "",
         "desp": "路径"
-      },
-      {
-        "type": "string_input",
-        "name": "v2Height",
-        "defaultValue": "100%",
-        "desp": "高度"
-      },
-      {
-        "type": "string_input",
-        "name": "v2Width",
-        "defaultValue": "100%",
-        "desp": "宽度"
+      },{
+        "defaultValue": false,
+        "type": "boolean",
+        "name": "fixation",
+        "desp": "固定原尺寸"
       }
     ],
     "css": {}
@@ -43,6 +36,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.1",
+  "version": "6.0.2",
   "index": 30000006
 }
