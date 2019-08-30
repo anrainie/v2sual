@@ -1,7 +1,7 @@
 <template>
-  <div style="display:flex; flex-wrap:wrap;">
+  <div :style="loopWrapStyle">
     <template v-for="(item,key) in loopTarget">
-      <slot :_item="item" :_key="key" :style="loopStyle"></slot>
+      <slot :_item="item" :_key="key" :_style="loopStyle"></slot>
     </template>
   </div>
 </template>
@@ -32,6 +32,15 @@ export default {
         this.model.__loopTarget.constructor == Array
         ? this.model.__loopTarget
         : [];
+    },
+    // 单行容量为 1 时,不需要绑定额外的样式
+    loopWrapStyle() {
+      let capa = this.model.__capacity || 1;
+      let wrapStyle = {
+        "display": "flex",
+        "flex-wrap": "wrap"
+      }
+      return capa > 1 ? wrapStyle : ''
     },
     loopStyle() {
       let capa = this.model.__capacity || 1;

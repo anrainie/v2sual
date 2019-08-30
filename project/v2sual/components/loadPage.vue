@@ -16,8 +16,8 @@ export default {
         return {}
     },
     mounted(){
-    //   console.log(`@/views/${this.model.page}`)
-    //    console.log(this.model)
+     console.log(`@/views/${this.model.page}`)
+       console.log('hshshsh',this.model)
     }
    
 }
