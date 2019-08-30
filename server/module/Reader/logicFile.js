@@ -30,6 +30,7 @@ let json2script = function (json, path) {
     i, importList,
     template, finalStr,
     self = this;
+  let computedStr;
 
   dataList = data;
   let transfer = self.toCode(logic),
@@ -49,7 +50,6 @@ let json2script = function (json, path) {
   importList = createImport(structureIndex);
   porpStr = self.createProp(data);
   transfer = self.bindData(logic, content.dataBasket.mapping);
-
   // transfer数据初始化
   if (!transfer.pollList) transfer.pollList = [];
 
@@ -72,7 +72,7 @@ let json2script = function (json, path) {
                 ${importList.length ? `components:{${importList.map(item => `${item.desp}`)}},` : ''}
                 methods:{${self.methodsToCode(transfer.methods)}},
                 watch:{${self.methodsToCode(transfer.watch)}},
-                computed:{${self.computedToCode(transfer.computed)}},
+                computed:{${self.createComputed(transfer.computed,content.dataBasket.computed)}},
                 beforeCreate(){
                     let ctx = this;
                     ${transfer.beforeCreate ? transfer.beforeCreate.code : ''}
@@ -157,11 +157,12 @@ let methodsToCode = function (obj) {
   }
   return arr.join("");
 }
-
-let computedToCode = function (obj) {
+// 生成computed
+let createComputed = function (obj, sourceComputed) {
   let arr = [];
-  let i;
-  console.log(obj)
+  let sourceTempContent = [];
+  let i, j;
+  let len;
   for (i in obj) {
     if (obj[i]) {
       arr.push(
@@ -173,6 +174,29 @@ let computedToCode = function (obj) {
       )
     }
   }
+  // 处理复合数据computed
+  if (sourceComputed) {
+    for (i in sourceComputed) {
+      sourceTempContent = [];
+      if (sourceComputed[i]) {
+        len = sourceComputed[i].length;
+        for (j in sourceComputed[i]) {
+          sourceTempContent.push(
+            `let step${parseInt(j)+1} = window.pipe.${sourceComputed[i][j].name}(${sourceComputed[i][j].arguments[0]==="default"?"step"+parseInt(j):"this."+sourceComputed[i][j].arguments[0]},${JSON.stringify(sourceComputed[i][j].arguments[1])})\n`
+          )
+        }
+        arr.push(
+          `
+          ${i}(){
+            ${sourceTempContent.join(";")}
+            return step${len};
+          }
+          `
+        )
+      }
+    }
+  }
+
   return arr.join(",");
 }
 // 生成import
@@ -210,7 +234,9 @@ let bindData = function (logic, mapping) {
     mapping[i].map(item => {
       if (item.type === 'loop' && item.modelValue !== "__loopTarget") {
         arr.push(`ctx.$store.commit("registerBind",{ dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
-      } else {
+      } else if(item.type === 'composite'){
+        arr.push(`ctx.$store.commit("registerBind",{ vueObj:this, data:this.${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}",type:"computed" });`);
+      }else {
         arr.push(`ctx.$store.commit("registerBind",{ vueObj:this, data:this.${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
       }
     });
@@ -278,6 +304,7 @@ let createProp = (data) => {
   }
   return arr;
 };
+
 
 // 转换代码
 let toCode = function (logic) {
@@ -548,6 +575,17 @@ let transItem = function (item) {
       break;
   }
 };
+let transToStr = function (target) {
+  let res;
+  if ($.isArray(target)) {
+    res = `[${target.join(',')}]`;
+  } else if (typeof target === 'object') {
+    res = JSON.stringify(target);
+  } else {
+    res = Object.prototype.toString.call(target);
+  }
+  return res;
+};
 
 // ======================================================================================================================
 exports.json2script = json2script;
@@ -564,4 +602,5 @@ exports.__buildIndex = __buildIndex;
 exports.createProp = createProp;
 exports.formatData = formatData;
 exports.toCamel = toCamel;
-exports.computedToCode = computedToCode;
+exports.createComputed = createComputed;
+exports.transToStr = transToStr;

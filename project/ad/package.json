@@ -6,7 +6,7 @@
       "description": "web版IDE项目基础支持",
       "scripts": {
             "style": "vue-cli-service build --no-clean",
-            "serve": "vue-cli-service serve --publicPath=./ --sockPort=7033 --sockPath=/sockjs-node --port=7033 --mockPort=7034 --sockHost=localhost",
+            "serve": "vue-cli-service serve --publicPath=./ --port=7033 --mockPort=7034",
             "build": "vue-cli-service build",
             "lint": "vue-cli-service lint",
             "theme": "et",
@@ -56,7 +56,7 @@
             "@v2-components/v2-mobile-steps": "^6.0.1",
             "@v2-components/v2-mobile-uploader": "^6.0.0",
             "@v2-components/v2-page": "^6.0.1",
-            "@v2-components/v2-switchable": "^6.0.0",
+            "@v2-components/v2-switchable": "^6.0.1",
             "@v2-lib/v2sual": "^6.0.3",
             "@v2-lib/vue.spa.plugin": "^6.0.2",
             "@v2-pipe/animate": "^6.0.0",
