@@ -1,7 +1,3 @@
-
-
-
-
 const path = require("path");
 const fs = require("fs");
 
@@ -81,6 +77,25 @@ let project = {
          Result.error(ctx, error)
      }
  
+  },
+  imgList:async(ctx)=>{
+    
+    
+    
+    
+    let list=[];
+    let cursor=1;
+
+    while(list.length<50){
+      cursor++;
+      let content=await util.$get(`${config.module.componentStore.server}/p/${cursor}/`);
+      const t=(content.match(/srcSet="([^"]+)"/g)||[]).map(e=>e.replace(/srcSet="([^"]+)"/,'$1'));
+
+      list=list.concat(t);
+    }
+
+    Result.success(ctx,list);
+
   }
 }
 module.exports = {
