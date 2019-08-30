@@ -57,12 +57,12 @@
       "style": [
         {
           "desp": "标题",
-          "cssAttrs": "background-color width height color",
+          "cssAttrs": "background-color width height color font-size padding margin",
           "name": "title"
         },
         {
           "desp": "值",
-          "cssAttrs": "background-color width height color",
+          "cssAttrs": "background-color width height color font-size padding margin",
           "name": "value"
         }
       ]
@@ -75,6 +75,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.1",
+  "version": "6.0.2",
   "index": 30000006
 }

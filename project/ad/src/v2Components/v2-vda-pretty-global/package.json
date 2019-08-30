@@ -1,0 +1,41 @@
+{
+  "author": {
+    "name": "zhanghaixian@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "好地球",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconzhuzhuangtu",
+    "type": "project",
+    "href": "v2-vda-pretty-global",
+    "author": "zhanghaixian@agree.com.cn",
+    "version": 610000,
+    "accept": "divCtn",
+    "name": "vda地球",
+    "option": [
+      {
+        "type": "array",
+        "name": "data",
+        "defaultValue": [],
+        "desp": "数据",
+        "details":"like [[ 119.15, 33.5, 1 ], [ 119.9, 32.49, 2 ], [ 108.33, 22.84, 3]], 前两项表示坐标经纬度，最后一项为数值"
+      }
+
+    ],
+    "css":{
+
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@v2-components/v2-vda-pretty-global",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.0",
+  "index":31000001
+}
+

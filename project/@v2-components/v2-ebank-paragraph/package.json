@@ -6,14 +6,14 @@
   "bundleDependencies": false,
   "deprecated": false,
   "index": 30000001,
-  "version": "6.0.1",
+  "version": "6.0.2",
   "license": "ISC",
   "author": {
     "name": "zhucheng@agree.com.cn"
   },
   "docs": {
     "name": "标题段落",
-    "type": "component",
+    "type": "project",
     "href": "v2-ebank-paragraph",
     "icon": "iconwenben",
     "accept": "divCtn",
@@ -22,28 +22,30 @@
     "version": 610000,
     "option": [
       {
-        "name": "icon",
-        "desp": "快捷键图标",
+        "name": "header",
+        "desp": "标题内容",
         "type": "string_input",
-        "defaultValue": "el-icon-eleme"
+        "defaultValue": "标题",
+        "placeholder": "请输入标题内容"
       },
       {
-        "name": "name",
-        "desp": "快捷键名",
-        "type": "string_input",
-        "defaultValue": "一个快捷键"
+        "name": "divider",
+        "desp": "标题分割线",
+        "type": "boolean",
+        "defaultValue": "true"
       },
       {
-        "name": "path",
-        "desp": "链接地址",
+        "name": "content",
+        "desp": "段落内容",
         "type": "string_input",
-        "defaultValue": "/index"
+        "defaultValue": "",
+        "placeholder": "请绑定段落数组"
       },
       {
-        "name": "size",
-        "desp": "尺寸",
-        "type": "string_input",
-        "defaultValue": "normal"
+        "name": "indent",
+        "desp": "段落缩进",
+        "type": "boolean",
+        "defaultValue": "true"
       }
     ],
     "css": {

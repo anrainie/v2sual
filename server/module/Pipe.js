@@ -29,6 +29,7 @@ class Pipe {
         const files = await readDir(path);
         let res = [{
           desp: "数据源",
+          name:"dataSource",
           item: []
         },
         {
@@ -50,27 +51,38 @@ class Pipe {
         },
         {
           desp: "比较运算",
+          name: "comparison",
           item: []
         },
         {
           desp: "数字运算",
+          name: "number",
           item: []
         },
         {
           desp: "逻辑运算",
+          name: "logic",
           item: []
         },
         {
           desp: '动画',
+          name: "animate",
           item: []
         },
         {
           desp: "字符串",
+          name: "string",
           item: []
         },
         {
           desp: "接口",
+          name: "api",
           item: []
+        },
+        {
+          desp: "复合数据源",
+          name: "compositeSource",
+          item:[]
         }
 
         ]
@@ -122,6 +134,9 @@ class Pipe {
             case "api":
               res[7].item.push(obj);
               break;
+              case "compositeSource":
+                res[8].item.push(obj);
+                break;
             default:
               break;
           }

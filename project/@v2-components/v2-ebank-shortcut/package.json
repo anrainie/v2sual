@@ -6,14 +6,14 @@
   "bundleDependencies": false,
   "deprecated": false,
   "index": 30000001,
-  "version": "6.0.1",
+  "version": "6.0.2",
   "license": "ISC",
   "author": {
     "name": "zhucheng@agree.com.cn"
   },
   "docs": {
     "name": "快捷键",
-    "type": "component",
+    "type": "project",
     "href": "v2-ebank-shortcut",
     "icon": "icontubiao",
     "accept": "divCtn",
@@ -25,7 +25,7 @@
         "name": "icon",
         "desp": "快捷键图标",
         "type": "string_input",
-        "defaultValue": "el-icon-eleme",
+        "defaultValue": "el-icon-setting",
         "placeholder": "图标class或图标图片路径"
       },
       {
@@ -51,17 +51,79 @@
         "defaultValue": "一个快捷键"
       },
       {
-        "name": "route",
-        "desp": "链接地址",
-        "type": "string_input",
-        "placeholder": "请绑定页面路由配置",
-        "defaultValue": ""
+        "name": "insideRoute",
+        "desp": "内置路由方法",
+        "type": "object",
+        "defaultValue": "",
+        "attr": [
+          {
+            "name": "useInsideRoute",
+            "desp": "使用内置路由方法",
+            "type": "boolean",
+            "defaultValue": true
+          },
+          {
+            "name": "route",
+            "desp": "路由配置",
+            "type": "string_input",
+            "placeholder": "请绑定页面路由配置",
+            "defaultValue": ""
+          }
+        ]
       },
       {
-        "name": "size",
-        "desp": "尺寸",
-        "type": "string_input",
-        "defaultValue": "normal"
+        "name": "funcBtn",
+        "desp": "功能按钮",
+        "type": "object",
+        "defaultValue": "",
+        "attr": [
+          {
+            "name": "showFuncBtn",
+            "desp": "显示功能按钮",
+            "type": "boolean",
+            "defaultValue": false
+          },
+          {
+            "name": "funcBtnName",
+            "desp": "功能按钮名",
+            "type": "string_input",
+            "defaultValue": "添加"
+          },
+          {
+            "name": "funcBtnParams",
+            "desp": "功能按钮参数",
+            "type": "string_input",
+            "placeholder": "请绑定事件所需参数",
+            "defaultValue": ""
+          }
+        ]
+      },
+      {
+        "name": "funcIcon",
+        "desp": "功能图标",
+        "type": "object",
+        "defaultValue": "",
+        "attr": [
+          {
+            "name": "showFuncIcon",
+            "desp": "显示功能图标",
+            "type": "boolean",
+            "defaultValue": false
+          },
+          {
+            "name": "funcIconClass",
+            "desp": "功能图标类名",
+            "type": "string_input",
+            "defaultValue": "el-icon-error"
+          },
+          {
+            "name": "funcIconParams",
+            "desp": "功能图标参数",
+            "type": "string_input",
+            "placeholder": "请绑定事件所需参数",
+            "defaultValue": ""
+          }
+        ]
       }
     ],
     "css": {

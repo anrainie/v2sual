@@ -15,7 +15,7 @@
     "accept": "foundationRowCtn divCtn",
     "name": "输入框",
     "inputfield": [
-      "value"
+      {"name":"value","desp":"输入值"}
     ],
     "option": [
       {
@@ -204,6 +204,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.1",
+  "version": "6.0.2",
   "index": 20000001
 }

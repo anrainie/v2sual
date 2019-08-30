@@ -6,14 +6,14 @@
   "bundleDependencies": false,
   "deprecated": false,
   "index": 30000001,
-  "version": "6.0.1",
+  "version": "6.0.2",
   "license": "ISC",
   "author": {
     "name": "zhucheng@agree.com.cn"
   },
   "docs": {
     "name": "银行卡",
-    "type": "component",
+    "type": "project",
     "href": "v2-ebank-bankcard",
     "icon": "iconkapian",
     "accept": "divCtn",

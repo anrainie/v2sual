@@ -1,0 +1,22 @@
+{
+  "backgroundColor": "transparent",
+
+  "series": {
+    "type": "map",
+    "map": "world",
+    "top": 0,
+    "left": 0,
+    "right": 0,
+    "bottom": 0,
+    "boundingCoords": [ [-180, 90], [180, -90] ],
+    "itemStyle": {
+      "areaColor": "transparent",
+      "borderColor": "white"
+    },
+    "emphasis": {
+      "label": {
+        "show": false
+      }
+    }
+  }
+}

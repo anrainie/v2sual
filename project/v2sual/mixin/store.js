@@ -338,6 +338,7 @@ export default () => {
         dataStr,
         wid,
         modelKey,
+        type
         // rootVue,
       }) {
         // if (!rootVue)
@@ -354,7 +355,11 @@ export default () => {
           console.error(`can not found widget ${wid}`)
           return;
         }
-
+        // 绑定computed
+        if (type && type === 'computed') {
+          model[modelKey] = data;
+          return;
+        }
         /**
          * modelKey可能是这种格式 a.b-1.c-1
          * dataStr也可能是这种格式A.B-1.C-1
@@ -494,7 +499,7 @@ export default () => {
         // UIData.structureIndex = UIData.structureIndex || {};
         // Vue.set(UIData.structureIndex, id, content);
         // UIData.structureIndex[id] = content;
-        Vue.set( UIData.structureIndex,id,content);
+        Vue.set(UIData.structureIndex, id, content);
       },
       /**
        * 设置当前激活的工具

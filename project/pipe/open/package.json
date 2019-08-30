@@ -1,59 +1,33 @@
 {
-  "_from": "@v2-pipe/open@^6.0.0",
-  "_id": "@v2-pipe/open@6.0.0",
-  "_inBundle": false,
-  "_integrity": "sha1-yrvELGmNRI/4ry8EBtXN2jit02c=",
-  "_location": "/@v2-pipe/open",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "range",
-    "registry": true,
-    "raw": "@v2-pipe/open@^6.0.0",
     "name": "@v2-pipe/open",
-    "escapedName": "@v2-pipe%2fopen",
-    "scope": "@v2-pipe",
-    "rawSpec": "^6.0.0",
-    "saveSpec": null,
-    "fetchSpec": "^6.0.0"
-  },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "https://npm.awebide.com/@v2-pipe/open/download/@v2-pipe/open-6.0.0.tgz",
-  "_shasum": "cabbc42c698d448ff8af2f0406d5cdda38add367",
-  "_spec": "@v2-pipe/open@^6.0.0",
-  "_where": "E:\\v2sual\\project\\ad",
-  "bundleDependencies": false,
-  "category": "自定义",
-  "deprecated": false,
-  "description": "打开页面",
-  "docs": {
-    "desp": "打开页面",
-    "name": "this.open",
-    "icon": "",
-    "category": "api",
-    "label": "open",
-    "labelType": "front",
-    "belongTo": "function",
-    "hasReturn": false,
-    "returnValue": {
-      "name": "",
-      "desp": "",
-      "details": "",
-      "type": "string",
-      "defaultValue": ""
+    "main": "index.js",
+    "docs": {
+        "desp": "打开页面",
+        "name": "this.open",
+        "icon": "",
+        "category": "api",
+        "label": "open",
+        "labelType": "front",
+        "belongTo": "function",
+        "hasReturn": false,
+        "returnValue": {
+            "name": "",
+            "desp": "",
+            "details": "",
+            "type": "string",
+            "defaultValue": ""
+        },
+        "params": [
+            {
+                "name": "option",
+                "desp": "option",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": ""
+            }
+        ]
     },
-    "params": [
-      {
-        "name": "option",
-        "desp": "option",
-        "type": "string",
-        "necessary": true,
-        "defaultValue": ""
-      }
-    ]
-  },
-  "main": "index.js",
-  "name": "@v2-pipe/open",
-  "version": "6.0.0"
+    "category": "自定义",
+    "description": "打开页面",
+    "version": "6.0.0"
 }

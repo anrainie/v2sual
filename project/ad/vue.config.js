@@ -7,9 +7,8 @@ const getConfig = () => {
     publicPath: './',
     port: 7009,
     mockPort: 7008,
-    sockPort: 7007,
-    sockPath: '/sockjs-node',
-
+    // sockPort: 7007,
+    // sockPath: '/sockjs-node',
   };
 
   process.argv.filter(e => e.startsWith('--')).forEach(e => {
@@ -27,15 +26,22 @@ const getConfig = () => {
 const config = getConfig();
 
 
+let sockConfig = {
+  sockPort: process.env.WEBPACK_SOCKJS_PROT || config.sockPort || config.port,
+  sockHost: process.env.WEBPACK_SOCKJS_HOST  || config.sockHost || 'localhost',
+  sockPath: process.env.WEBPACK_SOCKJS_PATH || config.sockPath || '/sockjs-node'
+}
+
 module.exports = {
   publicPath: config.publicPath,
   devServer: {
     port: config.port || 7009,
-    sockPort: config.sockPort,
-    sockPath: config.sockPath,
-    sockHost: config.sockHost,
+    sockPort: sockConfig.sockPort,
+    sockPath: sockConfig.sockPath,
+    sockHost: sockConfig.sockHost,
     disableHostCheck: true,
     hotOnly: false,
+    compress: true,
     proxy: {
       //假数据
       '/': {

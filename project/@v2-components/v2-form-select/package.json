@@ -15,8 +15,7 @@
     "accept": "foundationRowCtn divCtn",
     "name": "下拉框",
     "inputfield": [
-      "value",
-      "optionConfig"
+      {"name":"value","desp":"选中值"}
     ],
     "option": [
       {
@@ -177,6 +176,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.1",
+  "version": "6.0.2",
   "index": 20000006
 }

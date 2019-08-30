@@ -32,7 +32,7 @@ module.exports = {
       }
     }
   },
-  publicPath: config.publicPath,
+  // publicPath: config.publicPath,
   devServer: {
     port: config.port,
     sockPort: config.sockPort,
@@ -62,7 +62,8 @@ module.exports = {
   filenameHashing: false,
   css: {
     modules: false,
-    extract: false,
+    // extract: false,
+    extract: true,
     sourceMap: false,
     loaderOptions: {
       sass: {

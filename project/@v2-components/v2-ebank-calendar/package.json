@@ -1,0 +1,36 @@
+{
+  "author": {
+    "name": "zhucheng@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "日历便签",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconriqixuanze",
+    "type": "project",
+    "href": "v2-ebank-calendar",
+    "author": "zhucheng@agree.com.cn",
+    "version": 610000,
+    "accept": "divCtn",
+    "name": "日历便签",
+    "option": [
+      {
+        "type": "string_input",
+        "name": "notes",
+        "defaultValue": "",
+        "desp": "便签内容",
+        "placeholder": "请绑定便签数据"
+      }
+    ]
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@v2-components/v2-ebank-calendar",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.1",
+  "index": 30000015
+}
