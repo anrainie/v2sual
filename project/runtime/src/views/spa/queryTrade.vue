@@ -30,7 +30,7 @@ endTime:""
                   
             
                     /*overview*/
-                        (async()=>{    const t4 = ctx.$axios.post("v1/ds/cmbcms/querySceneSerial",{card_num: "909090909090",condition: "today"}).then(res=>{if(res.retType==="SUCCESS"){ctx.tableData=res.jsonData;}});
+                        (async()=>{    const t4 = ctx.$axios.post("v1/ds/cmbcms/querySceneSerial",{card_num: "909090909090",condition: "today"}).then(res=>{if(res.retType==="SUCCESS"){ctx.tableData=res.jsonData.map(item=>{if(item.trade_date){item.trade_date=moment(item.trade_date).format("YYYY-MM-DD")}return item;});}});;
 })();
                     /*overview over*/
                     
@@ -40,7 +40,7 @@ endTime:""
                   
             
                     /*overview*/
-                        (async()=>{    const t4 = ctx.$axios.post("v1/ds/cmbcms/querySceneSerial",{card_num: "909090909090",condition: "lastweek"}).then(res=>{if(res.retType==="SUCCESS"){ctx.tableData=res.jsonData;}});
+                        (async()=>{    const t4 = ctx.$axios.post("v1/ds/cmbcms/querySceneSerial",{card_num: "909090909090",condition: "lastweek"}).then(res=>{if(res.retType==="SUCCESS"){ctx.tableData=res.jsonData.map(item=>{if(item.trade_date){item.trade_date=moment(item.trade_date).format("YYYY-MM-DD")}return item;});}});;
 })();
                     /*overview over*/
                     
@@ -55,7 +55,7 @@ endTime:""
             card_num: "909090909090",
             condition: "lastmonth"
           })
-          .then(res=>{if(res.retType==="SUCCESS"){ctx.tableData=res.jsonData;}});
+          .then(res=>{if(res.retType==="SUCCESS"){ctx.tableData=res.jsonData.map(item=>{if(item.trade_date){item.trade_date=moment(item.trade_date).format("YYYY-MM-DD")}return item;});}});;
 })();
                     /*overview over*/
                     
@@ -70,7 +70,7 @@ endTime:""
             card_num: "909090909090",
             condition: "lastquarter"
           })
-          .then(res=>{if(res.retType==="SUCCESS"){ctx.tableData=res.jsonData;}});
+          .then(res=>{if(res.retType==="SUCCESS"){ctx.tableData=res.jsonData.map(item=>{if(item.trade_date){item.trade_date=moment(item.trade_date).format("YYYY-MM-DD")}return item;});}});;
 })();
                     /*overview over*/
                     
@@ -85,7 +85,7 @@ endTime:""
             card_num: "909090909090",
             condition: "lastyear"
           })
-          .then(res=>{if(res.retType==="SUCCESS"){ctx.tableData=res.jsonData;}});
+          .then(res=>{if(res.retType==="SUCCESS"){ctx.tableData=res.jsonData.map(item=>{if(item.trade_date){item.trade_date=moment(item.trade_date).format("YYYY-MM-DD")}return item;});}});;
 })();
                     /*overview over*/
                     
@@ -110,7 +110,7 @@ if(ctx.isShowHighQuery){
                   
             
                     /*overview*/
-                        (async()=>{    const t4 = ctx.$axios.post("v1/ds/cmbcms/queryTradeSerial",{card_num: "909090909090",start_date: "",end_date:""}).then(res=>{if(res.retType==="SUCCESS"){ctx.tableData=res.jsonData;}});;
+                        (async()=>{    const t4 = ctx.$axios.post("v1/ds/cmbcms/queryTradeSerial",{card_num: "909090909090",start_date: "",end_date:""}).then(res=>{if(res.retType==="SUCCESS"){ctx.tableData=res.jsonData.map(item=>{if(item.trade_date){item.trade_date=moment(item.trade_date).format("YYYY-MM-DD")}return item;});}});;
 })();
                     /*overview over*/
                     
