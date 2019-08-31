@@ -11,6 +11,9 @@
   import MapOptions from './map-default-options.json'
   import GlobalOptions from './global-default-options.json'
 
+  const defaultSeriesName = 'bar' // 对应bar3D.name
+  const defaultMapName = 'world'
+
   const geoJsonUrlOfWorld = "https://raw.githubusercontent.com/apache/incubator-echarts/master/map/json/world.json"
   const geoJsonUrlOfChina = "https://raw.githubusercontent.com/apache/incubator-echarts/master/map/json/china.json"
 
@@ -25,32 +28,47 @@
 
   /**
    * 将地图数据注册到echarts中
+   * @return {Promise} 忽略注册失败的情况
    */
   function registerMap() {
-    if (echarts.getMap('world')) {
+    if (echarts.getMap(defaultMapName)) {
       return Promise.resolve()
     }
+
+    function fetchMapJson(url) {
+      return new Promise(resolve => $.getJSON(url, resolve))
+    }
+
+    function mergeMapJson(all, item, exclude) {
+      let itemFeatures = item.features.map(({geometry, properties}) => ({geometry, properties}))
+
+      all.features = all.features.filter(feature => feature.properties.name.toLowerCase() !== exclude)
+      Reflect.apply(Array.prototype.push, all.features, itemFeatures)
+      return all
+    }
+
+
     let tasks = Array.of(
       fetchMapJson(geoJsonUrlOfWorld),
       fetchMapJson(geoJsonUrlOfChina)
     )
 
     return Promise.all(tasks)
-      .then(([world, china]) => echarts.registerMap('world', mergeMapJson(world, china, 'china')))
+      .then(([world, china]) => echarts.registerMap(defaultMapName, mergeMapJson(world, china, 'china')))
       .catch(() => console.error("Failed to load map json, please check net"))
   }
 
-  function fetchMapJson(url) {
-    return new Promise(resolve => $.getJSON(url, resolve))
+  function makeGlobalEchart(echartSize, element) {
+    let globalChart = makeEchart(GlobalOptions, echartSize,element)
+
+    applyDataForSeries(defaultSeriesName, this.data, this.globalChart)
+    globalChart.showLoading()
+
+    return globalChart
   }
 
-  function mergeMapJson(all, item, exclude) {
-    let itemFeatures = item.features.map(({geometry, properties}) => ({geometry, properties}))
-
-    all.features = all.features.filter(feature => feature.properties.name.toLowerCase() !== exclude)
-    all.features = Reflect.apply(Array.prototype.push, all.features, itemFeatures)
-
-    return all
+  function makeMapEchart(echartSize) {
+    return makeEchart(MapOptions, echartSize, document.createElement('canvas'))
   }
 
   function makeEchart(chartOptions, canvasOptions, element) {
@@ -61,20 +79,36 @@
 
   /**
    * 将地图作为地球表面层
-   * @param echartsInstance 地图echart
-   * @param globeOptions
+   * @param mapInstance 地图echart
+   * @param globalInstance 地球echart
    */
-  function applyMapLayer(echartsInstance, globeOptions) {
-    (globeOptions.layers || (globeOptions.layers = Array.of())).push({
-      type: 'blend',
-      texture: echartsInstance,
-      shading: 'lambert',
-      distance: 0
+  function applyMapLayer(mapInstance, globalInstance) {
+    globalInstance.setOption({
+      globe: {
+        layers: [
+          {
+            type: 'blend',
+            texture: mapInstance,
+            shading: 'lambert',
+            distance: 0
+          }
+        ]
+      }
     })
   }
 
-  function applyDataForSeries(data, seriesOptions, seriesIndex = 0) {
-    seriesOptions[seriesIndex].data = data
+  function applyDataForSeries(name, data, echartInstance) {
+    echartInstance.setOption({
+      series: Array.of({ data, name })
+    })
+  }
+
+  function applyViewControl(data, echartInstance) {
+    echartInstance.setOption({
+      globe: {
+        viewControl: data
+      }
+    })
   }
 
   export default {
@@ -82,35 +116,19 @@
 
     data() {
       return {
-        registered: false,
-        globalOptions: GlobalOptions
+        viewControl: GlobalOptions.globe.viewControl
       }
     },
 
     watch: {
       data(value) {
-        applyDataForSeries(value, this.globalOptions)
+        applyDataForSeries(defaultSeriesName, value, this.globalOptions)
       },
 
-      "globalOptions.globe.viewControl": {
+      viewControl: {
         deep: true,
-        handler(options) {
-          this.globalChart.setOption(options)
-        }
-      },
-
-      registered(value) {
-        if (value) {
-          const mapChartSize = {width: 3840, height: 2160}
-          const globalChartSize = {width: 1920, height: 1080}
-
-          // 创建世界地图
-          this.mapChart = makeEchart(MapOptions, mapChartSize, document.createElement('canvas'))
-
-          applyMapLayer(this.mapChart, GlobalOptions.globe)
-          applyDataForSeries(this.data, GlobalOptions.series)
-
-          this.globalChart = makeEchart(GlobalOptions, globalChartSize, this.$refs.global)
+        handler (value) {
+          applyViewControl(value, this.globalChart)
         }
       }
     },
@@ -124,7 +142,25 @@
     },
 
     beforeCreate() {
-      registerMap().then(() => this.registered = true)
+      const afterRegistered = registerMap()
+
+      // vueInstance.mounted and registered
+      this.$once('mount-echart', () => {
+        afterRegistered.then(() => {
+          this.globalChart.hideLoading()
+
+          // 创建世界地图
+          const mapChartSize = {width: 3840, height: 2160}
+          const mapEchart = makeMapEchart(mapChartSize)
+
+          applyMapLayer(mapEchart, this.globalChart)
+        })
+      })
+    },
+
+    mounted() {
+      this.globalChart = makeGlobalEchart({width: 1920, height: 1080}, this.$refs.global)
+      this.$emit('mount-echart')
     },
 
     methods: {
@@ -133,7 +169,7 @@
        * @param delta 视角接近地球的距离
        */
       zoomIn(delta = 10) {
-        this.globalOptions.globe.viewControl.distance -= delta
+        this.viewControl.distance -= delta
       },
 
       /**
@@ -141,7 +177,7 @@
        * @param delta 视角远离地球的距离
        */
       zoomOut(delta = 10) {
-        this.globalOptions.globe.viewControl.distance += delta
+        this.viewControl.distance += delta
       },
 
       /**
@@ -149,28 +185,28 @@
        * @param angle 旋转角度
        */
       rotateLeft(angle) {
-        this.globalOptions.globe.viewControl.targetCoord[1] += angle
+        this.viewControl.targetCoord[1] += angle
       },
 
       /**
        * @see rotateLeft
        */
       rotateRight(angle) {
-        this.globalOptions.globe.viewControl.targetCoord[1] -= angle
+        this.viewControl.targetCoord[1] -= angle
       },
 
       /**
        * @see rotateLeft
        */
       rotateTop(angle) {
-        this.globalOptions.globe.viewControl.targetCoord[0] += angle
+        this.viewControl.targetCoord[0] += angle
       },
 
       /**
        * @see rotateLeft
        */
       rotateBottom(angle) {
-        this.globalOptions.globe.viewControl.targetCoord[0] -= angle
+        this.viewControl.targetCoord[0] -= angle
       },
 
       /**
@@ -178,7 +214,7 @@
        */
       center(x, y, z) {
         if (checkNumber(x, y, z)) {
-          this.globalOptions.globe.viewControl.center = Array.of(x, y, z)
+          this.viewControl.center = Array.of(x, y, z)
         } else {
           console.warn(`Failed to move the center: [ ${x}, ${y}, ${z} ]`)
         }
@@ -191,7 +227,7 @@
        */
       targetCoord(lng, lat) {
         if (checkNumber(lng, lat)) {
-          this.globalOptions.globe.viewControl.targetCoord = Array.of(lng, lat)
+          this.viewControl.targetCoord = Array.of(lng, lat)
         } else {
           console.warn(`Failed to target the coordinate: [ ${lng}, ${lat} ]`)
         }
