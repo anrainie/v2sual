@@ -69,7 +69,7 @@ export default {
 </script>
 
 <style lang="scss">
-.eb-tabs.tabs-handlebar {
+.eb-tabs {
   position: relative;
 
   .el-tabs__nav {

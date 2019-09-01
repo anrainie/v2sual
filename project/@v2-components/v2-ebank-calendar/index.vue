@@ -382,8 +382,8 @@ export default {
     margin-bottom: 5px;
   }
   .el-tabs__item {
-    height: 36px;
-    font-size: 13px;
+    // height: 36px;
+    // font-size: 13px;
   }
   .weekdays {
     height: 30px;
