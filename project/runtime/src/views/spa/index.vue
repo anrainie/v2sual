@@ -374,8 +374,8 @@ recommendShortcuts:// recommendShortcuts
 ],
 noticeCtt:// noticeCtt
 [
-  {id: '', header: '风险提示', content: '风险提示风险提示风险提示风险提示风险提示风险提示风险提示风险提示风险提示风险提示'},
-  {id: '', header: '业务公告', content: '业务公告业务公告业务公告业务公告业务公告业务公告业务公告业务公告业务公告业务公告'}
+  {id: '', header: '风险提示', content: ['风险提示风险提示风险提示风险提示风险提示风险提示风险提示风险提示风险提示风险提示']},
+  {id: '', header: '业务公告', content: ['业务公告业务公告业务公告业务公告业务公告业务公告业务公告业务公告业务公告业务公告']}
 ],
 calendarNotes:// calendarNotes
 [
