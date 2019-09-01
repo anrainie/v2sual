@@ -74,12 +74,6 @@
           "下",
           "左"
         ]
-      },
-      {
-        "type": "string_input",
-        "name": "btns",
-        "defaultValue": "",
-        "desp": "功能按钮数组"
       }
     ]
   },
@@ -90,6 +84,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.2",
+  "version": "6.0.1",
   "index": 30000003
 }
