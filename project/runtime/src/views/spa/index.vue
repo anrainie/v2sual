@@ -42,7 +42,7 @@
                     </el-row>
                     <el-row class="V2ContainerBlock borderBox dashBorder" style="height:;" key="1">
                         <v2-switchable class="V2Widget" id="1567256812569" :wid="`1567256812569`" :index="1" :pid="`1567256660377`" activeindex="recommendNoticeTabBar.activeIndex"><template>
-                                <v2container id="1567258258287" :wid="`1567258258287`" :index="0" :pid="`1567256812569`" v-if="recommendNoticeTabBar.activeIndex==0">
+                                <v2container id="1567258258287" :wid="`1567258258287`" :index="0" :pid="`1567256812569`" v-show="recommendNoticeTabBar.activeIndex==0">
                                     <el-row class="V2ContainerBlock borderBox dashBorder" style="height:;" key="0">
                                         <v2-component-carousel class="V2Widget" id="1567259069043" :wid="`1567259069043`" :index="0" :pid="`1567258258287`"></v2-component-carousel>
                                     </el-row>
@@ -52,7 +52,7 @@
                                             </template></v2loop>
                                     </el-row>
                                 </v2container>
-                                <v2container id="1567258295596" :wid="`1567258295596`" :index="1" :pid="`1567256812569`" v-if="recommendNoticeTabBar.activeIndex==1">
+                                <v2container id="1567258295596" :wid="`1567258295596`" :index="1" :pid="`1567256812569`" v-show="recommendNoticeTabBar.activeIndex==1">
                                     <el-row class="V2ContainerBlock borderBox dashBorder" style="height:100%;" key="0">
                                         <v2loop class="V2Widget" id="1567258857426" :wid="`1567258857426`" :index="0" :pid="`1567258295596`"><template v-slot="scope">
                                                 <v2-ebank-paragraph class="V2Widget" :id="`1567258857426-${scope._key}`" :wid="`1567258857426-${scope._key}`" :index="scope._key" :pid="`1567258857426`" :cpttype="`loopItem`" :$item="scope._item" :$key="scope._key" :style="scope._style"></v2-ebank-paragraph>

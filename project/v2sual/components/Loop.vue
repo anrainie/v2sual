@@ -25,7 +25,18 @@ export default {
   },
   created() {
     //loopKey是用于初始化的关键字
-    this.model.__loopKey = this.model.__loopKey || this.model.__loopTarget;
+    if (!this.model.__loopKey) {
+      if (
+        this.model.__loopTarget &&
+        this.model.__loopTarget.constructor == String
+      ) {
+        this.model.__loopKey = this.model.__loopTarget;
+      } else {
+        console.error(
+          "循环组件关键字必须为String，当前为：" + this.model.__loopTarget
+        );
+      }
+    }
   },
   computed: {
     loopTarget() {
