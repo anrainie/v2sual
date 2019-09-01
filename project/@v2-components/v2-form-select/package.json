@@ -77,7 +77,7 @@
         "name": "optionConfig",
         "desp": "下拉项",
         "defaultValue": "",
-        "type": "databasket_input"
+        "type": "string_input"
       },
       {
         "require": {

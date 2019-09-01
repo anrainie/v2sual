@@ -3,7 +3,7 @@
  * 网银项目全局公共样式
  */
 
-* {
+ * {
   font-size: 12px;
 }
 
@@ -17,18 +17,46 @@
 }
 
 .aweb-main {
+  background: #ebecf2;
+}
+.aweb-main {
   padding: 20px 30px;
 }
 
+
+/* 背景色 #ebecf2
+蓝边框 #c2d5eb
+蓝边tabBar #f4f6fc
+border: 1px solid #9fd6ff;
+
+绿边框 
+绿边tabBar 
+
+容器背景 #fff
+ */
+
 .eb-grid {
   margin: 10px;
+  background: #fff;
+  overflow: hidden;
 }
 .eb-grid--radius {
   border-radius: 5px;
 }
 .eb-grid--blue {
-  border: 1px solid #9fd6ff;
+  border: 1px solid #c2d5eb;
 }
-.eb-grid--green {
+
+
+/* .eb-grid--green {
   border: 1px solid #97e490;
+} */
+
+.eb-tabs.tabs-handlebar .el-tabs__header {
+  background: #f4f6fc;
+}
+
+.eb-tabs .el-tabs__nav-wrap::after {
+  height: 1px;
+  background-color: #c2d5eb;
 }

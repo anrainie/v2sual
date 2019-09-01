@@ -79,9 +79,17 @@ ctx.$store.commit("registerBind",{ vueObj:this, data:this.step, dataStr:"step", 
                     
                     /*overview*/
                         (async()=>{    const t4 = ctx.$root.$on('step',({
-    index
+    index,
+    receiveName,
+    receiveAccount,
+    receiveBank,
+    receiveMoney,
 })=>{
     ctx.step = index;
+    ctx.$root.receiveName = receiveName;
+    ctx.$root.receiveAccount = receiveAccount;
+    ctx.$root.receiveBank = receiveBank;
+    ctx.$root.receiveMoney = receiveMoney;
 });
 })();
                     /*overview over*/

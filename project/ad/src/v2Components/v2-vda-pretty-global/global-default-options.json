@@ -8,8 +8,8 @@
     "globeRadius": 100,
     "viewControl": {
       "distance": 1000,
-      "minDistance": 40,
-      "maxDistance": 400,
+      "minDistance": 0,
+      "maxDistance": 4000,
       "panSensitivity": 1,
       "orthographicSize": 50,
       "maxOrthographicSize": 400,

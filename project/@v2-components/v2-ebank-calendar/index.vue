@@ -121,15 +121,8 @@ export default {
   },
   computed: {
     notes() {
+      // TODO: 根据当前日期构造组件的假数据
       let notes = [
-        [
-          { day: "2019-07-01", header: "07-01", paragraphs: ["便签事件1"] },
-          { day: "2019-07-07", header: "07-07", paragraphs: ["便签事件2"] },
-          { day: "2019-07-12", header: "07-12", paragraphs: ["便签事件3"] },
-          { day: "2019-07-22", header: "07-22", paragraphs: ["便签事件4"] },
-          { day: "2019-07-29", header: "07-29", paragraphs: ["便签事件5"] },
-          { day: "2019-07-30", header: "07-30", paragraphs: ["便签事件6"] }
-        ],
         [
           { day: "2019-08-01", header: "08-01", paragraphs: ["便签事件1"] },
           { day: "2019-08-08", header: "08-08", paragraphs: ["便签事件2"] },
@@ -145,6 +138,14 @@ export default {
           { day: "2019-09-22", header: "09-22", paragraphs: ["便签事件4"] },
           { day: "2019-09-29", header: "09-29", paragraphs: ["便签事件5"] },
           { day: "2019-09-30", header: "09-30", paragraphs: ["便签事件6"] }
+        ],
+        [
+          { day: "2019-10-01", header: "10-01", paragraphs: ["便签事件1"] },
+          { day: "2019-10-10", header: "10-10", paragraphs: ["便签事件2"] },
+          { day: "2019-10-12", header: "10-12", paragraphs: ["便签事件3"] },
+          { day: "2019-10-22", header: "10-22", paragraphs: ["便签事件4"] },
+          { day: "2019-10-29", header: "10-29", paragraphs: ["便签事件5"] },
+          { day: "2019-10-30", header: "10-30", paragraphs: ["便签事件6"] }
         ]
       ];
 
@@ -382,8 +383,8 @@ export default {
     margin-bottom: 5px;
   }
   .el-tabs__item {
-    height: 36px;
-    font-size: 13px;
+    // height: 36px;
+    // font-size: 13px;
   }
   .weekdays {
     height: 30px;
