@@ -281,7 +281,7 @@
     .el-calendar-table td.is-selected {
       background-color: #F2F8FE; }
     .el-calendar-table td.is-today {
-      color: #409EFF; }
+      color: #455ecb; }
   .el-calendar-table tr:first-child td {
     border-top: 1px solid #EBEEF5; }
   .el-calendar-table tr td:first-child {
