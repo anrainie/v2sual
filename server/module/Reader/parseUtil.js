@@ -204,7 +204,7 @@ let appendComponent = function (parent, index, element) {
   if (eCom.localName === 'v2-switchable') {
     //如果是可切换容器，就往下添加一个template
     let template = document.createElement('template');
-    if (child.activeIndex) eCom.setAttribute('activeIndex', child.activeIndex);
+    if (child.activeIndex) eCom.setAttribute(':activeindex', child.activeIndex);
     eCom.appendChild(template);
     appendChildren(child, template, isContainer);
   } else if (eCom.localName === 'v2container') {
@@ -222,14 +222,14 @@ let appendComponent = function (parent, index, element) {
     //如果是template，就往上判断是否为可切换容器
     if (element.parentElement.localName === 'v2-switchable') {
       //如果是可切换容器，添加v-if
-      let instance = element.parentElement.getAttribute('activeIndex');
+      let instance = element.parentElement.getAttribute(':activeindex');
       if (instance == null) {
         throw '[切换容器]没有填写页码变量';
       }
       if (instance.startsWith('$')) {
         instance = instance.substring('2', instance.length - 1);
       }
-      eCom.setAttribute('v-if', instance + '==' + index);
+      eCom.setAttribute('v-show', instance + '==' + index);
     }
     element.content.appendChild(eCom);
   } else {

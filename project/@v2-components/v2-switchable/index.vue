@@ -1,12 +1,16 @@
 <template>
-    <div ref="wrap">
-        <slot>
-
-        </slot>
-    </div>
+  <div ref="wrap">
+    <slot></slot>
+  </div>
 </template>
+
 <script>
-    export default{
-        
+export default {
+  props: ["activeindex"],
+  watch: {
+    'activeindex'() {
+      $(window).trigger("resize");
     }
+  }
+};
 </script>
