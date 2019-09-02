@@ -159,23 +159,53 @@ const routerList = [
     }
   },
   {
-    path: "queryTransaction",
-    name: "queryTransaction",
-    component: "spa/queryTransaction",
+    path: "accountOverview",
+    name: "accountOverview",
+    component: "spa/accountOverview",
+    meta: {
+      title: "账户总览",
+      icon: "el-icon-goods"
+    }
+  },
+  {
+    path: "tranfer",
+    name: "tranfer",
+    component: "spa/tranfer",
+    meta: {
+      title: "转账",
+      icon: "el-icon-goods"
+    }
+  },
+  {
+    path: "queryTrade",
+    name: "queryTrade",
+    component: "spa/queryTrade",
     meta: {
       title: "交易查询",
       icon: "el-icon-goods"
     }
   },
-  {
-    path: "pwdManager",
-    name: "pwdManager",
-    component: "spa/pwdManager",
-    meta: {
-      title: "密码管理",
-      icon: "el-icon-goods"
-    }
-  }
+  // queryTrade
+  // accountOverview
+  // XhqTest/tranfer
+  // {
+  //   path: "queryTransaction",
+  //   name: "queryTransaction",
+  //   component: "spa/queryTransaction",
+  //   meta: {
+  //     title: "交易查询",
+  //     icon: "el-icon-goods"
+  //   }
+  // },
+  // {
+  //   path: "pwdManager",
+  //   name: "pwdManager",
+  //   component: "spa/pwdManager",
+  //   meta: {
+  //     title: "密码管理",
+  //     icon: "el-icon-goods"
+  //   }
+  // }
 ];
 
 router.get("/-/router/get", function(ctx) {
