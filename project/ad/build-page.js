@@ -37,6 +37,7 @@ const exe = (src, target, name) => {
     console.log(name);
     exec(`vue build -t lib  -d ${target} -n ${name} ${src}`, {
         shell: true,
+        maxBuffer: 1024*1024, 
         cwd: __dirname
     }, (error, stdout, stderr) => {
         if (error) {
@@ -102,13 +103,13 @@ const packagePipe = async (tPath, dir) => {
 }
 
 (async () => {
-    // let tPath = "../@v2-components";
-    // let dir = await readdir(tPath);
-    // await packageComponent(tPath, dir);
+    let tPath = "../@v2-components";
+    let dir = await readdir(tPath);
+    await packageComponent(tPath, dir);
 
-    let pipePath="../pipe";
+    // let pipePath="../pipe";
     
-    let dir = await readdir(pipePath);
-    await packagePipe(pipePath, dir);
+    // let dir = await readdir(pipePath);
+    // await packagePipe(pipePath, dir);
 
 })()

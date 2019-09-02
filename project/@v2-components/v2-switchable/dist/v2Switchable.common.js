@@ -110,12 +110,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6ca89b2e-vue-loader-template"}!C:/Users/wubingyu/AppData/Roaming/npm/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!../@v2-components/v2-switchable/index.vue?vue&type=template&id=cb734694&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1380565c-vue-loader-template"}!C:/Users/wubingyu/AppData/Roaming/npm/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!../@v2-components/v2-switchable/index.vue?vue&type=template&id=7984cc76&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"wrap"},[_vm._t("default")],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ../@v2-components/v2-switchable/index.vue?vue&type=template&id=cb734694&
+// CONCATENATED MODULE: ../@v2-components/v2-switchable/index.vue?vue&type=template&id=7984cc76&
 
 // CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib??ref--12-1!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!../@v2-components/v2-switchable/index.vue?vue&type=script&lang=js&
 //
@@ -124,8 +124,14 @@ var staticRenderFns = []
 //
 //
 //
-//
-/* harmony default export */ var v2_switchablevue_type_script_lang_js_ = ({});
+/* harmony default export */ var v2_switchablevue_type_script_lang_js_ = ({
+  props: ["activeindex"],
+  watch: {
+    'activeindex': function activeindex() {
+      $(window).trigger("resize");
+    }
+  }
+});
 // CONCATENATED MODULE: ../@v2-components/v2-switchable/index.vue?vue&type=script&lang=js&
  /* harmony default export */ var _v2_components_v2_switchablevue_type_script_lang_js_ = (v2_switchablevue_type_script_lang_js_); 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js

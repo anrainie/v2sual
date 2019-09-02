@@ -13,7 +13,7 @@
     name: '账户预览',
     title: '账户预览',
     icon: 'el-icon-s-finance',
-    // icon: 'http://localhost:7007/img/logo.png',
+    // icon: 'img/logo.png',
     route: {
       page: "spa/accountOverview",
       path: "spa/accountOverview",
@@ -64,8 +64,8 @@ bankCards:// bankCards
   {
     id: '', alias: '招商银行 | 一卡通', cardType: '借记卡',
     // imgSrc: '/v1/runtime/img/bankcard-dark.png',
-    // imgSrc: 'http://localhost:7007/img/card1.jpg',
-    imgSrc: 'http://localhost:7007/img/bankcard-blue.png',
+    // imgSrc: 'img/card1.jpg',
+    imgSrc: 'img/bankcard-blue.png',
     cardID: '1234 xxxx xxxx 1111',
     funds: [
       {title: '定期', sum: '100.00'},
@@ -104,8 +104,8 @@ bankCards:// bankCards
   },
   {
     id: '', alias: '个人账户', cardType: '信用卡',
-    // imgSrc: 'http://localhost:7007/img/card2.jpg',
-    imgSrc: 'http://localhost:7007/img/bankcard-dark.png',
+    // imgSrc: 'img/card2.jpg',
+    imgSrc: 'img/bankcard-dark.png',
     cardID: '1234 xxxx xxxx 2222',
     funds: [
       {title: '本期账单', sum: '100.00'},
@@ -144,8 +144,8 @@ bankCards:// bankCards
   },
   {
     id: '', alias: '招商银行 | 一卡通', cardType: '借记卡',
-    // imgSrc: 'http://localhost:7007/img/card3.jpg',
-    imgSrc: 'http://localhost:7007/img/bankcard-blue.png',
+    // imgSrc: 'img/card3.jpg',
+    imgSrc: 'img/bankcard-blue.png',
     cardID: '1234 xxxx xxxx 1111',
     funds: [
       {title: '定期', sum: '100.00'},
@@ -184,8 +184,8 @@ bankCards:// bankCards
   },
   {
     id: '', alias: '个人账户', cardType: '信用卡',
-    // imgSrc: 'http://localhost:7007/img/card4.jpg',
-    imgSrc: 'http://localhost:7007/img/bankcard-dark.png',
+    // imgSrc: 'img/card4.jpg',
+    imgSrc: 'img/bankcard-dark.png',
     cardID: '1234 xxxx xxxx 2222',
     funds: [
       {title: '本期账单', sum: '100.00'},
@@ -241,7 +241,6 @@ favorites:// favorites
     name: '账户总览',
     title: '账户总览',
     icon: 'el-icon-s-finance',
-    // icon: 'http://localhost:7007/img/custom-aweb-logo.png',
     route: {
       page: "spa/accountOverview",
       path: "spa/accountOverview",
@@ -278,7 +277,6 @@ favorites:// favorites
     name: '账户预览',
     title: '账户预览',
     icon: 'el-icon-s-finance',
-    // icon: 'http://localhost:7007/img/custom-aweb-logo.png',
     route: {
       page: "spa/index",
       path: "/index",
@@ -315,7 +313,6 @@ favorites:// favorites
     name: '账户预览',
     title: '账户预览',
     icon: 'el-icon-s-finance',
-    // icon: 'http://localhost:7007/img/custom-aweb-logo.png',
     route: {
       page: "spa/index",
       path: "/index",
@@ -359,8 +356,8 @@ recommendNoticeTabBar:// recommendNoticeTabBar
 },
 recommendBanners:// recommendBanners
 [
-  {tittle: '扫码登陆', src: 'http://localhost:7007/img/banner1.jpg'},
-  {tittle: '现金抽奖', src: 'http://localhost:7007/img/banner2.jpg'}
+  {tittle: '扫码登陆', src: 'img/banner1.jpg'},
+  {tittle: '现金抽奖', src: 'img/banner2.jpg'}
 ],
 recommendShortcuts:// recommendShortcuts
 [

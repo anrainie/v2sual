@@ -119,7 +119,7 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6ca89b2e-vue-loader-template"}!C:/Users/wubingyu/AppData/Roaming/npm/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!../@v2-components/v2-component-tree/index.vue?vue&type=template&id=9c247810&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1380565c-vue-loader-template"}!C:/Users/wubingyu/AppData/Roaming/npm/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!../@v2-components/v2-component-tree/index.vue?vue&type=template&id=9c247810&scoped=true&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.widgetClass,style:(_vm.model.commonStyle)},[_c('el-tree',{ref:"_op_componentTree_tree",attrs:{"data":_vm.myconfig,"props":_vm.model.defaultProps,"show-checkbox":_vm.model.showCheckbox,"node-key":_vm.model.nodeKey||null,"default-expanded-keys":_vm.model.defExpanded||[],"default-checked-keys":_vm.model.defChecked||[]}})],1)}
 var staticRenderFns = []
 

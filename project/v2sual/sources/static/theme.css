@@ -60,3 +60,11 @@ border: 1px solid #9fd6ff;
   height: 1px;
   background-color: #c2d5eb;
 }
+
+.white_background{
+  background:white;
+}
+
+.image_text{
+  text-align: center;
+}
