@@ -49,6 +49,7 @@ import v2Xxxxx from "../../../@v2-components/v2-XXXXX";
 import v2XXXXXEditor from "../../../@v2-components/v2-XXXXX/XXXXXEditor.vue";
 
 import v2EbankBankcard from "../../../@v2-components/v2-ebank-bankcard";
+import v2EbankBankcardType2 from "../../../@v2-components/v2-ebank-bankcard-type2";
 import v2EbankCalendar from "../../../@v2-components/v2-ebank-calendar";
 import v2EbankParagraph from "../../../@v2-components/v2-ebank-paragraph";
 import v2EbankShortcut from "../../../@v2-components/v2-ebank-shortcut";
@@ -109,6 +110,7 @@ export default {
   v2Xxxxx,
   v2XXXXXEditor,
   v2EbankBankcard,
+  v2EbankBankcardType2,
   v2EbankCalendar,
   v2EbankParagraph,
   v2EbankShortcut,

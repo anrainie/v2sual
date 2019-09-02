@@ -1,7 +1,11 @@
 // ########## 页面 index ##########
 [class*="eb-index__"] {
   .eb-shortcut {
-    padding: 15px;
+    padding: 11px;
+
+    .eb-shortcut__icon .eb-shortcut__icon-icon {
+      font-size: 30px;
+    }
   }
 }
 .eb-index__shortcuts {
@@ -68,6 +72,10 @@
     background: #f4f6fc;
   }
 
+  .eb-calendar .el-tabs__item {
+    font-weight: bold;
+  }
+
   .eb-calendar .el-tabs__nav-wrap::after {
     height: 1px;
     background-color: #c2d5eb;
@@ -114,6 +122,44 @@
   }
 }
 
+
+// ########## 页面 certificateNeeded ##########
+
+.eb-certificate__main {
+  position: relative;
+  margin: 150px auto 0;
+  width: 600px;
+
+  .el-icon-lock {
+    font-size: 240px;
+    color: #8fbaf2;
+  }
+
+  .eb-paragraph {
+    display: inline-block;
+    margin-top: 20px;
+    width: 320px;
+    vertical-align: top;
+
+    .eb-paragraph__header p {
+      background: rgba(0,0,0,0);
+      font-size: 24px;
+    }
+    .eb-paragraph__ctt {
+      line-height: 30px;
+      margin-top: 12px;
+    }
+  }
+
+  button {
+    position: absolute;
+    bottom: 25px;
+    left: 250px;
+    width: 200px;
+    background: #4788f8;
+    color: #fff;
+  }
+}
 
 
 // ########## 页面 XXXXX ##########

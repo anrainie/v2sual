@@ -52,8 +52,12 @@ border: 1px solid #9fd6ff;
   border: 1px solid #97e490;
 } */
 
-.eb-tabs.tabs-handlebar .el-tabs__header {
+.eb-tabs .el-tabs__header {
   background: #f4f6fc;
+
+}
+.eb-tabs .el-tabs__item {
+  font-weight: bold;
 }
 
 .eb-tabs .el-tabs__nav-wrap::after {
