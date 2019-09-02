@@ -5,7 +5,7 @@ import vueRouter from 'vue-router';
 import Layout from '@/views/Layout'
 import Login from "@/views/Login"
 import noFound from "@/views/404"
-import Main from "@/views/main/main"
+import Main from "@/views/spa/index"
 
 let mainRouter = [{
   path: "/",
