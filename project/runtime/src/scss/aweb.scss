@@ -161,6 +161,90 @@
   }
 }
 
+// ########## 页面 creditCard ##########
 
-// ########## 页面 XXXXX ##########
+.eb-creditCard__bankcards {
+  //
+}
+.eb-creditCard__bankcards-main {
+  padding: 10px 20px;
 
+  .eb-bankcard-type2 {
+    margin: 20px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.2);
+  }
+}
+
+.eb-creditCard__menus {
+  margin: 20px 10px;
+  padding: 5px;
+  background: #fff;
+}
+.eb-creditCard__menus-header {
+  font-size: 14px;
+  padding: 0 40px;
+  color: #455ecb;
+
+  & > div {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+}
+.eb-creditCard__menus-main {
+  padding: 5px 0 5px 50px;
+  height: 130px;
+
+  &:not(:last-child) {
+    border-right: 2px dotted;
+  }
+
+  .eb-shortcut {
+    max-width: 300px; 
+    width: 240px;
+    display: inline-block;
+
+    .eb-shortcut__icon .eb-shortcut__icon-icon {
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: bold;
+      // left: 50px;
+    }
+    .eb-shortcut__bot {
+      line-height: 20px;
+
+      .eb-shortcut__name {
+        text-align: left;
+        text-indent: 20px;
+      }
+    }
+  }
+}
+
+.eb-creditCard__grid {
+  margin: 10px 5px;
+  background: #f2f8fe;
+}
+
+
+// ########## 页面 generalCard ##########
+
+.eb-generalCard__msg {
+  margin: 20px 10px;
+  padding: 15px;
+  background: #fff;
+  border: 1px solid #c2d5eb;
+
+  .key,
+  .val {
+    line-height: 30px;
+    font-size: 15px;
+    /* float: left; */
+    display: inline-block;
+  }
+  .key {
+    width: 80px;
+  }
+  .val {
+    width: calc(100% - 80px);
+  }
+}
