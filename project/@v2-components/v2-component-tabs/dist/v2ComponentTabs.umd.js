@@ -119,12 +119,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6ca89b2e-vue-loader-template"}!C:/Users/wubingyu/AppData/Roaming/npm/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!../@v2-components/v2-component-tabs/index.vue?vue&type=template&id=001d6552&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1380565c-vue-loader-template"}!C:/Users/wubingyu/AppData/Roaming/npm/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!../@v2-components/v2-component-tabs/index.vue?vue&type=template&id=dacef9a2&scoped=true&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('el-tabs',{class:_vm.widgetClass,style:(_vm.model.commonStyle),attrs:{"type":_vm.model.type,"tab-position":_vm.model.tabPosition},model:{value:(_vm.model.active),callback:function ($$v) {_vm.$set(_vm.model, "active", $$v)},expression:"model.active"}},_vm._l((_vm.model.list),function(item,index){return _c('el-tab-pane',{key:index,attrs:{"label":item.label,"name":item.name}})}),1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ../@v2-components/v2-component-tabs/index.vue?vue&type=template&id=001d6552&scoped=true&
+// CONCATENATED MODULE: ../@v2-components/v2-component-tabs/index.vue?vue&type=template&id=dacef9a2&scoped=true&
 
 // CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib??ref--12-1!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!../@v2-components/v2-component-tabs/index.vue?vue&type=script&lang=js&
 //
@@ -256,7 +256,7 @@ var component = normalizeComponent(
   staticRenderFns,
   false,
   null,
-  "001d6552",
+  "dacef9a2",
   null
   
 )
