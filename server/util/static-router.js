@@ -2,6 +2,19 @@ const fs = require('fs')
 const Path = require('path')
 const send = require('koa-send')
 
+const IsFile=(filePath)=>{
+    return new Promise((resolve) => {
+        fs.stat(filePath, (err, stats) => {
+            if (err) {
+                resolve(null)
+            }
+            else {
+                resolve(stats.isFile());
+            }
+        })
+    })
+}
+
 async function get_Route_FilePath(ctx, data) {
     let dir, router
     if (typeof (data) === 'object') {
@@ -34,21 +47,17 @@ async function toSend(ctx, dir, router) {
         if (filePath.indexOf('?') !== -1) {
             filePath = filePath.split('?')[0];
         }
-        const isFile = await new Promise((resolve) => {
-            fs.stat(filePath, (err, stats) => {
-                if (err) {
-                    resolve(null)
-                }
-                else {
-                    resolve(stats.isFile());
-                }
-            })
-        })
-        if (isFile) {
+
+        if (await IsFile(filePath)) {
             await send(ctx, filePath, { root: '/' });
+        }else if(filePath.replace(/\\/g,'/').indexOf('public/static/img')!==-1){
+            filePath=filePath.replace(/public([\/\\])static([\/\\])img/,'public$1img');
+            if(await IsFile(filePath)){
+                await send(ctx, filePath, { root: '/' });
+            }
         }
     }catch(e){
-        console.log(e);
+       
         return new Promise(r=>{
             ctx.body = 'Not Found';
             r();
