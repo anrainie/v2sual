@@ -47,6 +47,13 @@ export default {
       return this.model.content && this.model.content.length ? this.model.content : content;
     }
   },
+  watch:{
+    "model.content"(v){
+      // console.log("model.content",this.model.content,this.content);
+      this._computedWatchers.content.dirty=true
+      this.$forceUpdate();
+    }
+  },
   // watch: {
   //   "model.divider": {
   //     immediate: true,

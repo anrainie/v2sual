@@ -1,6 +1,11 @@
 <template>
   <div :style="chartCtnStyle">
-    <div :class="widgetClass" class="chart-content" style="width:100%;height:100%;" ref="_op_componentEchart_chart"></div>
+    <div
+      :class="widgetClass"
+      class="chart-content"
+      style="width:100%;height:100%;"
+      ref="_op_componentEchart_chart"
+    ></div>
     <div class="chart-tips" v-if="error">
       <p>本组件使用echart配置</p>
       <hr />
@@ -17,6 +22,7 @@
 </template>
 <script>
 import echarts from "echarts";
+import { setTimeout } from "timers";
 export default {
   name: "v2-component-echart",
 
@@ -40,11 +46,11 @@ export default {
     }
   },
   watch: {
-    "mode.commonStyle.height"(){
-      this.chart&&this.chart.resize&&this.chart.resize();
+    "mode.commonStyle.height"() {
+      this.chart && this.chart.resize && this.chart.resize();
     },
-    "mode.commonStyle.width"(){
-      this.chart&&this.chart.resize&&this.chart.resize();
+    "mode.commonStyle.width"() {
+      this.chart && this.chart.resize && this.chart.resize();
     },
     "model.configs": {
       handler(val) {
@@ -71,7 +77,14 @@ export default {
       }
     }
   },
-  mounted() {}
+  mounted() {
+    $(window).on("resize", e => {
+      setTimeout(() => {
+        if (!$(this.$el).is(":hidden"))
+          this.chart && this.chart.resize && this.chart.resize();
+      }, 100);
+    });
+  }
 };
 </script>
 

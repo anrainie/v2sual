@@ -26,7 +26,9 @@ class Pipe {
     } = this;
     return async (req) => {
       try {
-        const files = await readDir(path);
+        const nodeModelPipePath = trans2absolute(`node_modules${nodejsPath.sep}@v2-pipe`);
+        let files = await readDir(path);
+        
         let res = [{
           desp: "数据源",
           name:"dataSource",
@@ -86,6 +88,9 @@ class Pipe {
         }
 
         ]
+        if(fs.existsSync(nodeModelPipePath)){
+          files = files.concat(await readDir(nodeModelPipePath));
+        }
         //文件列表
         const pipeList = files.filter(f => f.lastIndexOf('package.json') !== -1);
 

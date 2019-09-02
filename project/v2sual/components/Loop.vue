@@ -24,7 +24,19 @@ export default {
     return {};
   },
   created() {
-    this.model.__loopKey = this.model.__loopTarget;
+    //loopKey是用于初始化的关键字
+    if (!this.model.__loopKey) {
+      if (
+        this.model.__loopTarget &&
+        this.model.__loopTarget.constructor == String
+      ) {
+        this.model.__loopKey = this.model.__loopTarget;
+      } else {
+        console.error(
+          "循环组件关键字必须为String，当前为：" + this.model.__loopTarget
+        );
+      }
+    }
   },
   computed: {
     loopTarget() {
@@ -37,16 +49,16 @@ export default {
     loopWrapStyle() {
       let capa = this.model.__capacity || 1;
       let wrapStyle = {
-        "display": "flex",
+        display: "flex",
         "flex-wrap": "wrap"
-      }
-      return capa > 1 ? wrapStyle : ''
+      };
+      return capa > 1 ? wrapStyle : "";
     },
     loopStyle() {
       let capa = this.model.__capacity || 1;
       return {
         width: 100 / capa + "%",
-        ...this.model.commonStyle || {}
+        ...(this.model.commonStyle || {})
       };
     }
   },

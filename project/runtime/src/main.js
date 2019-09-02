@@ -11,6 +11,7 @@ import  router from './router'
 import Lib from  '@v2-lib/vue.spa.plugin'
 import ideLib from '@v2-lib/v2sual'
 import store from './store'
+import moment from "moment"
 
 import $ from "jquery";
 
@@ -29,6 +30,7 @@ Vue.directive('focus', {
 })
 window.Vue=Vue;
 window.$ = $;
+window.moment = moment;
 
 Vue.config.productionTip = false;
 

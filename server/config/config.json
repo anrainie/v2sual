@@ -199,8 +199,16 @@
                     "v1/ds/icons":""
                 },
                 "logLevel":"debug"
+            },{
+                "name": "招行内容管理",
+                "source": "/cmbcms",
+                "target": "https://nanyan.agree.cn/cmbcms",
+                "changeOrigin": true,
+                "pathRewrite": {
+                    "v1/ds/cmbcms": ""
+                },
+                "logLevel": "debug"
             }
-
         ]
     }
 }

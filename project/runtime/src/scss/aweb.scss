@@ -1,3 +1,77 @@
+// ########## 页面 index ##########
+[class*="eb-index__"] {
+  .eb-shortcut {
+    padding: 15px;
+  }
+}
+.eb-index__shortcuts {
+  padding: 10px 0;
+
+  .eb-shortcut:not(:last-child) {
+    border-bottom: 1px solid #c2d5eb;
+  }
+}
+.eb-index__bankcards {
+  .eb-index__bankcards-ctt {
+    padding: 0 15px;
+  }
+}
+.eb-index__favorites {
+  .eb-index__favorites-ctn {
+    padding: 14px 5px;
+  }
+  .eb-shortcut {
+    width: 25%;
+  }
+}
+.eb-index__recommendNotice {
+
+  .el-carousel {
+    .el-carousel__container {
+      height: 180px;
+    }
+    img {
+      width: 100%;
+      height: 180px;
+    }
+  }
+  .el-carousel--horizontal {
+    padding: 9px 15px;
+  }
+
+  .eb-shortcut {
+    width: 50%;
+
+    .eb-shortcut__icon .eb-shortcut__icon-icon {
+      color: #ef6819;
+    }
+
+    .eb-shortcut__bot {
+      line-height: 22px;
+      float: left;
+      margin-left: 10px;
+    }
+  }
+
+
+}
+.eb-index__calendar {
+  .eb-calendar .el-tabs__header {
+    background: #f4f6fc;
+  }
+
+  .eb-calendar .el-tabs__nav-wrap::after {
+    height: 1px;
+    background-color: #c2d5eb;
+  }
+}
+
+// ########## 页面 XXXXX ##########
+
+
+
+
+
 // body {
 //   margin: 0;
 //   padding: 0;
@@ -49,56 +123,84 @@
 //   // height: 100%;
 // }
 
-* {
-  font-size: 12px;
-}
 
-.clearfix {
-  zoom: 1;
 
-  &::after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
 
-/**
- * 网银项目全局公共样式
- */
 
-#app .aweb-container {
 
-    // .V2ContainerBlock .el-col {
-    //   // margin: 5px;
-    //   // // border: 1px solid #7EABFA;
-    //   // border: 1px solid #A4C6FF;
-    //   // border-radius: 5px;
-    // }
 
-    // // , 'grid__wrap' gridWrapClass
-    // .grid__wrap {
-    //   margin: 0 10px 20px;
-    //   // border: 1px solid #7EABFA;
-    //   border: 1px solid #a4c6ff;
-    //   border-radius: 5px;
-    // }
 
-  .aweb-main {
-    padding: 20px 30px;
-  }
 
-  // // 对组件样式的调整
-  // .tabs-handlebar {
-  //   .el-tabs__nav {
-  //     margin-left: 15px;
-  //   }
 
-  //   .el-tabs__header {
-  //     margin-bottom: 0;
-  //   }
-  // }
-}
+// * {
+//   font-size: 12px;
+// }
+
+// .clearfix {
+//   zoom: 1;
+
+//   &::after {
+//     content: "";
+//     display: table;
+//     clear: both;
+//   }
+// }
+
+// /**
+//  * 网银项目全局公共样式
+//  */
+
+// #app .aweb-container {
+
+//   .aweb-main {
+//     padding: 20px 30px;
+//   }
+
+
+//   .eb-grid {
+//     margin: 10px;
+//   }
+//   .eb-grid--radius {
+//     border-radius: 5px;
+//   }
+//   .eb-grid--blue {
+//     border: 1px solid #9fd6ff;
+//   }
+//   .eb-grid--blue {
+//     border: 1px solid #9fd6ff;
+//   }
+//   .eb-grid--green {
+//     border: 1px solid #97e490;
+//   }
+
+//   // .V2ContainerBlock .el-col {
+//   //   // margin: 5px;
+//   //   // // border: 1px solid #7EABFA;
+//   //   // border: 1px solid #A4C6FF;
+//   //   // border-radius: 5px;
+//   // }
+
+//   // // , 'grid__wrap' gridWrapClass
+//   // .grid__wrap {
+//   //   margin: 0 10px 20px;
+//   //   // border: 1px solid #7EABFA;
+//   //   border: 1px solid #a4c6ff;
+//   //   border-radius: 5px;
+//   // }
+
+//   // // 对组件样式的调整
+//   // .tabs-handlebar {
+//   //   .el-tabs__nav {
+//   //     margin-left: 15px;
+//   //   }
+
+//   //   .el-tabs__header {
+//   //     margin-bottom: 0;
+//   //   }
+//   // }
+// }
+
+
 
 // /**
 //  * 网银项目自定义组件样式
@@ -386,5 +488,3 @@
 //     border: 1px solid #97e490;
 //   }
 // }
-
-// // ########## 页面 page ##########

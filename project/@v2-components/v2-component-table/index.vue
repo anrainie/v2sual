@@ -67,7 +67,7 @@
       </template>
     </el-table-column>
   </el-table>
-  <el-pagination
+  <!-- <el-pagination
     :style="`text-align:right`"
     @size-change="handleSizeChange"
     @current-change="handleCurrentChange"
@@ -78,7 +78,7 @@
     layout="total, sizes, prev, pager, next, jumper"
     :total="totalCount"
     background>
-  </el-pagination>
+  </el-pagination> -->
   </div>
 </template>
 <script>

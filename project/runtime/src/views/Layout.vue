@@ -544,13 +544,14 @@ export default {
     }
   }
   .aweb-main {
-    padding: 0;
+    // padding: 0;
     position: absolute;
     left: 0;
     right: 0;
     top: 96px;
     bottom: 38px;
     overflow: auto;
+
     // .ebank-breadcrumb {
     //   width: $--main-width;
     //   margin: 0 auto 10px;
