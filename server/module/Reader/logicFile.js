@@ -267,7 +267,7 @@ let formatData = function (val) {
   } else if (val.startsWith('{')) {
     //json\map暂时不做处理
   } else {
-    val = '"' + val + '"';
+    val = '`' + val + '`';
   }
   return val;
 }

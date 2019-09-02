@@ -211,11 +211,12 @@ export default {
         path = keys[0],
         page = keys[1],
         title = keys[2];
-debugger;
+
       this.updatedBreadcrumbPath(title);
 
       this.open({
         path: "/" + path,
+        page:page,
         status: true,
         type: "BLANK",
         title: title || "标题",
@@ -514,6 +515,15 @@ debugger;
           height: 50px;
     line-height: 50px;
     }
+    .el-menu--horizontal .el-menu .el-menu-item, 
+    .el-menu--horizontal .el-menu .el-submenu__title,
+    .el-menu--horizontal > .el-submenu .el-submenu__title,
+    .el-menu--horizontal > .el-menu-item{
+      color:#303133;
+    }
+    .el-menu-item:hover, .el-menu-item:focus{
+      color:rgb(69,94,203);
+    }
 
     .ebank-header-main {
       position: relative;
@@ -578,7 +588,7 @@ debugger;
           cursor: pointer;
           color: #000;
           &:hover {
-            background-color: rgb(71, 136, 248);
+            background-color: rgb(69,94,203);
           }
           &:last-child {
             border-left: 1px solid #ccc;

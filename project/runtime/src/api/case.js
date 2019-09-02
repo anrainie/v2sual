@@ -24,7 +24,22 @@ export const caseRouter=[
             meta: {
               title: "账户管理",
              
-            }
+            },
+            children:[ {
+              path: "queryTrade",
+              name: "queryTrade",
+              component: "spa/queryTrade",
+              meta: {
+                title: "账户查询"
+              }
+            }, {
+              path: "accountOverview",
+              name: "accountOverview",
+              component: "spa/accountOverview",
+              meta: {
+                title: "账户总览"
+              }
+            }]
           },
           {
             path: "creditCard",
@@ -33,7 +48,22 @@ export const caseRouter=[
             meta: {
               title: "自助转账",
              
-            }
+            },
+            children:[ {
+              path: "tranfer",
+              name: "tranfer",
+              component: "XhqTest/tranfer",
+              meta: {
+                title: "转账汇款"
+              }
+            }, {
+              path: "refund",
+              name: "refund",
+              component: "main/main",
+              meta: {
+                title: "信用卡还款"
+              }
+            }]
           },
           {
             path: "creditCard",
