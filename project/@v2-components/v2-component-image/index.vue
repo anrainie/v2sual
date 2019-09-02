@@ -38,15 +38,15 @@ export default {
   },
   watch:{
      "model.commonStyle.width"(val){
-        this.model.fixation && (this.model.commonStyle.width =this.$refs.imgComponent.naturalWidth)
+        this.model.fixation && (this.model.commonStyle.width =this.$refs.imgComponent.naturalWidth+'px')
      },
      "model.commonStyle.height"(val){  
-      this.model.fixation && (this.model.commonStyle.height =this.$refs.imgComponent.naturalHeight)
+      this.model.fixation && (this.model.commonStyle.height =this.$refs.imgComponent.naturalHeight+'px')
      },
      "model.fixation"(val){
        if(val){
-         this.model.commonStyle.width =this.$refs.imgComponent.naturalWidth;
-         this.model.commonStyle.height =this.$refs.imgComponent.naturalHeight
+         this.model.commonStyle.width =this.$refs.imgComponent.naturalWidth+'px';
+         this.model.commonStyle.height =this.$refs.imgComponent.naturalHeight+'px'
        }
      }
   },
