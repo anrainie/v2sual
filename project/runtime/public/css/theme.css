@@ -64,3 +64,29 @@ border: 1px solid #9fd6ff;
   height: 1px;
   background-color: #c2d5eb;
 }
+
+.white_background{
+  background:white;
+  box-shadow:0 0 2px 2px lightgray;
+}
+
+.white_background:hover{
+ border:1px solid lightblue;
+}
+
+.image_text{
+  text-align: center;
+  cursor: pointer;
+}
+
+.image_text:hover{
+  color: red;
+}
+
+.clickableImage{
+  cursor: pointer;
+}
+
+.clickableImage:hover{
+  box-shadow:0 0 2px 2px lightgray;
+}

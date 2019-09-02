@@ -1,217 +1,89 @@
-<template>
-  <v2container :wid="`root`">
-    <el-row class="V2ContainerBlock borderBox dashBorder" style="height:100%;width:100%;" key="0">
-      <v2loop class="V2Widget" id="1565339962345" :wid="`1565339962345`" :index="0" :pid="`root`">
-        <template v-slot="scope">
-          <v2-component-text-value
-            class="V2Widget"
-            :id="`1565339962345-${scope._key}`"
-            :wid="`1565339962345-${scope._key}`"
-            :index="scope._key"
-            :pid="`1565339962345`"
-            :cpttype="`loopItem`"
-            :$item="scope._item"
-            :$key="scope._key"
-          ></v2-component-text-value>
-        </template>
-      </v2loop>
-    </el-row>
-  </v2container>
-</template>
+<template><v2container :wid="`root`"><el-row class="V2ContainerBlock" style="height:50%;" key="0"><v2container id="1567391373756" :wid="`1567391373756`" :index="0" :pid="`root`"><el-col class="V2ContainerBlock borderBox dashBorder" style="width:100px;" key="0"><v2loop class="V2Widget" id="1567391362918" :wid="`1567391362918`" :index="0" :pid="`1567391373756`"><template v-slot="scope"><v2-ebank-shortcut class="V2Widget" :id="`1567391362918-${scope._key}`" :wid="`1567391362918-${scope._key}`" :index="scope._key" :pid="`1567391362918`" :cpttype="`loopItem`" :$item="scope._item" :$key="scope._key" :style="scope._style"></v2-ebank-shortcut></template></v2loop></el-col><el-col class="V2ContainerBlock" style="width:calc(100% - 140px);" key="1"><v2container id="1567391449127" :wid="`1567391449127`" :index="1" :pid="`1567391373756`"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;" key="0"><v2-ebank-tabs class="V2Widget" id="1567391426027" :wid="`1567391426027`" :index="0" :pid="`1567391449127`"></v2-ebank-tabs></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;" key="1"><v2loop class="V2Widget" id="1567391454447" :wid="`1567391454447`" :index="1" :pid="`1567391449127`"><template v-slot="scope"><v2-ebank-bankcard class="V2Widget" :id="`1567391454447-${scope._key}`" :wid="`1567391454447-${scope._key}`" :index="scope._key" :pid="`1567391454447`" :cpttype="`loopItem`" :$item="scope._item" :$key="scope._key" :style="scope._style"></v2-ebank-bankcard></template></v2loop></el-row></v2container></el-col></v2container></el-row><el-row class="V2ContainerBlock" style="height:50%;" key="1"><v2container id="1567391320112" :wid="`1567391320112`" :index="1" :pid="`root`"><el-col class="V2ContainerBlock" style="width:33.33%;" key="0"><v2container id="1567391441438" :wid="`1567391441438`" :index="0" :pid="`1567391320112`"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;" key="0"><v2-ebank-tabs class="V2Widget" id="1567391437657" :wid="`1567391437657`" :index="0" :pid="`1567391441438`"></v2-ebank-tabs></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;" key="1"><v2loop class="V2Widget" id="1567391454194" :wid="`1567391454194`" :index="1" :pid="`1567391441438`"><template v-slot="scope"><v2-ebank-shortcut class="V2Widget" :id="`1567391454194-${scope._key}`" :wid="`1567391454194-${scope._key}`" :index="scope._key" :pid="`1567391454194`" :cpttype="`loopItem`" :$item="scope._item" :$key="scope._key" :style="scope._style"></v2-ebank-shortcut></template></v2loop></el-row></v2container></el-col><el-col class="V2ContainerBlock" style="width:33.33%;" key="1"><v2container id="1567391486531" :wid="`1567391486531`" :index="1" :pid="`1567391320112`"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;" key="0"><v2-ebank-tabs class="V2Widget" id="1567391449871" :wid="`1567391449871`" :index="0" :pid="`1567391486531`"></v2-ebank-tabs></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:50%;" key="1"><v2-switchable class="V2Widget" id="1567391510255" :wid="`1567391510255`" :index="1" :pid="`1567391486531`" :activeindex="0"><template><v2container id="1567391659904" :wid="`1567391659904`" :index="0" :pid="`1567391510255`" v-show="0==0"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:100%;" key="0"><v2-ebank-paragraph class="V2Widget" id="1567391628732" :wid="`1567391628732`" :index="0" :pid="`1567391659904`"></v2-ebank-paragraph></el-row></v2container><v2container id="1567391622046" :wid="`1567391622046`" :index="1" :pid="`1567391510255`" v-show="0==1"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:100%;" key="0"><v2-ebank-paragraph class="V2Widget" id="1567391599888" :wid="`1567391599888`" :index="0" :pid="`1567391622046`"></v2-ebank-paragraph></el-row></v2container></template></v2-switchable></el-row></v2container></el-col><el-col class="V2ContainerBlock borderBox dashBorder" style="width:33.33%;" key="2"><v2-ebank-calendar class="V2Widget" id="1567391442921" :wid="`1567391442921`" :index="2" :pid="`1567391320112`"></v2-ebank-calendar></el-col></v2container></el-row></v2container></template>
 <script>
-import { root } from "@v2-lib/v2sual/mixin/v2-view";
-
-export default {
-  data() {
-    return {
-      CONTENT: {
-        structure: {
-          id: "root",
-          component: "v2Container",
-          direction: "row",
-          layout: [100],
-          style: { width: "100%", height: "100%" },
-          data: {},
-          children: [
-            {
-              style: {
-                title: {
-                  "background-color": "",
-                  height: "",
-                  width: "",
-                  color: ""
+            import  {mixins} from '@v2-lib/vue.spa.plugin';
+            import {root} from '@v2-lib/v2sual/mixin/v2-view';
+            
+            export default{
+                data(){
+                    return{
+                        "CONTENT":{structure:{"id":"root","component":"v2Container","direction":"row","layout":[100],"style":{"width":"100%","height":"100%"},"data":{},"children":[{"component":"v2-layout","href":"v2-layout","layout":[50,50],"direction":"row","children":[{"component":"v2-layout","href":"v2-layout","layout":["100","calc(100% - 140px)"],"direction":"col","children":[{"theme":{},"style":{},"icon":"el-icon-setting","iconPosition":"top","name":"一个快捷键","insideRoute":{"useInsideRoute":true,"route":""},"funcBtn":{"showFuncBtn":false,"funcBtnName":"添加","funcBtnParams":""},"funcIcon":{"showFuncIcon":false,"funcIconClass":"el-icon-error","funcIconParams":""},"ctnClass":"","customClass":"","__type":"loop","__loopTarget":"scs","__capacity":"1","component":"v2-ebank-shortcut","href":"v2-ebank-shortcut","children":[],"events":{},"id":1567391362918,"pid":1567391373756,"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"animate":["","animated"]},{"component":"v2-layout","href":"v2-layout","layout":[50,50],"direction":"row","children":[{"active":"","tabs":"","tabsType":"","hasBtns":false,"btns":"","btnsType":"text","ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-ebank-tabs","href":"v2-ebank-tabs","children":[],"events":{},"id":1567391426027,"pid":1567391449127,"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"animate":["","animated"]},{"theme":{},"style":{},"alias":"一张银行卡","cardType":"借记卡","imgSrc":"","cardID":"1234 xxxx xxxx 1111","funds":"","shortcuts":"","ctnClass":"","customClass":"","__type":"loop","__loopTarget":"bcs","__capacity":"1","component":"v2-ebank-bankcard","href":"v2-ebank-bankcard","children":[],"events":{},"id":1567391454447,"pid":1567391449127,"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"animate":["","animated"]}],"style":{},"pid":"1567391373756-1","id":1567391449127,"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}]}],"style":{},"pid":"1567391360138-0","id":1567391373756,"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}],"ctnClass":"","customClass":"","realSize":["px","输入"],"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"animate":[]},{"component":"v2-layout","href":"v2-layout","layout":[33.33,33.33,33.33],"direction":"col","children":[{"component":"v2-layout","href":"v2-layout","layout":[50,50],"direction":"row","children":[{"active":"","tabs":"","tabsType":"","hasBtns":false,"btns":"","btnsType":"text","ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-ebank-tabs","href":"v2-ebank-tabs","children":[],"events":{},"id":1567391437657,"pid":1567391441438,"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"animate":["","animated"]},{"theme":{},"style":{},"icon":"el-icon-setting","iconPosition":"top","name":"一个快捷键","insideRoute":{"useInsideRoute":true,"route":""},"funcBtn":{"showFuncBtn":false,"funcBtnName":"添加","funcBtnParams":""},"funcIcon":{"showFuncIcon":false,"funcIconClass":"el-icon-error","funcIconParams":""},"ctnClass":"","customClass":"","__type":"loop","__loopTarget":"fvs","__capacity":"1","component":"v2-ebank-shortcut","href":"v2-ebank-shortcut","children":[],"events":{},"id":1567391454194,"pid":1567391441438,"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"animate":["","animated"]}],"style":{},"pid":"1567391320112-0","id":1567391441438,"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}]},{"component":"v2-layout","href":"v2-layout","layout":[50,50],"direction":"row","children":[{"active":"","tabs":"","tabsType":"","hasBtns":false,"btns":"","btnsType":"text","ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-ebank-tabs","href":"v2-ebank-tabs","children":[],"events":{},"id":1567391449871,"pid":1567391486531,"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"animate":["","animated"]},{"style":{"iWarpStyle":{"background-color":"","margin":"","padding":""}},"activeIndex":"0","ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-switchable","href":"v2-switchable","children":[{"id":1567391659904,"pid":1567391510255,"component":"v2Container","layout":[100],"position":"row","children":[{"theme":{},"style":{},"header":"标题","divider":true,"content":"","indent":true,"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-ebank-paragraph","href":"v2-ebank-paragraph","children":[],"events":{},"id":1567391628732,"pid":1567391659904,"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"animate":["","animated"]}],"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}],"ctnClass":"","customClass":"","realSize":["%"],"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"animate":["","animated"]},{"id":1567391622046,"pid":1567391510255,"component":"v2Container","layout":[100],"position":"row","children":[{"theme":{},"style":{},"header":"标题","divider":true,"content":"","indent":true,"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-ebank-paragraph","href":"v2-ebank-paragraph","children":[],"events":{},"id":1567391599888,"pid":1567391622046,"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"animate":["","animated"]}],"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}]}],"events":{},"customEditor":"v2EditorSwitch","id":1567391510255,"pid":1567391486531,"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"animate":["","animated"],"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}]}],"style":{},"pid":"1567391320112-1","id":1567391486531,"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}]},{"notes":"","ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-ebank-calendar","href":"v2-ebank-calendar","children":[],"events":{},"id":1567391442921,"pid":1567391320112,"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"animate":["","animated"]}],"style":{},"pid":"1567391360138-1","id":1567391320112,"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}]}],"style":{},"pid":"root-0","id":1567391360138,"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}]}],"events":{},"ctnClass":"","customClass":"","realSize":["%"],"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":""},"animate":{"0":"","1":"animated","name":"","duration":0,"delay":0,"classCode":""},"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}]}},
+                        ctnClass:[
+    "test-demo"
+],
+keyVals:[
+    {
+        icon: 'el-icon-eleme',
+        text: '文本'
+    },
+    {
+        icon: 'el-icon-eleme',
+        text: '文本'
+    },
+],
+scs:[,,,],
+bcs:[,,,,],
+fvs:[,,,,,,,,,,,,,]
+                    }
                 },
-                value: {
-                  "background-color": "",
-                  height: "",
-                  width: "",
-                  color: ""
-                }
-              },
-              title: "${$item.text}",
-              type: "icon",
-              value: "${$item.icon}",
-              direction: "text-value-col",
-              ctnClass: "",
-              customClass: "",
-              __type: "loop",
-              __loopTarget: "keyVals",
-              __capacity: "2",
-              component: "v2-component-text-value",
-              href: "v2-component-text-value",
-              children: [],
-              events: {},
-              id: 1565339962345,
-              pid: "root",
-              commonStyle: {
-                position: "",
-                top: "",
-                right: "",
-                left: "",
-                bottom: "",
-                width: "",
-                height: "",
-                "padding-top": "",
-                "padding-bottom": "",
-                "padding-left": "",
-                "padding-right": "",
-                "margin-top": "",
-                "margin-bottom": "",
-                "margin-left": "",
-                "margin-right": "",
-                "font-size": "",
-                color: ""
-              },
-              animate: { name: "", duration: 0, delay: 0, classCode: "" }
-            }
-          ],
-          events: {},
-          ctnClass: "",
-          customClass: "",
-          realSize: ["%"],
-          commonStyle: {
-            position: "",
-            top: "",
-            right: "",
-            left: "",
-            bottom: "",
-            width: "",
-            height: "",
-            "padding-top": "",
-            "padding-bottom": "",
-            "padding-left": "",
-            "padding-right": "",
-            "margin-top": "",
-            "margin-bottom": "",
-            "margin-left": "",
-            "margin-right": "",
-            "font-size": "",
-            color: ""
-          },
-          animate: { name: "", duration: 0, delay: 0, classCode: "" },
-          ctnStyle: [
-            {
-              position: "",
-              top: "",
-              right: "",
-              left: "",
-              bottom: "",
-              width: "",
-              height: "",
-              "text-align": "",
-              "background-color": "",
-              "padding-top": "",
-              "padding-bottom": "",
-              "padding-left": "",
-              "padding-right": "",
-              "margin-top": "",
-              "margin-bottom": "",
-              "margin-left": "",
-              "margin-right": "",
-              "border-color": "",
-              "border-width": "",
-              "border-style": ""
-            }
-          ]
-        }
-      },
-      ctnClass: ["test-demo"],
-      keyVals: [
-        {
-          icon: "el-icon-eleme",
-          text: "文本"
-        },
-        {
-          icon: "el-icon-eleme",
-          text: "文本"
-        }
-      ]
-    };
-  },
-  props: {},
-  mixins: [root],
+                props:{
+                  
+                },
+                mixins:[root,mixins],
+                
+                methods:{},
+                watch:{},
+                computed:{},
+                beforeCreate(){
+                    let ctx = this;
+                    
+                },
+                created(){
+                    let ctx = this;
+                    
+                    
+                    /**bind**/ctx.$store.commit("registerBind",{ vueObj:this, data:this.ctnClass, dataStr:"ctnClass", wid:1565230849487, modelKey:"ctnClass" });
+ctx.$store.commit("registerBind",{ vueObj:this, data:this.scs, dataStr:"scs", wid:1567391362918, modelKey:"__loopTarget" });
+ctx.$store.commit("registerBind",{ vueObj:this, data:this.bcs, dataStr:"bcs", wid:1567391454447, modelKey:"__loopTarget" });
+ctx.$store.commit("registerBind",{ vueObj:this, data:this.fvs, dataStr:"fvs", wid:1567391454194, modelKey:"__loopTarget" });/**bind over**/
+                },
+                beforeMount(){
+                    let ctx = this;
+                    
+                },
+                mounted(){
+                    let ctx = this;
+                    
+                    
+                },
+                beforeUpdate(){
+                    let ctx = this;
+                    
+                },
+                updated(){
+                    let ctx = this;
+                    
+                },
+                beforeDestroy(){ 
+                    let ctx = this;
+                        
+                },
+                destroyed(){
+                    let ctx = this;
+                        
+                },
+                deactivated(){
+                  /**页面切出**/
+                  let ctx = this;
+                  
+                },
+                activated(){
+                  /**页面切入**/
+                  let ctx = this;
+                  
+                },
 
-  methods: {},
-  watch: {},
-  computed: {},
-  beforeCreate() {
-    let ctx = this;
-  },
-  created() {
-    let ctx = this;
-
-    /**bind**/ ctx.$store.commit("registerBind", {
-      vueObj: this,
-      data: this.ctnClass,
-      dataStr: "ctnClass",
-      wid: 1565230849487,
-      modelKey: "ctnClass"
-    });
-    ctx.$store.commit("registerBind", {
-      vueObj: this,
-      data: this.keyVals,
-      dataStr: "keyVals",
-      wid: 1565339962345,
-      modelKey: "__loopTarget"
-    });
-    ctx.$store.commit("registerBind", {
-      dataStr: "$item.icon",
-      wid: 1565339962345,
-      modelKey: "value"
-    });
-    ctx.$store.commit("registerBind", {
-      dataStr: "$item.text",
-      wid: 1565339962345,
-      modelKey: "title"
-    }); /**bind over**/
-  },
-  beforeMount() {
-    let ctx = this;
-  },
-  mounted() {
-    let ctx = this;
-  },
-  beforeUpdate() {
-    let ctx = this;
-  },
-  updated() {
-    let ctx = this;
-  },
-  beforeDestroy() {
-    let ctx = this;
-  },
-  destroyed() {
-    let ctx = this;
-  },
-  deactivated() {
-    /**页面切出**/
-    let ctx = this;
-  },
-  activated() {
-    /**页面切入**/
-    let ctx = this;
-  }
-};
-</script>
+            };
+        </script>
 <style lang="scss">
+
 </style>
