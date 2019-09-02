@@ -16,6 +16,14 @@
     padding: 0 15px;
   }
 }
+
+
+.eb-index__favorites,
+.eb-index__recommendNotice,
+.eb-index__calendar {
+  height: 296px;
+}
+
 .eb-index__favorites {
   .eb-index__favorites-ctn {
     padding: 14px 5px;
