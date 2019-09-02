@@ -267,7 +267,7 @@ let formatData = function (val) {
   } else if (val.startsWith('{')) {
     //json\map暂时不做处理
   } else {
-    val = '`' + val + '`';
+    val = '"' + val + '"';
   }
   return val;
 }
@@ -279,7 +279,7 @@ let createData = function (data) {
     //格式化data
     let val = this.formatData(data[i]);
 
-    arr.push(`${i}:${val}`);
+    arr.push(`${i}:${val===""?'"'+val+'"':val}`);
   }
   return arr;
 };
