@@ -11,7 +11,7 @@ export const caseRouter=[
       {
         path: "queryTransaction",
         name: "queryTransaction",
-        component: "spa/queryTransaction",
+        component: "spa/queryTrade",
         meta: {
           title: "交易查询",
           icon: "el-icon-goods"
@@ -20,9 +20,9 @@ export const caseRouter=[
       {
         path: "pwdManager",
         name: "pwdManager",
-        component: "spa/pwdManager",
+        component: "XhqTest/tranfer",
         meta: {
-          title: "密码管理",
+          title: "转账汇款",
           icon: "el-icon-goods"
         }
       }

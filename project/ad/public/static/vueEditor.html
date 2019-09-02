@@ -262,7 +262,7 @@
             parent.$el.addEventListener('dragenter', e => {
          
               if ((e && e.dataTransfer.types && e.dataTransfer.types[0] === 'Files' )||(e && e.dataTransfer.types && e.dataTransfer.types[3] === 'v2imgsrc')) {
-               
+                debugger;
                 editor.startCreateElement({
                   element: imgJson,
                   desp: undefined,
@@ -301,7 +301,7 @@
               event.stopPropagation();
               event.preventDefault();
               // $(this.$refs.editor.$el).trigger('mouseup');
-          
+         
               if(event.dataTransfer.getData("v2ImgSrc")){
 
                   let src = event.dataTransfer.getData("v2ImgSrc");
@@ -310,6 +310,7 @@
                    self.$refs.editor.$performRequest('applyCreate', {
                         adImgDrog: true,
                         afterCreate: model => {
+                          debugger;
                           model.src = `img/${src}`;
                           if (!model.commonStyle) self.$set(model,'commonStyle',{})
                           self.$set(model.commonStyle,'position','absolute')

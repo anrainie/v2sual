@@ -16,6 +16,14 @@
     padding: 0 15px;
   }
 }
+
+
+.eb-index__favorites,
+.eb-index__recommendNotice,
+.eb-index__calendar {
+  height: 296px;
+}
+
 .eb-index__favorites {
   .eb-index__favorites-ctn {
     padding: 14px 5px;
@@ -66,10 +74,49 @@
   }
 }
 
+// ########## 页面 transfer ##########
+
+.eb-transfer__main {
+  padding-top: 30px;
+  // padding: 15px 500px 0 300px;
+
+  > .V2Container {
+    width: 600px;
+    margin: 0 auto;
+  }
+
+  .eb-transfer__transInfo {
+    margin-left: 50px;
+
+    .eb-transfer__transInfo-left {
+      width: 80px;
+    }
+
+    .eb-transfer__transInfo-right {
+      padding-left: 30px;
+    }
+    
+    i.el-icon-arrow-right{
+      font-size: 80px;
+      /* height: 100%; */
+      color: rgb(255, 255, 255);
+      animation-duration: 1s;
+      background: #c2d5eb;
+      line-height: 160px;
+    }
+
+    .receive-name,
+    .receive-money {
+      margin-right: 8px;
+      font-size: 20px;
+    }
+
+  }
+}
+
+
+
 // ########## 页面 XXXXX ##########
-
-
-
 
 
 // body {
