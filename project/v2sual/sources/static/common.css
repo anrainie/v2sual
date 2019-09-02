@@ -536,7 +536,7 @@ position: absolute; */
 */
 .context-menu {
   border: 1px solid #eee;
-  width: 11rem;
+  width: 15rem;
   padding: .2rem 0;
   list-style: none;
   background-color: white;
@@ -569,7 +569,7 @@ position: absolute; */
   font-size: 0.8rem;
   display: inline-flex;
   position: relative;
-  width: 11rem;
+  width: 15rem;
   line-height: 25px;
 }
 
@@ -633,7 +633,7 @@ position: absolute; */
 }
 
 .subMenu {
-  left: 11rem;
+  left: 15rem;
   top: 0px;
 }
 
