@@ -31,13 +31,24 @@ let project = {
        v2Components= v2Components.map(item=>{
             if(dep.hasOwnProperty(item.name)){
                 item.installed=true;
+            }else{
+              item.installed=false;
+
             }
+            item.rate=5;
+            item.opting=false;
             return item;
        })
        v2Pipes= v2Pipes.map(item=>{
         if(dep.hasOwnProperty(item.name)){
             item.installed=true;
+        }else{
+          item.installed=false;
+
         }
+        item.rate=5;
+        item.opting=false;
+
         return item;
          })
 
@@ -59,10 +70,13 @@ let project = {
       let {name,opt}=ctx.query;
       if(name && opt){
          await new Promise((resolve, reject) => {
-              exec(`npm ${opt} ${name}`, { cwd: projectPath }, function (error, stdout, stderr) {
+              exec(`npm ${opt} ${name} --registry=https://npm.awebide.com`, { cwd: projectPath }, function (error, stdout, stderr) {
+                console.log(stdout);
+                console.log(stderr);
                   if (error) {
                       reject(error);
                   }
+                 
                   resolve();
               });
           });
