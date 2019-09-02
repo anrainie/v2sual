@@ -1,0 +1,133 @@
+<template><v2container :wid="`root`"><el-row class="V2ContainerBlock borderBox dashBorder" style="height:10%;" key="0"><v2-component-text class="V2Widget" id="1564556718402" :wid="`1564556718402`" :index="0" :pid="`root`"></v2-component-text></el-row><el-row class="V2ContainerBlock" style="height:10%;" key="1"><v2container id="1564556749064" :wid="`1564556749064`" :index="1" :pid="`root`"><el-col class="V2ContainerBlock borderBox dashBorder" style="width:25%;" key="0"><v2-form-input class="V2Widget" id="1564556798142" :wid="`1564556798142`" :index="0" :pid="`1564556749064`"></v2-form-input></el-col><el-col class="V2ContainerBlock" style="width:25%;" key="1"><v2empty class="V2Empty" id="1564556749064-1" :wid="`1564556749064-1`" :index="1" :pid="`1564556749064`"></v2empty></el-col><el-col class="V2ContainerBlock" style="width:25%;" key="2"><v2empty class="V2Empty" id="1564556749064-2" :wid="`1564556749064-2`" :index="2" :pid="`1564556749064`"></v2empty></el-col><el-col class="V2ContainerBlock borderBox dashBorder" style="width:25%;" key="3"><v2-component-btn class="V2Widget" id="1564556860045" :wid="`1564556860045`" :index="3" :pid="`1564556749064`"></v2-component-btn></el-col></v2container></el-row><el-row class="V2ContainerBlock borderBox dashBorder" style="height:80%;" key="2"><v2-component-table class="V2Widget" id="1564556923576" :wid="`1564556923576`" :index="2" :pid="`root`"></v2-component-table></el-row></v2container></template>
+<script>
+            import  {mixins} from '@v2-lib/vue.spa.plugin';
+            import {root} from '@v2-lib/v2sual/mixin/v2-view';
+            
+            export default{
+                data(){
+                    return{
+                        "CONTENT":{structure:{"id":"root","component":"v2Container","direction":"row","layout":[100],"style":{"width":"100%","height":"100%"},"data":{},"children":[{"component":"v2-layout","href":"v2-layout","layout":["10","10","80"],"direction":"row","children":[{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"银联在线支付","editable":false,"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"id":1564556718402,"pid":1564556657476,"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":""}},{"component":"v2-layout","href":"v2-layout","layout":[25,25,25,25],"direction":"col","children":[{"theme":{"size":""},"style":{"label":{"font-size":"","font-weight":"","color":""}},"label":"当前账户","titleMode":"col","labelWitdh":"80px","inputType":"text","rows":"2","placeholder":"请输入","prepend":"","append":"","maxlength":"","minlength":"","prefixIcon":"","suffixIcon":"","showWordLimit":false,"value":"${tradeSerialQueryData.card_num}","clearable":false,"disabled":false,"isRequired":false,"autoComplete":false,"suggestion":"","rules":"","ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-form-input","href":"v2-form-input","children":[],"events":{},"id":1564556798142,"pid":1564556749064,"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":""},"animate":["","animated"]},null,null,{"theme":{"btnType":"","size":""},"style":{"btnStyle":{"background-color":"","height":"","width":""}},"btnName":"查询","shape":"def","loading":false,"disabled":false,"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-btn","href":"v2-component-btn","children":[],"events":{"_root":{},"_op_componentBtn_btn":{"click":["queryTradeSerial"]}},"id":1564556860045,"pid":1564556749064,"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":""}}],"style":{},"pid":"1564556657476-1","id":1564556749064,"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}]},{"theme":{"tableType":"border","size":""},"columns":[{"active":true,"prop":"columns0","label":"","fixed":"","width":"","sortable":false},{"active":true,"prop":"state","label":"交易状态","fixed":"","width":"","sortable":false,"openFilter":false,"type":"text","tagMap":[{"active":"true","value":"","text":"","type":"text"}],"iconMap":[{"active":"true","value":"","text":""}],"filterMap":[{"active":"true","text":"","value":""}],"__edm_collection":{"CODINGRULE":"UTF-8","DICTTYPE":"2","PUBCODECNAME":"交易状态","description":"交易状态","COLSCALE":"0","name":"state","Parameter":{"pname":"字段长度","pvalue":"77"},"type":"String","UUID":"579307B9FF7F4BD4B28B143E579DC48C","EDITION":"v0.0.1","APPLYAREA":"casdf.cadf","fieldLength":"77","like":true,"desp":"交易状态"}},{"active":true,"prop":"tradeId","label":"交易号","fixed":"","width":"","sortable":false,"openFilter":false,"type":"text","tagMap":[{"active":"true","value":"","text":"","type":"text"}],"iconMap":[{"active":"true","value":"","text":""}],"filterMap":[{"active":"true","text":"","value":""}],"__edm_collection":{"CODINGRULE":"UTF-8","DICTTYPE":"2","PUBCODECNAME":"交易号","description":"交易号","COLSCALE":"0","name":"tradeId","Parameter":{"pname":"字段长度","pvalue":"77"},"type":"String","UUID":"579307B9FF7F4BD4B28B143E579DC48C","EDITION":"v0.0.1","APPLYAREA":"casdf.cadf","fieldLength":"77","like":true,"desp":"交易号"}},{"active":true,"prop":"tradeId","label":"交易号","fixed":"","width":"","sortable":false,"openFilter":false,"type":"text","tagMap":[{"active":"true","value":"","text":"","type":"text"}],"iconMap":[{"active":"true","value":"","text":""}],"filterMap":[{"active":"true","text":"","value":""}],"__edm_collection":{"CODINGRULE":"UTF-8","DICTTYPE":"2","PUBCODECNAME":"交易号","description":"交易号","COLSCALE":"0","name":"tradeId","Parameter":{"pname":"字段长度","pvalue":"77"},"type":"String","UUID":"579307B9FF7F4BD4B28B143E579DC48C","EDITION":"v0.0.1","APPLYAREA":"casdf.cadf","fieldLength":"77","like":true,"desp":"交易号"}}],"selection":"","openIndex":false,"toolBar":false,"toolTitle":"操作列","toolLocation":"right","toolWidth":"100","toolBtns":[],"tHeight":"","tMaxHeight":"","tableData":"${tradeSerialListData}","ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-table","href":"v2-component-table","children":[],"events":{},"id":1564556923576,"pid":1564556657476,"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":""},"animate":["","animated"]}],"style":{},"pid":"root-0","id":1564556657476,"ctnClass":"","customClass":"","realSize":["%","%","%"],"commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":""},"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},null,{"position":"","top":"","right":"","left":"","bottom":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}]}],"events":{}}},
+                        tradeSerial:{
+    serial_num: '',
+    card_num: '',
+    trade_date: '',
+    trade_amount: '',
+    balance: '',
+    trade_type: '',
+    note: '',
+    notify_phone: '',
+    payer: '',
+    payer_account: '',
+    payer_bank: '',
+    payer_sub_account: '',
+    payee: '',
+    payee_account: '',
+    payee_bank: '',
+    payee_sub_account: '',
+    fee: '',
+    status: ''
+}          ,
+tradeSerialListData:[],
+tradeSerialQueryData:{
+    card_num: '',
+    start_date: '',
+    end_date: ''
+}
+                    }
+                },
+                props:{
+                  
+                },
+                mixins:[root,mixins],
+                
+                methods:{queryTradeSerial(){
+                  let ctx = this;
+                  
+            
+                    /*overview*/
+                        (async()=>{    const t4 = this.$axios.post('v1/ds/cmbcms/cmbcms/queryTradeSerial',ctx.tradeSerialQueryData
+    ).then(res=>{
+        if(res.retType === 'SUCCESS'){
+            ctx.tradeSerialListData = res.jsonData;           
+            this.$message({
+                showClose: true,
+                message: res.retMsg,
+                type: 'success',
+                duration: 0
+            });
+        }else{
+            this.$message({
+                showClose: true,
+                message: res.retMsg,
+                type: 'error',
+                duration: 0
+            });
+        }
+        
+    }).catch(error=> {
+        this.$message({
+                showClose: true,
+                message: error,
+                type: 'error',
+                duration: 0
+        });
+    });;
+})();
+                    /*overview over*/
+                    
+                    
+              }, },
+                watch:{},
+                computed:{},
+                beforeCreate(){
+                    let ctx = this;
+                    
+                },
+                created(){
+                    let ctx = this;
+                    
+                    
+                    /**bind**/ctx.$store.commit("registerBind",{ vueObj:this, data:this.tradeSerialListData, dataStr:"tradeSerialListData", wid:1564556923576, modelKey:"tableData" });
+ctx.$store.commit("registerBind",{ vueObj:this, data:this.tradeSerialQueryData.card_num, dataStr:"tradeSerialQueryData.card_num", wid:1564556798142, modelKey:"value" });/**bind over**/
+                },
+                beforeMount(){
+                    let ctx = this;
+                    
+                },
+                mounted(){
+                    let ctx = this;
+                    
+                    
+                },
+                beforeUpdate(){
+                    let ctx = this;
+                    
+                },
+                updated(){
+                    let ctx = this;
+                    
+                },
+                beforeDestroy(){ 
+                    let ctx = this;
+                        
+                },
+                destroyed(){
+                    let ctx = this;
+                        
+                },
+                deactivated(){
+                  /**页面切出**/
+                  let ctx = this;
+                  
+                },
+                activated(){
+                  /**页面切入**/
+                  let ctx = this;
+                  
+                },
+
+            };
+        </script>
+<style lang="scss">
+
+</style>

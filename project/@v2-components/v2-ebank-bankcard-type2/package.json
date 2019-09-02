@@ -1,0 +1,80 @@
+{
+  "name": "@v2-components/v2-ebank-bankcard-type2",
+  "description": "银行卡类型2",
+  "main": "index.vue",
+  "keywords": [],
+  "bundleDependencies": false,
+  "deprecated": false,
+  "index": 30000001,
+  "version": "6.0.2",
+  "license": "ISC",
+  "author": {
+    "name": "zhucheng@agree.com.cn"
+  },
+  "docs": {
+    "name": "银行卡类型2",
+    "type": "project",
+    "href": "v2-ebank-bankcard-type2",
+    "icon": "iconkapian",
+    "accept": "divCtn",
+    "belongTo": "aui",
+    "author": "zhucheng@agree.com.cn",
+    "version": 610000,
+    "option": [
+      {
+        "name": "alias",
+        "desp": "卡别名",
+        "type": "string_input",
+        "defaultValue": "一张银行卡"
+      },
+      {
+        "name": "cardType",
+        "desp": "银行卡类型",
+        "type": "string_input",
+        "defaultValue": "借记卡",
+        "placeholder": "借记卡或信用卡"
+      },
+      {
+        "name": "imgSrc",
+        "desp": "银行卡图片",
+        "type": "string_input",
+        "defaultValue": "",
+        "placeholder": "请绑定图片路径"
+      },
+      {
+        "name": "logo",
+        "desp": "银行卡logo",
+        "type": "string_input",
+        "defaultValue": "",
+        "placeholder": "请绑定logo路径"
+      },
+      {
+        "name": "cardID",
+        "desp": "银行卡号",
+        "type": "string_input",
+        "defaultValue": "1234 xxxx xxxx 1111"
+      },
+      {
+        "name": "funds",
+        "desp": "银行卡金额概况",
+        "type": "string_input",
+        "defaultValue": "",
+        "placeholder": "请绑定银行卡金额数据"
+      },
+      {
+        "name": "shortcuts",
+        "desp": "按钮组",
+        "type": "string_input",
+        "defaultValue": "",
+        "placeholder": "请绑定操作按钮数组"
+      }
+    ],
+    "css": {
+      "style": [],
+      "theme": []
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

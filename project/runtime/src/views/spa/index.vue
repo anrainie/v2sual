@@ -75,8 +75,8 @@ bankCards:// bankCards
     shortcuts: [
       {id: '', title: '转账汇款',
         route: {
-          page: "spa/index",
-          path: "/index",
+          page: "XhqTest/tranfer",
+          path: "XhqTest/tranfer",
           type: "BLANK",
           status: !0,
           params: { cardID: '1234 xxxx xxxx 2222' }
@@ -93,8 +93,8 @@ bankCards:// bankCards
       },
       {id: '', title: '交易查询',
         route: {
-          page: "spa/queryTransaction",
-          path: "/queryTransaction",
+          page: "spa/queryTrade",
+          page: "spa/queryTrade",
           type: "BLANK",
           status: !0,
           params: { cardID: '1234 xxxx xxxx 2222' }
@@ -115,8 +115,8 @@ bankCards:// bankCards
     shortcuts: [
       {id: '', title: '转账汇款',
         route: {
-          page: "spa/index",
-          path: "/index",
+          page: "XhqTest/tranfer",
+          path: "XhqTest/tranfer",
           type: "BLANK",
           status: !0,
           params: { cardID: '1234 xxxx xxxx 2222' }
@@ -133,8 +133,8 @@ bankCards:// bankCards
       },
       {id: '', title: '交易查询',
         route: {
-          page: "spa/queryTransaction",
-          path: "/queryTransaction",
+          page: "spa/queryTrade",
+          page: "spa/queryTrade",
           type: "BLANK",
           status: !0,
           params: { cardID: '1234 xxxx xxxx 2222' }
@@ -155,8 +155,8 @@ bankCards:// bankCards
     shortcuts: [
       {id: '', title: '转账汇款',
         route: {
-          page: "spa/index",
-          path: "/index",
+          page: "XhqTest/tranfer",
+          path: "XhqTest/tranfer",
           type: "BLANK",
           status: !0,
           params: { cardID: '1234 xxxx xxxx 2222' }
@@ -173,8 +173,8 @@ bankCards:// bankCards
       },
       {id: '', title: '交易查询',
         route: {
-          page: "spa/queryTransaction",
-          path: "/queryTransaction",
+          page: "spa/queryTrade",
+          page: "spa/queryTrade",
           type: "BLANK",
           status: !0,
           params: { cardID: '1234 xxxx xxxx 2222' }
@@ -195,8 +195,8 @@ bankCards:// bankCards
     shortcuts: [
       {id: '', title: '转账汇款',
         route: {
-          page: "spa/index",
-          path: "/index",
+          page: "XhqTest/tranfer",
+          path: "XhqTest/tranfer",
           type: "BLANK",
           status: !0,
           params: { cardID: '1234 xxxx xxxx 2222' }
@@ -213,8 +213,8 @@ bankCards:// bankCards
       },
       {id: '', title: '交易查询',
         route: {
-          page: "spa/queryTransaction",
-          path: "/queryTransaction",
+          page: "spa/queryTrade",
+          page: "spa/queryTrade",
           type: "BLANK",
           status: !0,
           params: { cardID: '1234 xxxx xxxx 2222' }
@@ -241,6 +241,7 @@ favorites:// favorites
     name: '账户总览',
     title: '账户总览',
     icon: 'el-icon-s-finance',
+    // icon: 'img/custom-aweb-logo.png',
     route: {
       page: "spa/accountOverview",
       path: "spa/accountOverview",
@@ -277,6 +278,7 @@ favorites:// favorites
     name: '账户预览',
     title: '账户预览',
     icon: 'el-icon-s-finance',
+    // icon: 'img/custom-aweb-logo.png',
     route: {
       page: "spa/index",
       path: "/index",
@@ -313,6 +315,7 @@ favorites:// favorites
     name: '账户预览',
     title: '账户预览',
     icon: 'el-icon-s-finance',
+    // icon: 'img/custom-aweb-logo.png',
     route: {
       page: "spa/index",
       path: "/index",
