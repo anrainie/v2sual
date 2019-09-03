@@ -15,8 +15,8 @@
 </template>
 
 <script>
-
 import  {mixins} from '@v2-lib/vue.spa.plugin';
+
 export default {
   mixins:[mixins],
   data() {
@@ -49,6 +49,7 @@ export default {
       ]
     };
   },
+
   methods: {
     closeCurrentPage() {
       this.close();

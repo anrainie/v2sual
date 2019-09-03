@@ -34,17 +34,92 @@
       <div class="aweb-menu-ctn">
         <ul>
           <li
-            v-for="(item,index) in routerData"
-            :class="{'active':$route.path==='/'+item.path}"
+            v-for="(item,index) in topTabs"
+            :class="{'active':activeTabIndex===index}"
             :key="index"
-            @click="handleSelectMenu(item.path+'#'+item.componentUrl+'#'+(item.meta && item.meta.title && item.meta.title),index)"
-          >{{item.meta.title}}</li>
+            @click="handleTabMenu(index)"
+          >{{item}}</li>
         </ul>
         <el-input class="ebanck-menu-search" suffix-icon="el-icon-search" v-model="searchVal"></el-input>
       </div>
+
+            <el-menu        
+          default-active="2"
+          class="el-menu-demo"
+          mode="horizontal"
+          v-if="menuData.length"
+          @select="handleSelectMenu"
+        >
+          <template v-for="item in menuData" v-if="!item.hidden">
+            
+              <el-submenu  v-if="item.children && item.children.length && !item.isLeaf || (item.isLeaf && item.isRedirect)" :index="item.path+'#'+item.componentUrl+'#'+(item.meta && item.meta.title && item.meta.title)" :key="item.path">
+                <template slot="title">
+                  <i v-if="item.meta && item.meta.icon" :class="item.meta.icon"></i>
+                  <span v-if="item.meta && item.meta.title">{{item.meta.title}}</span>
+                </template>
+
+                <template v-for="child in item.children" v-if="!child.hidden">
+
+                      <el-submenu  v-if="child.children" :index="item.path+'/'+child.path+'#'+child.componentUrl+'#'+(child.meta && child.meta.title && child.meta.title)" :key="item.path+'/'+child.path">
+                              
+                                    <template slot="title">
+                                      <i v-if="child.meta && child.meta.icon" :class="child.meta.icon"></i>
+                                      <span v-if="child.meta && child.meta.title">{{child.meta.title}}</span>
+                                    </template>
+
+                                    <template v-for="child3 in child.children" v-if="!child3.hidden">
+
+                                            <el-submenu  v-if="child3.children" :index="item.path+'/'+child.path+'/'+child3.path+'#'+child3.componentUrl+'#'+(child3.meta && child3.meta.title && child3.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path">                              
+                                                    <template slot="title">
+                                                      <i v-if="child3.meta && child3.meta.icon" :class="child3.meta.icon"></i>
+                                                      <span v-if="child3.meta && child3.meta.title">{{child3.meta.title}}</span>
+                                                    </template>
+
+                                                    <template v-for="child4 in child3.children" v-if="!child4.hidden">                                         
+                                                          <el-menu-item :index="item.path+'/'+child.path+'/'+child3.path+'/'+child4.path+'#'+child4.componentUrl+'#'+(child4.meta && child4.meta.title && child4.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path+'/'+child4.path">
+                                                            <i v-if="child4.meta && child4.meta.icon" :class="child4.meta.icon"></i>
+                                                            <span v-if="child4.meta&&child4.meta.title">{{child4.meta.title}}</span>
+                                                          </el-menu-item>
+                                                    </template>                             
+                                              </el-submenu>
+
+
+                                          <el-menu-item v-else :index="item.path+'/'+child.path+'/'+child3.path+'#'+child3.componentUrl+'#'+(child3.meta && child3.meta.title && child3.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path">
+                                            <i v-if="child3.meta && child3.meta.icon" :class="child3.meta.icon"></i>
+                                            <span v-if="child3.meta&&child3.meta.title">{{child3.meta.title}}</span>
+                                          </el-menu-item>
+
+
+                                    </template>
+                              
+                      </el-submenu>
+
+
+                    <el-menu-item v-else  :index="item.path+'/'+child.path+'#'+child.componentUrl+'#'+(child.meta && child.meta.title && child.meta.title)" :key="item.path+'/'+child.path">
+                      <i v-if="child.meta && child.meta.icon" :class="child.meta.icon"></i>
+                      <span v-if="child.meta && child.meta.title" :data-role="item.path+'/'+child.path">{{child.meta.title}}</span>
+                    </el-menu-item>
+            
+                </template>
+              </el-submenu>
+
+             
+                <el-menu-item  v-else-if="item.isLeaf && !item.children[0].children"  :index="item.children[0].path+'#'+item.children[0].componentUrl+'#'+(item.children[0].meta && item.children[0].meta.title && item.children[0].meta.title)" :key="item.path+'/'+item.children[0].path" >  
+                  <i v-if="item.children[0].meta && item.children[0].meta.icon" :class="item.children[0].meta.icon"></i>          
+                    <span v-if="item.children[0].meta && item.children[0].meta.title">{{item.children[0].meta.title}}</span>
+                  </el-menu-item>
+
+                 <el-menu-item  v-else  :index="item.path+'#'+item.componentUrl+'#'+(item.meta && item.meta.title && item.meta.title)" :key="item.path" >  
+                  <i v-if="item.meta && item.meta.icon" :class="item.meta.icon"></i>          
+                    <span v-if="item.meta && item.meta.title">{{item.meta.title}}</span>
+                  </el-menu-item>
+
+
+            </template>        
+        </el-menu>
     </div>
 
-    <div class="aweb-main">
+    <div class="aweb-main" :style="{'top':menuData.length?'142px':'96px'}">
       <!-- 导航菜单 START -->
 
     
@@ -92,7 +167,7 @@ export default {
   data() {
     return {
       routerData:JSON.parse(JSON.stringify(getMenuRoutes())),
-   
+       menuData:[],
       sysUserName: "admin",
       sysUserAvatar:
         "https://s.gravatar.com/avatar/f30a9191dda93b5389965ed99f57f850?s=50&d=retro",
@@ -100,7 +175,9 @@ export default {
       // isRouterAlive: true,
       breadcrumbPath: [], // 面包屑路径
       showBreadcrumbPath: false,
-      searchVal:''
+      searchVal:'',
+      activeTabIndex:0,
+      topTabs:["首页","一卡通","信用卡","超级网银","财务管理","金融助手"]
     };
   },
    async beforeRouteEnter(to, from, next){
@@ -110,7 +187,7 @@ export default {
         if(!menus.length){
           // let menus=await getMenu();
           let path = to.redirectedFrom || to.path;
-          let menuData=[...menus,...caseRouter];
+          let menuData=[...caseRouter];
           addMenuToRoutes(menuData);
           next(path);
         }else{
@@ -139,11 +216,18 @@ export default {
 
       this.open({
         path: "/" + path,
+        page:page,
         status: true,
         type: "BLANK",
         title: title || "标题",
         keepAlive: true
       });
+    },
+    handleTabMenu(index){
+       this.activeTabIndex = index;
+       debugger;
+       console.log('ee',this.routerData)
+       this.menuData = this.routerData[index].children||[]
     },
     initUserInfo() {
       // console.log("routerData", this.routerData);
@@ -426,6 +510,21 @@ export default {
     border-bottom: 1px solid rgb(144, 176, 201);
     background: linear-gradient(rgb(243, 243, 243), rgb(215, 215, 215));
 
+    .el-menu--horizontal > .el-submenu .el-submenu__title,
+    .el-menu--horizontal > .el-menu-item{
+          height: 50px;
+    line-height: 50px;
+    }
+    .el-menu--horizontal .el-menu .el-menu-item, 
+    .el-menu--horizontal .el-menu .el-submenu__title,
+    .el-menu--horizontal > .el-submenu .el-submenu__title,
+    .el-menu--horizontal > .el-menu-item{
+      color:#303133;
+    }
+    .el-menu-item:hover, .el-menu-item:focus{
+      color:rgb(69,94,203);
+    }
+
     .ebank-header-main {
       position: relative;
 
@@ -489,7 +588,7 @@ export default {
           cursor: pointer;
           color: #000;
           &:hover {
-            background-color: rgb(71, 136, 248);
+            background-color: rgb(69,94,203);
           }
           &:last-child {
             border-left: 1px solid #ccc;
@@ -548,7 +647,7 @@ export default {
     position: absolute;
     left: 0;
     right: 0;
-    top: 96px;
+    top: 142px;
     bottom: 38px;
     overflow: auto;
 
