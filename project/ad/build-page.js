@@ -103,7 +103,7 @@ const packagePipe = async (tPath, dir) => {
 }
 
 (async () => {
-    let tPath = "../@v2-components";
+    let tPath = "./src/v2Components";
     let dir = await readdir(tPath);
     await packageComponent(tPath, dir);
 
