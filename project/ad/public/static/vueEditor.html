@@ -209,7 +209,7 @@
           loadedStyle() {
             if (!this.styleUpdated) {
               this.styleUpdated = true;
-              debugger;
+              
               $('head', window.document).append(this.style);
 
               parent.$store.commit('loading', false);
@@ -267,7 +267,7 @@
             parent.$el.addEventListener('dragenter', e => {
          
               if ((e && e.dataTransfer.types && e.dataTransfer.types[0] === 'Files' )||(e && e.dataTransfer.types && e.dataTransfer.types[3] === 'v2imgsrc')) {
-                debugger;
+                
                 editor.startCreateElement({
                   element: imgJson,
                   desp: undefined,
@@ -315,7 +315,7 @@
                    self.$refs.editor.$performRequest('applyCreate', {
                         adImgDrog: true,
                         afterCreate: model => {
-                          debugger;
+                          
                           model.src = `img/${src}`;
                           if (!model.commonStyle) self.$set(model,'commonStyle',{})
                           self.$set(model.commonStyle,'position','absolute')
