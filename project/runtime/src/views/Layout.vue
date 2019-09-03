@@ -227,7 +227,9 @@ export default {
        this.activeTabIndex = index;
    
        let currentRoute = this.routerData[index];
-       if(currentRoute.children && currentRoute.componentUrl){
+
+       if(currentRoute.componentUrl){
+      
           this.open({
               path: "/" + currentRoute.path,
               page:currentRoute.componentUrl||'main/main',
