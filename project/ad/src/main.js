@@ -17,6 +17,10 @@ import $ from "jquery";
 import { getbrotherPageList } from '@/api/api.js'
 import {addTabsRoutes} from '@v2-lib/vue.spa.plugin/router'
 
+import echarts from 'echarts'
+
+Vue.prototype.$echarts = echarts
+
 Vue.use(Lib)
 Vue.use(ideLib)
 Vue.use(ElementUI)
