@@ -1,3 +1,71 @@
 .text-red{
     color:green;
 }
+
+body{
+    margin:0;
+}
+.s_m_panel{
+    background:white;
+    box-shadow:0 0 1px 1px lightgray;
+    width:93.6%; 
+    left:3.2%;
+    position:relative;
+    border-radius:8px;
+}
+
+.s_m_bg{
+    background-color:#EBEFF5;
+}
+
+.hline{
+    border-top:1px solid lightgray;
+    height:0;
+}
+
+.vline{
+    border-left:1px solid lightgray;
+    width:0;
+}
+
+.title1{
+    font-size:24px;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(82,88,102,1);
+    text-align:center;
+}
+.title2{
+    font-size:28px;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(10,15,26,1);
+    line-height:28px;
+}
+.value1{
+    font-size:40px;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(10,15,26,1);
+    text-align:center;
+}
+.unit1{
+    font-size:24px;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(10,15,26,1);
+}
+.pageName{
+    font-size:32px;
+font-family:PingFang SC;
+font-weight:500;
+color:rgba(255,255,255,1);
+line-height:28px;
+text-align:center;
+}
+.filter_text{
+    font-size:20px;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(50,128,255,1);
+}
