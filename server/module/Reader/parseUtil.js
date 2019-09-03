@@ -25,6 +25,9 @@ let formatData = function (val) {
   try {
     let _x;
     eval("_x=" + val)
+    if(!isNaN(_x)&&`${_x}`.length<val.length){
+      return `\`${val}\``
+    }
     return val;
   } catch (e) {
     // console.error(e)
@@ -177,8 +180,11 @@ let appendComponent = function (parent, index, element) {
       }
       //判断输入的类型
       let itemValue = child.dataBasket[item];
+      console.log('before:',itemValue)
       if (dataBasketJson[itemValue] == undefined) {
         itemValue = formatData(itemValue);
+        console.log('after:',itemValue)
+        console.log();
         //字符串类型：`字符串`
         // if (itemValue.startsWith("'") || itemValue.startsWith('"')) {
         //   itemValue = '`' + itemValue.replace(/"/g, "").replace(/'/g, "") + '`';

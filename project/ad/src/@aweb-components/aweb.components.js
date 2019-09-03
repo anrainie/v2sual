@@ -5,12 +5,14 @@ import v2ComponentCalendar  from '@v2-components/v2-component-calendar';
 import v2ComponentCard  from '@v2-components/v2-component-card';
 import v2ComponentEchart  from '@v2-components/v2-component-echart';
 import v2ComponentEtable  from '@v2-components/v2-component-etable';
+import v2ComponentEchart  from '@v2-components/v2-component-echart';
 import v2ComponentIcon  from '@v2-components/v2-component-icon';
 import v2ComponentSteps  from '@v2-components/v2-component-steps';
 import v2ComponentTable  from '@v2-components/v2-component-table';
 import v2ComponentImage  from '@v2-components/v2-component-image';
 import v2ComponentTabs  from '@v2-components/v2-component-tabs';
 import v2ComponentTextValue  from '@v2-components/v2-component-text-value';
+import v2ComponentText  from '@v2-components/v2-component-text';
 import v2ComponentTree  from '@v2-components/v2-component-tree';
 import v2ComponentText  from '@v2-components/v2-component-text';
 import v2CtnXy  from '@v2-components/v2-ctn-xy';
@@ -39,13 +41,15 @@ import v2MobileButton  from '@v2-components/v2-mobile-button';
 import v2MobileSteps  from '@v2-components/v2-mobile-steps';
 import v2MobileInput  from '@v2-components/v2-mobile-input';
 import v2MobileUploader  from '@v2-components/v2-mobile-uploader';
-import v2MobileRadio  from '@v2-components/v2-mobile-radio';
+import v2MobileSteps  from '@v2-components/v2-mobile-steps';
+import v2Page  from '@v2-components/v2-page';
 import v2Switchable  from '@v2-components/v2-switchable';
 import v2EditorSwitch  from '@v2-components/v2-switchable/switchEditor.vue';
 import v2Page  from '@v2-components/v2-page';
 import v2ComponentWeather  from '../v2Components/v2-component-weather';
 import v2Vda3dpie  from '../v2Components/v2-vda-3dpie';
 import v2VdaChart  from '../v2Components/v2-vda-chart';
+import v2ComponentWeather  from '../v2Components/v2-component-weather';
 import v2VdaPrettyGlobal  from '../v2Components/v2-vda-pretty-global';
 import v2ComponentDigitroll  from '../v2Components/v2-component-digitroll'
   
@@ -53,12 +57,12 @@ import v2ComponentDigitroll  from '../v2Components/v2-component-digitroll'
 import getValue  from '../../pipe/getValue';
 import mapping  from '../../pipe/mapping';
 import vda  from '../../pipe/vda';
-import animate  from '@v2-pipe/animate';
+import mapping  from '../../pipe/mapping';
+import animateKill  from '@v2-pipe/animateKill';
 import close  from '@v2-pipe/close';
 import getAfaData  from '@v2-pipe/getAfaData';
 import animateKill  from '@v2-pipe/animateKill';
 import gt  from '@v2-pipe/gt';
-import getExcelData  from '@v2-pipe/getExcelData';
 import open  from '@v2-pipe/open';
 import map  from '@v2-pipe/map'
   
@@ -67,12 +71,12 @@ import map  from '@v2-pipe/map'
 	getValue,
 	mapping,
 	vda,
-	animate,
+	mapping,
+	animateKill,
 	close,
 	getAfaData,
 	animateKill,
 	gt,
-	getExcelData,
 	open,
 	map
         };
@@ -86,12 +90,14 @@ import map  from '@v2-pipe/map'
 	v2ComponentCard,
 	v2ComponentEchart,
 	v2ComponentEtable,
+	v2ComponentEchart,
 	v2ComponentIcon,
 	v2ComponentSteps,
 	v2ComponentTable,
 	v2ComponentImage,
 	v2ComponentTabs,
 	v2ComponentTextValue,
+	v2ComponentText,
 	v2ComponentTree,
 	v2ComponentText,
 	v2CtnXy,
@@ -120,13 +126,15 @@ import map  from '@v2-pipe/map'
 	v2MobileSteps,
 	v2MobileInput,
 	v2MobileUploader,
-	v2MobileRadio,
+	v2MobileSteps,
+	v2Page,
 	v2Switchable,
 	v2EditorSwitch,
 	v2Page,
 	v2ComponentWeather,
 	v2Vda3dpie,
 	v2VdaChart,
+	v2ComponentWeather,
 	v2VdaPrettyGlobal,
 	v2ComponentDigitroll
         }

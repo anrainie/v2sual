@@ -54,7 +54,7 @@
         "tinycolor2": "^1.4.1",
         "topology-jquery": "^1.1.1",
         "uglify-es-web": "^1.0.1",
-        "urllib": "^2.34.0",
+        "urllib": "^2.34.1",
         "vue": "^2.5.2",
         "vue-router": "^3.0.1",
         "vuedraggable": "^2.20.0",
