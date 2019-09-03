@@ -225,7 +225,19 @@ export default {
     },
     handleTabMenu(index){
        this.activeTabIndex = index;
-       debugger;
+   
+       let currentRoute = this.routerData[index];
+       if(currentRoute.children){
+          this.open({
+              path: "/" + currentRoute.path,
+              page:currentRoute.componentUrl||'main/main',
+              status: true,
+              type: "BLANK",
+              title: currentRoute.meta.title || "标题",
+              keepAlive: true
+            });
+       }
+     
        console.log('ee',this.routerData)
        this.menuData = this.routerData[index].children||[]
     },
