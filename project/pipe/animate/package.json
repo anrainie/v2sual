@@ -1,51 +1,25 @@
 {
-  "_from": "@v2-pipe/animate@^6.0.0",
-  "_id": "@v2-pipe/animate@6.0.0",
-  "_inBundle": false,
-  "_integrity": "sha1-etl/xq4fTgtvoy4HwmC/ab1alCU=",
-  "_location": "/@v2-pipe/animate",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "range",
-    "registry": true,
-    "raw": "@v2-pipe/animate@^6.0.0",
     "name": "@v2-pipe/animate",
-    "escapedName": "@v2-pipe%2fanimate",
-    "scope": "@v2-pipe",
-    "rawSpec": "^6.0.0",
-    "saveSpec": null,
-    "fetchSpec": "^6.0.0"
-  },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "https://npm.awebide.com/@v2-pipe/animate/download/@v2-pipe/animate-6.0.0.tgz",
-  "_shasum": "7ad97fc6ae1f4e0b6fa32e07c260bf69bd5a9425",
-  "_spec": "@v2-pipe/animate@^6.0.0",
-  "_where": "E:\\v2sual\\project\\ad",
-  "bundleDependencies": false,
-  "category": "自定义",
-  "dependencies": {
-    "animate.css": "^3.7.2",
-    "uuid-umd": "^3.3.2"
-  },
-  "deprecated": false,
-  "description": "动画",
-  "docs": {
-    "desp": "动画效果",
-    "name": "animate",
-    "belongTo": "function",
-    "category": "animate",
-    "hasReturn": true,
-    "returnValue": {
-      "name": "state",
-      "desp": "状态",
-      "details": "",
-      "type": "string",
-      "defaultValue": "animationend"
-    }
-  },
-  "main": "index.js",
-  "name": "@v2-pipe/animate",
-  "version": "6.0.0"
+    "main": "index.js",
+    "docs": {
+        "desp": "动画效果",
+        "name": "animate",
+        "belongTo": "function",
+        "category": "animate",
+        "hasReturn": true,
+        "returnValue": {
+            "name": "state",
+            "desp": "状态",
+            "details": "",
+            "type": "string",
+            "defaultValue": "animationend"
+        }
+    },
+    "dependencies": {
+        "animate.css": "^3.7.2",
+        "uuid-umd": "^3.3.2"
+    },
+    "category": "自定义",
+    "description": "动画",
+    "version": "6.0.0"
 }

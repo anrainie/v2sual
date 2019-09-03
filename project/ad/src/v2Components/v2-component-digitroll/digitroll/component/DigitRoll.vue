@@ -101,7 +101,7 @@ export default {
 
   watch: {
     rollDigits(value, oldVal) {
-      debugger;
+
       if (rollLock) {
         return;
       }
@@ -365,7 +365,7 @@ export default {
 
 <style>
   .d-roll-wrapper{
-    margin: 20px auto;
+    margin: 0px auto;
     width: 100%;
   }
   .d-roll-list{

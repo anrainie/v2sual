@@ -64,9 +64,7 @@ const packageComponent = async (tPath, dir) => {
 
             exe(src, target, camelCaseName);
 
-            if (content.paramEditor) {
-                exe(`${tPath}/${name}/${content.paramEditor.path}`, target, content.paramEditor.name);
-            }
+    
 
             //自定义组件编辑器
             if (content.editor) {

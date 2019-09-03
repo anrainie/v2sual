@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["ad1-config"],{"19e4":function(e){e.exports=JSON.parse('{"name":"ad1","desc":"第一个广告","entry":"./index.vue","pageList":["page1.vue","page2.vue"],"img":"./img/shoutcut.png","animate":"","display":{"width":"537px","height":"800px"}}')}}]);

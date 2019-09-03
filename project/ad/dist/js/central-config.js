@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["central-config"],{"7b47":function(e){e.exports=JSON.parse('{"name":"central","desc":"第一个广告","entry":"./index.vue","pageList":["page1.vue","page2.vue"],"img":"./img/shoutcut.png","animate":"","display":{"width":"1400px","height":"1050px"}}')}}]);

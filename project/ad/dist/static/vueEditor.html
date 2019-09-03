@@ -4,7 +4,12 @@
   <!--css-->
   <link rel="stylesheet" type="text/css" href="./common.css" />
   <link rel="stylesheet" type="text/css" href="./ide_icon/iconfont.css" />
-  <link rel="stylesheet" type="text/css" href="./animate.min.css">
+
+  
+  <link rel="stylesheet" type="text/css" href="/v1/public/css/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="/v1/public/css/theme.css" />
+  <link rel="stylesheet" type="text/css" href="/v1/theme/index.css" />
+
   <script>
     function getUrlParam(name) {
       var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
@@ -20,6 +25,7 @@
       window.jQuery = window.parent.jQuery;
       window.Vue = window.parent.Vue;
       window.Vuex = window.parent.Vuex;
+      window.parent.THREE = window.THREE;
 
       var id = getUrlParam("id");
       var parent = window.parent.__dataPool[id];
@@ -46,9 +52,7 @@
                 <el-breadcrumb separator="/">
                   <el-breadcrumb-item v-for="l in label" :key="l.id">{{l.label}}</el-breadcrumb-item>
                 </el-breadcrumb>
-                <div class="switchable-ctn-editor-btn-group">
-                  <el-button size="mini" type="text" @click="closeCustomEditor" title="退出编辑" ><i class="ideicon iconfanhui"></i></el-button>  
-                </div>
+              
               </div>
               <div ref="customEditorArea" ></div>
             </div>
@@ -65,6 +69,7 @@
           return {
             showCustomEditor: false,
             styleUpdated: false,
+            loadIframe:false
           }
         },
         watch: {
@@ -87,7 +92,7 @@
           },
           label() {
             let ret = [];
-            if (this.showCustomEditor) {
+            if (this.showCustomEditor && !this.loadIframe) {
               const widgetStack = [];
 
               let wid = this.customEditor.wid;
@@ -145,7 +150,7 @@
           //       true;
           //   });
           let self = this;
-          document.addEventListener("mousewheel", e => {
+          window.addEventListener("mousewheel", e => {
             if (e.ctrlKey) {
               e.preventDefault();
               return self.activeTool && self.activeTool.mouseWheelEvent ?
@@ -160,7 +165,7 @@
 
         },
         methods: {
-          openCustomEditor(widget,callback) {
+          openCustomEditor(widget) {
             let Comp = Vue.component(widget.model.customEditor);
             let comp = new Comp();
 
@@ -176,26 +181,26 @@
 
             this.showCustomEditor = true;
           },
-          openCustomIframeEditor(iframeSrc,callback) {
+          openCustomIframeEditor(iframeSrc,widget,callback) {
          
-            let area = $(this.$refs.customEditorArea);
-            console.log(this.$refs.customEditorArea);
+         let area = $(this.$refs.customEditorArea);
+         console.log(this.$refs.customEditorArea);
+          this.customEditor = widget;
+         let content = $(`<div><iframe style="width:100%;height:100%" src="${iframeSrc}"></iframe></div>`)
+         area.append(content);
+         callback && callback(content);
 
-            let content = $(`<div><iframe style="":src="${iframeSrc}"></iframe></div>`)
-            area.append(content);
-            comp.$store = widget.$store;
-            comp.wid = widget.wid;
-            comp.$mount(content[0]);
-            this.customEditor = comp;
-            callback && callback();
-            this.showCustomEditor = true;
-            },
+         this.loadIframe = true;
+         this.showCustomEditor = true;
+         },
           closeCustomEditor() {
-            if (this.customEditor)
+            if (this.customEditor && !this.loadIframe){
               this.customEditor.$destroy();
+            }
+            
             let area = $(this.$refs.customEditorArea);
             area.empty();
-
+            
             this.showCustomEditor = false;
           },
           loadStyle() {
@@ -204,6 +209,7 @@
           loadedStyle() {
             if (!this.styleUpdated) {
               this.styleUpdated = true;
+              debugger;
               $('head', window.document).append(this.style);
 
               parent.$store.commit('loading', false);
@@ -218,17 +224,36 @@
             let imgJson = {
               children: [],
               component: "v2-component-image",
-              commonStyle: {},
+              commonStyle: {
+                "position":"",
+                "top":"",
+                "right":"",
+                "left":"",
+                "bottom":"",
+                "width":"",
+                "height":"",
+                "padding-top": "",
+                "padding-bottom": "",
+                "padding-left": "",
+                "padding-right": "",
+                "margin-top": "",
+                "margin-bottom": "",
+                "margin-left": "",
+                "margin-right": "",
+                "font-size":"",
+                "color":"",
+                "animation-duration":'1s',
+                "animation-delay":''  
+              },
               cptpath: undefined,
               ctnClass: "",
               customClass: "",
               customEditor: undefined,
               events: {},
-              height: "100px",
               href: "v2-component-image",
               src: "",
-              style: {},
-              width: "100px",
+              fixation:false,
+              style: {}, 
               __capacity: "1",
               __loopTarget: "",
               __type: "",
@@ -240,15 +265,18 @@
 
 
             parent.$el.addEventListener('dragenter', e => {
-
-              editor.startCreateElement({
-                element: imgJson,
-                desp: undefined,
-                hidden: undefined,
-                icon: "iconkapian",
-                name: "图片",
-                type: "component"
-              }, null, false);
+         
+              if ((e && e.dataTransfer.types && e.dataTransfer.types[0] === 'Files' )||(e && e.dataTransfer.types && e.dataTransfer.types[3] === 'v2imgsrc')) {
+                debugger;
+                editor.startCreateElement({
+                  element: imgJson,
+                  desp: undefined,
+                  hidden: undefined,
+                  icon: "iconkapian",
+                  name: "图片",
+                  type: "component"
+                }, null, false);
+              }
             })
 
 
@@ -256,6 +284,7 @@
               event.stopPropagation();
               event.preventDefault();
             });
+         
 
             $domWindow.addEventListener('dragover', event => {
               event.stopPropagation();
@@ -277,19 +306,42 @@
               event.stopPropagation();
               event.preventDefault();
               // $(this.$refs.editor.$el).trigger('mouseup');
+         
+              if(event.dataTransfer.getData("v2ImgSrc")){
 
-              if (event && event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files
-                .length) {
+                  let src = event.dataTransfer.getData("v2ImgSrc");
+                  let tImgW = event.dataTransfer.getData("v2ImgWidth");
+                  let tImgH = event.dataTransfer.getData("v2ImgHeight")
+                   self.$refs.editor.$performRequest('applyCreate', {
+                        adImgDrog: true,
+                        afterCreate: model => {
+                          debugger;
+                          model.src = `img/${src}`;
+                          if (!model.commonStyle) self.$set(model,'commonStyle',{})
+                          self.$set(model.commonStyle,'position','absolute')
+                          self.$set(model.commonStyle,'width',tImgW+'px')
+                          self.$set(model.commonStyle,'height',tImgH+'px')
+                          self.$set(model.commonStyle,'top',event.offsetY - (tImgW / 2))
+                          self.$set(model.commonStyle,'left',event.offsetX - (tImgH / 2))
+                        }
+                      });
+            
+              }else if ((event && event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files
+                .length)) {
                 let data = event.dataTransfer.files[0];
                 let name = data.name;
                 let type = data.type;
                 let reader = new FileReader();
+              
                 if (!type.startsWith("image")) {
                   alert("只支持上传图片");
                   return null;
                 }
+             
                 reader.readAsDataURL(data);
                 reader.onload = e => {
+                  var tImg = new Image();
+                  tImg.src = e.target.result;
                   self
                     .apis("/v1/page/upload", {
                       params: {
@@ -304,11 +356,15 @@
                       self.$refs.editor.$performRequest('applyCreate', {
                         adImgDrog: true,
                         afterCreate: model => {
-                          model.src = `img/${name}`;
-                          if (!model.commonStyle) model.commonStyle = {}
-                          model.commonStyle.position = 'absolute';
-                          model.commonStyle.top = event.offsetY - (parseInt(model.height) / 2);
-                          model.commonStyle.left = event.offsetX - (parseInt(model.width) / 2);
+                          console.log('width,hight',tImg.naturalWidth,tImg.naturalHeight);
+                          model.src = `img/${name}`;  
+                          if (!model.commonStyle) self.$set(model,'commonStyle',{})
+                          self.$set(model.commonStyle,'position','absolute')
+                          self.$set(model.commonStyle,'width',tImg.naturalWidth+'px')
+                          self.$set(model.commonStyle,'height',tImg.naturalHeight+'px')
+                          self.$set(model.commonStyle,'top',event.offsetY - (tImg.naturalWidth / 2))
+                          self.$set(model.commonStyle,'left',event.offsetX - (tImg.naturalHeight / 2))
+                        
                         }
                       });
                     })
@@ -328,8 +384,11 @@
   </script>
 </head>
 
-<body style="padding:5px;box-sizing: border-box;">
+<body style="box-sizing: border-box;">
   <div></div>
+
+  <script src="../js/three.js"></script> 
+  <script src="../js/OrbitControls.js"></script> 
 </body>
 
 </html>

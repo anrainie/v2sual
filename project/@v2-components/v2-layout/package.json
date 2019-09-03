@@ -312,7 +312,7 @@
   "keywords": [],
   "license": "ISC",
   "main": "index.vue",
-  "paramEditor": {
+  "editor": {
     "path": "editor.vue",
     "name": "v2LayoutEditor"
   },

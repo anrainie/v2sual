@@ -5,7 +5,7 @@ body {
 }
 
 body {
-  padding: 1rem;
+  /* padding: 1rem; */
   user-select: none;
 }
 
@@ -211,12 +211,12 @@ box-shadow: 0 0 1px 1px #00000021;
 }
 
 .V2XyBlock:hover{
-  border: 1px dotted gray;
+  box-shadow: inset 0px 0px 3px 3px darkcyan;
 }
 
 
 .V2CustomCptMask, .V2PageCptMask,
-.V2OrderCtnMask,
+.V2OrderCtnMask,.V2VDAChartMask,
 .v2XYContainerMask {
   /* left: 0;
 top: 0;
@@ -253,6 +253,9 @@ position: absolute; */
 }
 .v2XYContainerMask:after{
   content: "[自由布局容器]";
+}
+.V2VDAChartMask:after{
+  content: "[VDA图表编辑]";
 }
 .v2OrderDrapeCtn >.V2OrderBlock{
   float: left
@@ -318,7 +321,10 @@ position: absolute; */
   /* border: none; */
   padding: 0 8px;
 }
-
+.v2-picture{
+  width:100px;
+  height:100px;
+}
 /*美化可切换tab样式 End*/
 .V2ResizeMask {
   pointer-events: none;
@@ -790,3 +796,76 @@ position: absolute; */
 }
 
 /*美化可切换tab样式 End*/
+
+/*IDE样式*/
+
+.s_navi_item{
+  width:14px;
+  height:4px;
+  background:rgba(26,130,255,1);
+  opacity:0.5;
+  border-radius:2px;
+}
+
+.s_navi_item_active{
+  width:14px;
+  height:4px;
+  background:rgba(26,130,255,1);
+  border-radius:2px;
+}
+
+.s_title1{
+  font-size:16px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight:400;
+  color:rgba(211,231,245,1);
+}
+
+.more_detail{
+  font-size:14px;
+font-family:RTWS YueGothic G0v1;
+font-weight:400;
+color:rgba(153,197,255,1);
+}
+
+.s_num{
+  font-size:20px;
+font-family:RTWS YueGothic G0v1;
+font-weight:400;
+color:rgba(239,254,255,1);
+}
+.s_num_desc{
+  font-size:16px;
+font-family:RTWS YueGothic G0v1;
+font-weight:400;
+color:rgba(172,207,255,1);
+}
+.h1_number{
+  font-size:64px;
+font-family:RTWS YueGothic G0v1;
+font-weight:400;
+color:rgba(229,247,255,1);
+}
+.lastMonth1{
+  background:rgba(255,66,76,1);
+  border-radius:4px;
+  padding:5px 10px;
+  font-size:18px;
+font-family:RTWS YueGothic G0v1;
+font-weight:400;
+color:rgba(255,255,255,1);
+}
+
+.lastMonth2{
+  background:rgba(22,160,96,1);
+  border-radius:4px;
+  padding:5px 10px;
+  font-size:18px;
+font-family:RTWS YueGothic G0v1;
+font-weight:400;
+color:rgba(255,255,255,1);
+}
+.s_line{
+  border-top:2px dashed #4BA1F1;
+  height:10px;
+}

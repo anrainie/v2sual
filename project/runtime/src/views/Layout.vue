@@ -1,6 +1,6 @@
 <template>
   <div class="aweb-container">
-    <div class="aweb-header">
+    <div class="aweb-header" v-move-client>
       <div class="ebank-header-main">
         <div class="ebank-logo-ctn">
           <img src="../assets/logo.png" alt />
@@ -24,9 +24,9 @@
             </el-dropdown-menu>
           </el-dropdown>
           <div class="ebank-header-opr">
-            <span class="el-icon-minus"></span>
-            <span class="el-icon-full-screen"></span>
-            <span class="el-icon-close"></span>
+            <span class="el-icon-minus" @click.capture="handleMinimize"></span>
+            <span :class="maximize ? 'el-icon-full-screen' : 'el-icon-full-screen'" @click.capture="handleMaximize"></span>
+            <span class="el-icon-close" @click.capture="handleClose"></span>
           </div>
         </div>
       </div>
@@ -43,7 +43,7 @@
         <el-input class="ebanck-menu-search" suffix-icon="el-icon-search" v-model="searchVal"></el-input>
       </div>
 
-            <el-menu        
+            <el-menu
           default-active="2"
           class="el-menu-demo"
           mode="horizontal"
@@ -51,7 +51,7 @@
           @select="handleSelectMenu"
         >
           <template v-for="item in menuData" v-if="!item.hidden">
-            
+
               <el-submenu  v-if="item.children && item.children.length && !item.isLeaf || (item.isLeaf && item.isRedirect)" :index="item.path+'#'+item.componentUrl+'#'+(item.meta && item.meta.title && item.meta.title)" :key="item.path">
                 <template slot="title">
                   <i v-if="item.meta && item.meta.icon" :class="item.meta.icon"></i>
@@ -61,7 +61,7 @@
                 <template v-for="child in item.children" v-if="!child.hidden">
 
                       <el-submenu  v-if="child.children" :index="item.path+'/'+child.path+'#'+child.componentUrl+'#'+(child.meta && child.meta.title && child.meta.title)" :key="item.path+'/'+child.path">
-                              
+
                                     <template slot="title">
                                       <i v-if="child.meta && child.meta.icon" :class="child.meta.icon"></i>
                                       <span v-if="child.meta && child.meta.title">{{child.meta.title}}</span>
@@ -69,18 +69,18 @@
 
                                     <template v-for="child3 in child.children" v-if="!child3.hidden">
 
-                                            <el-submenu  v-if="child3.children" :index="item.path+'/'+child.path+'/'+child3.path+'#'+child3.componentUrl+'#'+(child3.meta && child3.meta.title && child3.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path">                              
+                                            <el-submenu  v-if="child3.children" :index="item.path+'/'+child.path+'/'+child3.path+'#'+child3.componentUrl+'#'+(child3.meta && child3.meta.title && child3.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path">
                                                     <template slot="title">
                                                       <i v-if="child3.meta && child3.meta.icon" :class="child3.meta.icon"></i>
                                                       <span v-if="child3.meta && child3.meta.title">{{child3.meta.title}}</span>
                                                     </template>
 
-                                                    <template v-for="child4 in child3.children" v-if="!child4.hidden">                                         
+                                                    <template v-for="child4 in child3.children" v-if="!child4.hidden">
                                                           <el-menu-item :index="item.path+'/'+child.path+'/'+child3.path+'/'+child4.path+'#'+child4.componentUrl+'#'+(child4.meta && child4.meta.title && child4.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path+'/'+child4.path">
                                                             <i v-if="child4.meta && child4.meta.icon" :class="child4.meta.icon"></i>
                                                             <span v-if="child4.meta&&child4.meta.title">{{child4.meta.title}}</span>
                                                           </el-menu-item>
-                                                    </template>                             
+                                                    </template>
                                               </el-submenu>
 
 
@@ -91,7 +91,7 @@
 
 
                                     </template>
-                              
+
                       </el-submenu>
 
 
@@ -99,30 +99,30 @@
                       <i v-if="child.meta && child.meta.icon" :class="child.meta.icon"></i>
                       <span v-if="child.meta && child.meta.title" :data-role="item.path+'/'+child.path">{{child.meta.title}}</span>
                     </el-menu-item>
-            
+
                 </template>
               </el-submenu>
 
-             
-                <el-menu-item  v-else-if="item.isLeaf && !item.children[0].children"  :index="item.children[0].path+'#'+item.children[0].componentUrl+'#'+(item.children[0].meta && item.children[0].meta.title && item.children[0].meta.title)" :key="item.path+'/'+item.children[0].path" >  
-                  <i v-if="item.children[0].meta && item.children[0].meta.icon" :class="item.children[0].meta.icon"></i>          
+
+                <el-menu-item  v-else-if="item.isLeaf && !item.children[0].children"  :index="item.children[0].path+'#'+item.children[0].componentUrl+'#'+(item.children[0].meta && item.children[0].meta.title && item.children[0].meta.title)" :key="item.path+'/'+item.children[0].path" >
+                  <i v-if="item.children[0].meta && item.children[0].meta.icon" :class="item.children[0].meta.icon"></i>
                     <span v-if="item.children[0].meta && item.children[0].meta.title">{{item.children[0].meta.title}}</span>
                   </el-menu-item>
 
-                 <el-menu-item  v-else  :index="item.path+'#'+item.componentUrl+'#'+(item.meta && item.meta.title && item.meta.title)" :key="item.path" >  
-                  <i v-if="item.meta && item.meta.icon" :class="item.meta.icon"></i>          
+                 <el-menu-item  v-else  :index="item.path+'#'+item.componentUrl+'#'+(item.meta && item.meta.title && item.meta.title)" :key="item.path" >
+                  <i v-if="item.meta && item.meta.icon" :class="item.meta.icon"></i>
                     <span v-if="item.meta && item.meta.title">{{item.meta.title}}</span>
                   </el-menu-item>
 
 
-            </template>        
+            </template>
         </el-menu>
     </div>
 
     <div class="aweb-main" :style="{'top':menuData.length?'142px':'96px'}">
       <!-- 导航菜单 START -->
 
-    
+
       <!-- 导航菜单 END -->
 
       <!-- 内容区域 START -->
@@ -160,6 +160,7 @@
 
 import {getMenuRoutes,addMenuToRoutes,mixins} from '@v2-lib/vue.spa.plugin'
 import {caseRouter} from '@/api/case.js'
+import {maximizeWindow, minimizeWindow, closeWindow, resizeWindow, moveWindow} from '../api/window'
 // const caseList= process.env.NODE_ENV === 'production'?[]:caseRouter;
 
 export default {
@@ -181,7 +182,7 @@ export default {
     };
   },
    async beforeRouteEnter(to, from, next){
-      
+
       try{
         let menus=getMenuRoutes();
         if(!menus.length){
@@ -194,7 +195,7 @@ export default {
           next()
         }
       }catch(e){
-      
+
       console.log(e);
         next();
       }
@@ -203,6 +204,15 @@ export default {
   mixins:[mixins],
 
   methods: {
+    handleMaximize () {
+      (this.maximize ? resizeWindow : maximizeWindow)().then(() => (this.maximize = !this.maximize))
+    },
+    handleMinimize () {
+      minimizeWindow()
+    },
+    handleClose () {
+      closeWindow()
+    },
     handleSelectMenu: function(key, index) {
       console.log("key", key);
 
@@ -225,11 +235,11 @@ export default {
     },
     handleTabMenu(index){
        this.activeTabIndex = index;
-   
+
        let currentRoute = this.routerData[index];
 
        if(currentRoute.componentUrl){
-      
+
           this.open({
               path: "/" + currentRoute.path,
               page:currentRoute.componentUrl||'main/main',
@@ -239,7 +249,7 @@ export default {
               keepAlive: true
             });
        }
-     
+
        console.log('ee',this.routerData)
        this.menuData = this.routerData[index].children||[]
     },
@@ -295,7 +305,7 @@ export default {
         .then(() => {
           sessionStorage.removeItem("user");
           _this.$router.push("/login");
-        
+
           // global.antRouter = "";
           // global.pageMap = {};
           // global.hasLogin = false;
@@ -509,8 +519,28 @@ export default {
         }
       }
     }
+  },
+
+  directives: {
+    moveClient: {
+      bind (el) {
+        let isMove = false;
+        let x, y;
+        $(el).mousedown(e => {
+          isMove = true;
+          x = e.pageX;
+          y = e.pageY;
+        });
+
+        $(document).on('mousemove.moveClient', e => isMove && moveWindow(e.pageX - x, e.pageY - y))
+          .on(`mouseup.resize`, () => (isMove = false));
+      },
+      unbind (el) {
+        $(document).off('.resize');
+      }
+    }
   }
- 
+
 };
 </script>
 
@@ -529,7 +559,7 @@ export default {
           height: 50px;
     line-height: 50px;
     }
-    .el-menu--horizontal .el-menu .el-menu-item, 
+    .el-menu--horizontal .el-menu .el-menu-item,
     .el-menu--horizontal .el-menu .el-submenu__title,
     .el-menu--horizontal > .el-submenu .el-submenu__title,
     .el-menu--horizontal > .el-menu-item{
@@ -602,7 +632,7 @@ export default {
           cursor: pointer;
           color: #000;
           &:hover {
-            background-color: rgb(69,94,203);
+            background-color: rgb(71, 136, 248);
           }
           &:last-child {
             border-left: 1px solid #ccc;
@@ -661,7 +691,7 @@ export default {
     position: absolute;
     left: 0;
     right: 0;
-    top: 142px;
+    top: 96px;
     bottom: 38px;
     overflow: auto;
 
@@ -742,10 +772,10 @@ export default {
     .aweb-ctt {
       height: 100%;
       width: 100%;
-      
+
     }
   }
-  
+
 
   .aweb-footer {
     font-size: 13px;
