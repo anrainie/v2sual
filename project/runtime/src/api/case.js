@@ -1,6 +1,6 @@
 export const caseRouter = [{
-    path: "index",
-    name: "index",
+    path: "main",
+    name: "main",
     component: "spa/index",
     meta: {
       title: "首页",
