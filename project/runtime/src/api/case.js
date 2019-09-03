@@ -20,7 +20,7 @@ export const caseRouter = [{
       {
         path: "accMgr",
         name: "accMgr",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "账户管理",
 
@@ -47,12 +47,33 @@ export const caseRouter = [{
           meta: {
             title: "账户总览"
           }
+        }, {
+          path: "cardInfo",
+          name: "cardInfo",
+          component: "spa/cardInfo",
+          meta: {
+            title: "一卡通开户信息"
+          }
+        }, {
+          path: "cardManageMent",
+          name: "cardManageMent",
+          component: "spa/cardManagement",
+          meta: {
+            title: "一闪通管理"
+          }
+        }, {
+          path: "accountFeeQuery",
+          name: "accountFeeQuery",
+          component: "spa/accountFeeQuery",
+          meta: {
+            title: "账户费查询"
+          }
         }]
       },
       {
         path: "customTransfer",
         name: "customTransfer",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "自助转账",
 
@@ -75,7 +96,7 @@ export const caseRouter = [{
         }, {
           path: "refund",
           name: "refund",
-          component: "main/main",
+          component: "spa/certificateNeeded",
           meta: {
             title: "信用卡还款"
           }
@@ -84,7 +105,7 @@ export const caseRouter = [{
       {
         path: "customRepay",
         name: "customRepay",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "自助缴费",
 
@@ -102,7 +123,7 @@ export const caseRouter = [{
       {
         path: "invertMgr",
         name: "invertMgr",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "投资管理",
 
@@ -120,7 +141,7 @@ export const caseRouter = [{
       {
         path: "outBuss",
         name: "outBuss",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "外汇业务",
 
@@ -138,7 +159,7 @@ export const caseRouter = [{
       {
         path: "loadMgr",
         name: "loadMgr",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "贷款管理",
 
@@ -164,7 +185,7 @@ export const caseRouter = [{
       {
         path: "onlinePayMgr",
         name: "onlinePayMgr",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "网上支付",
 
@@ -224,7 +245,7 @@ export const caseRouter = [{
     children: [{
         path: "customerMgr",
         name: "customerMgr",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "客户管理",
 
@@ -233,7 +254,7 @@ export const caseRouter = [{
       {
         path: "acccountMgr",
         name: "acccountMgr",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "账户管理",
 
@@ -242,7 +263,7 @@ export const caseRouter = [{
       {
         path: "splitFundition",
         name: "splitFundition",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "分期理财",
 
@@ -251,7 +272,7 @@ export const caseRouter = [{
       {
         path: "repayMgr",
         name: "repayMgr",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "还款管理",
 
@@ -260,7 +281,7 @@ export const caseRouter = [{
       {
         path: "customRepayment",
         name: "customRepayment",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "自助缴费",
 
@@ -269,7 +290,7 @@ export const caseRouter = [{
       {
         path: "onelinePayment",
         name: "onelinePayment",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "网上支付",
 
@@ -278,7 +299,7 @@ export const caseRouter = [{
       {
         path: "cardMgr",
         name: "cardMgr",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "卡片管理",
 
@@ -287,7 +308,7 @@ export const caseRouter = [{
       {
         path: "scoreMgr",
         name: "scoreMgr",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "积分管理",
 
@@ -298,7 +319,7 @@ export const caseRouter = [{
   {
     path: "super",
     name: "super",
-    component: "main/main",
+    component: "spa/certificateNeeded",
     meta: {
       title: "超级网银",
       icon: "el-icon-goods"
@@ -306,7 +327,7 @@ export const caseRouter = [{
     children: [{
         path: "selfBankProxy",
         name: "selfBankProxy",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "本行代管账户",
 
@@ -315,7 +336,7 @@ export const caseRouter = [{
       {
         path: "otherBankProxy",
         name: "otherBankProxy",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "他行账户管理",
 
@@ -324,7 +345,7 @@ export const caseRouter = [{
       {
         path: "otherAccTrans",
         name: "otherAccTrans",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "他行账户转招行",
 
@@ -333,7 +354,7 @@ export const caseRouter = [{
       {
         path: "repaymentMgr",
         name: "repaymentMgr",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "还款管理",
 
@@ -342,7 +363,7 @@ export const caseRouter = [{
       {
         path: "funditionIn",
         name: "funditionIn",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "资金归集",
 
@@ -351,7 +372,7 @@ export const caseRouter = [{
       {
         path: "funcSuply",
         name: "funcSuply",
-        component: "main/main",
+        component: "spa/certificateNeeded",
         meta: {
           title: "功能申请",
 
@@ -363,7 +384,7 @@ export const caseRouter = [{
   {
     path: "financial",
     name: "financial",
-    component: "main/main",
+    component: "spa/certificateNeeded",
     meta: {
       title: "财务管理",
       icon: "el-icon-goods"
