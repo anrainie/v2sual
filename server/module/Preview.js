@@ -127,14 +127,19 @@ class Preview {
   
   
       //项目级组件
+      console.log(context.componentPath)
       if (fs.existsSync(context.componentPath)) {
+ 
         const files = await readDir(context.componentPath);
+        console.log('lalal',files)
         files
           //读取每一个package.json
           .filter(f => f.lastIndexOf('package.json') !== -1)
           //读取组件和编辑器
           .forEach(f => {
             try {
+
+              console.log('hahha')
               // .map(f => f.replace(path.sep + 'package.json', ''))
               let rePath = f.replace(path.sep + 'package.json', '');
   
@@ -152,11 +157,11 @@ class Preview {
               if(fs.existsSync(distPath)){
                 componentContent[name]= Buffer.from(fs.readFileSync(distPath)).toString();
               }
-
-              let compoCssPath = path.join(repath,`./dist/${name}.css`);
-             
+              
+              let compoCssPath = path.join(rePath,`./dist/${name}.css`);
+              console.log(compoCssPath)
               if(fs.existsSync(compoCssPath)){
-             
+                console.log('有')
                 compoCss.push(Buffer.from(fs.readFileSync(compoCssPath)).toString())
               }
               //参数编辑器
@@ -185,7 +190,9 @@ class Preview {
 
 
               }
-            } catch (e) { }
+            } catch (e) { 
+              console.log(e)
+            }
           });
   
       }

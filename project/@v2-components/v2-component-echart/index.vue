@@ -22,7 +22,7 @@
 </template>
 <script>
 import echarts from "echarts";
-import { setTimeout } from "timers";
+
 export default {
   name: "v2-component-echart",
 
