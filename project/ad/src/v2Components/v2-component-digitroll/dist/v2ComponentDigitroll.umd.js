@@ -2926,12 +2926,12 @@ var staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/v2Components/v2-component-digitroll/index.vue?vue&type=template&id=d9c77be6&scoped=true&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5680c094-vue-loader-template"}!C:/Users/Erin/AppData/Roaming/npm/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/v2Components/v2-component-digitroll/digitroll/component/DigitRoll.vue?vue&type=template&id=7a73c83c&
-var DigitRollvue_type_template_id_7a73c83c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"d-roll-wrapper",staticStyle:{"height":"160px"}},[_c('ul',{ref:"list",staticClass:"d-roll-list",staticStyle:{"height":"160px"}},[_vm._l((_vm.digitOffsetArr),function(item,i){return [_c('li',{key:i,staticClass:"d-roll-item",style:({ height: (_vm.cellHeight + "px") })},[_c('div',{staticClass:"d-roll-bar",style:(_vm.getliStyle(item, i)),domProps:{"innerHTML":_vm._s(_vm.innerUnitHtml)}})])]})],2)])}
-var DigitRollvue_type_template_id_7a73c83c_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5680c094-vue-loader-template"}!C:/Users/Erin/AppData/Roaming/npm/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/v2Components/v2-component-digitroll/digitroll/component/DigitRoll.vue?vue&type=template&id=18e4faf4&
+var DigitRollvue_type_template_id_18e4faf4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"d-roll-wrapper",staticStyle:{"height":"160px"}},[_c('ul',{ref:"list",staticClass:"d-roll-list",staticStyle:{"height":"160px"}},[_vm._l((_vm.digitOffsetArr),function(item,i){return [_c('li',{key:i,staticClass:"d-roll-item",style:({ height: (_vm.cellHeight + "px") })},[_c('div',{staticClass:"d-roll-bar",style:(_vm.getliStyle(item, i)),domProps:{"innerHTML":_vm._s(_vm.innerUnitHtml)}})])]})],2)])}
+var DigitRollvue_type_template_id_18e4faf4_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/v2Components/v2-component-digitroll/digitroll/component/DigitRoll.vue?vue&type=template&id=7a73c83c&
+// CONCATENATED MODULE: ./src/v2Components/v2-component-digitroll/digitroll/component/DigitRoll.vue?vue&type=template&id=18e4faf4&
 
 // EXTERNAL MODULE: C:/Users/Erin/AppData/Roaming/npm/node_modules/@vue/cli-service-global/node_modules/core-js/modules/web.dom.iterable.js
 var web_dom_iterable = __webpack_require__("17a0");
@@ -3240,8 +3240,6 @@ var defaultFlipStra = function defaultFlipStra(before, next) {
   watch: {
     rollDigits: function rollDigits(value, oldVal) {
       var _this2 = this;
-
-      debugger;
 
       if (rollLock) {
         return;
@@ -3641,8 +3639,8 @@ function normalizeComponent (
 
 var component = normalizeComponent(
   component_DigitRollvue_type_script_lang_js_,
-  DigitRollvue_type_template_id_7a73c83c_render,
-  DigitRollvue_type_template_id_7a73c83c_staticRenderFns,
+  DigitRollvue_type_template_id_18e4faf4_render,
+  DigitRollvue_type_template_id_18e4faf4_staticRenderFns,
   false,
   null,
   null,

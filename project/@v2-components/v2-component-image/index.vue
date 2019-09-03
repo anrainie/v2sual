@@ -105,7 +105,6 @@ export default {
       };
       wrap.onmousedown = function(event){return false;}
     }
-    console.log(self);
  
   }
 };
