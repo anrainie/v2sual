@@ -18,8 +18,8 @@ export const caseRouter = [{
     children: [
 
       {
-        path: "creditCard",
-        name: "creditCard",
+        path: "accMgr",
+        name: "accMgr",
         component: "main/main",
         meta: {
           title: "账户管理",
@@ -50,8 +50,8 @@ export const caseRouter = [{
         }]
       },
       {
-        path: "creditCard",
-        name: "creditCard",
+        path: "customTransfer",
+        name: "customTransfer",
         component: "main/main",
         meta: {
           title: "自助转账",
@@ -82,8 +82,8 @@ export const caseRouter = [{
         }]
       },
       {
-        path: "creditCard",
-        name: "creditCard",
+        path: "customRepay",
+        name: "customRepay",
         component: "main/main",
         meta: {
           title: "自助缴费",
@@ -100,8 +100,8 @@ export const caseRouter = [{
         }, ]
       },
       {
-        path: "creditCard",
-        name: "creditCard",
+        path: "invertMgr",
+        name: "invertMgr",
         component: "main/main",
         meta: {
           title: "投资管理",
@@ -118,8 +118,8 @@ export const caseRouter = [{
         }, ]
       },
       {
-        path: "creditCard",
-        name: "creditCard",
+        path: "outBuss",
+        name: "outBuss",
         component: "main/main",
         meta: {
           title: "外汇业务",
@@ -136,8 +136,8 @@ export const caseRouter = [{
         }, ]
       },
       {
-        path: "creditCard",
-        name: "creditCard",
+        path: "loadMgr",
+        name: "loadMgr",
         component: "main/main",
         meta: {
           title: "贷款管理",
@@ -162,8 +162,8 @@ export const caseRouter = [{
         }, ]
       },
       {
-        path: "creditCard",
-        name: "creditCard",
+        path: "onlinePayMgr",
+        name: "onlinePayMgr",
         component: "main/main",
         meta: {
           title: "网上支付",
@@ -203,8 +203,8 @@ export const caseRouter = [{
         }, ]
       },
       {
-        path: "creditCard",
-        name: "creditCard",
+        path: "certificateNeeded",
+        name: "certificateNeeded",
         component: "spa/certificateNeeded",
         meta: {
           title: "功能申请",
@@ -216,14 +216,14 @@ export const caseRouter = [{
   {
     path: "creditCard",
     name: "creditCard",
-    component: "main/main",
+    component: "spa/creditCard",
     meta: {
       title: "信用卡",
       icon: "el-icon-goods"
     },
     children: [{
-        path: "creditCard",
-        name: "creditCard",
+        path: "customerMgr",
+        name: "customerMgr",
         component: "main/main",
         meta: {
           title: "客户管理",
@@ -231,8 +231,8 @@ export const caseRouter = [{
         }
       },
       {
-        path: "creditCard",
-        name: "creditCard",
+        path: "acccountMgr",
+        name: "acccountMgr",
         component: "main/main",
         meta: {
           title: "账户管理",
@@ -240,8 +240,8 @@ export const caseRouter = [{
         }
       },
       {
-        path: "creditCard",
-        name: "creditCard",
+        path: "splitFundition",
+        name: "splitFundition",
         component: "main/main",
         meta: {
           title: "分期理财",
@@ -249,8 +249,8 @@ export const caseRouter = [{
         }
       },
       {
-        path: "creditCard",
-        name: "creditCard",
+        path: "repayMgr",
+        name: "repayMgr",
         component: "main/main",
         meta: {
           title: "还款管理",
@@ -258,8 +258,8 @@ export const caseRouter = [{
         }
       },
       {
-        path: "creditCard",
-        name: "creditCard",
+        path: "customRepayment",
+        name: "customRepayment",
         component: "main/main",
         meta: {
           title: "自助缴费",
@@ -267,8 +267,8 @@ export const caseRouter = [{
         }
       },
       {
-        path: "creditCard",
-        name: "creditCard",
+        path: "onelinePayment",
+        name: "onelinePayment",
         component: "main/main",
         meta: {
           title: "网上支付",
@@ -276,8 +276,8 @@ export const caseRouter = [{
         }
       },
       {
-        path: "creditCard",
-        name: "creditCard",
+        path: "cardMgr",
+        name: "cardMgr",
         component: "main/main",
         meta: {
           title: "卡片管理",
@@ -285,8 +285,8 @@ export const caseRouter = [{
         }
       },
       {
-        path: "creditCard",
-        name: "creditCard",
+        path: "scoreMgr",
+        name: "scoreMgr",
         component: "main/main",
         meta: {
           title: "积分管理",
@@ -304,8 +304,8 @@ export const caseRouter = [{
       icon: "el-icon-goods"
     },
     children: [{
-        path: "creditCard",
-        name: "creditCard",
+        path: "selfBankProxy",
+        name: "selfBankProxy",
         component: "main/main",
         meta: {
           title: "本行代管账户",
@@ -313,8 +313,8 @@ export const caseRouter = [{
         }
       },
       {
-        path: "creditCard",
-        name: "creditCard",
+        path: "otherBankProxy",
+        name: "otherBankProxy",
         component: "main/main",
         meta: {
           title: "他行账户管理",
@@ -322,8 +322,8 @@ export const caseRouter = [{
         }
       },
       {
-        path: "creditCard",
-        name: "creditCard",
+        path: "otherAccTrans",
+        name: "otherAccTrans",
         component: "main/main",
         meta: {
           title: "他行账户转招行",
@@ -331,8 +331,8 @@ export const caseRouter = [{
         }
       },
       {
-        path: "creditCard",
-        name: "creditCard",
+        path: "repaymentMgr",
+        name: "repaymentMgr",
         component: "main/main",
         meta: {
           title: "还款管理",
@@ -340,8 +340,8 @@ export const caseRouter = [{
         }
       },
       {
-        path: "creditCard",
-        name: "creditCard",
+        path: "funditionIn",
+        name: "funditionIn",
         component: "main/main",
         meta: {
           title: "资金归集",
@@ -349,8 +349,8 @@ export const caseRouter = [{
         }
       },
       {
-        path: "creditCard",
-        name: "creditCard",
+        path: "funcSuply",
+        name: "funcSuply",
         component: "main/main",
         meta: {
           title: "功能申请",
