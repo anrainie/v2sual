@@ -241,7 +241,6 @@ favorites:// favorites
     name: '账户总览',
     title: '账户总览',
     icon: 'el-icon-s-finance',
-    // icon: 'img/custom-aweb-logo.png',
     route: {
       page: "spa/accountOverview",
       path: "spa/accountOverview",
@@ -263,8 +262,8 @@ favorites:// favorites
     }
   },
   {
-    name: '交易查询',
-    title: '交易查询',
+    name: '账户查询',
+    title: '账户查询',
     icon: 'el-icon-s-goods',
     route: {
       page: "spa/queryTrade",
@@ -275,79 +274,89 @@ favorites:// favorites
     }
   },
   {
-    name: '账户预览',
-    title: '账户预览',
-    icon: 'el-icon-s-finance',
-    // icon: 'img/custom-aweb-logo.png',
+    name: '一卡通',
+    title: '一卡通',
+    icon: 'el-icon-s-data',
     route: {
-      page: "spa/index",
-      path: "/index",
+      page: "spa/generalCard",
+      path: "spa/generalCard",
       type: "BLANK",
       status: !0,
-      params: { param: "一个参数" }
+      params: { }
     }
   },
   {
-    name: '转账',
-    title: '转账',
-    icon: 'el-icon-s-help',
+    name: '信用卡',
+    title: '信用卡',
+    icon: 'el-icon-s-marketing',
     route: {
-      page: "spa/queryTransaction",
-      path: "/queryTransaction",
+      page: "spa/creditCard",
+      path: "spa/creditCard",
       type: "BLANK",
       status: !0,
-      params: { param: "一个参数" }
+      params: { }
     }
   },
   {
-    name: '财富',
-    title: '财富',
-    icon: 'el-icon-s-goods',
+    name: '个人贷款查询',
+    title: '个人贷款查询',
+    icon: 'el-icon-s-flag',
     route: {
-      page: "spa/pwdManager",
-      path: "/pwdManager",
+      page: "spa/loan/queryLoan",
+      path: "spa/loan/queryLoan",
       type: "BLANK",
       status: !0,
-      params: { param: "一个参数" }
+      params: { }
     }
   },
   {
-    name: '账户预览',
-    title: '账户预览',
-    icon: 'el-icon-s-finance',
-    // icon: 'img/custom-aweb-logo.png',
+    name: '银联在线支付',
+    title: '银联在线支付',
+    icon: 'el-icon-s-comment',
     route: {
-      page: "spa/index",
-      path: "/index",
+      page: "spa/onlinepay/ebankPay",
+      path: "spa/onlinepay/ebankPay",
       type: "BLANK",
       status: !0,
-      params: { param: "一个参数" }
+      params: { }
     }
   },
   {
-    name: '转账',
-    title: '转账',
-    icon: 'el-icon-s-help',
+    name: '快捷支付',
+    title: '快捷支付',
+    icon: 'el-icon-s-opportunity',
     route: {
-      page: "spa/queryTransaction",
-      path: "/queryTransaction",
+      page: "spa/certificateNeeded",
+      path: "spa/certificateNeeded",
       type: "BLANK",
       status: !0,
-      params: { param: "一个参数" }
+      params: { }
     }
   },
   {
-    name: '财富',
-    title: '财富',
-    icon: 'el-icon-s-goods',
+    name: '金融行情',
+    title: '金融行情',
+    icon: 'el-icon-s-ticket',
     route: {
-      page: "spa/pwdManager",
-      path: "/pwdManager",
+      page: "spa/finhelper/finQuotation",
+      path: "spa/finhelper/finQuotation",
       type: "BLANK",
       status: !0,
-      params: { param: "一个参数" }
+      params: { }
     }
-  }
+  },
+  {
+    name: '产品超市',
+    title: '产品超市',
+    icon: 'el-icon-s-order',
+    route: {
+      page: "spa/finhelper/proSupermarket",
+      path: "spa/finhelper/proSupermarket",
+      type: "BLANK",
+      status: !0,
+      params: { }
+    }
+  },
 ],
 recommendNoticeTabBar:// recommendNoticeTabBar
 {
