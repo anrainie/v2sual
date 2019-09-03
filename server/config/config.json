@@ -147,6 +147,10 @@
         },{
             "router":"/v1/public",
             "dir":"./public"
+        },
+        {
+            "router":"/v1/theme",
+            "dir":"./theme"
         }
     ],
     "dataSource": {

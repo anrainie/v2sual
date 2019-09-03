@@ -66,7 +66,8 @@ class Preview {
       //组件列表
       let vueMap = {},
           componentContent={},
-          pipeContent={};
+          pipeContent={},
+          compoCss =[];
 
   
       //平台级组件
@@ -92,6 +93,13 @@ class Preview {
             if(fs.existsSync(distPath)){
               componentContent[name]= Buffer.from(fs.readFileSync(distPath)).toString();
             }
+         
+            let compoCssPath = path.join(repath,`./dist/${name}.css`);
+    
+            if(fs.existsSync(compoCssPath)){
+ 
+              compoCss.push(Buffer.from(fs.readFileSync(compoCssPath)).toString())
+            }
             //参数编辑器
             if (content.paramEditor) {
               vueMap[content.paramEditor.name] = path.join(scope, content.paramEditor.path);
@@ -107,6 +115,10 @@ class Preview {
               let editorDist=path.join(scope,`./dist/${content.editor.name}.umd.min.js`);
               if(fs.existsSync(editorDist)){
                 componentContent[content.editor.name]= Buffer.from(fs.readFileSync(editorDist)).toString();
+              }
+              let compoCssPath = path.join(scope,`./dist/${name}.css`);
+              if(fs.existsSync(compoCssPath)){
+                compoCss.push(Buffer.from(fs.readFileSync(compoCssPath)).toString())
               }
             }
   
@@ -140,6 +152,13 @@ class Preview {
               if(fs.existsSync(distPath)){
                 componentContent[name]= Buffer.from(fs.readFileSync(distPath)).toString();
               }
+
+              let compoCssPath = path.join(repath,`./dist/${name}.css`);
+             
+              if(fs.existsSync(compoCssPath)){
+             
+                compoCss.push(Buffer.from(fs.readFileSync(compoCssPath)).toString())
+              }
               //参数编辑器
               if (content.paramEditor) {
                 vueMap[content.paramEditor.name] = path.join(filepath, content.paramEditor.path);
@@ -152,10 +171,19 @@ class Preview {
               //自定义组件编辑器
               if (content.editor) {
                 vueMap[content.editor.name] = path.join(filepath, content.editor.path);
+
                 let editorDist=path.join(rePath,`./dist/${content.editor.name}.umd.min.js`);
                 if(fs.existsSync(editorDist)){
                   componentContent[content.editor.name]= Buffer.from(fs.readFileSync(editorDist)).toString();
                 }
+
+                let compoCssPath = path.join(rePath,`./dist/${content.editor.name}.css`);
+                
+                if(fs.existsSync(compoCssPath)){
+                  compoCss.push(Buffer.from(fs.readFileSync(compoCssPath)).toString())
+                }
+
+
               }
             } catch (e) { }
           });
@@ -246,11 +274,11 @@ class Preview {
         }`;
   
       await util.writeFile(context.componentFile, content);
-
-    
+      
       platform.sendSuccessResult(req,{
         pipe:pipeContent,
-        component:componentContent
+        component:componentContent,
+        css:compoCss.join('')
       });
 
     } catch (error) {
