@@ -1,19 +1,19 @@
 <template><v2-ctn-xy :wid="`root`"></v2-ctn-xy></template>
 <script>
             import  {mixins} from '@v2-lib/vue.spa.plugin';
-            import {root,cpt,widget} from '@v2-lib/v2sual/mixin/v2-view';import events from "@v2-lib/v2sual/mixin/events";
+            import {root} from '@v2-lib/v2sual/mixin/v2-view';
             
             export default{
                 data(){
                     return{
-                        "CONTENT":{structure:{"id":"root","component":"v2EditorXYCtn","style":{"width":"100%","height":"100%"},"children":[]}},
+                        "CONTENT":{structure:{"id":"root","component":"v2EditorXYCtn","style":{"width":"100%","height":"100%"},"children":[],"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}]}},
                         
                     }
                 },
                 props:{
                   
                 },
-                mixins:[root,widget,cpt,events,mixins],
+                mixins:[root,mixins],
                 
                 methods:{},
                 watch:{},
