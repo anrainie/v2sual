@@ -28,6 +28,16 @@ body{
     background-color:#EBEFF5;
 }
 
+.s_m_gradient1{
+    background:linear-gradient(75deg,rgba(17,151,234,1) 0%,rgba(0,186,246,1) 100%);
+}
+.s_m_gradient2{
+   background:linear-gradient(75deg,rgba(46,102,234,1) 0%,rgba(50,128,255,1) 100%);
+}
+.s_m_gradient3{
+    background:linear-gradient(75deg,rgba(250,136,22,1) 0%,rgba(255,168,19,1) 100%);
+}
+
 .hline{
     border-top:1px solid lightgray;
     height:0;
@@ -51,6 +61,14 @@ body{
     font-weight:500;
     color:rgba(10,15,26,1);
     line-height:28px;
+}
+.title3{
+    font-size:2.8rem;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(10,15,26,1);
+    line-height:28px;
+    text-align:center;
 }
 .value1{
     font-size:4rem;
@@ -78,4 +96,46 @@ color:rgba(10,15,26,1);
     font-family:PingFang SC;
     font-weight:400;
     color:rgba(50,128,255,1);
+}
+
+.device_name{
+    font-size:3.2rem;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    line-height:2.8rem;
+    opacity:0.6;
+}
+
+.device_number{
+    font-size:4rem;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+}
+
+.device_data{
+    font-size:2.4rem;
+    font-family:PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    opacity:0.8;
+}
+
+.alignRight{
+    text-align:right;
+}
+.grow{
+    color:rgba(255,43,22,1);
+}
+.grow:after{
+    content:"↑";
+    position:relative;
+}
+.reduce{
+color:rgba(1,155,103,1);
+}
+.reduce:after{
+    content:"↓";
+    position:relative;
 }
