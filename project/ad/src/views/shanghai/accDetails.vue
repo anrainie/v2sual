@@ -66,7 +66,7 @@
                     }
             },
             itemStyle:{
-                borderColor:'',
+                borderColor:'black',
                 borderWidth:5  
             },
              data: [
@@ -164,7 +164,7 @@ option2:{
 }
 ,
 option3:{
-    backgroundColor:'black',
+    backgroundColor:'#04113a',
     title:{
         subtext:"单位:万户"
     },
