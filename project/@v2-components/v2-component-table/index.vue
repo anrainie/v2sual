@@ -67,8 +67,9 @@
       </template>
     </el-table-column>
   </el-table>
-  <!-- <el-pagination
+  <el-pagination
     :style="`text-align:right`"
+    v-if="model.openPage"
     @size-change="handleSizeChange"
     @current-change="handleCurrentChange"
     :current-page="currentPage"
@@ -78,7 +79,7 @@
     layout="total, sizes, prev, pager, next, jumper"
     :total="totalCount"
     background>
-  </el-pagination> -->
+  </el-pagination>
   </div>
 </template>
 <script>
