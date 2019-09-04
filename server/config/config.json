@@ -45,7 +45,8 @@
             },
             "exclude": [
                 "Layout.vue",
-                "Home.vue"
+                "Home.vue",
+                "index.vue"
             ]
         },
         "pageFlow": {
