@@ -51,7 +51,6 @@ import v2ComponentDigitroll  from '../v2Components/v2-component-digitroll'
   
         import filter  from '../../pipe/filter';
 import getValue  from '../../pipe/getValue';
-import mapping  from '../../pipe/mapping';
 import vda  from '../../pipe/vda';
 import animate  from '@v2-pipe/animate';
 import getAfaData  from '@v2-pipe/getAfaData';
@@ -65,7 +64,6 @@ import open  from '@v2-pipe/open'
         let app = {
           filter,
 	getValue,
-	mapping,
 	vda,
 	animate,
 	getAfaData,

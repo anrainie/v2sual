@@ -48,6 +48,8 @@ project/runtime/dist/js/*.js
 
 project/runtime/v2sual/@aweb-template/*.js
 
+project/ad/src/@aweb-components/aweb.components.js
+
 
 # project/runtime/dist/js/*.js
 # runtime/src/views/**/*.vue

@@ -58,52 +58,46 @@ class Preview {
    */
  async initComponent(platform,req) {
     try {
-      const projectPath = this.projectPath;
+      // const projectPath = this.projectPath;
       const context = this;
-      // const absProjectPath = path.resolve(projectPath);
-  
   
       //组件列表
       let vueMap = {},
           componentContent={},
-          pipeContent={},
-          compoCss =[];
-
+          compoCss ={};
+      
   
-      //平台级组件
-      const platformComponentPath = path.join(context.projectPath, configJson.runtime.platformComponent);
-      if (fs.existsSync(platformComponentPath)) {
-        const components = await readDir(platformComponentPath);
-        components
+      const getComponents=(files)=>{
+        files
           .filter(f => f.lastIndexOf('package.json') !== -1)
   
           .forEach(f => {
-            let repath = f.replace(path.sep + 'package.json', '');
+            let absPath = f.replace(path.sep + 'package.json', '');
 
             const contentStr = fs.readFileSync(f).toString();
             const content = JSON.parse(contentStr);
   
             const paths = f.split(path.sep);
-            const scope = content.name;
             const name = camelcase(paths[paths.length - 2]);
   
-            vueMap[name] = scope;
+            const relPath = path.relative(path.dirname(context.componentFile), absPath);//相对路径
 
-            let distPath=path.join(repath,`./dist/${name}.umd.min.js`);
+            vueMap[name] = relPath;//相对路径
+
+            let distPath=path.join(absPath,`./dist/${name}.umd.min.js`);
             if(fs.existsSync(distPath)){
               componentContent[name]= Buffer.from(fs.readFileSync(distPath)).toString();
             }
          
-            let compoCssPath = path.join(repath,`./dist/${name}.css`);
+            let compoCssPath = path.join(absPath,`./dist/${name}.css`);
     
             if(fs.existsSync(compoCssPath)){
- 
-              compoCss.push(Buffer.from(fs.readFileSync(compoCssPath)).toString())
+              compoCss[name]=Buffer.from(fs.readFileSync(compoCssPath)).toString()
             }
             //参数编辑器
             if (content.paramEditor) {
-              vueMap[content.paramEditor.name] = path.join(scope, content.paramEditor.path);
-              let paramEditorDist=path.join(scope,`./dist/${content.paramEditor.name}.umd.min.js`);
+              vueMap[content.paramEditor.name] = path.join(relPath, content.paramEditor.path);//相对路径
+              let paramEditorDist=path.join(absPath,`./dist/${content.paramEditor.name}.umd.min.js`);
               if(fs.existsSync(paramEditorDist)){
                 componentContent[content.paramEditor.name]= Buffer.from(fs.readFileSync(paramEditorDist)).toString();
               }
@@ -111,158 +105,105 @@ class Preview {
 
             //自定义组件编辑器
             if (content.editor) {
-              vueMap[content.editor.name] = path.join(scope, content.editor.path);
-              let editorDist=path.join(scope,`./dist/${content.editor.name}.umd.min.js`);
+              let editorName=content.editor.name;
+              vueMap[editorName] = path.join(relPath, content.editor.path);//相对路径
+
+              let editorDist=path.join(absPath,`./dist/${editorName}.umd.min.js`);
               if(fs.existsSync(editorDist)){
-                componentContent[content.editor.name]= Buffer.from(fs.readFileSync(editorDist)).toString();
+                componentContent[editorName]= Buffer.from(fs.readFileSync(editorDist)).toString();
               }
-              let compoCssPath = path.join(scope,`./dist/${name}.css`);
+              let compoCssPath = path.join(absPath,`./dist/${editorName}.css`);
               if(fs.existsSync(compoCssPath)){
-                compoCss.push(Buffer.from(fs.readFileSync(compoCssPath)).toString())
+                compoCss[editorName]=Buffer.from(fs.readFileSync(compoCssPath)).toString();
               }
             }
-  
+
           })
+      }
+
+
+      //平台级组件
+      const platformComponentPath = path.join(context.projectPath, configJson.runtime.platformComponent);
+      if (fs.existsSync(platformComponentPath)) {
+        let files = await readDir(platformComponentPath);
+        getComponents(files);
+
       }
   
   
       //项目级组件
       console.log(context.componentPath)
       if (fs.existsSync(context.componentPath)) {
- 
         const files = await readDir(context.componentPath);
-        console.log('lalal',files)
-        files
-          //读取每一个package.json
-          .filter(f => f.lastIndexOf('package.json') !== -1)
-          //读取组件和编辑器
-          .forEach(f => {
-            try {
-
-              console.log('hahha')
-              // .map(f => f.replace(path.sep + 'package.json', ''))
-              let rePath = f.replace(path.sep + 'package.json', '');
-  
-              const contentStr = fs.readFileSync(f).toString();
-              const content = JSON.parse(contentStr);
-  
-              const paths = f.split(path.sep);
-              // const scope=content.name;
-              const name = camelcase(paths[paths.length - 2]);
-  
-              const filepath = path.relative(path.dirname(context.componentFile), rePath);
-  
-              vueMap[name] = filepath;
-              let distPath=path.join(rePath,`./dist/${name}.umd.min.js`);
-              if(fs.existsSync(distPath)){
-                componentContent[name]= Buffer.from(fs.readFileSync(distPath)).toString();
-              }
-              
-              let compoCssPath = path.join(rePath,`./dist/${name}.css`);
-              console.log(compoCssPath)
-              if(fs.existsSync(compoCssPath)){
-                console.log('有')
-                compoCss.push(Buffer.from(fs.readFileSync(compoCssPath)).toString())
-              }
-              //参数编辑器
-              if (content.paramEditor) {
-                vueMap[content.paramEditor.name] = path.join(filepath, content.paramEditor.path);
-                let paramEditorDist=path.join(rePath,`./dist/${content.paramEditor.name}.umd.min.js`);
-                if(fs.existsSync(paramEditorDist)){
-                  componentContent[content.paramEditor.name]= Buffer.from(fs.readFileSync(paramEditorDist)).toString();
-                }
-              }
-  
-              //自定义组件编辑器
-              if (content.editor) {
-                vueMap[content.editor.name] = path.join(filepath, content.editor.path);
-
-                let editorDist=path.join(rePath,`./dist/${content.editor.name}.umd.min.js`);
-                if(fs.existsSync(editorDist)){
-                  componentContent[content.editor.name]= Buffer.from(fs.readFileSync(editorDist)).toString();
-                }
-
-                let compoCssPath = path.join(rePath,`./dist/${content.editor.name}.css`);
-                
-                if(fs.existsSync(compoCssPath)){
-                  compoCss.push(Buffer.from(fs.readFileSync(compoCssPath)).toString())
-                }
-
-
-              }
-            } catch (e) { 
-              console.log(e)
-            }
-          });
+        getComponents(files);
   
       }
   
       const vueFiles = Object.keys(vueMap).map(n => {
+        let item=vueMap[n];
+        if(item.includes('node_modules')){
+           item=item.replace(/.*node_modules[\\|\/]/g,'')
+        }
         return {
           name: n,
-          path: `${vueMap[n]}`
+          path:item
         }
       });
-  
+
+
+
+     
       //pipe
+      let pipeContent={};
       let pipeMap = {};
-      let pipeList = [];
-      const pipePath = this.pipePath;
-      if (fs.existsSync(pipePath)) {
-        const pipes = await readDir(pipePath);
-        pipeList = pipes
-          .filter(f => f.lastIndexOf('package.json') !== -1)
-          // .map(f => f.replace(path.sep + 'package.json', ''))
-          // .sort()
-  
-          .map(f => {
-  
-            let repath = f.replace(path.sep + 'package.json', '');
-            let contentStr = fs.readFileSync(f).toString();
-            let content = JSON.parse(contentStr);
-            let name = content.docs.name;
-            let nameArr = name.split('.');
-            name = nameArr[nameArr.length - 1];
-            pipeMap[name] = true;
-            let distPath=path.join(repath,`./dist/${name}.umd.min.js`);
-            if(fs.existsSync(distPath)){
-              pipeContent[name]=Buffer.from(fs.readFileSync(distPath)).toString();
-            }
-            return {
-              name: name,
-              path: path.relative(path.dirname(context.componentFile), repath)
-            }
-          })
-  
+      // let pipeList = [];
+
+      const getPipe=(pipeFiles)=>{
+        pipeFiles
+        .filter(f => f.lastIndexOf('package.json') !== -1)
+        .forEach(f => {
+          let absPath = f.replace(path.sep + 'package.json', '');
+          let contentStr = fs.readFileSync(f).toString();
+          let content = JSON.parse(contentStr);
+          let name = content.docs.name;
+          let nameArr = name.split('.');
+          name = nameArr[nameArr.length - 1];
+
+         let relativePath=path.relative(path.dirname(context.componentFile), absPath);
+          pipeMap[name]=relativePath;
+          let distPath=path.join(absPath,`./dist/${name}.umd.min.js`);
+          if(fs.existsSync(distPath)){
+            pipeContent[name]=Buffer.from(fs.readFileSync(distPath)).toString();
+          }
+
+
+        })
       }
+    
   
       const platformPipePath = path.join(context.projectPath, configJson.runtime.platformPipe);
       if (fs.existsSync(platformPipePath)) {
-        const pipes = await readDir(platformPipePath);
-        pipes
-          .filter(f => f.lastIndexOf('package.json') !== -1)
-  
-          .forEach(f => {
-            let repath = f.replace(path.sep + 'package.json', '');
-            let contentStr = fs.readFileSync(f).toString();
-            let content = JSON.parse(contentStr);
-            let name = content.docs.name;
-            let nameArr = name.split('.');
-            name = nameArr[nameArr.length - 1];
-            if (!pipeMap[name]) {
-              let distPath=path.join(repath,`./dist/${name}.umd.min.js`);
-              if(fs.existsSync(distPath)){
-                pipeContent[name]=Buffer.from(fs.readFileSync(distPath)).toString();
-              }
-              pipeList.push({
-                name: name,
-                path: content.name
-              })
-            }
-  
-          })
+        const pipeFiles = await readDir(platformPipePath);
+        getPipe(pipeFiles);
+ 
       }
+      const pipePath = this.pipePath;
+      if (fs.existsSync(pipePath)) {
+        const pipesFiles = await readDir(pipePath);
+        getPipe(pipesFiles);
+ 
   
+      }
+      const pipeList = Object.keys(pipeMap).map(n => {
+        let item=pipeMap[n];
+        if(item.includes('node_modules')){
+           item=item.replace(/.*node_modules[\\|\/]/g,'')
+        }
+        return {
+          name: n,
+          path:item
+        }
+      });
   
       //生成Vue Use
       const content = `        
@@ -285,11 +226,11 @@ class Preview {
       platform.sendSuccessResult(req,{
         pipe:pipeContent,
         component:componentContent,
-        css:compoCss.join('')
+        css:Object.values(compoCss)
       });
 
     } catch (error) {
-      
+        console.log(error);
     }
    
   }
@@ -403,7 +344,7 @@ class Preview {
 
               .map(f => {
 
-                let repath = f.replace(path.sep + 'package.json', '');
+                let rePath = f.replace(path.sep + 'package.json', '');
                 let contentStr = fs.readFileSync(f).toString();
                 let content = JSON.parse(contentStr);
                 let name = content.docs.name;
@@ -413,7 +354,7 @@ class Preview {
 
                 return {
                   name: name,
-                  path: path.relative(path.dirname(context.componentFile), repath)
+                  path: path.relative(path.dirname(context.componentFile), rePath)
                 }
               })
 
@@ -574,9 +515,7 @@ class Preview {
     return function (req) {
 
       try {
-        console.log("3333333")
         if (req.data && req.data.type === 'component') {
-          console.log(req);
 
           context.initComponent(platform,req)
         } else {

@@ -1,3 +1,45 @@
+.vda-table .el-table {
+    background-color: rgba(0, 0, 0, 0);
+    color: #fefefe;
+  }
+  .vda-table .el-table--group,
+  .vda-table .el-table--border {
+    border: 1px solid #25498a;
+    border-bottom: none;
+  }
+  .vda-table .el-table--group::after,
+  .vda-table .el-table--border::after,
+  .vda-table .el-table::before {
+    background-color: transparent;
+  }
+  .vda-table .el-table__fixed::before,
+  .vda-table .el-table__fixed-right::before {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .vda-table .el-table--scrollable-x .el-table__body-wrapper {
+    overflow-x: hidden;
+  }
+  .vda-table .el-table th {
+    color: #90c4ff;
+    background-color: rgba(0, 60, 150, 0.3);
+  }
+  .vda-table .el-table tr {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .vda-table .el-table th.is-leaf,
+  .vda-table .el-table td {
+    border-bottom: 1px solid #25498a;
+  }
+  .vda-table .el-table--border th,
+  .vda-table .el-table--border td {
+    border-right: none;
+  }
+  .vda-table .el-table__body tr.hover-row > td,
+  .vda-table .el-table__body tr.hover-row.current-row > td,
+  .vda-table .el-table__body tr.hover-row.el-table__row--striped > td,
+  .vda-table .el-table__body tr.hover-row.el-table__row--striped.current-row > td {
+    background-color: rgba(0, 60, 150, 0.3);
+  }
 /*屏幕适配方案*/
 html {
     font-size: 14px;
@@ -78,4 +120,11 @@ color:rgba(10,15,26,1);
     font-family:PingFang SC;
     font-weight:400;
     color:rgba(50,128,255,1);
+}
+
+.vda-header{
+  font-size:16px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight:400;
+  color:rgba(210,230,245,1);
 }
