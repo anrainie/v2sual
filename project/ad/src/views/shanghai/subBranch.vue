@@ -1,4 +1,4 @@
-<template><v2-ctn-xy :wid="`root`"><v2-component-s_background class="V2Widget" :style="`position:absolute;top:0;left:0;width:1920px;height:1080px;`" id="1567566500663" :wid="`1567566500663`" :index="0" :pid="`root`"></v2-component-s_background><v2-component-image class="V2Widget" id="1567566570150" :wid="`1567566570150`" :index="1" :pid="`root`"></v2-component-image><v2-component-image class="V2Widget" id="1567566552122" :wid="`1567566552122`" :index="2" :pid="`root`"></v2-component-image><v2-component-image class="V2Widget" id="1567566804299" :wid="`1567566804299`" :index="3" :pid="`root`"></v2-component-image><v2-component-echart class="V2Widget" id="1567567030793" :wid="`1567567030793`" :index="4" :pid="`root`"></v2-component-echart><v2-component-text class="V2Widget" id="1567567393278" :wid="`1567567393278`" :index="5" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" id="1567567467969" :wid="`1567567467969`" :index="6" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`s`]" id="1567567964039" :wid="`1567567964039`" :index="7" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" id="1567568221349" :wid="`1567568221349`" :index="8" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" id="1567568254115" :wid="`1567568254115`" :index="9" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" id="1567568267702" :wid="`1567568267702`" :index="10" :pid="`root`"></v2-component-text></v2-ctn-xy></template>
+<template><v2-ctn-xy :wid="`root`"><v2-component-s_background class="V2Widget" :style="`position:absolute;top:0;left:0;width:1920px;height:1080px;`" id="1567566500663" :wid="`1567566500663`" :index="0" :pid="`root`"></v2-component-s_background><v2-component-image class="V2Widget" id="1567566570150" :wid="`1567566570150`" :index="1" :pid="`root`"></v2-component-image><v2-component-image class="V2Widget" id="1567566552122" :wid="`1567566552122`" :index="2" :pid="`root`"></v2-component-image><v2-component-image class="V2Widget" id="1567566804299" :wid="`1567566804299`" :index="3" :pid="`root`"></v2-component-image><v2-component-echart class="V2Widget" id="1567567030793" :wid="`1567567030793`" :index="4" :pid="`root`"></v2-component-echart><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567583062055" :wid="`1567583062055`" :index="5" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567583067846" :wid="`1567583067846`" :index="6" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567583095025" :wid="`1567583095025`" :index="7" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567583022728" :wid="`1567583022728`" :index="8" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567583074644" :wid="`1567583074644`" :index="9" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567583049959" :wid="`1567583049959`" :index="10" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567583134310" :wid="`1567583134310`" :index="11" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567583125986" :wid="`1567583125986`" :index="12" :pid="`root`"></v2-component-text><v2-component-echart class="V2Widget" id="1567587966341" :wid="`1567587966341`" :index="13" :pid="`root`"></v2-component-echart></v2-ctn-xy></template>
 <script>
             import  {mixins} from '@v2-lib/vue.spa.plugin';
             import {root} from '@v2-lib/v2sual/mixin/v2-view';
@@ -6,7 +6,7 @@
             export default{
                 data(){
                     return{
-                        "CONTENT":{structure:{"id":"root","component":"v2EditorXYCtn","style":{"width":"100%","height":"100%"},"children":[{"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-s_background","href":"v2-component-s_background","cptpath":"/src/views/_customWidget/s_background.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"0","left":"0","width":"1920px","height":"1080px"},"id":1567566500663,"pid":"root","animate":["","animated"]},{"src":"img/shanghai/s_bigGroup2.png","fixation":false,"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-image","href":"v2-component-image","children":[],"events":{},"commonStyle":{"position":"absolute","top":"181px","left":"61px","width":"469px","height":"777px"},"id":1567566570150,"pid":"root","animate":["","animated"]},{"src":"img/shanghai/s_bigGroup2.png","fixation":false,"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-image","href":"v2-component-image","children":[],"events":{},"commonStyle":{"position":"absolute","top":"194px","left":"1400px","width":"450px","height":"756px"},"id":1567566552122,"pid":"root","animate":["","animated"]},{"src":"/img/s_branch_center_bg.png","fixation":false,"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-image","href":"v2-component-image","children":[],"events":{},"commonStyle":{"position":"absolute","top":"130px","left":"553px","width":"815px","height":"885px"},"id":1567566804299,"pid":"root","animate":["","animated"]},{"configs":"${topEchartOption1}","ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-echart","href":"v2-component-echart","children":[],"events":{},"commonStyle":{"position":"absolute","top":"524px","left":"93px"},"id":1567567030793,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"同分行下网点TOP","editable":false,"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"487px","left":"93px","color":"#D3E7F5","font-size":"18px"},"id":1567567393278,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"客户排队等待信息","editable":false,"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"228px","left":"93px","color":"#D3E7F5","font-size":"18px"},"id":1567567467969,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"开户数","editable":false,"ctnClass":"","customClass":"s","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"211px","left":"640px","color":"#D3E7F5"},"id":1567567964039,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"销户数","editable":false,"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"211px","left":"981px","color":"#D3E7F5"},"id":1567568221349,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"6日开销户趋势","editable":false,"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"389px","left":"640px","color":"white"},"id":1567568254115,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"自助机具异常信息","editable":false,"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"639px","left":"640px","color":"#FFFFFF"},"id":1567568267702,"pid":"root","animate":["","animated"]}],"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}]}},
+                        "CONTENT":{structure:{"id":"root","component":"v2EditorXYCtn","style":{"width":"100%","height":"100%"},"children":[{"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-s_background","href":"v2-component-s_background","cptpath":"/src/views/_customWidget/s_background.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"0","left":"0","width":"1920px","height":"1080px"},"id":1567566500663,"pid":"root","animate":["","animated"]},{"src":"img/shanghai/s_bigGroup2.png","fixation":false,"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-image","href":"v2-component-image","children":[],"events":{},"commonStyle":{"position":"absolute","top":"181px","left":"61px","width":"469px","height":"777px"},"id":1567566570150,"pid":"root","animate":["","animated"]},{"src":"img/shanghai/s_bigGroup2.png","fixation":false,"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-image","href":"v2-component-image","children":[],"events":{},"commonStyle":{"position":"absolute","top":"194px","left":"1400px","width":"450px","height":"756px"},"id":1567566552122,"pid":"root","animate":["","animated"]},{"src":"/img/s_branch_center_bg.png","fixation":false,"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-image","href":"v2-component-image","children":[],"events":{},"commonStyle":{"position":"absolute","top":"130px","left":"553px","width":"815px","height":"885px"},"id":1567566804299,"pid":"root","animate":["","animated"]},{"configs":"${topEchartOption1}","ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-echart","href":"v2-component-echart","children":[],"events":{},"commonStyle":{"position":"absolute","top":"524px","left":"93px"},"id":1567567030793,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"客户排队等待信息","editable":false,"ctnClass":"","customClass":"vda-header","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"232.004px","left":"93.0126px"},"id":1567583062055,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"同分行下网点TOP","editable":false,"ctnClass":"","customClass":"vda-header","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"483.008px","left":"93.0088px"},"id":1567583067846,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"开户数","editable":false,"ctnClass":"","customClass":"vda-header","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"194.004px","left":"623.004px"},"id":1567583095025,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"销户数","editable":false,"ctnClass":"","customClass":"vda-header","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"194.012px","left":"1006.01px"},"id":1567583022728,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"6日开销户趋势","editable":false,"ctnClass":"","customClass":"vda-header","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"340.004px","left":"623.004px"},"id":1567583074644,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"自助机具异常信息","editable":false,"ctnClass":"","customClass":"vda-header","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"601.012px","left":"623.005px"},"id":1567583049959,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"自助机具状态统计","editable":false,"ctnClass":"","customClass":"vda-header","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"232.012px","left":"1445.01px"},"id":1567583134310,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"自助机具交易量","editable":false,"ctnClass":"","customClass":"vda-header","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"661.004px","left":"1445.01px"},"id":1567583125986,"pid":"root","animate":["","animated"]},{"configs":"${option2}","ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-echart","href":"v2-component-echart","children":[],"events":{},"commonStyle":{"position":"absolute","top":"373px","left":"623px","width":"679px","height":"211px"},"id":1567587966341,"pid":"root","animate":["","animated"]}],"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}],"ctnClass":"","customClass":"","commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"animate":["","animated"]}},
                         topEchartOption1:{
     width: "90%",
     backgroundColor: "#04113a",
@@ -133,6 +133,136 @@
             data: [50,50,50,50,50]
         }
     ]
+},
+option2:{
+    backgroundColor:'',
+    grid: {
+        x:75,
+        y:50,
+        x2:25,
+        y2:25
+    },
+    title : {
+        subtext: '单位：位'
+    },
+    legend: {
+        padding:20,
+        itemGap:50,
+        icon:'rect',
+      	x:'right',
+      	y:'top',
+        data:['销户数','开户数'],
+        textStyle:{
+            fontSize:16,
+          	color:'white'
+    	}
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    xAxis : [
+        {
+            type : 'category',
+            axisLabel:{
+                interval:3,
+            	textStyle:{
+                    fontSize:16,
+            		color:'#4876FF'
+            	}
+          	},
+            boundaryGap : false,
+            data : ['8/25','-','-','-',
+            '8/26','-','-','-',
+            '8/27','-','-','-',
+            '8/28','-','-','-',
+            '8/29','-','-','-',
+            '8/30'],
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            axisLabel:{
+            	textStyle:{
+                    fontSize:16,
+            		color:'#4876FF'
+            	}
+          	},
+            min:0,
+            max:12000,
+            interval:3000,
+        }
+    ],
+    series : [
+          {
+              name:'销户数',
+              type:'line',
+              symbol:'none',
+              data:[3050,3504,3041,2500,
+              2640,2400,2350,2600,
+              2100,2500,1950,2150,
+              2700,1550,2650,1540,
+              1950,2300,2100,1231,
+              2300],
+              itemStyle:{
+                  normal: {
+                    color: "#FFD700",
+                  },
+              },
+              areaStyle: {
+                normal: {
+                    color: {
+                        type: 'linear',//设置线性渐变
+                        x: 0,
+                        y: 0,
+                        x2: 0,
+                        y2: 1,
+                        colorStops: [{
+                                offset: 0, color: 'rgba(255,215,0,0.3)' // 0% 处的颜色
+                            }, 
+                            {
+                                offset: 1, color: 'rgba(255,215,0,0.3)' // 100% 处的颜色
+                            }
+                        ],
+                    },
+                }
+            },
+          },
+          {
+              name:'开户数',
+              type:'line',
+              symbol:'none',
+              data:[3600,2500,4500,5000,
+              3500,3800,5800,6000,
+              5500,6300,5800,7500,
+              7000,6500,7500,7300,
+              7000,6300,5000,3000,
+              2500],
+              itemStyle:{
+                  normal: {
+                    color: "#8DEEEE",
+                  },
+              },
+              areaStyle: {
+                normal: {
+                    color: {
+                        type: 'linear',//设置线性渐变
+                        x: 0,
+                        y: 0,
+                        x2: 0,
+                        y2: 1,
+                        colorStops: [{
+                                offset: 0, color: 'rgba(141,238,238,0.5)' // 0% 处的颜色
+                            }, 
+                            {
+                                offset: 1, color: 'rgba(141,238,238,0.5)' // 100% 处的颜色
+                            }
+                        ],
+                    },
+                }
+            },
+          },
+      ] 
 }
                     }
                 },
@@ -152,7 +282,8 @@
                     let ctx = this;
                     
                     
-                    /**bind**/ctx.$store.commit("registerBind",{ vueObj:this, data:this.topEchartOption1, dataStr:"topEchartOption1", wid:1567567030793, modelKey:"configs" });/**bind over**/
+                    /**bind**/ctx.$store.commit("registerBind",{ vueObj:this, data:this.topEchartOption1, dataStr:"topEchartOption1", wid:1567567030793, modelKey:"configs" });
+ctx.$store.commit("registerBind",{ vueObj:this, data:this.option2, dataStr:"option2", wid:1567587966341, modelKey:"configs" });/**bind over**/
                 },
                 beforeMount(){
                     let ctx = this;

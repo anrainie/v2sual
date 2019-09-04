@@ -1,126 +1,206 @@
 /* vda 屏幕适配方案 */
 html {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 @media (min-width: 320px) {
-    html {
-        font-size: 10px;
-    }
+  html {
+    font-size: 10px;
+  }
 }
-.text-red{
-    color:green;
-}
-
-body{
-    margin:0;
-}
-.s_m_panel{
-    background:white;
-    box-shadow:0 0 1px 1px lightgray;
-    width:93.6%; 
-    left:3.2%;
-    position:relative;
-    border-radius:.8rem;
+.text-red {
+  color: green;
 }
 
-.s_m_bg{
-    background-color:#EBEFF5;
+body {
+  margin: 0;
+}
+.s_m_panel {
+  background: white;
+  box-shadow: 0 0 1px 1px lightgray;
+  width: 93.6%;
+  left: 3.2%;
+  position: relative;
+  border-radius: 0.8rem;
 }
 
-.hline{
-    border-top:1px solid lightgray;
-    height:0;
+.s_m_bg {
+  background-color: #ebeff5;
 }
 
-.vline{
-    border-left:1px solid lightgray;
-    width:0;
+.s_m_gradient1 {
+  background: linear-gradient(
+    75deg,
+    rgba(17, 151, 234, 1) 0%,
+    rgba(0, 186, 246, 1) 100%
+  );
+}
+.s_m_gradient2 {
+  background: linear-gradient(
+    75deg,
+    rgba(46, 102, 234, 1) 0%,
+    rgba(50, 128, 255, 1) 100%
+  );
+}
+.s_m_gradient3 {
+  background: linear-gradient(
+    75deg,
+    rgba(250, 136, 22, 1) 0%,
+    rgba(255, 168, 19, 1) 100%
+  );
 }
 
-.title1{
-    font-size:2.4rem;
-    font-family:PingFang SC;
-    font-weight:400;
-    color:rgba(82,88,102,1);
-    text-align:center;
+.hline {
+  border-top: 1px solid lightgray;
+  height: 0;
 }
-.title2{
-    font-size:2.8rem;
-    font-family:PingFang SC;
-    font-weight:500;
-    color:rgba(10,15,26,1);
-    line-height:28px;
+
+.vline {
+  border-left: 1px solid lightgray;
+  width: 0;
 }
-.value1{
-    font-size:4rem;
-    font-family:PingFang SC;
-    font-weight:400;
-    color:rgba(10,15,26,1);
-    text-align:center;
+
+.title1 {
+  font-size: 2.4rem;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(82, 88, 102, 1);
+  text-align: center;
 }
-.unit1{
-    font-size:2.4rem;
-font-family:PingFang SC;
-font-weight:400;
-color:rgba(10,15,26,1);
+.title2 {
+  font-size: 2.8rem;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(10, 15, 26, 1);
+  line-height: 28px;
 }
-.pageName{
-    font-size:3.2rem;
-    font-family:PingFang SC;
-    font-weight:500;
-    color:rgba(255,255,255,1);
-    line-height:2.8rem;
-    text-align:center;
+.title3 {
+  font-size: 2.8rem;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(10, 15, 26, 1);
+  line-height: 28px;
+  text-align: center;
 }
-.filter_text{
-    font-size:2rem;
-    font-family:PingFang SC;
-    font-weight:400;
-    color:rgba(50,128,255,1);
+.value1 {
+  font-size: 4rem;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(10, 15, 26, 1);
+  text-align: center;
+}
+.unit1 {
+  font-size: 2.4rem;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(10, 15, 26, 1);
+}
+.pageName {
+  font-size: 3.2rem;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 2.8rem;
+  text-align: center;
+}
+.filter_text {
+  font-size: 2rem;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(50, 128, 255, 1);
 }
 
 /* vda 组件主题样式 */
 
 .vda-table .el-table {
-    background-color: rgba(0, 0, 0, 0);
-    color: #fefefe;
-  }
-  .vda-table .el-table--group,
-  .vda-table .el-table--border {
-    border: 1px solid #25498a;
-    border-bottom: none;
-  }
-  .vda-table .el-table--group::after,
-  .vda-table .el-table--border::after,
-  .vda-table .el-table::before {
-    background-color: transparent;
-  }
-  .vda-table .el-table__fixed::before,
-  .vda-table .el-table__fixed-right::before {
-    background-color: rgba(0, 0, 0, 0);
-  }
-  .vda-table .el-table--scrollable-x .el-table__body-wrapper {
-    overflow-x: hidden;
-  }
-  .vda-table .el-table th {
-    color: #90c4ff;
-    background-color: rgba(0, 60, 150, 0.3);
-  }
-  .vda-table .el-table tr {
-    background-color: rgba(0, 0, 0, 0);
-  }
-  .vda-table .el-table th.is-leaf,
-  .vda-table .el-table td {
-    border-bottom: 1px solid #25498a;
-  }
-  .vda-table .el-table--border th,
-  .vda-table .el-table--border td {
-    border-right: none;
-  }
-  .vda-table .el-table__body tr.hover-row > td,
-  .vda-table .el-table__body tr.hover-row.current-row > td,
-  .vda-table .el-table__body tr.hover-row.el-table__row--striped > td,
-  .vda-table .el-table__body tr.hover-row.el-table__row--striped.current-row > td {
-    background-color: rgba(0, 60, 150, 0.3);
-  }
+  background-color: rgba(0, 0, 0, 0);
+  color: #fefefe;
+}
+.vda-table .el-table--group,
+.vda-table .el-table--border {
+  border: 1px solid #25498a;
+  border-bottom: none;
+}
+.vda-table .el-table--group::after,
+.vda-table .el-table--border::after,
+.vda-table .el-table::before {
+  background-color: transparent;
+}
+.vda-table .el-table__fixed::before,
+.vda-table .el-table__fixed-right::before {
+  background-color: rgba(0, 0, 0, 0);
+}
+.vda-table .el-table--scrollable-x .el-table__body-wrapper {
+  overflow-x: hidden;
+}
+.vda-table .el-table th {
+  color: #90c4ff;
+  background-color: rgba(0, 60, 150, 0.3);
+}
+.vda-table .el-table tr {
+  background-color: rgba(0, 0, 0, 0);
+}
+.vda-table .el-table th.is-leaf,
+.vda-table .el-table td {
+  border-bottom: 1px solid #25498a;
+}
+.vda-table .el-table--border th,
+.vda-table .el-table--border td {
+  border-right: none;
+}
+.vda-table .el-table__body tr.hover-row > td,
+.vda-table .el-table__body tr.hover-row.current-row > td,
+.vda-table .el-table__body tr.hover-row.el-table__row--striped > td,
+.vda-table
+  .el-table__body
+  tr.hover-row.el-table__row--striped.current-row
+  > td {
+  background-color: rgba(0, 60, 150, 0.3);
+}
+.device_name {
+  font-size: 3.2rem;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 2.8rem;
+  opacity: 0.6;
+}
+
+.device_number {
+  font-size: 4rem;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+}
+
+.device_data {
+  font-size: 2.4rem;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  opacity: 0.8;
+}
+
+.alignRight {
+  text-align: right;
+}
+.grow {
+  color: rgba(255, 43, 22, 1);
+}
+.grow:after {
+  content: "↑";
+  position: relative;
+}
+.reduce {
+  color: rgba(1, 155, 103, 1);
+}
+.reduce:after {
+  content: "↓";
+  position: relative;
+}
+.vda-header {
+  font-size: 16px;
+  font-family: RTWS YueGothic G0v1;
+  font-weight: 400;
+  color: rgba(210, 230, 245, 1);
+}
