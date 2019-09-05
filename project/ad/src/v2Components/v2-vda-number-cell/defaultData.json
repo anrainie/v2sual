@@ -1,0 +1,17 @@
+[{
+    "title": "当前排队人数",
+    "count": 27,
+    "suffix": "人"
+},{
+    "title": "平均等待耗时",
+    "count": 385,
+    "suffix": "s"
+},{
+    "title": "已处理客户",
+    "count": 47,
+    "suffix": "人"
+},{
+    "title": "等待最长耗时",
+    "count": 481,
+    "suffix": "s"
+}]
