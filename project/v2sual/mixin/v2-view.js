@@ -27,7 +27,21 @@ export const cpt = {
       wid: this.wid,
       vue: this
     });
+  },
+  methods:{
+    cptEvent(){
+      return this.$parent.$store.getters.model(this.wid).events||{};
+    },
+    cptEditor(){
+      if(this.$parent.$store.state.root){
+        return this.$parent.$store.state.root;
+      }
+    },
+    cptRef(){
+      return this.$parent.$store.getters.vueInstance(this.wid);
+    }
   }
+  
 }
 
 export const root = {

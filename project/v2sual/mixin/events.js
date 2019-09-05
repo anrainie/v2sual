@@ -31,17 +31,17 @@ export default {
         }
       }
       */
-      let events = self.model.events;
-      let editor = self.$store.state.root;
+     let events = (self.cptEvent&&self.cptEvent())||self.model.events;
+     let editor = (self.cptEditor&&self.cptEditor())||self.$store.state.root;
       // 在焦点管理中注册当前组件，会为它绑定基本的监听
       editor.focusManager.regist(self);
       // debugger;
       for (let ref in events) {
         // 找到对应的vue对象或者el
         // let dom = self.$refs[ref];
-        let _ref = self.$refs[ref];
+        let _ref = (self.cptRef&&self.cptRef())||self.$refs[ref];
         let dom = Array.isArray(_ref) && _ref.length ? _ref[0] : _ref;
-
+        
         if (dom) {
           let devents = events[ref];
           for (let eventType in devents) {
