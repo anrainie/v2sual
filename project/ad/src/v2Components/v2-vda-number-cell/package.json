@@ -1,0 +1,83 @@
+{
+  "author": {
+    "name": "xieyirong@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "数字信息块",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconzhuzhuangtu",
+    "type": "project",
+    "href": "v2-vda-number-cell",
+    "author": "xieyirong@agree.com.cn",
+    "version": 610000,
+    "accept": "divCtn",
+    "name": "vda数字信息块",
+    "option": [
+      {
+        "name": "ctnWidth",
+        "desp": "容器宽度",
+        "type": "string_input",
+        "defaultValue": "480px",
+        "placeholder": "填写容器宽度"
+      },
+      {
+        "name": "cellWidth",
+        "desp": "信息块宽度",
+        "type": "string_input",
+        "defaultValue": "200px",
+        "placeholder": "填写信息块宽度"
+      },
+      {
+        "name": "countData",
+        "desp": "数据",
+        "type": "string_input",
+        "defaultValue": "[]",
+        "placeholder": "填写信息块数据"
+      },
+      {
+        "name": "cellPosition",
+        "desp": "信息块相对位置",
+        "type": "string_select",
+        "defaultValue": "column",
+        "valueArray": [
+          "column",
+          "row"
+        ],
+        "despArray": [
+          "垂直",
+          "水平"
+        ]
+      },
+      {
+        "name": "cellAlign",
+        "desp": "信息块对齐方式",
+        "type": "string_select",
+        "defaultValue": "left",
+        "valueArray": [
+          "left",
+          "center"
+        ],
+        "despArray": [
+          "居左",
+          "居中"
+        ]
+      }
+      
+    ],
+    "css":{
+
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@v2-components/v2-vda-number-cell",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.0",
+  "index":31000001
+}
+

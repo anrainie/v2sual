@@ -1,83 +1,2005 @@
-<template><v2-ctn-xy :wid="`root`"><v2-component-text class="V2Widget" :class="[`s_m_bg`]" id="1567508581415" :wid="`1567508581415`" :index="0" :pid="`root`"></v2-component-text><v2-component-image class="V2Widget" id="1567508709339" :wid="`1567508709339`" :index="1" :pid="`root`"></v2-component-image><v2-component-text class="V2Widget" :class="[`s_m_panel`]" id="1567507254912" :wid="`1567507254912`" :index="2" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`hline`]" id="1567508998952" :wid="`1567508998952`" :index="3" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vline`]" id="1567509400587" :wid="`1567509400587`" :index="4" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vline`]" id="1567509522568" :wid="`1567509522568`" :index="5" :pid="`root`"></v2-component-text><v2-component-title_text class="V2Widget" :style="`position:absolute;top:232px;left:53px;width:30%;height:130px;`" id="1567518741368" :wid="`1567518741368`" :index="6" :pid="`root`" :title="`当前排队人数`" :value="`queueInfo.count`" :unit="`人`"></v2-component-title_text><v2-component-title_text class="V2Widget" :style="`position:absolute;top:232px;left:279.012px;width:30%;height:130px;`" id="1567518711214" :wid="`1567518711214`" :index="7" :pid="`root`" :title="`已处理客户`" :value="`queueInfo.handled`" :unit="`人`"></v2-component-title_text><v2-component-title_text class="V2Widget" :style="`position:absolute;top:232px;left:504px;width:30%;height:130px;`" id="1567518763418" :wid="`1567518763418`" :index="8" :pid="`root`" :title="`等待最长耗时`" :value="`queueInfo.most_wait`" :unit="`分钟`"></v2-component-title_text><v2-component-title_text class="V2Widget" :style="`position:absolute;top:362px;left:53px;width:30%;height:130px;`" id="1567518718515" :wid="`1567518718515`" :index="9" :pid="`root`" :title="`平均等待耗时`" :value="`queueInfo.aveage_wait`" :unit="`分钟`"></v2-component-title_text><v2-component-title_text class="V2Widget" :style="`position:absolute;top:362px;left:279px;width:30%;height:130px;`" id="1567518805393" :wid="`1567518805393`" :index="10" :pid="`root`" :title="`上月等待耗时`" :value="`queueInfo.last_mon_aveage_wait`" :unit="`分钟`"></v2-component-title_text><v2-component-title_text class="V2Widget" :style="`position:absolute;top:362px;left:504px;width:30%;height:130px;`" id="1567518726498" :wid="`1567518726498`" :index="11" :pid="`root`" :title="`当前弃号率`" :value="`queueInfo.lost_rare`" :unit="`%`"></v2-component-title_text><v2-component-text class="V2Widget" :class="[`pageName`]" id="1567519134878" :wid="`1567519134878`" :index="12" :pid="`root`"></v2-component-text><v2-component-image class="V2Widget" id="1567522849068" :wid="`1567522849068`" :index="13" :pid="`root`"></v2-component-image><v2-component-image class="V2Widget" id="1567522886771" :wid="`1567522886771`" :index="14" :pid="`root`"></v2-component-image><v2-component-image class="V2Widget" id="1567522843505" :wid="`1567522843505`" :index="15" :pid="`root`"></v2-component-image><v2-component-text class="V2Widget" :class="[`s_m_panel`]" id="1567522955457" :wid="`1567522955457`" :index="16" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`title2`]" id="1567522962048" :wid="`1567522962048`" :index="17" :pid="`root`"></v2-component-text><v2-component-image class="V2Widget" id="1567523113186" :wid="`1567523113186`" :index="18" :pid="`root`"></v2-component-image><v2-component-image class="V2Widget" id="1567523061139" :wid="`1567523061139`" :index="19" :pid="`root`"></v2-component-image><v2-component-text class="V2Widget" :class="[`filter_text`]" id="1567523149722" :wid="`1567523149722`" :index="20" :pid="`root`"></v2-component-text><v2-component-table class="V2Widget" id="1567523202055" :wid="`1567523202055`" :index="21" :pid="`root`"></v2-component-table><v2-component-text class="V2Widget" :class="[`s_m_panel`]" id="1567523733024" :wid="`1567523733024`" :index="22" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`title2`]" id="1567523741770" :wid="`1567523741770`" :index="23" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`filter_text`]" id="1567523817933" :wid="`1567523817933`" :index="24" :pid="`root`"></v2-component-text><v2-component-image class="V2Widget" id="1567523809438" :wid="`1567523809438`" :index="25" :pid="`root`"></v2-component-image><v2-component-table class="V2Widget" id="1567523887255" :wid="`1567523887255`" :index="26" :pid="`root`"></v2-component-table></v2-ctn-xy></template>
-<script>
-            import  {mixins} from '@v2-lib/vue.spa.plugin';
-            import {root} from '@v2-lib/v2sual/mixin/v2-view';
-            import v2ComponentTitle_text from '@/views/_customWidget/title_text.vue'
-            export default{
-                data(){
-                    return{
-                        "CONTENT":{structure:{"id":"root","component":"v2EditorXYCtn","style":{"width":"100%","height":"100%"},"children":[{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"","editable":false,"ctnClass":"","customClass":"s_m_bg","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"-9px","left":"-5px","width":"100%","height":"100%"},"id":1567508581415,"pid":"root","animate":["","animated"]},{"src":"img/shanghai_mobile/s_m_bg.png","fixation":true,"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-image","href":"v2-component-image","children":[],"events":{},"commonStyle":{"position":"absolute","top":"-28px","left":"-5px","width":"100%","height":"260px"},"id":1567508709339,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"","editable":false,"ctnClass":"","customClass":"s_m_panel","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"198px","left":"22px","width":"","height":"322px"},"id":1567507254912,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"","editable":false,"ctnClass":"","customClass":"hline","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"","top":"356","left":"7%","width":"86%","height":""},"id":1567508998952,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"","editable":false,"ctnClass":"","customClass":"vline","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"232px","left":"33.33%","height":"260px","width":""},"id":1567509400587,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"","editable":false,"ctnClass":"","customClass":"vline","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"232px","left":"66%","height":"260px","width":""},"id":1567509522568,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"当前排队人数","value":"queueInfo.count","unit":"人"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-title_text","href":"v2-component-title_text","cptpath":"\\src\\views\\_customWidget\\title_text.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"232px","left":"53px","width":"30%","height":"130px"},"id":1567518741368,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"已处理客户","value":"queueInfo.handled","unit":"人"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-title_text","href":"v2-component-title_text","cptpath":"\\src\\views\\_customWidget\\title_text.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"232px","left":"279.012px","width":"30%","height":"130px"},"id":1567518711214,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"等待最长耗时","value":"queueInfo.most_wait","unit":"分钟"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-title_text","href":"v2-component-title_text","cptpath":"\\src\\views\\_customWidget\\title_text.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"232px","left":"504px","width":"30%","height":"130px"},"id":1567518763418,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"平均等待耗时","value":"queueInfo.aveage_wait","unit":"分钟"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-title_text","href":"v2-component-title_text","cptpath":"\\src\\views\\_customWidget\\title_text.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"362px","left":"53px","width":"30%","height":"130px"},"id":1567518718515,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"上月等待耗时","value":"queueInfo.last_mon_aveage_wait","unit":"分钟"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-title_text","href":"v2-component-title_text","cptpath":"\\src\\views\\_customWidget\\title_text.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"362px","left":"279px","width":"30%","height":"130px"},"id":1567518805393,"pid":"root","animate":["","animated"]},{"dataBasket":{"title":"当前弃号率","value":"queueInfo.lost_rare","unit":"%"},"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-title_text","href":"v2-component-title_text","cptpath":"\\src\\views\\_customWidget\\title_text.vue","children":[],"events":{},"commonStyle":{"position":"absolute","top":"362px","left":"504px","width":"30%","height":"130px"},"id":1567518726498,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"首页","editable":false,"ctnClass":"","customClass":"pageName","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"24px","left":"-5px","width":"747px","height":"24px"},"id":1567519134878,"pid":"root","animate":["","animated"]},{"children":[],"component":"v2-component-image","commonStyle":{"position":"absolute","top":"120px","right":"","left":"53px","bottom":"","width":"160px","height":"40px","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"ctnClass":"","customClass":"","events":{},"href":"v2-component-image","src":"img/形状 1.png","fixation":false,"style":{},"__capacity":"1","__loopTarget":"","__type":"","icon":"iconkapian","name":"图片","type":"component","id":1567522849068,"pid":"root","animate":["","animated"]},{"children":[],"component":"v2-component-image","commonStyle":{"position":"absolute","top":"10px","right":"","left":"676px","bottom":"","width":"48px","height":"48px","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"ctnClass":"","customClass":"","events":{},"href":"v2-component-image","src":"img/椭圆 5.png","fixation":false,"style":{},"__capacity":"1","__loopTarget":"","__type":"","icon":"iconkapian","name":"图片","type":"component","id":1567522886771,"pid":"root"},{"children":[],"component":"v2-component-image","commonStyle":{"position":"absolute","top":"10px","right":"","left":"22px","bottom":"","width":"48px","height":"48px","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"ctnClass":"","customClass":"","events":{},"href":"v2-component-image","src":"img/矩形 10.png","fixation":false,"style":{},"__capacity":"1","__loopTarget":"","__type":"","icon":"iconkapian","name":"图片","type":"component","id":1567522843505,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"","editable":false,"ctnClass":"","customClass":"s_m_panel","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"563px","left":"","height":"783"},"id":1567522955457,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"上海地区TOP10","editable":false,"ctnClass":"","customClass":"title2","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"591px","left":"53px"},"id":1567522962048,"pid":"root","animate":["","animated"]},{"children":[],"component":"v2-component-image","commonStyle":{"position":"absolute","top":54,"right":"","left":471,"bottom":"","width":"24px","height":"24px","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"ctnClass":"","customClass":"","events":{},"href":"v2-component-image","src":"img/形状 8.png","fixation":false,"style":{},"__capacity":"1","__loopTarget":"","__type":"","icon":"iconkapian","name":"图片","type":"component","id":1567523113186,"pid":"root"},{"children":[],"component":"v2-component-image","commonStyle":{"position":"absolute","top":"595px","right":"","left":"555px","bottom":"","width":"24px","height":"24px","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"ctnClass":"","customClass":"","events":{},"href":"v2-component-image","src":"img/形状 8.png","fixation":false,"style":{},"__capacity":"1","__loopTarget":"","__type":"","icon":"iconkapian","name":"图片","type":"component","id":1567523061139,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"按等待数","editable":false,"ctnClass":"","customClass":"filter_text","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"591px","left":"587px"},"id":1567523149722,"pid":"root","animate":["","animated"]},{"theme":{"tableType":"border","size":""},"columns":[{"active":true,"prop":"columns0","label":"","fixed":"","width":"","sortable":false,"openFilter":false,"type":"text","tagMap":[{"active":"true","value":"","text":"","type":"text"}],"iconMap":[{"active":"true","value":"","text":""}],"filterMap":[{"active":"true","text":"","value":""}]},{"active":true,"prop":"columns1","label":"网点名称","fixed":"","width":"","sortable":false,"openFilter":false,"type":"text","tagMap":[{"active":"true","value":"","text":"","type":"text"}],"iconMap":[{"active":"true","value":"","text":""}],"filterMap":[{"active":"true","text":"","value":""}]},{"active":true,"prop":"columns2","label":"处理数","fixed":"","width":"","sortable":false,"openFilter":false,"type":"text","tagMap":[{"active":"true","value":"","text":"","type":"text"}],"iconMap":[{"active":"true","value":"","text":""}],"filterMap":[{"active":"true","text":"","value":""}]},{"active":true,"prop":"columns3","label":"等待数","fixed":"","width":"","sortable":false,"openFilter":false,"type":"text","tagMap":[{"active":"true","value":"","text":"","type":"text"}],"iconMap":[{"active":"true","value":"","text":""}],"filterMap":[{"active":"true","text":"","value":""}]},{"active":true,"prop":"columns4","label":"等待耗时","fixed":"","width":"","sortable":false,"openFilter":false,"type":"text","tagMap":[{"active":"true","value":"","text":"","type":"text"}],"iconMap":[{"active":"true","value":"","text":""}],"filterMap":[{"active":"true","text":"","value":""}]},{"active":true,"prop":"columns5","label":"最长耗时","fixed":"","width":"","sortable":false,"openFilter":false,"type":"text","tagMap":[{"active":"true","value":"","text":"","type":"text"}],"iconMap":[{"active":"true","value":"","text":""}],"filterMap":[{"active":"true","text":"","value":""}]},{"active":true,"prop":"columns6","label":"上月排名","fixed":"","width":"","sortable":false,"openFilter":false,"type":"text","tagMap":[{"active":"true","value":"","text":"","type":"text"}],"iconMap":[{"active":"true","value":"","text":""}],"filterMap":[{"active":"true","text":"","value":""}]}],"selection":"","openIndex":false,"toolBar":false,"toolTitle":"","toolLocation":"right","toolWidth":"0","toolBtns":[],"tHeight":"","tMaxHeight":"","tableData":"","expand":false,"expandMap":"","ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-table","href":"v2-component-table","children":[],"events":{},"commonStyle":{"position":"absolute","top":"651px","left":"7%","width":"86%","height":"648px"},"id":1567523202055,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"","editable":false,"ctnClass":"","customClass":"s_m_panel","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"1364px","left":"","height":"476px"},"id":1567523733024,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"异地TOP5","editable":false,"ctnClass":"","customClass":"title2","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"1390px","left":"55px"},"id":1567523741770,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"height":"","width":"","line-height":"","font-family":"","font-weight":"","font-style":"","text-decoration":""}},"text":"按等待数","editable":false,"ctnClass":"","customClass":"filter_text","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"1394px","left":"558px"},"id":1567523817933,"pid":"root","animate":["","animated"]},{"children":[],"component":"v2-component-image","commonStyle":{"position":"absolute","top":"1394px","right":"","left":"521px","bottom":"","width":"24px","height":"24px","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"ctnClass":"","customClass":"","events":{},"href":"v2-component-image","src":"img/形状 8.png","fixation":false,"style":{},"__capacity":"1","__loopTarget":"","__type":"","icon":"iconkapian","name":"图片","type":"component","id":1567523809438,"pid":"root","animate":["","animated"]},{"theme":{"tableType":"border","size":""},"columns":[{"active":true,"prop":"columns0","label":"","fixed":"","width":"","sortable":false,"openFilter":false,"type":"text","tagMap":[{"active":"true","value":"","text":"","type":"text"}],"iconMap":[{"active":"true","value":"","text":""}],"filterMap":[{"active":"true","text":"","value":""}]},{"active":true,"prop":"columns1","label":"网点名称","fixed":"","width":"","sortable":false,"openFilter":false,"type":"text","tagMap":[{"active":"true","value":"","text":"","type":"text"}],"iconMap":[{"active":"true","value":"","text":""}],"filterMap":[{"active":"true","text":"","value":""}]},{"active":true,"prop":"columns2","label":"处理数","fixed":"","width":"","sortable":false,"openFilter":false,"type":"text","tagMap":[{"active":"true","value":"","text":"","type":"text"}],"iconMap":[{"active":"true","value":"","text":""}],"filterMap":[{"active":"true","text":"","value":""}]},{"active":true,"prop":"columns3","label":"等待数","fixed":"","width":"","sortable":false,"openFilter":false,"type":"text","tagMap":[{"active":"true","value":"","text":"","type":"text"}],"iconMap":[{"active":"true","value":"","text":""}],"filterMap":[{"active":"true","text":"","value":""}]},{"active":true,"prop":"columns4","label":"等待耗时","fixed":"","width":"","sortable":false,"openFilter":false,"type":"text","tagMap":[{"active":"true","value":"","text":"","type":"text"}],"iconMap":[{"active":"true","value":"","text":""}],"filterMap":[{"active":"true","text":"","value":""}]},{"active":true,"prop":"columns5","label":"最长耗时","fixed":"","width":"","sortable":false,"openFilter":false,"type":"text","tagMap":[{"active":"true","value":"","text":"","type":"text"}],"iconMap":[{"active":"true","value":"","text":""}],"filterMap":[{"active":"true","text":"","value":""}]},{"active":true,"prop":"columns6","label":"上月排名","fixed":"","width":"","sortable":false,"openFilter":false,"type":"text","tagMap":[{"active":"true","value":"","text":"","type":"text"}],"iconMap":[{"active":"true","value":"","text":""}],"filterMap":[{"active":"true","text":"","value":""}]}],"selection":"","openIndex":false,"toolBar":false,"toolTitle":"","toolLocation":"right","toolWidth":"0","toolBtns":[],"tHeight":"","tMaxHeight":"","tableData":"","expand":false,"expandMap":"","ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-table","href":"v2-component-table","children":[],"events":{},"commonStyle":{"position":"absolute","top":"1442px","left":"45px","width":"86%","height":"648px"},"id":1567523887255,"pid":"root","animate":["","animated"]}],"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},null,{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},null,{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},null,null,{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}],"ctnClass":"","customClass":"","commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"animate":["","animated"]}},
-                        queueInfo:{
-    count:1231,
-    handled:5121,
-    most_wait:31,
-    aveage_wait:16,
-    last_mon_aveage_wait:19,
-    lost_rare:18.4,
-}
-                    }
-                },
-                props:{
-                  
-                },
-                mixins:[root,mixins],
-                components:{v2ComponentTitle_text},
-                methods:{},
-                watch:{},
-                computed:{},
-                beforeCreate(){
-                    let ctx = this;
-                    
-                },
-                created(){
-                    let ctx = this;
-                    
-                    
-                    /**bind**/ctx.$store.commit("registerBind",{ vueObj:this, data:this.queueInfo.count, dataStr:"queueInfo.count", wid:1567518741368, modelKey:"value" });
-ctx.$store.commit("registerBind",{ vueObj:this, data:this.queueInfo.most_wait, dataStr:"queueInfo.most_wait", wid:1567518763418, modelKey:"value" });
-ctx.$store.commit("registerBind",{ vueObj:this, data:this.queueInfo.aveage_wait, dataStr:"queueInfo.aveage_wait", wid:1567518718515, modelKey:"value" });
-ctx.$store.commit("registerBind",{ vueObj:this, data:this.queueInfo.lost_rare, dataStr:"queueInfo.lost_rare", wid:1567518726498, modelKey:"value" });
-ctx.$store.commit("registerBind",{ vueObj:this, data:this.queueInfo.handled, dataStr:"queueInfo.handled", wid:1567518711214, modelKey:"value" });
-ctx.$store.commit("registerBind",{ vueObj:this, data:this.queueInfo.last_mon_aveage_wait, dataStr:"queueInfo.last_mon_aveage_wait", wid:1567518805393, modelKey:"value" });/**bind over**/
-                },
-                beforeMount(){
-                    let ctx = this;
-                    
-                },
-                mounted(){
-                    let ctx = this;
-                    
-                    
-                },
-                beforeUpdate(){
-                    let ctx = this;
-                    
-                },
-                updated(){
-                    let ctx = this;
-                    
-                },
-                beforeDestroy(){ 
-                    let ctx = this;
-                        
-                },
-                destroyed(){
-                    let ctx = this;
-                        
-                },
-                deactivated(){
-                  /**页面切出**/
-                  let ctx = this;
-                  
-                },
-                activated(){
-                  /**页面切入**/
-                  let ctx = this;
-                  
-                },
+<template>
+<v2-ctn-xy :wid="`root`">
+    <v2-component-text class="V2Widget" :class="[`s_m_bg`]" id="1567508581415" :wid="`1567508581415`" :index="0" :pid="`root`"></v2-component-text>
+    <v2-component-s_m_header class="V2Widget" :style="`position:absolute;top:0;left:0;width:100%;height:26rem;`" id="1567577600390" :wid="`1567577600390`" :index="1" :pid="`root`"></v2-component-s_m_header>
+    <v2-component-text class="V2Widget" :class="[`s_m_panel`]" id="1567507254912" :wid="`1567507254912`" :index="2" :pid="`root`"></v2-component-text>
+    <v2-component-text class="V2Widget" :class="[`hline`]" id="1567508998952" :wid="`1567508998952`" :index="3" :pid="`root`"></v2-component-text>
+    <v2-component-text class="V2Widget" :class="[`vline`]" id="1567509400587" :wid="`1567509400587`" :index="4" :pid="`root`"></v2-component-text>
+    <v2-component-text class="V2Widget" :class="[`vline`]" id="1567509522568" :wid="`1567509522568`" :index="5" :pid="`root`"></v2-component-text>
+    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:232px;left:53px;width:30%;height:130px;`" id="1567518741368" :wid="`1567518741368`" :index="6" :pid="`root`" :title="`当前排队人数`" :value="`queueInfo.count`" :unit="`人`"></v2-component-title_text>
+    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:232px;left:279.012px;width:30%;height:130px;`" id="1567518711214" :wid="`1567518711214`" :index="7" :pid="`root`" :title="`已处理客户`" :value="`queueInfo.handled`" :unit="`人`"></v2-component-title_text>
+    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:232px;left:504px;width:30%;height:130px;`" id="1567518763418" :wid="`1567518763418`" :index="8" :pid="`root`" :title="`等待最长耗时`" :value="`queueInfo.most_wait`" :unit="`分钟`"></v2-component-title_text>
+    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:362px;left:53px;width:30%;height:130px;`" id="1567518718515" :wid="`1567518718515`" :index="9" :pid="`root`" :title="`平均等待耗时`" :value="`queueInfo.aveage_wait`" :unit="`分钟`"></v2-component-title_text>
+    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:362px;left:279px;width:30%;height:130px;`" id="1567518805393" :wid="`1567518805393`" :index="10" :pid="`root`" :title="`上月等待耗时`" :value="`queueInfo.last_mon_aveage_wait`" :unit="`分钟`"></v2-component-title_text>
+    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:362px;left:504px;width:30%;height:130px;`" id="1567518726498" :wid="`1567518726498`" :index="11" :pid="`root`" :title="`当前弃号率`" :value="`queueInfo.lost_rare`" :unit="`%`"></v2-component-title_text>
+    <v2-component-text class="V2Widget" :class="[`s_m_panel`]" id="1567522955457" :wid="`1567522955457`" :index="12" :pid="`root`"></v2-component-text>
+    <v2-component-text class="V2Widget" :class="[`title2`]" id="1567522962048" :wid="`1567522962048`" :index="13" :pid="`root`"></v2-component-text>
+    <v2-component-image class="V2Widget" id="1567523061139" :wid="`1567523061139`" :index="14" :pid="`root`"></v2-component-image>
+    <v2-component-text class="V2Widget" :class="[`filter_text`]" id="1567523149722" :wid="`1567523149722`" :index="15" :pid="`root`"></v2-component-text>
+    <v2-component-table class="V2Widget" id="1567523202055" :wid="`1567523202055`" :index="16" :pid="`root`"></v2-component-table>
+    <v2-component-text class="V2Widget" :class="[`s_m_panel`]" id="1567523733024" :wid="`1567523733024`" :index="17" :pid="`root`"></v2-component-text>
+    <v2-component-text class="V2Widget" :class="[`title2`]" id="1567523741770" :wid="`1567523741770`" :index="18" :pid="`root`"></v2-component-text>
+    <v2-component-text class="V2Widget" :class="[`filter_text`]" id="1567523817933" :wid="`1567523817933`" :index="19" :pid="`root`"></v2-component-text>
+    <v2-component-image class="V2Widget" id="1567523809438" :wid="`1567523809438`" :index="20" :pid="`root`"></v2-component-image>
+    <v2-component-table class="V2Widget" id="1567523887255" :wid="`1567523887255`" :index="21" :pid="`root`"></v2-component-table>
+</v2-ctn-xy>
+</template>
 
-            };
-        </script>
+<script>
+import {
+    mixins
+} from '@v2-lib/vue.spa.plugin';
+import {
+    root
+} from '@v2-lib/v2sual/mixin/v2-view';
+import v2ComponentTitle_text from '@/views/_customWidget/title_text.vue';
+import v2ComponentS_m_header from '@/views/_customWidget/s_m_header.vue'
+export default {
+    data() {
+        return {
+            "CONTENT": {
+                structure: {
+                    "id": "root",
+                    "component": "v2EditorXYCtn",
+                    "style": {
+                        "width": "100%",
+                        "height": "100%"
+                    },
+                    "children": [{
+                        "style": {
+                            "textStyle": {
+                                "height": "",
+                                "width": "",
+                                "line-height": "",
+                                "font-family": "",
+                                "font-weight": "",
+                                "font-style": "",
+                                "text-decoration": ""
+                            }
+                        },
+                        "text": "",
+                        "editable": false,
+                        "ctnClass": "",
+                        "customClass": "s_m_bg",
+                        "__type": "",
+                        "__loopTarget": "",
+                        "__capacity": "1",
+                        "component": "v2-component-text",
+                        "href": "v2-component-text",
+                        "children": [],
+                        "events": {},
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "0",
+                            "left": "0",
+                            "width": "100%",
+                            "height": "100%"
+                        },
+                        "id": 1567508581415,
+                        "pid": "root",
+                        "animate": ["", "animated"]
+                    }, {
+                        "ctnClass": "",
+                        "customClass": "",
+                        "__type": "",
+                        "__loopTarget": "",
+                        "__capacity": "1",
+                        "component": "v2-component-s_m_header",
+                        "href": "v2-component-s_m_header",
+                        "cptpath": "\\src\\views\\_customWidget\\s_m_header.vue",
+                        "children": [],
+                        "events": {},
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "0",
+                            "left": "0",
+                            "width": "100%",
+                            "height": "26rem"
+                        },
+                        "id": 1567577600390,
+                        "pid": "root",
+                        "animate": ["", "animated"]
+                    }, {
+                        "style": {
+                            "textStyle": {
+                                "height": "",
+                                "width": "",
+                                "line-height": "",
+                                "font-family": "",
+                                "font-weight": "",
+                                "font-style": "",
+                                "text-decoration": ""
+                            }
+                        },
+                        "text": "",
+                        "editable": false,
+                        "ctnClass": "",
+                        "customClass": "s_m_panel",
+                        "__type": "",
+                        "__loopTarget": "",
+                        "__capacity": "1",
+                        "component": "v2-component-text",
+                        "href": "v2-component-text",
+                        "children": [],
+                        "events": {},
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "198px",
+                            "left": "22px",
+                            "width": "",
+                            "height": "322px"
+                        },
+                        "id": 1567507254912,
+                        "pid": "root",
+                        "animate": ["", "animated"]
+                    }, {
+                        "style": {
+                            "textStyle": {
+                                "height": "",
+                                "width": "",
+                                "line-height": "",
+                                "font-family": "",
+                                "font-weight": "",
+                                "font-style": "",
+                                "text-decoration": ""
+                            }
+                        },
+                        "text": "",
+                        "editable": false,
+                        "ctnClass": "",
+                        "customClass": "hline",
+                        "__type": "",
+                        "__loopTarget": "",
+                        "__capacity": "1",
+                        "component": "v2-component-text",
+                        "href": "v2-component-text",
+                        "children": [],
+                        "events": {},
+                        "commonStyle": {
+                            "position": "",
+                            "top": "356",
+                            "left": "7%",
+                            "width": "86%",
+                            "height": ""
+                        },
+                        "id": 1567508998952,
+                        "pid": "root",
+                        "animate": ["", "animated"]
+                    }, {
+                        "style": {
+                            "textStyle": {
+                                "height": "",
+                                "width": "",
+                                "line-height": "",
+                                "font-family": "",
+                                "font-weight": "",
+                                "font-style": "",
+                                "text-decoration": ""
+                            }
+                        },
+                        "text": "",
+                        "editable": false,
+                        "ctnClass": "",
+                        "customClass": "vline",
+                        "__type": "",
+                        "__loopTarget": "",
+                        "__capacity": "1",
+                        "component": "v2-component-text",
+                        "href": "v2-component-text",
+                        "children": [],
+                        "events": {},
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "232px",
+                            "left": "33.33%",
+                            "height": "260px",
+                            "width": ""
+                        },
+                        "id": 1567509400587,
+                        "pid": "root",
+                        "animate": ["", "animated"]
+                    }, {
+                        "style": {
+                            "textStyle": {
+                                "height": "",
+                                "width": "",
+                                "line-height": "",
+                                "font-family": "",
+                                "font-weight": "",
+                                "font-style": "",
+                                "text-decoration": ""
+                            }
+                        },
+                        "text": "",
+                        "editable": false,
+                        "ctnClass": "",
+                        "customClass": "vline",
+                        "__type": "",
+                        "__loopTarget": "",
+                        "__capacity": "1",
+                        "component": "v2-component-text",
+                        "href": "v2-component-text",
+                        "children": [],
+                        "events": {},
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "232px",
+                            "left": "66%",
+                            "height": "260px",
+                            "width": ""
+                        },
+                        "id": 1567509522568,
+                        "pid": "root",
+                        "animate": ["", "animated"]
+                    }, {
+                        "dataBasket": {
+                            "title": "当前排队人数",
+                            "value": "queueInfo.count",
+                            "unit": "人"
+                        },
+                        "ctnClass": "",
+                        "customClass": "",
+                        "__type": "",
+                        "__loopTarget": "",
+                        "__capacity": "1",
+                        "component": "v2-component-title_text",
+                        "href": "v2-component-title_text",
+                        "cptpath": "\\src\\views\\_customWidget\\title_text.vue",
+                        "children": [],
+                        "events": {},
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "232px",
+                            "left": "53px",
+                            "width": "30%",
+                            "height": "130px"
+                        },
+                        "id": 1567518741368,
+                        "pid": "root",
+                        "animate": ["", "animated"]
+                    }, {
+                        "dataBasket": {
+                            "title": "已处理客户",
+                            "value": "queueInfo.handled",
+                            "unit": "人"
+                        },
+                        "ctnClass": "",
+                        "customClass": "",
+                        "__type": "",
+                        "__loopTarget": "",
+                        "__capacity": "1",
+                        "component": "v2-component-title_text",
+                        "href": "v2-component-title_text",
+                        "cptpath": "\\src\\views\\_customWidget\\title_text.vue",
+                        "children": [],
+                        "events": {},
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "232px",
+                            "left": "279.012px",
+                            "width": "30%",
+                            "height": "130px"
+                        },
+                        "id": 1567518711214,
+                        "pid": "root",
+                        "animate": ["", "animated"]
+                    }, {
+                        "dataBasket": {
+                            "title": "等待最长耗时",
+                            "value": "queueInfo.most_wait",
+                            "unit": "分钟"
+                        },
+                        "ctnClass": "",
+                        "customClass": "",
+                        "__type": "",
+                        "__loopTarget": "",
+                        "__capacity": "1",
+                        "component": "v2-component-title_text",
+                        "href": "v2-component-title_text",
+                        "cptpath": "\\src\\views\\_customWidget\\title_text.vue",
+                        "children": [],
+                        "events": {},
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "232px",
+                            "left": "504px",
+                            "width": "30%",
+                            "height": "130px"
+                        },
+                        "id": 1567518763418,
+                        "pid": "root",
+                        "animate": ["", "animated"]
+                    }, {
+                        "dataBasket": {
+                            "title": "平均等待耗时",
+                            "value": "queueInfo.aveage_wait",
+                            "unit": "分钟"
+                        },
+                        "ctnClass": "",
+                        "customClass": "",
+                        "__type": "",
+                        "__loopTarget": "",
+                        "__capacity": "1",
+                        "component": "v2-component-title_text",
+                        "href": "v2-component-title_text",
+                        "cptpath": "\\src\\views\\_customWidget\\title_text.vue",
+                        "children": [],
+                        "events": {},
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "362px",
+                            "left": "53px",
+                            "width": "30%",
+                            "height": "130px"
+                        },
+                        "id": 1567518718515,
+                        "pid": "root",
+                        "animate": ["", "animated"]
+                    }, {
+                        "dataBasket": {
+                            "title": "上月等待耗时",
+                            "value": "queueInfo.last_mon_aveage_wait",
+                            "unit": "分钟"
+                        },
+                        "ctnClass": "",
+                        "customClass": "",
+                        "__type": "",
+                        "__loopTarget": "",
+                        "__capacity": "1",
+                        "component": "v2-component-title_text",
+                        "href": "v2-component-title_text",
+                        "cptpath": "\\src\\views\\_customWidget\\title_text.vue",
+                        "children": [],
+                        "events": {},
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "362px",
+                            "left": "279px",
+                            "width": "30%",
+                            "height": "130px"
+                        },
+                        "id": 1567518805393,
+                        "pid": "root",
+                        "animate": ["", "animated"]
+                    }, {
+                        "dataBasket": {
+                            "title": "当前弃号率",
+                            "value": "queueInfo.lost_rare",
+                            "unit": "%"
+                        },
+                        "ctnClass": "",
+                        "customClass": "",
+                        "__type": "",
+                        "__loopTarget": "",
+                        "__capacity": "1",
+                        "component": "v2-component-title_text",
+                        "href": "v2-component-title_text",
+                        "cptpath": "\\src\\views\\_customWidget\\title_text.vue",
+                        "children": [],
+                        "events": {},
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "362px",
+                            "left": "504px",
+                            "width": "30%",
+                            "height": "130px"
+                        },
+                        "id": 1567518726498,
+                        "pid": "root",
+                        "animate": ["", "animated"]
+                    }, {
+                        "style": {
+                            "textStyle": {
+                                "height": "",
+                                "width": "",
+                                "line-height": "",
+                                "font-family": "",
+                                "font-weight": "",
+                                "font-style": "",
+                                "text-decoration": ""
+                            }
+                        },
+                        "text": "",
+                        "editable": false,
+                        "ctnClass": "",
+                        "customClass": "s_m_panel",
+                        "__type": "",
+                        "__loopTarget": "",
+                        "__capacity": "1",
+                        "component": "v2-component-text",
+                        "href": "v2-component-text",
+                        "children": [],
+                        "events": {},
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "563px",
+                            "left": "17.2183px",
+                            "height": "783px",
+                            "width": "95%"
+                        },
+                        "id": 1567522955457,
+                        "pid": "root",
+                        "animate": ["", "animated"]
+                    }, {
+                        "style": {
+                            "textStyle": {
+                                "height": "",
+                                "width": "",
+                                "line-height": "",
+                                "font-family": "",
+                                "font-weight": "",
+                                "font-style": "",
+                                "text-decoration": ""
+                            }
+                        },
+                        "text": "上海地区TOP10",
+                        "editable": false,
+                        "ctnClass": "",
+                        "customClass": "title2",
+                        "__type": "",
+                        "__loopTarget": "",
+                        "__capacity": "1",
+                        "component": "v2-component-text",
+                        "href": "v2-component-text",
+                        "children": [],
+                        "events": {},
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "591px",
+                            "left": "53px"
+                        },
+                        "id": 1567522962048,
+                        "pid": "root",
+                        "animate": ["", "animated"]
+                    }, {
+                        "children": [],
+                        "component": "v2-component-image",
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "592px",
+                            "right": "18%",
+                            "left": "",
+                            "bottom": "",
+                            "width": "24px",
+                            "height": "24px",
+                            "padding-top": "",
+                            "padding-bottom": "",
+                            "padding-left": "",
+                            "padding-right": "",
+                            "margin-top": "",
+                            "margin-bottom": "",
+                            "margin-left": "",
+                            "margin-right": "",
+                            "font-size": "",
+                            "color": "",
+                            "animation-duration": "1s",
+                            "animation-delay": ""
+                        },
+                        "ctnClass": "",
+                        "customClass": "",
+                        "events": {},
+                        "href": "v2-component-image",
+                        "src": "img/形状 8.png",
+                        "fixation": false,
+                        "style": {},
+                        "__capacity": "1",
+                        "__loopTarget": "",
+                        "__type": "",
+                        "icon": "iconkapian",
+                        "name": "图片",
+                        "type": "component",
+                        "id": 1567523061139,
+                        "pid": "root",
+                        "animate": ["", "animated"]
+                    }, {
+                        "style": {
+                            "textStyle": {
+                                "height": "",
+                                "width": "",
+                                "line-height": "",
+                                "font-family": "",
+                                "font-weight": "",
+                                "font-style": "",
+                                "text-decoration": ""
+                            }
+                        },
+                        "text": "按等待数",
+                        "editable": false,
+                        "ctnClass": "",
+                        "customClass": "filter_text",
+                        "__type": "",
+                        "__loopTarget": "",
+                        "__capacity": "1",
+                        "component": "v2-component-text",
+                        "href": "v2-component-text",
+                        "children": [],
+                        "events": {},
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "591px",
+                            "left": "",
+                            "padding-right": "",
+                            "right": "6%",
+                            "width": "80px"
+                        },
+                        "id": 1567523149722,
+                        "pid": "root",
+                        "animate": ["", "animated"]
+                    }, {
+                        "theme": {
+                            "tableType": "border",
+                            "size": ""
+                        },
+                        "columns": [{
+                            "active": true,
+                            "prop": "columns0",
+                            "label": "",
+                            "fixed": "",
+                            "width": "",
+                            "sortable": false,
+                            "openFilter": false,
+                            "type": "text",
+                            "tagMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": "",
+                                "type": "text"
+                            }],
+                            "iconMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": ""
+                            }],
+                            "filterMap": [{
+                                "active": "true",
+                                "text": "",
+                                "value": ""
+                            }]
+                        }, {
+                            "active": true,
+                            "prop": "name",
+                            "label": "网点名称",
+                            "fixed": "",
+                            "width": "",
+                            "sortable": false,
+                            "openFilter": false,
+                            "type": "text",
+                            "tagMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": "",
+                                "type": "text"
+                            }],
+                            "iconMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": ""
+                            }],
+                            "filterMap": [{
+                                "active": "true",
+                                "text": "",
+                                "value": ""
+                            }]
+                        }, {
+                            "active": true,
+                            "prop": "d1",
+                            "label": "处理数",
+                            "fixed": "",
+                            "width": "",
+                            "sortable": false,
+                            "openFilter": false,
+                            "type": "text",
+                            "tagMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": "",
+                                "type": "text"
+                            }],
+                            "iconMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": ""
+                            }],
+                            "filterMap": [{
+                                "active": "true",
+                                "text": "",
+                                "value": ""
+                            }]
+                        }, {
+                            "active": true,
+                            "prop": "d2",
+                            "label": "等待数",
+                            "fixed": "",
+                            "width": "",
+                            "sortable": false,
+                            "openFilter": false,
+                            "type": "text",
+                            "tagMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": "",
+                                "type": "text"
+                            }],
+                            "iconMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": ""
+                            }],
+                            "filterMap": [{
+                                "active": "true",
+                                "text": "",
+                                "value": ""
+                            }]
+                        }, {
+                            "active": true,
+                            "prop": "d3",
+                            "label": "等待耗时",
+                            "fixed": "",
+                            "width": "",
+                            "sortable": false,
+                            "openFilter": false,
+                            "type": "text",
+                            "tagMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": "",
+                                "type": "text"
+                            }],
+                            "iconMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": ""
+                            }],
+                            "filterMap": [{
+                                "active": "true",
+                                "text": "",
+                                "value": ""
+                            }]
+                        }, {
+                            "active": true,
+                            "prop": "d4",
+                            "label": "最长耗时",
+                            "fixed": "",
+                            "width": "",
+                            "sortable": false,
+                            "openFilter": false,
+                            "type": "text",
+                            "tagMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": "",
+                                "type": "text"
+                            }],
+                            "iconMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": ""
+                            }],
+                            "filterMap": [{
+                                "active": "true",
+                                "text": "",
+                                "value": ""
+                            }]
+                        }, {
+                            "active": true,
+                            "prop": "d5",
+                            "label": "上月排名",
+                            "fixed": "",
+                            "width": "",
+                            "sortable": false,
+                            "openFilter": false,
+                            "type": "text",
+                            "tagMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": "",
+                                "type": "text"
+                            }],
+                            "iconMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": ""
+                            }],
+                            "filterMap": [{
+                                "active": "true",
+                                "text": "",
+                                "value": ""
+                            }]
+                        }],
+                        "selection": "",
+                        "openIndex": false,
+                        "toolBar": false,
+                        "toolTitle": "",
+                        "toolLocation": "right",
+                        "toolWidth": "0",
+                        "toolBtns": [],
+                        "tHeight": "",
+                        "tMaxHeight": "",
+                        "tableData": "${top10}",
+                        "expand": false,
+                        "expandMap": "",
+                        "ctnClass": "",
+                        "customClass": "",
+                        "__type": "",
+                        "__loopTarget": "",
+                        "__capacity": "1",
+                        "component": "v2-component-table",
+                        "href": "v2-component-table",
+                        "children": [],
+                        "events": {},
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "635px",
+                            "left": "7%",
+                            "width": "86%",
+                            "height": "588px",
+                            "right": "6%"
+                        },
+                        "id": 1567523202055,
+                        "pid": "root",
+                        "animate": ["", "animated"],
+                        "openPage": false
+                    }, {
+                        "style": {
+                            "textStyle": {
+                                "height": "",
+                                "width": "",
+                                "line-height": "",
+                                "font-family": "",
+                                "font-weight": "",
+                                "font-style": "",
+                                "text-decoration": ""
+                            }
+                        },
+                        "text": "",
+                        "editable": false,
+                        "ctnClass": "",
+                        "customClass": "s_m_panel",
+                        "__type": "",
+                        "__loopTarget": "",
+                        "__capacity": "1",
+                        "component": "v2-component-text",
+                        "href": "v2-component-text",
+                        "children": [],
+                        "events": {},
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "1364px",
+                            "left": "17px",
+                            "height": "476px",
+                            "width": "95%"
+                        },
+                        "id": 1567523733024,
+                        "pid": "root",
+                        "animate": ["", "animated"]
+                    }, {
+                        "style": {
+                            "textStyle": {
+                                "height": "",
+                                "width": "",
+                                "line-height": "",
+                                "font-family": "",
+                                "font-weight": "",
+                                "font-style": "",
+                                "text-decoration": ""
+                            }
+                        },
+                        "text": "异地TOP5",
+                        "editable": false,
+                        "ctnClass": "",
+                        "customClass": "title2",
+                        "__type": "",
+                        "__loopTarget": "",
+                        "__capacity": "1",
+                        "component": "v2-component-text",
+                        "href": "v2-component-text",
+                        "children": [],
+                        "events": {},
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "1390px",
+                            "left": "55px"
+                        },
+                        "id": 1567523741770,
+                        "pid": "root",
+                        "animate": ["", "animated"]
+                    }, {
+                        "style": {
+                            "textStyle": {
+                                "height": "",
+                                "width": "",
+                                "line-height": "",
+                                "font-family": "",
+                                "font-weight": "",
+                                "font-style": "",
+                                "text-decoration": ""
+                            }
+                        },
+                        "text": "按等待数",
+                        "editable": false,
+                        "ctnClass": "",
+                        "customClass": "filter_text",
+                        "__type": "",
+                        "__loopTarget": "",
+                        "__capacity": "1",
+                        "component": "v2-component-text",
+                        "href": "v2-component-text",
+                        "children": [],
+                        "events": {},
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "1390px",
+                            "left": "",
+                            "right": "6%",
+                            "width": "80px"
+                        },
+                        "id": 1567523817933,
+                        "pid": "root",
+                        "animate": ["", "animated"]
+                    }, {
+                        "children": [],
+                        "component": "v2-component-image",
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "1392px",
+                            "right": "18%",
+                            "left": "",
+                            "bottom": "",
+                            "width": "24px",
+                            "height": "24px",
+                            "padding-top": "",
+                            "padding-bottom": "",
+                            "padding-left": "",
+                            "padding-right": "",
+                            "margin-top": "",
+                            "margin-bottom": "",
+                            "margin-left": "",
+                            "margin-right": "",
+                            "font-size": "",
+                            "color": "",
+                            "animation-duration": "1s",
+                            "animation-delay": ""
+                        },
+                        "ctnClass": "",
+                        "customClass": "",
+                        "events": {},
+                        "href": "v2-component-image",
+                        "src": "img/形状 8.png",
+                        "fixation": false,
+                        "style": {},
+                        "__capacity": "1",
+                        "__loopTarget": "",
+                        "__type": "",
+                        "icon": "iconkapian",
+                        "name": "图片",
+                        "type": "component",
+                        "id": 1567523809438,
+                        "pid": "root",
+                        "animate": ["", "animated"]
+                    }, {
+                        "theme": {
+                            "tableType": "border",
+                            "size": ""
+                        },
+                        "columns": [{
+                            "active": true,
+                            "prop": "columns0",
+                            "label": "",
+                            "fixed": "",
+                            "width": "",
+                            "sortable": false,
+                            "openFilter": false,
+                            "type": "text",
+                            "tagMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": "",
+                                "type": "text"
+                            }],
+                            "iconMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": ""
+                            }],
+                            "filterMap": [{
+                                "active": "true",
+                                "text": "",
+                                "value": ""
+                            }]
+                        }, {
+                            "active": true,
+                            "prop": "name",
+                            "label": "网点名称",
+                            "fixed": "",
+                            "width": "",
+                            "sortable": false,
+                            "openFilter": false,
+                            "type": "text",
+                            "tagMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": "",
+                                "type": "text"
+                            }],
+                            "iconMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": ""
+                            }],
+                            "filterMap": [{
+                                "active": "true",
+                                "text": "",
+                                "value": ""
+                            }]
+                        }, {
+                            "active": true,
+                            "prop": "d1",
+                            "label": "处理数",
+                            "fixed": "",
+                            "width": "",
+                            "sortable": false,
+                            "openFilter": false,
+                            "type": "text",
+                            "tagMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": "",
+                                "type": "text"
+                            }],
+                            "iconMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": ""
+                            }],
+                            "filterMap": [{
+                                "active": "true",
+                                "text": "",
+                                "value": ""
+                            }]
+                        }, {
+                            "active": true,
+                            "prop": "d2",
+                            "label": "等待数",
+                            "fixed": "",
+                            "width": "",
+                            "sortable": false,
+                            "openFilter": false,
+                            "type": "text",
+                            "tagMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": "",
+                                "type": "text"
+                            }],
+                            "iconMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": ""
+                            }],
+                            "filterMap": [{
+                                "active": "true",
+                                "text": "",
+                                "value": ""
+                            }]
+                        }, {
+                            "active": true,
+                            "prop": "d3",
+                            "label": "等待耗时",
+                            "fixed": "",
+                            "width": "",
+                            "sortable": false,
+                            "openFilter": false,
+                            "type": "text",
+                            "tagMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": "",
+                                "type": "text"
+                            }],
+                            "iconMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": ""
+                            }],
+                            "filterMap": [{
+                                "active": "true",
+                                "text": "",
+                                "value": ""
+                            }]
+                        }, {
+                            "active": true,
+                            "prop": "d4",
+                            "label": "最长耗时",
+                            "fixed": "",
+                            "width": "",
+                            "sortable": false,
+                            "openFilter": false,
+                            "type": "text",
+                            "tagMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": "",
+                                "type": "text"
+                            }],
+                            "iconMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": ""
+                            }],
+                            "filterMap": [{
+                                "active": "true",
+                                "text": "",
+                                "value": ""
+                            }]
+                        }, {
+                            "active": true,
+                            "prop": "d5",
+                            "label": "上月排名",
+                            "fixed": "",
+                            "width": "",
+                            "sortable": false,
+                            "openFilter": false,
+                            "type": "text",
+                            "tagMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": "",
+                                "type": "text"
+                            }],
+                            "iconMap": [{
+                                "active": "true",
+                                "value": "",
+                                "text": ""
+                            }],
+                            "filterMap": [{
+                                "active": "true",
+                                "text": "",
+                                "value": ""
+                            }]
+                        }],
+                        "selection": "",
+                        "openIndex": false,
+                        "toolBar": false,
+                        "toolTitle": "",
+                        "toolLocation": "right",
+                        "toolWidth": "",
+                        "toolBtns": [],
+                        "tHeight": "",
+                        "tMaxHeight": "",
+                        "tableData": "${top5}",
+                        "expand": false,
+                        "expandMap": "",
+                        "ctnClass": "",
+                        "customClass": "",
+                        "__type": "",
+                        "__loopTarget": "",
+                        "__capacity": "1",
+                        "component": "v2-component-table",
+                        "href": "v2-component-table",
+                        "children": [],
+                        "events": {},
+                        "commonStyle": {
+                            "position": "absolute",
+                            "top": "1429px",
+                            "left": "5%",
+                            "width": "86%",
+                            "height": "392px",
+                            "right": "5%"
+                        },
+                        "id": 1567523887255,
+                        "pid": "root",
+                        "animate": ["", "animated"],
+                        "openPage": false
+                    }],
+                    "ctnStyle": [{
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }, {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "text-align": "",
+                        "background-color": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "border-color": "",
+                        "border-width": "",
+                        "border-style": ""
+                    }],
+                    "ctnClass": "",
+                    "customClass": "",
+                    "commonStyle": {
+                        "position": "",
+                        "top": "",
+                        "right": "",
+                        "left": "",
+                        "bottom": "",
+                        "width": "",
+                        "height": "",
+                        "padding-top": "",
+                        "padding-bottom": "",
+                        "padding-left": "",
+                        "padding-right": "",
+                        "margin-top": "",
+                        "margin-bottom": "",
+                        "margin-left": "",
+                        "margin-right": "",
+                        "font-size": "",
+                        "color": "",
+                        "animation-duration": "1s",
+                        "animation-delay": ""
+                    },
+                    "animate": ["", "animated"]
+                }
+            },
+            queueInfo: {
+                count: 1231,
+                handled: 5121,
+                most_wait: 31,
+                aveage_wait: 16,
+                last_mon_aveage_wait: 19,
+                lost_rare: 18.4,
+            },
+            top5: [{
+                name: "城西支行",
+                d1: "222",
+                d2: 22,
+                d3: 343,
+                d4: 444,
+                d5: 222
+            }, {
+                name: "城西支行",
+                d1: "222",
+                d2: 22,
+                d3: 343,
+                d4: 444,
+                d5: 222
+            }, {
+                name: "城西支行",
+                d1: "222",
+                d2: 22,
+                d3: 343,
+                d4: 444,
+                d5: 222
+            }, {
+                name: "城西支行",
+                d1: "222",
+                d2: 22,
+                d3: 343,
+                d4: 444,
+                d5: 222
+            }, {
+                name: "城西支行",
+                d1: "222",
+                d2: 22,
+                d3: 343,
+                d4: 444,
+                d5: 222
+            }],
+            top10: [{
+                name: "滴水湖支行",
+                d1: 1389,
+                d2: 232,
+                d3: 343,
+                d4: 444,
+                d5: 2226
+            }, {
+                name: "城西支行",
+                d1: 1389,
+                d2: 22,
+                d3: 343,
+                d4: 444,
+                d5: 222
+            }, {
+                name: "滴水湖支行",
+                d1: "2242",
+                d2: 22,
+                d3: 343,
+                d4: 444,
+                d5: 222
+            }, {
+                name: "城西支行",
+                d1: "1222",
+                d2: 22,
+                d3: 343,
+                d4: 444,
+                d5: 222
+            }, {
+                name: "滴水湖支行",
+                d1: "2522",
+                d2: 22,
+                d3: 343,
+                d4: 444,
+                d5: 222
+            }, {
+                name: "滴水湖支行",
+                d1: "2522",
+                d2: 22,
+                d3: 343,
+                d4: 444,
+                d5: 222
+            }, {
+                name: "滴水湖支行",
+                d1: "2522",
+                d2: 22,
+                d3: 343,
+                d4: 444,
+                d5: 222
+            }, {
+                name: "滴水湖支行",
+                d1: "2522",
+                d2: 22,
+                d3: 343,
+                d4: 444,
+                d5: 222
+            }, {
+                name: "滴水湖支行",
+                d1: "2522",
+                d2: 22,
+                d3: 343,
+                d4: 444,
+                d5: 222
+            }, {
+                name: "滴水湖支行",
+                d1: "2522",
+                d2: 22,
+                d3: 343,
+                d4: 444,
+                d5: 222
+            }]
+        }
+    },
+    props: {
+
+    },
+    mixins: [root, mixins],
+    components: {
+        v2ComponentTitle_text,
+        v2ComponentS_m_header
+    },
+    methods: {},
+    watch: {},
+    computed: {},
+    beforeCreate() {
+        let ctx = this;
+
+    },
+    created() {
+        let ctx = this;
+
+        /**bind**/
+        ctx.$store.commit("registerBind", {
+            vueObj: this,
+            data: this.queueInfo.count,
+            dataStr: "queueInfo.count",
+            wid: 1567518741368,
+            modelKey: "value"
+        });
+        ctx.$store.commit("registerBind", {
+            vueObj: this,
+            data: this.queueInfo.most_wait,
+            dataStr: "queueInfo.most_wait",
+            wid: 1567518763418,
+            modelKey: "value"
+        });
+        ctx.$store.commit("registerBind", {
+            vueObj: this,
+            data: this.queueInfo.aveage_wait,
+            dataStr: "queueInfo.aveage_wait",
+            wid: 1567518718515,
+            modelKey: "value"
+        });
+        ctx.$store.commit("registerBind", {
+            vueObj: this,
+            data: this.queueInfo.lost_rare,
+            dataStr: "queueInfo.lost_rare",
+            wid: 1567518726498,
+            modelKey: "value"
+        });
+        ctx.$store.commit("registerBind", {
+            vueObj: this,
+            data: this.queueInfo.handled,
+            dataStr: "queueInfo.handled",
+            wid: 1567518711214,
+            modelKey: "value"
+        });
+        ctx.$store.commit("registerBind", {
+            vueObj: this,
+            data: this.queueInfo.last_mon_aveage_wait,
+            dataStr: "queueInfo.last_mon_aveage_wait",
+            wid: 1567518805393,
+            modelKey: "value"
+        });
+        ctx.$store.commit("registerBind", {
+            vueObj: this,
+            data: this.top5,
+            dataStr: "top5",
+            wid: 1567523887255,
+            modelKey: "tableData"
+        });
+        ctx.$store.commit("registerBind", {
+            vueObj: this,
+            data: this.top10,
+            dataStr: "top10",
+            wid: 1567523202055,
+            modelKey: "tableData"
+        }); /**bind over**/
+    },
+    beforeMount() {
+        let ctx = this;
+
+    },
+    mounted() {
+        let ctx = this;
+
+    },
+    beforeUpdate() {
+        let ctx = this;
+
+    },
+    updated() {
+        let ctx = this;
+
+    },
+    beforeDestroy() {
+        let ctx = this;
+
+    },
+    destroyed() {
+        let ctx = this;
+
+    },
+    deactivated() {
+        /**页面切出**/
+        let ctx = this;
+
+    },
+    activated() {
+        /**页面切入**/
+        let ctx = this;
+
+    },
+
+};
+</script>
+
 <style lang="scss">
 
 </style>
