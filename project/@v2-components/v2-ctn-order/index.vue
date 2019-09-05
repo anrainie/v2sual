@@ -9,8 +9,11 @@
 export default {
   computed: {
     ctnStyle() {
+    console.log('自由布局',this.model.borderRadius);
       return {
         // "display": this.model.display,
+   
+        ...this.model.commonStyle,
         "width": this.model.width,
         "height": this.model.height,
         "margin": this.model.margin,

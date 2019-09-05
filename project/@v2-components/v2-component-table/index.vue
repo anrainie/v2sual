@@ -58,7 +58,7 @@
     </el-table-column>
 
      <el-table-column
-      v-if="model.toolBtns.length"
+      v-if="model.toolBtns && model.toolBtns.length"
       :fixed="model.toolBar && model.toolLocation"
       :label="model.toolTitle"
       :width="model.toolWidth">

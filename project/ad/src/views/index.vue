@@ -1,5 +1,6 @@
 <template>
   <div class="aweb-container">
+    <!-- <div></div> -->
         <!-- <header>
           <div class="menu-btn"><i class="el-icon-s-operation"></i></div>
            <div class="header-title"><span>首页</span></div>
@@ -7,11 +8,95 @@
            </header> -->
         <router-view></router-view>
         <footer>
-          <div><i class="el-icon-s-home"></i><div class="foot-title">首页</div></div> 
-          <div><i class="el-icon-mobile"></i><div class="foot-title">设备详情</div></div>
-          <div><i class="el-icon-user"></i><div class="foot-title">客户详情</div></div>
+          <div ><i class="el-icon-s-home" @click="openPage('index','shanghai_mobile/page2')" :style="{'color':activeTab==='index'?'#1b55d2':'#ddd'}"></i><div class="foot-title">首页</div></div> 
+          <div><i class="el-icon-mobile" @click="openPage('driver','shanghai_mobile/page3')" :style="{'color':activeTab==='driver'?'#1b55d2':'#ddd'}"></i><div class="foot-title">设备详情</div></div>
+          <div><i class="el-icon-user" @click="openPage('user','shanghai_mobile/page1')" :style="{'color':activeTab==='user'?'#1b55d2':'#ddd'}"></i><div class="foot-title">客户详情</div></div>
           </footer>
+        <!-- 抽屉 -->
+        <el-drawer
+          title="菜单"
+          :visible.sync="$store.state.MenuDrawer"
+          :direction="`ltr`"
+          >
+          
+        <el-menu        
+          default-active="2"
+          class="el-menu-vertical-demo"
+          background-color="#152028"
+          text-color="#fff"
+ 
+          @select="handleSelectMenu"
+        >
+          <template v-for="item in routerData" v-if="!item.hidden">
+            
+              <el-submenu  v-if="item.children && item.children.length && !item.isLeaf || (item.isLeaf && item.isRedirect)" :index="item.path+'#'+item.componentUrl+'#'+(item.meta && item.meta.title && item.meta.title)" :key="item.path">
+                <template slot="title">
+                  <i v-if="item.meta && item.meta.icon" :class="item.meta.icon"></i>
+                  <span v-if="item.meta && item.meta.title">{{item.meta.title}}</span>
+                </template>
 
+                <template v-for="child in item.children" v-if="!child.hidden">
+
+                      <el-submenu  v-if="child.children" :index="item.path+'/'+child.path+'#'+child.componentUrl+'#'+(child.meta && child.meta.title && child.meta.title)" :key="item.path+'/'+child.path">
+                              
+                                    <template slot="title">
+                                      <i v-if="child.meta && child.meta.icon" :class="child.meta.icon"></i>
+                                      <span v-if="child.meta && child.meta.title">{{child.meta.title}}</span>
+                                    </template>
+
+                                    <template v-for="child3 in child.children" v-if="!child3.hidden">
+
+                                            <el-submenu  v-if="child3.children" :index="item.path+'/'+child.path+'/'+child3.path+'#'+child3.componentUrl+'#'+(child3.meta && child3.meta.title && child3.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path">                              
+                                                    <template slot="title">
+                                                      <i v-if="child3.meta && child3.meta.icon" :class="child3.meta.icon"></i>
+                                                      <span v-if="child3.meta && child3.meta.title">{{child3.meta.title}}</span>
+                                                    </template>
+
+                                                    <template v-for="child4 in child3.children" v-if="!child4.hidden">                                         
+                                                          <el-menu-item :index="item.path+'/'+child.path+'/'+child3.path+'/'+child4.path+'#'+child4.componentUrl+'#'+(child4.meta && child4.meta.title && child4.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path+'/'+child4.path">
+                                                            <i v-if="child4.meta && child4.meta.icon" :class="child4.meta.icon"></i>
+                                                            <span v-if="child4.meta&&child4.meta.title">{{child4.meta.title}}</span>
+                                                          </el-menu-item>
+                                                    </template>                             
+                                              </el-submenu>
+
+
+                                          <el-menu-item v-else :index="item.path+'/'+child.path+'/'+child3.path+'#'+child3.componentUrl+'#'+(child3.meta && child3.meta.title && child3.meta.title)" :key="item.path+'/'+child.path+'/'+child3.path">
+                                            <i v-if="child3.meta && child3.meta.icon" :class="child3.meta.icon"></i>
+                                            <span v-if="child3.meta&&child3.meta.title">{{child3.meta.title}}</span>
+                                          </el-menu-item>
+
+
+                                    </template>
+                              
+                      </el-submenu>
+
+
+                    <el-menu-item v-else  :index="item.path+'/'+child.path+'#'+child.componentUrl+'#'+(child.meta && child.meta.title && child.meta.title)" :key="item.path+'/'+child.path">
+                      <i v-if="child.meta && child.meta.icon" :class="child.meta.icon"></i>
+                      <span v-if="child.meta && child.meta.title" :data-role="item.path+'/'+child.path">{{child.meta.title}}</span>
+                    </el-menu-item>
+            
+                </template>
+              </el-submenu>
+
+             
+                <el-menu-item  v-else-if="item.isLeaf && !item.children[0].children"  :index="item.children[0].path+'#'+item.children[0].componentUrl+'#'+(item.children[0].meta && item.children[0].meta.title && item.children[0].meta.title)" :key="item.path+'/'+item.children[0].path" >  
+                  <i v-if="item.children[0].meta && item.children[0].meta.icon" :class="item.children[0].meta.icon"></i>          
+                    <span v-if="item.children[0].meta && item.children[0].meta.title">{{item.children[0].meta.title}}</span>
+                  </el-menu-item>
+
+                 <el-menu-item  v-else  :index="item.path+'#'+item.componentUrl+'#'+(item.meta && item.meta.title && item.meta.title)" :key="item.path" >  
+                  <i v-if="item.meta && item.meta.icon" :class="item.meta.icon"></i>          
+                    <span v-if="item.meta && item.meta.title">{{item.meta.title}}</span>
+                  </el-menu-item>
+
+
+            </template>        
+        </el-menu>
+     
+        </el-drawer>
+        <!-- 抽屉 end -->
      <!-- 弹窗 start -->
          <el-dialog
           :title="subPageTitle"
@@ -35,17 +120,17 @@
 
 <script>
 
-
-import {getMenuRoutes,addMenuToRoutes,mixins} from '@v2-lib/vue.spa.plugin'
+import Lib from  '@v2-lib/vue.spa.plugin'
+import {getMenuRoutes,mixins,filterAsyncRouter} from '@v2-lib/vue.spa.plugin'
 import {caseRouter} from '@/api/case.js'
+
 // const caseList= process.env.NODE_ENV === 'production'?[]:caseRouter;
 
 export default {
-  name: "layout",
+  name: "index",
   data() {
     return {
       routerData:JSON.parse(JSON.stringify(getMenuRoutes())),
-   
       sysUserName: "admin",
       sysUserAvatar:
         "https://s.gravatar.com/avatar/f30a9191dda93b5389965ed99f57f850?s=50&d=retro",
@@ -53,35 +138,37 @@ export default {
       // isRouterAlive: true,
       breadcrumbPath: [], // 面包屑路径
       showBreadcrumbPath: false,
-      searchVal:''
+      searchVal:'',
+      activeTab:'index'
     };
   },
-   async beforeRouteEnter(to, from, next){
-      
-      try{
-        let menus=getMenuRoutes();
-        if(!menus.length){
-          // let menus=await getMenu();
-          let path = to.redirectedFrom || to.path;
-          let menuData=[...menus,...caseRouter];
-          addMenuToRoutes(menuData);
-          next(path);
-        }else{
-          next()
-        }
-      }catch(e){
-      
-      console.log(e);
-        next();
-      }
-
- },
   mixins:[mixins],
 
   methods: {
+    openPage(path,page){
+      this.activeTab = path;
+      if(window.router.matcher.match('/mobile/'+path).path=='/404'){
+      let routes=window.router.options.routes;
+        routes[1].children.push({
+                    path: '/mobile/'+path,
+                    replace: true,
+                    component: Lib._import(page),
+                    meta: {
+                      title: '预览',
+                      type: 'preview'
+                    },
+                    keepAlive:true
+                    });
+          window.router.addRoutes(routes);
+          this.$router.push('/mobile/'+path);
+      }else{
+         this.$router.push('/mobile/'+path);
+      }
+   
+    },
     handleSelectMenu: function(key, index) {
       console.log("key", key);
-
+      this.$store.sate.MenuDrawer = false;
       // this.activeIndex=index;
       let keys = key.split("#"),
         path = keys[0],
@@ -92,6 +179,7 @@ export default {
 
       this.open({
         path: "/" + path,
+        page:page,
         status: true,
         type: "BLANK",
         title: title || "标题",

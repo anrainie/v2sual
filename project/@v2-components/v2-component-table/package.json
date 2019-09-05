@@ -82,12 +82,35 @@
             "valueArray": [
               "text",
               "tag",
-              "icon"
+              "icon",
+              "combi"
             ],
             "despArray": [
               "文本",
               "标签映射",
-              "图标映射"
+              "图标文本组合"
+            ]
+          },
+          {
+            "require": {
+              "type": "combi"
+            },
+            "type": "array",
+            "name": "combi",
+            "desp": "图标映射表",
+            "attrInEachElement": [
+              {
+                "name": "value",
+                "desp": "值",
+                "defaultValue": "",
+                "type": "string_input"
+              },
+              {
+                "name": "text",
+                "desp": "图标类名",
+                "defaultValue": "",
+                "type": "string_input"
+              }
             ]
           },
           {
@@ -370,6 +393,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "6.0.3",
+  "version": "6.0.4",
   "index": 30000003
 }
