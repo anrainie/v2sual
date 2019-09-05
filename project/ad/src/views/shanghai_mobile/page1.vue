@@ -6,12 +6,12 @@
     <v2-component-text class="V2Widget" :class="[`hline`]" id="1567508998952" :wid="`1567508998952`" :index="3" :pid="`root`"></v2-component-text>
     <v2-component-text class="V2Widget" :class="[`vline`]" id="1567509400587" :wid="`1567509400587`" :index="4" :pid="`root`"></v2-component-text>
     <v2-component-text class="V2Widget" :class="[`vline`]" id="1567509522568" :wid="`1567509522568`" :index="5" :pid="`root`"></v2-component-text>
-    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:232px;left:53px;width:30%;height:130px;`" id="1567518741368" :wid="`1567518741368`" :index="6" :pid="`root`" :title="`当前排队人数`" :value="`queueInfo.count`" :unit="`人`"></v2-component-title_text>
-    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:232px;left:279.012px;width:30%;height:130px;`" id="1567518711214" :wid="`1567518711214`" :index="7" :pid="`root`" :title="`已处理客户`" :value="`queueInfo.handled`" :unit="`人`"></v2-component-title_text>
-    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:232px;left:504px;width:30%;height:130px;`" id="1567518763418" :wid="`1567518763418`" :index="8" :pid="`root`" :title="`等待最长耗时`" :value="`queueInfo.most_wait`" :unit="`分钟`"></v2-component-title_text>
-    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:362px;left:53px;width:30%;height:130px;`" id="1567518718515" :wid="`1567518718515`" :index="9" :pid="`root`" :title="`平均等待耗时`" :value="`queueInfo.aveage_wait`" :unit="`分钟`"></v2-component-title_text>
-    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:362px;left:279px;width:30%;height:130px;`" id="1567518805393" :wid="`1567518805393`" :index="10" :pid="`root`" :title="`上月等待耗时`" :value="`queueInfo.last_mon_aveage_wait`" :unit="`分钟`"></v2-component-title_text>
-    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:362px;left:504px;width:30%;height:130px;`" id="1567518726498" :wid="`1567518726498`" :index="11" :pid="`root`" :title="`当前弃号率`" :value="`queueInfo.lost_rare`" :unit="`%`"></v2-component-title_text>
+    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:232px;left:53px;width:30%;height:130px;`" id="1567518741368" :wid="`1567518741368`" :index="6" :pid="`root`" :title="`当前排队人数`" :value="queueInfo.count" :unit="`人`"></v2-component-title_text>
+    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:232px;left:279.012px;width:30%;height:130px;`" id="1567518711214" :wid="`1567518711214`" :index="7" :pid="`root`" :title="`已处理客户`" :value="queueInfo.handled" :unit="`人`"></v2-component-title_text>
+    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:232px;left:504px;width:30%;height:130px;`" id="1567518763418" :wid="`1567518763418`" :index="8" :pid="`root`" :title="`等待最长耗时`" :value="queueInfo.most_wait" :unit="`分钟`"></v2-component-title_text>
+    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:362px;left:53px;width:30%;height:130px;`" id="1567518718515" :wid="`1567518718515`" :index="9" :pid="`root`" :title="`平均等待耗时`" :value="queueInfo.aveage_wait" :unit="`分钟`"></v2-component-title_text>
+    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:362px;left:279px;width:30%;height:130px;`" id="1567518805393" :wid="`1567518805393`" :index="10" :pid="`root`" :title="`上月等待耗时`" :value="queueInfo.last_mon_aveage_wait" :unit="`分钟`"></v2-component-title_text>
+    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:362px;left:504px;width:30%;height:130px;`" id="1567518726498" :wid="`1567518726498`" :index="11" :pid="`root`" :title="`当前弃号率`" :value="queueInfo.lost_rare" :unit="`%`"></v2-component-title_text>
     <v2-component-text class="V2Widget" :class="[`s_m_panel`]" id="1567522955457" :wid="`1567522955457`" :index="12" :pid="`root`"></v2-component-text>
     <v2-component-text class="V2Widget" :class="[`title2`]" id="1567522962048" :wid="`1567522962048`" :index="13" :pid="`root`"></v2-component-text>
     <v2-component-image class="V2Widget" id="1567523061139" :wid="`1567523061139`" :index="14" :pid="`root`"></v2-component-image>
@@ -47,26 +47,12 @@ export default {
                     },
                     "children": [{
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
-                        "text": "",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "s_m_bg",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -79,15 +65,10 @@ export default {
                         "pid": "root",
                         "animate": ["", "animated"]
                     }, {
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-s_m_header",
                         "href": "v2-component-s_m_header",
                         "cptpath": "\\src\\views\\_customWidget\\s_m_header.vue",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -101,32 +82,17 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
-                        "text": "",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "s_m_panel",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
                             "top": "198px",
                             "left": "22px",
-                            "width": "",
                             "height": "322px"
                         },
                         "id": 1567507254912,
@@ -134,99 +100,53 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
-                        "text": "",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "hline",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
-                            "position": "",
                             "top": "356",
                             "left": "7%",
-                            "width": "86%",
-                            "height": ""
+                            "width": "86%"
                         },
                         "id": 1567508998952,
                         "pid": "root",
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
-                        "text": "",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "vline",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
                             "top": "232px",
                             "left": "33.33%",
-                            "height": "260px",
-                            "width": ""
+                            "height": "260px"
                         },
                         "id": 1567509400587,
                         "pid": "root",
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
-                        "text": "",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "vline",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
                             "top": "232px",
                             "left": "66%",
-                            "height": "260px",
-                            "width": ""
+                            "height": "260px"
                         },
                         "id": 1567509522568,
                         "pid": "root",
@@ -237,15 +157,10 @@ export default {
                             "value": "queueInfo.count",
                             "unit": "人"
                         },
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-title_text",
                         "href": "v2-component-title_text",
                         "cptpath": "\\src\\views\\_customWidget\\title_text.vue",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -263,15 +178,10 @@ export default {
                             "value": "queueInfo.handled",
                             "unit": "人"
                         },
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-title_text",
                         "href": "v2-component-title_text",
                         "cptpath": "\\src\\views\\_customWidget\\title_text.vue",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -289,15 +199,10 @@ export default {
                             "value": "queueInfo.most_wait",
                             "unit": "分钟"
                         },
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-title_text",
                         "href": "v2-component-title_text",
                         "cptpath": "\\src\\views\\_customWidget\\title_text.vue",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -315,15 +220,10 @@ export default {
                             "value": "queueInfo.aveage_wait",
                             "unit": "分钟"
                         },
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-title_text",
                         "href": "v2-component-title_text",
                         "cptpath": "\\src\\views\\_customWidget\\title_text.vue",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -341,15 +241,10 @@ export default {
                             "value": "queueInfo.last_mon_aveage_wait",
                             "unit": "分钟"
                         },
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-title_text",
                         "href": "v2-component-title_text",
                         "cptpath": "\\src\\views\\_customWidget\\title_text.vue",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -367,15 +262,10 @@ export default {
                             "value": "queueInfo.lost_rare",
                             "unit": "%"
                         },
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-title_text",
                         "href": "v2-component-title_text",
                         "cptpath": "\\src\\views\\_customWidget\\title_text.vue",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -389,26 +279,12 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
-                        "text": "",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "s_m_panel",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -422,26 +298,13 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "上海地区TOP10",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title2",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -452,39 +315,20 @@ export default {
                         "pid": "root",
                         "animate": ["", "animated"]
                     }, {
-                        "children": [],
                         "component": "v2-component-image",
                         "commonStyle": {
                             "position": "absolute",
                             "top": "592px",
                             "right": "18%",
-                            "left": "",
-                            "bottom": "",
                             "width": "24px",
                             "height": "24px",
-                            "padding-top": "",
-                            "padding-bottom": "",
-                            "padding-left": "",
-                            "padding-right": "",
-                            "margin-top": "",
-                            "margin-bottom": "",
-                            "margin-left": "",
-                            "margin-right": "",
-                            "font-size": "",
-                            "color": "",
-                            "animation-duration": "1s",
-                            "animation-delay": ""
+                            "animation-duration": "1s"
                         },
-                        "ctnClass": "",
-                        "customClass": "",
                         "events": {},
                         "href": "v2-component-image",
                         "src": "img/形状 8.png",
-                        "fixation": false,
                         "style": {},
                         "__capacity": "1",
-                        "__loopTarget": "",
-                        "__type": "",
                         "icon": "iconkapian",
                         "name": "图片",
                         "type": "component",
@@ -493,32 +337,17 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "按等待数",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "filter_text",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
                             "top": "591px",
-                            "left": "",
-                            "padding-right": "",
                             "right": "6%",
                             "width": "80px"
                         },
@@ -527,205 +356,119 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "theme": {
-                            "tableType": "border",
-                            "size": ""
+                            "tableType": "border"
                         },
                         "columns": [{
                             "active": true,
                             "prop": "columns0",
-                            "label": "",
-                            "fixed": "",
-                            "width": "",
-                            "sortable": false,
-                            "openFilter": false,
                             "type": "text",
                             "tagMap": [{
                                 "active": "true",
-                                "value": "",
-                                "text": "",
                                 "type": "text"
                             }],
                             "iconMap": [{
-                                "active": "true",
-                                "value": "",
-                                "text": ""
+                                "active": "true"
                             }],
                             "filterMap": [{
-                                "active": "true",
-                                "text": "",
-                                "value": ""
+                                "active": "true"
                             }]
                         }, {
                             "active": true,
                             "prop": "name",
                             "label": "网点名称",
-                            "fixed": "",
-                            "width": "",
-                            "sortable": false,
-                            "openFilter": false,
                             "type": "text",
                             "tagMap": [{
                                 "active": "true",
-                                "value": "",
-                                "text": "",
                                 "type": "text"
                             }],
                             "iconMap": [{
-                                "active": "true",
-                                "value": "",
-                                "text": ""
+                                "active": "true"
                             }],
                             "filterMap": [{
-                                "active": "true",
-                                "text": "",
-                                "value": ""
+                                "active": "true"
                             }]
                         }, {
                             "active": true,
                             "prop": "d1",
                             "label": "处理数",
-                            "fixed": "",
-                            "width": "",
-                            "sortable": false,
-                            "openFilter": false,
                             "type": "text",
                             "tagMap": [{
                                 "active": "true",
-                                "value": "",
-                                "text": "",
                                 "type": "text"
                             }],
                             "iconMap": [{
-                                "active": "true",
-                                "value": "",
-                                "text": ""
+                                "active": "true"
                             }],
                             "filterMap": [{
-                                "active": "true",
-                                "text": "",
-                                "value": ""
+                                "active": "true"
                             }]
                         }, {
                             "active": true,
                             "prop": "d2",
                             "label": "等待数",
-                            "fixed": "",
-                            "width": "",
-                            "sortable": false,
-                            "openFilter": false,
                             "type": "text",
                             "tagMap": [{
                                 "active": "true",
-                                "value": "",
-                                "text": "",
                                 "type": "text"
                             }],
                             "iconMap": [{
-                                "active": "true",
-                                "value": "",
-                                "text": ""
+                                "active": "true"
                             }],
                             "filterMap": [{
-                                "active": "true",
-                                "text": "",
-                                "value": ""
+                                "active": "true"
                             }]
                         }, {
                             "active": true,
                             "prop": "d3",
                             "label": "等待耗时",
-                            "fixed": "",
-                            "width": "",
-                            "sortable": false,
-                            "openFilter": false,
                             "type": "text",
                             "tagMap": [{
                                 "active": "true",
-                                "value": "",
-                                "text": "",
                                 "type": "text"
                             }],
                             "iconMap": [{
-                                "active": "true",
-                                "value": "",
-                                "text": ""
+                                "active": "true"
                             }],
                             "filterMap": [{
-                                "active": "true",
-                                "text": "",
-                                "value": ""
+                                "active": "true"
                             }]
                         }, {
                             "active": true,
                             "prop": "d4",
                             "label": "最长耗时",
-                            "fixed": "",
-                            "width": "",
-                            "sortable": false,
-                            "openFilter": false,
                             "type": "text",
                             "tagMap": [{
                                 "active": "true",
-                                "value": "",
-                                "text": "",
                                 "type": "text"
                             }],
                             "iconMap": [{
-                                "active": "true",
-                                "value": "",
-                                "text": ""
+                                "active": "true"
                             }],
                             "filterMap": [{
-                                "active": "true",
-                                "text": "",
-                                "value": ""
+                                "active": "true"
                             }]
                         }, {
                             "active": true,
                             "prop": "d5",
                             "label": "上月排名",
-                            "fixed": "",
-                            "width": "",
-                            "sortable": false,
-                            "openFilter": false,
                             "type": "text",
                             "tagMap": [{
                                 "active": "true",
-                                "value": "",
-                                "text": "",
                                 "type": "text"
                             }],
                             "iconMap": [{
-                                "active": "true",
-                                "value": "",
-                                "text": ""
+                                "active": "true"
                             }],
                             "filterMap": [{
-                                "active": "true",
-                                "text": "",
-                                "value": ""
+                                "active": "true"
                             }]
                         }],
-                        "selection": "",
-                        "openIndex": false,
-                        "toolBar": false,
-                        "toolTitle": "",
                         "toolLocation": "right",
                         "toolWidth": "0",
-                        "toolBtns": [],
-                        "tHeight": "",
-                        "tMaxHeight": "",
                         "tableData": "${top10}",
-                        "expand": false,
-                        "expandMap": "",
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-table",
                         "href": "v2-component-table",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -737,30 +480,15 @@ export default {
                         },
                         "id": 1567523202055,
                         "pid": "root",
-                        "animate": ["", "animated"],
-                        "openPage": false
+                        "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
-                        "text": "",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "s_m_panel",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -774,26 +502,13 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "异地TOP5",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title2",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -805,31 +520,17 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "按等待数",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "filter_text",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
                             "top": "1390px",
-                            "left": "",
                             "right": "6%",
                             "width": "80px"
                         },
@@ -837,39 +538,20 @@ export default {
                         "pid": "root",
                         "animate": ["", "animated"]
                     }, {
-                        "children": [],
                         "component": "v2-component-image",
                         "commonStyle": {
                             "position": "absolute",
                             "top": "1392px",
                             "right": "18%",
-                            "left": "",
-                            "bottom": "",
                             "width": "24px",
                             "height": "24px",
-                            "padding-top": "",
-                            "padding-bottom": "",
-                            "padding-left": "",
-                            "padding-right": "",
-                            "margin-top": "",
-                            "margin-bottom": "",
-                            "margin-left": "",
-                            "margin-right": "",
-                            "font-size": "",
-                            "color": "",
-                            "animation-duration": "1s",
-                            "animation-delay": ""
+                            "animation-duration": "1s"
                         },
-                        "ctnClass": "",
-                        "customClass": "",
                         "events": {},
                         "href": "v2-component-image",
                         "src": "img/形状 8.png",
-                        "fixation": false,
                         "style": {},
                         "__capacity": "1",
-                        "__loopTarget": "",
-                        "__type": "",
                         "icon": "iconkapian",
                         "name": "图片",
                         "type": "component",
@@ -878,205 +560,118 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "theme": {
-                            "tableType": "border",
-                            "size": ""
+                            "tableType": "border"
                         },
                         "columns": [{
                             "active": true,
                             "prop": "columns0",
-                            "label": "",
-                            "fixed": "",
-                            "width": "",
-                            "sortable": false,
-                            "openFilter": false,
                             "type": "text",
                             "tagMap": [{
                                 "active": "true",
-                                "value": "",
-                                "text": "",
                                 "type": "text"
                             }],
                             "iconMap": [{
-                                "active": "true",
-                                "value": "",
-                                "text": ""
+                                "active": "true"
                             }],
                             "filterMap": [{
-                                "active": "true",
-                                "text": "",
-                                "value": ""
+                                "active": "true"
                             }]
                         }, {
                             "active": true,
                             "prop": "name",
                             "label": "网点名称",
-                            "fixed": "",
-                            "width": "",
-                            "sortable": false,
-                            "openFilter": false,
                             "type": "text",
                             "tagMap": [{
                                 "active": "true",
-                                "value": "",
-                                "text": "",
                                 "type": "text"
                             }],
                             "iconMap": [{
-                                "active": "true",
-                                "value": "",
-                                "text": ""
+                                "active": "true"
                             }],
                             "filterMap": [{
-                                "active": "true",
-                                "text": "",
-                                "value": ""
+                                "active": "true"
                             }]
                         }, {
                             "active": true,
                             "prop": "d1",
                             "label": "处理数",
-                            "fixed": "",
-                            "width": "",
-                            "sortable": false,
-                            "openFilter": false,
                             "type": "text",
                             "tagMap": [{
                                 "active": "true",
-                                "value": "",
-                                "text": "",
                                 "type": "text"
                             }],
                             "iconMap": [{
-                                "active": "true",
-                                "value": "",
-                                "text": ""
+                                "active": "true"
                             }],
                             "filterMap": [{
-                                "active": "true",
-                                "text": "",
-                                "value": ""
+                                "active": "true"
                             }]
                         }, {
                             "active": true,
                             "prop": "d2",
                             "label": "等待数",
-                            "fixed": "",
-                            "width": "",
-                            "sortable": false,
-                            "openFilter": false,
                             "type": "text",
                             "tagMap": [{
                                 "active": "true",
-                                "value": "",
-                                "text": "",
                                 "type": "text"
                             }],
                             "iconMap": [{
-                                "active": "true",
-                                "value": "",
-                                "text": ""
+                                "active": "true"
                             }],
                             "filterMap": [{
-                                "active": "true",
-                                "text": "",
-                                "value": ""
+                                "active": "true"
                             }]
                         }, {
                             "active": true,
                             "prop": "d3",
                             "label": "等待耗时",
-                            "fixed": "",
-                            "width": "",
-                            "sortable": false,
-                            "openFilter": false,
                             "type": "text",
                             "tagMap": [{
                                 "active": "true",
-                                "value": "",
-                                "text": "",
                                 "type": "text"
                             }],
                             "iconMap": [{
-                                "active": "true",
-                                "value": "",
-                                "text": ""
+                                "active": "true"
                             }],
                             "filterMap": [{
-                                "active": "true",
-                                "text": "",
-                                "value": ""
+                                "active": "true"
                             }]
                         }, {
                             "active": true,
                             "prop": "d4",
                             "label": "最长耗时",
-                            "fixed": "",
-                            "width": "",
-                            "sortable": false,
-                            "openFilter": false,
                             "type": "text",
                             "tagMap": [{
                                 "active": "true",
-                                "value": "",
-                                "text": "",
                                 "type": "text"
                             }],
                             "iconMap": [{
-                                "active": "true",
-                                "value": "",
-                                "text": ""
+                                "active": "true"
                             }],
                             "filterMap": [{
-                                "active": "true",
-                                "text": "",
-                                "value": ""
+                                "active": "true"
                             }]
                         }, {
                             "active": true,
                             "prop": "d5",
                             "label": "上月排名",
-                            "fixed": "",
-                            "width": "",
-                            "sortable": false,
-                            "openFilter": false,
                             "type": "text",
                             "tagMap": [{
                                 "active": "true",
-                                "value": "",
-                                "text": "",
                                 "type": "text"
                             }],
                             "iconMap": [{
-                                "active": "true",
-                                "value": "",
-                                "text": ""
+                                "active": "true"
                             }],
                             "filterMap": [{
-                                "active": "true",
-                                "text": "",
-                                "value": ""
+                                "active": "true"
                             }]
                         }],
-                        "selection": "",
-                        "openIndex": false,
-                        "toolBar": false,
-                        "toolTitle": "",
                         "toolLocation": "right",
-                        "toolWidth": "",
-                        "toolBtns": [],
-                        "tHeight": "",
-                        "tMaxHeight": "",
                         "tableData": "${top5}",
-                        "expand": false,
-                        "expandMap": "",
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-table",
                         "href": "v2-component-table",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -1088,683 +683,11 @@ export default {
                         },
                         "id": 1567523887255,
                         "pid": "root",
-                        "animate": ["", "animated"],
-                        "openPage": false
+                        "animate": ["", "animated"]
                     }],
-                    "ctnStyle": [{
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }],
-                    "ctnClass": "",
-                    "customClass": "",
+                    "ctnStyle": [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
                     "commonStyle": {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "font-size": "",
-                        "color": "",
-                        "animation-duration": "1s",
-                        "animation-delay": ""
+                        "animation-duration": "1s"
                     },
                     "animate": ["", "animated"]
                 }

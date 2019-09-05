@@ -13,12 +13,12 @@
     <v2-component-echart class="V2Widget" id="1567580258936" :wid="`1567580258936`" :index="10" :pid="`root`"></v2-component-echart>
     <v2-component-text class="V2Widget" :class="[`s_m_panel`]" id="1567580561765" :wid="`1567580561765`" :index="11" :pid="`root`"></v2-component-text>
     <v2-component-text class="V2Widget" :class="[`title3`]" id="1567580577032" :wid="`1567580577032`" :index="12" :pid="`root`"></v2-component-text>
-    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:85rem;left:7%;width:30%;height:13rem;`" id="1567580762574" :wid="`1567580762574`" :index="13" :pid="`root`" :title="`当前排队人数`" :value="`queueInfo.count`" :unit="`人`"></v2-component-title_text>
-    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:85rem;left:37%;width:30%;height:13rem;`" id="1567580827875" :wid="`1567580827875`" :index="14" :pid="`root`" :title="`已处理客户`" :value="`queueInfo.handled`" :unit="`人`"></v2-component-title_text>
-    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:85rem;left:67%;width:30%;height:13rem;`" id="1567580888595" :wid="`1567580888595`" :index="15" :pid="`root`" :title="`等待最长耗时`" :value="`queueInfo.most_wait`" :unit="`分钟`"></v2-component-title_text>
-    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:98rem;left:7%;width:30%;height:13rem;`" id="1567580822073" :wid="`1567580822073`" :index="16" :pid="`root`" :title="`平均等待耗时`" :value="`queueInfo.aveage_wait`" :unit="`分钟`"></v2-component-title_text>
-    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:98rem;left:37%;width:30%;height:13rem;`" id="1567580864448" :wid="`1567580864448`" :index="17" :pid="`root`" :title="`上月等待耗时`" :value="`queueInfo.last_mon_aveage_wait`" :unit="`分钟`"></v2-component-title_text>
-    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:98rem;left:67%;width:30%;height:13rem;`" id="1567580885694" :wid="`1567580885694`" :index="18" :pid="`root`" :title="`当前弃号率`" :value="`queueInfo.lost_rare`" :unit="`%`"></v2-component-title_text>
+    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:85rem;left:7%;width:30%;height:130px;`" id="1567580762574" :wid="`1567580762574`" :index="13" :pid="`root`" :title="`当前排队人数`" :value="queueInfo.count" :unit="`人`"></v2-component-title_text>
+    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:85rem;left:37%;width:30%;height:130px;`" id="1567580827875" :wid="`1567580827875`" :index="14" :pid="`root`" :title="`已处理客户`" :value="queueInfo.handled" :unit="`人`"></v2-component-title_text>
+    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:85rem;left:67%;width:30%;height:130px;`" id="1567580888595" :wid="`1567580888595`" :index="15" :pid="`root`" :title="`等待最长耗时`" :value="queueInfo.most_wait" :unit="`分钟`"></v2-component-title_text>
+    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:98rem;left:7%;width:30%;height:130px;`" id="1567580822073" :wid="`1567580822073`" :index="16" :pid="`root`" :title="`平均等待耗时`" :value="queueInfo.aveage_wait" :unit="`分钟`"></v2-component-title_text>
+    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:98rem;left:37%;width:30%;height:130px;`" id="1567580864448" :wid="`1567580864448`" :index="17" :pid="`root`" :title="`上月等待耗时`" :value="queueInfo.last_mon_aveage_wait" :unit="`分钟`"></v2-component-title_text>
+    <v2-component-title_text class="V2Widget" :style="`position:absolute;top:98rem;left:67%;width:30%;height:130px;`" id="1567580885694" :wid="`1567580885694`" :index="18" :pid="`root`" :title="`当前弃号率`" :value="queueInfo.lost_rare" :unit="`%`"></v2-component-title_text>
     <v2-component-text class="V2Widget" :class="[`hline`]" id="1567580998595" :wid="`1567580998595`" :index="19" :pid="`root`"></v2-component-text>
     <v2-component-text class="V2Widget" :class="[`vline`]" id="1567581186926" :wid="`1567581186926`" :index="20" :pid="`root`"></v2-component-text>
     <v2-component-text class="V2Widget" :class="[`vline`]" id="1567581305073" :wid="`1567581305073`" :index="21" :pid="`root`"></v2-component-text>
@@ -27,9 +27,9 @@
     <v2-component-s_m_device class="V2Widget" :style="`position:absolute;top:1246px;left:80px;width:32rem;height:9rem;`" id="1567582328457" :wid="`1567582328457`" :index="24" :pid="`root`" :img="`img/device1.png`" :title="`完好率`" :value="intactRare"></v2-component-s_m_device>
     <v2-component-s_m_device class="V2Widget" :style="`position:absolute;top:1246px;left:409px;width:32rem;height:9rem;`" id="1567582340860" :wid="`1567582340860`" :index="25" :pid="`root`" :img="`img/device2.png`" :title="`开机率`" :value="openRare"></v2-component-s_m_device>
     <v2-component-text class="V2Widget" :class="[`vline`]" id="1567582274935" :wid="`1567582274935`" :index="26" :pid="`root`"></v2-component-text>
-    <v2-component-s_m_device_panel class="V2Widget" :style="['s_m_panel','s_m_gradient1']" id="1567584956233" :wid="`1567584956233`" :index="27" :pid="`root`" :img="`img/s_m_dev2.png`" :name="`CDS`" :number="`cdsData.number`" :intact_number="`cdsData.intact_number`" :intact_rare="`cdsData.intact_rare`" :open_number="`cdsData.open_number`" :open_rare="`cdsData.open_rare`"></v2-component-s_m_device_panel>
-    <v2-component-s_m_device_panel class="V2Widget" :style="['s_m_panel','s_m_gradient2']" id="1567585497436" :wid="`1567585497436`" :index="28" :pid="`root`" :img="`img/s_m_dev1.png`" :name="`ATM`" :number="`atmData.number`" :intact_number="`atmData.intact_number`" :intact_rare="`atmData.intact_rare`" :open_number="`atmData.open_number`" :open_rare="`atmData.open_rare`"></v2-component-s_m_device_panel>
-    <v2-component-s_m_device_panel class="V2Widget" :style="['s_m_panel','s_m_gradient3']" id="1567585741167" :wid="`1567585741167`" :index="29" :pid="`root`" :img="`img/s_m_dev3.png`" :name="`ITM`" :number="`itmData.number`" :intact_number="`itmData.intact_number`" :intact_rare="`itmData.intact_rare`" :open_number="`itmData.open_number`" :open_rare="`itmData.open_rare`"></v2-component-s_m_device_panel>
+    <v2-component-s_m_device_panel class="V2Widget" :style="['s_m_panel','s_m_gradient1']" id="1567584956233" :wid="`1567584956233`" :index="27" :pid="`root`" :img="`img/s_m_dev2.png`" :name="`CDS`" :number="cdsData.number" :intact_number="cdsData.intact_number" :intact_rare="cdsData.intact_rare" :open_number="cdsData.open_number" :open_rare="cdsData.open_rare"></v2-component-s_m_device_panel>
+    <v2-component-s_m_device_panel class="V2Widget" :style="['s_m_panel','s_m_gradient2']" id="1567585497436" :wid="`1567585497436`" :index="28" :pid="`root`" :img="`img/s_m_dev1.png`" :name="`ATM`" :number="atmData.number" :intact_number="atmData.intact_number" :intact_rare="atmData.intact_rare" :open_number="atmData.open_number" :open_rare="atmData.open_rare"></v2-component-s_m_device_panel>
+    <v2-component-s_m_device_panel class="V2Widget" :style="['s_m_panel','s_m_gradient3']" id="1567585741167" :wid="`1567585741167`" :index="29" :pid="`root`" :img="`img/s_m_dev3.png`" :name="`ITM`" :number="itmData.number" :intact_number="itmData.intact_number" :intact_rare="itmData.intact_rare" :open_number="itmData.open_number" :open_rare="itmData.open_rare"></v2-component-s_m_device_panel>
     <v2-component-text class="V2Widget" :class="[`s_m_panel`]" id="1567585873099" :wid="`1567585873099`" :index="30" :pid="`root`"></v2-component-text>
     <v2-component-text class="V2Widget" :class="[`title2`]" id="1567585929565" :wid="`1567585929565`" :index="31" :pid="`root`"></v2-component-text>
     <v2-component-text class="V2Widget" :class="[`title1`]" id="1567585915070" :wid="`1567585915070`" :index="32" :pid="`root`"></v2-component-text>
@@ -73,15 +73,10 @@ export default {
                         "height": "100%"
                     },
                     "children": [{
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-s_m_header",
                         "href": "v2-component-s_m_header",
                         "cptpath": "\\src\\views\\_customWidget\\s_m_header.vue",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -95,71 +90,36 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
-                        "text": "",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "s_m_panel",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
                             "top": "20rem",
-                            "left": "",
-                            "width": "",
                             "height": "12rem"
                         },
                         "id": 1567579249972,
                         "pid": "root",
                         "animate": ["", "animated"]
                     }, {
-                        "children": [],
                         "component": "v2-component-image",
                         "commonStyle": {
                             "position": "absolute",
                             "top": "24rem",
-                            "right": "",
                             "left": "53.33%",
-                            "bottom": "",
                             "width": "4rem",
                             "height": "4rem",
-                            "padding-top": "",
-                            "padding-bottom": "",
-                            "padding-left": "",
-                            "padding-right": "",
-                            "margin-top": "",
-                            "margin-bottom": "",
-                            "margin-left": "",
-                            "margin-right": "",
-                            "font-size": "",
-                            "color": "",
-                            "animation-duration": "1s",
-                            "animation-delay": ""
+                            "animation-duration": "1s"
                         },
-                        "ctnClass": "",
-                        "customClass": "",
                         "events": {},
                         "href": "v2-component-image",
                         "src": "img/形状 9.png",
-                        "fixation": false,
                         "style": {},
                         "__capacity": "1",
-                        "__loopTarget": "",
-                        "__type": "",
                         "icon": "iconkapian",
                         "name": "图片",
                         "type": "component",
@@ -168,15 +128,9 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "src": "img/形状 8.png",
-                        "fixation": false,
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-image",
                         "href": "v2-component-image",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -190,26 +144,13 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "今日开户数",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title1",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -221,26 +162,13 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "今日销户数",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title1",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -252,26 +180,13 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "${todayAccOpened}",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "value1",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -285,26 +200,13 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "${todayAccCancel}",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "value1",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -318,32 +220,16 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
-                        "text": "",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "s_m_panel",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
                             "top": "34.5rem",
-                            "left": "",
-                            "width": "",
                             "height": "40rem"
                         },
                         "id": 1567580166167,
@@ -351,26 +237,13 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "近6日开户数趋势",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title2",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -382,14 +255,9 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "configs": "${day6chart}",
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-echart",
                         "href": "v2-component-echart",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -403,32 +271,16 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
-                        "text": "",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "s_m_panel",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
                             "top": "82rem",
-                            "left": "",
-                            "width": "",
                             "height": "322px"
                         },
                         "id": 1567580561765,
@@ -436,31 +288,17 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "客户等待信息",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title3",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
                             "top": "77rem",
-                            "left": "",
                             "width": "100%"
                         },
                         "id": 1567580577032,
@@ -472,22 +310,17 @@ export default {
                             "value": "queueInfo.count",
                             "unit": "人"
                         },
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-title_text",
                         "href": "v2-component-title_text",
                         "cptpath": "\\src\\views\\_customWidget\\title_text.vue",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
                             "top": "85rem",
                             "left": "7%",
                             "width": "30%",
-                            "height": "13rem"
+                            "height": "130px"
                         },
                         "id": 1567580762574,
                         "pid": "root",
@@ -498,22 +331,17 @@ export default {
                             "value": "queueInfo.handled",
                             "unit": "人"
                         },
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-title_text",
                         "href": "v2-component-title_text",
                         "cptpath": "\\src\\views\\_customWidget\\title_text.vue",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
                             "top": "85rem",
                             "left": "37%",
                             "width": "30%",
-                            "height": "13rem"
+                            "height": "130px"
                         },
                         "id": 1567580827875,
                         "pid": "root",
@@ -524,22 +352,17 @@ export default {
                             "value": "queueInfo.most_wait",
                             "unit": "分钟"
                         },
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-title_text",
                         "href": "v2-component-title_text",
                         "cptpath": "\\src\\views\\_customWidget\\title_text.vue",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
                             "top": "85rem",
                             "left": "67%",
                             "width": "30%",
-                            "height": "13rem"
+                            "height": "130px"
                         },
                         "id": 1567580888595,
                         "pid": "root",
@@ -550,22 +373,17 @@ export default {
                             "value": "queueInfo.aveage_wait",
                             "unit": "分钟"
                         },
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-title_text",
                         "href": "v2-component-title_text",
                         "cptpath": "\\src\\views\\_customWidget\\title_text.vue",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
                             "top": "98rem",
                             "left": "7%",
                             "width": "30%",
-                            "height": "13rem"
+                            "height": "130px"
                         },
                         "id": 1567580822073,
                         "pid": "root",
@@ -576,22 +394,17 @@ export default {
                             "value": "queueInfo.last_mon_aveage_wait",
                             "unit": "分钟"
                         },
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-title_text",
                         "href": "v2-component-title_text",
                         "cptpath": "\\src\\views\\_customWidget\\title_text.vue",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
                             "top": "98rem",
                             "left": "37%",
                             "width": "30%",
-                            "height": "13rem"
+                            "height": "130px"
                         },
                         "id": 1567580864448,
                         "pid": "root",
@@ -602,48 +415,29 @@ export default {
                             "value": "queueInfo.lost_rare",
                             "unit": "%"
                         },
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-title_text",
                         "href": "v2-component-title_text",
                         "cptpath": "\\src\\views\\_customWidget\\title_text.vue",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
                             "top": "98rem",
                             "left": "67%",
                             "width": "30%",
-                            "height": "13rem"
+                            "height": "130px"
                         },
                         "id": 1567580885694,
                         "pid": "root",
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
-                        "text": "",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "hline",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -656,26 +450,12 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
-                        "text": "",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "vline",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -688,26 +468,12 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
-                        "text": "",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "vline",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "fixed",
@@ -720,26 +486,13 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "自助设备信息",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title3",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -752,32 +505,16 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
-                        "text": "",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "s_m_panel",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
                             "top": "122rem",
-                            "left": "",
-                            "width": "",
                             "height": "16rem"
                         },
                         "id": 1567582042617,
@@ -789,15 +526,10 @@ export default {
                             "title": "完好率",
                             "value": "intactRare"
                         },
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-s_m_device",
                         "href": "v2-component-s_m_device",
                         "cptpath": "\\src\\views\\_customWidget\\s_m_device.vue",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -815,15 +547,10 @@ export default {
                             "title": "开机率",
                             "value": "openRare"
                         },
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-s_m_device",
                         "href": "v2-component-s_m_device",
                         "cptpath": "\\src\\views\\_customWidget\\s_m_device.vue",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -837,26 +564,12 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
-                        "text": "",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "vline",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -878,15 +591,10 @@ export default {
                             "open_number": "cdsData.open_number",
                             "open_rare": "cdsData.open_rare"
                         },
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-s_m_device_panel",
                         "href": "v2-component-s_m_device_panel",
                         "cptpath": "\\src\\views\\_customWidget\\s_m_device_panel.vue",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -909,20 +617,14 @@ export default {
                             "open_number": "atmData.open_number",
                             "open_rare": "atmData.open_rare"
                         },
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-s_m_device_panel",
                         "href": "v2-component-s_m_device_panel",
                         "cptpath": "\\src\\views\\_customWidget\\s_m_device_panel.vue",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
                             "top": "160rem",
-                            "left": "",
                             "width": "100%",
                             "height": "13rem"
                         },
@@ -940,15 +642,10 @@ export default {
                             "open_number": "itmData.open_number",
                             "open_rare": "itmData.open_rare"
                         },
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-s_m_device_panel",
                         "href": "v2-component-s_m_device_panel",
                         "cptpath": "\\src\\views\\_customWidget\\s_m_device_panel.vue",
-                        "children": [],
                         "events": {
                             "_root": {},
                             "mountpoint": {}
@@ -965,32 +662,16 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
-                        "text": "",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "s_m_panel",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
                             "top": "190rem",
-                            "left": "",
-                            "width": "",
                             "height": "33rem"
                         },
                         "id": 1567585873099,
@@ -998,26 +679,13 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "设备交易占比",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title2",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -1029,26 +697,13 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "交易总量",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title1",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -1060,60 +715,32 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "${tradeTotal}",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title1",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
                             "top": "192rem",
                             "left": "77%",
-                            "width": "15rem",
-                            "height": "",
-                            "right": ""
+                            "width": "15rem"
                         },
                         "id": 1567586000000,
                         "pid": "root",
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "设备",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title1",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -1125,26 +752,13 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "交易量",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title1",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -1156,26 +770,13 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "环比",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title1",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -1187,15 +788,9 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "src": "img/3dPane.png",
-                        "fixation": false,
-                        "ctnClass": "",
-                        "customClass": "",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-image",
                         "href": "v2-component-image",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -1209,26 +804,13 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "CDS",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title3",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -1240,26 +822,13 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "ATM",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title3",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -1271,26 +840,13 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "ITM",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title3",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -1302,26 +858,13 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "${cdsTrade}",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title3",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -1334,26 +877,13 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "${atmTrade}",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title3",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -1366,26 +896,13 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "${itmTrade}",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title3",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -1398,32 +915,18 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "${cdsChainRatio}",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title3,grow,alignRight",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
                             "top": "205rem",
                             "left": "30rem",
-                            "font-size": "",
                             "width": "120px",
                             "height": "28px"
                         },
@@ -1432,26 +935,13 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "${atmChainRatio}",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title3,reduce,alignRight",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -1464,26 +954,13 @@ export default {
                         "animate": ["", "animated"]
                     }, {
                         "style": {
-                            "textStyle": {
-                                "height": "",
-                                "width": "",
-                                "line-height": "",
-                                "font-family": "",
-                                "font-weight": "",
-                                "font-style": "",
-                                "text-decoration": ""
-                            }
+                            "textStyle": {}
                         },
                         "text": "${itmChainRatio}",
-                        "editable": false,
-                        "ctnClass": "",
                         "customClass": "title3,grow,alignRight",
-                        "__type": "",
-                        "__loopTarget": "",
                         "__capacity": "1",
                         "component": "v2-component-text",
                         "href": "v2-component-text",
-                        "children": [],
                         "events": {},
                         "commonStyle": {
                             "position": "absolute",
@@ -1495,1037 +972,9 @@ export default {
                         "pid": "root",
                         "animate": ["", "animated"]
                     }],
-                    "ctnStyle": [{
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }, {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "text-align": "",
-                        "background-color": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "border-color": "",
-                        "border-width": "",
-                        "border-style": ""
-                    }],
-                    "ctnClass": "",
-                    "customClass": "",
+                    "ctnStyle": [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
                     "commonStyle": {
-                        "position": "",
-                        "top": "",
-                        "right": "",
-                        "left": "",
-                        "bottom": "",
-                        "width": "",
-                        "height": "",
-                        "padding-top": "",
-                        "padding-bottom": "",
-                        "padding-left": "",
-                        "padding-right": "",
-                        "margin-top": "",
-                        "margin-bottom": "",
-                        "margin-left": "",
-                        "margin-right": "",
-                        "font-size": "",
-                        "color": "",
-                        "animation-duration": "1s",
-                        "animation-delay": ""
+                        "animation-duration": "1s"
                     },
                     "animate": ["", "animated"]
                 }
