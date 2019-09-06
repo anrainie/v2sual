@@ -278,3 +278,25 @@ body {
   font-weight:400;
   color:rgba(255,66,76,1);
 }
+.vda-propertion-num{
+  font-size:20px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight:400;
+  color:rgba(239,254,255,1);
+}
+.vda-propertion-text{
+  font-size:16px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight:400;
+  color:rgba(172,207,255,1);
+}
+.vda-text-moreDetail{
+  font-size:14px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight:400;
+  color:rgba(153,197,255,1);
+}.vda-text-moreDetail:hover{
+  text-decoration:underline;
+  color:rgb(245, 255, 153);
+  cursor: pointer;
+}
