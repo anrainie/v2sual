@@ -31,7 +31,7 @@
             "@v2-components/v2-component-text": "^6.0.2",
             "@v2-components/v2-component-text-value": "^6.0.2",
             "@v2-components/v2-component-tree": "^6.0.2",
-            "@v2-components/v2-ctn-order": "^6.0.2",
+            "@v2-components/v2-ctn-order": "^6.0.3",
             "@v2-components/v2-ctn-xy": "^6.0.2",
             "@v2-components/v2-echart-bar": "^6.0.2",
             "@v2-components/v2-echart-line": "^6.0.2",
