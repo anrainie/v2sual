@@ -68,37 +68,7 @@ const exe = (src, target, name) => {
         console.log(stdout);
     });
 }
-const packageComponent = async (tPath, src) => {
 
-        let packageJsonPath = path.join(tPath, `${componentName}/package.json`);
-        if (fs.existsSync(packageJsonPath)) {
-            let content = await readFile(packageJsonPath);
-
-
-            content = JSON.parse(content.toString());
-            let name = content.name.replace('@v2-components/', '');
-
-            let src = `${tPath}/${name}/${content.main}`;
-            let target = `${tPath}/${name}/dist/`;
-
-            let camelCaseName = camelcase(name);
-
-         
-
-             exe(src, target, camelCaseName);
-
-      
-   
-             //自定义组件编辑器
-            if (content.editor) {
-
-                exe(`${tPath}/${name}/${content.editor.path}`, target, content.editor.name);
-
-             }
-
-        }
-
-}
 
 const packagePipe = async (tPath, dir) => {
 
@@ -128,45 +98,23 @@ const packagePipe = async (tPath, dir) => {
 (async () => {
 
 
-    let tPath = "./src/v2Components";//项目级组件
-    let mPath = "../@v2-components";//平台级组件
-    let endPath ="";
+    let tPipePath = "./pipe";//项目级管道
+    let mPipePath = "../pipe";//平台级管道
+    let endPipePath ="";
 
  
-    let distPath1=path.join(tPath,componentName);
-    let distPath2=path.join(mPath,componentName);
+    let distpPath1=path.join(tPipePath,componentName);
+    let distpPath2=path.join(mPipePath,componentName);
 
-    if(fs.existsSync(distPath1)){
-        console.log('项目级组件')
-        endPath = tPath;
-    }else if(fs.existsSync(distPath2)){
-        console.log('平台级组件')
-        endPath = mPath;
+    if(fs.existsSync(distpPath1)){
+        console.log('项目级管道')
+        endPipePath = tPipePath;
+    }else if(fs.existsSync(distpPath2)){
+        console.log('平台级管道')
+        endPipePath = mPipePath;
     }
-
-    let dir = await readdir(endPath);
-    await packageComponent(endPath, dir);
-
-  
-
-
-    // let tPipePath = "./pipe";//项目级管道
-    // let mPipePath = "../pipe";//平台级管道
-    // let endPipePath ="";
-
- 
-    // let distpPath1=path.join(tPipePath,componentName);
-    // let distpPath2=path.join(mPipePath,componentName);
-
-    // if(fs.existsSync(distpPath1)){
-    //     console.log('项目级管道')
-    //     endPipePath = tPipePath;
-    // }else if(fs.existsSync(distpPath2)){
-    //     console.log('平台级管道')
-    //     endPipePath = mPipePath;
-    // }
     
-    // let dir = await readdir(endPipePath);
-    // await packagePipe(endPipePath, dir);
+    let dir = await readdir(endPipePath);
+    await packagePipe(endPipePath, dir);
 
 })()
