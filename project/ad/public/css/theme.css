@@ -95,7 +95,8 @@ body {
 }
 
 .gaueOption{
-  transform:scale(.5)
+  transform:scale(.5);
+  transform-origin:0 0;
 }
 
 .s_gray_panel{

@@ -25,7 +25,7 @@ let formatData = function (val) {
   try {
     let _x;
     eval("_x=" + val)
-    if(!isNaN(_x)&&`${_x}`.length<val.length){
+    if (!isNaN(_x) && `${_x}`.length < val.length) {
       return `\`${val}\``
     }
     return val;
@@ -181,24 +181,14 @@ let appendComponent = function (parent, index, element) {
       }
       //判断输入的类型
       let itemValue = child.dataBasket[item];
-      console.log('before:',itemValue)
-      let arr = itemValue.split('.');
-      if (dataBasketJson[arr[0]] == undefined) {
-        itemValue = formatData(itemValue);
-        console.log('after:',itemValue)
-        console.log();
-        //字符串类型：`字符串`
-        // if (itemValue.startsWith("'") || itemValue.startsWith('"')) {
-        //   itemValue = '`' + itemValue.replace(/"/g, "").replace(/'/g, "") + '`';
-        // } else if (isNumber(itemValue)) {
-        //   //数字暂时不作处理
-        // } else if (itemValue.startsWith('[')) {
-        //   //数组暂时不做处理
-        // } else if (itemValue.startsWith('{')) {
-        //   //json、map暂时不做处理
-        // } else {
-        //   itemValue = '`' + itemValue + '`';
-        // }
+      console.log('before:', itemValue);
+      if (itemValue instanceof String) {
+        let arr = itemValue.split('.');
+        if (dataBasketJson[arr[0]] == undefined) {
+          itemValue = formatData(itemValue);
+          console.log('after:', itemValue)
+          console.log();
+        }
       }
       eCom.setAttribute(':' + item, itemValue);
       //在dom中:key只能为小写，故编译之后需要进行大小写的调整
