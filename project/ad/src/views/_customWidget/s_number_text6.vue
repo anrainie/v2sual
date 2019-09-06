@@ -14,7 +14,7 @@
                   num:{default:()=>{return 24,560}},
 text1:{default:()=>{return `当年签约数`}},
 num_class:{default:()=>{return `vda-h1-num4`}},
-text1_class:{default:()=>{return `vda-h2-text`}},
+text1_class:{default:()=>{return `vda-h2-text2`}},
 bgImg:{default:()=>{return `img/shanghai/s_glassShort.png`}}
                 },
                 mixins:[root,widget,cpt,events,mixins],
