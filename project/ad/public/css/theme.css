@@ -37,6 +37,41 @@ html {
     font-size: 10px;
   }
 }
+@media (min-width: 1000px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media (min-width:1200px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width:1400px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (min-width:1600px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (min-width:1800px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+@media (min-width:2000px) {
+  html {
+    font-size: 22px;
+  }
+}
 
 .text-red {
   color: green;
@@ -45,6 +80,30 @@ html {
 body {
   margin: 0;
 }
+/*PC端样式*/
+
+.s_panel{
+  background: white;
+  box-shadow: 0 0 1px 1px lightgray;
+  margin-left:1rem;
+  margin-top:.5rem;
+  padding-left:1rem;
+  padding-top:1rem;
+  position: absolute;
+  font-weight:bold;
+  border-radius: 0.2rem;
+}
+
+.gaueOption{
+  transform:scale(.5)
+}
+
+.s_gray_panel{
+  background:rgba(242,244,247,1);
+  border-radius:0.3rem;
+}
+
+/*手持端样式*/
 .s_m_panel {
   background: white;
   box-shadow: 0 0 1px 1px lightgray;
