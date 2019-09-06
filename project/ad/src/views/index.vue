@@ -14,19 +14,19 @@
           </footer>
         <!-- 抽屉 -->
         <el-drawer
-          title="菜单"
-          :visible.sync="$store.state.MenuDrawer"
+          title="分行目录"
+          :visible.sync="showDrawer"
           :direction="`ltr`"
+          :show-close="false"
+          :closed ="closedDrawer"
           >
           
-        <el-menu        
-          default-active="2"
-          class="el-menu-vertical-demo"
-          background-color="#152028"
-          text-color="#fff"
- 
-          @select="handleSelectMenu"
-        >
+        <div>
+        <el-menu 
+              default-active="2"
+              class="el-menu-vertical-demo"  
+              @select="handleSelectMenu"
+            >
           <template v-for="item in routerData" v-if="!item.hidden">
             
               <el-submenu  v-if="item.children && item.children.length && !item.isLeaf || (item.isLeaf && item.isRedirect)" :index="item.path+'#'+item.componentUrl+'#'+(item.meta && item.meta.title && item.meta.title)" :key="item.path">
@@ -94,6 +94,8 @@
 
             </template>        
         </el-menu>
+
+        </div>
      
         </el-drawer>
         <!-- 抽屉 end -->
@@ -132,6 +134,7 @@ export default {
     return {
       routerData:JSON.parse(JSON.stringify(getMenuRoutes())),
       sysUserName: "admin",
+      showDrawer:false,
       sysUserAvatar:
         "https://s.gravatar.com/avatar/f30a9191dda93b5389965ed99f57f850?s=50&d=retro",
       // rightClickHandler: null,
@@ -145,6 +148,11 @@ export default {
   mixins:[mixins],
 
   methods: {
+    closedDrawer(){
+       console.log('关闭侧边菜单',this.showDrawer);
+       this.showDrawer = false;
+
+    },
     openPage(path,page){
       this.activeTab = path;
       if(window.router.matcher.match('/mobile/'+path).path=='/404'){
@@ -326,6 +334,11 @@ export default {
   },
   mounted() {
     console.log(this.routerData);
+
+    this.$root.$on('showDrawer',(val)=>{
+
+          this.showDrawer = val;
+    })
     // console.log(this.axios.get())
     // this.initUserInfo();
     // this.initBreadcrumbPath();
@@ -406,6 +419,10 @@ export default {
     }
   },
   watch: {
+    '$store.state.MenuDrawer':(val)=>{
+        debugger;
+       this.showD = val;
+    },
     $route(to, from) {
       let flag = false;
       if (to.meta.type === "BLANK") {

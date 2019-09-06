@@ -9,7 +9,7 @@ const panelSource = 'visualConfPanelController/info/panel';
 const queryDmData = 'visualThemeController/queryDmData';
 const createPanelUrl = 'visualConfPanelController/save/panel'
 const username = 'admin';
-const password = 'agreexian!';
+const password = '888888';
 
 let token = '';
 
