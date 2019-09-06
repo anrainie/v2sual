@@ -176,12 +176,14 @@ let appendComponent = function (parent, index, element) {
   if (child && child.dataBasket && child.__type !== 'loop') {
     for (let item in child.dataBasket) {
       if (!child.dataBasket[item]) {
+        eCom.setAttribute(':' + item, "``");
         continue;
       }
       //判断输入的类型
       let itemValue = child.dataBasket[item];
       console.log('before:',itemValue)
-      if (dataBasketJson[itemValue] == undefined) {
+      let arr = itemValue.split('.');
+      if (dataBasketJson[arr[0]] == undefined) {
         itemValue = formatData(itemValue);
         console.log('after:',itemValue)
         console.log();

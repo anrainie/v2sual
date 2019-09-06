@@ -103,6 +103,14 @@ body {
   line-height: 2.8rem;
   text-align: center;
 }
+.subPageName{
+  font-size:26px;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(189,211,255,1);
+
+}
+
 .filter_text {
   font-size: 2rem;
   font-family: PingFang SC;
@@ -203,4 +211,70 @@ body {
   font-family: RTWS YueGothic G0v1;
   font-weight: 400;
   color: rgba(210, 230, 245, 1);
+}
+.vda-h1-num {
+  font-size: 64px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight: 400;
+  color:rgba(229,247,255,1);
+}
+.vda-h1-num2 {
+  font-size: 52px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight: 400;
+  color:rgba(229,247,255,1);
+}
+.vda-h1-num3 {
+  font-size: 38px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight: 400;
+  color:rgba(227,239,255,1);
+}
+.vda-h1-num4 {
+  font-size: 24px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight: 400;
+  color:rgba(227,239,255,1);
+}
+.vda-h2-text{
+  font-size:18px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight:400;
+  color:rgba(211,231,245,1);
+}
+.vda-h2-text-redBg{
+  background:rgba(255,66,76,1);
+  border-radius:4px;
+  padding:5px 10px;
+  font-size:16px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+}
+.vda-h2-text-greenBg{
+  background:rgba(22,160,96,1);
+  border-radius:4px;
+  padding:5px 10px;
+  font-size:16px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+}
+.vda-h2-text2{
+  font-size:14px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight:400;
+  color:rgba(172,207,255,1);
+}
+.vda-h2-text2-greenFont{
+  font-size:14px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight:400;
+  color:rgba(0,255,255,1);
+}
+.vda-h2-text2-redFont{
+  font-size:14px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight:400;
+  color:rgba(255,66,76,1);
 }
