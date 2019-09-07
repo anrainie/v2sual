@@ -11,7 +11,7 @@ const queryNewDmData = 'visualThemeController/queryNewDmData';
 
 const createPanelUrl = 'visualConfPanelController/save/panel'
 const username = 'admin';
-const password = 'agreexian!';
+const password = '888888'//'agreexian!';
 
 let token = '';
 

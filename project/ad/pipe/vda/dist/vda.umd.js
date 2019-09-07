@@ -1698,7 +1698,8 @@ var queryDmData = 'visualThemeController/queryDmData';
 var queryNewDmData = 'visualThemeController/queryNewDmData';
 var createPanelUrl = 'visualConfPanelController/save/panel';
 var username = 'admin';
-var vda_password = 'agreexian!';
+var vda_password = '888888'; //'agreexian!';
+
 var token = '';
 var fakeData = {
   '网点树': {
