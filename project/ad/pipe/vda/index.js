@@ -11,7 +11,7 @@ const queryNewDmData = 'visualThemeController/queryNewDmData';
 
 const createPanelUrl = 'visualConfPanelController/save/panel'
 const username = 'admin';
-const password = 'agreexian!';
+const password = '888888'//'agreexian!';
 
 let token = '';
 
@@ -399,9 +399,14 @@ export default {
     return token ? new Promise(r => r(token)) : signInFn();
   },
   list() {
-    return axios.post(`${host}/${apiList}`, qs.stringify({
-      token: token
-    }));
+    // return axios.post(`${host}/${apiList}`, qs.stringify({
+    //   token: token
+    // }));
+    return new Promise(r => {
+      r({
+        content: fakeData
+      });
+    });
   },
   data(id) {
     return axios.post(`${host}/${dataPreview}`, qs.stringify({
@@ -433,8 +438,8 @@ export default {
     }))
   },
 
-  paramNewAjax(params, apiName) {
-    return Promise(r => {
+  paramNewAjax(apiName) {
+    return new Promise(r => {
       r({
         content: fakeData[apiName].content
       });

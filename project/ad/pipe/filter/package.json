@@ -6,7 +6,7 @@
         "name": "filter",
         "category": "compositeSource",
         "label": ">",
-        "labelType": "normal",
+        "labelType": "filter",
         "belongTo": "function",
         "params": [
             {

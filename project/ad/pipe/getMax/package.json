@@ -1,12 +1,12 @@
 {
-    "name": "@aweb-pipe/app.mapping",
+    "name": "@aweb-pipe/app.getMax",
     "main": "index.js",
     "docs": {
-        "desp": "映射",
-        "name": "mapping",
+        "desp": "取最大值",
+        "name": "getMax",
         "category": "compositeSource",
         "label": ">",
-        "labelType": "mapping",
+        "labelType": "simpleOperation",
         "belongTo": "function",
         "params": [
             {
