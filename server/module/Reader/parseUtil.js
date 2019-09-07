@@ -182,15 +182,32 @@ let appendComponent = function (parent, index, element) {
       //判断输入的类型
       let itemValue = child.dataBasket[item];
       console.log('before:', itemValue);
-      if (itemValue instanceof String) {
+      if (itemValue.constructor == String) {
         let arr = itemValue.split('.');
+        console.log('  isString', arr, dataBasketJson[arr[0]]);
         if (dataBasketJson[arr[0]] == undefined) {
           itemValue = formatData(itemValue);
           console.log('after:', itemValue)
-          console.log();
         }
+      } else if (itemValue.constructor == Object) {
+        console.log(' isObject');
+      } else if (itemValue.constructor == Array) {
+        console.log(' isArray');
+        let v = '';
+        for (let item of itemValue) {
+          v += "`" + item + "`,";
+        }
+        itemValue = '[' + v + ']'
+      } else if (itemValue.constructor == Number) {
+        console.log(' isNumber');
+      } else {
+        console.log(' isOther', itemValue.constructor)
       }
+
+      console.log(' output| ', ':' + item, itemValue);
+      console.log();
       eCom.setAttribute(':' + item, itemValue);
+      eCom.setAttribute(':test', ['213']);
       //在dom中:key只能为小写，故编译之后需要进行大小写的调整
       if (item != item.toLocaleLowerCase()) {
         let key = ':' + item.toLocaleLowerCase() + '="' + eCom.getAttribute(':' + item) + '"';
@@ -254,7 +271,8 @@ let appendChildren = function (parentJson, element, isContainer) {
   } else {
     let layout = layout_c(parentJson);
     let realSize = parentJson.realSize;
-    for (let i = 0, len = layout.length; i < len; i++) {
+    // for (let i = 0, len = layout.length; i < len; i++) {
+    for (let i = 0, len = parentJson.children.length; i < len; i++) {
       //编译生成el-row和el-col
       let el = null;
       if (parentJson.direction === 'col') {
@@ -265,52 +283,55 @@ let appendChildren = function (parentJson, element, isContainer) {
       let height = null;
       let width = null;
       el.setAttribute('class', 'V2ContainerBlock' + blockClass(i, parentJson));
-      //自定义容器样式ctnClass
-      if (parentJson.children[i] && parentJson.children[i].ctnClass) {
-        let ctnClass = parentJson.children[i].ctnClass;
-        if (ctnClass.startsWith('$')) {
-          ctnClass = ctnClass.substring('2', ctnClass.length - 1)
-        } else {
-          ctnClass = '[' + ctnClass.split(',').map(item => {
-            return '`' + item + '`';
-          }) + ']';
-        }
-        el.setAttribute(':class', ctnClass);
-      }
-      //计算高度：layout[i]+realSize[i]如80+px,50+%
-      if (realSize instanceof Array && realSize[i]) {
-        // 添加输入容器尺寸的功能 100px || calc(30% - 20px) ...
-        let _realSize = realSize[i] === '输入' ? '' : realSize[i];
-        // height = layout[i] + realSize[i];
-        // width = layout[i] + realSize[i];
-        height = layout[i] + _realSize;
-        width = layout[i] + _realSize;
 
-      } else {
-        height = layout instanceof Array ? layout[i] + '%' : '50%';
-        width = layout instanceof Array ? layout[i] + '%' : '50%';
-      }
-      if (parentJson.ctnStyle && parentJson.ctnStyle[i]) {
-        let ctnCss = parentJson.ctnStyle[i];
-        for (let name in ctnCss) {
-          !ctnCss[name] && delete ctnCss[name]
+      if (parentJson.component != 'v2EditorXYCtn') {
+        //自定义容器样式ctnClass
+        if (parentJson.children[i] && parentJson.children[i].ctnClass) {
+          let ctnClass = parentJson.children[i].ctnClass;
+          if (ctnClass.startsWith('$')) {
+            ctnClass = ctnClass.substring('2', ctnClass.length - 1)
+          } else {
+            ctnClass = '[' + ctnClass.split(',').map(item => {
+              return '`' + item + '`';
+            }) + ']';
+          }
+          el.setAttribute(':class', ctnClass);
         }
-        // 去掉容器的百分比尺寸
-        if (parentJson.direction === 'col') {
-          // el.setAttribute('style','height:100%;width:'+ width+';'+JSON.stringify(ctnCss).replace(/[{}]/g,'').replace(/",/g,";").replace(/"/g,""));
-          el.setAttribute('style', 'width:' + width + ';' + JSON.stringify(ctnCss).replace(/[{}]/g, '').replace(/",/g, ";").replace(/"/g, ""));
+        //计算高度：layout[i]+realSize[i]如80+px,50+%
+        if (realSize instanceof Array && realSize[i]) {
+          // 添加输入容器尺寸的功能 100px || calc(30% - 20px) ...
+          let _realSize = realSize[i] === '输入' ? '' : realSize[i];
+          // height = layout[i] + realSize[i];
+          // width = layout[i] + realSize[i];
+          height = layout[i] + _realSize;
+          width = layout[i] + _realSize;
+
         } else {
-          // el.setAttribute('style','height:'+ height + ';width:100%;'+JSON.stringify(ctnCss).replace(/[{}]/g,'').replace(/",/g,";").replace(/"/g,""));
-          el.setAttribute('style', 'height:' + height + ';' + JSON.stringify(ctnCss).replace(/[{}]/g, '').replace(/",/g, ";").replace(/"/g, ""));
+          height = layout instanceof Array ? layout[i] + '%' : '50%';
+          width = layout instanceof Array ? layout[i] + '%' : '50%';
         }
-      } else {
-        // 去掉容器的百分比尺寸
-        if (parentJson.direction === 'col') {
-          // el.setAttribute('style','height:100%;width:'+ width);
-          el.setAttribute('style', 'width:' + width);
+        if (parentJson.ctnStyle && parentJson.ctnStyle[i]) {
+          let ctnCss = parentJson.ctnStyle[i];
+          for (let name in ctnCss) {
+            !ctnCss[name] && delete ctnCss[name]
+          }
+          // 去掉容器的百分比尺寸
+          if (parentJson.direction === 'col') {
+            // el.setAttribute('style','height:100%;width:'+ width+';'+JSON.stringify(ctnCss).replace(/[{}]/g,'').replace(/",/g,";").replace(/"/g,""));
+            el.setAttribute('style', 'width:' + width + ';' + JSON.stringify(ctnCss).replace(/[{}]/g, '').replace(/",/g, ";").replace(/"/g, ""));
+          } else {
+            // el.setAttribute('style','height:'+ height + ';width:100%;'+JSON.stringify(ctnCss).replace(/[{}]/g,'').replace(/",/g,";").replace(/"/g,""));
+            el.setAttribute('style', 'height:' + height + ';' + JSON.stringify(ctnCss).replace(/[{}]/g, '').replace(/",/g, ";").replace(/"/g, ""));
+          }
         } else {
-          // el.setAttribute('style','height:'+ height + ';width:100%;');
-          el.setAttribute('style', 'height:' + height + ';');
+          // 去掉容器的百分比尺寸
+          if (parentJson.direction === 'col') {
+            // el.setAttribute('style','height:100%;width:'+ width);
+            el.setAttribute('style', 'width:' + width);
+          } else {
+            // el.setAttribute('style','height:'+ height + ';width:100%;');
+            el.setAttribute('style', 'height:' + height + ';');
+          }
         }
       }
 
@@ -336,7 +357,8 @@ let json2html = function (jsonStr) {
   }
   let root = document.createElement('v2c');
   let temp = document.createElement('template');
-  let isAd = ideType === 'ad'
+  // let isAd = ideType === 'ad'
+  let isAd = jsonV2C.component == 'v2EditorXYCtn';
   let eV2C = isAd ? document.createElement('v2-ctn-xy') : document.createElement('v2container');
   jsonV2C.wid = jsonV2C.id;
   eV2C.setAttribute(':wid', '`' + jsonV2C.wid + '`');
