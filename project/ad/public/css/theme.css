@@ -151,6 +151,10 @@ html {
 }
 }
 
+.v2-picture >img{
+  position: inherit;
+}
+
 .text-red {
   color: green;
 }
@@ -188,6 +192,9 @@ body {
 }
 .s_m_table .el-table{
   font-size: 0.12rem;
+}
+.s_m_table .el-table .cell{
+  line-height: 0.2rem;
 }
 .s_m_panel {
   background: white;
