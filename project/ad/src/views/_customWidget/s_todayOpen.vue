@@ -11,9 +11,9 @@
                     }
                 },
                 props:{
-                  title:{default:()=>{return `今日开户数`}},
-value:{default:()=>{return 2,074}},
-rare:{default:()=>{return `13.7%`}},
+                  title:{default:()=>{return "`今日开户数`"}},
+value:{default:()=>{return "2,074"}},
+rare:{default:()=>{return "`13.7%`"}},
 v2forminput_1567760866528_value:{default:()=>{return ""}}
                 },
                 mixins:[root,widget,cpt,events,mixins],

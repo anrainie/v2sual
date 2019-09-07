@@ -300,7 +300,13 @@ let createProp = (data) => {
   for (i in data) {
     //格式化data
     let val = this.formatData(data[i]);
-    arr.push(`${i}:{default:()=>{return ${val === "" ? '""' : val}}}`);
+    if(val===""){
+      arr.push(`${i}:{default:()=>{return ""}}`);
+    }else if(val.startsWith('"')||val.startsWith("'")){
+      arr.push(`${i}:{default:()=>{return ${val}}}`);
+    }else{
+      arr.push(`${i}:{default:()=>{return "${val}"}}`);
+    }
   }
   return arr;
 };

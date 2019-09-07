@@ -11,8 +11,8 @@
                     }
                 },
                 props:{
-                  title:{default:()=>{return `设备总数`}},
-value:{default:()=>{return 11,066}}
+                  title:{default:()=>{return "`设备总数`"}},
+value:{default:()=>{return "11,066"}}
                 },
                 mixins:[root,widget,cpt,events,mixins],
                 
