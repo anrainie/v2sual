@@ -11,7 +11,9 @@ export default {
 }
 </script>
 
-<style >
+<style lang="scss">
+@import "./scss/aweb.scss";
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,8 +25,8 @@ export default {
   padding: 0;
 }
 ::-webkit-scrollbar {
-  width: .5em;
-  height: .5em;
+  width: .05em;
+  height: .05em;
   background-color: transparent;
   border-radius: 0;
 }
@@ -37,4 +39,8 @@ export default {
   background-color: #000000;
   background-color: rgba(0, 0, 0, 0.35);
 }
+ html{
+  /* font-size: 12px; */
+  height: 100%;
+} 
 </style>

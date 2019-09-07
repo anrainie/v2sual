@@ -215,7 +215,7 @@ box-shadow: 0 0 1px 1px #00000021;
 }
 
 .V2Container.V2XyBlock:hover{
-  padding: 1rem;
+  padding: 0.1rem;
   box-sizing: border-box;
 }
 
@@ -241,7 +241,7 @@ position: absolute; */
   top: 0;
   left: 0;
   z-index: 7;
-  font-size: .5rem;
+  font-size: .05rem;
 }
 
 .V2CustomCptMask:after {
@@ -311,7 +311,7 @@ position: absolute; */
   top: 0;
   left: 0;
   z-index: 7;
-  font-size: 0.5rem;
+  font-size: 0.05rem;
   /* background: lightblue; */
 }
 
@@ -520,16 +520,16 @@ position: absolute; */
 }
 
 ::-webkit-scrollbar {
-  width: .5rem;
-  height: .5rem;
-  margin-right: -1.2rem;
-  border-radius: .8rem;
+  width: 0.05rem;
+  height: 0.05rem;
+  margin-right: -0.12rem;
+  border-radius: .08rem;
   background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  width: .8rem;
-  border-radius: .8rem;
+  width: .08rem;
+  border-radius: .08rem;
   background-color: transparent;
 }
 
@@ -542,13 +542,13 @@ position: absolute; */
 */
 .context-menu {
   border: 1px solid #eee;
-  width: 11rem;
-  padding: .2rem 0;
+  width: 1.1rem;
+  padding: .02rem 0;
   list-style: none;
   background-color: white;
   position: absolute;
   z-index: 999;
-  box-shadow: 0 .3rem 1.6rem -.5rem #070707;
+  box-shadow: 0 .03rem 0.16rem -.05rem #070707;
 }
 
 .context-menu>li {
@@ -558,7 +558,7 @@ position: absolute; */
 .context-menu>div {
   display: inline-block;
   width: 100%;
-  height: 2rem;
+  height: 0.2rem;
 }
 
 .context-menu>div>span {
@@ -566,13 +566,13 @@ position: absolute; */
   margin: 0 auto;
   width: 0;
   height: 0;
-  border-left: .4rem solid transparent;
-  border-right: .4rem solid transparent;
-  border-top: .8rem solid black;
+  border-left: .04rem solid transparent;
+  border-right: .04rem solid transparent;
+  border-top: .08rem solid black;
 }
 
 .context-menu-content {
-  font-size: 0.8rem;
+  font-size: 0.08rem;
   display: inline-flex;
   position: relative;
   width: 11rem;
@@ -594,14 +594,14 @@ position: absolute; */
 
 .context-menu-item-img {
   position: absolute;
-  left: .5rem;
-  margin-bottom: .5rem;
+  left: .05rem;
+  margin-bottom: .05rem;
 }
 
 .context-menu-shortcutKey {
   float: right;
   color: gray;
-  margin-right: 1.5rem;
+  margin-right: 0.15rem;
 }
 
 .context-menu-item:hover>.context-menu-content {
@@ -614,32 +614,32 @@ position: absolute; */
 }
 
 .context-menu-separator {
-  border-top: .1rem solid #ccc;
-  margin: .5rem;
-  font-size: 1.2rem;
+  border-top: .01rem solid #ccc;
+  margin: .05rem;
+  font-size: 0.12rem;
   position: relative;
 }
 
 .list-item {
   cursor: default;
   color: #333;
-  padding: 0 1rem;
+  padding: 0 0.1rem;
 }
 
 .menu-right-arrow {
   display: inline-block;
   width: 0;
   height: 0;
-  border-top: .4rem solid transparent;
-  border-bottom: .4rem solid transparent;
-  border-left: .8rem solid black;
+  border-top: .04rem solid transparent;
+  border-bottom: .04rem solid transparent;
+  border-left: .08rem solid black;
   float: right;
-  margin-top: .6rem;
-  margin-right: .3rem;
+  margin-top: .06rem;
+  margin-right: .03rem;
 }
 
 .subMenu {
-  left: 11rem;
+  left: 1.1rem;
   top: 0px;
 }
 

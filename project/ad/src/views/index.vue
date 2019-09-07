@@ -336,7 +336,6 @@ export default {
     console.log(this.routerData);
 
     this.$root.$on('showDrawer',(val)=>{
-
           this.showDrawer = val;
     })
     // console.log(this.axios.get())
@@ -494,14 +493,14 @@ export default {
       .menu-btn{
          width:50px;
           >i{
-            font-size:2rem;
+            font-size:0.2rem;
             padding:6px;
           }
       }
       .header-title{
-        padding:.5rem 0;
+        padding:.05rem 0;
         >span{
-          font-size:1.2rem;
+          font-size:0.12rem;
         }
       }
   }
@@ -518,11 +517,11 @@ export default {
         flex: 1;
         text-align: center;
            i{
-                 font-size: 2rem;
+                 font-size: 0.2rem;
                  padding-top: 5px;
              }
              .foot-title{
-                 font-size: 1rem;
+                 font-size: 0.1rem;
              }
        }
   
