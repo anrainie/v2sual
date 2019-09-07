@@ -6,7 +6,7 @@
         "name": "getValue",
         "category": "compositeSource",
         "label": ">",
-        "labelType": "normal",
+        "labelType": "getValue",
         "belongTo": "function",
         "params": [
             {
