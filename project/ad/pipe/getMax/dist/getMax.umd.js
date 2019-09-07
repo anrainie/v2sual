@@ -475,7 +475,7 @@ var web_dom_iterable = __webpack_require__("5c9d");
         item = _step.value;
 
         if (item[str]) {
-          if (res) {
+          if (!res) {
             res = parseFloat(item[str]);
           } else if (item[str] > res) {
             res = parseFloat(item[str]);

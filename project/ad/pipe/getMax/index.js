@@ -7,7 +7,7 @@ export default function (target, params) {
   if ($.isArray(data)) {
     for (item of data) {
       if(item[str]){
-        if(res){
+        if(!res){
           res = parseFloat(item[str]);
         }else if(item[str]>res){
           res = parseFloat(item[str]);
