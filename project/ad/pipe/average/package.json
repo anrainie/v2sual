@@ -1,12 +1,12 @@
 {
-    "name": "@aweb-pipe/app.mapping",
+    "name": "@aweb-pipe/app.average",
     "main": "index.js",
     "docs": {
-        "desp": "映射",
-        "name": "mapping",
+        "desp": "平均",
+        "name": "average",
         "category": "compositeSource",
         "label": ">",
-        "labelType": "mapping",
+        "labelType": "simpleOperation",
         "belongTo": "function",
         "params": [
             {

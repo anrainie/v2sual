@@ -1,12 +1,12 @@
 {
-    "name": "@aweb-pipe/app.mapping",
+    "name": "@aweb-pipe/app.summation",
     "main": "index.js",
     "docs": {
-        "desp": "映射",
-        "name": "mapping",
+        "desp": "求和",
+        "name": "summation",
         "category": "compositeSource",
         "label": ">",
-        "labelType": "mapping",
+        "labelType": "simpleOperation",
         "belongTo": "function",
         "params": [
             {
