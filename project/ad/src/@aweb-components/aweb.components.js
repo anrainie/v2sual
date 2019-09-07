@@ -34,7 +34,7 @@ import v2FormTransfer  from '@v2-components/v2-form-transfer';
 import v2FormUpload  from '@v2-components/v2-form-upload';
 import v2Layout  from '@v2-components/v2-layout';
 import v2LayoutEditor  from '@v2-components/v2-layout/editor.vue';
-import v2MobileButton  from '@v2-components/v2-mobile-button';
+import v2MobileInput  from '@v2-components/v2-mobile-input';
 import v2MobileImage  from '@v2-components/v2-mobile-image';
 import v2MobileInput  from '@v2-components/v2-mobile-input';
 import v2MobileSteps  from '@v2-components/v2-mobile-steps';
@@ -114,7 +114,7 @@ import vda  from '../../pipe/vda'
 	v2FormUpload,
 	v2Layout,
 	v2LayoutEditor,
-	v2MobileButton,
+	v2MobileInput,
 	v2MobileImage,
 	v2MobileInput,
 	v2MobileSteps,
