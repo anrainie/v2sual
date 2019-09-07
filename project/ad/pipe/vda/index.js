@@ -51,7 +51,7 @@ const fakeData = {
       "modelfilter": "",
       "order": "",
       "cols": [
-        "开会数昨日同比"
+        "_openAccountCount"
       ],
       "limit": ""
     }],

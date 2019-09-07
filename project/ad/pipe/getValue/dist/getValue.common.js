@@ -82,7 +82,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "ef3b");
+/******/ 	return __webpack_require__(__webpack_require__.s = "3e94");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -130,17 +130,13 @@ module.exports =
 
 /***/ }),
 
-/***/ "63d0":
-/***/ (function(module, exports) {
-
-(function () {});
-
-/***/ }),
-
-/***/ "ed21":
+/***/ "3e94":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+
+// CONCATENATED MODULE: C:/Users/Gavin/AppData/Roaming/npm/node_modules/@vue/cli-service-global/node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 // This file is imported into lib/wc client bundles.
 
 if (typeof window !== 'undefined') {
@@ -155,21 +151,27 @@ if (typeof window !== 'undefined') {
 }
 
 // Indicate to webpack that this file can be concatenated
-/* unused harmony default export */ var _unused_webpack_default_export = (null);
+/* harmony default export */ var setPublicPath = (null);
+
+// CONCATENATED MODULE: ./pipe/getValue/index.js
+/* harmony default export */ var getValue = (function (target, parmas) {
+  var data = JSON.parse(JSON.stringify(target));
+  var index = parmas[0];
+  var res;
+
+  if (data[index]) {
+    res = data[index];
+  } else {
+    res = data[0][index];
+  }
+
+  return res;
+});
+;
+// CONCATENATED MODULE: C:/Users/Gavin/AppData/Roaming/npm/node_modules/@vue/cli-service-global/node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
 
 
-/***/ }),
-
-/***/ "ef3b":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _setPublicPath__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("ed21");
-/* harmony import */ var _entry__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("63d0");
-/* harmony import */ var _entry__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_entry__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _entry__WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _entry__WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-
+/* harmony default export */ var entry_lib = __webpack_exports__["default"] = (getValue);
 
 
 
