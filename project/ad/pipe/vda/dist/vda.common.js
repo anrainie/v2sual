@@ -82,26 +82,10 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "dd7a");
+/******/ 	return __webpack_require__(__webpack_require__.s = "576d");
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ "0314":
-/***/ (function(module, exports, __webpack_require__) {
-
-// 7.3.20 SpeciesConstructor(O, defaultConstructor)
-var anObject = __webpack_require__("6fd6");
-var aFunction = __webpack_require__("b1f5");
-var SPECIES = __webpack_require__("ff49")('species');
-module.exports = function (O, D) {
-  var C = anObject(O).constructor;
-  var S;
-  return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? D : aFunction(S);
-};
-
-
-/***/ }),
 
 /***/ "044b":
 /***/ (function(module, exports) {
@@ -121,15 +105,124 @@ module.exports = function isBuffer (obj) {
 
 /***/ }),
 
-/***/ "0765":
+/***/ "04ee":
 /***/ (function(module, exports) {
 
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global = module.exports = typeof window != 'undefined' && window.Math == Math
-  ? window : typeof self != 'undefined' && self.Math == Math ? self
-  // eslint-disable-next-line no-new-func
-  : Function('return this')();
-if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
+module.exports = function (it) {
+  return typeof it === 'object' ? it !== null : typeof it === 'function';
+};
+
+
+/***/ }),
+
+/***/ "07bc":
+/***/ (function(module, exports) {
+
+var hasOwnProperty = {}.hasOwnProperty;
+module.exports = function (it, key) {
+  return hasOwnProperty.call(it, key);
+};
+
+
+/***/ }),
+
+/***/ "07ee":
+/***/ (function(module, exports) {
+
+// document.currentScript polyfill by Adam Miller
+
+// MIT license
+
+(function(document){
+  var currentScript = "currentScript",
+      scripts = document.getElementsByTagName('script'); // Live NodeList collection
+
+  // If browser needs currentScript polyfill, add get currentScript() to the document object
+  if (!(currentScript in document)) {
+    Object.defineProperty(document, currentScript, {
+      get: function(){
+
+        // IE 6-10 supports script readyState
+        // IE 10+ support stack trace
+        try { throw new Error(); }
+        catch (err) {
+
+          // Find the second match for the "at" string to get file src url from stack.
+          // Specifically works with the format of stack traces in IE.
+          var i, res = ((/.*at [^\(]*\((.*):.+:.+\)$/ig).exec(err.stack) || [false])[1];
+
+          // For all scripts on the page, if src matches or if ready state is interactive, return the script tag
+          for(i in scripts){
+            if(scripts[i].src == res || scripts[i].readyState == "interactive"){
+              return scripts[i];
+            }
+          }
+
+          // If no match, return null
+          return null;
+        }
+      }
+    });
+  }
+})(document);
+
+
+/***/ }),
+
+/***/ "088e":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("a324");
+var core = __webpack_require__("21c7");
+var hide = __webpack_require__("d9a9");
+var redefine = __webpack_require__("446e");
+var ctx = __webpack_require__("2efb");
+var PROTOTYPE = 'prototype';
+
+var $export = function (type, name, source) {
+  var IS_FORCED = type & $export.F;
+  var IS_GLOBAL = type & $export.G;
+  var IS_STATIC = type & $export.S;
+  var IS_PROTO = type & $export.P;
+  var IS_BIND = type & $export.B;
+  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] || (global[name] = {}) : (global[name] || {})[PROTOTYPE];
+  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
+  var expProto = exports[PROTOTYPE] || (exports[PROTOTYPE] = {});
+  var key, own, out, exp;
+  if (IS_GLOBAL) source = name;
+  for (key in source) {
+    // contains in native
+    own = !IS_FORCED && target && target[key] !== undefined;
+    // export native or passed
+    out = (own ? target : source)[key];
+    // bind timers to global for call from export context
+    exp = IS_BIND && own ? ctx(out, global) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
+    // extend global
+    if (target) redefine(target, key, out, type & $export.U);
+    // export
+    if (exports[key] != out) hide(exports, key, exp);
+    if (IS_PROTO && expProto[key] != out) expProto[key] = out;
+  }
+};
+global.core = core;
+// type bitmap
+$export.F = 1;   // forced
+$export.G = 2;   // global
+$export.S = 4;   // static
+$export.P = 8;   // proto
+$export.B = 16;  // bind
+$export.W = 32;  // wrap
+$export.U = 64;  // safe
+$export.R = 128; // real proto method for `library`
+module.exports = $export;
+
+
+/***/ }),
+
+/***/ "0968":
+/***/ (function(module, exports) {
+
+module.exports = {};
 
 
 /***/ }),
@@ -256,96 +349,55 @@ module.exports = function spread(callback) {
 
 /***/ }),
 
-/***/ "0f55":
-/***/ (function(module, exports) {
+/***/ "12ca":
+/***/ (function(module, exports, __webpack_require__) {
 
-// document.currentScript polyfill by Adam Miller
-
-// MIT license
-
-(function(document){
-  var currentScript = "currentScript",
-      scripts = document.getElementsByTagName('script'); // Live NodeList collection
-
-  // If browser needs currentScript polyfill, add get currentScript() to the document object
-  if (!(currentScript in document)) {
-    Object.defineProperty(document, currentScript, {
-      get: function(){
-
-        // IE 6-10 supports script readyState
-        // IE 10+ support stack trace
-        try { throw new Error(); }
-        catch (err) {
-
-          // Find the second match for the "at" string to get file src url from stack.
-          // Specifically works with the format of stack traces in IE.
-          var i, res = ((/.*at [^\(]*\((.*):.+:.+\)$/ig).exec(err.stack) || [false])[1];
-
-          // For all scripts on the page, if src matches or if ready state is interactive, return the script tag
-          for(i in scripts){
-            if(scripts[i].src == res || scripts[i].readyState == "interactive"){
-              return scripts[i];
-            }
-          }
-
-          // If no match, return null
-          return null;
-        }
-      }
-    });
+// call something on iterator step with safe closing on error
+var anObject = __webpack_require__("9d2f");
+module.exports = function (iterator, fn, value, entries) {
+  try {
+    return entries ? fn(anObject(value)[0], value[1]) : fn(value);
+  // 7.4.6 IteratorClose(iterator, completion)
+  } catch (e) {
+    var ret = iterator['return'];
+    if (ret !== undefined) anObject(ret.call(iterator));
+    throw e;
   }
-})(document);
+};
 
 
 /***/ }),
 
-/***/ "132e":
+/***/ "1777":
 /***/ (function(module, exports) {
 
 module.exports = function (it) {
-  return typeof it === 'object' ? it !== null : typeof it === 'function';
+  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
+  return it;
 };
 
 
 /***/ }),
 
-/***/ "16b2":
+/***/ "1a64":
 /***/ (function(module, exports, __webpack_require__) {
 
-var ITERATOR = __webpack_require__("ff49")('iterator');
-var SAFE_CLOSING = false;
+// check on default Array iterator
+var Iterators = __webpack_require__("0968");
+var ITERATOR = __webpack_require__("e007")('iterator');
+var ArrayProto = Array.prototype;
 
-try {
-  var riter = [7][ITERATOR]();
-  riter['return'] = function () { SAFE_CLOSING = true; };
-  // eslint-disable-next-line no-throw-literal
-  Array.from(riter, function () { throw 2; });
-} catch (e) { /* empty */ }
-
-module.exports = function (exec, skipClosing) {
-  if (!skipClosing && !SAFE_CLOSING) return false;
-  var safe = false;
-  try {
-    var arr = [7];
-    var iter = arr[ITERATOR]();
-    iter.next = function () { return { done: safe = true }; };
-    arr[ITERATOR] = function () { return iter; };
-    exec(arr);
-  } catch (e) { /* empty */ }
-  return safe;
+module.exports = function (it) {
+  return it !== undefined && (Iterators.Array === it || ArrayProto[ITERATOR] === it);
 };
 
 
 /***/ }),
 
-/***/ "1a06":
+/***/ "1c1a":
 /***/ (function(module, exports) {
 
-module.exports = function (it, Constructor, name, forbiddenField) {
-  if (!(it instanceof Constructor) || (forbiddenField !== undefined && forbiddenField in it)) {
-    throw TypeError(name + ': incorrect invocation!');
-  } return it;
-};
+module.exports = false;
 
 
 /***/ }),
@@ -369,29 +421,305 @@ module.exports = function bind(fn, thisArg) {
 
 /***/ }),
 
-/***/ "1dab":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "21c7":
+/***/ (function(module, exports) {
 
-// call something on iterator step with safe closing on error
-var anObject = __webpack_require__("6fd6");
-module.exports = function (iterator, fn, value, entries) {
-  try {
-    return entries ? fn(anObject(value)[0], value[1]) : fn(value);
-  // 7.4.6 IteratorClose(iterator, completion)
-  } catch (e) {
-    var ret = iterator['return'];
-    if (ret !== undefined) anObject(ret.call(iterator));
-    throw e;
-  }
-};
+var core = module.exports = { version: '2.6.5' };
+if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 
 /***/ }),
 
-/***/ "20a0":
+/***/ "22d6":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("97cc")('native-function-to-string', Function.toString);
+"use strict";
+
+var LIBRARY = __webpack_require__("1c1a");
+var global = __webpack_require__("a324");
+var ctx = __webpack_require__("2efb");
+var classof = __webpack_require__("3c91");
+var $export = __webpack_require__("088e");
+var isObject = __webpack_require__("04ee");
+var aFunction = __webpack_require__("1777");
+var anInstance = __webpack_require__("c281");
+var forOf = __webpack_require__("e966");
+var speciesConstructor = __webpack_require__("7c32");
+var task = __webpack_require__("4f79").set;
+var microtask = __webpack_require__("b60c")();
+var newPromiseCapabilityModule = __webpack_require__("b783");
+var perform = __webpack_require__("cfb5");
+var userAgent = __webpack_require__("6b27");
+var promiseResolve = __webpack_require__("97f2");
+var PROMISE = 'Promise';
+var TypeError = global.TypeError;
+var process = global.process;
+var versions = process && process.versions;
+var v8 = versions && versions.v8 || '';
+var $Promise = global[PROMISE];
+var isNode = classof(process) == 'process';
+var empty = function () { /* empty */ };
+var Internal, newGenericPromiseCapability, OwnPromiseCapability, Wrapper;
+var newPromiseCapability = newGenericPromiseCapability = newPromiseCapabilityModule.f;
+
+var USE_NATIVE = !!function () {
+  try {
+    // correct subclassing with @@species support
+    var promise = $Promise.resolve(1);
+    var FakePromise = (promise.constructor = {})[__webpack_require__("e007")('species')] = function (exec) {
+      exec(empty, empty);
+    };
+    // unhandled rejections tracking support, NodeJS Promise without it fails @@species test
+    return (isNode || typeof PromiseRejectionEvent == 'function')
+      && promise.then(empty) instanceof FakePromise
+      // v8 6.6 (Node 10 and Chrome 66) have a bug with resolving custom thenables
+      // https://bugs.chromium.org/p/chromium/issues/detail?id=830565
+      // we can't detect it synchronously, so just check versions
+      && v8.indexOf('6.6') !== 0
+      && userAgent.indexOf('Chrome/66') === -1;
+  } catch (e) { /* empty */ }
+}();
+
+// helpers
+var isThenable = function (it) {
+  var then;
+  return isObject(it) && typeof (then = it.then) == 'function' ? then : false;
+};
+var notify = function (promise, isReject) {
+  if (promise._n) return;
+  promise._n = true;
+  var chain = promise._c;
+  microtask(function () {
+    var value = promise._v;
+    var ok = promise._s == 1;
+    var i = 0;
+    var run = function (reaction) {
+      var handler = ok ? reaction.ok : reaction.fail;
+      var resolve = reaction.resolve;
+      var reject = reaction.reject;
+      var domain = reaction.domain;
+      var result, then, exited;
+      try {
+        if (handler) {
+          if (!ok) {
+            if (promise._h == 2) onHandleUnhandled(promise);
+            promise._h = 1;
+          }
+          if (handler === true) result = value;
+          else {
+            if (domain) domain.enter();
+            result = handler(value); // may throw
+            if (domain) {
+              domain.exit();
+              exited = true;
+            }
+          }
+          if (result === reaction.promise) {
+            reject(TypeError('Promise-chain cycle'));
+          } else if (then = isThenable(result)) {
+            then.call(result, resolve, reject);
+          } else resolve(result);
+        } else reject(value);
+      } catch (e) {
+        if (domain && !exited) domain.exit();
+        reject(e);
+      }
+    };
+    while (chain.length > i) run(chain[i++]); // variable length - can't use forEach
+    promise._c = [];
+    promise._n = false;
+    if (isReject && !promise._h) onUnhandled(promise);
+  });
+};
+var onUnhandled = function (promise) {
+  task.call(global, function () {
+    var value = promise._v;
+    var unhandled = isUnhandled(promise);
+    var result, handler, console;
+    if (unhandled) {
+      result = perform(function () {
+        if (isNode) {
+          process.emit('unhandledRejection', value, promise);
+        } else if (handler = global.onunhandledrejection) {
+          handler({ promise: promise, reason: value });
+        } else if ((console = global.console) && console.error) {
+          console.error('Unhandled promise rejection', value);
+        }
+      });
+      // Browsers should not trigger `rejectionHandled` event if it was handled here, NodeJS - should
+      promise._h = isNode || isUnhandled(promise) ? 2 : 1;
+    } promise._a = undefined;
+    if (unhandled && result.e) throw result.v;
+  });
+};
+var isUnhandled = function (promise) {
+  return promise._h !== 1 && (promise._a || promise._c).length === 0;
+};
+var onHandleUnhandled = function (promise) {
+  task.call(global, function () {
+    var handler;
+    if (isNode) {
+      process.emit('rejectionHandled', promise);
+    } else if (handler = global.onrejectionhandled) {
+      handler({ promise: promise, reason: promise._v });
+    }
+  });
+};
+var $reject = function (value) {
+  var promise = this;
+  if (promise._d) return;
+  promise._d = true;
+  promise = promise._w || promise; // unwrap
+  promise._v = value;
+  promise._s = 2;
+  if (!promise._a) promise._a = promise._c.slice();
+  notify(promise, true);
+};
+var $resolve = function (value) {
+  var promise = this;
+  var then;
+  if (promise._d) return;
+  promise._d = true;
+  promise = promise._w || promise; // unwrap
+  try {
+    if (promise === value) throw TypeError("Promise can't be resolved itself");
+    if (then = isThenable(value)) {
+      microtask(function () {
+        var wrapper = { _w: promise, _d: false }; // wrap
+        try {
+          then.call(value, ctx($resolve, wrapper, 1), ctx($reject, wrapper, 1));
+        } catch (e) {
+          $reject.call(wrapper, e);
+        }
+      });
+    } else {
+      promise._v = value;
+      promise._s = 1;
+      notify(promise, false);
+    }
+  } catch (e) {
+    $reject.call({ _w: promise, _d: false }, e); // wrap
+  }
+};
+
+// constructor polyfill
+if (!USE_NATIVE) {
+  // 25.4.3.1 Promise(executor)
+  $Promise = function Promise(executor) {
+    anInstance(this, $Promise, PROMISE, '_h');
+    aFunction(executor);
+    Internal.call(this);
+    try {
+      executor(ctx($resolve, this, 1), ctx($reject, this, 1));
+    } catch (err) {
+      $reject.call(this, err);
+    }
+  };
+  // eslint-disable-next-line no-unused-vars
+  Internal = function Promise(executor) {
+    this._c = [];             // <- awaiting reactions
+    this._a = undefined;      // <- checked in isUnhandled reactions
+    this._s = 0;              // <- state
+    this._d = false;          // <- done
+    this._v = undefined;      // <- value
+    this._h = 0;              // <- rejection state, 0 - default, 1 - handled, 2 - unhandled
+    this._n = false;          // <- notify
+  };
+  Internal.prototype = __webpack_require__("a8f8")($Promise.prototype, {
+    // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
+    then: function then(onFulfilled, onRejected) {
+      var reaction = newPromiseCapability(speciesConstructor(this, $Promise));
+      reaction.ok = typeof onFulfilled == 'function' ? onFulfilled : true;
+      reaction.fail = typeof onRejected == 'function' && onRejected;
+      reaction.domain = isNode ? process.domain : undefined;
+      this._c.push(reaction);
+      if (this._a) this._a.push(reaction);
+      if (this._s) notify(this, false);
+      return reaction.promise;
+    },
+    // 25.4.5.1 Promise.prototype.catch(onRejected)
+    'catch': function (onRejected) {
+      return this.then(undefined, onRejected);
+    }
+  });
+  OwnPromiseCapability = function () {
+    var promise = new Internal();
+    this.promise = promise;
+    this.resolve = ctx($resolve, promise, 1);
+    this.reject = ctx($reject, promise, 1);
+  };
+  newPromiseCapabilityModule.f = newPromiseCapability = function (C) {
+    return C === $Promise || C === Wrapper
+      ? new OwnPromiseCapability(C)
+      : newGenericPromiseCapability(C);
+  };
+}
+
+$export($export.G + $export.W + $export.F * !USE_NATIVE, { Promise: $Promise });
+__webpack_require__("e61e")($Promise, PROMISE);
+__webpack_require__("f631")(PROMISE);
+Wrapper = __webpack_require__("21c7")[PROMISE];
+
+// statics
+$export($export.S + $export.F * !USE_NATIVE, PROMISE, {
+  // 25.4.4.5 Promise.reject(r)
+  reject: function reject(r) {
+    var capability = newPromiseCapability(this);
+    var $$reject = capability.reject;
+    $$reject(r);
+    return capability.promise;
+  }
+});
+$export($export.S + $export.F * (LIBRARY || !USE_NATIVE), PROMISE, {
+  // 25.4.4.6 Promise.resolve(x)
+  resolve: function resolve(x) {
+    return promiseResolve(LIBRARY && this === Wrapper ? $Promise : this, x);
+  }
+});
+$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__("9f9e")(function (iter) {
+  $Promise.all(iter)['catch'](empty);
+})), PROMISE, {
+  // 25.4.4.1 Promise.all(iterable)
+  all: function all(iterable) {
+    var C = this;
+    var capability = newPromiseCapability(C);
+    var resolve = capability.resolve;
+    var reject = capability.reject;
+    var result = perform(function () {
+      var values = [];
+      var index = 0;
+      var remaining = 1;
+      forOf(iterable, false, function (promise) {
+        var $index = index++;
+        var alreadyCalled = false;
+        values.push(undefined);
+        remaining++;
+        C.resolve(promise).then(function (value) {
+          if (alreadyCalled) return;
+          alreadyCalled = true;
+          values[$index] = value;
+          --remaining || resolve(values);
+        }, reject);
+      });
+      --remaining || resolve(values);
+    });
+    if (result.e) reject(result.v);
+    return capability.promise;
+  },
+  // 25.4.4.4 Promise.race(iterable)
+  race: function race(iterable) {
+    var C = this;
+    var capability = newPromiseCapability(C);
+    var reject = capability.reject;
+    var result = perform(function () {
+      forOf(iterable, false, function (promise) {
+        C.resolve(promise).then(capability.resolve, reject);
+      });
+    });
+    if (result.e) reject(result.v);
+    return capability.promise;
+  }
+});
 
 
 /***/ }),
@@ -497,21 +825,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("b40f")))
-
-/***/ }),
-
-/***/ "285a":
-/***/ (function(module, exports) {
-
-module.exports = function (exec) {
-  try {
-    return !!exec();
-  } catch (e) {
-    return true;
-  }
-};
-
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("a3cb")))
 
 /***/ }),
 
@@ -554,14 +868,28 @@ module.exports = function isCancel(value) {
 
 /***/ }),
 
-/***/ "3086":
+/***/ "2efb":
 /***/ (function(module, exports, __webpack_require__) {
 
-// 7.1.15 ToLength
-var toInteger = __webpack_require__("3bba");
-var min = Math.min;
-module.exports = function (it) {
-  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
+// optional / simple context binding
+var aFunction = __webpack_require__("1777");
+module.exports = function (fn, that, length) {
+  aFunction(fn);
+  if (that === undefined) return fn;
+  switch (length) {
+    case 1: return function (a) {
+      return fn.call(that, a);
+    };
+    case 2: return function (a, b) {
+      return fn.call(that, a, b);
+    };
+    case 3: return function (a, b, c) {
+      return fn.call(that, a, b, c);
+    };
+  }
+  return function (/* ...args */) {
+    return fn.apply(that, arguments);
+  };
 };
 
 
@@ -636,6 +964,18 @@ module.exports = function buildURL(url, params, paramsSerializer) {
   }
 
   return url;
+};
+
+
+/***/ }),
+
+/***/ "32f0":
+/***/ (function(module, exports) {
+
+var id = 0;
+var px = Math.random();
+module.exports = function (key) {
+  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
 };
 
 
@@ -746,28 +1086,49 @@ module.exports = (
 
 /***/ }),
 
-/***/ "3bba":
-/***/ (function(module, exports) {
+/***/ "3966":
+/***/ (function(module, exports, __webpack_require__) {
 
-// 7.1.4 ToInteger
-var ceil = Math.ceil;
-var floor = Math.floor;
-module.exports = function (it) {
-  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
-};
+module.exports = !__webpack_require__("e964") && !__webpack_require__("9abb")(function () {
+  return Object.defineProperty(__webpack_require__("cec0")('div'), 'a', { get: function () { return 7; } }).a != 7;
+});
 
 
 /***/ }),
 
-/***/ "3d39":
+/***/ "3b08":
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__("132e");
-var document = __webpack_require__("0765").document;
-// typeof document.createElement is 'object' in old IE
-var is = isObject(document) && isObject(document.createElement);
+module.exports = __webpack_require__("80dd")('native-function-to-string', Function.toString);
+
+
+/***/ }),
+
+/***/ "3c91":
+/***/ (function(module, exports, __webpack_require__) {
+
+// getting tag from 19.1.3.6 Object.prototype.toString()
+var cof = __webpack_require__("f452");
+var TAG = __webpack_require__("e007")('toStringTag');
+// ES3 wrong here
+var ARG = cof(function () { return arguments; }()) == 'Arguments';
+
+// fallback for IE11 Script Access Denied error
+var tryGet = function (it, key) {
+  try {
+    return it[key];
+  } catch (e) { /* empty */ }
+};
+
 module.exports = function (it) {
-  return is ? document.createElement(it) : {};
+  var O, T, B;
+  return it === undefined ? 'Undefined' : it === null ? 'Null'
+    // @@toStringTag case
+    : typeof (T = tryGet(O = Object(it), TAG)) == 'string' ? T
+    // builtinTag case
+    : ARG ? cof(O)
+    // ES3 arguments fallback
+    : (B = cof(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : B;
 };
 
 
@@ -1010,27 +1371,52 @@ module.exports = {
 
 /***/ }),
 
-/***/ "436d":
+/***/ "446e":
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
+var global = __webpack_require__("a324");
+var hide = __webpack_require__("d9a9");
+var has = __webpack_require__("07bc");
+var SRC = __webpack_require__("32f0")('src');
+var $toString = __webpack_require__("3b08");
+var TO_STRING = 'toString';
+var TPL = ('' + $toString).split(TO_STRING);
 
-// 25.4.1.5 NewPromiseCapability(C)
-var aFunction = __webpack_require__("b1f5");
+__webpack_require__("21c7").inspectSource = function (it) {
+  return $toString.call(it);
+};
 
-function PromiseCapability(C) {
-  var resolve, reject;
-  this.promise = new C(function ($$resolve, $$reject) {
-    if (resolve !== undefined || reject !== undefined) throw TypeError('Bad Promise constructor');
-    resolve = $$resolve;
-    reject = $$reject;
-  });
-  this.resolve = aFunction(resolve);
-  this.reject = aFunction(reject);
-}
+(module.exports = function (O, key, val, safe) {
+  var isFunction = typeof val == 'function';
+  if (isFunction) has(val, 'name') || hide(val, 'name', key);
+  if (O[key] === val) return;
+  if (isFunction) has(val, SRC) || hide(val, SRC, O[key] ? '' + O[key] : TPL.join(String(key)));
+  if (O === global) {
+    O[key] = val;
+  } else if (!safe) {
+    delete O[key];
+    hide(O, key, val);
+  } else if (O[key]) {
+    O[key] = val;
+  } else {
+    hide(O, key, val);
+  }
+// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
+})(Function.prototype, TO_STRING, function toString() {
+  return typeof this == 'function' && this[SRC] || $toString.call(this);
+});
 
-module.exports.f = function (C) {
-  return new PromiseCapability(C);
+
+/***/ }),
+
+/***/ "45f1":
+/***/ (function(module, exports, __webpack_require__) {
+
+// 7.1.15 ToLength
+var toInteger = __webpack_require__("fa17");
+var min = Math.min;
+module.exports = function (it) {
+  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
 };
 
 
@@ -1070,311 +1456,93 @@ module.exports = function settle(resolve, reject, response) {
 
 /***/ }),
 
-/***/ "4830":
-/***/ (function(module, exports) {
-
-module.exports = function (bitmap, value) {
-  return {
-    enumerable: !(bitmap & 1),
-    configurable: !(bitmap & 2),
-    writable: !(bitmap & 4),
-    value: value
-  };
-};
-
-
-/***/ }),
-
-/***/ "4d46":
+/***/ "4f79":
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var LIBRARY = __webpack_require__("deb9");
-var global = __webpack_require__("0765");
-var ctx = __webpack_require__("af01");
-var classof = __webpack_require__("c882");
-var $export = __webpack_require__("8cc3");
-var isObject = __webpack_require__("132e");
-var aFunction = __webpack_require__("b1f5");
-var anInstance = __webpack_require__("1a06");
-var forOf = __webpack_require__("615a");
-var speciesConstructor = __webpack_require__("0314");
-var task = __webpack_require__("e815").set;
-var microtask = __webpack_require__("c069")();
-var newPromiseCapabilityModule = __webpack_require__("436d");
-var perform = __webpack_require__("a5b6");
-var userAgent = __webpack_require__("9dfb");
-var promiseResolve = __webpack_require__("8baf");
-var PROMISE = 'Promise';
-var TypeError = global.TypeError;
+var ctx = __webpack_require__("2efb");
+var invoke = __webpack_require__("dad9");
+var html = __webpack_require__("d7f0");
+var cel = __webpack_require__("cec0");
+var global = __webpack_require__("a324");
 var process = global.process;
-var versions = process && process.versions;
-var v8 = versions && versions.v8 || '';
-var $Promise = global[PROMISE];
-var isNode = classof(process) == 'process';
-var empty = function () { /* empty */ };
-var Internal, newGenericPromiseCapability, OwnPromiseCapability, Wrapper;
-var newPromiseCapability = newGenericPromiseCapability = newPromiseCapabilityModule.f;
-
-var USE_NATIVE = !!function () {
-  try {
-    // correct subclassing with @@species support
-    var promise = $Promise.resolve(1);
-    var FakePromise = (promise.constructor = {})[__webpack_require__("ff49")('species')] = function (exec) {
-      exec(empty, empty);
-    };
-    // unhandled rejections tracking support, NodeJS Promise without it fails @@species test
-    return (isNode || typeof PromiseRejectionEvent == 'function')
-      && promise.then(empty) instanceof FakePromise
-      // v8 6.6 (Node 10 and Chrome 66) have a bug with resolving custom thenables
-      // https://bugs.chromium.org/p/chromium/issues/detail?id=830565
-      // we can't detect it synchronously, so just check versions
-      && v8.indexOf('6.6') !== 0
-      && userAgent.indexOf('Chrome/66') === -1;
-  } catch (e) { /* empty */ }
-}();
-
-// helpers
-var isThenable = function (it) {
-  var then;
-  return isObject(it) && typeof (then = it.then) == 'function' ? then : false;
-};
-var notify = function (promise, isReject) {
-  if (promise._n) return;
-  promise._n = true;
-  var chain = promise._c;
-  microtask(function () {
-    var value = promise._v;
-    var ok = promise._s == 1;
-    var i = 0;
-    var run = function (reaction) {
-      var handler = ok ? reaction.ok : reaction.fail;
-      var resolve = reaction.resolve;
-      var reject = reaction.reject;
-      var domain = reaction.domain;
-      var result, then, exited;
-      try {
-        if (handler) {
-          if (!ok) {
-            if (promise._h == 2) onHandleUnhandled(promise);
-            promise._h = 1;
-          }
-          if (handler === true) result = value;
-          else {
-            if (domain) domain.enter();
-            result = handler(value); // may throw
-            if (domain) {
-              domain.exit();
-              exited = true;
-            }
-          }
-          if (result === reaction.promise) {
-            reject(TypeError('Promise-chain cycle'));
-          } else if (then = isThenable(result)) {
-            then.call(result, resolve, reject);
-          } else resolve(result);
-        } else reject(value);
-      } catch (e) {
-        if (domain && !exited) domain.exit();
-        reject(e);
-      }
-    };
-    while (chain.length > i) run(chain[i++]); // variable length - can't use forEach
-    promise._c = [];
-    promise._n = false;
-    if (isReject && !promise._h) onUnhandled(promise);
-  });
-};
-var onUnhandled = function (promise) {
-  task.call(global, function () {
-    var value = promise._v;
-    var unhandled = isUnhandled(promise);
-    var result, handler, console;
-    if (unhandled) {
-      result = perform(function () {
-        if (isNode) {
-          process.emit('unhandledRejection', value, promise);
-        } else if (handler = global.onunhandledrejection) {
-          handler({ promise: promise, reason: value });
-        } else if ((console = global.console) && console.error) {
-          console.error('Unhandled promise rejection', value);
-        }
-      });
-      // Browsers should not trigger `rejectionHandled` event if it was handled here, NodeJS - should
-      promise._h = isNode || isUnhandled(promise) ? 2 : 1;
-    } promise._a = undefined;
-    if (unhandled && result.e) throw result.v;
-  });
-};
-var isUnhandled = function (promise) {
-  return promise._h !== 1 && (promise._a || promise._c).length === 0;
-};
-var onHandleUnhandled = function (promise) {
-  task.call(global, function () {
-    var handler;
-    if (isNode) {
-      process.emit('rejectionHandled', promise);
-    } else if (handler = global.onrejectionhandled) {
-      handler({ promise: promise, reason: promise._v });
-    }
-  });
-};
-var $reject = function (value) {
-  var promise = this;
-  if (promise._d) return;
-  promise._d = true;
-  promise = promise._w || promise; // unwrap
-  promise._v = value;
-  promise._s = 2;
-  if (!promise._a) promise._a = promise._c.slice();
-  notify(promise, true);
-};
-var $resolve = function (value) {
-  var promise = this;
-  var then;
-  if (promise._d) return;
-  promise._d = true;
-  promise = promise._w || promise; // unwrap
-  try {
-    if (promise === value) throw TypeError("Promise can't be resolved itself");
-    if (then = isThenable(value)) {
-      microtask(function () {
-        var wrapper = { _w: promise, _d: false }; // wrap
-        try {
-          then.call(value, ctx($resolve, wrapper, 1), ctx($reject, wrapper, 1));
-        } catch (e) {
-          $reject.call(wrapper, e);
-        }
-      });
-    } else {
-      promise._v = value;
-      promise._s = 1;
-      notify(promise, false);
-    }
-  } catch (e) {
-    $reject.call({ _w: promise, _d: false }, e); // wrap
+var setTask = global.setImmediate;
+var clearTask = global.clearImmediate;
+var MessageChannel = global.MessageChannel;
+var Dispatch = global.Dispatch;
+var counter = 0;
+var queue = {};
+var ONREADYSTATECHANGE = 'onreadystatechange';
+var defer, channel, port;
+var run = function () {
+  var id = +this;
+  // eslint-disable-next-line no-prototype-builtins
+  if (queue.hasOwnProperty(id)) {
+    var fn = queue[id];
+    delete queue[id];
+    fn();
   }
 };
-
-// constructor polyfill
-if (!USE_NATIVE) {
-  // 25.4.3.1 Promise(executor)
-  $Promise = function Promise(executor) {
-    anInstance(this, $Promise, PROMISE, '_h');
-    aFunction(executor);
-    Internal.call(this);
-    try {
-      executor(ctx($resolve, this, 1), ctx($reject, this, 1));
-    } catch (err) {
-      $reject.call(this, err);
-    }
+var listener = function (event) {
+  run.call(event.data);
+};
+// Node.js 0.9+ & IE10+ has setImmediate, otherwise:
+if (!setTask || !clearTask) {
+  setTask = function setImmediate(fn) {
+    var args = [];
+    var i = 1;
+    while (arguments.length > i) args.push(arguments[i++]);
+    queue[++counter] = function () {
+      // eslint-disable-next-line no-new-func
+      invoke(typeof fn == 'function' ? fn : Function(fn), args);
+    };
+    defer(counter);
+    return counter;
   };
-  // eslint-disable-next-line no-unused-vars
-  Internal = function Promise(executor) {
-    this._c = [];             // <- awaiting reactions
-    this._a = undefined;      // <- checked in isUnhandled reactions
-    this._s = 0;              // <- state
-    this._d = false;          // <- done
-    this._v = undefined;      // <- value
-    this._h = 0;              // <- rejection state, 0 - default, 1 - handled, 2 - unhandled
-    this._n = false;          // <- notify
+  clearTask = function clearImmediate(id) {
+    delete queue[id];
   };
-  Internal.prototype = __webpack_require__("61c8")($Promise.prototype, {
-    // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
-    then: function then(onFulfilled, onRejected) {
-      var reaction = newPromiseCapability(speciesConstructor(this, $Promise));
-      reaction.ok = typeof onFulfilled == 'function' ? onFulfilled : true;
-      reaction.fail = typeof onRejected == 'function' && onRejected;
-      reaction.domain = isNode ? process.domain : undefined;
-      this._c.push(reaction);
-      if (this._a) this._a.push(reaction);
-      if (this._s) notify(this, false);
-      return reaction.promise;
-    },
-    // 25.4.5.1 Promise.prototype.catch(onRejected)
-    'catch': function (onRejected) {
-      return this.then(undefined, onRejected);
-    }
-  });
-  OwnPromiseCapability = function () {
-    var promise = new Internal();
-    this.promise = promise;
-    this.resolve = ctx($resolve, promise, 1);
-    this.reject = ctx($reject, promise, 1);
-  };
-  newPromiseCapabilityModule.f = newPromiseCapability = function (C) {
-    return C === $Promise || C === Wrapper
-      ? new OwnPromiseCapability(C)
-      : newGenericPromiseCapability(C);
-  };
+  // Node.js 0.8-
+  if (__webpack_require__("f452")(process) == 'process') {
+    defer = function (id) {
+      process.nextTick(ctx(run, id, 1));
+    };
+  // Sphere (JS game engine) Dispatch API
+  } else if (Dispatch && Dispatch.now) {
+    defer = function (id) {
+      Dispatch.now(ctx(run, id, 1));
+    };
+  // Browsers with MessageChannel, includes WebWorkers
+  } else if (MessageChannel) {
+    channel = new MessageChannel();
+    port = channel.port2;
+    channel.port1.onmessage = listener;
+    defer = ctx(port.postMessage, port, 1);
+  // Browsers with postMessage, skip WebWorkers
+  // IE8 has postMessage, but it's sync & typeof its postMessage is 'object'
+  } else if (global.addEventListener && typeof postMessage == 'function' && !global.importScripts) {
+    defer = function (id) {
+      global.postMessage(id + '', '*');
+    };
+    global.addEventListener('message', listener, false);
+  // IE8-
+  } else if (ONREADYSTATECHANGE in cel('script')) {
+    defer = function (id) {
+      html.appendChild(cel('script'))[ONREADYSTATECHANGE] = function () {
+        html.removeChild(this);
+        run.call(id);
+      };
+    };
+  // Rest old browsers
+  } else {
+    defer = function (id) {
+      setTimeout(ctx(run, id, 1), 0);
+    };
+  }
 }
-
-$export($export.G + $export.W + $export.F * !USE_NATIVE, { Promise: $Promise });
-__webpack_require__("672e")($Promise, PROMISE);
-__webpack_require__("5a63")(PROMISE);
-Wrapper = __webpack_require__("b0aa")[PROMISE];
-
-// statics
-$export($export.S + $export.F * !USE_NATIVE, PROMISE, {
-  // 25.4.4.5 Promise.reject(r)
-  reject: function reject(r) {
-    var capability = newPromiseCapability(this);
-    var $$reject = capability.reject;
-    $$reject(r);
-    return capability.promise;
-  }
-});
-$export($export.S + $export.F * (LIBRARY || !USE_NATIVE), PROMISE, {
-  // 25.4.4.6 Promise.resolve(x)
-  resolve: function resolve(x) {
-    return promiseResolve(LIBRARY && this === Wrapper ? $Promise : this, x);
-  }
-});
-$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__("16b2")(function (iter) {
-  $Promise.all(iter)['catch'](empty);
-})), PROMISE, {
-  // 25.4.4.1 Promise.all(iterable)
-  all: function all(iterable) {
-    var C = this;
-    var capability = newPromiseCapability(C);
-    var resolve = capability.resolve;
-    var reject = capability.reject;
-    var result = perform(function () {
-      var values = [];
-      var index = 0;
-      var remaining = 1;
-      forOf(iterable, false, function (promise) {
-        var $index = index++;
-        var alreadyCalled = false;
-        values.push(undefined);
-        remaining++;
-        C.resolve(promise).then(function (value) {
-          if (alreadyCalled) return;
-          alreadyCalled = true;
-          values[$index] = value;
-          --remaining || resolve(values);
-        }, reject);
-      });
-      --remaining || resolve(values);
-    });
-    if (result.e) reject(result.v);
-    return capability.promise;
-  },
-  // 25.4.4.4 Promise.race(iterable)
-  race: function race(iterable) {
-    var C = this;
-    var capability = newPromiseCapability(C);
-    var reject = capability.reject;
-    var result = perform(function () {
-      forOf(iterable, false, function (promise) {
-        C.resolve(promise).then(capability.resolve, reject);
-      });
-    });
-    if (result.e) reject(result.v);
-    return capability.promise;
-  }
-});
+module.exports = {
+  set: setTask,
+  clear: clearTask
+};
 
 
 /***/ }),
@@ -1473,120 +1641,201 @@ module.exports = function dispatchRequest(config) {
 
 /***/ }),
 
-/***/ "5a63":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "576d":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
 
-var global = __webpack_require__("0765");
-var dP = __webpack_require__("d495");
-var DESCRIPTORS = __webpack_require__("916d");
-var SPECIES = __webpack_require__("ff49")('species');
+// CONCATENATED MODULE: /Users/lijiancheng/.config/yarn/global/node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
+// This file is imported into lib/wc client bundles.
 
-module.exports = function (KEY) {
-  var C = global[KEY];
-  if (DESCRIPTORS && C && !C[SPECIES]) dP.f(C, SPECIES, {
-    configurable: true,
-    get: function () { return this; }
+if (typeof window !== 'undefined') {
+  if (true) {
+    __webpack_require__("07ee")
+  }
+
+  var i
+  if ((i = window.document.currentScript) && (i = i.src.match(/(.+\/)[^/]+\.js(\?.*)?$/))) {
+    __webpack_require__.p = i[1] // eslint-disable-line
+  }
+}
+
+// Indicate to webpack that this file can be concatenated
+/* harmony default export */ var setPublicPath = (null);
+
+// EXTERNAL MODULE: /Users/lijiancheng/.config/yarn/global/node_modules/core-js/modules/es6.promise.js
+var es6_promise = __webpack_require__("22d6");
+
+// EXTERNAL MODULE: ./node_modules/axios/index.js
+var axios = __webpack_require__("bc3a");
+var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
+
+// EXTERNAL MODULE: ./node_modules/qs/lib/index.js
+var lib = __webpack_require__("4328");
+var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
+
+// CONCATENATED MODULE: ./pipe/vda/index.js
+
+
+
+
+var host = 'v1/ds/dvms/vda';
+var signIn = 'loginController/signIn';
+var apiList = 'visualDataModelController/queryTreeDataModels';
+var dataPreview = 'visualDataModelController/dataPreview';
+var panelSource = 'visualConfPanelController/info/panel';
+var queryDmData = 'visualThemeController/queryDmData';
+var queryNewDmData = 'visualThemeController/queryNewDmData';
+var createPanelUrl = 'visualConfPanelController/save/panel';
+var username = 'admin';
+var vda_password = 'agreexian!';
+var token = '';
+var fakeData = {
+  '网点树': {
+    "params": [{
+      "requestid": "27CF0EDB-981B-4580-9A19-A23AADE92B64",
+      "cols": ["_orgname"]
+    }],
+    "content": {
+      '27CF0EDB-981B-4580-9A19-A23AADE92B64': [{
+        "_orgname": "渠道管理部"
+      }, {
+        "_orgname": "平台管理部"
+      }, {
+        "_orgname": "运行管理部"
+      }, {
+        "_orgname": "系统应用管理部"
+      }, {
+        "_orgname": "杭州分行"
+      }, {
+        "_orgname": "杭州分行营业部"
+      }, {
+        "_orgname": "市北分行"
+      }, {
+        "_orgname": "杨浦支行"
+      }, {
+        "_orgname": "杨浦支行营业部"
+      }, {
+        "_orgname": "闸北支行"
+      }, {
+        "_orgname": "零售业务部"
+      }]
+    }
+  },
+  "开会趋势": {
+    "params": [{
+      "requestid": "518B3F39-B1",
+      "cols": ["_orgname"]
+    }]
+  }
+};
+
+var vda_signInFn = function signInFn() {
+  return new Promise(function (r, j) {
+    axios_default.a.post("".concat(host, "/").concat(signIn), lib_default.a.stringify({
+      username: username,
+      password: vda_password
+    }), {
+      headers: {}
+    }).then(function (res) {
+      if (res.status) {
+        if (res.data) {
+          token = res.data.content.token;
+        } else {
+          token = res.content.token;
+        }
+      } else {
+        j(res.errorMsg);
+      }
+
+      r(token);
+    }).catch(function (e) {
+      j(e);
+    });
   });
 };
 
-
-/***/ }),
-
-/***/ "615a":
-/***/ (function(module, exports, __webpack_require__) {
-
-var ctx = __webpack_require__("af01");
-var call = __webpack_require__("1dab");
-var isArrayIter = __webpack_require__("8dc0");
-var anObject = __webpack_require__("6fd6");
-var toLength = __webpack_require__("3086");
-var getIterFn = __webpack_require__("65bd");
-var BREAK = {};
-var RETURN = {};
-var exports = module.exports = function (iterable, entries, fn, that, ITERATOR) {
-  var iterFn = ITERATOR ? function () { return iterable; } : getIterFn(iterable);
-  var f = ctx(fn, that, entries ? 2 : 1);
-  var index = 0;
-  var length, step, iterator, result;
-  if (typeof iterFn != 'function') throw TypeError(iterable + ' is not iterable!');
-  // fast case for arrays with default iterator
-  if (isArrayIter(iterFn)) for (length = toLength(iterable.length); length > index; index++) {
-    result = entries ? f(anObject(step = iterable[index])[0], step[1]) : f(iterable[index]);
-    if (result === BREAK || result === RETURN) return result;
-  } else for (iterator = iterFn.call(iterable); !(step = iterator.next()).done;) {
-    result = call(iterator, f, step.value, entries);
-    if (result === BREAK || result === RETURN) return result;
+/* harmony default export */ var vda = ({
+  ready: function ready() {
+    return token ? new Promise(function (r) {
+      return r(token);
+    }) : vda_signInFn();
+  },
+  list: function list() {
+    return axios_default.a.post("".concat(host, "/").concat(apiList), lib_default.a.stringify({
+      token: token
+    }));
+  },
+  data: function data(id) {
+    return axios_default.a.post("".concat(host, "/").concat(dataPreview), lib_default.a.stringify({
+      token: token,
+      dmUid: id
+    }));
+  },
+  createPanel: function createPanel(name) {
+    return axios_default.a.post("".concat(host, "/").concat(createPanelUrl), lib_default.a.stringify({
+      data: JSON.stringify({
+        "treeData": {
+          "treeNodeName": name,
+          "treePNodeName": "AWEB测试"
+        },
+        "panelData": {
+          "name": name,
+          "id": "",
+          "visualConfPanelCharts": []
+        }
+      }),
+      token: token
+    }));
+  },
+  //获取面板数据
+  panel: function panel(panelName) {
+    return axios_default.a.post("".concat(host, "/").concat(panelSource), lib_default.a.stringify({
+      token: token,
+      panelName: panelName
+    }));
+  },
+  //获取配置数据
+  paramAjax: function paramAjax(params) {
+    return axios_default.a.post("".concat(host, "/").concat(queryDmData), lib_default.a.stringify({
+      token: token,
+      request: JSON.stringify({
+        userid: username,
+        paras: params
+      })
+    }));
+  },
+  paramNewAjax: function paramNewAjax(params, apiName) {
+    return Promise(function (r) {
+      r({
+        content: fakeData[apiName].content
+      });
+    }); // return axios.post(`${host}/${queryNewDmData}`, qs.stringify({
+    //     token: token,
+    //     request: JSON.stringify({
+    //         userid: username,
+    //         paras: params
+    //     })
+    // }));
   }
-};
-exports.BREAK = BREAK;
-exports.RETURN = RETURN;
+});
+// CONCATENATED MODULE: /Users/lijiancheng/.config/yarn/global/node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
+
+
+/* harmony default export */ var entry_lib = __webpack_exports__["default"] = (vda);
+
 
 
 /***/ }),
 
-/***/ "61c8":
+/***/ "6b27":
 /***/ (function(module, exports, __webpack_require__) {
 
-var redefine = __webpack_require__("b159");
-module.exports = function (target, src, safe) {
-  for (var key in src) redefine(target, key, src[key], safe);
-  return target;
-};
+var global = __webpack_require__("a324");
+var navigator = global.navigator;
 
-
-/***/ }),
-
-/***/ "631b":
-/***/ (function(module, exports) {
-
-var toString = {}.toString;
-
-module.exports = function (it) {
-  return toString.call(it).slice(8, -1);
-};
-
-
-/***/ }),
-
-/***/ "65bd":
-/***/ (function(module, exports, __webpack_require__) {
-
-var classof = __webpack_require__("c882");
-var ITERATOR = __webpack_require__("ff49")('iterator');
-var Iterators = __webpack_require__("a851");
-module.exports = __webpack_require__("b0aa").getIteratorMethod = function (it) {
-  if (it != undefined) return it[ITERATOR]
-    || it['@@iterator']
-    || Iterators[classof(it)];
-};
-
-
-/***/ }),
-
-/***/ "672e":
-/***/ (function(module, exports, __webpack_require__) {
-
-var def = __webpack_require__("d495").f;
-var has = __webpack_require__("cd36");
-var TAG = __webpack_require__("ff49")('toStringTag');
-
-module.exports = function (it, tag, stat) {
-  if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
-};
-
-
-/***/ }),
-
-/***/ "6fd6":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__("132e");
-module.exports = function (it) {
-  if (!isObject(it)) throw TypeError(it + ' is not an object!');
-  return it;
-};
+module.exports = navigator && navigator.userAgent || '';
 
 
 /***/ }),
@@ -1679,100 +1928,55 @@ module.exports = (
 
 /***/ }),
 
-/***/ "7e51":
+/***/ "7c32":
 /***/ (function(module, exports, __webpack_require__) {
 
-var dP = __webpack_require__("d495");
-var createDesc = __webpack_require__("4830");
-module.exports = __webpack_require__("916d") ? function (object, key, value) {
-  return dP.f(object, key, createDesc(1, value));
-} : function (object, key, value) {
-  object[key] = value;
-  return object;
+// 7.3.20 SpeciesConstructor(O, defaultConstructor)
+var anObject = __webpack_require__("9d2f");
+var aFunction = __webpack_require__("1777");
+var SPECIES = __webpack_require__("e007")('species');
+module.exports = function (O, D) {
+  var C = anObject(O).constructor;
+  var S;
+  return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? D : aFunction(S);
 };
 
 
 /***/ }),
 
-/***/ "8baf":
+/***/ "80dd":
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__("6fd6");
-var isObject = __webpack_require__("132e");
-var newPromiseCapability = __webpack_require__("436d");
+var core = __webpack_require__("21c7");
+var global = __webpack_require__("a324");
+var SHARED = '__core-js_shared__';
+var store = global[SHARED] || (global[SHARED] = {});
 
-module.exports = function (C, x) {
-  anObject(C);
-  if (isObject(x) && x.constructor === C) return x;
-  var promiseCapability = newPromiseCapability.f(C);
-  var resolve = promiseCapability.resolve;
-  resolve(x);
-  return promiseCapability.promise;
-};
+(module.exports = function (key, value) {
+  return store[key] || (store[key] = value !== undefined ? value : {});
+})('versions', []).push({
+  version: core.version,
+  mode: __webpack_require__("1c1a") ? 'pure' : 'global',
+  copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
+});
 
 
 /***/ }),
 
-/***/ "8cc3":
+/***/ "84ec":
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__("0765");
-var core = __webpack_require__("b0aa");
-var hide = __webpack_require__("7e51");
-var redefine = __webpack_require__("b159");
-var ctx = __webpack_require__("af01");
-var PROTOTYPE = 'prototype';
-
-var $export = function (type, name, source) {
-  var IS_FORCED = type & $export.F;
-  var IS_GLOBAL = type & $export.G;
-  var IS_STATIC = type & $export.S;
-  var IS_PROTO = type & $export.P;
-  var IS_BIND = type & $export.B;
-  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] || (global[name] = {}) : (global[name] || {})[PROTOTYPE];
-  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
-  var expProto = exports[PROTOTYPE] || (exports[PROTOTYPE] = {});
-  var key, own, out, exp;
-  if (IS_GLOBAL) source = name;
-  for (key in source) {
-    // contains in native
-    own = !IS_FORCED && target && target[key] !== undefined;
-    // export native or passed
-    out = (own ? target : source)[key];
-    // bind timers to global for call from export context
-    exp = IS_BIND && own ? ctx(out, global) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
-    // extend global
-    if (target) redefine(target, key, out, type & $export.U);
-    // export
-    if (exports[key] != out) hide(exports, key, exp);
-    if (IS_PROTO && expProto[key] != out) expProto[key] = out;
-  }
-};
-global.core = core;
-// type bitmap
-$export.F = 1;   // forced
-$export.G = 2;   // global
-$export.S = 4;   // static
-$export.P = 8;   // proto
-$export.B = 16;  // bind
-$export.W = 32;  // wrap
-$export.U = 64;  // safe
-$export.R = 128; // real proto method for `library`
-module.exports = $export;
-
-
-/***/ }),
-
-/***/ "8dc0":
-/***/ (function(module, exports, __webpack_require__) {
-
-// check on default Array iterator
-var Iterators = __webpack_require__("a851");
-var ITERATOR = __webpack_require__("ff49")('iterator');
-var ArrayProto = Array.prototype;
-
-module.exports = function (it) {
-  return it !== undefined && (Iterators.Array === it || ArrayProto[ITERATOR] === it);
+// 7.1.1 ToPrimitive(input [, PreferredType])
+var isObject = __webpack_require__("04ee");
+// instead of the ES6 spec version, we didn't implement @@toPrimitive case
+// and the second argument - flag - preferred type is a string
+module.exports = function (it, S) {
+  if (!isObject(it)) return it;
+  var fn, val;
+  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
+  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+  throw TypeError("Can't convert object to primitive value");
 };
 
 
@@ -1843,43 +2047,47 @@ module.exports = CancelToken;
 
 /***/ }),
 
-/***/ "916d":
+/***/ "97f2":
 /***/ (function(module, exports, __webpack_require__) {
 
-// Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__("285a")(function () {
-  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
-});
+var anObject = __webpack_require__("9d2f");
+var isObject = __webpack_require__("04ee");
+var newPromiseCapability = __webpack_require__("b783");
+
+module.exports = function (C, x) {
+  anObject(C);
+  if (isObject(x) && x.constructor === C) return x;
+  var promiseCapability = newPromiseCapability.f(C);
+  var resolve = promiseCapability.resolve;
+  resolve(x);
+  return promiseCapability.promise;
+};
 
 
 /***/ }),
 
-/***/ "97cc":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "9abb":
+/***/ (function(module, exports) {
 
-var core = __webpack_require__("b0aa");
-var global = __webpack_require__("0765");
-var SHARED = '__core-js_shared__';
-var store = global[SHARED] || (global[SHARED] = {});
-
-(module.exports = function (key, value) {
-  return store[key] || (store[key] = value !== undefined ? value : {});
-})('versions', []).push({
-  version: core.version,
-  mode: __webpack_require__("deb9") ? 'pure' : 'global',
-  copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
-});
+module.exports = function (exec) {
+  try {
+    return !!exec();
+  } catch (e) {
+    return true;
+  }
+};
 
 
 /***/ }),
 
-/***/ "9dfb":
+/***/ "9d2f":
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__("0765");
-var navigator = global.navigator;
-
-module.exports = navigator && navigator.userAgent || '';
+var isObject = __webpack_require__("04ee");
+module.exports = function (it) {
+  if (!isObject(it)) throw TypeError(it + ' is not an object!');
+  return it;
+};
 
 
 /***/ }),
@@ -2066,168 +2274,49 @@ module.exports = function (str, opts) {
 
 /***/ }),
 
-/***/ "a02b":
+/***/ "9f9e":
 /***/ (function(module, exports, __webpack_require__) {
 
-var document = __webpack_require__("0765").document;
-module.exports = document && document.documentElement;
+var ITERATOR = __webpack_require__("e007")('iterator');
+var SAFE_CLOSING = false;
 
+try {
+  var riter = [7][ITERATOR]();
+  riter['return'] = function () { SAFE_CLOSING = true; };
+  // eslint-disable-next-line no-throw-literal
+  Array.from(riter, function () { throw 2; });
+} catch (e) { /* empty */ }
 
-/***/ }),
-
-/***/ "a5b6":
-/***/ (function(module, exports) {
-
-module.exports = function (exec) {
+module.exports = function (exec, skipClosing) {
+  if (!skipClosing && !SAFE_CLOSING) return false;
+  var safe = false;
   try {
-    return { e: false, v: exec() };
-  } catch (e) {
-    return { e: true, v: e };
-  }
+    var arr = [7];
+    var iter = arr[ITERATOR]();
+    iter.next = function () { return { done: safe = true }; };
+    arr[ITERATOR] = function () { return iter; };
+    exec(arr);
+  } catch (e) { /* empty */ }
+  return safe;
 };
 
 
 /***/ }),
 
-/***/ "a851":
+/***/ "a324":
 /***/ (function(module, exports) {
 
-module.exports = {};
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+var global = module.exports = typeof window != 'undefined' && window.Math == Math
+  ? window : typeof self != 'undefined' && self.Math == Math ? self
+  // eslint-disable-next-line no-new-func
+  : Function('return this')();
+if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 
 
 /***/ }),
 
-/***/ "a924":
-/***/ (function(module, exports, __webpack_require__) {
-
-// 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__("132e");
-// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-// and the second argument - flag - preferred type is a string
-module.exports = function (it, S) {
-  if (!isObject(it)) return it;
-  var fn, val;
-  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
-  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  throw TypeError("Can't convert object to primitive value");
-};
-
-
-/***/ }),
-
-/***/ "af01":
-/***/ (function(module, exports, __webpack_require__) {
-
-// optional / simple context binding
-var aFunction = __webpack_require__("b1f5");
-module.exports = function (fn, that, length) {
-  aFunction(fn);
-  if (that === undefined) return fn;
-  switch (length) {
-    case 1: return function (a) {
-      return fn.call(that, a);
-    };
-    case 2: return function (a, b) {
-      return fn.call(that, a, b);
-    };
-    case 3: return function (a, b, c) {
-      return fn.call(that, a, b, c);
-    };
-  }
-  return function (/* ...args */) {
-    return fn.apply(that, arguments);
-  };
-};
-
-
-/***/ }),
-
-/***/ "b0aa":
-/***/ (function(module, exports) {
-
-var core = module.exports = { version: '2.6.9' };
-if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
-
-
-/***/ }),
-
-/***/ "b159":
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__("0765");
-var hide = __webpack_require__("7e51");
-var has = __webpack_require__("cd36");
-var SRC = __webpack_require__("f189")('src');
-var $toString = __webpack_require__("20a0");
-var TO_STRING = 'toString';
-var TPL = ('' + $toString).split(TO_STRING);
-
-__webpack_require__("b0aa").inspectSource = function (it) {
-  return $toString.call(it);
-};
-
-(module.exports = function (O, key, val, safe) {
-  var isFunction = typeof val == 'function';
-  if (isFunction) has(val, 'name') || hide(val, 'name', key);
-  if (O[key] === val) return;
-  if (isFunction) has(val, SRC) || hide(val, SRC, O[key] ? '' + O[key] : TPL.join(String(key)));
-  if (O === global) {
-    O[key] = val;
-  } else if (!safe) {
-    delete O[key];
-    hide(O, key, val);
-  } else if (O[key]) {
-    O[key] = val;
-  } else {
-    hide(O, key, val);
-  }
-// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
-})(Function.prototype, TO_STRING, function toString() {
-  return typeof this == 'function' && this[SRC] || $toString.call(this);
-});
-
-
-/***/ }),
-
-/***/ "b1f5":
-/***/ (function(module, exports) {
-
-module.exports = function (it) {
-  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
-  return it;
-};
-
-
-/***/ }),
-
-/***/ "b313":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var replace = String.prototype.replace;
-var percentTwenties = /%20/g;
-
-module.exports = {
-    'default': 'RFC3986',
-    formatters: {
-        RFC1738: function (value) {
-            return replace.call(value, percentTwenties, '+');
-        },
-        RFC3986: function (value) {
-            return value;
-        }
-    },
-    RFC1738: 'RFC1738',
-    RFC3986: 'RFC3986'
-};
-
-
-/***/ }),
-
-/***/ "b40f":
+/***/ "a3cb":
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -2418,6 +2507,44 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "a8f8":
+/***/ (function(module, exports, __webpack_require__) {
+
+var redefine = __webpack_require__("446e");
+module.exports = function (target, src, safe) {
+  for (var key in src) redefine(target, key, src[key], safe);
+  return target;
+};
+
+
+/***/ }),
+
+/***/ "b313":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var replace = String.prototype.replace;
+var percentTwenties = /%20/g;
+
+module.exports = {
+    'default': 'RFC3986',
+    formatters: {
+        RFC1738: function (value) {
+            return replace.call(value, percentTwenties, '+');
+        },
+        RFC3986: function (value) {
+            return value;
+        }
+    },
+    RFC1738: 'RFC1738',
+    RFC3986: 'RFC3986'
+};
+
+
+/***/ }),
+
 /***/ "b50d":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2588,45 +2715,15 @@ module.exports = function xhrAdapter(config) {
 
 /***/ }),
 
-/***/ "b60f":
-/***/ (function(module, exports) {
-
-// fast apply, http://jsperf.lnkit.com/fast-apply/5
-module.exports = function (fn, args, that) {
-  var un = that === undefined;
-  switch (args.length) {
-    case 0: return un ? fn()
-                      : fn.call(that);
-    case 1: return un ? fn(args[0])
-                      : fn.call(that, args[0]);
-    case 2: return un ? fn(args[0], args[1])
-                      : fn.call(that, args[0], args[1]);
-    case 3: return un ? fn(args[0], args[1], args[2])
-                      : fn.call(that, args[0], args[1], args[2]);
-    case 4: return un ? fn(args[0], args[1], args[2], args[3])
-                      : fn.call(that, args[0], args[1], args[2], args[3]);
-  } return fn.apply(that, args);
-};
-
-
-/***/ }),
-
-/***/ "bc3a":
+/***/ "b60c":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("cee4");
-
-/***/ }),
-
-/***/ "c069":
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__("0765");
-var macrotask = __webpack_require__("e815").set;
+var global = __webpack_require__("a324");
+var macrotask = __webpack_require__("4f79").set;
 var Observer = global.MutationObserver || global.WebKitMutationObserver;
 var process = global.process;
 var Promise = global.Promise;
-var isNode = __webpack_require__("631b")(process) == 'process';
+var isNode = __webpack_require__("f452")(process) == 'process';
 
 module.exports = function () {
   var head, last, notify;
@@ -2689,6 +2786,51 @@ module.exports = function () {
       notify();
     } last = task;
   };
+};
+
+
+/***/ }),
+
+/***/ "b783":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+// 25.4.1.5 NewPromiseCapability(C)
+var aFunction = __webpack_require__("1777");
+
+function PromiseCapability(C) {
+  var resolve, reject;
+  this.promise = new C(function ($$resolve, $$reject) {
+    if (resolve !== undefined || reject !== undefined) throw TypeError('Bad Promise constructor');
+    resolve = $$resolve;
+    reject = $$reject;
+  });
+  this.resolve = aFunction(resolve);
+  this.reject = aFunction(reject);
+}
+
+module.exports.f = function (C) {
+  return new PromiseCapability(C);
+};
+
+
+/***/ }),
+
+/***/ "bc3a":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("cee4");
+
+/***/ }),
+
+/***/ "c281":
+/***/ (function(module, exports) {
+
+module.exports = function (it, Constructor, name, forbiddenField) {
+  if (!(it instanceof Constructor) || (forbiddenField !== undefined && forbiddenField in it)) {
+    throw TypeError(name + ': incorrect invocation!');
+  } return it;
 };
 
 
@@ -3094,41 +3236,24 @@ module.exports = {
 
 /***/ }),
 
-/***/ "c593":
+/***/ "c70f":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = !__webpack_require__("916d") && !__webpack_require__("285a")(function () {
-  return Object.defineProperty(__webpack_require__("3d39")('div'), 'a', { get: function () { return 7; } }).a != 7;
-});
+var anObject = __webpack_require__("9d2f");
+var IE8_DOM_DEFINE = __webpack_require__("3966");
+var toPrimitive = __webpack_require__("84ec");
+var dP = Object.defineProperty;
 
-
-/***/ }),
-
-/***/ "c882":
-/***/ (function(module, exports, __webpack_require__) {
-
-// getting tag from 19.1.3.6 Object.prototype.toString()
-var cof = __webpack_require__("631b");
-var TAG = __webpack_require__("ff49")('toStringTag');
-// ES3 wrong here
-var ARG = cof(function () { return arguments; }()) == 'Arguments';
-
-// fallback for IE11 Script Access Denied error
-var tryGet = function (it, key) {
-  try {
-    return it[key];
+exports.f = __webpack_require__("e964") ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+  anObject(O);
+  P = toPrimitive(P, true);
+  anObject(Attributes);
+  if (IE8_DOM_DEFINE) try {
+    return dP(O, P, Attributes);
   } catch (e) { /* empty */ }
-};
-
-module.exports = function (it) {
-  var O, T, B;
-  return it === undefined ? 'Undefined' : it === null ? 'Null'
-    // @@toStringTag case
-    : typeof (T = tryGet(O = Object(it), TAG)) == 'string' ? T
-    // builtinTag case
-    : ARG ? cof(O)
-    // ES3 arguments fallback
-    : (B = cof(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : B;
+  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
+  if ('value' in Attributes) O[P] = Attributes.value;
+  return O;
 };
 
 
@@ -3154,12 +3279,15 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 /***/ }),
 
-/***/ "cd36":
-/***/ (function(module, exports) {
+/***/ "cec0":
+/***/ (function(module, exports, __webpack_require__) {
 
-var hasOwnProperty = {}.hasOwnProperty;
-module.exports = function (it, key) {
-  return hasOwnProperty.call(it, key);
+var isObject = __webpack_require__("04ee");
+var document = __webpack_require__("a324").document;
+// typeof document.createElement is 'object' in old IE
+var is = isObject(document) && isObject(document.createElement);
+module.exports = function (it) {
+  return is ? document.createElement(it) : {};
 };
 
 
@@ -3221,6 +3349,35 @@ module.exports = axios;
 
 // Allow use of default import syntax in TypeScript
 module.exports.default = axios;
+
+
+/***/ }),
+
+/***/ "cf6b":
+/***/ (function(module, exports, __webpack_require__) {
+
+var classof = __webpack_require__("3c91");
+var ITERATOR = __webpack_require__("e007")('iterator');
+var Iterators = __webpack_require__("0968");
+module.exports = __webpack_require__("21c7").getIteratorMethod = function (it) {
+  if (it != undefined) return it[ITERATOR]
+    || it['@@iterator']
+    || Iterators[classof(it)];
+};
+
+
+/***/ }),
+
+/***/ "cfb5":
+/***/ (function(module, exports) {
+
+module.exports = function (exec) {
+  try {
+    return { e: false, v: exec() };
+  } catch (e) {
+    return { e: true, v: e };
+  }
+};
 
 
 /***/ }),
@@ -3446,25 +3603,11 @@ module.exports = {
 
 /***/ }),
 
-/***/ "d495":
+/***/ "d7f0":
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__("6fd6");
-var IE8_DOM_DEFINE = __webpack_require__("c593");
-var toPrimitive = __webpack_require__("a924");
-var dP = Object.defineProperty;
-
-exports.f = __webpack_require__("916d") ? Object.defineProperty : function defineProperty(O, P, Attributes) {
-  anObject(O);
-  P = toPrimitive(P, true);
-  anObject(Attributes);
-  if (IE8_DOM_DEFINE) try {
-    return dP(O, P, Attributes);
-  } catch (e) { /* empty */ }
-  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
-  if ('value' in Attributes) O[P] = Attributes.value;
-  return O;
-};
+var document = __webpack_require__("a324").document;
+module.exports = document && document.documentElement;
 
 
 /***/ }),
@@ -3491,145 +3634,72 @@ module.exports = function isAbsoluteURL(url) {
 
 /***/ }),
 
-/***/ "dd7a":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "d9a9":
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-
-// CONCATENATED MODULE: C:/Users/Erin/AppData/Roaming/npm/node_modules/@vue/cli-service-global/node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
-// This file is imported into lib/wc client bundles.
-
-if (typeof window !== 'undefined') {
-  if (true) {
-    __webpack_require__("0f55")
-  }
-
-  var i
-  if ((i = window.document.currentScript) && (i = i.src.match(/(.+\/)[^/]+\.js(\?.*)?$/))) {
-    __webpack_require__.p = i[1] // eslint-disable-line
-  }
-}
-
-// Indicate to webpack that this file can be concatenated
-/* harmony default export */ var setPublicPath = (null);
-
-// EXTERNAL MODULE: C:/Users/Erin/AppData/Roaming/npm/node_modules/@vue/cli-service-global/node_modules/core-js/modules/es6.promise.js
-var es6_promise = __webpack_require__("4d46");
-
-// EXTERNAL MODULE: ./node_modules/axios/index.js
-var axios = __webpack_require__("bc3a");
-var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
-
-// EXTERNAL MODULE: ./node_modules/qs/lib/index.js
-var lib = __webpack_require__("4328");
-var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
-
-// CONCATENATED MODULE: ./pipe/vda/index.js
-
-
-
-
-var host = 'v1/ds/dvms/vda';
-var signIn = 'loginController/signIn';
-var apiList = 'visualDataModelController/queryTreeDataModels';
-var dataPreview = 'visualDataModelController/dataPreview';
-var panelSource = 'visualConfPanelController/info/panel';
-var queryDmData = 'visualThemeController/queryDmData';
-var createPanelUrl = 'visualConfPanelController/save/panel';
-var username = 'admin';
-var vda_password = '888888';
-var token = '';
-
-var vda_signInFn = function signInFn() {
-  return new Promise(function (r, j) {
-    axios_default.a.post("".concat(host, "/").concat(signIn), lib_default.a.stringify({
-      username: username,
-      password: vda_password
-    }), {
-      headers: {}
-    }).then(function (res) {
-      if (res.status) {
-        if (res.data) {
-          token = res.data.content.token;
-        } else {
-          token = res.content.token;
-        }
-      } else {
-        j(res.errorMsg);
-      }
-
-      r(token);
-    }).catch(function (e) {
-      j(e);
-    });
-  });
+var dP = __webpack_require__("c70f");
+var createDesc = __webpack_require__("faa0");
+module.exports = __webpack_require__("e964") ? function (object, key, value) {
+  return dP.f(object, key, createDesc(1, value));
+} : function (object, key, value) {
+  object[key] = value;
+  return object;
 };
-
-/* harmony default export */ var vda = ({
-  ready: function ready() {
-    return token ? new Promise(function (r) {
-      return r(token);
-    }) : vda_signInFn();
-  },
-  list: function list() {
-    return axios_default.a.post("".concat(host, "/").concat(apiList), lib_default.a.stringify({
-      token: token
-    }));
-  },
-  data: function data(id) {
-    return axios_default.a.post("".concat(host, "/").concat(dataPreview), lib_default.a.stringify({
-      token: token,
-      dmUid: id
-    }));
-  },
-  createPanel: function createPanel(name) {
-    return axios_default.a.post("".concat(host, "/").concat(createPanelUrl), lib_default.a.stringify({
-      data: JSON.stringify({
-        "treeData": {
-          "treeNodeName": name,
-          "treePNodeName": "AWEB测试"
-        },
-        "panelData": {
-          "name": name,
-          "id": "",
-          "visualConfPanelCharts": []
-        }
-      }),
-      token: token
-    }));
-  },
-  //获取面板数据
-  panel: function panel(panelName) {
-    return axios_default.a.post("".concat(host, "/").concat(panelSource), lib_default.a.stringify({
-      token: token,
-      panelName: panelName
-    }));
-  },
-  //获取配置数据
-  paramAjax: function paramAjax(params) {
-    return axios_default.a.post("".concat(host, "/").concat(queryDmData), lib_default.a.stringify({
-      token: token,
-      request: JSON.stringify({
-        userid: username,
-        paras: params
-      })
-    }));
-  }
-});
-// CONCATENATED MODULE: C:/Users/Erin/AppData/Roaming/npm/node_modules/@vue/cli-service-global/node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
-
-
-/* harmony default export */ var entry_lib = __webpack_exports__["default"] = (vda);
-
 
 
 /***/ }),
 
-/***/ "deb9":
+/***/ "dad9":
 /***/ (function(module, exports) {
 
-module.exports = false;
+// fast apply, http://jsperf.lnkit.com/fast-apply/5
+module.exports = function (fn, args, that) {
+  var un = that === undefined;
+  switch (args.length) {
+    case 0: return un ? fn()
+                      : fn.call(that);
+    case 1: return un ? fn(args[0])
+                      : fn.call(that, args[0]);
+    case 2: return un ? fn(args[0], args[1])
+                      : fn.call(that, args[0], args[1]);
+    case 3: return un ? fn(args[0], args[1], args[2])
+                      : fn.call(that, args[0], args[1], args[2]);
+    case 4: return un ? fn(args[0], args[1], args[2], args[3])
+                      : fn.call(that, args[0], args[1], args[2], args[3]);
+  } return fn.apply(that, args);
+};
+
+
+/***/ }),
+
+/***/ "e007":
+/***/ (function(module, exports, __webpack_require__) {
+
+var store = __webpack_require__("80dd")('wks');
+var uid = __webpack_require__("32f0");
+var Symbol = __webpack_require__("a324").Symbol;
+var USE_SYMBOL = typeof Symbol == 'function';
+
+var $exports = module.exports = function (name) {
+  return store[name] || (store[name] =
+    USE_SYMBOL && Symbol[name] || (USE_SYMBOL ? Symbol : uid)('Symbol.' + name));
+};
+
+$exports.store = store;
+
+
+/***/ }),
+
+/***/ "e61e":
+/***/ (function(module, exports, __webpack_require__) {
+
+var def = __webpack_require__("c70f").f;
+var has = __webpack_require__("07bc");
+var TAG = __webpack_require__("e007")('toStringTag');
+
+module.exports = function (it, tag, stat) {
+  if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
+};
 
 
 /***/ }),
@@ -3656,104 +3726,77 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 /***/ }),
 
-/***/ "e815":
+/***/ "e964":
 /***/ (function(module, exports, __webpack_require__) {
 
-var ctx = __webpack_require__("af01");
-var invoke = __webpack_require__("b60f");
-var html = __webpack_require__("a02b");
-var cel = __webpack_require__("3d39");
-var global = __webpack_require__("0765");
-var process = global.process;
-var setTask = global.setImmediate;
-var clearTask = global.clearImmediate;
-var MessageChannel = global.MessageChannel;
-var Dispatch = global.Dispatch;
-var counter = 0;
-var queue = {};
-var ONREADYSTATECHANGE = 'onreadystatechange';
-var defer, channel, port;
-var run = function () {
-  var id = +this;
-  // eslint-disable-next-line no-prototype-builtins
-  if (queue.hasOwnProperty(id)) {
-    var fn = queue[id];
-    delete queue[id];
-    fn();
+// Thank's IE8 for his funny defineProperty
+module.exports = !__webpack_require__("9abb")(function () {
+  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
+});
+
+
+/***/ }),
+
+/***/ "e966":
+/***/ (function(module, exports, __webpack_require__) {
+
+var ctx = __webpack_require__("2efb");
+var call = __webpack_require__("12ca");
+var isArrayIter = __webpack_require__("1a64");
+var anObject = __webpack_require__("9d2f");
+var toLength = __webpack_require__("45f1");
+var getIterFn = __webpack_require__("cf6b");
+var BREAK = {};
+var RETURN = {};
+var exports = module.exports = function (iterable, entries, fn, that, ITERATOR) {
+  var iterFn = ITERATOR ? function () { return iterable; } : getIterFn(iterable);
+  var f = ctx(fn, that, entries ? 2 : 1);
+  var index = 0;
+  var length, step, iterator, result;
+  if (typeof iterFn != 'function') throw TypeError(iterable + ' is not iterable!');
+  // fast case for arrays with default iterator
+  if (isArrayIter(iterFn)) for (length = toLength(iterable.length); length > index; index++) {
+    result = entries ? f(anObject(step = iterable[index])[0], step[1]) : f(iterable[index]);
+    if (result === BREAK || result === RETURN) return result;
+  } else for (iterator = iterFn.call(iterable); !(step = iterator.next()).done;) {
+    result = call(iterator, f, step.value, entries);
+    if (result === BREAK || result === RETURN) return result;
   }
 };
-var listener = function (event) {
-  run.call(event.data);
-};
-// Node.js 0.9+ & IE10+ has setImmediate, otherwise:
-if (!setTask || !clearTask) {
-  setTask = function setImmediate(fn) {
-    var args = [];
-    var i = 1;
-    while (arguments.length > i) args.push(arguments[i++]);
-    queue[++counter] = function () {
-      // eslint-disable-next-line no-new-func
-      invoke(typeof fn == 'function' ? fn : Function(fn), args);
-    };
-    defer(counter);
-    return counter;
-  };
-  clearTask = function clearImmediate(id) {
-    delete queue[id];
-  };
-  // Node.js 0.8-
-  if (__webpack_require__("631b")(process) == 'process') {
-    defer = function (id) {
-      process.nextTick(ctx(run, id, 1));
-    };
-  // Sphere (JS game engine) Dispatch API
-  } else if (Dispatch && Dispatch.now) {
-    defer = function (id) {
-      Dispatch.now(ctx(run, id, 1));
-    };
-  // Browsers with MessageChannel, includes WebWorkers
-  } else if (MessageChannel) {
-    channel = new MessageChannel();
-    port = channel.port2;
-    channel.port1.onmessage = listener;
-    defer = ctx(port.postMessage, port, 1);
-  // Browsers with postMessage, skip WebWorkers
-  // IE8 has postMessage, but it's sync & typeof its postMessage is 'object'
-  } else if (global.addEventListener && typeof postMessage == 'function' && !global.importScripts) {
-    defer = function (id) {
-      global.postMessage(id + '', '*');
-    };
-    global.addEventListener('message', listener, false);
-  // IE8-
-  } else if (ONREADYSTATECHANGE in cel('script')) {
-    defer = function (id) {
-      html.appendChild(cel('script'))[ONREADYSTATECHANGE] = function () {
-        html.removeChild(this);
-        run.call(id);
-      };
-    };
-  // Rest old browsers
-  } else {
-    defer = function (id) {
-      setTimeout(ctx(run, id, 1), 0);
-    };
-  }
-}
-module.exports = {
-  set: setTask,
-  clear: clearTask
+exports.BREAK = BREAK;
+exports.RETURN = RETURN;
+
+
+/***/ }),
+
+/***/ "f452":
+/***/ (function(module, exports) {
+
+var toString = {}.toString;
+
+module.exports = function (it) {
+  return toString.call(it).slice(8, -1);
 };
 
 
 /***/ }),
 
-/***/ "f189":
-/***/ (function(module, exports) {
+/***/ "f631":
+/***/ (function(module, exports, __webpack_require__) {
 
-var id = 0;
-var px = Math.random();
-module.exports = function (key) {
-  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
+"use strict";
+
+var global = __webpack_require__("a324");
+var dP = __webpack_require__("c70f");
+var DESCRIPTORS = __webpack_require__("e964");
+var SPECIES = __webpack_require__("e007")('species');
+
+module.exports = function (KEY) {
+  var C = global[KEY];
+  if (DESCRIPTORS && C && !C[SPECIES]) dP.f(C, SPECIES, {
+    configurable: true,
+    get: function () { return this; }
+  });
 };
 
 
@@ -3819,20 +3862,30 @@ module.exports = InterceptorManager;
 
 /***/ }),
 
-/***/ "ff49":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "fa17":
+/***/ (function(module, exports) {
 
-var store = __webpack_require__("97cc")('wks');
-var uid = __webpack_require__("f189");
-var Symbol = __webpack_require__("0765").Symbol;
-var USE_SYMBOL = typeof Symbol == 'function';
-
-var $exports = module.exports = function (name) {
-  return store[name] || (store[name] =
-    USE_SYMBOL && Symbol[name] || (USE_SYMBOL ? Symbol : uid)('Symbol.' + name));
+// 7.1.4 ToInteger
+var ceil = Math.ceil;
+var floor = Math.floor;
+module.exports = function (it) {
+  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
 };
 
-$exports.store = store;
+
+/***/ }),
+
+/***/ "faa0":
+/***/ (function(module, exports) {
+
+module.exports = function (bitmap, value) {
+  return {
+    enumerable: !(bitmap & 1),
+    configurable: !(bitmap & 2),
+    writable: !(bitmap & 4),
+    value: value
+  };
+};
 
 
 /***/ })
