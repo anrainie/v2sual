@@ -2005,6 +2005,103 @@ var fakeData = {
         "_normal": 1183
       }]
     }
+  },
+  "总数": {
+    "params": [{
+      "requestid": "ACB9639A-ABA2-4956-BA50-DD944D3EDF89",
+      "cols": ["_dailyCount"]
+    }],
+    "content": {
+      'ACB9639A-ABA2-4956-BA50-DD944D3EDF89': [{
+        "_dailyCount": 15222743
+      }]
+    }
+  },
+  "交易量": {
+    "params": [{
+      "requestid": "373CF19D-071B-482F-9CBE-64BC9217FB60",
+      "cols": ["_dailyBusTransCount"]
+    }],
+    "content": {
+      '373CF19D-071B-482F-9CBE-64BC9217FB60': [{
+        "_dailyBusTransCount": 221978
+      }]
+    }
+  },
+  "环比": {
+    "params": [{
+      "requestid": "B09EDAB7-FBBB-4C58-B677-0CF9DD1963C6",
+      "cols": ["rate"]
+    }],
+    "content": {
+      'B09EDAB7-FBBB-4C58-B677-0CF9DD1963C6': [{
+        "rate": -0.87
+      }, {
+        "rate": -0.79
+      }, {
+        "rate": -0.26
+      }]
+    }
+  },
+  "完好数": {
+    "params": [{
+      "requestid": "18CD6D40-92C6-410C-ABFD-77712BD883B0",
+      "cols": ["_dailyNormal"]
+    }],
+    "content": {
+      '18CD6D40-92C6-410C-ABFD-77712BD883B0': [{
+        "_dailyNormal": 5061500
+      }, {
+        "_dailyNormal": 15219348
+      }, {
+        "_dailyNormal": 10540
+      }]
+    }
+  },
+  "开机数": {
+    "params": [{
+      "requestid": "BE7C1AB5-CA0E-4FFB-A37F-160882FFAF4F",
+      "cols": ["_dailyOnline"]
+    }],
+    "content": {
+      'BE7C1AB5-CA0E-4FFB-A37F-160882FFAF4F': [{
+        "_dailyOnline": 5061500
+      }, {
+        "_dailyOnline": 15248152
+      }, {
+        "_dailyOnline": 10154477
+      }]
+    }
+  },
+  "完好率": {
+    "params": [{
+      "requestid": "F901CC51-DCF6-49D5-A4CB-DB9F4E6A3F0F",
+      "cols": ["_dailyNormalRate"]
+    }],
+    "content": {
+      'F901CC51-DCF6-49D5-A4CB-DB9F4E6A3F0F': [{
+        "_dailyNormalRate": 1
+      }, {
+        "_dailyNormalRate": 1
+      }, {
+        "_dailyNormalRate": 0
+      }]
+    }
+  },
+  "开机率": {
+    "params": [{
+      "requestid": "8F4A4321-89D9-4EFE-AC16-9C04F635D7AF",
+      "cols": ["_dailyOnlineRate"]
+    }],
+    "content": {
+      '8F4A4321-89D9-4EFE-AC16-9C04F635D7AF': [{
+        "_dailyOnlineRate": 1
+      }, {
+        "_dailyOnlineRate": 1
+      }, {
+        "_dailyOnlineRate": 1
+      }]
+    }
   }
 };
 
