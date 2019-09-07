@@ -1931,6 +1931,71 @@ var fakeData = {
         "上月平均等待耗时": 3237.0
       }]
     }
+  },
+  "自助设备信息": {
+    "params": [{
+      "requestid": "20711E8D-6E33-4102-8F26-D938249EF004",
+      "cols": ["_count"]
+    }, {
+      "requestid": "158007AE-DD0F-475D-B82F-4154EAF90B22",
+      "cols": ["总完好率"]
+    }, {
+      "requestid": "345F34BE-2A49-4222-A6CE-A2CB2A506C93",
+      "cols": ["总开机率"]
+    }, {
+      "requestid": "DB4351D0-2F62-4D5E-996C-48103F640442",
+      "cols": ["_normal"]
+    }, {
+      "requestid": "39BDC953-FC7C-4FBF-89DE-DF2A7FA326A5",
+      "cols": ["_online"]
+    }],
+    "content": {
+      '20711E8D-6E33-4102-8F26-D938249EF004': [{
+        "_count": 1557
+      }, {
+        "_count": 1552
+      }, {
+        "_count": 2502
+      }, {
+        "_count": 2498
+      }],
+      '158007AE-DD0F-475D-B82F-4154EAF90B22': [{
+        "总完好率": 98
+      }],
+      '345F34BE-2A49-4222-A6CE-A2CB2A506C93': [{
+        "总开机率": 86
+      }],
+      "39BDC953-FC7C-4FBF-89DE-DF2A7FA326A5": [{
+        "_online": 1335
+      }, {
+        "_online": 1330
+      }, {
+        "_online": 2145
+      }, {
+        "_online": 2141
+      }, {
+        "_online": 1933
+      }, {
+        "_online": 1930
+      }, {
+        "_online": 1183
+      }],
+      "DB4351D0-2F62-4D5E-996C-48103F640442": [{
+        "_normal": 1335
+      }, {
+        "_normal": 1330
+      }, {
+        "_normal": 2145
+      }, {
+        "_normal": 2141
+      }, {
+        "_normal": 1933
+      }, {
+        "_normal": 1930
+      }, {
+        "_normal": 1183
+      }]
+    }
   }
 };
 
