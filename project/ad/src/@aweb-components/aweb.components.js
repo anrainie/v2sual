@@ -36,7 +36,6 @@ import v2Layout  from '@v2-components/v2-layout';
 import v2LayoutEditor  from '@v2-components/v2-layout/editor.vue';
 import v2MobileInput  from '@v2-components/v2-mobile-input';
 import v2MobileImage  from '@v2-components/v2-mobile-image';
-import v2MobileInput  from '@v2-components/v2-mobile-input';
 import v2MobileSteps  from '@v2-components/v2-mobile-steps';
 import v2MobileUploader  from '@v2-components/v2-mobile-uploader';
 import v2MobileRadio  from '@v2-components/v2-mobile-radio';
