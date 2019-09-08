@@ -1,0 +1,39 @@
+{
+    "name": "@aweb-pipe/app.addKey",
+    "main": "index.js",
+    "docs": {
+        "desp": "添加自定义对象属性",
+        "name": "addKey",
+        "category": "compositeSource",
+        "label": ">",
+        "labelType": "addKey",
+        "belongTo": "function",
+        "params": [
+            {
+                "name": "",
+                "desp": "",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": "value2"
+            },
+            {
+                "name": "",
+                "desp": "",
+                "type": "string",
+                "necessary": true,
+                "defaultValue": ""
+            }
+        ],
+        "hasReturn": false,
+        "returnValue": {
+            "name": "",
+            "desp": "",
+            "details": "",
+            "type": "string",
+            "defaultValue": ""
+        }
+    },
+    "category": "自定义",
+    "description": "",
+    "version": "6.0.0"
+}

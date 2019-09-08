@@ -166,12 +166,19 @@ if (typeof window !== 'undefined') {
 /* harmony default export */ var getValue = (function (target, parmas) {
   var data = JSON.parse(JSON.stringify(target));
   var index = parmas[0];
+  var outKey = parmas[1];
+  var tempObj = {};
   var res;
 
   if (data[index]) {
     res = data[index];
   } else {
     res = data[0][index];
+
+    if (outKey) {
+      tempObj[outKey] = res;
+      res = [tempObj];
+    }
   }
 
   return res;
