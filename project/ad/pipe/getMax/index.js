@@ -3,6 +3,8 @@ export default function (target, params) {
   let item;
   let res;
   let str = params[0];
+  let outKey = params[1];
+  let tempObj = {};
 
   if ($.isArray(data)) {
     for (item of data) {
@@ -13,6 +15,10 @@ export default function (target, params) {
           res = parseFloat(item[str]);
         }
       }
+    }
+    if(outKey){
+      tempObj[outKey] = res;
+      res = [tempObj]
     }
   }
   return res;

@@ -455,6 +455,8 @@ var web_dom_iterable = __webpack_require__("5c9d");
   var item;
   var res;
   var str = params[0];
+  var outKey = params[1];
+  var tempObj = {};
 
   if ($.isArray(data)) {
     var _iteratorNormalCompletion = true;
@@ -486,6 +488,11 @@ var web_dom_iterable = __webpack_require__("5c9d");
           throw _iteratorError;
         }
       }
+    }
+
+    if (outKey) {
+      tempObj[outKey] = res;
+      res = [tempObj];
     }
   }
 
