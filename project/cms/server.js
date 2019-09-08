@@ -297,7 +297,7 @@ router.get('/-/getMainList', function (ctx) {
 })
 
 //若删掉代理，预览时候不能获取数据
-require('../../server/module/dataSource')(app,require('../../server/config/config.json').dataSource, config.prefix);
+require('../../server/module/dataSource.js')(app,require('../../server/config/config.json').dataSource, config.prefix);
 
 
 //parser

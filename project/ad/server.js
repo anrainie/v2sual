@@ -439,7 +439,7 @@ router.get('/-/getFileList', async ctx => {
 });
 
 //若删掉代理，预览时候不能获取数据
-let dataSourcePath = path.join(__dirname, '../../server/module/dataSource');
+let dataSourcePath = path.join(__dirname, '../../server/module/dataSource.js');
 if (fs.existsSync(dataSourcePath)) {
   require(dataSourcePath)(app, require('../../server/config/config.json').dataSource)
 }
