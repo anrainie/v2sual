@@ -43,7 +43,7 @@ export default {
         return x;
     },
       getData() {
-          if (this.model.countData && this.model.countData.length) {
+          if (this.model.countData && this.model.countData.length && $.isArray(this.model.countData)) {
               return this.model.countData
           }else {
               return defaultData
