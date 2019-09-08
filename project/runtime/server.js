@@ -326,7 +326,7 @@ router.post("/-/upload", async (ctx, next) => {
   return (ctx.body = { code: 200, status: true });
 });
 //若删掉代理，预览时候不能获取数据
-require("../../server/module/dataSource")(
+require("../../server/module/dataSource.js")(
   app,
   require("../../server/config/config.json").dataSource, 
   config.prefix
