@@ -176,10 +176,10 @@ body {
   border-radius: 0.02rem;
 }
 
-.gaueOption{
+/* .gaueOption{
   transform:scale(.5);
   transform-origin:0 0;
-}
+} */
 
 .s_gray_panel{
   background:rgba(242,244,247,1);
