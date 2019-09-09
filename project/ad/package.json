@@ -6,7 +6,7 @@
       "description": "web版IDE项目基础支持",
       "scripts": {
             "style": "vue-cli-service build --no-clean",
-            "serve": "vue-cli-service serve --publicPath=./ --port=7033 --mockPort=7034",
+            "serve": "vue-cli-service serve --mode production --publicPath=./ --port=7033 --mockPort=7034",
             "build": "vue-cli-service build",
             "lint": "vue-cli-service lint",
             "theme": "et",
