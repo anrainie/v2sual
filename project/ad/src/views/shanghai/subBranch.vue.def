@@ -747,7 +747,8 @@
       "name": "currentWait",
       "desp": "当前排队",
       "value": "[{\"_queuedCount\":11},{\"_queuedCount\":11},{\"_queuedCount\":11},{\"_queuedCount\":11},{\"_queuedCount\":11},{\"_queuedCount\":11}]",
-      "type": "sourceData"
+      "type": "sourceData",
+      "fields": [{"label":"_queuedCount","value":"_queuedCount"}]
     }, {
       "name": "currentWaitNum",
       "desp": "当前排队人数",
@@ -764,22 +765,26 @@
       "name": "waitAverage",
       "desp": "排队等待平均耗时",
       "value": "[{\"_dailyTotalAVGQueuingWaiteTime\":80564},{\"_dailyTotalAVGQueuingWaiteTime\":0},{\"_dailyTotalAVGQueuingWaiteTime\":0},{\"_dailyTotalAVGQueuingWaiteTime\":0},{\"_dailyTotalAVGQueuingWaiteTime\":0},{\"_dailyTotalAVGQueuingWaiteTime\":0},{\"_dailyTotalAVGQueuingWaiteTime\":0},{\"_dailyTotalAVGQueuingWaiteTime\":0},{\"_dailyTotalAVGQueuingWaiteTime\":0},{\"_dailyTotalAVGQueuingWaiteTime\":80558},{\"_dailyTotalAVGQueuingWaiteTime\":80558}]",
-      "type": "sourceData"
+      "type": "sourceData",
+      "fields": [{"label":"_dailyTotalAVGQueuingWaiteTime","value":"_dailyTotalAVGQueuingWaiteTime"}]
     }, {
       "name": "processed",
       "desp": "已处理",
       "value": "[{\"_calledCount\":11},{\"_calledCount\":11},{\"_calledCount\":11},{\"_calledCount\":11},{\"_calledCount\":11},{\"_calledCount\":11},{\"_calledCount\":11}]",
-      "type": "sourceData"
+      "type": "sourceData",
+      "fields": [{"label":"_calledCount","value":"_calledCount"}]
     }, {
       "name": "waitLongest",
       "desp": "排队等待最长耗时",
       "value": "[{\"_dailyTotalMaxQueuingWaiteTime\":886201},{\"_dailyTotalMaxQueuingWaiteTime\":886201},{\"_dailyTotalMaxQueuingWaiteTime\":886141},{\"_dailyTotalMaxQueuingWaiteTime\":886201},{\"_dailyTotalMaxQueuingWaiteTime\":886263},{\"_dailyTotalMaxQueuingWaiteTime\":886201},{\"_dailyTotalMaxQueuingWaiteTime\":886263},{\"_dailyTotalMaxQueuingWaiteTime\":886262},{\"_dailyTotalMaxQueuingWaiteTime\":886263}]",
-      "type": "sourceData"
+      "type": "sourceData",
+      "fields": [{"label":"_dailyTotalMaxQueuingWaiteTime","value":"_dailyTotalMaxQueuingWaiteTime"}]
     }, {
       "name": "waitLastMonth",
       "desp": "上月平均等待耗时",
       "value": "[{\"上月平均等待耗时\":3237}]",
-      "type": "sourceData"
+      "type": "sourceData",
+      "fields": [{"label":"上月平均等待耗时","value":"上月平均等待耗时"}]
     }, {
       "name": "proessedNum",
       "desp": "已处理客户",
