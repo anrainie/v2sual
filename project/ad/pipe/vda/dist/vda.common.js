@@ -803,7 +803,7 @@ var panelSource = 'visualConfPanelController/info/panel';
 var queryDmData = 'visualThemeController/queryDmData';
 var createPanelUrl = 'visualConfPanelController/save/panel'; // data
 
-var queryNewDmData = 'visualDataModelController/queryNewDmData'; // cols
+var queryNewDmData = 'visualThemeController/queryNewDmData'; // cols
 
 var _modelCols = 'visualDataModelController/queryDataModelCols'; // list
 
