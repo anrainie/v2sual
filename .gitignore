@@ -52,9 +52,13 @@ project/runtime/v2sual/@aweb-template/*.js
 
 project/ad/src/@aweb-components/aweb.components.js
 
+aweb.components.js
+
 
 # project/runtime/dist/js/*.js
 # runtime/src/views/**/*.vue
 # runtime/src/views/**/*.def
 # project/runtime/src/views/**/*.vue
 # project/runtime/src/views/**/*.def
+# aweb component.js
+project/**/aweb.components.js
