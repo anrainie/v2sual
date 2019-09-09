@@ -4,14 +4,19 @@ import qs from 'qs';
 const host = 'v1/ds/dvms/vda';
 const signIn = 'loginController/signIn'
 const apiList = 'visualDataModelController/queryTreeDataModels';
-const dataPreview = 'visualDataModelController/dataPreview';
 const panelSource = 'visualConfPanelController/info/panel';
 const queryDmData = 'visualThemeController/queryDmData';
-const queryNewDmData = 'visualThemeController/queryNewDmData';
-
 const createPanelUrl = 'visualConfPanelController/save/panel'
+
+// data
+const queryNewDmData = 'visualDataModelController/queryNewDmData';
+// cols
+const modelCols = 'visualDataModelController/queryDataModelCols';
+// list
+const newApiList = 'visualDataModelController/queryTreeAllModels';
 const username = 'admin';
-const password = '888888'//'agreexian!';
+// const password = '888888'//'agreexian!';
+const password = 'agreexian!';
 
 let token = '';
 
@@ -399,19 +404,39 @@ export default {
     return token ? new Promise(r => r(token)) : signInFn();
   },
   list() {
-    // return axios.post(`${host}/${apiList}`, qs.stringify({
-    //   token: token
-    // }));
-    return new Promise(r => {
-      r({
-        content: fakeData
-      });
-    });
+    return axios.post(`${host}/${newApiList}`, qs.stringify({
+      token: token
+    }));
+    // return new Promise(r => {
+    //   r({
+    //     content: fakeData
+    //   });
+    // });
   },
-  data(id) {
-    return axios.post(`${host}/${dataPreview}`, qs.stringify({
+  modelCols(id){
+    return  axios.post(`${host}/${modelCols}`, qs.stringify({
       token: token,
       dmUid: id
+    }));
+  },
+  data({moduleid,cols}) {
+    return axios.post(`${host}/${queryNewDmData}`, qs.stringify({
+      token: token,
+      request: {
+        "userid":username,
+        "paras":[{
+          "requestid": "518B3F39-B17B-486D-B799-779F0CD98FC5",
+          "datatype": "1",
+          "moduleid": moduleid,
+          "statcontent": {},
+          "filter": "",
+          "modelfilter": "",
+          "order": "",
+          "cols": cols,
+          "limit": ""
+        }]
+
+      }
     }));
   },
   createPanel(name) {

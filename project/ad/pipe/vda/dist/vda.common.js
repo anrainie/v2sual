@@ -799,14 +799,18 @@ var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
 var host = 'v1/ds/dvms/vda';
 var signIn = 'loginController/signIn';
 var apiList = 'visualDataModelController/queryTreeDataModels';
-var dataPreview = 'visualDataModelController/dataPreview';
 var panelSource = 'visualConfPanelController/info/panel';
 var queryDmData = 'visualThemeController/queryDmData';
-var queryNewDmData = 'visualThemeController/queryNewDmData';
-var createPanelUrl = 'visualConfPanelController/save/panel';
-var username = 'admin';
-var vda_password = '888888'; //'agreexian!';
+var createPanelUrl = 'visualConfPanelController/save/panel'; // data
 
+var queryNewDmData = 'visualDataModelController/queryNewDmData'; // cols
+
+var _modelCols = 'visualDataModelController/queryDataModelCols'; // list
+
+var newApiList = 'visualDataModelController/queryTreeAllModels';
+var username = 'admin'; // const password = '888888'//'agreexian!';
+
+var vda_password = 'agreexian!';
 var token = '';
 var fakeData = {
   '网点树': {
@@ -1245,19 +1249,39 @@ var vda_signInFn = function signInFn() {
     }) : vda_signInFn();
   },
   list: function list() {
-    // return axios.post(`${host}/${apiList}`, qs.stringify({
-    //   token: token
-    // }));
-    return new Promise(function (r) {
-      r({
-        content: fakeData
-      });
-    });
+    return axios_default.a.post("".concat(host, "/").concat(newApiList), lib_default.a.stringify({
+      token: token
+    })); // return new Promise(r => {
+    //   r({
+    //     content: fakeData
+    //   });
+    // });
   },
-  data: function data(id) {
-    return axios_default.a.post("".concat(host, "/").concat(dataPreview), lib_default.a.stringify({
+  modelCols: function modelCols(id) {
+    return axios_default.a.post("".concat(host, "/").concat(_modelCols), lib_default.a.stringify({
       token: token,
       dmUid: id
+    }));
+  },
+  data: function data(_ref) {
+    var moduleid = _ref.moduleid,
+        cols = _ref.cols;
+    return axios_default.a.post("".concat(host, "/").concat(queryNewDmData), lib_default.a.stringify({
+      token: token,
+      request: {
+        "userid": username,
+        "paras": [{
+          "requestid": "518B3F39-B17B-486D-B799-779F0CD98FC5",
+          "datatype": "1",
+          "moduleid": moduleid,
+          "statcontent": {},
+          "filter": "",
+          "modelfilter": "",
+          "order": "",
+          "cols": cols,
+          "limit": ""
+        }]
+      }
     }));
   },
   createPanel: function createPanel(name) {
