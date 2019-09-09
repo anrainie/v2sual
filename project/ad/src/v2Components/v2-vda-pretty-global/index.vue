@@ -10,6 +10,9 @@
   import "echarts-gl"
   import MapOptions from './map-default-options.json'
   import GlobalOptions from './global-default-options.json'
+  // const earthBg = require('./earth.jpg');
+
+  // GlobalOptions.globe.baseTexture = earthBg;
 
   const defaultSeriesName = 'bar' // 对应bar3D.name
   const defaultMapName = 'world'
@@ -17,20 +20,12 @@
   const geoJsonUrlOfWorld = "https://raw.githubusercontent.com/apache/incubator-echarts/master/map/json/world.json"
   const geoJsonUrlOfChina = "https://raw.githubusercontent.com/apache/incubator-echarts/master/map/json/china.json"
 
-  function checkNumber() {
-    for (let i = 0; i < arguments.length; i++) {
-      if (Number.isNaN(arguments[i])) {
-        return false
-      }
-    }
-    return true
-  }
 
   /**
    * 将地图数据注册到echarts中
    * @return {Promise} 忽略注册失败的情况
    */
-  function registerMap() {
+  const registerMap = ()=> {
     if (echarts.getMap(defaultMapName)) {
       return Promise.resolve()
     }
@@ -56,33 +51,23 @@
     return Promise.all(tasks)
       .then(([world, china]) => echarts.registerMap(defaultMapName, mergeMapJson(world, china, 'china')))
       .catch(() => console.error("Failed to load map json, please check net"))
-  }
+  };
 
-  function makeGlobalEchart(echartSize, element) {
-    let globalChart = makeEchart(GlobalOptions, echartSize,element)
+  const  makeMapEchart = (echartSize)=> {
+      return  makeEchart(MapOptions, echartSize, document.createElement('canvas'))
+    }
 
-    applyDataForSeries(defaultSeriesName, this.data, this.globalChart)
-    globalChart.showLoading()
-
-    return globalChart
-  }
-
-  function makeMapEchart(echartSize) {
-    return makeEchart(MapOptions, echartSize, document.createElement('canvas'))
-  }
-
-  function makeEchart(chartOptions, canvasOptions, element) {
-    let chart = echarts.init(element, null, canvasOptions)
-    chart.setOption(chartOptions)
-    return chart
-  }
-
-  /**
+  const  makeEchart = (chartOptions, canvasOptions, element)=> {
+      let chart = echarts.init(element, null, canvasOptions)
+      chart.setOption(chartOptions)
+      return chart
+   };
+     /**
    * 将地图作为地球表面层
    * @param mapInstance 地图echart
    * @param globalInstance 地球echart
    */
-  function applyMapLayer(mapInstance, globalInstance) {
+   const applyMapLayer = (mapInstance, globalInstance)=> {
     globalInstance.setOption({
       globe: {
         layers: [
@@ -95,49 +80,47 @@
         ]
       }
     })
-  }
-
-  function applyDataForSeries(name, data, echartInstance) {
-    echartInstance.setOption({
-      series: Array.of({ data, name })
-    })
-  }
-
-  function applyViewControl(data, echartInstance) {
-    echartInstance.setOption({
-      globe: {
-        viewControl: data
-      }
-    })
-  }
+  };
 
   export default {
     name: "v2-vda-pretty-global",
 
     data() {
+
+      
+
       return {
-        viewControl: GlobalOptions.globe.viewControl
+        viewControl: GlobalOptions.globe.viewControl,
+        globalChart:""
       }
     },
 
     watch: {
-      data(value) {
-        applyDataForSeries(defaultSeriesName, value, this.globalOptions)
+     optionData(value) {
+       console.log('echartIns',value,this.globalChart)
+        this.applyDataForSeries(defaultSeriesName, value, this.globalChart)
       },
 
       viewControl: {
         deep: true,
         handler (value) {
-          applyViewControl(value, this.globalChart)
+          debugger;
+          this.applyViewControl(value, this.globalChart)
         }
+      },
+      "model.alpha"(val){
+        this.viewControl.alpha = val;
+      },
+      "model.beta"(val){
+        this.viewControl.beta = val;
       }
     },
 
     computed: {
       // like [[ 119.15, 33.5, 1 ], [ 119.9, 32.49, 2 ], [ 108.33, 22.84, 3]]
       // 前两项表示坐标经纬度，最后一项为数值，也可添加多项数据
-      data() {
-        return this.model.data
+      optionData() {
+        return this.model.optionData || [[ 119.15, 33.5, 1 ], [ 119.9, 32.49, 2 ], [ 108.33, 22.84, 3],[0,0,0]]
       }
     },
 
@@ -153,17 +136,21 @@
           const mapChartSize = {width: 3840, height: 2160}
           const mapEchart = makeMapEchart(mapChartSize)
 
-          applyMapLayer(mapEchart, this.globalChart)
+           applyMapLayer(mapEchart, this.globalChart)
         })
       })
     },
 
     mounted() {
-      this.globalChart = makeGlobalEchart({width: 1920, height: 1080}, this.$refs.global)
-      this.$emit('mount-echart')
+
+      this.globalChart = this.makeGlobalEchart({width: 1920, height: 1080}, this.$refs.global);
+        
+      this.$emit('mount-echart');
+      
+
     },
 
-    methods: {
+    methods:{
       /**
        * 拉近观看地球距离,投影模式${globe.viewControl.projection: 'perspective'}下无法穿过地球内部
        * @param delta 视角接近地球的距离
@@ -213,7 +200,7 @@
        * 改变地球旋转中心位置，默认为[0, 0, 0]
        */
       center(x, y, z) {
-        if (checkNumber(x, y, z)) {
+        if (this.checkNumber(x, y, z)) {
           this.viewControl.center = Array.of(x, y, z)
         } else {
           console.warn(`Failed to move the center: [ ${x}, ${y}, ${z} ]`)
@@ -226,12 +213,48 @@
        * @param lat 纬度
        */
       targetCoord(lng, lat) {
-        if (checkNumber(lng, lat)) {
+        if (this.checkNumber(lng, lat)) {
           this.viewControl.targetCoord = Array.of(lng, lat)
         } else {
           console.warn(`Failed to target the coordinate: [ ${lng}, ${lat} ]`)
         }
+      },
+
+  checkNumber() {
+    for (let i = 0; i < arguments.length; i++) {
+      if (Number.isNaN(arguments[i])) {
+        return false
       }
+    }
+    return true
+  },
+
+
+  makeGlobalEchart(echartSize, element) {
+    let globalChart = makeEchart(GlobalOptions, echartSize,element)
+
+    this.applyDataForSeries(defaultSeriesName, this.optionData, globalChart)
+    globalChart.showLoading()
+
+    return globalChart
+  },
+
+  applyDataForSeries(name, data, echartInstance) {
+    echartInstance.setOption({
+      series: Array.of({ data, name })
+    })
+  },
+   applyViewControl(data, echartInstance) {
+    echartInstance.setOption({
+      globe: {
+        viewControl: data
+      }
+    })
+  }
+
+
+
+
     }
   }
 </script>
