@@ -1,5 +1,5 @@
 <template>
-  <div class="aweb-container">
+  <div class="aweb-container-mobile">
     <!-- <div></div> -->
         <!-- <header>
           <div class="menu-btn"><i class="el-icon-s-operation"></i></div>
@@ -18,13 +18,14 @@
           :visible.sync="showDrawer"
           :direction="`ltr`"
           :show-close="false"
+          :size ="'50%'"
           :closed ="closedDrawer"
           >
           
         <div>
         <el-menu 
               default-active="2"
-              class="el-menu-vertical-demo"  
+              class="el-menu-left-mobile"  
               @select="handleSelectMenu"
             >
           <template v-for="item in routerData" v-if="!item.hidden">
@@ -155,10 +156,10 @@ export default {
     },
     openPage(path,page){
       this.activeTab = path;
-      if(window.router.matcher.match('/mobile/'+path).path=='/404'){
+      if(window.router.matcher.match('/mobile/'+page).path=='/404'){
       let routes=window.router.options.routes;
         routes[1].children.push({
-                    path: '/mobile/'+path,
+                    path: '/mobile/'+page,
                     replace: true,
                     component: Lib._import(page),
                     meta: {
@@ -170,7 +171,7 @@ export default {
           window.router.addRoutes(routes);
           this.$router.push('/mobile/'+path);
       }else{
-         this.$router.push('/mobile/'+path);
+         this.$router.push('/mobile/'+page);
       }
    
     },
@@ -471,13 +472,14 @@ export default {
 </script>
 
 
-<style  lang="scss" scoped>
-.aweb-container {
+<style  lang="scss">
+.aweb-container-mobile {
   // position: absolute;
   // top: 0px;
   // bottom: 0px;
   width: 100%;
   background:#ebeff5;
+
   >header{
       position: fixed;
       top:0;
@@ -527,13 +529,23 @@ export default {
   
   }
 
-  .el-drawer__header{
-    font-size: 0.14rem;
-  }
-
   div{
     font-size:0.12rem;
   }
  
 }
+.el-menu-left-mobile{
+  font-size:0.14rem;
+}
+
+  .el-drawer__header{
+    font-size: 0.14rem;
+  }
+
+  .el-drawer{
+    &.ltr{
+      width:50%;
+      font-size:0.14rem;
+     }
+  }
 </style>
