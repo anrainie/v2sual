@@ -9,13 +9,13 @@ const queryDmData = 'visualThemeController/queryDmData';
 const createPanelUrl = 'visualConfPanelController/save/panel'
 
 // data
-const queryNewDmData = 'visualDataModelController/queryNewDmData';
+const queryNewDmData = 'visualThemeController/queryNewDmData';
 // cols
 const modelCols = 'visualDataModelController/queryDataModelCols';
 // list
 const newApiList = 'visualDataModelController/queryTreeAllModels';
 const username = 'admin';
-const password = '888888' //'agreexian!';
+const password = 'agreexian!';
 // const password = 'agreexian!';
 
 let token = '';

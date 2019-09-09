@@ -14,8 +14,12 @@ import store from './store'
 import Vant from 'vant';
 import 'vant/lib/index.css';
 import $ from "jquery";
-import { getbrotherPageList } from '@/api/api.js'
-import { addTabsRoutes } from '@v2-lib/vue.spa.plugin/router'
+import {
+  getbrotherPageList
+} from '@/api/api.js'
+import {
+  addTabsRoutes
+} from '@v2-lib/vue.spa.plugin/router'
 
 import echarts from 'echarts'
 
@@ -67,21 +71,21 @@ router.beforeEach((to, from, next) => {
     });
     router.addRoutes(routes);
 
-    if(wpath.indexOf('shanghai_mobile')==0 && router.matcher.match('/mobile/'+wpath).path=='/404'){    
-  
+    if (wpath.indexOf('shanghai_mobile') == 0 && router.matcher.match('/mobile/' + wpath).path == '/404') {
+
       routes[1].children.push({
-                  path: '/mobile/'+wpath,
-                  replace: true,
-                  component: Lib._import(wpath),
-                  meta: {
-                    title: '预览',
-                    type: 'preview'
-                  },
-                  keepAlive:true
-                  });
-        router.addRoutes(routes);
-        
-        next('/mobile/'+wpath);
+        path: '/mobile/' + wpath,
+        replace: true,
+        component: Lib._import(wpath),
+        meta: {
+          title: '预览',
+          type: 'preview'
+        },
+        keepAlive: true
+      });
+      router.addRoutes(routes);
+
+      next('/mobile/' + wpath);
     }
 
     // getbrotherPageList().then(res => {
@@ -103,7 +107,7 @@ router.beforeEach((to, from, next) => {
     //     } else {
 
     //       if(window.router.matcher.match('/mobile/'+wpath).path=='/404'){
-       
+
     //           routes[1].children.push({
     //                       path: '/mobile/'+wpath,
     //                       replace: true,
@@ -135,8 +139,8 @@ router.beforeEach((to, from, next) => {
     //   }
     // })
 
-  } 
-   
+  }
+
 
   next()
 
@@ -147,11 +151,18 @@ router.afterEach(() => {
   NProgress.done()
 })
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+window.pipe.vda.ready().then(res => {
+  if (res.data) {
+    window.token = res.data.content.token;
+  } else if (res.content) {
+    window.token = res.content.token
+  } else if (res.constructor == String) {
+    window.token = res;
+  }
+  new Vue({
+    router,
+    store,
+    render: h => h(App)
+  }).$mount('#app')
 
-// window.pipe.vda.ready().then(r => {
-// })
+})

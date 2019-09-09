@@ -70,7 +70,15 @@ let json2script = function (json, path) {
                 },
                 ${isCustom ? `mixins:[root,widget,cpt,events,mixins],` : `mixins:[root,mixins],`}
                 ${importList.length ? `components:{${importList.map(item => `${item.desp}`)}},` : ''}
-                methods:{${self.methodsToCode(transfer.methods)}},
+                methods:{
+                  _source_init(){
+                    let ctx = this;
+                    window.pipe.vda.ready().then(() =>{
+                      ${self.createInitSource(content.dataBasket.list).join("")}
+                    });
+                  },
+                  ${self.methodsToCode(transfer.methods)}
+                },
                 watch:{${self.methodsToCode(transfer.watch)}},
                 computed:{${self.createComputed(transfer.computed,content.dataBasket.computed)}},
                 beforeCreate(){
@@ -87,8 +95,9 @@ let json2script = function (json, path) {
                         }`
         })})
                     `: ``}
-                    
+                    ctx._source_init();
                     ${transfer.created ? transfer.created.code : ''}
+
                 },
                 beforeMount(){
                     let ctx = this;
@@ -234,9 +243,9 @@ let bindData = function (logic, mapping) {
     mapping[i].map(item => {
       if (item.type === 'loop' && item.modelValue !== "__loopTarget") {
         arr.push(`ctx.$store.commit("registerBind",{ dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
-      } else if(item.type === 'composite'){
+      } else if (item.type === 'composite') {
         arr.push(`ctx.$store.commit("registerBind",{ vueObj:this, data:this.${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}",type:"computed" });`);
-      }else {
+      } else {
         arr.push(`ctx.$store.commit("registerBind",{ vueObj:this, data:this.${item.dataValue}, dataStr:"${item.dataValue}", wid:${item.id}, modelKey:"${item.modelValue}" });`);
       }
     });
@@ -300,13 +309,13 @@ let createProp = (data) => {
   for (i in data) {
     //格式化data
     let val = this.formatData(data[i]);
-    if(val===""){
+    if (val === "") {
       arr.push(`${i}:{default:()=>{return ""}}`);
-    }else if(val.startsWith('"')||val.startsWith("'")||val.startsWith("`")){
+    } else if (val.startsWith('"') || val.startsWith("'") || val.startsWith("`")) {
       arr.push(`${i}:{default:()=>{return ${val}}}`);
-    }else if(val.startsWith('{')){
+    } else if (val.startsWith('{')) {
       arr.push(`${i}:{default:()=>{return ${val}}}`);
-    }else{
+    } else {
       arr.push(`${i}:{default:()=>{return "${val}"}}`);
     }
   }
@@ -595,6 +604,31 @@ let transToStr = function (target) {
   return res;
 };
 
+let createInitSource = function (list) {
+  let tempArr=[];
+  let res = [];
+
+  tempArr = list.filter(item=>{
+    if(item.type ==="sourceData"&&item.modelid&&item.cols){
+      return item;
+    }
+  });
+  res = tempArr.map(item=>{
+    return `
+    window.pipe.vda.data({modelid: "${item.modelid}",cols: ${item.cols}}).then(res => {
+      let temp=[];
+      if (res.data && res.data.content) {
+        for (i in res.data.content) {
+          temp = temp.concat(res.data.content[i]);
+        }
+        ctx.${item.name} = temp;
+      }
+    });
+    `
+  })
+  return res;
+}
+
 // ======================================================================================================================
 exports.json2script = json2script;
 exports.toCode = toCode;
@@ -612,3 +646,4 @@ exports.formatData = formatData;
 exports.toCamel = toCamel;
 exports.createComputed = createComputed;
 exports.transToStr = transToStr;
+exports.createInitSource = createInitSource;
