@@ -221,7 +221,7 @@ class Preview {
           ${vueFiles.map(f => `${f.name}`).join(',\n\t')}
         }`;
   
-      await util.writeFile(context.componentFile, content);
+      // await util.writeFile(context.componentFile, content);  
       
       platform.sendSuccessResult(req,{
         pipe:pipeContent,
