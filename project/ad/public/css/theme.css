@@ -467,19 +467,28 @@ body {
   font-weight:400;
   color:rgba(211,231,245,1);
 }
+
 .vda-h2-text-redBg{
+  margin:0 auto;
+  text-align:center;
+  width:150px;
+  padding:5px;
   background:rgba(255,66,76,1);
   border-radius:4px;
-  padding:5px 10px;
+  /* padding:5px 10px; */
   font-size:16px;
   font-family:RTWS YueGothic G0v1;
   font-weight:400;
   color:rgba(255,255,255,1);
 }
 .vda-h2-text-greenBg{
+  margin:0 auto;
+  text-align:center;
+  width:150px;
+  padding:5px;
   background:rgba(22,160,96,1);
   border-radius:4px;
-  padding:5px 10px;
+  /* padding:5px 10px; */
   font-size:16px;
   font-family:RTWS YueGothic G0v1;
   font-weight:400;
