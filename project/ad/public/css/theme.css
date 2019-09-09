@@ -341,15 +341,25 @@ body {
 .vda-table .el-table--border td {
   border-right: none;
 }
-.vda-table .el-table__body tr.hover-row > td,
-.vda-table .el-table__body tr.hover-row.current-row > td,
-.vda-table .el-table__body tr.hover-row.el-table__row--striped > td,
+/* .vda-table .el-table__body tr > td, */
+.vda-table .el-table--enable-row-hover .el-table__body tr:hover > td,
+.vda-table .el-table__body tr.current-row > td,
+.vda-table .el-table__body tr.el-table__row--striped > td,
 .vda-table
   .el-table__body
-  tr.hover-row.el-table__row--striped.current-row
+  tr.el-table__row--striped.current-row
   > td {
   background-color: rgba(0, 60, 150, 0.3);
 }
+/* 
+.el-table--enable-row-hover .el-table__body tr:hover > td {
+  background-color: rgba(0, 60, 150, 0.3);
+}
+
+.el-table__body tr.current-row > td {
+  background-color: rgba(0, 60, 150, 0.3);
+} */
+
 .device_name {
   font-size: 0.32rem;
   font-family: PingFang SC;
