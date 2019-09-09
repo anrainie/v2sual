@@ -6,12 +6,12 @@
             export default{
                 data(){
                     return{
-                        "CONTENT":{structure:{"id":"root","component":"v2EditorXYCtn","style":{"width":"100%","height":"100%"},"children":[{"style":{},"src":"${bgImg}","height":"413px","width":"136px","ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","fixation":true,"component":"v2-component-image","href":"v2-component-image","children":[],"events":{},"commonStyle":{"position":"absolute","top":"0px","left":"0px","width":"100%","height":"100%"},"id":1567653970103,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"text-align":"center","margin":"","padding":"","height":"","width":"","line-height":"","font-family":"","font-size":"","font-weight":"","font-style":"","color":"","text-decoration":""}},"text":"${num}","editable":false,"ctnClass":"","customClass":"${num_class}","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"25%","left":"0px","width":"100%","height":""},"id":1567649606803,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"text-align":"","margin":"","padding":"","height":"","width":"","line-height":"","font-family":"","font-size":"","font-weight":"","font-style":"","color":"","text-decoration":""}},"text":"${text1}","editable":false,"ctnClass":"","customClass":"${text1_class}","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"14%","left":"40%","width":"","height":""},"id":1567649605859,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"text-align":"","background":"","margin":"","padding":"","height":"","width":"","line-height":"","font-family":"","font-size":"","font-weight":"","font-style":"","color":"","text-decoration":""}},"text":"${text2}","editable":false,"ctnClass":"","customClass":"${text2_class}","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"67%","left":"34%","color":""},"id":1567649606796,"pid":"root","animate":["","animated"]}],"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}],"ctnClass":"","customClass":"","commonStyle":{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","font-size":"","color":"","animation-duration":"1s","animation-delay":""},"animate":["","animated"]}},
+                        "CONTENT":{structure:{"id":"root","component":"v2EditorXYCtn","style":{"width":"100%","height":"100%"},"children":[{"style":{},"src":"${bgImg}","height":"413px","width":"136px","__capacity":"1","fixation":true,"component":"v2-component-image","href":"v2-component-image","events":{},"commonStyle":{"position":"absolute","top":"0px","left":"0px","width":"100%","height":"100%","animation-duration":"1s"},"id":1567653970103,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"text-align":"center"}},"text":"${num}","customClass":"${num_class}","__capacity":"1","component":"v2-component-text","href":"v2-component-text","events":{},"commonStyle":{"position":"absolute","top":"25%","left":"0px","width":"100%","animation-duration":"1s"},"id":1567649606803,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"text-align":"center"}},"text":"${text1}","customClass":"${text1_class}","__capacity":"1","component":"v2-component-text","href":"v2-component-text","events":{},"commonStyle":{"position":"absolute","top":"14%","left":"0%","width":"100%","animation-duration":"1s"},"id":1567649605859,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{}},"text":"${text2}","customClass":"${text2_class}","__capacity":"1","component":"v2-component-text","href":"v2-component-text","events":{},"commonStyle":{"position":"relative","top":"67%","left":"0","animation-duration":"1s"},"id":1567649606796,"pid":"root","animate":["","animated"]}],"ctnStyle":[{},{},{},{}],"commonStyle":{"animation-duration":"1s"},"animate":["","animated"]}},
                         
                     }
                 },
                 props:{
-                  num:{default:()=>{return 2,648,560}},
+                  num:{default:()=>{return "2,648,560"}},
 text1:{default:()=>{return `柜面交易量`}},
 text2:{default:()=>{return `上月同比 23.6% ↑`}},
 num_class:{default:()=>{return `vda-h1-num2`}},
@@ -21,7 +21,15 @@ bgImg:{default:()=>{return `img/shanghai/s_glassShort2.png`}}
                 },
                 mixins:[root,widget,cpt,events,mixins],
                 
-                methods:{},
+                methods:{
+                  _source_init(){
+                    let ctx = this;
+                    window.pipe.vda.ready().then(() =>{
+                      
+                    });
+                  },
+                  
+                },
                 watch:{},
                 computed:{},
                 beforeCreate(){
@@ -31,7 +39,7 @@ bgImg:{default:()=>{return `img/shanghai/s_glassShort2.png`}}
                 created(){
                     let ctx = this;
                     
-                    
+                    ctx._source_init();
                     /**bind**/ctx.$store.commit("registerBind",{ vueObj:this, data:this.num, dataStr:"num", wid:1567649606803, modelKey:"text" });
 ctx.$store.commit("registerBind",{ vueObj:this, data:this.num_class, dataStr:"num_class", wid:1567649606803, modelKey:"customClass" });
 ctx.$store.commit("registerBind",{ vueObj:this, data:this.text2Color, dataStr:"text2Color", wid:1567649606796, modelKey:"style.textStyle.background" });
@@ -40,6 +48,7 @@ ctx.$store.commit("registerBind",{ vueObj:this, data:this.text2_class, dataStr:"
 ctx.$store.commit("registerBind",{ vueObj:this, data:this.text1, dataStr:"text1", wid:1567649605859, modelKey:"text" });
 ctx.$store.commit("registerBind",{ vueObj:this, data:this.text1_class, dataStr:"text1_class", wid:1567649605859, modelKey:"customClass" });
 ctx.$store.commit("registerBind",{ vueObj:this, data:this.bgImg, dataStr:"bgImg", wid:1567653970103, modelKey:"src" });/**bind over**/
+
                 },
                 beforeMount(){
                     let ctx = this;
@@ -80,5 +89,10 @@ ctx.$store.commit("registerBind",{ vueObj:this, data:this.bgImg, dataStr:"bgImg"
             };
         </script>
 <style lang="scss">
-
+.vda-h2-text-redBg {
+    margin: 0 auto;
+    text-align: center;
+    width: 150px;
+    padding: 5px;
+}
 </style>
