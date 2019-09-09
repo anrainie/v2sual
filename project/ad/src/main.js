@@ -40,6 +40,7 @@ window.Vue = Vue;
 window.$ = $;
 
 Vue.config.productionTip = false;
+let  hasOpen = false;
 
 router.beforeEach((to, from, next) => {
   NProgress.start();
@@ -71,22 +72,24 @@ router.beforeEach((to, from, next) => {
     });
     router.addRoutes(routes);
 
-    if (wpath.indexOf('shanghai_mobile') == 0 && router.matcher.match('/mobile/' + wpath).path == '/404') {
+    if (wpath.indexOf('shanghai_mobile') == 0 && !hasOpen) {
+         hasOpen = true;
+      // routes[1].children.push({
+      //   path: '/mobile/' + wpath,
+      //   replace: true,
+      //   component: Lib._import(wpath),
+      //   meta: {
+      //     title: '预览',
+      //     type: 'preview'
+      //   },
+      //   keepAlive: true
+      // });
+      // router.addRoutes(routes);
 
-      routes[1].children.push({
-        path: '/mobile/' + wpath,
-        replace: true,
-        component: Lib._import(wpath),
-        meta: {
-          title: '预览',
-          type: 'preview'
-        },
-        keepAlive: true
-      });
-      router.addRoutes(routes);
-
-      next('/mobile/' + wpath);
+      // next('/mobile/' + wpath);
+      next('/mobile/'+wpath);
     }
+   
 
     // getbrotherPageList().then(res => {
     //   if (res.status) {

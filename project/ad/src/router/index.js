@@ -8,8 +8,10 @@ import Login from "@/views/Login"
 import noFound from "@/views/404"
 import mobileLayout from "@/views/index"
 import Home from "@/views/Home"
-import Main from "@/views/shanghai_mobile/page2.vue"
-
+import s_user from "@/views/shanghai_mobile/page1.vue"
+import s_index from "@/views/shanghai_mobile/page2.vue"
+import s_driver from "@/views/shanghai_mobile/page3.vue"
+import s_detail from "@/views/shanghai_mobile/page4.vue"
 let mainRouter = [
   
   {
@@ -33,9 +35,36 @@ let mainRouter = [
   component: mobileLayout,
   children:[
     {
-      path: "/main",
+      path: "shanghai_mobile/page1",
       name: 'main',
-      component:Main,
+      component:s_user,
+      meta: {
+        title: "首页",
+        icon: "el-icon-goods"
+      }
+    },
+    {
+      path: "shanghai_mobile/page2",
+      name: 'main',
+      component:s_index,
+      meta: {
+        title: "首页",
+        icon: "el-icon-goods"
+      }
+    },
+    {
+      path: "shanghai_mobile/page3",
+      name: 'main',
+      component:s_driver,
+      meta: {
+        title: "首页",
+        icon: "el-icon-goods"
+      }
+    },
+    {
+      path: "shanghai_mobile/page4",
+      name: 'main',
+      component:s_detail,
       meta: {
         title: "首页",
         icon: "el-icon-goods"
