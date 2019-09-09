@@ -849,7 +849,7 @@ var fakeData = {
     "params": [{
       "requestid": "518B3F39-B17B-486D-B799-779F0CD98FC5",
       "datatype": "1",
-      "moduleid": "0f25a46ec83a38088909c16269edb30e",
+      "modelid": "0f25a46ec83a38088909c16269edb30e",
       "statcontent": {},
       "filter": "",
       "modelfilter": "",
@@ -1250,31 +1250,41 @@ var vda_signInFn = function signInFn() {
     }) : vda_signInFn();
   },
   list: function list() {
-    return axios_default.a.post("".concat(host, "/").concat(newApiList), lib_default.a.stringify({
+    return axios_default.a.post("".concat(host, "/").concat(newApiList), {
       token: token
-    })); // return new Promise(r => {
+    }, {
+      responseType: 'json',
+      headers: {
+        'Content-Type': 'application/json;charset=utf8'
+      }
+    }); // return new Promise(r => {
     //   r({
     //     content: fakeData
     //   });
     // });
   },
   modelCols: function modelCols(id) {
-    return axios_default.a.post("".concat(host, "/").concat(_modelCols), lib_default.a.stringify({
+    return axios_default.a.post("".concat(host, "/").concat(_modelCols), {
       token: token,
       dmUid: id
-    }));
+    }, {
+      responseType: 'json',
+      headers: {
+        'Content-Type': 'application/json;charset=utf8'
+      }
+    });
   },
   data: function data(_ref) {
-    var moduleid = _ref.moduleid,
+    var modelid = _ref.modelid,
         cols = _ref.cols;
-    return axios_default.a.post("".concat(host, "/").concat(queryNewDmData), lib_default.a.stringify({
+    return axios_default.a.post("".concat(host, "/").concat(queryNewDmData), {
       token: token,
       request: JSON.stringify({
         "userid": username,
         "paras": [{
           "requestid": "518B3F39-B17B-486D-B799-779F0CD98FC5",
           "datatype": "1",
-          "moduleid": moduleid,
+          "modelid": modelid,
           "statcontent": {},
           "filter": "",
           "modelfilter": "",
@@ -1283,7 +1293,12 @@ var vda_signInFn = function signInFn() {
           "limit": ""
         }]
       })
-    }));
+    }, {
+      responseType: 'json',
+      headers: {
+        'Content-Type': 'application/json;charset=utf8'
+      }
+    });
   },
   createPanel: function createPanel(name) {
     return axios_default.a.post("".concat(host, "/").concat(createPanelUrl), lib_default.a.stringify({
