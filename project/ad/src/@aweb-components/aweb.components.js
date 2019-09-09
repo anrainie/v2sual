@@ -50,7 +50,6 @@ import v2VdaPrettyGlobal  from '../v2Components/v2-vda-pretty-global';
 import v2VdaNumberCell  from '../v2Components/v2-vda-number-cell';
 import v2ComponentDigitroll  from '../v2Components/v2-component-digitroll'
   
-        import close  from '@v2-pipe/close';
 import animateKill  from '@v2-pipe/animateKill';
 import close  from '@v2-pipe/close';
 import getAfaData  from '@v2-pipe/getAfaData';
