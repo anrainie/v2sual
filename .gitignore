@@ -60,3 +60,5 @@ aweb.components.js
 # runtime/src/views/**/*.def
 # project/runtime/src/views/**/*.vue
 # project/runtime/src/views/**/*.def
+# aweb component.js
+project/**/aweb.components.js
