@@ -1,5 +1,6 @@
 import store from './store.js'
 import FocusManager from './focusManager'
+import axios from 'axios'
 
 function deepGet(model, keys) {
   if (keys == null || model == null)
@@ -28,20 +29,20 @@ export const cpt = {
       vue: this
     });
   },
-  methods:{
-    cptEvent(){
-      return this.$parent.$store.getters.model(this.wid).events||{};
+  methods: {
+    cptEvent() {
+      return this.$parent.$store.getters.model(this.wid).events || {};
     },
-    cptEditor(){
-      if(this.$parent.$store.state.root){
+    cptEditor() {
+      if (this.$parent.$store.state.root) {
         return this.$parent.$store.state.root;
       }
     },
-    cptRef(){
+    cptRef() {
       return this.$parent.$store.getters.vueInstance(this.wid);
     }
   }
-  
+
 }
 
 export const root = {
@@ -61,6 +62,30 @@ export const root = {
     },
   },
   methods: {
+    post(modelid, cols) {
+      return axios.post(`v1/ds/dvms/vda/visualThemeController/queryNewDmData`, {
+        token: window.token,
+        request: JSON.stringify({
+          "userid": "admin",
+          "paras": [{
+            "requestid": "518B3F39-B17B-486D-B799-779F0CD98FC5",
+            "datatype": "1",
+            "modelid": modelid,
+            "statcontent": {},
+            "filter": "",
+            "modelfilter": "",
+            "order": "",
+            "cols": cols,
+            "limit": ""
+          }]
+        })
+      }, {
+        responseType: 'json',
+        headers: {
+          'Content-Type': 'application/json;charset=utf8'
+        },
+      })
+    },
     __check(runnable) {
       let freq = runnable.freq;
       if (this.poll_count % freq === 0) {
