@@ -6,13 +6,13 @@
             export default{
                 data(){
                     return{
-                        "CONTENT":{structure:{"id":"root","component":"v2EditorXYCtn","style":{"width":"100%","height":"100%"},"children":[{"style":{},"src":"img/s_navi_item1.png","height":"100%","width":"100%","ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","fixation":true,"component":"v2-component-image","href":"v2-component-image","children":[],"events":{},"commonStyle":{"position":"absolute","top":"0px","left":"0px","width":"139px","height":"34px"},"id":1566903798862,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"text-align":"","margin":"","padding":"","height":"","width":"","line-height":"","font-family":"","font-size":"","font-weight":"","font-style":"","color":"","text-decoration":""}},"text":"${title}","editable":false,"ctnClass":"","customClass":"","__type":"","__loopTarget":"","__capacity":"1","component":"v2-component-text","href":"v2-component-text","children":[],"events":{},"commonStyle":{"position":"absolute","top":"7px","left":"23px","color":"#E5E8EB"},"id":1566903851862,"pid":"root","animate":["","animated"]}],"ctnStyle":[{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""},{"position":"","top":"","right":"","left":"","bottom":"","width":"","height":"","text-align":"","background-color":"","padding-top":"","padding-bottom":"","padding-left":"","padding-right":"","margin-top":"","margin-bottom":"","margin-left":"","margin-right":"","border-color":"","border-width":"","border-style":""}]}},
+                        "CONTENT":{structure:{"id":"root","component":"v2EditorXYCtn","style":{"width":"100%","height":"100%"},"children":[{"style":{},"src":"img/s_navi_item1.png","height":"100%","width":"100%","__capacity":"1","fixation":true,"component":"v2-component-image","href":"v2-component-image","events":{},"commonStyle":{"position":"absolute","top":"0px","left":"0px","width":"139px","height":"34px","animation-duration":"1s"},"id":1566903798862,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{"line-height":"20px"}},"text":"${title}","__capacity":"1","component":"v2-component-text","href":"v2-component-text","events":{},"commonStyle":{"position":"absolute","top":"7px","left":"23px","color":"#E5E8EB","font-size":"18px","animation-duration":"1s"},"id":1566903851862,"pid":"root","animate":["","animated"]}],"ctnStyle":[{},{}]}},
                         
                     }
                 },
                 props:{
-                  title:{default:()=>{return `业务运营`}},
-selected:{default:()=>{return false}}
+                  title:{default:()=>{return "`业务运营`"}},
+selected:{default:()=>{return "false"}}
                 },
                 mixins:[root,widget,cpt,events,mixins],
                 

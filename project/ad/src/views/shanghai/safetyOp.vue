@@ -1,4 +1,4 @@
-<template><v2-ctn-xy :wid="`root`"><v2-component-s_background class="V2Widget" :style="`position:absolute;top:0px;left:0px;width:1920px;height:1080px;animation-duration:1s;`" id="1566972327260" :wid="`1566972327260`" :index="0" :pid="`root`"></v2-component-s_background><v2-component-image class="V2Widget" id="1567565602525" :wid="`1567565602525`" :index="1" :pid="`root`"></v2-component-image><v2-component-image class="V2Widget" id="1567565732888" :wid="`1567565732888`" :index="2" :pid="`root`"></v2-component-image><v2-component-image class="V2Widget" id="1567565723497" :wid="`1567565723497`" :index="3" :pid="`root`"></v2-component-image><v2-component-image class="V2Widget" id="1567565813093" :wid="`1567565813093`" :index="4" :pid="`root`"></v2-component-image><v2-component-image class="V2Widget" id="1567565839438" :wid="`1567565839438`" :index="5" :pid="`root`"></v2-component-image><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567582524328" :wid="`1567582524328`" :index="6" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567582584673" :wid="`1567582584673`" :index="7" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567582569115" :wid="`1567582569115`" :index="8" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567582596433" :wid="`1567582596433`" :index="9" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567582676810" :wid="`1567582676810`" :index="10" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567582688283" :wid="`1567582688283`" :index="11" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567582693072" :wid="`1567582693072`" :index="12" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567582701410" :wid="`1567582701410`" :index="13" :pid="`root`"></v2-component-text><v2-component-echart class="V2Widget" id="1567586360333" :wid="`1567586360333`" :index="14" :pid="`root`"></v2-component-echart><v2-component-echart class="V2Widget" id="1567586502956" :wid="`1567586502956`" :index="15" :pid="`root`"></v2-component-echart><v2-component-echart class="V2Widget" id="1567586742329" :wid="`1567586742329`" :index="16" :pid="`root`"></v2-component-echart><v2-component-echart class="V2Widget" id="1567586876376" :wid="`1567586876376`" :index="17" :pid="`root`"></v2-component-echart><v2-component-s_number_text2 class="V2Widget" :style="`position:absolute;top:132.003px;left:490.011px;width:290px;height:170px;animation-duration:1s;`" id="1567752156369" :wid="`1567752156369`" :index="18" :pid="`root`" :num="560" :text1="`今日事件总数`" :text2="`上月同比 23.6% ↑`" :num_class="`vda-h1-num2`" :text1_class="`vda-h2-text`" :text2_class="`vda-h2-text-redBg`" :bgImg="`img/shanghai/s_glassShort2.png`"></v2-component-s_number_text2><v2-component-s_number_text2 class="V2Widget" :style="`position:absolute;top:132.005px;left:801.002px;width:290px;height:170px;animation-duration:1s;`" id="1567752158269" :wid="`1567752158269`" :index="19" :pid="`root`" :num="446" :text1="`事件处理数`" :text2="`上月同比 10.3%% ↑`" :num_class="`vda-h1-num2`" :text1_class="`vda-h2-text`" :text2_class="`vda-h2-text-redBg`" :bgImg="`img/shanghai/s_glassShort2.png`"></v2-component-s_number_text2><v2-component-s_number_text2 class="V2Widget" :style="`position:absolute;top:132.009px;left:1111.01px;width:290px;height:170px;animation-duration:1s;`" id="1567752206353" :wid="`1567752206353`" :index="20" :pid="`root`" :num="`79.6%`" :text1="`事件处理率`" :text2="`上月同比 3.6% ↓`" :num_class="`vda-h1-num2`" :text1_class="`vda-h2-text`" :text2_class="`vda-h2-text-greenBg`" :bgImg="`img/shanghai/s_glassShort2.png`"></v2-component-s_number_text2></v2-ctn-xy></template>
+<template><v2-ctn-xy :wid="`root`"><v2-component-s_background class="V2Widget" :style="`position:absolute;top:0px;left:0px;width:1920px;height:1080px;animation-duration:1s;`" id="1566972327260" :wid="`1566972327260`" :index="0" :pid="`root`"></v2-component-s_background><v2-component-image class="V2Widget" id="1567565602525" :wid="`1567565602525`" :index="1" :pid="`root`"></v2-component-image><v2-component-image class="V2Widget" id="1567565732888" :wid="`1567565732888`" :index="2" :pid="`root`"></v2-component-image><v2-component-image class="V2Widget" id="1567565723497" :wid="`1567565723497`" :index="3" :pid="`root`"></v2-component-image><v2-component-image class="V2Widget" id="1567565813093" :wid="`1567565813093`" :index="4" :pid="`root`"></v2-component-image><v2-component-image class="V2Widget" id="1567565839438" :wid="`1567565839438`" :index="5" :pid="`root`"></v2-component-image><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567582524328" :wid="`1567582524328`" :index="6" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567582584673" :wid="`1567582584673`" :index="7" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567582569115" :wid="`1567582569115`" :index="8" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567582596433" :wid="`1567582596433`" :index="9" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567582676810" :wid="`1567582676810`" :index="10" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567582688283" :wid="`1567582688283`" :index="11" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567582693072" :wid="`1567582693072`" :index="12" :pid="`root`"></v2-component-text><v2-component-text class="V2Widget" :class="[`vda-header`]" id="1567582701410" :wid="`1567582701410`" :index="13" :pid="`root`"></v2-component-text><v2-component-echart class="V2Widget" id="1567586360333" :wid="`1567586360333`" :index="14" :pid="`root`"></v2-component-echart><v2-component-echart class="V2Widget" id="1567586502956" :wid="`1567586502956`" :index="15" :pid="`root`"></v2-component-echart><v2-component-echart class="V2Widget" id="1567586742329" :wid="`1567586742329`" :index="16" :pid="`root`"></v2-component-echart><v2-component-echart class="V2Widget" id="1567586876376" :wid="`1567586876376`" :index="17" :pid="`root`"></v2-component-echart><v2-component-s_number_text2 class="V2Widget" :style="`position:absolute;top:132.003px;left:490.011px;width:290px;height:170px;animation-duration:1s;`" id="1567752156369" :wid="`1567752156369`" :index="18" :pid="`root`" :num="560" :test="213" :text1="`今日事件总数`" :text2="`上月同比 23.6% ↑`" :num_class="`vda-h1-num2`" :text1_class="`vda-h2-text`" :text2_class="`vda-h2-text-redBg`" :bgImg="`img/shanghai/s_glassShort2.png`"></v2-component-s_number_text2><v2-component-s_number_text2 class="V2Widget" :style="`position:absolute;top:132.005px;left:801.002px;width:290px;height:170px;animation-duration:1s;`" id="1567752158269" :wid="`1567752158269`" :index="19" :pid="`root`" :num="446" :test="213" :text1="`事件处理数`" :text2="`上月同比 10.3%% ↑`" :num_class="`vda-h1-num2`" :text1_class="`vda-h2-text`" :text2_class="`vda-h2-text-redBg`" :bgImg="`img/shanghai/s_glassShort2.png`"></v2-component-s_number_text2><v2-component-s_number_text2 class="V2Widget" :style="`position:absolute;top:132.009px;left:1111.01px;width:290px;height:170px;animation-duration:1s;`" id="1567752206353" :wid="`1567752206353`" :index="20" :pid="`root`" :num="`79.6%`" :test="213" :text1="`事件处理率`" :text2="`上月同比 3.6% ↓`" :num_class="`vda-h1-num2`" :text1_class="`vda-h2-text`" :text2_class="`vda-h2-text-greenBg`" :bgImg="`img/shanghai/s_glassShort2.png`"></v2-component-s_number_text2><v2-component-echart class="V2Widget" id="1567946776371" :wid="`1567946776371`" :index="21" :pid="`root`"></v2-component-echart></v2-ctn-xy></template>
 <script>
             import  {mixins} from '@v2-lib/vue.spa.plugin';
             import {root} from '@v2-lib/v2sual/mixin/v2-view';
@@ -6,7 +6,7 @@
             export default{
                 data(){
                     return{
-                        "CONTENT":{structure:{"id":"root","component":"v2EditorXYCtn","style":{"width":"100%","height":"100%"},"children":[{"__capacity":"1","component":"v2-component-s_background","href":"v2-component-s_background","cptpath":"\\src\\views\\_customWidget\\s_background.vue","events":{},"commonStyle":{"position":"absolute","top":"0px","left":"0px","width":"1920px","height":"1080px","animation-duration":"1s"},"id":1566972327260,"pid":"root","animate":["","animated"]},{"src":"img/shanghai/s_group3.png","fixation":true,"__capacity":"1","component":"v2-component-image","href":"v2-component-image","events":{},"commonStyle":{"position":"absolute","top":"80px","left":"1424px","width":"429px","height":"305px"},"id":1567565602525,"pid":"root","animate":["","animated"]},{"src":"img/shanghai/s_group3.png","fixation":true,"__capacity":"1","component":"v2-component-image","href":"v2-component-image","events":{},"commonStyle":{"position":"absolute","top":"80px","left":"40px","width":"429px","height":"568px"},"id":1567565732888,"pid":"root","animate":["","animated"]},{"src":"img/shanghai/s_group2.png","fixation":true,"__capacity":"1","component":"v2-component-image","href":"v2-component-image","events":{},"commonStyle":{"position":"absolute","top":"666px","left":"40px","width":"429px","height":"369px","animation-duration":"1s"},"id":1567565723497,"pid":"root","animate":["","animated"]},{"src":"img/shanghai/s_group2.png","fixation":true,"__capacity":"1","component":"v2-component-image","href":"v2-component-image","events":{},"commonStyle":{"position":"absolute","top":"784px","left":"1424px","width":"429px","height":"268px"},"id":1567565813093,"pid":"root","animate":["","animated"]},{"src":"img/shanghai/s_group2.png","fixation":true,"__capacity":"1","component":"v2-component-image","href":"v2-component-image","events":{},"commonStyle":{"position":"absolute","top":"401px","left":"1424px","width":"429px","height":"362px"},"id":1567565839438,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{}},"text":"后台作业主要操作统计","customClass":"vda-header","__capacity":"1","component":"v2-component-text","href":"v2-component-text","events":{},"commonStyle":{"position":"absolute","top":"132.009px","left":"76px"},"id":1567582524328,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{}},"text":"后台操作时段占比","customClass":"vda-header","__capacity":"1","component":"v2-component-text","href":"v2-component-text","events":{},"commonStyle":{"position":"absolute","top":"705.008px","left":"76.012px"},"id":1567582584673,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{}},"text":"处理详情占比","customClass":"vda-header","__capacity":"1","component":"v2-component-text","href":"v2-component-text","events":{},"commonStyle":{"position":"absolute","top":"116.008px","left":"1460.01px"},"id":1567582569115,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{}},"text":"支行预警数TOP","customClass":"vda-header","__capacity":"1","component":"v2-component-text","href":"v2-component-text","events":{},"commonStyle":{"position":"absolute","top":"441.003px","left":"1460.01px"},"id":1567582596433,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{}},"text":"时点平均工作量比较","customClass":"vda-header","__capacity":"1","component":"v2-component-text","href":"v2-component-text","events":{},"commonStyle":{"position":"absolute","top":"252.008px","left":"76.0084px"},"id":1567582676810,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{}},"text":"耗时信息","customClass":"vda-header","__capacity":"1","component":"v2-component-text","href":"v2-component-text","events":{},"commonStyle":{"position":"absolute","top":"385.004px","left":"76.0082px"},"id":1567582688283,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{}},"text":"各分行事件数详情","customClass":"vda-header","__capacity":"1","component":"v2-component-text","href":"v2-component-text","events":{},"commonStyle":{"position":"absolute","top":"312.005px","left":"500.012px"},"id":1567582693072,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{}},"text":"今日事件趋势详情","customClass":"vda-header","__capacity":"1","component":"v2-component-text","href":"v2-component-text","events":{},"commonStyle":{"position":"absolute","top":"763.001px","left":"500.004px"},"id":1567582701410,"pid":"root","animate":["","animated"]},{"configs":"${option1}","__capacity":"1","component":"v2-component-echart","href":"v2-component-echart","events":{},"commonStyle":{"position":"absolute","top":"252px","left":"76px","width":"294px","height":"119px"},"id":1567586360333,"pid":"root","animate":["","animated"]},{"configs":"${option2}","__capacity":"1","component":"v2-component-echart","href":"v2-component-echart","events":{},"commonStyle":{"position":"absolute","top":"438px","left":"69px","width":"366px","height":"176px"},"id":1567586502956,"pid":"root","animate":["","animated"]},{"configs":"${option3}","__capacity":"1","component":"v2-component-echart","href":"v2-component-echart","events":{},"commonStyle":{"position":"absolute","top":"801px","left":"500px","width":"888px","height":"242px"},"id":1567586742329,"pid":"root","animate":["","animated"]},{"configs":"${option4}","__capacity":"1","component":"v2-component-echart","href":"v2-component-echart","events":{},"commonStyle":{"position":"absolute","top":"475.012px","left":"1460.01px","width":"356px","height":"251px"},"id":1567586876376,"pid":"root","animate":["","animated"]},{"dataBasket":{"num":"560","text1":"今日事件总数","text2":"上月同比 23.6% ↑","num_class":"vda-h1-num2","text1_class":"vda-h2-text","text2_class":"vda-h2-text-redBg","bgImg":"img/shanghai/s_glassShort2.png"},"__capacity":"1","component":"v2-component-s_number_text2","href":"v2-component-s_number_text2","cptpath":"\\src\\views\\_customWidget\\s_number_text2.vue","events":{},"commonStyle":{"position":"absolute","top":"132.003px","left":"490.011px","width":"290px","height":"170px","animation-duration":"1s"},"id":1567752156369,"pid":"root","animate":["","animated"]},{"dataBasket":{"num":"446","text1":"事件处理数","text2":"上月同比 10.3%% ↑","num_class":"vda-h1-num2","text1_class":"vda-h2-text","text2_class":"vda-h2-text-redBg","bgImg":"img/shanghai/s_glassShort2.png"},"__capacity":"1","component":"v2-component-s_number_text2","href":"v2-component-s_number_text2","cptpath":"\\src\\views\\_customWidget\\s_number_text2.vue","events":{},"commonStyle":{"position":"absolute","top":"132.005px","left":"801.002px","width":"290px","height":"170px","animation-duration":"1s"},"id":1567752158269,"pid":"root","animate":["","animated"]},{"dataBasket":{"num":"79.6%","text1":"事件处理率","text2":"上月同比 3.6% ↓","num_class":"vda-h1-num2","text1_class":"vda-h2-text","text2_class":"vda-h2-text-greenBg","bgImg":"img/shanghai/s_glassShort2.png"},"__capacity":"1","component":"v2-component-s_number_text2","href":"v2-component-s_number_text2","cptpath":"\\src\\views\\_customWidget\\s_number_text2.vue","events":{},"commonStyle":{"position":"absolute","top":"132.009px","left":"1111.01px","width":"290px","height":"170px","animation-duration":"1s"},"id":1567752206353,"pid":"root","animate":["","animated"]}],"ctnStyle":[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],"commonStyle":{"animation-duration":"1s"},"animate":["","animated"]}},
+                        "CONTENT":{structure:{"id":"root","component":"v2EditorXYCtn","style":{"width":"100%","height":"100%"},"children":[{"__capacity":"1","component":"v2-component-s_background","href":"v2-component-s_background","cptpath":"\\src\\views\\_customWidget\\s_background.vue","events":{},"commonStyle":{"position":"absolute","top":"0px","left":"0px","width":"1920px","height":"1080px","animation-duration":"1s"},"id":1566972327260,"pid":"root","animate":["","animated"]},{"src":"img/shanghai/s_group3.png","fixation":true,"__capacity":"1","component":"v2-component-image","href":"v2-component-image","events":{},"commonStyle":{"position":"absolute","top":"80px","left":"1424px","width":"429px","height":"305px"},"id":1567565602525,"pid":"root","animate":["","animated"]},{"src":"img/shanghai/s_group3.png","fixation":true,"__capacity":"1","component":"v2-component-image","href":"v2-component-image","events":{},"commonStyle":{"position":"absolute","top":"80px","left":"40px","width":"429px","height":"568px"},"id":1567565732888,"pid":"root","animate":["","animated"]},{"src":"img/shanghai/s_group2.png","fixation":true,"__capacity":"1","component":"v2-component-image","href":"v2-component-image","events":{},"commonStyle":{"position":"absolute","top":"666px","left":"40px","width":"429px","height":"369px","animation-duration":"1s"},"id":1567565723497,"pid":"root","animate":["","animated"]},{"src":"img/shanghai/s_group2.png","fixation":true,"__capacity":"1","component":"v2-component-image","href":"v2-component-image","events":{},"commonStyle":{"position":"absolute","top":"784px","left":"1424px","width":"429px","height":"268px","animation-duration":"1s"},"id":1567565813093,"pid":"root","animate":["","animated"]},{"src":"img/shanghai/s_group2.png","fixation":true,"__capacity":"1","component":"v2-component-image","href":"v2-component-image","events":{},"commonStyle":{"position":"absolute","top":"401px","left":"1424px","width":"429px","height":"362px"},"id":1567565839438,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{}},"text":"后台作业主要操作统计","customClass":"vda-header","__capacity":"1","component":"v2-component-text","href":"v2-component-text","events":{},"commonStyle":{"position":"absolute","top":"132.009px","left":"76px"},"id":1567582524328,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{}},"text":"后台操作时段占比","customClass":"vda-header","__capacity":"1","component":"v2-component-text","href":"v2-component-text","events":{},"commonStyle":{"position":"absolute","top":"705.008px","left":"76.012px"},"id":1567582584673,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{}},"text":"处理详情占比","customClass":"vda-header","__capacity":"1","component":"v2-component-text","href":"v2-component-text","events":{},"commonStyle":{"position":"absolute","top":"116.008px","left":"1460.01px"},"id":1567582569115,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{}},"text":"支行预警数TOP","customClass":"vda-header","__capacity":"1","component":"v2-component-text","href":"v2-component-text","events":{},"commonStyle":{"position":"absolute","top":"441.003px","left":"1460.01px"},"id":1567582596433,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{}},"text":"时点平均工作量比较","customClass":"vda-header","__capacity":"1","component":"v2-component-text","href":"v2-component-text","events":{},"commonStyle":{"position":"absolute","top":"252.008px","left":"76.0084px"},"id":1567582676810,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{}},"text":"耗时信息","customClass":"vda-header","__capacity":"1","component":"v2-component-text","href":"v2-component-text","events":{},"commonStyle":{"position":"absolute","top":"385.004px","left":"76.0082px"},"id":1567582688283,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{}},"text":"各分行事件数详情","customClass":"vda-header","__capacity":"1","component":"v2-component-text","href":"v2-component-text","events":{},"commonStyle":{"position":"absolute","top":"312.005px","left":"500.012px"},"id":1567582693072,"pid":"root","animate":["","animated"]},{"style":{"textStyle":{}},"text":"今日事件趋势详情","customClass":"vda-header","__capacity":"1","component":"v2-component-text","href":"v2-component-text","events":{},"commonStyle":{"position":"absolute","top":"763.001px","left":"500.004px"},"id":1567582701410,"pid":"root","animate":["","animated"]},{"configs":"${option1}","__capacity":"1","component":"v2-component-echart","href":"v2-component-echart","events":{},"commonStyle":{"position":"absolute","top":"252px","left":"76px","width":"294px","height":"119px"},"id":1567586360333,"pid":"root","animate":["","animated"]},{"configs":"${option2}","__capacity":"1","component":"v2-component-echart","href":"v2-component-echart","events":{},"commonStyle":{"position":"absolute","top":"438px","left":"69px","width":"366px","height":"176px"},"id":1567586502956,"pid":"root","animate":["","animated"]},{"configs":"${option3}","__capacity":"1","component":"v2-component-echart","href":"v2-component-echart","events":{},"commonStyle":{"position":"absolute","top":"801px","left":"500px","width":"888px","height":"242px"},"id":1567586742329,"pid":"root","animate":["","animated"]},{"configs":"${option4}","__capacity":"1","component":"v2-component-echart","href":"v2-component-echart","events":{},"commonStyle":{"position":"absolute","top":"475.012px","left":"1460.01px","width":"356px","height":"251px","animation-duration":"1s"},"id":1567586876376,"pid":"root","animate":["","animated"]},{"dataBasket":{"num":"560","text1":"今日事件总数","text2":"上月同比 23.6% ↑","num_class":"vda-h1-num2","text1_class":"vda-h2-text","text2_class":"vda-h2-text-redBg","bgImg":"img/shanghai/s_glassShort2.png"},"__capacity":"1","component":"v2-component-s_number_text2","href":"v2-component-s_number_text2","cptpath":"\\src\\views\\_customWidget\\s_number_text2.vue","events":{},"commonStyle":{"position":"absolute","top":"132.003px","left":"490.011px","width":"290px","height":"170px","animation-duration":"1s"},"id":1567752156369,"pid":"root","animate":["","animated"]},{"dataBasket":{"num":"446","text1":"事件处理数","text2":"上月同比 10.3%% ↑","num_class":"vda-h1-num2","text1_class":"vda-h2-text","text2_class":"vda-h2-text-redBg","bgImg":"img/shanghai/s_glassShort2.png"},"__capacity":"1","component":"v2-component-s_number_text2","href":"v2-component-s_number_text2","cptpath":"\\src\\views\\_customWidget\\s_number_text2.vue","events":{},"commonStyle":{"position":"absolute","top":"132.005px","left":"801.002px","width":"290px","height":"170px","animation-duration":"1s"},"id":1567752158269,"pid":"root","animate":["","animated"]},{"dataBasket":{"num":"79.6%","text1":"事件处理率","text2":"上月同比 3.6% ↓","num_class":"vda-h1-num2","text1_class":"vda-h2-text","text2_class":"vda-h2-text-greenBg","bgImg":"img/shanghai/s_glassShort2.png"},"__capacity":"1","component":"v2-component-s_number_text2","href":"v2-component-s_number_text2","cptpath":"\\src\\views\\_customWidget\\s_number_text2.vue","events":{},"commonStyle":{"position":"absolute","top":"132.009px","left":"1111.01px","width":"290px","height":"170px","animation-duration":"1s"},"id":1567752206353,"pid":"root","animate":["","animated"]},{"configs":"${option5}","__capacity":"1","component":"v2-component-echart","href":"v2-component-echart","events":{},"commonStyle":{"position":"absolute","top":"726px","left":"69px","width":"366px","height":"284px","animation-duration":"1s"},"id":1567946776371,"pid":"root","animate":["","animated"]}],"ctnStyle":[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],"commonStyle":{"animation-duration":"1s"},"animate":["","animated"]}},
                         option1:{
     backgroundColor:'',
     grid: {
@@ -311,12 +311,12 @@ option3:{
       ] 
 },
 option4:{
-  width: "90%",
-  backgroundColor: "#04113a",
+  // width: "90%",
+  // backgroundColor: "#04113a",
   grid: {
-    left: "10px",
-    top: "20px",
-    bottom:'0px'
+    left: "5%",
+    top: "5%",
+    bottom: "5%"
   },
   tooltip: {
     show: true,
@@ -326,7 +326,7 @@ option4:{
     },
     formatter: "{b}：{c}",
     textStyle: {
-      fontSize: "14px"
+      fontSize: "20"
     }
   },
   xAxis: {
@@ -352,41 +352,55 @@ option4:{
     axisLabel: {
       show: false
     },
-    data: ["信息技术大厦支行", "南京湖南路支行", "深圳红岭支行", "成都武侯支行", "深圳科技园支行"]
+    data: [
+      "乐原道支行",
+      "南京湖南路支行",
+      "深圳科技园支行"
+    ]
   },
   series: [
     {
-      barWidth: 10,
+      barWidth: 8,
       z: 10,
       itemStyle: {
-        color: new this.$echarts.graphic.LinearGradient(0, 0, 1, 0, [
-          {
-            offset: 0,
-            color: "blue"
-          },
-          {
-            offset: 0.7,
-            color: "rgba(172,207,255,1)"
-          }
-        ]),
-        barBorderRadius: 10
+        color: new (this.$echarts || echarts).graphic.LinearGradient(
+          0,
+          0,
+          1,
+          0,
+          [
+            {
+              offset: 0,
+              color: "rgba(28,126,255,1)"
+              
+            },
+            {
+              offset: 0.7,
+              color: "rgba(96,187,255,1)"
+            }
+          ]
+        ),
+        barBorderRadius: 15
       },
       label: {
         show: true,
         fontSize: 16,
         // distance: 10,
-        position: [0, "-30px"],
-        formatter: "{b}",
+        // position: [0, "-30px"],
+        // position: "top",
+        // formatter: "{b}",
+        position: ["150", "-24px"],
+        formatter: "{c}",
         // offset: [0, -10],
-        color: "rgba(172,207,255,1)"
+        color: "rgba(239,254,255,1)"
       },
       type: "bar",
-      data: [11, 12, 12, 14, 15]
+      data: [27, 34, 49]
     },
     {
       type: "bar",
       barGap: "-100%",
-      barWidth: 15,
+      barWidth: 8,
       animation: false,
       z: -1,
       itemStyle: {
@@ -395,46 +409,151 @@ option4:{
       },
       label: {
         show: true,
-        position: "top",
+        // position: "top",
         fontSize: 16,
         // lineHeight: 50,
         // position: ["50%", "-30px"],
-        color: "rgba(239,254,255,1)",
-        formatter: function(param) {
-          var data = [
-            {
-              name: "信息技术大厦支行",
-              value: 11
-            },
-            {
-              name: "南京湖南路支行",
-              value: 12
-            },
-            {
-              name: "深圳红岭支行",
-              value: 12
-            },
-            {
-              name: "成都武侯支行",
-              value: 14
-            },
-            {
-              name: "深圳科技园支行",
-              value: 15
-            }
-          ];
-
-          for (var i = 0; i < data.length; i++) {
-            if (param.name == data[i].name) {
-              return data[i].value;
-            }
-          }
-        }
+        position: [0, "-24px"],
+        color: "rgba(172,207,255,1)",
+        formatter: "{b}"
+        // formatter: function(param) {
+        //   for (var i = 0; i < data.length; i++) {
+        //     if (param.name == data[i].name) {
+        //       return data[i].value + " 分钟";
+        //     }
+        //   }
+        // }
       },
-      data: [16, 16, 16, 16, 16]
+      data: [55, 55, 55]
     }
   ]
 }
+,
+option5:{
+  // backgroundColor: "#101E44",
+  grid: [
+    {
+      left: "10%",
+      top: "10%",
+      right: "10%",
+      bottom: "10%",
+      containLabel: true
+    }
+  ],
+  xAxis: [
+    {
+      max: 13.7,
+      show: false
+    }
+  ],
+  yAxis: [
+    {
+      axisTick: "none",
+      axisLine: "none",
+      offset: "10",
+      axisLabel: {
+        textStyle: {
+          color: "#accfff",
+          fontSize: "16"
+        }
+      },
+      data: [
+        "0-3时",
+        "3-6时",
+        "6-9时"
+      ]
+    },
+    {
+      axisTick: "none",
+      axisLine: "none",
+      show: true,
+      axisLabel: {
+        textStyle: {
+          color: "#fff",
+          fontSize: "16"
+        },
+        formatter: "{value} %"
+      },
+      data: [11.5, 9.2, 13.7]
+    }
+  ],
+  series: [
+    {
+      name: "背景进度条",
+      type: "bar",
+      barWidth: 12,
+      legendHoverLink: false,
+      silent: true,
+      barGap: "-100%",
+      itemStyle: {
+        color: {
+          type: "linear",
+          x: 0,
+          y: 0,
+          x2: 1,
+          y2: 0,
+          colorStops: [
+            {
+              offset: 0,
+              color: "rgba(32, 114, 202, 0.5)" // 0% 处的颜色
+            },
+            {
+              offset: 1,
+              color: "rgba(32, 114, 202, 0.5)" // 100% 处的颜色
+            }
+          ],
+          globalCoord: false // 缺省为 false
+        }
+      },
+      data: [13.7, 13.7, 13.7]
+    },
+    {
+      name: "前景进度条",
+      type: "bar",
+      barWidth: 12,
+      legendHoverLink: false,
+      silent: true,
+      itemStyle: {
+        color: {
+          type: "linear",
+          x: 0,
+          y: 0,
+          x2: 1,
+          y2: 0,
+          colorStops: [
+            {
+              offset: 0,
+              color: "#44A0FF" // 0% 处的颜色
+            },
+            {
+              offset: 1,
+              color: "#44A0FF" // 100% 处的颜色
+            }
+          ],
+          globalCoord: false // 缺省为 false
+        } //底色
+      },
+      data: [11.5, 9.2, 13.7]
+    },
+    {
+      name: "进度条分割",
+      type: "pictorialBar",
+      itemStyle: {
+        color: "#101E44"
+      },
+      symbolRepeat: "fixed",
+      symbolMargin: "2",
+      symbol: "rect",
+      symbolClip: true,
+      symbolSize: [2, 14],
+      symbolPosition: "start",
+      symbolOffset: [0, 0],
+      symbolBoundingData: 13.7,
+      data: [13.7, 13.7, 13.7]
+    }
+  ]
+}
+
                     }
                 },
                 props:{
@@ -456,7 +575,8 @@ option4:{
                     /**bind**/ctx.$store.commit("registerBind",{ vueObj:this, data:this.option1, dataStr:"option1", wid:1567586360333, modelKey:"configs" });
 ctx.$store.commit("registerBind",{ vueObj:this, data:this.option2, dataStr:"option2", wid:1567586502956, modelKey:"configs" });
 ctx.$store.commit("registerBind",{ vueObj:this, data:this.option3, dataStr:"option3", wid:1567586742329, modelKey:"configs" });
-ctx.$store.commit("registerBind",{ vueObj:this, data:this.option4, dataStr:"option4", wid:1567586876376, modelKey:"configs" });/**bind over**/
+ctx.$store.commit("registerBind",{ vueObj:this, data:this.option4, dataStr:"option4", wid:1567586876376, modelKey:"configs" });
+ctx.$store.commit("registerBind",{ vueObj:this, data:this.option5, dataStr:"option5", wid:1567946776371, modelKey:"configs" });/**bind over**/
                 },
                 beforeMount(){
                     let ctx = this;

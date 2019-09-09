@@ -1,8 +1,8 @@
 /* vda 屏幕适配方案 */
-html {
+/* html {
   font-size: 100px;
-}
-/* 
+} */
+
 @media screen and (min-width: 300px) {
    html {
     font-size: 5px;
@@ -71,7 +71,7 @@ html {
   html {
     font-size: 22px;
   }
-} */
+} 
 
 
 /* 小于400 */	  
@@ -114,42 +114,44 @@ html {
 	html,body {
 	font-size:160px;
 }
-}/* 大于960 小于1200 */	
+}
+
+/* 
  @media screen and (min-width:921px) and (max-width:1020px) {
 	html,body {
 	font-size:18px;
 }
-}/* 大于960 小于1200 */	
+}
  @media screen and (min-width:1021px) and (max-width:1120px) {
 	html,body {
 	font-size:200px;
 }
-}/* 大于960 小于1200 */	
+}
  @media screen and (min-width:1121px) and (max-width:1220px) {
 	html,body {
 	font-size:2.2rem;
 }
-}/* 大于960 小于1200 */	
+}
  @media screen and (min-width:1221px) and (max-width:1320px) {
 	html,body {
 	font-size:240px;
 }
-}/* 大于960 小于1200 */	
+}
  @media screen and (min-width:1321px) and (max-width:1420px) {
 	html,body {
 	font-size:260px;
 }
-}/* 大于960 小于1200 */	
+}
  @media screen and (min-width:1421px) and (max-width:1520px) {
 	html,body {
 	font-size:280px;
 }
-}/* 大于960 小于1200 */	
+}	
  @media screen and (min-width:1521px) and (max-width:1620px) {
 	html,body {
 	font-size:300px;
 }
-}
+} */
 
 .v2-picture >img{
   position: inherit;
@@ -176,10 +178,10 @@ body {
   border-radius: 0.02rem;
 }
 
-.gaueOption{
+/* .gaueOption{
   transform:scale(.5);
   transform-origin:0 0;
-}
+} */
 
 .s_gray_panel{
   background:rgba(242,244,247,1);
