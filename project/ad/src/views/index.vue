@@ -477,6 +477,7 @@ export default {
   // top: 0px;
   // bottom: 0px;
   width: 100%;
+  background:#ebeff5;
   >header{
       position: fixed;
       top:0;
@@ -506,7 +507,7 @@ export default {
      bottom: 0;
      z-index: 1;
      width:100%;
-     height: 50px;
+     min-height: 50px;
      background: #fff;
      display: flex;
      flex-wrap: wrap;
@@ -514,15 +515,24 @@ export default {
        >div{
         flex: 1;
         text-align: center;
+        font-size: 0.14rem;
            i{
-                 font-size: 0.2rem;
+                 font-size: 0.25rem;
                  padding-top: 5px;
              }
              .foot-title{
-                 font-size: 0.1rem;
+                 font-size: 0.12rem;
              }
        }
   
+  }
+
+  .el-drawer__header{
+    font-size: 0.14rem;
+  }
+
+  div{
+    font-size:0.12rem;
   }
  
 }
