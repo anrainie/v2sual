@@ -305,6 +305,7 @@ body {
 
 /* vda 组件主题样式 */
 
+/* table表格 */
 .vda-table .el-table {
   background-color: rgba(0, 0, 0, 0);
   color: #fefefe;
@@ -351,14 +352,43 @@ body {
   > td {
   background-color: rgba(0, 60, 150, 0.3);
 }
-/* 
-.el-table--enable-row-hover .el-table__body tr:hover > td {
-  background-color: rgba(0, 60, 150, 0.3);
-}
 
-.el-table__body tr.current-row > td {
-  background-color: rgba(0, 60, 150, 0.3);
-} */
+/* 下拉列表 */
+
+
+.vda-select .el-input__inner {
+  height:30px;
+  color: #90c4ff;
+  background:transparent;
+  border: 1px solid #25498a;
+}
+.vda-select .form-select-ctn, .vda-select .el-input__icon, .vda-select .v2-form-label{
+  line-height:30px;
+  font-size:16px;
+  color: #90c4ff;
+}
+.vda-select .el-select:hover .el-input__inner {
+  border-color: #0581fd;
+}
+.vda-select .el-select .el-input.is-focus .el-input__inner {
+  border-color: #0581fd;
+}
+.el-select-dropdown__item.hover,
+.el-select-dropdown__item:hover {
+  background-color: rgba(44, 86, 148, 0.3)!important;
+}
+.el-select-dropdown {
+  border: solid 1px #25498a!important;
+  background-color: #000117!important;
+}
+.el-popper[x-placement^=bottom] .popper__arrow::after {
+  top: 0px!important;
+  border-bottom-color: #25498a!important;
+}
+.el-select-dropdown__item.selected {
+  color: #fff!important;
+  font-weight: normal!important;
+}
 
 .device_name {
   font-size: 0.32rem;

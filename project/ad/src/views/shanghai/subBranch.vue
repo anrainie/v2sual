@@ -811,7 +811,15 @@ option5:{
                 },
                 mixins:[root,mixins],
                 components:{v2ComponentS_device_trade2,v2ComponentS_number_text3,v2ComponentS_background},
-                methods:{},
+                methods:{
+                  _source_init(){
+                    let ctx = this;
+                    window.pipe.vda.ready().then(() =>{
+                      
+                    });
+                  },
+                  
+                },
                 watch:{},
                 computed:{
           currentWaitNum(){
@@ -856,7 +864,7 @@ option5:{
                 created(){
                     let ctx = this;
                     
-                    
+                    ctx._source_init();
                     /**bind**/ctx.$store.commit("registerBind",{ vueObj:this, data:this.topEchartOption1, dataStr:"topEchartOption1", wid:1567567030793, modelKey:"configs" });
 ctx.$store.commit("registerBind",{ vueObj:this, data:this.option2, dataStr:"option2", wid:1567587966341, modelKey:"configs" });
 ctx.$store.commit("registerBind",{ vueObj:this, data:this.customWaitingInfo, dataStr:"customWaitingInfo", wid:1567653048348, modelKey:"countData" });
@@ -870,6 +878,7 @@ ctx.$store.commit("registerBind",{ vueObj:this, data:this.option3, dataStr:"opti
 ctx.$store.commit("registerBind",{ vueObj:this, data:this.option4, dataStr:"option4", wid:1567947567702, modelKey:"configs" });
 ctx.$store.commit("registerBind",{ vueObj:this, data:this.machineWornInfo, dataStr:"machineWornInfo", wid:1568022519112, modelKey:"tableData" });
 ctx.$store.commit("registerBind",{ vueObj:this, data:this.option5, dataStr:"option5", wid:1568028590229, modelKey:"configs" });/**bind over**/
+
                 },
                 beforeMount(){
                     let ctx = this;

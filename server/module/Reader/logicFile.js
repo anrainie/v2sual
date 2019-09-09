@@ -608,7 +608,11 @@ let createInitSource = function (list) {
   let tempArr=[];
   let res = [];
 
-  tempArr = list.filter(item=>item.type ==="sourceData");
+  tempArr = list.filter(item=>{
+    if(item.type ==="sourceData"&&item.modelid&&item.cols){
+      return item;
+    }
+  });
   res = tempArr.map(item=>{
     return `
     window.pipe.vda.data({modelid: "${item.modelid}",cols: ${item.cols}}).then(res => {
