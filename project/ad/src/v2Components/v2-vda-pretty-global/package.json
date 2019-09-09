@@ -16,13 +16,26 @@
     "name": "vda地球",
     "option": [
       {
-        "type": "array",
-        "name": "data",
-        "defaultValue": [],
+        "type": "string_input",
+        "name": "optionData",
+        "defaultValue": "",
         "desp": "数据",
         "details":"like [[ 119.15, 33.5, 1 ], [ 119.9, 32.49, 2 ], [ 108.33, 22.84, 3]], 前两项表示坐标经纬度，最后一项为数值"
+      },
+      {
+        "type": "string_input",
+        "name": "alpha",
+        "defaultValue": 1.411183641145538,
+        "desp": "经度",
+        "details":"数字"
+      },
+      {
+        "type": "string_input",
+        "name": "beta",
+        "defaultValue": 190.5974495677231,
+        "desp": "纬度",
+        "details":"数字"
       }
-
     ],
     "css":{
 

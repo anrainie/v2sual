@@ -156,7 +156,9 @@
 .v2-picture >img{
   position: inherit;
 }
-
+.v2-form-label{
+  float: left;
+}
 .text-red {
   color: green;
 }
