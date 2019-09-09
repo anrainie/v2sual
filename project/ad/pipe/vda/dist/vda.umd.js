@@ -817,9 +817,10 @@ var queryNewDmData = 'visualDataModelController/queryNewDmData'; // cols
 var _modelCols = 'visualDataModelController/queryDataModelCols'; // list
 
 var newApiList = 'visualDataModelController/queryTreeAllModels';
-var username = 'admin'; // const password = '888888'//'agreexian!';
+var username = 'admin';
+var vda_password = '888888'; //'agreexian!';
+// const password = 'agreexian!';
 
-var vda_password = 'agreexian!';
 var token = '';
 var fakeData = {
   '网点树': {

@@ -15,8 +15,8 @@ const modelCols = 'visualDataModelController/queryDataModelCols';
 // list
 const newApiList = 'visualDataModelController/queryTreeAllModels';
 const username = 'admin';
-// const password = '888888'//'agreexian!';
-const password = 'agreexian!';
+const password = '888888'//'agreexian!';
+// const password = 'agreexian!';
 
 let token = '';
 
