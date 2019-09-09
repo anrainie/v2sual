@@ -43,14 +43,14 @@ router.beforeEach((to, from, next) => {
 
   let wpath = hash.split('?')[0].replace('#/', '');
   let routes = router.options.routes
-  if (localStorage.getItem('openWindow') && localStorage.getItem('openWindow') === wpath) {
-    routes.push({
-      path: '/' + wpath,
-      component: Lib._import(wpath),
-      hidden: true
-    });
-    router.addRoutes(routes);
-  }
+  // if (localStorage.getItem('openWindow') && localStorage.getItem('openWindow') === wpath) {
+  //   routes.push({
+  //     path: '/' + wpath,
+  //     component: Lib._import(wpath),
+  //     hidden: true
+  //   });
+  //   router.addRoutes(routes);
+  // }
   let urlParam = hash.split('?')[1];
 
 
@@ -66,49 +66,79 @@ router.beforeEach((to, from, next) => {
       }
     });
     router.addRoutes(routes);
+debugger;
+    if(wpath.indexOf('shanghai_mobile')==0 && router.matcher.match('/mobile/'+wpath).path=='/404'){    
+      debugger;  
+      routes[1].children.push({
+                  path: '/mobile/'+wpath,
+                  replace: true,
+                  component: Lib._import(wpath),
+                  meta: {
+                    title: '预览',
+                    type: 'preview'
+                  },
+                  keepAlive:true
+                  });
+        router.addRoutes(routes);
+        
+        next('/mobile/'+wpath);
+    }
 
-    getbrotherPageList().then(res => {
-      if (res.status) {
-
-
-        let floder = res.content.filter(item => item.name === wpath.split('/')[0])[0];
-        if (floder) {
-          res.content.forEach(item => {
-            let temp = {
-              path: item.href,
-              component: Lib._import(item.href),
-              name: item.name,
-              children: []
-            };
-            addTabsRoutes(temp);
-          });
-          next({ path: '/' + floder.href, query: { pages: floder.pages } })
-        } else {
-
-          routes[0].children.push({
-            path: '/' + wpath,
-            replace: true,
-            component: Lib._import(wpath),
-            meta: {
-              title: '预览',
-              type: 'preview'
-            }
-          });
-          router.addRoutes(routes);
-        }
-
-      }
-    })
-
-    next()
-  } else {
-    next()
-  }
+    // getbrotherPageList().then(res => {
+    //   if (res.status) {
 
 
+    //     let floder = res.content.filter(item => item.name === wpath.split('/')[0])[0];
+    //     if (floder) {
+    //       res.content.forEach(item => {
+    //         let temp = {
+    //           path: item.href,
+    //           component: Lib._import(item.href),
+    //           name: item.name,
+    //           children: []
+    //         };
+    //         addTabsRoutes(temp);
+    //       });
+    //       next({ path: '/' + floder.href, query: { pages: floder.pages } })
+    //     } else {
 
+    //       if(window.router.matcher.match('/mobile/'+wpath).path=='/404'){
+       
+    //           routes[1].children.push({
+    //                       path: '/mobile/'+wpath,
+    //                       replace: true,
+    //                       component: Lib._import(wpath),
+    //                       meta: {
+    //                         title: '预览',
+    //                         type: 'preview'
+    //                       },
+    //                       keepAlive:true
+    //                       });
+    //             router.addRoutes(routes);
 
+    //             next('/mobile/'+wpath);
 
+    //         }else{         
+    //               routes[0].children.push({
+    //                 path: '/' + wpath,
+    //                 replace: true,
+    //                 component: Lib._import(wpath),
+    //                 meta: {
+    //                   title: '预览',
+    //                   type: 'preview'
+    //                 }
+    //               });
+    //               router.addRoutes(routes);
+    //         }
+    //     }
+
+    //   }
+    // })
+
+  } 
+   
+
+  next()
 
 })
 
@@ -117,11 +147,11 @@ router.afterEach(() => {
   NProgress.done()
 })
 
-window.pipe.vda.ready().then(r => {
+// window.pipe.vda.ready().then(r => {
   new Vue({
     router,
     store,
     render: h => h(App)
   }).$mount('#app')
-})
+// })
 

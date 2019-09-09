@@ -6,12 +6,15 @@ import vueRouter from "vue-router"
 import Layout from '@/views/Layout'
 import Login from "@/views/Login"
 import noFound from "@/views/404"
-
+import mobileLayout from "@/views/index"
 import Home from "@/views/Home"
+import Main from "@/views/shanghai_mobile/page2.vue"
 
-let mainRouter = [{
+let mainRouter = [
+  
+  {
   path: "/",
-  redirect:'/home',
+  // redirect:'/mobile',
   component: Layout,
   children:[
     {
@@ -22,14 +25,32 @@ let mainRouter = [{
         title: "404"
       }
     }
+    
   ]
-}, {
-  path: "/login",
-  component: Login,
-}, {
-  path: "/home",
-  component: Home,
-}, {
+},{
+  path: "/mobile",
+  // redirect:'/main',
+  component: mobileLayout,
+  children:[
+    {
+      path: "/main",
+      name: 'main',
+      component:Main,
+      meta: {
+        title: "首页",
+        icon: "el-icon-goods"
+      }
+    },
+    {
+      path: '/404',
+      component: noFound,
+      hidden: true,
+      meta: {
+        title: "404"
+      }
+    }
+  ]
+},{
   path: "/layout",
   component: Layout,
 },

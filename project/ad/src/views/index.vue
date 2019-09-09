@@ -418,10 +418,7 @@ export default {
     }
   },
   watch: {
-    '$store.state.MenuDrawer':(val)=>{
-        debugger;
-       this.showD = val;
-    },
+   
     $route(to, from) {
       let flag = false;
       if (to.meta.type === "BLANK") {
@@ -507,12 +504,13 @@ export default {
   >footer{
      position: fixed;
      bottom: 0;
+     z-index: 1;
      width:100%;
      height: 50px;
      background: #fff;
      display: flex;
      flex-wrap: wrap;
-       border-top: 1px solid #ccc;
+     border-top: 1px solid #ccc;
        >div{
         flex: 1;
         text-align: center;
