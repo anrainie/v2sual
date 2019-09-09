@@ -105,11 +105,6 @@ router.beforeEach((to, from, next) => {
     next()
   }
 
-
-
-
-
-
 })
 
 router.afterEach(() => {
@@ -117,11 +112,11 @@ router.afterEach(() => {
   NProgress.done()
 })
 
-window.pipe.vda.ready().then(r => {
-  new Vue({
-    router,
-    store,
-    render: h => h(App)
-  }).$mount('#app')
-})
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')
 
+// window.pipe.vda.ready().then(r => {
+// })
