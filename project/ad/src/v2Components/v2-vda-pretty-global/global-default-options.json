@@ -44,6 +44,7 @@
   },
   "visualMap": {
     "max": 60,
+    "show":false,
     "calculable": true,
     "realtime": true,
     "inRange": {
