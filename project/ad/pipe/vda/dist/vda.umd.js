@@ -808,13 +808,18 @@ var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
 var host = 'v1/ds/dvms/vda';
 var signIn = 'loginController/signIn';
 var apiList = 'visualDataModelController/queryTreeDataModels';
-var dataPreview = 'visualDataModelController/dataPreview';
 var panelSource = 'visualConfPanelController/info/panel';
 var queryDmData = 'visualThemeController/queryDmData';
-var queryNewDmData = 'visualThemeController/queryNewDmData';
-var createPanelUrl = 'visualConfPanelController/save/panel';
+var createPanelUrl = 'visualConfPanelController/save/panel'; // data
+
+var queryNewDmData = 'visualDataModelController/queryNewDmData'; // cols
+
+var _modelCols = 'visualDataModelController/queryDataModelCols'; // list
+
+var newApiList = 'visualDataModelController/queryTreeAllModels';
 var username = 'admin';
 var vda_password = '888888'; //'agreexian!';
+// const password = 'agreexian!';
 
 var token = '';
 var fakeData = {
@@ -853,7 +858,7 @@ var fakeData = {
     "params": [{
       "requestid": "518B3F39-B17B-486D-B799-779F0CD98FC5",
       "datatype": "1",
-      "moduleid": "0f25a46ec83a38088909c16269edb30e",
+      "modelid": "0f25a46ec83a38088909c16269edb30e",
       "statcontent": {},
       "filter": "",
       "modelfilter": "",
@@ -1254,20 +1259,55 @@ var vda_signInFn = function signInFn() {
     }) : vda_signInFn();
   },
   list: function list() {
-    // return axios.post(`${host}/${apiList}`, qs.stringify({
-    //   token: token
-    // }));
-    return new Promise(function (r) {
-      r({
-        content: fakeData
-      });
-    });
+    return axios_default.a.post("".concat(host, "/").concat(newApiList), {
+      token: token
+    }, {
+      responseType: 'json',
+      headers: {
+        'Content-Type': 'application/json;charset=utf8'
+      }
+    }); // return new Promise(r => {
+    //   r({
+    //     content: fakeData
+    //   });
+    // });
   },
-  data: function data(id) {
-    return axios_default.a.post("".concat(host, "/").concat(dataPreview), lib_default.a.stringify({
+  modelCols: function modelCols(id) {
+    return axios_default.a.post("".concat(host, "/").concat(_modelCols), {
       token: token,
       dmUid: id
-    }));
+    }, {
+      responseType: 'json',
+      headers: {
+        'Content-Type': 'application/json;charset=utf8'
+      }
+    });
+  },
+  data: function data(_ref) {
+    var modelid = _ref.modelid,
+        cols = _ref.cols;
+    return axios_default.a.post("".concat(host, "/").concat(queryNewDmData), {
+      token: token,
+      request: JSON.stringify({
+        "userid": username,
+        "paras": [{
+          "requestid": "518B3F39-B17B-486D-B799-779F0CD98FC5",
+          "datatype": "1",
+          "modelid": modelid,
+          "statcontent": {},
+          "filter": "",
+          "modelfilter": "",
+          "order": "",
+          "cols": cols,
+          "limit": ""
+        }]
+      })
+    }, {
+      responseType: 'json',
+      headers: {
+        'Content-Type': 'application/json;charset=utf8'
+      }
+    });
   },
   createPanel: function createPanel(name) {
     return axios_default.a.post("".concat(host, "/").concat(createPanelUrl), lib_default.a.stringify({

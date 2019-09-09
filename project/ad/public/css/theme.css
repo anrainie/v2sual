@@ -156,7 +156,9 @@
 .v2-picture >img{
   position: inherit;
 }
-
+.v2-form-label{
+  float: left;
+}
 .text-red {
   color: green;
 }
@@ -478,8 +480,53 @@ body {
   font-family:RTWS YueGothic G0v1;
   font-weight:400;
   color:rgba(153,197,255,1);
-}.vda-text-moreDetail:hover{
+}
+.vda-text-moreDetail:hover{
   text-decoration:underline;
   color:rgb(245, 255, 153);
   cursor: pointer;
+}
+.vda_device_bottom{
+  background:rgba(45,110,225,0.2);
+  border:1px solid rgba(77,148,255,1);
+  opacity:0.4;
+  border-radius:14px;
+}
+.vda_device_proportion{
+  background:rgba(32,111,255,1);
+  opacity:0.3;
+}
+.vda_device_title{
+  font-size:14px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight:400;
+  color:rgba(172,207,255,1);
+}
+.vda_device_key{
+  font-size:14px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight:400;
+  color:rgba(115,174,255,1);
+}
+.vda_device_value{
+  font-size:16px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight:400;
+  color:rgba(223,236,255,1);
+}
+.vda_glass_bg{
+  background:rgba(34,87,179,1);
+  opacity:0.2;
+}
+.vda_progress_proportion{
+  font-size:22px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight:400;
+  color:rgba(239,254,255,1);
+}
+.vda_progress_value{
+  font-size:16px;
+  font-family:RTWS YueGothic G0v1;
+  font-weight:400;
+  color:rgba(239,254,255,1);
 }

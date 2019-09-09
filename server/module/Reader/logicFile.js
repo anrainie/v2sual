@@ -302,7 +302,9 @@ let createProp = (data) => {
     let val = this.formatData(data[i]);
     if(val===""){
       arr.push(`${i}:{default:()=>{return ""}}`);
-    }else if(val.startsWith('"')||val.startsWith("'")){
+    }else if(val.startsWith('"')||val.startsWith("'")||val.startsWith("`")){
+      arr.push(`${i}:{default:()=>{return ${val}}}`);
+    }else if(val.startsWith('{')){
       arr.push(`${i}:{default:()=>{return ${val}}}`);
     }else{
       arr.push(`${i}:{default:()=>{return "${val}"}}`);
