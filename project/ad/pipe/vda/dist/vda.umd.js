@@ -1278,7 +1278,7 @@ var vda_signInFn = function signInFn() {
         cols = _ref.cols;
     return axios_default.a.post("".concat(host, "/").concat(queryNewDmData), lib_default.a.stringify({
       token: token,
-      request: {
+      request: JSON.stringify({
         "userid": username,
         "paras": [{
           "requestid": "518B3F39-B17B-486D-B799-779F0CD98FC5",
@@ -1291,7 +1291,7 @@ var vda_signInFn = function signInFn() {
           "cols": cols,
           "limit": ""
         }]
-      }
+      })
     }));
   },
   createPanel: function createPanel(name) {

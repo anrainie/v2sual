@@ -422,7 +422,7 @@ export default {
   data({moduleid,cols}) {
     return axios.post(`${host}/${queryNewDmData}`, qs.stringify({
       token: token,
-      request: {
+      request: JSON.stringify({
         "userid":username,
         "paras":[{
           "requestid": "518B3F39-B17B-486D-B799-779F0CD98FC5",
@@ -435,8 +435,7 @@ export default {
           "cols": cols,
           "limit": ""
         }]
-
-      }
+      })
     }));
   },
   createPanel(name) {
