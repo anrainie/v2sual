@@ -66,9 +66,9 @@ router.beforeEach((to, from, next) => {
       }
     });
     router.addRoutes(routes);
-debugger;
+
     if(wpath.indexOf('shanghai_mobile')==0 && router.matcher.match('/mobile/'+wpath).path=='/404'){    
-      debugger;  
+  
       routes[1].children.push({
                   path: '/mobile/'+wpath,
                   replace: true,
@@ -147,11 +147,11 @@ router.afterEach(() => {
   NProgress.done()
 })
 
-// window.pipe.vda.ready().then(r => {
-  new Vue({
-    router,
-    store,
-    render: h => h(App)
-  }).$mount('#app')
-// })
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')
 
+// window.pipe.vda.ready().then(r => {
+// })
