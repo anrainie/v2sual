@@ -86,9 +86,6 @@
     name: "v2-vda-pretty-global",
 
     data() {
-
-      
-
       return {
         viewControl: GlobalOptions.globe.viewControl,
         globalChart:""
@@ -104,7 +101,6 @@
       viewControl: {
         deep: true,
         handler (value) {
-          debugger;
           this.applyViewControl(value, this.globalChart)
         }
       },
