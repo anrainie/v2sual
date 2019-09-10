@@ -335,6 +335,9 @@ body {
 .vda-table .el-table tr {
   background-color: rgba(0, 0, 0, 0);
 }
+.vda-table .el-table td {
+  color: #fefefe;
+}
 .vda-table .el-table th.is-leaf,
 .vda-table .el-table td {
   border-bottom: 1px solid #25498a;
