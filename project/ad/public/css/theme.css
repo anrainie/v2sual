@@ -335,6 +335,9 @@ body {
 .vda-table .el-table tr {
   background-color: rgba(0, 0, 0, 0);
 }
+.vda-table .el-table td {
+  color: #fefefe;
+}
 .vda-table .el-table th.is-leaf,
 .vda-table .el-table td {
   border-bottom: 1px solid #25498a;
@@ -389,6 +392,29 @@ body {
 .el-select-dropdown__item.selected {
   color: #fff!important;
   font-weight: normal!important;
+}
+
+
+/* 按钮样式 */
+.vda-btn {
+  background-color: rgba(44, 86, 148, 0.3)!important;
+  border: solid 1px #25498a!important;
+  height: 30px;
+  line-height: 30px!important;
+  padding: 0 10px!important;
+  color: #90c4ff!important;
+}
+.vda-btn-left {
+  border-radius: 4px 0 0 4px!important
+}
+.vda-btn-right {
+  border-radius: 0 4px 4px 0!important
+}
+.vda-btn-active {
+  background-color: rgba(44, 86, 148, 0.7)!important;
+}
+.vda-btn-active span {
+  text-shadow: 0 0 1px #fff;
 }
 
 .device_name {
