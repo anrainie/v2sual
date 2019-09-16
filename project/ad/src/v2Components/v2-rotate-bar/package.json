@@ -1,0 +1,58 @@
+{
+  "author": {
+    "name": "zhanghaixian@agree.com.cn"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "锥形图",
+  "docs": {
+    "belongTo": "aui",
+    "icon": "iconzhuzhuangtu",
+    "type": "project",
+    "href": "v2-rotate-bar",
+    "author": "zhanghaixian@agree.com.cn",
+    "version": 610000,
+    "accept": "divCtn",
+    "name": "锥形图",
+    "option": [
+      {
+        "type": "string_input",
+        "name": "title",
+        "defaultValue": "广州",
+        "desp": "标题",
+        "details": ""
+      },
+      {
+        "type": "string_input",
+        "name": "value",
+        "defaultValue": "18.88万",
+        "desp": "数值",
+        "details": ""
+      },
+      {
+        "type": "string_input",
+        "name": "level",
+        "defaultValue": "1",
+        "desp": "排名",
+        "details": ""
+      },
+      {
+        "type": "boolean",
+        "name": "openTitle",
+        "defaultValue": "false",
+        "desp": "开启提示信息",
+        "details": ""
+      }
+    ],
+    "css": {}
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.vue",
+  "name": "@v2-components/v2-rotate-bar",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "6.0.3",
+  "index": 31000001
+}
