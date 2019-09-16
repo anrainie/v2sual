@@ -211,7 +211,12 @@ box-shadow: 0 0 1px 1px #00000021;
 }
 
 .V2XyBlock:hover{
-  /* box-shadow: inset 0px 0px 3px 3px darkcyan; */
+  box-shadow: inset 0px 0px 3px 3px darkcyan;
+  cursor: move;
+}
+
+.V2XySelected{
+  box-shadow: inset 0px 0px 3px 3px darkcyan;
 }
 
 .V2Container.V2XyBlock:hover{
