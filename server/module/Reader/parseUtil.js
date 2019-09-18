@@ -272,6 +272,11 @@ let appendChildren = function (parentJson, element, isContainer) {
     let layout = layout_c(parentJson);
     let realSize = parentJson.realSize;
     // for (let i = 0, len = layout.length; i < len; i++) {
+    if (!parentJson.children) {
+      console.log('parseUtil#appendChildren: parentJson没有子节点');
+      console.error(parentJson);
+      return;
+    }
     for (let i = 0, len = parentJson.children.length; i < len; i++) {
       //编译生成el-row和el-col
       let el = null;
