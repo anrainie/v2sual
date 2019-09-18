@@ -28,7 +28,7 @@ class Pipe {
       try {
         const nodeModelPipePath = trans2absolute(`node_modules${nodejsPath.sep}@v2-pipe`);
         let files = await readDir(path);
-        
+
         let res = [{
           desp: "数据源",
           name:"dataSource",
@@ -251,6 +251,6 @@ class Pipe {
 module.exports = {
   consume(platform, consumption, path) {
     const pipe = new Pipe(platform, path);
-    Object.keys(consumption).map(c => platform.socket.on(c, pipe[consumption[c]]()));
+    Object.keys(consumption).map(c => platform.on(c, pipe[consumption[c]]()));
   }
 };
