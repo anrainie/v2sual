@@ -52,8 +52,8 @@ const fileUtil = {
   },
   /**
    * 保存文件
-   * @param {*} path 
-   * @param {*} content 
+   * @param {*} path
+   * @param {*} content
    */
   saveFile(path, content, logicOptions) {
     let writer = this.getFileWriter(path);
@@ -416,7 +416,7 @@ const reader = {
 
 module.exports = {
   consume(platform, consumption) {
-    Object.keys(consumption).map(c => platform.socket.on(c, reader[consumption[c]](platform)));
+    Object.keys(consumption).map(c => platform.on(c, reader[consumption[c]](platform)));
   },
   fileUtil,
 };

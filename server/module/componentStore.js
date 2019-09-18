@@ -10,7 +10,7 @@ const {exec}=require('child_process')
 // portIsOccupied(1987)
 let project = {
   getComponentList:async(ctx)=> {
-    
+
     try {
        let projectPath=config.runtime.base;
        let pakcageJsonPath=path.join(projectPath,'./package.json');
@@ -21,9 +21,9 @@ let project = {
           packageJsonData=JSON.parse(packageJsonData.toString());
           dep={...packageJsonData.dependencies,...packageJsonData.devDependencies}
        }
-       
+
     //    let depData=Object.keys(dep);
-       
+
        let pro=await util.$get("https://npm.awebide.com/-/projectModules/");
        pro=JSON.parse(pro);
        let v2Components=pro.v2Components;
@@ -76,7 +76,7 @@ let project = {
                   if (error) {
                       reject(error);
                   }
-                 
+
                   resolve();
               });
           });
@@ -85,18 +85,18 @@ let project = {
         Result.error(ctx,`操作不正确！`);
 
       }
-     
-    
+
+
      } catch (error) {
          Result.error(ctx, error)
      }
- 
+
   },
   imgList:async(ctx)=>{
-    
-    
-    
-    
+
+
+
+
     let list=[];
     let cursor=1;
 
@@ -115,7 +115,7 @@ let project = {
 module.exports = {
     consume(platform, consumption) {
       Object.keys(consumption).map(c => {
-        platform.socket.on(c, project[consumption[c]](platform))
+        platform.on(c, project[consumption[c]](platform))
       });
     },
     router(http) {
@@ -126,4 +126,3 @@ module.exports = {
       return router;
     }
   }
-  

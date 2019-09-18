@@ -47,7 +47,7 @@ class Preview {
   /**
    * @private
    * @desp 生成 Component 文件
-   * @param {*} platform 
+   * @param {*} platform
    */
 
   /**
@@ -60,26 +60,26 @@ class Preview {
     try {
       // const projectPath = this.projectPath;
       const context = this;
-  
+
       //组件列表
       let vueMap = {},
           componentContent={},
           compoCss ={};
-      
-  
+
+
       const getComponents=(files)=>{
         files
           .filter(f => f.lastIndexOf('package.json') !== -1)
-  
+
           .forEach(f => {
             let absPath = f.replace(path.sep + 'package.json', '');
 
             const contentStr = fs.readFileSync(f).toString();
             const content = JSON.parse(contentStr);
-  
+
             const paths = f.split(path.sep);
             const name = camelcase(paths[paths.length - 2]);
-  
+
             const relPath = path.relative(path.dirname(context.componentFile), absPath);//相对路径
 
             vueMap[name] = relPath;//相对路径
@@ -88,9 +88,9 @@ class Preview {
             if(fs.existsSync(distPath)){
               componentContent[name]= Buffer.from(fs.readFileSync(distPath)).toString();
             }
-         
+
             let compoCssPath = path.join(absPath,`./dist/${name}.css`);
-    
+
             if(fs.existsSync(compoCssPath)){
               compoCss[name]=Buffer.from(fs.readFileSync(compoCssPath)).toString()
             }
@@ -129,16 +129,16 @@ class Preview {
         getComponents(files);
 
       }
-  
-  
+
+
       //项目级组件
       console.log(context.componentPath)
       if (fs.existsSync(context.componentPath)) {
         const files = await readDir(context.componentPath);
         getComponents(files);
-  
+
       }
-  
+
       const vueFiles = Object.keys(vueMap).map(n => {
         let item=vueMap[n];
         if(item.includes('node_modules')){
@@ -152,7 +152,7 @@ class Preview {
 
 
 
-     
+
       //pipe
       let pipeContent={};
       let pipeMap = {};
@@ -179,20 +179,20 @@ class Preview {
 
         })
       }
-    
-  
+
+
       const platformPipePath = path.join(context.projectPath, configJson.runtime.platformPipe);
       if (fs.existsSync(platformPipePath)) {
         const pipeFiles = await readDir(platformPipePath);
         getPipe(pipeFiles);
- 
+
       }
       const pipePath = this.pipePath;
       if (fs.existsSync(pipePath)) {
         const pipesFiles = await readDir(pipePath);
         getPipe(pipesFiles);
- 
-  
+
+
       }
       const pipeList = Object.keys(pipeMap).map(n => {
         let item=pipeMap[n];
@@ -204,7 +204,7 @@ class Preview {
           path:item
         }
       });
-  
+
       //生成Vue Use
       const content = `        
         ${vueFiles.map(f => `import ${f.name}  from '${f.path.replace(/\\/g, '/')}'`).join(';\n')}
@@ -220,9 +220,9 @@ class Preview {
         export default {
           ${vueFiles.map(f => `${f.name}`).join(',\n\t')}
         }`;
-  
-      // await util.writeFile(context.componentFile, content);  
-      
+
+      await util.writeFile(context.componentFile, content);
+
       platform.sendSuccessResult(req,{
         pipe:pipeContent,
         component:componentContent,
@@ -232,7 +232,7 @@ class Preview {
     } catch (error) {
         console.log(error);
     }
-   
+
   }
   init(platform) {
     const projectPath = this.projectPath;
@@ -537,7 +537,7 @@ class Preview {
 module.exports = {
   consume(platform, consumption, runtime) {
     const preview = new Preview(runtime);
-    Object.keys(consumption).map(c => platform.socket.on(c, preview[consumption[c]](platform)));
+    Object.keys(consumption).map(c => platform.on(c, preview[consumption[c]](platform)));
   },
   router(runtime, consumption) {
     const preview = new Preview(runtime);

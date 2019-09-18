@@ -12,7 +12,7 @@ class SocketListener {
   }
 
   init() {
-    this.platform.socket.on('widget', async req => {
+    this.platform.on('widget', async req => {
       let target = `${entryPath}/src/@aweb-components`;
       let dir = await Util.readdir(target);
       let menu = [];
@@ -33,7 +33,7 @@ class SocketListener {
       this.platform.sendSuccessResult(req, menu)
     });
 
-    this.platform.socket.on('dict', async req => {
+    this.platform.on('dict', async req => {
       let target = `${entryPath}/src/datadict`;
       let dir = await Util.readdir(target);
       let ret = {};
@@ -51,9 +51,9 @@ class SocketListener {
       }
       this.platform.sendSuccessResult(req, ret)
     });
-    this.platform.socket.on('previewPath', async res => {
+    this.platform.on('previewPath', async res => {
       console.log('res', res);
-      this.platform.socket.emit('preview-page', {});
+      this.platform.emit('preview-page', {});
     });
 
   }

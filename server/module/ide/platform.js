@@ -1,51 +1,52 @@
-const config = require('../../config/config.base');
+const WebideServlet = require('../../../gitmodule/webide-servlet')
 
-const io = require('socket.io-client');
-const ExtListn = require('../../util/socketListener');
-const fileUtil = require('../Reader/fileUtil');
+const DelegateEmitterFunctions = [ "on", "emit", "off" ]
 
+function checkLoaded(platform) {
+  platform.loaded || console.warn("Unable to observe platform caused by un-loaded servlet")
+  return platform.loaded
+}
 
-const extListn = new ExtListn();
+function delegateEmitterFunction(delegation) {
+  DelegateEmitterFunctions.forEach(name => delegation[name] = function () {
+    this.loaded ? this.provider[name].apply(this.provider, arguments) : this._callQueue.push({name: name, args: [...arguments]})
+  })
+}
+
 class Platform {
-  constructor({
-    ip,
-    port
-  }) {
-    this.ip = ip;
-    this.port = port;
+  constructor(name) {
+    this.loaded = false
+    this.servlet = null
+    this.provider = null
+    // TODO
+    this._callQueue = []
+    this._listeners = []
+    // 将Platform的emitter方法委托至provider上
+    delegateEmitterFunction(this, this.provider)
 
-    let ideType = config.server.type;
-    let selfPort = config.webide.clientPort;
-    let selfIP = config.webide.clientHost;
-    let publicPort = config.webide.publicPort || 0;
-    let id = config.server.id;
-    let name = config.server.name || id;
-    let preview = config.server.preview;
-
-    let url = `${ip}${publicPort != 0 ? `:${publicPort}` : ''}?server=true&id=${id}&type=${ideType}&httpPort=${selfPort}&ip=${selfIP}&name=${name}&preview=${preview}`;
-    console.log(`尝试连接${url}`);
-    try {
-      this.socket = io(url, {
-        path: config.webide.path
-      });
-
-      this.socket.on('connect', r => console.log('连接成功'));
-      this.socket.on('disconnect', r => console.log('断连', r));
-      this.socket.on('connect_error', r => console.log('连接失败', r.message));
-      this.socket.on('data', r => console.log(r));
-      this.socket.on('error', r => console.log('连接错误', r));
-      this.socket.on('previewPath', (res) => {
-        console.log('previewRes', res)
-      });
-
-      this.init();
-    } catch (e) {
-      console.log(e)
-    }
+    WebideServlet.load(name)
+      .then(servlet => this._setUp(servlet))
+      .catch(e => console.log("Failed to load servlet instance", e))
   }
-  init() {
-    //注册了画板相关的监听
-    extListn.observe(this);
+
+  _setUp(servlet) {
+    this.servlet = servlet
+    this.provider = servlet.provide({ "id": "vda", "type": "v2sual" })
+    this.loaded = true
+
+    // 处理还未加载前的调用
+    let calls = this._callQueue.slice()
+    for (let {name, args} of calls) {
+      this[name].apply(this, args)
+    }
+
+    let listeners = this._listeners.slice()
+    for (let listener of listeners) {
+      listener.observe(this.provider)
+    }
+
+    delete this._listeners
+    delete this._callQueue
   }
 
   sendSuccessResult(req, data) {
@@ -64,10 +65,13 @@ class Platform {
   }
 
   send(req, result) {
-    // console.log(req, result);
-    this.socket.emit(req.callbackId, result);
+    this.provider.emit(req.callbackId, result);
+  }
+
+  observe(listener) {
+    checkLoaded(this) ? listener.observe(this.provider) : this._listeners.push(listener)
+    return this
   }
 }
-
 
 module.exports = Platform;
