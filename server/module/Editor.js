@@ -29,7 +29,7 @@ let editor = {
   'widget'(platform) {
     return async (req) => {
       try {
-        
+
         let menu = [];
         let componentMap={};
         const getComponent=(components)=>{
@@ -38,25 +38,25 @@ let editor = {
           .forEach(f => {
             const contentStr = fs.readFileSync(f, 'utf8').toString();
             const content = JSON.parse(contentStr);
-            
+
             if (content.docs) {
               componentMap[content.docs.href]={
                 ...content.docs,
                 main: content.main,
                 index: content.index
               };
-              
+
             }
           });
         }
-      
+
 
         //平台级组件
         const platformPath=config.runtime.platformComponent;
         if(fs.existsSync(platformPath)){
           const platformComponents = (await readDir(platformPath));
           getComponent(platformComponents);
-      
+
         }
 
 
@@ -65,7 +65,7 @@ let editor = {
         if(fs.existsSync(projectPath)){
           const projectComponents = (await readDir(projectPath));
           getComponent(projectComponents);
-  
+
         }
 
         //功能组件
@@ -73,8 +73,8 @@ let editor = {
                menu.push(componentMap[i]);
         })
 
-       
-          
+
+
        // 自定义组件
        if(fs.existsSync(config.runtime.customWidget)){
 
@@ -130,7 +130,7 @@ let editor = {
             }
           });
        }
-      
+
         platform.sendSuccessResult(req, menu.sort(sorter));
       } catch (e) {
         platform.sendErrorResult(req, e);
@@ -167,6 +167,6 @@ let editor = {
 
 module.exports = {
   consume(platform, consumption) {
-    Object.keys(consumption).map(c => platform.socket.on(c, editor[consumption[c]](platform)));
+    Object.keys(consumption).map(c => platform.on(c, editor[consumption[c]](platform)));
   }
 };

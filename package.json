@@ -16,12 +16,14 @@
         "ad": "node  ./server/server.js ide=ad sh=http://localhost sp=7003 id=ad name=广告投放 ch=http://localhost cp=3005 ocp=3005 base=./project/ad pipe=./pipe component=./src/v2Components  preview=http://localhost:7033",
         "installPlatform": "npm i koa socket.io-client rimraf path fs koa-router rimraf urllib compressing mkdirp request child_process",
         "platform": "node ./server/platform.js sh=http://localhost sp=7003 id=netbank name=网银 ch=http://localhost cp=3000 ocp=3000 base=./project/runtime pipe=../pipe component=../@v2-components static=../v2sual/sources preview=http://localhost:7007",
-        "vda": "node --inspect ./server/server.js ide=ad sh=http://localhost sp=7003 id=vda name=VDA大屏 ch=http://localhost cp=3006 ocp=3006 base=./project/ad pipe=./pipe component=./src/v2Components preview=http://localhost:7033"
+        "vda": "node --inspect ./server/server.js ide=ad sh=http://localhost sp=7003 id=vda name=VDA大屏 ch=http://localhost cp=3006 ocp=3006 base=./project/ad pipe=./pipe component=./src/v2Components preview=http://localhost:7033",
+        "init:webide-servlet": "git submodule init & git submodule update"
     },
     "dependencies": {
         "@handsontable/vue": "^3.1.0",
         "aweb-ui": "^0.0.3",
         "axios": "^0.18.0",
+        "base64id": "^2.0.0",
         "child_process": "^1.0.2",
         "compressing": "^1.4.0",
         "d3": "^5.9.2",
@@ -49,6 +51,7 @@
         "popper.js": "^0.6.4",
         "recursive-readdir": "^2.2.2",
         "scriptjs": "^2.5.8",
+        "socket.io": "^2.2.0",
         "socket.io-client": "^2.2.0",
         "sortablejs": "^1.7.0",
         "tinycolor2": "^1.4.1",

@@ -174,98 +174,14 @@ openCloseAccOption:{
           },
       ] 
 },
-timeTableData:[
-    {
-        rank:1,
-        webSite:'崂山东路支行',
-        handled:28,
-        wait:24,
-        averageTime:'6分钟',
-        longestTime:'67分钟',
-        lastMonthRank:2
-    },
-    {
-        rank:2,
-        webSite:'联洋支行',
-        handled:37,
-        wait:56,
-        averageTime:'12分钟',
-        longestTime:'59分钟',
-        lastMonthRank:7
-    },
-    {
-        rank:3,
-        webSite:'世博家园支行',
-        handled:15,
-        wait:39,
-        averageTime:'8分钟',
-        longestTime:'52分钟',
-        lastMonthRank:16
-    },
-    {
-        rank:4,
-        webSite:'陆家嘴支行',
-        handled:25,
-        wait:17,
-        averageTime:'10分钟',
-        longestTime:'47分钟',
-        lastMonthRank:8
-    },
-    {
-        rank:5,
-        webSite:'洋泾支行',
-        handled:41,
-        wait:36,
-        averageTime:'5分钟',
-        longestTime:'46分钟',
-        lastMonthRank:12
-    },
-    {
-        rank:6,
-        webSite:'马陆支行',
-        handled:43,
-        wait:35,
-        averageTime:'7分钟',
-        longestTime:'38分钟',
-        lastMonthRank:3
-    },
-    {
-        rank:7,
-        webSite:'东方路支行',
-        handled:27,
-        wait:19,
-        averageTime:'6分钟',
-        longestTime:'32分钟',
-        lastMonthRank:9
-    },
-    {
-        rank:8,
-        webSite:'蓝村支行',
-        handled:21,
-        wait:22,
-        averageTime:'5分钟',
-        longestTime:'27分钟',
-        lastMonthRank:7
-    },
-    {
-        rank:9,
-        webSite:'花木支行',
-        handled:18,
-        wait:26,
-        averageTime:'9分钟',
-        longestTime:'21分钟',
-        lastMonthRank:10
-    },
-    {
-        rank:10,
-        webSite:'华夏西路支行',
-        handled:12,
-        wait:19,
-        averageTime:'11分钟',
-        longestTime:'20分钟',
-        lastMonthRank:17
-    }
-],
+timeTableData:[{
+  "等待客户数":83,
+  "平均等待耗时":183,
+  "当前最长等待耗时":13141,
+  "网点名称":"上海银行自忠支行",
+  "已处理":83,
+  "上月平均等待耗时排名":1
+}],
 topEchartsOption1:{
 //   backgroundColor: "#0E1327",
   series: [

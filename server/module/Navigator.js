@@ -27,7 +27,7 @@ const listDir = (dirPath = listPath) => {
         let filePath = path.join(dirPath, files[i]);
         let relativePath = trans2RelativePath(filePath);
         let stat = fs.lstatSync(dirPath + path.sep + files[i]);
-        
+
         if (stat.isDirectory()) {
           let DirInfo = listDir(filePath);
           let name = path.basename(filePath);
@@ -190,11 +190,11 @@ const statisDir = async() => {
             treeNode[0].children.push(item);
           }
           }
-        
+
         }
       }
-    
-   
+
+
     // theme
     treeNode[1].children = scanDir(themePath);
     //statis
@@ -307,7 +307,7 @@ const sorter = (a, b) => {
 }
 const pipeDir = async() => {
   let res = [];
-  
+
   let pipePath = config.runtime.pipe;
   if(!fs.existsSync(pipePath)){
      await util.mkdir(pipePath)
@@ -448,6 +448,6 @@ const Navigator = {
 
 module.exports = {
   consume(platform, consumption) {
-    Object.keys(consumption).map(c => platform.socket.on(c, Navigator[consumption[c]](platform)));
+    Object.keys(consumption).map(c => platform.on(c, Navigator[consumption[c]](platform)));
   }
 };

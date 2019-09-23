@@ -127,6 +127,24 @@
                 this.activeTool.dispatchKeyEvent(this, e) :
                 true;
             });
+           
+           $(window)
+            .on("keyup.keymap", e => {
+              return this.activeTool && this.activeTool.dispatchKeyUpEvent ?
+                this.activeTool.dispatchKeyUpEvent(this, e) :
+                true;
+            });
+          let self = this;
+          window.addEventListener("mousewheel", e => {
+            if (e.ctrlKey) {
+              e.preventDefault();
+              return self.activeTool && self.activeTool.mouseWheelEvent ?
+                self.activeTool.mouseWheelEvent(self, e) :
+                true;
+            }
+          }, {
+            passive: false
+          });
         },
         methods: {
           openCustomEditor(widget) {

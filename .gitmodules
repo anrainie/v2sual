@@ -1,0 +1,3 @@
+[submodule "gitmodule/webide-servlet"]
+	path = gitmodule/webide-servlet
+	url = https://github.com/XyParaCrim/webide-servlet.git

@@ -25,11 +25,11 @@ class Page {
 
   /**
    * /Users/lijiancheng/Agree/v2sual/runtime/src/views/page.vue
-   * 
+   *
    * @desp 截取匹配内容
-   * @param 文件内容 content 
-   * @param 开始 startTag 
-   * @param 结束 endTag 
+   * @param 文件内容 content
+   * @param 开始 startTag
+   * @param 结束 endTag
    */
   getMatchPart(content, startTag, endTag) {
     const start = content.indexOf(startTag);
@@ -39,10 +39,10 @@ class Page {
   }
 
   /**
-   * 
+   *
    * @desp 解析注解
    * @param 方法信息 key
-   * 
+   *
    */
   getMethodComments(key) {
     var ret = {
@@ -67,8 +67,8 @@ class Page {
 
   /**
    * @desp  获取文件信息
-   * @param 文件路径 filepath 
-   * @param 文件内容 content 
+   * @param 文件路径 filepath
+   * @param 文件内容 content
    */
   getPageInfo(filepath, content) {
     let args = {
@@ -96,8 +96,8 @@ class Page {
 
   /**
    * @desp  获取脚本信息
-   * @param 文件路径 filepath 
-   * @param 文件内容 content 
+   * @param 文件路径 filepath
+   * @param 文件内容 content
    */
   async getPageScriptInfo(filepath, content) {
     try {
@@ -593,6 +593,6 @@ module.exports = {
   PageFlow: Page,
   consume(platform, consumption) {
     const page = new Page(config.runtime.page);
-    Object.keys(consumption).map(c => platform.socket.on(c, page[consumption[c]](platform)));
+    Object.keys(consumption).map(c => platform.on(c, page[consumption[c]](platform)));
   }
 };

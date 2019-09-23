@@ -176,7 +176,7 @@ let project = {
 module.exports = {
   consume(platform, consumption) {
     Object.keys(consumption).map(c => {
-      platform.socket.on(c, project[consumption[c]](platform))
+      platform.on(c, project[consumption[c]](platform))
     });
   },
   router(http) {

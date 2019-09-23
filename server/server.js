@@ -11,10 +11,9 @@ const cors = require('koa-cors')
 
 //WEB IDE 模块
 const Platform = require('./module/ide/platform');
-const platform = new Platform({
-  ip: config.webide.host,
-  port: config.webide.port
-});
+const PlatformListener = require('../server/util/socketListener')
+const platform = new Platform("memory-dev")
+  .observe(new PlatformListener());
 
 //server
 const app = new Koa();
