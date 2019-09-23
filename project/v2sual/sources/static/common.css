@@ -798,3 +798,33 @@ position: absolute; */
 .white_background{
   background:white;
 }
+
+/* 对齐线，距离线，文本 */
+.V2AlignmentLine{
+  position:absolute;
+  border-left:1px solid red;
+  border-top:1px solid red;
+  z-index:99
+}
+
+.V2DistanceLine{
+  position:absolute;
+  border-left:1px solid blue;
+  border-top:1px solid blue;
+  z-index:99
+}
+
+.V2PositionText{
+  position:absolute;
+  background:rgb(255,61,102);
+  color:white;
+  padding:2px
+}
+
+.V2DistanceText{
+  position:absolute;
+  background:white;
+  color:blue;
+  z-index:99;
+  padding:2px;
+}
