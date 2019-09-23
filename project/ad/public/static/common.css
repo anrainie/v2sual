@@ -219,6 +219,12 @@ box-shadow: 0 0 1px 1px #00000021;
   box-shadow: inset 0px 0px 3px 3px darkcyan;
 }
 
+.V2XyLocked.V2XySelected,
+.V2XyLocked:hover
+{
+  box-shadow: inset 0px 0px 2px 2px #bbb;
+}
+
 .V2Container.V2XyBlock:hover{
   padding: 0.1rem;
   box-sizing: border-box;
