@@ -12,7 +12,7 @@ const cors = require('koa-cors')
 //WEB IDE 模块
 const Platform = require('./module/ide/platform');
 const PlatformListener = require('../server/util/socketListener')
-const platform = new Platform("memory-dev")
+const platform = new Platform("memory-dev", config.server)
   .observe(new PlatformListener());
 
 //server
@@ -84,3 +84,5 @@ app.on("error", (err, ctx) => console.log(new Date(), ":", err));
 
 //启动
 app.listen(config.server.port, () => console.log(`项目启动：http://localhost:${config.server.port}}`));
+
+

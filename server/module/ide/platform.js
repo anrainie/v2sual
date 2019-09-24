@@ -1,5 +1,4 @@
 const WebideServlet = require('../../../gitmodule/webide-servlet')
-const config = require('../../config/config.base')
 
 const DelegateEmitterFunctions = [ "on", "emit", "off" ]
 
@@ -15,13 +14,21 @@ function delegateEmitterFunction(delegation) {
 }
 
 class Platform {
-  constructor(name) {
+  /**
+   *
+   * @param name WebideServlet实现名，对应/webide-servlet/instances/${name}
+   * @param info 提供的数据，客户端可以直接获取
+   */
+  constructor(name, info) {
     this.loaded = false
     this.servlet = null
     this.provider = null
+    this.info = info
+
     // TODO
     this._callQueue = []
     this._listeners = []
+
     // 将Platform的emitter方法委托至provider上
     delegateEmitterFunction(this, this.provider)
 
@@ -30,10 +37,25 @@ class Platform {
       .catch(e => console.log("Failed to load servlet instance", e))
   }
 
+  /**
+   * 动态修改提供的数据
+   * @param key
+   * @param value
+   */
+  set(key, value) {
+    if (this.servlet) {
+      this.servlet.set(key, value)
+    } else {
+      this.info[key] = value
+    }
+  }
+
   _setUp(servlet) {
     this.servlet = servlet
-    this.provider = servlet.provide({ "id": config.server.id, "type": config.server.type })
+    this.provider = servlet.provide(this.info)
     this.loaded = true
+
+    console.log(`Register to servlet: ${this.servlet.detail()}`, `provided info: ${JSON.stringify(this.info)}`)
 
     // 处理还未加载前的调用
     let calls = this._callQueue.slice()
