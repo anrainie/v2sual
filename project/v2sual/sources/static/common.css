@@ -210,6 +210,20 @@ box-shadow: 0 0 1px 1px #00000021;
   border: 1px dotted gray;
 }
 
+.V2XyBlock:hover{
+  box-shadow: inset 0px 0px 3px 3px darkcyan;
+  cursor: move;
+}
+
+.V2XySelected{
+  box-shadow: inset 0px 0px 3px 3px darkcyan;
+}
+
+.V2XyLocked.V2XySelected,
+.V2XyLocked:hover
+{
+  box-shadow: inset 0px 0px 2px 2px grey;
+}
 
 .V2CustomCptMask, .V2PageCptMask,
 .V2OrderCtnMask,
@@ -805,4 +819,34 @@ position: absolute; */
 /*美化可切换tab样式 End*/
 .white_background{
   background:white;
+}
+
+/* 对齐线，距离线，文本 */
+.V2AlignmentLine{
+  position:absolute;
+  border-left:1px solid red;
+  border-top:1px solid red;
+  z-index:99
+}
+
+.V2DistanceLine{
+  position:absolute;
+  border-left:1px solid blue;
+  border-top:1px solid blue;
+  z-index:99
+}
+
+.V2PositionText{
+  position:absolute;
+  background:rgb(255,61,102);
+  color:white;
+  padding:2px
+}
+
+.V2DistanceText{
+  position:absolute;
+  background:white;
+  color:blue;
+  z-index:99;
+  padding:2px;
 }

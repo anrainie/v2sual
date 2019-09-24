@@ -219,6 +219,11 @@ box-shadow: 0 0 1px 1px #00000021;
   box-shadow: inset 0px 0px 3px 3px darkcyan;
 }
 
+.V2XyLocked.V2XySelected,
+.V2XyLocked:hover
+{
+  box-shadow: inset 0px 0px 2px 2px #bbb;
+}
 
 .V2CustomCptMask, .V2PageCptMask,
 .V2OrderCtnMask,.V2VDAChartMask,
@@ -768,6 +773,42 @@ position: absolute; */
   transform: scale(.75);
   position: relative;
   top: 0.2px;
+}
+
+.V2AlignmentLine{
+  position:absolute;
+  border-left:2px solid red;
+  border-top:2px solid red;
+  z-index:99
+}
+
+.V2DistanceLine{
+  position:absolute;
+  border-left:2px solid blue;
+  border-top:2px solid blue;
+  z-index:99
+}
+
+.V2PositionText{
+  position:absolute;
+  background:rgb(255,61,102);
+  color:white;
+  padding:2px
+}
+
+.V2DistanceText{
+  position:absolute;
+  background:white;
+  color:blue;
+  z-index:99;
+  padding:2px;
+}
+
+.V2DistanceText{
+  position:absolute;
+  background:rgb(255,61,102);
+  color:white;
+  padding:2px;
 }
 
 .switchable-ctn-editor-toolbar {
