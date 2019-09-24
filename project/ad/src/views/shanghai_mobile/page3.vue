@@ -90,7 +90,14 @@ traceData:[{
                 },
                 mixins:[root,mixins],
                 components:{v2ComponentS_m_device,v2ComponentS_m_header},
-                methods:{openPage(row){
+                methods:{
+                  _source_init(){
+                    let ctx = this;
+                    window.pipe.vda.ready().then(() =>{
+                      
+                    });
+                  },
+                  openPage(row){
                   let ctx = this;
                   
             
@@ -105,7 +112,8 @@ traceData:[{
                     /*overview over*/
                     
                     
-              }, },
+              }, 
+                },
                 watch:{},
                 computed:{},
                 beforeCreate(){
@@ -115,9 +123,10 @@ traceData:[{
                 created(){
                     let ctx = this;
                     
-                    
+                    ctx._source_init();
                     /**bind**/ctx.$store.commit("registerBind",{ vueObj:this, data:this.top10, dataStr:"top10", wid:1567604529177, modelKey:"configs" });
 ctx.$store.commit("registerBind",{ vueObj:this, data:this.traceData, dataStr:"traceData", wid:1567604118671, modelKey:"tableData" });/**bind over**/
+
                 },
                 beforeMount(){
                     let ctx = this;

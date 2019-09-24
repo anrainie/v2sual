@@ -268,11 +268,7 @@ module.exports = function spread(callback) {
 /***/ "0f55":
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-var queryNewDmData = 'visualThemeController/queryNewDmData'; // cols
-=======
 // document.currentScript polyfill by Adam Miller
->>>>>>> fb9054c69b223c7f8e80e31cc0fecad2bf55f0d2
 
 // MIT license
 
@@ -280,133 +276,6 @@ var queryNewDmData = 'visualThemeController/queryNewDmData'; // cols
   var currentScript = "currentScript",
       scripts = document.getElementsByTagName('script'); // Live NodeList collection
 
-<<<<<<< HEAD
-var token = '';
-var fakeData = {
-  '网点树': {
-    "params": [{
-      "requestid": "27CF0EDB-981B-4580-9A19-A23AADE92B64",
-      "cols": ["_orgname"]
-    }],
-    "content": {
-      '27CF0EDB-981B-4580-9A19-A23AADE92B64': [{
-        "_orgname": "渠道管理部"
-      }, {
-        "_orgname": "平台管理部"
-      }, {
-        "_orgname": "运行管理部"
-      }, {
-        "_orgname": "系统应用管理部"
-      }, {
-        "_orgname": "杭州分行"
-      }, {
-        "_orgname": "杭州分行营业部"
-      }, {
-        "_orgname": "市北分行"
-      }, {
-        "_orgname": "杨浦支行"
-      }, {
-        "_orgname": "杨浦支行营业部"
-      }, {
-        "_orgname": "闸北支行"
-      }, {
-        "_orgname": "零售业务部"
-      }]
-    }
-  },
-  "开户趋势": {
-    "params": [{
-      "requestid": "518B3F39-B17B-486D-B799-779F0CD98FC5",
-      "datatype": "1",
-      "modelid": "0f25a46ec83a38088909c16269edb30e",
-      "statcontent": {},
-      "filter": "",
-      "modelfilter": "",
-      "order": "",
-      "cols": ["_openAccountCount"],
-      "limit": ""
-    }],
-    "content": {
-      "518B3F39-B17B-486D-B799-779F0CD98FC5": [{
-        "_openAccountCount": 351
-      }, {
-        "_openAccountCount": 2
-      }, {
-        "_openAccountCount": 3666
-      }, {
-        "_openAccountCount": 1679
-      }, {
-        "_openAccountCount": 2244
-      }, {
-        "_openAccountCount": 180
-      }, {
-        "_openAccountCount": 682
-      }, {
-        "_openAccountCount": 5248
-      }, {
-        "_openAccountCount": 49
-      }]
-    }
-  },
-  "自助设备异常信息": {
-    "params": [{
-      "requestid": "323A3D01-6CA5-4C2C-9981-2B065AC9020B",
-      "cols": ["_DID", "_DT", "_TBID", "_DSN", "TBN"]
-    }],
-    "content": {
-      "323A3D01-6CA5-4C2C-9981-2B065AC9020B": [{
-        "_TBID": "CN0010121",
-        "_DID": "18003055",
-        "_DSN": "正常",
-        "_TBN": "杨浦支行营业部",
-        "_DT": "CDS"
-      }, {
-        "_TBID": "CN0010413",
-        "_DID": "18003054",
-        "_DSN": "正常",
-        "_TBN": "北站支行",
-        "_DT": "CDS"
-      }, {
-        "_TBID": "CN0010121",
-        "_DID": "18003053",
-        "_DSN": "正常",
-        "_TBN": "杨浦支行营业部",
-        "_DT": "CDS"
-      }, {
-        "_TBID": "CN0010413",
-        "_DID": "18003058",
-        "_DSN": "离线",
-        "_TBN": "北站支行",
-        "_DT": "ATM"
-      }, {
-        "_TBID": "CN0010413",
-        "_DID": "18003057",
-        "_DSN": "卡纸",
-        "_TBN": "杨浦支行营业部",
-        "_DT": "CDS"
-      }]
-    }
-  },
-  '当前排队': {
-    "params": [{
-      "requestid": "0A7C1993-E24C-405F-AD67-24D860F5CBAD",
-      "cols": ["_queuedCount"]
-    }],
-    "content": {
-      '0A7C1993-E24C-405F-AD67-24D860F5CBAD': [{
-        "_queuedCount": 11
-      }, {
-        "_queuedCount": 11
-      }, {
-        "_queuedCount": 11
-      }, {
-        "_queuedCount": 11
-      }, {
-        "_queuedCount": 11
-      }, {
-        "_queuedCount": 11
-      }]
-=======
   // If browser needs currentScript polyfill, add get currentScript() to the document object
   if (!(currentScript in document)) {
     Object.defineProperty(document, currentScript, {
@@ -1035,7 +904,6 @@ var stringify = function stringify( // eslint-disable-line func-name-matching
                 encodeValuesOnly
             ));
         }
->>>>>>> fb9054c69b223c7f8e80e31cc0fecad2bf55f0d2
     }
 
     return values;

@@ -5,7 +5,7 @@ body {
 }
 
 body {
-  padding: 1rem;
+  margin: 0;
   user-select: none;
 }
 
@@ -387,7 +387,7 @@ position: absolute; */
 
 /* 考虑用before/after */
 .v2selected {
-  box-shadow: inset 0px 0px 0px 1px darkcyan;
+  /* box-shadow: inset 0px 0px 0px 1px darkcyan; */
   /* box-sizing: border-box; */
   /* filter: invert(10%) blur(.5px); */
   position: relative;
@@ -441,11 +441,19 @@ position: absolute; */
 }
 
 .dashBorder {
-  border: .5px dotted lightgray;
+  /* border: .5px dotted lightgray; */
 }
 
 .hoveredElement {
   box-shadow: 0 0 3px 1px lightgray;
+}
+
+.v2Component:hover{
+  box-shadow: inset 0px 0px 2px 1px darkcyan;
+}
+
+.V2XySelected{
+  box-shadow: inset 0px 0px 0px 1px darkcyan;
 }
 
 .V2Dropable {

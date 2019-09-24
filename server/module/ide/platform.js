@@ -1,4 +1,5 @@
 const WebideServlet = require('../../../gitmodule/webide-servlet')
+const config = require('../../config/config.base')
 
 const DelegateEmitterFunctions = [ "on", "emit", "off" ]
 
@@ -31,7 +32,7 @@ class Platform {
 
   _setUp(servlet) {
     this.servlet = servlet
-    this.provider = servlet.provide({ "id": "vda", "type": "v2sual" })
+    this.provider = servlet.provide({ "id": config.server.id, "type": config.server.type })
     this.loaded = true
 
     // 处理还未加载前的调用
